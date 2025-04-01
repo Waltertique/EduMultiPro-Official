@@ -1,0 +1,534 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--blanco);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+/* centro -------------------- centro*/
+/* nav -------------------- nav */
+
+#navegador{
+    background: var(--azul);
+    height: 140px;
+}
+#n2 h1{
+    font-size: 105px;
+    color: white;
+}
+#n3 h4{
+    font-size: 45px;
+    color: aqua;
+}
+#img1{
+    margin: 0px 30px 0px 0px;
+    width: 115px;
+    height: 115px;
+}
+
+/* article -------------------- article */
+
+#centro{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.caja {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1100px;
+    padding: 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: bounceIn 1s ease-out;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+.cajalogin {
+    padding: 40px;
+    background: #c4e2f7;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#form h2 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    color: #007bbd;
+    font-weight: bold;
+}
+
+#form input {
+    width: 80%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #007bbd;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+#form input:focus {
+    border-color: #005a8d;
+    outline: none;
+}
+
+#form button {
+    padding: 15px 40px;
+    background: #007bbd;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+}
+
+#form button:hover {
+    background: #005a8d;
+    transform: scale(1.1);
+}
+
+#form a {
+    margin-top: 15px;
+    color: #007bbd;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+}
+
+#form a:hover {
+    text-decoration: underline;
+}
+
+.cajaimagen {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.cajaimagen img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: fade 12s infinite;
+    transition: opacity 1s;
+}
+
+.cajaimagen img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.cajaimagen img:nth-child(2) {
+    animation-delay: 4s;
+}
+
+.cajaimagen img:nth-child(3) {
+    animation-delay: 8s;
+}
+
+@keyframes fade {
+    0%, 33% { opacity: 1; }
+    34%, 100% { opacity: 0; }
+}
+
+/* footer -------------------- footer */
+
+#pie{
+    background-image: url("../img/gris fondo.jpg");
+    height: 130px;
+}
+#n4 h2{
+    color: white;
+    font-size: 45px;
+}
+#n5 a{
+    color: white;
+    font-size: 20px;
+}
+
+@media (min-width: 576px) {
+    #navegador{
+        background: var(--azul);
+        height: 280px;
+    }
+    #n2 h1{
+        font-size: 80px;
+        color: white;
+    }
+    #n3 h4{
+        font-size: 20px;
+        color: aqua;
+    }
+    #n1{
+        display: flex;
+        justify-content: center; 
+    }
+    #img1{
+        margin: 0px auto;
+        width: 100px;
+        height: 100px;
+    }
+
+    #pie{
+        background-image: url("../img/gris\ fondo.jpg");
+        height: 200px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+    #n5 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+    #n6 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+    #n7 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+    #n8 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+    #n9 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+}
+@media (min-width: 600px) {
+    #navegador{
+        background: var(--azul);
+        height: 280px;
+    }
+    #n2 h1{
+        font-size: 80px;
+        color: white;
+    }
+    #n3 h4{
+        font-size: 25px;
+        color: aqua;
+    }
+    #n1{
+        display: flex;
+        justify-content: center; 
+    }
+    #img1{
+        margin: 0px auto;
+        width: 100px;
+        height: 100px;
+    }
+
+    .caja {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        max-width: 660px;
+        padding: 30px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        animation: bounceIn 1s ease-out;
+    }
+
+    #pie{
+        background-image: url("../img/gris\ fondo.jpg");
+        height: 220px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 35px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    #n5 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    #n6 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+    #n7 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+    #n8 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+    #n9 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+}
+@media (min-width: 768px) {
+    #navegador{
+        background: var(--azul);
+        height: 280px;
+    }
+    #n2 h1{
+        font-size: 115px;
+        color: white;
+    }
+    #n3 h4{
+        font-size: 35px;
+        color: aqua;
+    }
+    #n1{
+        display: flex;
+        justify-content: center; 
+    }
+    #img1{
+        width: 115px;
+        height: 115px;
+    }
+
+    .caja {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        max-width: 770px;
+        padding: 30px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        animation: bounceIn 1s ease-out;
+    }
+
+    #pie{
+        background-image: url("../img/gris\ fondo.jpg");
+        height: 220px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 35px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    #n5 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    #n6 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    #n7 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    #n8 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    #n9 a{
+        color: white;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+}
+@media (min-width: 992px) {
+    #navegador{
+        background: var(--azul);
+        height: 140px;
+    }
+    #n2 h1{
+        font-size: 105px;
+        color: white;
+    }
+    #n3 h4{
+        font-size: 45px;
+        color: aqua;
+    }
+    #img1{
+        margin: 0px 30px 0px 0px;
+        width: 115px;
+        height: 115px;
+    }
+    
+    /* article -------------------- article */
+    
+    #centro{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 0;
+    }
+    
+    .caja {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        max-width: 1100px;
+        padding: 30px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        animation: bounceIn 1s ease-out;
+    }
+    
+    @keyframes bounceIn {
+        0% { transform: scale(0.8); opacity: 0; }
+        60% { transform: scale(1.1); opacity: 1; }
+        100% { transform: scale(1); }
+    }
+    
+    .cajalogin {
+        padding: 40px;
+        background: #c4e2f7;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    
+    #form h2 {
+        margin-bottom: 30px;
+        font-size: 30px;
+        color: #007bbd;
+        font-weight: bold;
+    }
+    
+    #form input {
+        width: 80%;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 2px solid #007bbd;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+    
+    #form input:focus {
+        border-color: #005a8d;
+        outline: none;
+    }
+    
+    #form button {
+        padding: 15px 40px;
+        background: #007bbd;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        font-size: 18px;
+    }
+    
+    #form button:hover {
+        background: #005a8d;
+        transform: scale(1.1);
+    }
+    
+    #form a {
+        margin-top: 15px;
+        color: #007bbd;
+        text-decoration: none;
+        font-size: 16px;
+        display: block;
+    }
+    
+    #form a:hover {
+        text-decoration: underline;
+    }
+    
+    .cajaimagen {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    
+    .cajaimagen img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        animation: fade 12s infinite;
+        transition: opacity 1s;
+    }
+    
+    .cajaimagen img:nth-child(1) {
+        animation-delay: 0s;
+    }
+    
+    .cajaimagen img:nth-child(2) {
+        animation-delay: 4s;
+    }
+    
+    .cajaimagen img:nth-child(3) {
+        animation-delay: 8s;
+    }
+    
+    @keyframes fade {
+        0%, 33% { opacity: 1; }
+        34%, 100% { opacity: 0; }
+    }
+    
+    /* footer -------------------- footer */
+    
+    #pie{
+        background-image: url("../img/gris fondo.jpg");
+        height: 130px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 45px;
+    }
+    #n5 a{
+        color: white;
+        font-size: 20px;
+    }
+}
+
+
+
+
+
+
