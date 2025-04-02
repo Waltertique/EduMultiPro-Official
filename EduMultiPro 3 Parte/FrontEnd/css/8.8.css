@@ -93,54 +93,6 @@
     display: flex;
     padding: 0;
 }
-
-.card{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background: var(--blanco);
-    border: none;
-}
-.targeta{
-    border-top: 1px solid var(--azul);
-    background: rgb(255, 237, 212);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 15px;
-    width: 100%;
-    height: 120px;
-    flex-direction: column;
-    border-radius: 20px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1) ;
-    color: var(--azul);
-}
-.targeta:hover{
-    background: var(--azul);
-    border-top: 2px solid black;
-    color: rgb(255, 237, 212);
-    cursor: pointer;
-}
-.targeta i{
-    margin: 10px;
-    font-size: 25px;
-    
-}
-.targeta h1{
-    margin: 10px;
-    font-size: 25px;
-}
-
-.titulo{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 30px;
-}
-.titulo h1{
-    font-size: 30px;
-}
-
 .row {
     display: flex;
     width: 100%;
@@ -198,21 +150,6 @@ i:hover{
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
     width: 100%; 
 }
-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0px;
-}
-thead{
-    background-color: rgb(58, 58, 58);
-    color: var(--blanco);
-}
-#tablaUsuarios th, td{
-    padding: 10px;
-    text-align: center !important;
-    border: 1px solid rgb(173, 173, 173);
-}
-
 button{
     background-color: var(--azul);
     color: var(--blanco);
@@ -227,7 +164,6 @@ button{
 button:hover{
     background-color: black;
 }
-
 /* footer -------------------- footer */
 
 #pie{
@@ -279,15 +215,6 @@ button:hover{
         height: auto;
     }
 
-    .targeta i{
-        margin: 10px;
-        font-size: 15px;
-        
-    }
-    .targeta h1{
-        margin: 10px;
-        font-size: 10px;
-    }
 
     #pie{
         background-image: url("../img/gris fondo.jpg");

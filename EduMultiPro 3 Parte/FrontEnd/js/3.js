@@ -128,3 +128,8 @@ $(document).ready(function(){
             });
         });
     });
+    document.querySelectorAll('.info').forEach(boton => {
+        boton.addEventListener('click', function () {
+            window.location.href = '/admin/3.3cur.html';
+        });
+    });
