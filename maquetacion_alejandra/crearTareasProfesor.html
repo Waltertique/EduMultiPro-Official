@@ -4,99 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/crearTareasProfesor.css">
+    <link rel="stylesheet" href="css/crearTareasProfesor.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Agregamos Bootstrap -->
     <link rel="icon" href="img/icono.png">
-    <link rel="stylesheet" href="CSS/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <title>Crear tarea</title>
 </head>
 <body>
-    <!--nav-->
-    <nav class="navbar navbar-light bg-light justify-content-between">
-        <a class="navbar-brand">EduMultiPro</a>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </nav>
-          <!--Fin nav-->
-        <article>
-            <div class="parte1">
-                <div class="icono">
-                    <img src="img/f10.png" id="salir" alt="">
-                    <img src="img/f9.png" alt="">
-                    <p>Tarea</p>
-                </div>
-                <button type="submit" id="crear">Crear Tarea</button>
+    <div class="contenedor">
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <div class="container">
+                <img src="/maquetacion_alejandra/img/logo.png" alt="Logo" class="navbar-brand" style="width: 100px;"> <!-- Logo -->
+                <div class="navbar-brand text-white">EduMultiPro</div>
+                <div class="navbar-text text-white">Tu Aliado en el camino educativo</div>
             </div>
-            <div class="parte">
-                <div class="parte2">
-                    <p>Asignar A</p>
-                    <button type="submit">Toda la clase</button>
-                    <p>Puntos</p>
-                    <input type="number" placeholder="puntos" id="puntos" name="puntos">
-                    <p>Fecha Entrega</p>
-                    <input type="date" placeholder="fecha" id="fecha" name="fecha">
-                    <div class="op1">
-                        <select name="" id="">
-                            <option value="">Si</option>
-                            <option value="">No</option>
-                        </select>
-                        <p>Cerrar entregas después de la fecha límite</p>
+        </nav>
+
+        <!-- Main Content -->
+        <article class="container mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="icono d-flex align-items-center">
+                    <div class="img-container">
+                        <img src="/maquetacion_alejandra/img/f10.png" id="salir"  class="img-fluid mx-2 class="mr-2" style="width: 40px;"> <!-- Icono de salir -->
+                        <img src="/maquetacion_alejandra/img/f9.png"  class="img-fluid mx-2 class="mr-2" style="width: 40px;"> <!-- Icono de tarea -->
                     </div>
-                    <p>Tema</p>
-                    <input type="text" placeholder="tema" id="tema" name="tema">
+                    
+                    <p class="ml-2">Tarea</p>
                 </div>
-                <div class="a2parte">
-                    <div class="parte3">
-                        <input type="text" name="titulo" id="titulo" placeholder="Titulo">
-                        <input type="text" name="desc" id="desc" placeholder="Descripcion">
+                <button type="submit" id="crear" class="btn btn-success">Crear Tarea</button>
+            </div>
+
+            <div class="row">
+                <!-- Parte izquierda -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Asignar A</h5>
+                            <button type="submit" class="btn btn-secondary mb-3">Toda la clase</button>
+                            <div class="form-group">
+                                <label for="puntos">Puntos</label>
+                                <input type="number" placeholder="Puntos" id="puntos" name="puntos" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha Entrega</label>
+                                <input type="date" id="fecha" name="fecha" class="form-control">
+                            </div>
+                            <div class="form-group d-flex align-items-center">
+                                <select class="form-control mr-2">
+                                    <option value="">Si</option>
+                                    <option value="">No</option>
+                                </select>
+                                <p class="mb-0">Cerrar entregas después de la fecha límite</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="tema">Tema</label>
+                                <input type="text" placeholder="Tema" id="tema" name="tema" class="form-control">
+                            </div>
+                        </div>
                     </div>
-                    <div class="parte4">
+                </div>
+
+                <!-- Parte derecha -->
+                <div class="col-md-6">
+                    <div class="form-group mb-4">
+                        <label for="titulo">Título</label>
+                        <input type="text" name="titulo" id="titulo" placeholder="Título" class="form-control">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="desc">Descripción</label>
+                        <input type="text" name="desc" id="desc" placeholder="Descripción" class="form-control">
+                    </div>
+                    <div class="mb-4">
                         <h2>Adjuntar</h2>
-                        <div class="image">
-                            <img src="img/f11.png" alt="">
-                            <img src="img/f12.png" alt="">
+                        <div class="d-flex justify-content-center">
+                            <img src="img/f11.png" alt="" class="img-fluid mx-2" style="width: 20px; height: 40px;" >
+                            <img src="img/f12.png" alt="" class="img-fluid mx-2"style="width: 20px; height: 40px;"
                         </div>
                     </div>
                 </div>
             </div>
         </article>
-        <!--Footer-->
-        <footer>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white text-center py-4">
             <div class="informacion1">
                 <h2>Contactos</h2>
             </div>
             <div class="informacion2">
-                <a>
-                    <i class="fa-solid fa-phone "></i>
-                    +546-160000
+                <a class="text-white" href="#">
+                    <i class="fa-solid fa-phone"></i> +546-160000
                 </a>
-
-                <a target="_blank">
-                    <i class="fa-brands fa-facebook "></i>
-                    EduMultipro_08
+                <a class="text-white" target="_blank" href="#">
+                    <i class="fa-brands fa-facebook"></i> EduMultipro_08
                 </a>
-
-                <a target="_blank">
-                    <i class="fa-brands fa-instagram "></i>
-                    EduMultipro_08
+                <a class="text-white" target="_blank" href="#">
+                    <i class="fa-brands fa-instagram"></i> EduMultipro_08
                 </a>
-
-                <a target="_blank">
-                    <i class="fa-regular fa-envelope "></i>
-                    Edu_Pro@gmail.com
+                <a class="text-white" target="_blank" href="#">
+                    <i class="fa-regular fa-envelope"></i> Edu_Pro@gmail.com
                 </a>
-
-                <a target="_blank">
-                    <i class="fa-solid fa-globe "></i>
-                    EduMultiPro
+                <a class="text-white" target="_blank" href="#">
+                    <i class="fa-solid fa-globe"></i> EduMultiPro
                 </a>
             </div>
         </footer>
     </div>
-    <script src="../Profesor/js/8.js"></script>
-    <script src="JS/bootstrap.min.js"></script>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
