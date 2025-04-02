@@ -25,3 +25,112 @@ $(document).ready(function(){
        
     });
     }); 
+
+    document.addEventListener("DOMContentLoaded", function () {
+        function agregarEventosFila(fila) {
+            fila.querySelector(".modificar").addEventListener("click", function () {
+                let celdas = fila.querySelectorAll("td");
+    
+                Swal.fire({
+                    title: "Editar datos",
+                    html: `
+                        <input id="swal-id" class="swal2-input" placeholder="ID" value="${celdas[0].textContent}">
+                        <input id="swal-nombre" class="swal2-input" placeholder="Nombre" value="${celdas[1].textContent}">
+                        <input id="swal-segundo-nombre" class="swal2-input" placeholder="Materia" value="${celdas[2].textContent}">
+                        <input id="swal-apellido" class="swal2-input" placeholder="Curso" value="${celdas[3].textContent}">
+                        <input id="swal-segundo-apellido" class="swal2-input" placeholder="Profesor" value="${celdas[4].textContent}">
+                    `,
+                    showCancelButton: true,
+                    confirmButtonText: "Guardar cambios",
+                    cancelButtonText: "Cancelar",
+                    preConfirm: () => {
+                        return {
+                            id: document.getElementById("swal-id").value,
+                            nombre: document.getElementById("swal-nombre").value,
+                            segundoNombre: document.getElementById("swal-segundo-nombre").value,
+                            apellido: document.getElementById("swal-apellido").value,
+                            segundoApellido: document.getElementById("swal-segundo-apellido").value
+                        };
+                    }
+                }).then((resultado) => {
+                    if (resultado.isConfirmed) {
+                        let datos = resultado.value;
+                        celdas[0].textContent = datos.id;
+                        celdas[1].textContent = datos.nombre;
+                        celdas[2].textContent = datos.segundoNombre;
+                        celdas[3].textContent = datos.apellido;
+                        celdas[4].textContent = datos.segundoApellido;
+                    }
+                });
+            });
+    
+            fila.querySelector(".eliminar").addEventListener("click", function () {
+                Swal.fire({
+                    title: "¿Eliminar Aula?",
+                    text: "No podrás revertir esta acción.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Sí, eliminar",
+                    cancelButtonText: "Cancelar"
+                }).then((resultado) => {
+                    if (resultado.isConfirmed) {
+                        fila.remove();
+                    }
+                });
+            });
+        }
+    
+        document.querySelectorAll(".modificar").forEach(boton => {
+            agregarEventosFila(boton.closest("tr"));
+        });
+    
+        document.querySelector(".crear").addEventListener("click", function () {
+            Swal.fire({
+                title: "Crear Nueva Aula",
+                html: `
+                    <input id="swal-id" class="swal2-input" placeholder="ID">
+                    <input id="swal-nombre" class="swal2-input" placeholder="Nombre">
+                    <input id="swal-segundo-nombre" class="swal2-input" placeholder="Materia">
+                    <input id="swal-apellido" class="swal2-input" placeholder="Curso">
+                    <input id="swal-segundo-apellido" class="swal2-input" placeholder="Profesor">
+                `,
+                showCancelButton: true,
+                confirmButtonText: "Agregar",
+                cancelButtonText: "Cancelar",
+                preConfirm: () => {
+                    let id = document.getElementById("swal-id").value;
+                    let nombre = document.getElementById("swal-nombre").value;
+                    let segundoNombre = document.getElementById("swal-segundo-nombre").value;
+                    let apellido = document.getElementById("swal-apellido").value;
+                    let segundoApellido = document.getElementById("swal-segundo-apellido").value;
+                    if (!id || !nombre || !apellido) {
+                        Swal.showValidationMessage("Todos los campos son obligatorios");
+                        return false;
+                    }
+                    return { id, nombre, segundoNombre, apellido, segundoApellido };
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let nuevaFila = document.createElement("tr");
+                    nuevaFila.innerHTML = `
+                        <td>${result.value.id}</td>
+                        <td>${result.value.nombre}</td>
+                        <td>${result.value.segundoNombre || ''}</td>
+                        <td>${result.value.apellido}</td>
+                        <td>${result.value.segundoApellido || ''}</td>
+                        <td><button><i class="fa-solid fa-circle-info"></i></button></td>
+                        <td><button class="btn-icon modificar"><i class="fa-solid fa-gear"></i></button></td>
+                        <td><button class="btn-icon eliminar"><i class="fa-solid fa-trash"></i></button></td>
+                    `;
+                    document.querySelector("table tbody").appendChild(nuevaFila);
+                    agregarEventosFila(nuevaFila);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Aula Agregada",
+                        text: `La Aula ${result.value.id} ha sido agregada exitosamente.`,
+                        confirmButtonText: "OK"
+                    });
+                }
+            });
+        });
+    });

@@ -25,3 +25,100 @@ $(document).ready(function(){
        
     });
     }); 
+
+    document.addEventListener("DOMContentLoaded", function () {
+        function agregarEventosFila(fila) {
+            fila.querySelector(".modificar").addEventListener("click", function () {
+                let celdas = fila.querySelectorAll("td");
+    
+                Swal.fire({
+                    title: "Editar datos",
+                    html: `
+                        <input id="swal-id" class="swal2-input" placeholder="ID" value="${celdas[0].textContent}">
+                        <input id="swal-nombre" class="swal2-input" placeholder="Titulo" value="${celdas[1].textContent}">
+                        <input id="swal-segundo-nombre" class="swal2-input" placeholder="Tipo" value="${celdas[2].textContent}">
+                    `,
+                    showCancelButton: true,
+                    confirmButtonText: "Guardar cambios",
+                    cancelButtonText: "Cancelar",
+                    preConfirm: () => {
+                        return {
+                            id: document.getElementById("swal-id").value,
+                            nombre: document.getElementById("swal-nombre").value,
+                            segundoNombre: document.getElementById("swal-segundo-nombre").value,
+                        };
+                    }
+                }).then((resultado) => {
+                    if (resultado.isConfirmed) {
+                        let datos = resultado.value;
+                        celdas[0].textContent = datos.id;
+                        celdas[1].textContent = datos.nombre;
+                        celdas[2].textContent = datos.segundoNombre;
+                    }
+                });
+            });
+    
+            fila.querySelector(".eliminar").addEventListener("click", function () {
+                Swal.fire({
+                    title: "¿Eliminar Noticia?",
+                    text: "No podrás revertir esta acción.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Sí, eliminar",
+                    cancelButtonText: "Cancelar"
+                }).then((resultado) => {
+                    if (resultado.isConfirmed) {
+                        fila.remove();
+                    }
+                });
+            });
+        }
+    
+        document.querySelectorAll(".modificar").forEach(boton => {
+            agregarEventosFila(boton.closest("tr"));
+        });
+    
+        document.querySelector(".crear").addEventListener("click", function () {
+            Swal.fire({
+                title: "Crear Nueva Noticia",
+                html: `
+                    <input id="swal-id" class="swal2-input" placeholder="ID">
+                    <input id="swal-nombre" class="swal2-input" placeholder="Titulo">
+                    <input id="swal-segundo-nombre" class="swal2-input" placeholder="Tipo">
+                `,
+                showCancelButton: true,
+                confirmButtonText: "Agregar",
+                cancelButtonText: "Cancelar",
+                preConfirm: () => {
+                    let id = document.getElementById("swal-id").value;
+                    let nombre = document.getElementById("swal-nombre").value;
+                    let segundoNombre = document.getElementById("swal-segundo-nombre").value;
+                    if (!id || !nombre || !segundoNombre) {
+                        Swal.showValidationMessage("Todos los campos son obligatorios");
+                        return false;
+                    }
+                    return { id, nombre, segundoNombre };
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let nuevaFila = document.createElement("tr");
+                    nuevaFila.innerHTML = `
+                        <td>${result.value.id}</td>
+                        <td>${result.value.nombre}</td>
+                        <td>${result.value.segundoNombre || ''}</td>
+                        <td><button><i class="fa-solid fa-circle-info"></i></button></td>
+                        <td><button class="btn-icon modificar"><i class="fa-solid fa-gear"></i></button></td>
+                        <td><button class="btn-icon eliminar"><i class="fa-solid fa-trash"></i></button></td>
+                    `;
+                    document.querySelector("table tbody").appendChild(nuevaFila);
+                    agregarEventosFila(nuevaFila);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Noticia Agregado",
+                        text: `El noticia ${result.value.id} ha sido agregado exitosamente.`,
+                        confirmButtonText: "OK"
+                    });
+                }
+            });
+        });
+    });
