@@ -1,0 +1,208 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--blanco);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+/* Baner -------------------- Baner*/
+#navegador{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: flex-start;
+    background: var(--azul);
+    border-bottom: 3px solid var(--azulClaro);
+}
+#navegador .uno{
+    margin: 20px 20px 0px 50px;
+    width: 130px;
+    height: 90px;
+
+}
+#navegador .uno img{
+    width: 100%;
+    height: 100%;
+}
+
+#navegador .dos{
+    margin: 20px 30px;
+    width: 450px;
+    height: 90px;
+    justify-items: center;
+}
+#navegador .dos p{
+    font-size: 80px;
+    color: white;
+}
+#navegador .tres{
+    margin: 20px 0px 0px 40px;
+    width: 600px;
+    height: 90px;
+    display: grid;
+    place-items: center;
+   
+}
+#navegador .tres p{
+    font-size: 40px;
+    line-height: center;
+    color: aqua;
+}
+
+/* centro -------------------- centro*/
+/* parte1 -------------------- centro*/
+.contenedor article{
+    flex: 1;
+    display: flex;
+}
+
+ article .barraLateral{
+    width: 250px;
+    background-color: var(--azul);
+    display: flex;
+    flex-direction: column;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu  i{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    padding: 15px 25px;
+    border-bottom: 1px solid var(--azulClaro);
+}
+.menu i p{
+    margin: 0px 10px;
+}
+i:hover{
+    cursor: pointer;
+    background: var(--azulClaro);
+}
+/* contenido2 -------------------- contenido2*/
+.contenido2{
+    flex: 1;
+    padding: 20px;
+}
+.card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.targeta{
+    border-top: 1px solid var(--azul);
+    background: rgb(255, 237, 212);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 15px;
+    width: 100%;
+    height: 120px;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1) ;
+    color: var(--azul);
+}
+.targeta:hover{
+    background: var(--azul);
+    border-top: 2px solid black;
+    color: rgb(255, 237, 212);
+    cursor: pointer;
+}
+.targeta i{
+    margin: 10px;
+    font-size: 25px;
+    
+}
+.targeta h1{
+    margin: 10px;
+    font-size: 25px;
+}
+
+.titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px;
+}
+ h1{
+    font-size: 30px;
+}
+
+.contenedor-tabla{  
+    overflow-x: auto;
+    margin: 0px 0px 20px 0px;
+    background-color: rgb(255, 237, 212);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1) ;  
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px ;
+}
+thead{
+    background-color: rgb(58, 58, 58);
+    color: var(--blanco);
+}
+#tablaUsuarios th, td{
+    padding: 10px;
+    text-align: center !important;
+    border: 1px solid rgb(173, 173, 173);
+}
+
+button{
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover{
+    background-color: black;
+}
+
+/* footer -------------------- footer*/
+.contenedor footer{
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    height: 130px;
+    background-image: url("../img/gris\ fondo.jpg");
+}
+
+footer .informacion1{
+    color: white;
+    font-size: 30px;
+    margin: 15px 0px 0px 50px;
+}
+footer .informacion2{
+    margin: 15px 0px;
+    color: white;
+    font-size: 23px;
+    display: flex;
+    justify-content: space-around;
+}

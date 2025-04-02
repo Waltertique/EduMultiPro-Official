@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/2a.css">
+    <link rel="icon" href="img/icono.png">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" rel="stylesheet">
+    <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+    <title>Aulas</title>
+</head>
+<body>
+    <div class="contenedor">
+        <nav id="navegador">
+            <div class="uno"><img src="img/logo.png" alt=""></div>
+            <div class="dos"><p>EduMultiPro</p></div>
+            <div class="tres"><p>Tu Aliado en el camino educativo</p></div>
+        </nav>
+        <article>
+            <div class="contenido2">
+                <div class="titulo">
+                    <h1>Materias</h1>
+                    <button id="crearMateria">Crear Materias</button>
+                </div>
+                <div class="contenedor-tabla">
+                    <table class="tablaUsuarios" id="tablaUsuarios">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre Aula</th>
+                                <th>Materia</th>
+                                <th>Curso</th>
+                                <th>Profesor</th>
+                                <th>Aula</th>
+                                <th>Modificar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+        <footer>
+            <div class="informacion1">
+                <h2>Contactos</h2>
+            </div>
+        </footer>
+    </div>
+    <script>
+        $(document).ready(function() {
+            let tabla = $('#tablaUsuarios').DataTable();
+            
+            $('#crearMateria').click(function() {
+                let id = prompt("Ingrese ID:");
+                let nombre = prompt("Ingrese Nombre del Aula:");
+                let materia = prompt("Ingrese Materia:");
+                let curso = prompt("Ingrese Curso:");
+                let profesor = prompt("Ingrese Profesor:");
+                
+                if (id && nombre && materia && curso && profesor) {
+                    tabla.row.add([
+                        id, nombre, materia, curso, profesor,
+                        '<button><i class="fa-solid fa-users-rectangle"></i></button>',
+                        '<button class="btn-modificar"><i class="fa-solid fa-gear"></i></button>',
+                        '<button class="btn-eliminar"><i class="fa-solid fa-trash"></i></button>'
+                    ]).draw();
+                }
+            });
+            
+            $('#tablaUsuarios tbody').on('click', '.btn-eliminar', function() {
+                tabla.row($(this).parents('tr')).remove().draw();
+            });
+            
+            $('#tablaUsuarios tbody').on('click', '.btn-modificar', function() {
+                let row = tabla.row($(this).parents('tr'));
+                let data = row.data();
+                
+                let nuevoNombre = prompt("Modificar Nombre del Aula:", data[1]);
+                let nuevaMateria = prompt("Modificar Materia:", data[2]);
+                let nuevoCurso = prompt("Modificar Curso:", data[3]);
+                let nuevoProfesor = prompt("Modificar Profesor:", data[4]);
+                
+                if (nuevoNombre && nuevaMateria && nuevoCurso && nuevoProfesor) {
+                    data[1] = nuevoNombre;
+                    data[2] = nuevaMateria;
+                    data[3] = nuevoCurso;
+                    data[4] = nuevoProfesor;
+                    row.data(data).draw();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
