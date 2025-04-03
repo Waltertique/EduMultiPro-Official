@@ -131,38 +131,74 @@ i:hover{
     flex: 1;
     padding: 20px;
 }
-.titulo{
+#titulo{
+    border-bottom: 2px solid black;
+    margin: 30px auto 20px auto;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 30px;
+    align-items: center;
+    padding: 0px 40px;
+    width: 95%;
 }
- h1{
-    font-size: 30px;
+#titulo h2{
+    font-size: 50px;
 }
-
-.contenedor-tabla{  
-    overflow-x: auto;
-    margin: 0px 0px 20px 0px;
-    background-color: rgb(255, 237, 212);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
-    width: 100%; 
+#ttbtn{
+    display: flex;
+    justify-content: flex-end;
 }
-button{
-    background-color: var(--azul);
-    color: var(--blanco);
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
+#titulo button{
+    width: 70px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--azul);
+    color: white;
+    border: 2px solid var(--azulClaro);
+    margin-left: 15px;
+}
+#titulo button:hover{
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+    transform: scale(1.1);
 }
-
-button:hover{
-    background-color: black;
+#cont1{
+    background: rgb(216, 204, 186);
+    border-radius: 15px;
+    margin: 40px auto 20px auto;
+    padding: 20px;
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+#tituloho{
+    padding: 20px;
+    width: 90%;
+    height: auto;
+    background:  var(--azul);
+    border: 5px solid var(--azulClaro);
+    border-radius: 20px;
+    text-align: center;
+}
+#tituloho h2{
+    color: white;
+    font-size: 40px;
+}
+#imghorario{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+#imghorario img{
+    margin-top: 20px;
+    width: 90%;
+    height: auto;
+}
+#imghorario img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+#descripcion{
+    margin-top: 50px;
+    width: 90%;
 }
 /* footer -------------------- footer */
 
@@ -215,6 +251,66 @@ button:hover{
         height: auto;
     }
 
+    /* PARTE2 -------------------- PARTE2 */
+    #cont1{
+        background: rgb(216, 204, 186);
+        width: 100%;
+        padding: 20px 5px;
+    }
+    #titulo{
+        border-bottom: 2px solid black;
+        margin: 30px auto 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0px 40px;
+        width: 95%;
+    }
+    #titulo h2{
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    #ttbtn{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    #titulo button{
+        width: 100px;
+        height: 30px;
+        border-radius: 10px;
+        background: var(--azul);
+        color: white;
+        border: 2px solid var(--azulClaro);
+    }
+    #titulo button:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #tituloho h2{
+        color: white;
+        font-size: 25px;
+    }
+    #imghorario{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    #imghorario img{
+        margin-top: 20px;
+        width: 100%;
+        height: auto;
+    }
+    #imghorario img:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #descripcion{
+        margin-top: 50px;
+        width: 90%;
+    }
+    /* PARTE2 -------------------- PARTE2 */
 
     #pie{
         background-image: url("../img/gris fondo.jpg");
@@ -270,6 +366,70 @@ button:hover{
         max-width: 70px;
         height: auto;
     }
+    /* PARTE2 -------------------- PARTE2 */
+    #cont1{
+        background: rgb(216, 204, 186);
+        width: 100%;
+        padding: 20px 5px;
+    }
+    #titulo{
+        border-bottom: 2px solid black;
+        margin: 30px auto 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0px 40px;
+        width: 95%;
+    }
+    #titulo h2{
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    #ttbtn{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    #titulo button{
+        width: 100px;
+        height: 30px;
+        border-radius: 10px;
+        background: var(--azul);
+        color: white;
+        border: 2px solid var(--azulClaro);
+    }
+    #titulo button:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #tituloho h2{
+        color: white;
+        font-size: 25px;
+    }
+    #imghorario{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    #imghorario img{
+        margin-top: 20px;
+        width: 100%;
+        height: auto;
+    }
+    #imghorario img:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #descripcion{
+        margin-top: 50px;
+        width: 90%;
+    }
+
+ 
+
+
+    /* PARTE2 -------------------- PARTE2 */
     
     #pie{
         background-image: url("../img/gris fondo.jpg");
@@ -325,6 +485,66 @@ button:hover{
         max-width: 70px;
         height: auto;
     }
+    /* PARTE2 -------------------- PARTE2 */
+    #cont1{
+        background: rgb(216, 204, 186);
+        width: 100%;
+        padding: 20px 5px;
+    }
+    #titulo{
+        border-bottom: 2px solid black;
+        margin: 30px auto 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0px 40px;
+        width: 95%;
+    }
+    #titulo h2{
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    #ttbtn{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    #titulo button{
+        width: 100px;
+        height: 30px;
+        border-radius: 10px;
+        background: var(--azul);
+        color: white;
+        border: 2px solid var(--azulClaro);
+    }
+    #titulo button:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #tituloho h2{
+        color: white;
+        font-size: 25px;
+    }
+    #imghorario{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    #imghorario img{
+        margin-top: 20px;
+        width: 100%;
+        height: auto;
+    }
+    #imghorario img:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #descripcion{
+        margin-top: 50px;
+        width: 90%;
+    }
+    /* PARTE2 -------------------- PARTE2 */
     
     #pie{
         background-image: url("../img/gris fondo.jpg");
@@ -376,7 +596,66 @@ button:hover{
         max-width: 70px;
         height: auto;
     }
-    
+    /* PARTE2 -------------------- PARTE2 */
+    #cont1{
+        background: rgb(216, 204, 186);
+        width: 100%;
+        padding: 20px 5px;
+    }
+    #titulo{
+        border-bottom: 2px solid black;
+        margin: 30px auto 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 40px;
+        width: 95%;
+        text-align: center;
+    }
+    #titulo h2{
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    #ttbtn{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    #titulo button{
+        width: 100px;
+        height: 30px;
+        border-radius: 10px;
+        background: var(--azul);
+        color: white;
+        border: 2px solid var(--azulClaro);
+    }
+    #titulo button:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #tituloho h2{
+        color: white;
+        font-size: 25px;
+    }
+    #imghorario{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    #imghorario img{
+        margin-top: 20px;
+        width: 100%;
+        height: auto;
+    }
+    #imghorario img:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #descripcion{
+        margin-top: 50px;
+        width: 90%;
+    }
+    /* PARTE2 -------------------- PARTE2 */
     #pie{
         background-image: url("../img/gris fondo.jpg");
         height: 220px;
@@ -430,7 +709,66 @@ button:hover{
         max-width: 55px;
         height: auto;
     }
-    
+    /* PARTE2 -------------------- PARTE2 */
+    #cont1{
+        background: rgb(216, 204, 186);
+        width: 100%;
+        padding: 20px 5px;
+    }
+    #titulo{
+        border-bottom: 2px solid black;
+        margin: 30px auto 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 40px;
+        width: 95%;
+        text-align: center;
+    }
+    #titulo h2{
+        font-size: 45px;
+        margin-bottom: 20px;
+    }
+    #ttbtn{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    #titulo button{
+        width: 110px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--azul);
+        color: white;
+        border: 2px solid var(--azulClaro);
+    }
+    #titulo button:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #tituloho h2{
+        color: white;
+        font-size: 45px;
+    }
+    #imghorario{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    #imghorario img{
+        margin-top: 20px;
+        width: 100%;
+        height: auto;
+    }
+    #imghorario img:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #descripcion{
+        margin-top: 50px;
+        width: 90%;
+    }
+    /* PARTE2 -------------------- PARTE2 */
     #pie{
         background-image: url("../img/gris fondo.jpg");
         height: 220px;

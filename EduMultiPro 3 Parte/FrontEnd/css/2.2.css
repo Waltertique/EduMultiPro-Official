@@ -131,38 +131,97 @@ i:hover{
     flex: 1;
     padding: 20px;
 }
-.titulo{
+#titulo{
+    border-bottom: 2px solid black;
+    margin: 30px auto 20px auto;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 30px;
+    align-items: center;
+    padding: 0px 40px;
+    width: 95%;
 }
- h1{
-    font-size: 30px;
+#titulo h2{
+    font-size: 50px;
 }
-
-.contenedor-tabla{  
-    overflow-x: auto;
-    margin: 0px 0px 20px 0px;
-    background-color: rgb(255, 237, 212);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
-    width: 100%; 
+#ttbtn{
+    display: flex;
+    justify-content: flex-end;
 }
-button{
-    background-color: var(--azul);
-    color: var(--blanco);
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
+#titulo button{
+    width: 70px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--azul);
+    color: white;
+    border: 2px solid var(--azulClaro);
+}
+#titulo button:hover{
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+    transform: scale(1.1);
+}
+#cont1{
+    background: rgb(216, 204, 186);
+    border-radius: 15px;
+    margin: 40px auto 20px auto;
+    padding: 20px;
+    width: 80%;
+    height: auto;
+}
+#foto{
+    padding: 20px;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+#foto img{
+    width: 80%;
+    height: 60%;
+    border-radius: 10px;
+}
+#infor{
+    height: auto;
+    padding: 10px 0px;
 }
 
-button:hover{
-    background-color: black;
+#a1{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+#a2{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+#a3{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.campo{
+    margin: 10px 10px;
+}
+.campo .informe {
+    border-radius: 10px;
+    border: 1px solid #ebedf2;
+    background: white;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.informe p{
+    margin: 0px 5px;
+}
+
+.informe img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.informe img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
 /* footer -------------------- footer */
 
@@ -215,7 +274,87 @@ button:hover{
         height: auto;
     }
 
+    /* PARTE2 -------------------- PARTE2 */
 
+    #titulo{
+        border-bottom: 2px solid black;
+        margin: 30px auto 20px auto;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        padding: 0px 40px;
+        width: 95%;
+    }
+    #titulo h2{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    #ttbtn{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    #titulo button{
+        width: 100px;
+        height: 30px;
+        border-radius: 10px;
+        background: var(--azul);
+        color: white;
+        border: 2px solid var(--azulClaro);
+    }
+    #titulo button:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #cont1{
+        background: rgb(216, 204, 186);
+        border-radius: 15px;
+        margin: 40px auto 20px auto;
+        padding: 0px;
+        width: 90%;
+        height: auto;
+    }
+    #foto{
+        padding: 20px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #foto img{
+        width: 100%;
+        height: 80%;
+        border-radius: 10px;
+    }
+    .campo{
+        margin: 10px 10px;
+    }
+    .campo .informe {
+        border-radius: 10px;
+        border: 1px solid #ebedf2;
+        background: white;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 80%;
+    }
+    .informe p{
+        margin: 0px 5px;
+    }
+    
+    .informe img{
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+    .informe img:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+    /* footer -------------------- footer */
     #pie{
         background-image: url("../img/gris fondo.jpg");
         height: 200px;
@@ -270,6 +409,86 @@ button:hover{
         max-width: 70px;
         height: auto;
     }
+    /* PARTE2 -------------------- PARTE2 */
+
+    #titulo{
+        border-bottom: 2px solid black;
+        margin: 30px auto 20px auto;
+        display: flex;
+        align-items: center;
+        padding: 0px 40px;
+        width: 95%;
+    }
+    #titulo h2{
+        font-size: 45px;
+        margin-bottom: 20px;
+    }
+    #ttbtn{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    #titulo button{
+        width: 110px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--azul);
+        color: white;
+        border: 2px solid var(--azulClaro);
+    }
+    #titulo button:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #cont1{
+        background: rgb(216, 204, 186);
+        border-radius: 15px;
+        margin: 40px auto 20px auto;
+        padding: 0px;
+        width: 90%;
+        height: auto;
+    }
+    #foto{
+        padding: 20px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #foto img{
+        width: 100%;
+        height: 80%;
+        border-radius: 10px;
+    }
+    .campo{
+        margin: 10px 10px;
+    }
+    .campo .informe {
+        border-radius: 10px;
+        border: 1px solid #ebedf2;
+        background: white;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 80%;
+    }
+    .informe p{
+        margin: 0px 5px;
+    }
+    
+    .informe img{
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+    .informe img:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+    /* footer -------------------- footer */
     
     #pie{
         background-image: url("../img/gris fondo.jpg");
@@ -325,6 +544,86 @@ button:hover{
         max-width: 70px;
         height: auto;
     }
+    /* PARTE2 -------------------- PARTE2 */
+
+    #titulo{
+        border-bottom: 2px solid black;
+        margin: 30px auto 20px auto;
+        display: flex;
+        align-items: center;
+        padding: 0px 40px;
+        width: 95%;
+    }
+    #titulo h2{
+        font-size: 45px;
+        margin-bottom: 20px;
+    }
+    #ttbtn{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    #titulo button{
+        width: 110px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--azul);
+        color: white;
+        border: 2px solid var(--azulClaro);
+    }
+    #titulo button:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #cont1{
+        background: rgb(216, 204, 186);
+        border-radius: 15px;
+        margin: 40px auto 20px auto;
+        padding: 0px;
+        width: 90%;
+        height: auto;
+    }
+    #foto{
+        padding: 20px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #foto img{
+        width: 100%;
+        height: 80%;
+        border-radius: 10px;
+    }
+    .campo{
+        margin: 10px 10px;
+    }
+    .campo .informe {
+        border-radius: 10px;
+        border: 1px solid #ebedf2;
+        background: white;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 80%;
+    }
+    .informe p{
+        margin: 0px 5px;
+    }
+    
+    .informe img{
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+    .informe img:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+    /* footer -------------------- footer */
     
     #pie{
         background-image: url("../img/gris fondo.jpg");
@@ -376,6 +675,86 @@ button:hover{
         max-width: 70px;
         height: auto;
     }
+    /* PARTE2 -------------------- PARTE2 */
+
+    #titulo{
+        border-bottom: 2px solid black;
+        margin: 30px auto 20px auto;
+        display: flex;
+        align-items: center;
+        padding: 0px 40px;
+        width: 95%;
+    }
+    #titulo h2{
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+    #ttbtn{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    #titulo button{
+        width: 110px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--azul);
+        color: white;
+        border: 2px solid var(--azulClaro);
+    }
+    #titulo button:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    #cont1{
+        background: rgb(216, 204, 186);
+        border-radius: 15px;
+        margin: 40px auto 20px auto;
+        padding: 0px;
+        width: 75%;
+        height: auto;
+    }
+    #foto{
+        padding: 20px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #foto img{
+        width: 75%;
+        height: 60%;
+        border-radius: 10px;
+    }
+    .campo{
+        margin: 10px 10px;
+    }
+    .campo .informe {
+        border-radius: 10px;
+        border: 1px solid #ebedf2;
+        background: white;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 80%;
+    }
+    .informe p{
+        margin: 0px 5px;
+    }
+    
+    .informe img{
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+    .informe img:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+    /* footer -------------------- footer */
     
     #pie{
         background-image: url("../img/gris fondo.jpg");
@@ -429,6 +808,23 @@ button:hover{
         margin-bottom: 15px;
         max-width: 55px;
         height: auto;
+    }
+    /* PARTE2 -------------------- PARTE2 */
+    #titulo h2{
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+    #cont1{
+        background: rgb(216, 204, 186);
+        border-radius: 15px;
+        margin: 40px auto 20px auto;
+        padding: 0px;
+        width: 95%;
+        height: auto;
+    }
+
+    .campo .informe {
+        font-size: 70%;
     }
     
     #pie{
@@ -484,7 +880,14 @@ button:hover{
         max-width: 70px;
         height: auto;
     }
-    
+    .campo .informe {
+        font-size: 60%;
+    }
+    .informe img{
+        width: 15px;
+        height: 15px;
+        margin-right: 10px;
+    }
     #pie{
         background-image: url("../img/gris fondo.jpg");
         height: 130px;
@@ -537,5 +940,8 @@ button:hover{
         margin-bottom: 15px;
         max-width: 75px;
         height: auto;
+    }
+    .campo .informe {
+        font-size: 70%;
     }
 }

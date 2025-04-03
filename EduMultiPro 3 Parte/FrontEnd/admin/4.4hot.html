@@ -82,14 +82,44 @@
 
             <!--Tabla-->
             <div class="col-10" id="contenidoTabla">
-                <div class="titulo">
-                    <h1>Horario del Curso</h1>
-                    <button class="crear">Crear Usuario</button>
+
+              <div class="row" id="titulo">
+                <div class="col-12 col-lg-9 col-xl-9">
+                  <h2>Informacion Del Horario</h2>
                 </div>
-                <div class="contenedor-tabla">
-                    
+                <div class="col-12 col-lg-3 col-xl-3" id="ttbtn">
+                  <button class="Editar" type="button">Editar</button>
+                  <button class="salir" type="button">Salir</button>
                 </div>
+              </div>
+
+              <div class="row" id="cont1">
+                <div class="row" id="tituloho">
+                    <h2>Mi Horario: Curso 702 tarde</h2>
+                </div>
+
+                <div class="row" id="imghorario">
+                  <img id="horario-img" src="../img/imghorario.png" alt="Horario">
+                </div>
+
+                <div class="row" id="descripcion">
+                  <h3>Descripcion:</h3>
+                  <p>Horario segundo periodo del curso 702 jornada tarde, el cual se llevara acabo 
+                    apartir de la fecha del 15 de abril de año 2024 y finalizara el 20 de junion de año 2024.</p>
+                </div>
+
+              </div>
+
             </div>
+            
+            <div id="modal" class="modal">
+              <div class="modal-content">
+                  <span class="cerrar" id="cerrar">&times;</span>
+                  <img id="img-ampliada" src="" alt="Imagen Ampliada">
+              </div>
+            </div>
+
+
         </div>
     </div>
 
@@ -108,6 +138,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="../js/2.js"></script>
+  <script src="../js/4.4.js"></script>
 </body>
 </html>
