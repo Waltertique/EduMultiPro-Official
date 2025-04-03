@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/2a.css">
+    <link rel="icon" href="img/icono.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- DataTables CSS y JS -->
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <title>Cursos</title>
+</head>
+<body>
+    <div class="contenedor">
+        <nav id="navegador">
+            <div class="uno"><img src="img/logo.png" alt=""></div>
+            <div class="dos"><p>EduMultiPro</p></div>
+            <div class="tres"><p>Tu Aliado en el camino educativo</p></div>
+        </nav>
+
+        <article>
+
+            <div class="barraLateral">
+                <div class="opciones">
+                    <div class="menu">
+                        <a href="../administrador/1-PaginaPrincipal.html"><i class="fa-solid fa-user"><p>Usuario</p></i></a>
+                        <a href="../administrador/2-Cursos.html"><i class="fa-solid fa-layer-group"><p>Cursos</p></i></a>
+                        <a href="../administrador/3-horario.html"><i class="fa-solid fa-calendar-days"><p>Horarios</p></i></a>
+                        <a href="../administrador/4-Aulas.html"><i class="fa-solid fa-users-rectangle"><p>Aulas</p></i></a>
+                        <a href="../administrador/5-Notas.html"><i class="fa-solid fa-ranking-star"><p>Notas</p></i></a>
+                        <a href="../administrador/10-MateriaJ.html"><i class="fa-solid fa-ranking-star"><p>Mateiras</p></i></a>
+                        <a href="../administrador/6-Planillas.html"><i class="fa-solid fa-folder-open"><p>Planillas</p></i></a>
+                        <a href="../administrador/8-Noticias.html"><i class="fa-solid fa-radio"><p>Noticias</p></i></a>
+                        <a href="../Principal/index.html"><i class="fa-solid fa-right-to-bracket"><p>Salir</p></i></a> 
+                    </div>
+                </div>
+            </div>
+
+                <!--contenido2-->
+            <div class="contenido2">
+
+                <div class="card">
+                    <div class="targeta">
+                        <a href="../administrador/5-NotasJ.html"><i class="fa-solid fa-book"></i><h1>Jardin</h1></a>
+                    </div>
+                    <div class="targeta">
+                        <a href="../administrador/5-NotasP.html"><i class="fa-solid fa-book"></i><h1>Primaria</h1></a>
+                    </div>
+                    <div class="targeta">
+                        <a href="../administrador/5-NotasS.html"><i class="fa-solid fa-book"></i><h1>Secunadaria</h1></a>
+                    </div>
+                </div>
+
+                <div class="titulo">
+                    <h1>Cursos Actuales</h1>
+                    <button id="crearCurso">Crear Curso</button>
+                </div>
+                <div class="contenedor-tabla">
+                    <table class="tablaUsuarios" id="tablaUsuarios">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Curso</th>
+                                <th>Grado</th>
+                                <th>Miembros</th>
+                                <th>Modificar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Q103M</td>
+                                <td>103</td>
+                                <td>PRIMERO</td>
+                                <td><button><i class="fa-solid fa-people-group"></i></button></td>
+                                <td><button class="btn-icon btn-modificar"><i class="fa-solid fa-gear"></i></button></td>
+                                <td><button class="btn-icon btn-eliminar"><i class="fa-solid fa-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Q701T</td>
+                                <td>701</td>
+                                <td>SEPTIMO</td>
+                                <td><button><i class="fa-solid fa-people-group"></i></button></td>
+                                <td><button class="btn-icon btn-modificar"><i class="fa-solid fa-gear"></i></button></td>
+                                <td><button class="btn-icon btn-eliminar"><i class="fa-solid fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+
+        <footer>
+            <div class="informacion1">
+                <h2>Contactos</h2>
+            </div>
+            <div class="informacion2">
+                <a><i class="fa-solid fa-phone"></i> +546-160000</a>
+                <a target="_blank"><i class="fa-brands fa-facebook"></i> EduMultipro_08</a>
+                <a target="_blank"><i class="fa-brands fa-instagram"></i> EduMultipro_08</a>
+                <a target="_blank"><i class="fa-regular fa-envelope"></i> Edu_Pro@gmail.com</a>
+                <a target="_blank"><i class="fa-solid fa-globe"></i> EduMultiPro</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../administrador/js/5.js"></script>
+    
+</body>
+</html>

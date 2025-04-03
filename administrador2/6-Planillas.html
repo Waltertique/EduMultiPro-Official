@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/6a.css">
+    <link rel="icon" href="img/icono.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- datatables css y js -->
+    <link href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" rel="stylesheet">
+   <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+
+    <title>Planillas</title>
+
+    <style>
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        width: 50%;
+        border-radius: 10px;
+      }
+      .close {
+        float: right;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+
+        <!--banerrrrr-->
+        <nav id="navegador">
+            <div class="uno"><img src="img/logo.png" alt=""></div>
+            <div class="dos"><p>EduMultiPro</p></div>
+            <div class="tres"><p>Tu Aliado en el camino educativo</p></div>
+        </nav>
+        <!--Contenido-->
+        <article>
+            <div class="barraLateral">
+                <div class="opciones">
+                  <div class="menu">
+                    <a href="../administrador/1-PaginaPrincipal.html"><i class="fa-solid fa-user"><p>Usuario</p></i></a>
+                    <a href="../administrador/2-Cursos.html"><i class="fa-solid fa-layer-group"><p>Cursos</p></i></a>
+                    <a href="../administrador/3-horario.html"><i class="fa-solid fa-calendar-days"><p>Horarios</p></i></a>
+                    <a href="../administrador/4-Aulas.html"><i class="fa-solid fa-users-rectangle"><p>Aulas</p></i></a>
+                    <a href="../administrador/5-Notas.html"><i class="fa-solid fa-ranking-star"><p>Notas</p></i></a>
+                    <a href="../administrador/10-MateriaJ.html"><i class="fa-solid fa-ranking-star"><p>Mateiras</p></i></a>
+                    <a href="../administrador/6-Planillas.html"><i class="fa-solid fa-folder-open"><p>Planillas</p></i></a>
+                    <a href="../administrador/8-Noticias.html"><i class="fa-solid fa-radio"><p>Noticias</p></i></a>
+                    <a href="../Principal/index.html"><i class="fa-solid fa-right-to-bracket"><p>Salir</p></i></a> 
+                </div>
+                </div>
+            </div>
+
+            <!--Tabla-->
+            <div class="contenidoTabla">
+              <div class="titulo">
+                <h1>Gestión de Planillas</h1>
+                <button id="crearPlanilla">Crear Planilla</button>
+              </div>
+              <div class="contenedor-tabla">
+                <table class="tablaUsuarios" id="tablaUsuarios">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre Planilla</th>
+                      <th>Curso</th>
+                      <th>Jornada</th>
+                      <th>Periodo</th>
+                      <th>Planilla</th>
+                      <th>Modificar</th>
+                      <th>Eliminar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>PL001</td>
+                      <td>Planilla curs 902</td>
+                      <td>902</td>
+                      <td>Tarde</td>
+                      <td>Primer periodo</td>
+                      <td><button class="abrir"><i class="fa-solid fa-folder-open"></i></button></td>
+                      <td><button class="btn-icon modificar"><i class="fa-solid fa-gear"></i></button></td>
+                      <td><button class="btn-icon eliminar"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                    <tr>
+                      <td>Pl002</td>
+                      <td>Planilla curs 504</td>
+                      <td>504</td>
+                      <td>Mañana</td>
+                      <td>Segundo Periodo</td>
+                      <td><button class="abrir"><i class="fa-solid fa-folder-open"></i></button></td>
+                      <td><button class="btn-icon modificar"><i class="fa-solid fa-gear"></i></button></td>
+                      <td><button class="btn-icon eliminar"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                    <tr>
+                      <td>PL003</td>
+                      <td>Planilla curs 701</td>
+                      <td>701</td>
+                      <td>Mañana</td>
+                      <td>Tercer Periodo</td>
+                      <td><button class="abrir"><i class="fa-solid fa-folder-open"></i></button></td>
+                      <td><button class="btn-icon modificar"><i class="fa-solid fa-gear"></i></button></td>
+                      <td><button class="btn-icon eliminar"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+        </article>
+
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Ingresar Datos de la Planilla</h2>
+            <form id="formPlanilla">
+              <input type="hidden" id="editIndex">
+              <label>ID:</label>
+              <input type="text" id="idPlanilla" required><br>
+              <label>Nombre:</label>
+              <input type="text" id="nombrePlanilla" required><br>
+              <label>Curso:</label>
+              <input type="text" id="cursoPlanilla" required><br>
+              <label>Jornada:</label>
+              <input type="text" id="jornadaPlanilla" required><br>
+              <label>Periodo:</label>
+              <input type="text" id="periodoPlanilla" required><br>
+              <button type="submit">Guardar</button>
+            </form>
+          </div>
+        </div>
+
+        <!--Footer-->
+        <footer>
+            <div class="informacion1">
+                <h2>Contactos</h2>
+            </div>
+            <div class="informacion2">
+                <a>
+                    <i class="fa-solid fa-phone "></i>
+                    +546-160000
+                </a>
+
+                <a target="_blank">
+                    <i class="fa-brands fa-facebook "></i>
+                    EduMultipro_08
+                </a>
+
+                <a target="_blank">
+                    <i class="fa-brands fa-instagram "></i>
+                    EduMultipro_08
+                </a>
+
+                <a target="_blank">
+                    <i class="fa-regular fa-envelope "></i>
+                    Edu_Pro@gmail.com
+                </a>
+
+                <a target="_blank">
+                    <i class="fa-solid fa-globe "></i>
+                    EduMultiPro
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../administrador/js/6.js"></script>
+</body>
+</html>
