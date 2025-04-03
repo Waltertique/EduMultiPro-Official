@@ -1,0 +1,254 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+}
+
+#navegador{
+    background: var(--azul);
+    border-bottom: 3px solid var(--azulClaro);
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--blanco);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+/* Baner -------------------- Baner*/
+.contenedor nav{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: flex-start;
+    background: var(--azul);
+    background-position: center;
+    background-size: cover;
+}
+.contenedor nav .uno{
+    margin: 20px 20px 0px 40px;
+    width: 130px;
+    height: 90px;
+}
+.contenedor nav .uno img{
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor nav .dos{
+    margin: 20px 0px;
+    width: 500px;
+    height: 90px;
+    justify-items: center;
+}
+.contenedor nav .dos p{
+    font-size: 80px;
+    color: white;
+}
+.contenedor nav .tres{
+    margin: 20px 40px;
+    width: 800px;
+    height: 90px;
+    display: grid;
+    place-items: center;
+   
+}
+.contenedor nav .tres p{
+    font-size: 40px;
+    line-height: center;
+    color: aqua;
+}
+/* centro -------------------- centro*/
+/* parte1 -------------------- centro*/
+.contenedor article{
+    flex: 1;
+}
+.contenedor article .parte1{
+    margin: 20px 0px 0px 0px;
+    width: 100%;
+    height: 70px;
+    background: var(--azulClaro);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.contenedor article .parte1 .icono{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.contenedor article .parte1 .icono p{
+    color: white;
+    font-size: 40px;
+    margin: 0px 0px 0px 10px;
+}
+.contenedor article .parte1 .icono img{
+    margin: 0px 0px 0px 30px;
+    width: 40px;
+    height: 40px;
+}
+#salir:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.contenedor article .parte1 button{
+    margin: 15px 40px 0px 0px;
+    width: 150px;
+    height: 40px;
+    color: white;
+    font-size: 25px;
+    border-radius: 20px;
+    background: #007bbd;
+    border: 1px solid white;
+}
+.contenedor article .parte1 button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+/* parte2 -------------------- centro*/
+.contenedor article .parte{
+    display: flex;
+    flex-direction: row;
+}
+.contenedor article .parte2{
+    width: 350px;
+    height: 500px;
+    background: #4aa2d1;
+    border: 1px solid #317599;
+}
+.contenedor article .parte2 p{
+    margin: 30px 0px 10px 30px;
+    font-size: 25px;
+}
+.contenedor article .parte2 button{
+    margin: 0px 0px 0px 30px;
+    border-radius: 20px;
+    height: 35px;
+    width: 240px;
+    border: none;
+}
+.contenedor article .parte2 button:hover{
+    background: rgb(206, 194, 194);
+}
+.contenedor article .parte2 input{
+    margin: 0px 0px 10px 30px;
+    padding: 0px 20px;
+    border-radius: 20px;
+    height: 35px;
+    width: 200px;
+    border: none;
+}
+.contenedor article .parte2 input:hover{
+    background: rgb(206, 194, 194);
+}
+.contenedor article .parte2 .op1{
+    display: flex;
+    flex-direction: row;
+}
+.contenedor article .parte2 .op1 select{
+    margin: 0px 0px 0px 30px;
+    height: 20px;
+    width: 40px;
+    border: none;
+}
+.contenedor article .parte2 .op1 p{
+    margin: 0px 0px 0px 10px;
+    font-size: 13px;
+}
+/* parte3 -------------------- centro*/
+.contenedor article .parte .a2parte{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+}
+.contenedor article .parte3{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 900px;
+    height: 300px;
+    background: var(--azulClaro);
+    border-radius: 15px;
+}
+.contenedor article .parte3 #titulo{
+    margin: 25px;
+    padding: 0px 20px;
+    width: 780px;
+    height: 55px;
+    border-radius: 10px;
+    border: none;
+    background: var(--blanco);
+    font-size: 20px;
+}
+.contenedor article .parte3 #titulo:hover{
+    background: white;
+}
+.contenedor article .parte3 #desc{
+    padding: 0px 20px;
+    width: 780px;
+    height: 170px;
+    border-radius: 10px;
+    border: none;
+    background: var(--blanco);
+    font-size: 20px;
+}
+.contenedor article .parte3 #desc:hover{
+    background: white;
+}
+.contenedor article .parte4{
+    margin: 30px;
+    width: 900px;
+    height: 100px;
+    background: var(--azulClaro);
+    border-radius: 15px;
+}
+/* parte3 -------------------- centro*/
+.contenedor article .parte4 h2{
+    margin: 10px 0px 0px 20px;
+}
+.contenedor article .parte4 .image{
+    display: flex;
+    justify-content: center;
+}
+.contenedor article .parte4 .image img{
+    margin: 0px 30px;
+    width: 40px;
+    height: 40px;
+}
+.contenedor article .parte4 .image img:hover{
+    transform: scale(1.3);
+    cursor: pointer;
+}
+/* footer -------------------- footer*/
+.contenedor footer{
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    height: 130px;
+    background-image: url("../img/gris\ fondo.jpg");
+}
+
+footer .informacion1{
+    color: white;
+    font-size: 30px;
+    margin: 15px 0px 0px 50px;
+}
+footer .informacion2{
+    margin: 15px 0px;
+    color: white;
+    font-size: 23px;
+    display: flex;
+    justify-content: space-around;
+}
