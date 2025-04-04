@@ -11,35 +11,40 @@
     --gris: rgb(99, 95, 95);
     --azulClaro: #4aa2d1;
 }
-:root{
-    --primary:#6209db;
-    --color2: rgb(219, 186, 141);
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--blanco);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+/* Baner -------------------- Baner*/
+/* nav -------------------- nav */
+
+#navegador{
+    background: var(--azul);
+    border-bottom: 3px solid var(--azulClaro);
 }
 
-body{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+#n2{
+    padding: 0;
+}
+#n2 h1{
+    font-size: 7rem;
 }
 
-.navbar{
-    min-height: 90px;
-    background-color:var(--color2) !important;
-
+#n3 h3{
+    font-size: 3.3rem;
+    color: aqua;
+}
+#img1{
+    max-width: 90px;
+    height: auto;
+    margin-top: 5px;
 }
 
-.navbar .btn{
-    padding: .625 rem 1.25 rem !important;
-
-}
-
-.btn{
-    padding: 1 rem;
-}
-
-.btn-outline-success{
-    background-color: var(--primary) !important;
-    border-color: var(--primary);
-    color: black;
-}
 /* centro -------------------- centro*/
 /* parte1 -------------------- centro*/
 .contenedor article{
@@ -180,7 +185,7 @@ body{
     background: white;
 }
 .contenedor article .parte4{
-    margin: 30px;
+    margin: 0px 0px 0px 0px;
     width: 900px;
     height: 100px;
     background: var(--azulClaro);
@@ -204,22 +209,31 @@ body{
     cursor: pointer;
 }
 /* footer -------------------- footer*/
-.contenedor footer{
-    margin: 0px 0px 0px 0px;
-    width: 100%;
+#pie{
+    background-image: url("../img/gris fondo.jpg");
     height: 130px;
-    background-image: url("../img/gris\ fondo.jpg");
 }
-
-footer .informacion1{
+#n4 h2{
     color: white;
-    font-size: 30px;
-    margin: 15px 0px 0px 50px;
+    font-size: 45px;
 }
-footer .informacion2{
-    margin: 15px 0px;
+#n5 a{
     color: white;
-    font-size: 23px;
-    display: flex;
-    justify-content: space-around;
+    font-size: 20px;
+}
+#n6 a{
+    color: white;
+    font-size: 20px;
+}
+#n7 a{
+    color: white;
+    font-size: 20px;
+}
+#n8 a{
+    color: white;
+    font-size: 20px;
+}
+#n9 a{
+    color: white;
+    font-size: 20px;
 }
