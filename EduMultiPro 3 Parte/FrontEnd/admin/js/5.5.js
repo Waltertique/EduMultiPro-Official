@@ -137,10 +137,34 @@ const anuncios = document.getElementById('anuncios');
                 comentario.innerHTML = `
                     <div><img src="${foto}">${nombre} - <small>${fecha}</small></div>
                     <p>${comentarioTexto}</p>
-                    <button onclick="this.parentElement.remove()">Eliminar Comentario</button>
+                    <button onclick="this.parentElement.remove()">Quitar</button>
                 `;
 
                 comentarios.appendChild(comentario);
             }
         });
     }
+
+    document.querySelectorAll('#principal').forEach(boton => {
+        boton.addEventListener('click', function () {
+            window.location.href = '../admin/5.5aul.html';
+        });
+    });
+
+    document.querySelectorAll('#trabajo').forEach(boton => {
+        boton.addEventListener('click', function () {
+            window.location.href = '../admin/5.6trabajo.html';
+        });
+    });
+
+    document.querySelectorAll('#persona').forEach(boton => {
+        boton.addEventListener('click', function () {
+            window.location.href = '../admin/5.7persona.html';
+        });
+    });
+
+    document.querySelectorAll('#nota').forEach(boton => {
+        boton.addEventListener('click', function () {
+            window.location.href = '../admin/5.8nota.html';
+        });
+    });

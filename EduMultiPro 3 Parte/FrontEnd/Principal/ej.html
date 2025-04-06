@@ -1,192 +1,145 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Anuncios</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .anuncio, .comentario {
-            background: white;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .anuncio img, .comentario img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            vertical-align: middle;
-            margin-right: 10px;
-        }
-        .acciones button {
-            margin: 0 5px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear Tarea</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .contenedor {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+
+    .contenedor label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .contenedor input,
+    .contenedor textarea,
+    .contenedor select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    .contenedor textarea {
+      resize: vertical;
+    }
+
+    #archivoSubido a {
+      display: inline-block;
+      margin-top: 5px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    #archivoSubido a:hover {
+      text-decoration: underline;
+    }
+
+    .botones {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .botones button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .botones button:nth-child(1) {
+      background-color: #ccc;
+    }
+
+    .botones button:nth-child(2) {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    .botones button:hover {
+      opacity: 0.8;
+    }
+  </style>
+
 </head>
 <body>
 
-<h1>Gestión de Anuncios</h1>
+  <div class="contenedor">
+    <h2>Crear Tarea</h2>
 
-<button onclick="mostrarFormulario()">Crear Anuncio</button>
+    <label>Asignar A:</label>
+    <select>
+      <option value="toda">Toda la clase</option>
+      <option value="grupo1">Grupo 1</option>
+      <option value="grupo2">Grupo 2</option>
+      <option value="individual">Individual</option>
+    </select>
 
-<div id="anuncios"></div>
+    <label>Título del Trabajo:</label>
+    <input type="text" placeholder="Título">
 
-<script>
-    const anuncios = document.getElementById('anuncios');
+    <label>Descripción del Trabajo:</label>
+    <textarea placeholder="Descripción"></textarea>
 
-    function mostrarFormulario() {
-        Swal.fire({
-            title: 'Crear Anuncio',
-            html: `
-                <input id="foto" class="swal2-input" placeholder="URL Foto Perfil">
-                <input id="nombre" class="swal2-input" placeholder="Nombre">
-                <textarea id="descripcion" class="swal2-textarea" placeholder="Descripción"></textarea>
-                <input type="file" id="archivo" class="swal2-file">
-            `,
-            showCancelButton: true,
-            confirmButtonText: 'Publicar',
-            cancelButtonText: 'Cancelar'
-        }).then((resultado) => {
-            if (resultado.isConfirmed) {
-                const foto = document.getElementById('foto').value;
-                const nombre = document.getElementById('nombre').value;
-                const descripcion = document.getElementById('descripcion').value;
-                const archivoInput = document.getElementById('archivo');
-                const archivo = archivoInput.files[0];
+    <label>Adjuntar Archivo:</label>
+    <input type="file" id="archivo" onchange="mostrarArchivo(event)">
+    <div id="archivoSubido"></div>
 
-                if (!foto || !nombre) {
-                    Swal.fire('Error', 'La foto y el nombre son obligatorios', 'error');
-                    return;
-                }
+    <label>Puntos:</label>
+    <input type="number" placeholder="Puntos">
 
-                const fecha = new Date().toLocaleString();
+    <label>Fecha de Entrega:</label>
+    <input type="date">
 
-                const anuncio = document.createElement('div');
-                anuncio.className = 'anuncio';
-                anuncio.innerHTML = `
-                    <div><img src="${foto}">${nombre} - <small>${fecha}</small></div>
-                    <p>${descripcion}</p>
-                    ${archivo ? `<a href="${URL.createObjectURL(archivo)}" target="_blank">Ver Archivo</a>` : ''}
-                    <div class="acciones">
-                        <button onclick="modificarAnuncio(this)">Modificar</button>
-                        <button onclick="eliminarAnuncio(this)">Eliminar</button>
-                        <button onclick="agregarComentario(this)">Comentar</button>
-                    </div>
-                    <div class="comentarios"></div>
-                `;
+    <label>¿Permitir entregas después de la fecha?</label>
+    <select>
+      <option>Si</option>
+      <option>No</option>
+    </select>
 
-                anuncios.prepend(anuncio);
-            }
-        });
+    <label>Tema:</label>
+    <input type="text" placeholder="Tema">
+
+    <div class="botones">
+      <button>Cancelar</button>
+      <button>Crear Tarea</button>
+    </div>
+
+  </div>
+
+  <script>
+    function mostrarArchivo(event) {
+      const archivo = event.target.files[0];
+      const url = URL.createObjectURL(archivo);
+
+      document.getElementById('archivoSubido').innerHTML = `
+        <a href="${url}" target="_blank">${archivo.name}</a>
+      `;
     }
-
-    function modificarAnuncio(btn) {
-        const anuncio = btn.parentElement.parentElement;
-        const fotoActual = anuncio.querySelector('img').src;
-        const nombreActual = anuncio.querySelector('img').nextSibling.textContent.split(' - ')[0];
-        const descripcionActual = anuncio.querySelector('p').innerText;
-        const enlaceArchivo = anuncio.querySelector('a');
-
-        Swal.fire({
-            title: 'Modificar Anuncio',
-            html: `
-                <input id="foto" class="swal2-input" value="${fotoActual}">
-                <input id="nombre" class="swal2-input" value="${nombreActual}">
-                <textarea id="descripcion" class="swal2-textarea">${descripcionActual}</textarea>
-                <input type="file" id="archivo" class="swal2-file">
-            `,
-            showCancelButton: true,
-            confirmButtonText: 'Guardar',
-            cancelButtonText: 'Cancelar'
-        }).then((resultado) => {
-            if (resultado.isConfirmed) {
-                const foto = document.getElementById('foto').value;
-                const nombre = document.getElementById('nombre').value;
-                const descripcion = document.getElementById('descripcion').value;
-                const archivoInput = document.getElementById('archivo');
-                const archivo = archivoInput.files[0];
-
-                anuncio.querySelector('img').src = foto;
-                anuncio.querySelector('img').nextSibling.textContent = nombre + " - " + new Date().toLocaleString();
-                anuncio.querySelector('p').innerText = descripcion;
-
-                if (archivo) {
-                    if (enlaceArchivo) {
-                        enlaceArchivo.href = URL.createObjectURL(archivo);
-                        enlaceArchivo.textContent = 'Ver Archivo';
-                    } else {
-                        const nuevoEnlace = document.createElement('a');
-                        nuevoEnlace.href = URL.createObjectURL(archivo);
-                        nuevoEnlace.target = "_blank";
-                        nuevoEnlace.textContent = 'Ver Archivo';
-                        anuncio.insertBefore(nuevoEnlace, anuncio.querySelector('.acciones'));
-                    }
-                }
-            }
-        });
-    }
-
-    function eliminarAnuncio(btn) {
-        Swal.fire({
-            title: "¿Eliminar Anuncio?",
-            text: "No podrás revertir esta acción.",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Sí, eliminar",
-            cancelButtonText: "Cancelar"
-        }).then((resultado) => {
-            if (resultado.isConfirmed) {
-                btn.parentElement.parentElement.remove();
-            }
-        });
-    }
-
-    function agregarComentario(btn) {
-        const comentarios = btn.parentElement.nextElementSibling;
-        Swal.fire({
-            title: 'Nuevo Comentario',
-            html: `
-                <input id="foto" class="swal2-input" placeholder="URL Foto Perfil">
-                <input id="nombre" class="swal2-input" placeholder="Nombre">
-                <textarea id="comentario" class="swal2-textarea" placeholder="Escribe tu comentario..."></textarea>
-            `,
-            showCancelButton: true,
-            confirmButtonText: 'Publicar',
-            cancelButtonText: 'Cancelar'
-        }).then((resultado) => {
-            if (resultado.isConfirmed) {
-                const foto = document.getElementById('foto').value;
-                const nombre = document.getElementById('nombre').value;
-                const comentarioTexto = document.getElementById('comentario').value;
-
-                if (!foto || !nombre || !comentarioTexto) {
-                    Swal.fire('Error', 'Todos los campos son obligatorios', 'error');
-                    return;
-                }
-
-                const fecha = new Date().toLocaleString();
-
-                const comentario = document.createElement('div');
-                comentario.className = 'comentario';
-                comentario.innerHTML = `
-                    <div><img src="${foto}">${nombre} - <small>${fecha}</small></div>
-                    <p>${comentarioTexto}</p>
-                    <button onclick="this.parentElement.remove()">Eliminar Comentario</button>
-                `;
-
-                comentarios.appendChild(comentario);
-            }
-        });
-    }
-</script>
+  </script>
 
 </body>
 </html>

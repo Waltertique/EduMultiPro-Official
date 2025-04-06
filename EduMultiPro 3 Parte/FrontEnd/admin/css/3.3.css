@@ -233,6 +233,18 @@ button:hover{
         height: auto;
     }
 
+    .titulo{
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+    }
+     h1{
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .salir{
+        margin-left: 20px;
+    }
 
     #pie{
         height: 200px;
@@ -286,6 +298,19 @@ button:hover{
         margin-top: 15px;
         max-width: 70px;
         height: auto;
+    }
+    
+    .titulo{
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+    }
+     h1{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .salir{
+        margin-left: 20px;
     }
     
     #pie{

@@ -327,7 +327,81 @@ i:hover{
         height: auto;
     }
 
+/* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
 
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid rgb(241, 197, 135);
+        border-radius: 10px;
+        background: var(--blanco);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+    #titulo h2{
+        font-size: 30px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: center;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 50%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 10px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 10px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 10px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+
+/* footer -------------------- footer */
     #pie{
         height: 200px;
     }
@@ -381,6 +455,81 @@ i:hover{
         max-width: 70px;
         height: auto;
     }
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid rgb(241, 197, 135);
+        border-radius: 10px;
+        background: var(--blanco);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+    #titulo h2{
+        font-size: 30px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: center;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 50%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 10px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 10px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 10px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+
+/* footer -------------------- footer */
     
     #pie{
         height: 160px;
@@ -435,6 +584,81 @@ i:hover{
         max-width: 70px;
         height: auto;
     }
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid rgb(241, 197, 135);
+        border-radius: 10px;
+        background: var(--blanco);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+    #titulo h2{
+        font-size: 30px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: center;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 50%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 10px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 10px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 10px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+
+/* footer -------------------- footer */
     
     #pie{
         height: 200px;
@@ -485,6 +709,82 @@ i:hover{
         max-width: 70px;
         height: auto;
     }
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--blanco);
+        font-size: 18px;
+    }
+    #titulo h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio{
+    margin: 0px auto;
+}
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 13px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 13px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 13px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+
+/* footer -------------------- footer */
     
     #pie{
         height: 220px;
@@ -539,6 +839,83 @@ i:hover{
         height: auto;
     }
     
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--blanco);
+        font-size: 20px;
+    }
+    #titulo h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio{
+    margin: 0px auto;
+}
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 13px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 13px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 13px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+
+/* footer -------------------- footer */
+    
     #pie{
         height: 220px;
     }
@@ -592,6 +969,82 @@ i:hover{
         height: auto;
     }
     
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--blanco);
+        font-size: 20px;
+    }
+    #titulo h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio{
+    margin: 0px auto;
+}
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 13px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 13px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 13px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+
+/* footer -------------------- footer */
     #pie{
         height: 130px;
     }
@@ -644,4 +1097,80 @@ i:hover{
         max-width: 75px;
         height: auto;
     }
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--blanco);
+        font-size: 25px;
+    }
+    #titulo h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio{
+    margin: 0px auto;
+}
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 13px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 13px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 13px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+
+/* footer -------------------- footer */
 }
