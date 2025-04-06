@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Miembros</title>
+  <title>Jornadas</title>
   <link rel="icon" href="../Principal/img/icono.png">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!--libreria de logos-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="../admin/css/2.2.css">
+  <link rel="stylesheet" href="../admin/css/3.6.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!--permite que sangan las alertas-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!--pagina para iconos-->
   <!-- jquery -->
@@ -81,84 +81,58 @@
             </div>
 
             <!--Tabla-->
-            <div class="col-10 col-xl-10" id="contenidoTabla">
-                <div class="row" id="titulo">
-                  <div class="col-12 col-lg-9 col-xl-9">
-                    <h2>Informacion Del Usuario</h2>
-                  </div>
-                  <div class="col-12 col-lg-3 col-xl-3" id="ttbtn">
-                    <button class="salir" type="button">Salir</button>
-                  </div>
+            <div class="col-10" id="contenidoTabla">
+
+                <div class="card">
+
+                    <a href="../admin/3.4materias.html"><div class="targeta"><i class="fa-solid fa-book"></i><h1>Materia</h1></div></a>
+                    
+                    <a href="../admin/3.5grado.html"><div class="targeta"><i class="fa-solid fa-temperature-low"></i><h1>Grado</h1></div></a>
+
+                    <a href="../admin/3.6jornada.html"><div class="targeta"><i class="fa-solid fa-clock"></i><h1>Jornada</h1></div></a>
+
                 </div>
-                <div class="row" id="cont1">
-                  <div class="col-12 col-lg-3 col-xl-3" id="foto">
-                    <img src="../Principal/img/foto.jpg" alt="">
-                  </div>
-                  <div class="col-12 col-lg-9 col-xl-9" id="infor">
-                    <div class="row">
-
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" id="a1">
-                        
-                          <div class="campo">
-                            <label for="apellido">Primer Nombre*</label>
-                            <div class="informe"><p>Juan</p><img src="../Principal/img/f13.png" alt=""></div>
-                          </div>
-                          <div class="campo">
-                            <label for="nombre">Segundo Nombre*</label>
-                            <div class="informe"><p>Camilo</p><img src="../Principal/img/f13.png" alt=""></div>
-                          </div>
-                          <div class="campo">
-                            <label for="nombre">Primer Apellido*</label>
-                            <div class="informe"><p>Sanches</p><img src="../Principal/img/f13.png" alt=""></div>
-                          </div>
-                          <div class="campo">
-                            <label for="nombre">Segundo Apellido*</label>
-                            <div class="informe"><p>Gabiria</p><img src="../Principal/img/f13.png" alt=""></div>
-                          </div>
-                      
-                      </div>
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" id="a2">
-
-                        <div class="campo">
-                          <label for="celular">Tipo de Documento*</label>
-                          <div class="informe"><p>Cedula de ciudadania</p><img src="../Principal/img/f13.png" alt=""></div>
-                        </div>
-                        <div class="campo">
-                          <label for="email">NO. Documento</label>
-                          <div class="informe"><p>342456645</p><img src="../Principal/img/f13.png" alt=""></div>
-                        </div>
-                        <div class="campo">
-                          <label for="celular">Correo Institucional*</label>
-                              <div class="informe"><p>camiloS@edumultipro.com</p><img src="../Principal/img/f13.png" alt=""></div>
-                        </div>
-                        <div class="campo">
-                          <label for="email">Correo</label>
-                          <div class="informe"><p>JuanCamiloS@gmail.com</p><img src="../Principal/img/f13.png" alt=""></div>
-                        </div>
-
-                      </div>
-                      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" id="a3">
-
-                        <div class="campo">
-                          <label for="nombre">Contacto 1*</label>
-                          <div class="informe"><p>123 5434565</p><img src="../Principal/img/f13.png" alt=""></div>
-                        </div>
-                        <div class="campo">
-                          <label for="nombre">Contacto 2*</label>
-                          <div class="informe"><p>543 5675433</p><img src="../Principal/img/f13.png" alt=""></div>
-                        </div>
-                        <div class="campo">
-                          <label for="email">Fecha de Nacimiento</label>
-                          <div class="informe"><p>14/4/1993</p><img src="../Principal/img/f13.png" alt=""></div>
-                        </div>
-                        <div class="campo">
-                          <label for="email">ROL</label>
-                          <div class="informe"><p>Profesor</p><img src="../Principal/img/f13.png" alt=""></div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
+                
+                <div class="titulo">
+                    <h1>Jornadas Actuales</h1>
+                    <button class="crear">Crear Jornada</button>
+                </div>
+                <div class="contenedor-tabla">
+                    <table class="tablaUsuarios" id="tablaUsuarios">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                                <th>Modificar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>J01</td>
+                                <td>Mañana</td>
+                                <td>Es una jornada académica que se desarrolla en horas de la mañana, permitiendo a los estudiantes asistir a clases desde las primeras horas del día hasta el mediodía.</td>
+                                <td><button class="btn-icon modificar"><i class="fa-solid fa-gear"></i></button></td>
+                                <td><button class="btn-icon eliminar"><i class="fa-solid fa-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>J02</td>
+                                <td>Tarde</td>
+                                <td>Es una jornada que se realiza en horas de la tarde. Los estudiantes ingresan después del mediodía y terminan sus clases en la tarde.</td>
+                                <td><button class="btn-icon modificar"><i class="fa-solid fa-gear"></i></button></td>
+                                <td><button class="btn-icon eliminar"><i class="fa-solid fa-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>J03</td>
+                                <td>Mixta</td>
+                                <td>Es una jornada flexible donde los estudiantes pueden tener clases tanto en la mañana como en la tarde, según el horario establecido por la institución educativa.</td>
+                                <td><button class="btn-icon modificar"><i class="fa-solid fa-gear"></i></button></td>
+                                <td><button class="btn-icon eliminar"><i class="fa-solid fa-trash"></i></button></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -179,6 +153,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="../admin/js/2.2.js"></script>
+  <script src="../admin/js/3.6.js"></script>
 </body>
 </html>
