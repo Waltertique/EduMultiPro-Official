@@ -1,0 +1,538 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--blanco);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+/* nav -------------------- nav */
+
+#navegador{
+    background: var(--azul);
+    border-bottom: 3px solid var(--azulClaro);
+}
+
+#n2{
+    padding: 0;
+}
+#n2 h1{
+    font-size: 7rem;
+}
+
+#n3 h3{
+    font-size: 3.3rem;
+    color: aqua;
+}
+#img1{
+    max-width: 90px;
+    height: auto;
+    margin-top: 5px;
+}
+
+/* boton -------------------- boton*/
+#btn1{
+    padding: 0 0;
+}
+
+.btn-group{
+    width: 100%;
+    padding: 0;
+    background: #007bbd;
+    border-radius: 0;
+    border: 1px solid var(--azulClaro);
+}
+#abtn{
+    color: white;
+    border: 1px solid var(--azulClaro);
+}
+.dropdown-menu{
+    width: 100%;
+    background: var(--azul);
+}
+.dropdown-menu a{
+    border-bottom: 1px solid var(--azulClaro);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+}
+.dropdown-menu i{
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+.dropdown-menu p{
+    margin: auto 10px;
+}
+.dropdown-item:hover{
+    background: var(--azulClaro);
+}
+
+
+/* article -------------------- article */
+
+#centro{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+.row {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+#barraLateral{
+    width: 250px;
+    background-color: var(--azul);
+    display: flex;
+    flex-direction: column;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+.menu a{
+    text-decoration: none;
+}
+.menu  i{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    padding: 15px 25px;
+    border-bottom: 1px solid var(--azulClaro);
+}
+.menu i p{
+    margin: 0px 10px;
+}
+i:hover{
+    cursor: pointer;
+    background: var(--azulClaro);
+}
+/* tabla -------------------- tabla*/
+
+#Carrusel{
+    
+    width: 100%;
+    height: auto;
+}
+
+.container1{
+    background: #4aa2d1
+}
+
+
+.container1 h2{
+    text-align: center;
+    font-size: 45px;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding: 20px 0px 15px 0px;
+}
+
+/* footer -------------------- footer */
+
+#pie{
+    background-image: url("../img/gris fondo.jpg");
+    height: 130px;
+}
+#n4 h2{
+    color: white;
+    font-size: 45px;
+}
+#n5 a{
+    color: white;
+    font-size: 20px;
+}
+#n6 a{
+    color: white;
+    font-size: 20px;
+}
+#n7 a{
+    color: white;
+    font-size: 20px;
+}
+#n8 a{
+    color: white;
+    font-size: 20px;
+}
+#n9 a{
+    color: white;
+    font-size: 20px;
+}
+
+@media (min-width: 1300px) and (max-width: 1399px){
+    #cPrincipal{
+        width: 81%;
+        }
+}
+
+@media (min-width: 920px) and (max-width: 1199px){
+    #cPrincipal{
+        width: 74.7%;
+        }
+}
+
+@media (min-width: 100px) and (max-width: 414px) {
+    #n2 h1 {
+        font-size: 3.5rem; 
+        margin: 0 auto;
+    }
+
+    #n3 h3 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+    
+    #n1{
+        display: flex;
+        justify-content: center;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 60px;
+        height: auto;
+    }
+
+
+    #pie{
+        background-image: url("../IMG/gris\ fondo.jpg");
+        height: 200px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 575px) {
+    #n2 h1 {
+        font-size: 4.4rem; 
+        margin: 0 auto;
+    }
+
+    #n3 h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    #n1{
+        display: flex;
+        justify-content: center;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+    
+    #pie{
+        background-image: url("../img/gris fondo.jpg");
+        height: 160px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+    #n2 h1 {
+        font-size: 4.4rem; 
+        margin: 0 auto;
+    }
+
+    #n3 h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    #n1{
+        display: flex;
+        justify-content: center;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+    
+    #pie{
+        background-image: url("../img/gris fondo.jpg");
+        height: 200px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #n2 h1 {
+        font-size: 5.4rem; 
+        margin: 0 20px;
+    }
+
+    #n3 h3 {
+        font-size: 1.7rem;
+        margin-bottom: 15px;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+    
+    #pie{
+        background-image: url("../img/gris fondo.jpg");
+        height: 220px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2.8rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    #n2 h1 {
+        font-size: 3.7rem; 
+    }
+
+    #n3 h3 {
+        font-size: 1.8rem;
+    }
+    #n1{
+        display: flex;
+        justify-content: end;
+    }
+    #img1{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 55px;
+        height: auto;
+    }
+    
+    #pie{
+        background-image: url("../img/gris fondo.jpg");
+        height: 220px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2.8rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px){
+    #n2 h1 {
+        font-size: 4.9rem; 
+    }
+
+    #n3 h3 {
+        font-size: 2.1rem;
+    }
+    #n1{
+        display: flex;
+        justify-content: end;
+    }
+    #img1{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+    
+    #pie{
+        background-image: url("../img/gris fondo.jpg");
+        height: 130px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2.4rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+}
+@media (min-width: 1400px) and (max-width: 1775px){
+    #n2 h1 {
+        font-size: 5.6rem; 
+    }
+
+    #n3 h3 {
+        font-size: 2.4rem;
+    }
+    #n1{
+        display: flex;
+        justify-content: end;
+    }
+    #img1{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 75px;
+        height: auto;
+    }
+}
