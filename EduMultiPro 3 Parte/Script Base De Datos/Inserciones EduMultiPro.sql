@@ -8,50 +8,50 @@ INSERT INTO Documento(ID, Tipo_Documento) Values
     ('D002','Cedula'),
     ('D003','Cedula de extangeria');
     
-INSERT INTO Informacion(ID, Correo1, Correo2, Contacto1, Contacto2, Fecha_Nacimiento) Values
-	('I001', 'juan01@gmail.com', 'juan.alt01@gmail.com', '3111111111', '3201111111', '1990-01-15'),
-	('I002', 'maria02@gmail.com', 'maria.alt02@gmail.com', '3122222222', '3212222222', '1988-05-22'),
-	('I003', 'pedro03@gmail.com', 'pedro.alt03@gmail.com', '3133333333', '3223333333', '1995-07-10'),
-	('I004', 'laura04@gmail.com', 'laura.alt04@gmail.com', '3144444444', '3234444444', '1992-12-01'),
-	('I005', 'carlos05@gmail.com', 'carlos.alt05@gmail.com', '3155555555', '3245555555', '1985-09-18'),
-	('I006', 'ana06@gmail.com', 'ana.alt06@gmail.com', '3166666666', '3256666666', '1993-03-12'),
-	('I007', 'jose07@gmail.com', 'jose.alt07@gmail.com', '3177777777', '3267777777', '1997-08-27'),
-	('I008', 'sofia08@gmail.com', 'sofia.alt08@gmail.com', '3188888888', '3278888888', '1991-11-09'),
-	('I009', 'david09@gmail.com', 'david.alt09@gmail.com', '3199999999', '3289999999', '1989-06-14'),
-	('I010', 'paula10@gmail.com', 'paula.alt10@gmail.com', '3101010101', '3291010101', '1994-02-20'),
+INSERT INTO Informacion(ID, Correo1, Correo2, Contacto1, Contacto2, Fecha_Nacimiento,RutaFoto) Values
+	('I001', 'juan01@gmail.com', 'juan.alt01@gmail.com', '3111111111', '3201111111', '1990-01-15',null),
+	('I002', 'maria02@gmail.com', 'maria.alt02@gmail.com', '3122222222', '3212222222', '1988-05-22',null),
+	('I003', 'pedro03@gmail.com', 'pedro.alt03@gmail.com', '3133333333', '3223333333', '1995-07-10',null),
+	('I004', 'laura04@gmail.com', 'laura.alt04@gmail.com', '3144444444', '3234444444', '1992-12-01',null),
+	('I005', 'carlos05@gmail.com', 'carlos.alt05@gmail.com', '3155555555', '3245555555', '1985-09-18',null),
+	('I006', 'ana06@gmail.com', 'ana.alt06@gmail.com', '3166666666', '3256666666', '1993-03-12',null),
+	('I007', 'jose07@gmail.com', 'jose.alt07@gmail.com', '3177777777', '3267777777', '1997-08-27',null),
+	('I008', 'sofia08@gmail.com', 'sofia.alt08@gmail.com', '3188888888', '3278888888', '1991-11-09',null),
+	('I009', 'david09@gmail.com', 'david.alt09@gmail.com', '3199999999', '3289999999', '1989-06-14',null),
+	('I010', 'paula10@gmail.com', 'paula.alt10@gmail.com', '3101010101', '3291010101', '1994-02-20',null),
 
-	('I011', 'lucas11@gmail.com', 'lucas.alt11@gmail.com', '3111111112', '3201111112', '2008-04-05'),
-	('I012', 'valeria12@gmail.com', 'valeria.alt12@gmail.com', '3122222223', '3212222223', '2010-07-22'),
-	('I013', 'diego13@gmail.com', 'diego.alt13@gmail.com', '3133333334', '3223333334', '2009-01-30'),
-	('I014', 'camila14@gmail.com', 'camila.alt14@gmail.com', '3144444445', '3234444445', '2011-10-11'),
-	('I015', 'andres15@gmail.com', 'andres.alt15@gmail.com', '3155555556', '3245555556', '2012-03-25'),
-	('I016', 'natalia16@gmail.com', 'natalia.alt16@gmail.com', '3166666667', '3256666667', '2008-05-18'),
-	('I017', 'sergio17@gmail.com', 'sergio.alt17@gmail.com', '3177777778', '3267777778', '2013-09-29'),
-	('I018', 'carolina18@gmail.com', 'carolina.alt18@gmail.com', '3188888889', '3278888889', '2010-12-03'),
-	('I019', 'felipe19@gmail.com', 'felipe.alt19@gmail.com', '3199999900', '3289999900', '2009-02-28'),
-	('I020', 'daniela20@gmail.com', 'daniela.alt20@gmail.com', '3101010111', '3291010111', '2011-08-06'),
+	('I011', 'lucas11@gmail.com', 'lucas.alt11@gmail.com', '3111111112', '3201111112', '2008-04-05',null),
+	('I012', 'valeria12@gmail.com', 'valeria.alt12@gmail.com', '3122222223', '3212222223', '2010-07-22',null),
+	('I013', 'diego13@gmail.com', 'diego.alt13@gmail.com', '3133333334', '3223333334', '2009-01-30',null),
+	('I014', 'camila14@gmail.com', 'camila.alt14@gmail.com', '3144444445', '3234444445', '2011-10-11',null),
+	('I015', 'andres15@gmail.com', 'andres.alt15@gmail.com', '3155555556', '3245555556', '2012-03-25',null),
+	('I016', 'natalia16@gmail.com', 'natalia.alt16@gmail.com', '3166666667', '3256666667', '2008-05-18',null),
+	('I017', 'sergio17@gmail.com', 'sergio.alt17@gmail.com', '3177777778', '3267777778', '2013-09-29',null),
+	('I018', 'carolina18@gmail.com', 'carolina.alt18@gmail.com', '3188888889', '3278888889', '2010-12-03',null),
+	('I019', 'felipe19@gmail.com', 'felipe.alt19@gmail.com', '3199999900', '3289999900', '2009-02-28',null),
+	('I020', 'daniela20@gmail.com', 'daniela.alt20@gmail.com', '3101010111', '3291010111', '2011-08-06',null),
 
-	('I021', 'sebastian21@gmail.com', 'sebastian.alt21@gmail.com', '3111111122', '3201111122', '2008-03-17'),
-	('I022', 'andrea22@gmail.com', 'andrea.alt22@gmail.com', '3122222233', '3212222233', '2010-06-26'),
-	('I023', 'oscar23@gmail.com', 'oscar.alt23@gmail.com', '3133333344', '3223333344', '2011-09-15'),
-	('I024', 'alejandra24@gmail.com', 'alejandra.alt24@gmail.com', '3144444455', '3234444455', '2012-04-08'),
-	('I025', 'enrique25@gmail.com', 'enrique.alt25@gmail.com', '3155555566', '3245555566', '2013-12-21'),
-	('I026', 'karen26@gmail.com', 'karen.alt26@gmail.com', '3166666677', '3256666677', '2014-01-03'),
-	('I027', 'manuel27@gmail.com', 'manuel.alt27@gmail.com', '3177777788', '3267777788', '2015-05-12'),
-	('I028', 'isabela28@gmail.com', 'isabela.alt28@gmail.com', '3188888899', '3278888899', '2016-07-19'),
-	('I029', 'martin29@gmail.com', 'martin.alt29@gmail.com', '3199999000', '3289999000', '2017-11-02'),
-	('I030', 'juliana30@gmail.com', 'juliana.alt30@gmail.com', '3101010122', '3291010122', '2018-03-23'),
+	('I021', 'sebastian21@gmail.com', 'sebastian.alt21@gmail.com', '3111111122', '3201111122', '2008-03-17',null),
+	('I022', 'andrea22@gmail.com', 'andrea.alt22@gmail.com', '3122222233', '3212222233', '2010-06-26',null),
+	('I023', 'oscar23@gmail.com', 'oscar.alt23@gmail.com', '3133333344', '3223333344', '2011-09-15',null),
+	('I024', 'alejandra24@gmail.com', 'alejandra.alt24@gmail.com', '3144444455', '3234444455', '2012-04-08',null),
+	('I025', 'enrique25@gmail.com', 'enrique.alt25@gmail.com', '3155555566', '3245555566', '2013-12-21',null),
+	('I026', 'karen26@gmail.com', 'karen.alt26@gmail.com', '3166666677', '3256666677', '2014-01-03',null),
+	('I027', 'manuel27@gmail.com', 'manuel.alt27@gmail.com', '3177777788', '3267777788', '2015-05-12',null),
+	('I028', 'isabela28@gmail.com', 'isabela.alt28@gmail.com', '3188888899', '3278888899', '2016-07-19',null),
+	('I029', 'martin29@gmail.com', 'martin.alt29@gmail.com', '3199999000', '3289999000', '2017-11-02',null),
+	('I030', 'juliana30@gmail.com', 'juliana.alt30@gmail.com', '3101010122', '3291010122', '2018-03-23',null),
 
-	('I031', 'leonardo31@gmail.com', 'leonardo.alt31@gmail.com', '3111111133', '3201111133', '2010-06-10'),
-	('I032', 'ximena32@gmail.com', 'ximena.alt32@gmail.com', '3122222244', '3212222244', '2011-09-29'),
-	('I033', 'brayan33@gmail.com', 'brayan.alt33@gmail.com', '3133333355', '3223333355', '2012-01-14'),
-	('I034', 'nataly34@gmail.com', 'nataly.alt34@gmail.com', '3144444466', '3234444466', '2013-08-05'),
-	('I035', 'ricardo35@gmail.com', 'ricardo.alt35@gmail.com', '3155555577', '3245555577', '2014-02-17'),
-	('I036', 'monica36@gmail.com', 'monica.alt36@gmail.com', '3166666688', '3256666688', '2015-04-24'),
-	('I037', 'santiago37@gmail.com', 'santiago.alt37@gmail.com', '3177777799', '3267777799', '2016-11-30'),
-	('I038', 'victoria38@gmail.com', 'victoria.alt38@gmail.com', '3188888800', '3278888800', '2017-01-07'),
-	('I039', 'hugo39@gmail.com', 'hugo.alt39@gmail.com', '3199999011', '3289999011', '2018-05-13'),
-	('I040', 'estefania40@gmail.com', 'estefania.alt40@gmail.com', '3101010133', '3291010133', '2019-12-25');
+	('I031', 'leonardo31@gmail.com', 'leonardo.alt31@gmail.com', '3111111133', '3201111133', '2010-06-10',null),
+	('I032', 'ximena32@gmail.com', 'ximena.alt32@gmail.com', '3122222244', '3212222244', '2011-09-29',null),
+	('I033', 'brayan33@gmail.com', 'brayan.alt33@gmail.com', '3133333355', '3223333355', '2012-01-14',null),
+	('I034', 'nataly34@gmail.com', 'nataly.alt34@gmail.com', '3144444466', '3234444466', '2013-08-05',null),
+	('I035', 'ricardo35@gmail.com', 'ricardo.alt35@gmail.com', '3155555577', '3245555577', '2014-02-17',null),
+	('I036', 'monica36@gmail.com', 'monica.alt36@gmail.com', '3166666688', '3256666688', '2015-04-24',null),
+	('I037', 'santiago37@gmail.com', 'santiago.alt37@gmail.com', '3177777799', '3267777799', '2016-11-30',null),
+	('I038', 'victoria38@gmail.com', 'victoria.alt38@gmail.com', '3188888800', '3278888800', '2017-01-07',null),
+	('I039', 'hugo39@gmail.com', 'hugo.alt39@gmail.com', '3199999011', '3289999011', '2018-05-13',null),
+	('I040', 'estefania40@gmail.com', 'estefania.alt40@gmail.com', '3101010133', '3291010133', '2019-12-25',null);
     
 INSERT INTO Grado(ID, Grado_Nombre) Values
 	('G01', 'Primero'),
@@ -252,70 +252,70 @@ INSERT INTO Aula(ID, Aula_Nombre, materia_id, usuario_id, curso_id) Values
     ('A015', 'Aula Inglés 1101', 'M005', 'P007', 'Q1101X'),
     ('A016', 'Aula Educación Física 1101', 'M009', 'P008', 'Q1101X');
     
-INSERT INTO Anuncio(ID, Titulo_Anuncio, Descripcion_Anuncio, Enlace_Anuncio, Fecha_Anuncio, aula_id) Values
+INSERT INTO Anuncio(ID, Titulo_Anuncio, Descripcion_Anuncio, Enlace_Anuncio, Fecha_Anuncio, aula_id, usuario_id) Values
 	-- Matemáticas
-	('AN001', 'Examen de Matemáticas - Primer Parcial', 'Se realizará el primer examen parcial el día lunes. Temas: álgebra básica.', 'https://colegio.edu/anuncios/matematicas1', '2025-03-20','A001'),
-	('AN002', 'Guía de Estudio Matemáticas', 'Disponible la guía de ejercicios para preparar el examen. Descargar aquí.', 'https://colegio.edu/guias/matematicas1', '2025-03-18','A001'),
+	('AN001', 'Examen de Matemáticas - Primer Parcial', 'Se realizará el primer examen parcial el día lunes. Temas: álgebra básica.', 'https://colegio.edu/anuncios/matematicas1', '2025-03-20','A001','P001'),
+	('AN002', 'Guía de Estudio Matemáticas', 'Disponible la guía de ejercicios para preparar el examen. Descargar aquí.', 'https://colegio.edu/guias/matematicas1', '2025-03-18','A001','P002'),
 
 	-- Lengua Castellana
-	('AN003', 'Entrega de Ensayo - Lengua Castellana', 'Recordatorio: el ensayo de literatura debe entregarse el viernes antes de las 5 p.m.', 'https://colegio.edu/anuncios/castellana1', '2025-03-22','A002'),
-	('AN004', 'Nueva Lectura Obligatoria', 'Se ha asignado el libro "Cien años de soledad" para el próximo mes.', 'https://colegio.edu/libros/castellana1', '2025-03-19','A002'),
+	('AN003', 'Entrega de Ensayo - Lengua Castellana', 'Recordatorio: el ensayo de literatura debe entregarse el viernes antes de las 5 p.m.', 'https://colegio.edu/anuncios/castellana1', '2025-03-22','A002','P002'),
+	('AN004', 'Nueva Lectura Obligatoria', 'Se ha asignado el libro "Cien años de soledad" para el próximo mes.', 'https://colegio.edu/libros/castellana1', '2025-03-19','A002','P002'),
 
 	-- Ciencias Naturales
-	('AN005', 'Práctica de Laboratorio - Ciencias Naturales', 'Actividad práctica de biología sobre el sistema digestivo el miércoles.', 'https://colegio.edu/anuncios/naturales1', '2025-03-23','A003'),
-	('AN006', 'Resultados del Taller de Química', 'Revisa tus resultados del taller práctico subidos a la plataforma.', 'https://colegio.edu/resultados/naturales1', '2025-03-25','A003'),
+	('AN005', 'Práctica de Laboratorio - Ciencias Naturales', 'Actividad práctica de biología sobre el sistema digestivo el miércoles.', 'https://colegio.edu/anuncios/naturales1', '2025-03-23','A003','P003'),
+	('AN006', 'Resultados del Taller de Química', 'Revisa tus resultados del taller práctico subidos a la plataforma.', 'https://colegio.edu/resultados/naturales1', '2025-03-25','A003','P003'),
 
 	-- Ciencias Sociales
-	('AN007', 'Debate sobre Historia Universal', 'Organización del debate sobre las guerras mundiales en el aula 3.', 'https://colegio.edu/anuncios/sociales1', '2025-03-21','A004'),
-	('AN008', 'Taller de Geografía', 'Participa en el taller interactivo de geografía este viernes.', 'https://colegio.edu/talleres/sociales1', '2025-03-20','A004'),
+	('AN007', 'Debate sobre Historia Universal', 'Organización del debate sobre las guerras mundiales en el aula 3.', 'https://colegio.edu/anuncios/sociales1', '2025-03-21','A004','P004'),
+	('AN008', 'Taller de Geografía', 'Participa en el taller interactivo de geografía este viernes.', 'https://colegio.edu/talleres/sociales1', '2025-03-20','A004','P004'),
 
 	-- Inglés
-	('AN009', 'Examen de Inglés - Verbos Irregulares', 'Evaluación escrita sobre los verbos irregulares el próximo jueves.', 'https://colegio.edu/anuncios/ingles1', '2025-03-24','A005'),
-	('AN010', 'Club de Conversación en Inglés', 'Únete al club de conversación los sábados a las 10 a.m.', 'https://colegio.edu/clubs/ingles1', '2025-03-26','A005'),
+	('AN009', 'Examen de Inglés - Verbos Irregulares', 'Evaluación escrita sobre los verbos irregulares el próximo jueves.', 'https://colegio.edu/anuncios/ingles1', '2025-03-24','A005','P005'),
+	('AN010', 'Club de Conversación en Inglés', 'Únete al club de conversación los sábados a las 10 a.m.', 'https://colegio.edu/clubs/ingles1', '2025-03-26','A005','P005'),
 
 	-- Educación Física
-	('AN011', 'Competencia de Atletismo', 'Se convoca a la competencia anual de atletismo. Inscripciones abiertas.', 'https://colegio.edu/eventos/edufisica1', '2025-03-27','A006'),
-	('AN012', 'Clase Especial de Yoga', 'Clase de yoga para mejorar la flexibilidad y concentración.', 'https://colegio.edu/clases/edufisica1', '2025-03-29','A006'),
+	('AN011', 'Competencia de Atletismo', 'Se convoca a la competencia anual de atletismo. Inscripciones abiertas.', 'https://colegio.edu/eventos/edufisica1', '2025-03-27','A006','P006'),
+	('AN012', 'Clase Especial de Yoga', 'Clase de yoga para mejorar la flexibilidad y concentración.', 'https://colegio.edu/clases/edufisica1', '2025-03-29','A006','P006'),
 
 	-- Tecnología e Informática
-	('AN013', 'Taller de Programación en Scratch', 'Aprende los conceptos básicos de programación visual.', 'https://colegio.edu/talleres/tecnologia1', '2025-03-28','A007'),
-	('AN014', 'Concurso de Robótica', 'Participa en el concurso de robótica intercolegial.', 'https://colegio.edu/concursos/tecnologia1', '2025-04-01','A007'),
+	('AN013', 'Taller de Programación en Scratch', 'Aprende los conceptos básicos de programación visual.', 'https://colegio.edu/talleres/tecnologia1', '2025-03-28','A007','P007'),
+	('AN014', 'Concurso de Robótica', 'Participa en el concurso de robótica intercolegial.', 'https://colegio.edu/concursos/tecnologia1', '2025-04-01','A007','P007'),
 
 	-- Ética y Valores
-	('AN015', 'Foro de Valores Humanos', 'Discusión sobre respeto y responsabilidad ciudadana.', 'https://colegio.edu/foros/etica1', '2025-03-30','A008'),
-	('AN016', 'Campaña de Solidaridad', 'Jornada para recaudar alimentos no perecederos.', 'https://colegio.edu/campanas/etica1', '2025-04-02','A008'),
+	('AN015', 'Foro de Valores Humanos', 'Discusión sobre respeto y responsabilidad ciudadana.', 'https://colegio.edu/foros/etica1', '2025-03-30','A008','P008'),
+	('AN016', 'Campaña de Solidaridad', 'Jornada para recaudar alimentos no perecederos.', 'https://colegio.edu/campanas/etica1', '2025-04-02','A008','P008'),
 
 	-- Religión
-	('AN017', 'Encuentro Ecuménico', 'Invitación al encuentro interreligioso por la paz.', 'https://colegio.edu/eventos/religion1', '2025-04-03','A009'),
-	('AN018', 'Reflexión de Semana Santa', 'Actividades de reflexión y espiritualidad en la Semana Santa.', 'https://colegio.edu/actividades/religion1', '2025-04-05','A009'),
+	('AN017', 'Encuentro Ecuménico', 'Invitación al encuentro interreligioso por la paz.', 'https://colegio.edu/eventos/religion1', '2025-04-03','A009','P001'),
+	('AN018', 'Reflexión de Semana Santa', 'Actividades de reflexión y espiritualidad en la Semana Santa.', 'https://colegio.edu/actividades/religion1', '2025-04-05','A009','P001'),
 
 	-- Artes
-	('AN019', 'Exposición de Pintura', 'Presentación de las obras realizadas en el taller de arte.', 'https://colegio.edu/exposiciones/artes1', '2025-04-06','A010'),
-	('AN020', 'Clase Magistral de Música', 'Sesión especial sobre composición y técnica musical.', 'https://colegio.edu/clases/artes1', '2025-04-08','A010'),
+	('AN019', 'Exposición de Pintura', 'Presentación de las obras realizadas en el taller de arte.', 'https://colegio.edu/exposiciones/artes1', '2025-04-06','A010','P002'),
+	('AN020', 'Clase Magistral de Música', 'Sesión especial sobre composición y técnica musical.', 'https://colegio.edu/clases/artes1', '2025-04-08','A010','P002'),
     
     -- Matemáticas 2
-	('AN021', 'Examen de Matemáticas - Primer Parcial', 'Se realizará el primer examen parcial el día lunes. Temas: álgebra básica.', 'https://colegio.edu/anuncios/matematicas1', '2025-03-20','A011'),
-	('AN022', 'Guía de Estudio Matemáticas', 'Disponible la guía de ejercicios para preparar el examen. Descargar aquí.', 'https://colegio.edu/guias/matematicas1', '2025-03-18','A011'),
+	('AN021', 'Examen de Matemáticas - Primer Parcial', 'Se realizará el primer examen parcial el día lunes. Temas: álgebra básica.', 'https://colegio.edu/anuncios/matematicas1', '2025-03-20','A011','P003'),
+	('AN022', 'Guía de Estudio Matemáticas', 'Disponible la guía de ejercicios para preparar el examen. Descargar aquí.', 'https://colegio.edu/guias/matematicas1', '2025-03-18','A011','P003'),
 
 	-- Lengua Castellana 2
-	('AN023', 'Entrega de Ensayo - Lengua Castellana', 'Recordatorio: el ensayo de literatura debe entregarse el viernes antes de las 5 p.m.', 'https://colegio.edu/anuncios/castellana1', '2025-03-22','A012'),
-	('AN024', 'Nueva Lectura Obligatoria', 'Se ha asignado el libro "Cien años de soledad" para el próximo mes.', 'https://colegio.edu/libros/castellana1', '2025-03-19','A012'),
+	('AN023', 'Entrega de Ensayo - Lengua Castellana', 'Recordatorio: el ensayo de literatura debe entregarse el viernes antes de las 5 p.m.', 'https://colegio.edu/anuncios/castellana1', '2025-03-22','A012','P004'),
+	('AN024', 'Nueva Lectura Obligatoria', 'Se ha asignado el libro "Cien años de soledad" para el próximo mes.', 'https://colegio.edu/libros/castellana1', '2025-03-19','A012','P004'),
 
 	-- Ciencias Naturales 2
-	('AN025', 'Práctica de Laboratorio - Ciencias Naturales', 'Actividad práctica de biología sobre el sistema digestivo el miércoles.', 'https://colegio.edu/anuncios/naturales1', '2025-03-23','A013'),
-	('AN026', 'Resultados del Taller de Química', 'Revisa tus resultados del taller práctico subidos a la plataforma.', 'https://colegio.edu/resultados/naturales1', '2025-03-25','A013'),
+	('AN025', 'Práctica de Laboratorio - Ciencias Naturales', 'Actividad práctica de biología sobre el sistema digestivo el miércoles.', 'https://colegio.edu/anuncios/naturales1', '2025-03-23','A013','P005'),
+	('AN026', 'Resultados del Taller de Química', 'Revisa tus resultados del taller práctico subidos a la plataforma.', 'https://colegio.edu/resultados/naturales1', '2025-03-25','A013','P005'),
 
 	-- Ciencias Sociales 2
-	('AN027', 'Debate sobre Historia Universal', 'Organización del debate sobre las guerras mundiales en el aula 3.', 'https://colegio.edu/anuncios/sociales1', '2025-03-21','A014'),
-	('AN028', 'Taller de Geografía', 'Participa en el taller interactivo de geografía este viernes.', 'https://colegio.edu/talleres/sociales1', '2025-03-20','A014'),
+	('AN027', 'Debate sobre Historia Universal', 'Organización del debate sobre las guerras mundiales en el aula 3.', 'https://colegio.edu/anuncios/sociales1', '2025-03-21','A014','P006'),
+	('AN028', 'Taller de Geografía', 'Participa en el taller interactivo de geografía este viernes.', 'https://colegio.edu/talleres/sociales1', '2025-03-20','A014','P006'),
 
 	-- Inglés 2
-	('AN029', 'Examen de Inglés - Verbos Irregulares', 'Evaluación escrita sobre los verbos irregulares el próximo jueves.', 'https://colegio.edu/anuncios/ingles1', '2025-03-24','A015'),
-	('AN030', 'Club de Conversación en Inglés', 'Únete al club de conversación los sábados a las 10 a.m.', 'https://colegio.edu/clubs/ingles1', '2025-03-26','A015'),
+	('AN029', 'Examen de Inglés - Verbos Irregulares', 'Evaluación escrita sobre los verbos irregulares el próximo jueves.', 'https://colegio.edu/anuncios/ingles1', '2025-03-24','A015','P007'),
+	('AN030', 'Club de Conversación en Inglés', 'Únete al club de conversación los sábados a las 10 a.m.', 'https://colegio.edu/clubs/ingles1', '2025-03-26','A015','P007'),
 
 	-- Educación Física 2
-	('AN031', 'Competencia de Atletismo', 'Se convoca a la competencia anual de atletismo. Inscripciones abiertas.', 'https://colegio.edu/eventos/edufisica1', '2025-03-27','A016'),
-	('AN032', 'Clase Especial de Yoga', 'Clase de yoga para mejorar la flexibilidad y concentración.', 'https://colegio.edu/clases/edufisica1', '2025-03-29','A016');
+	('AN031', 'Competencia de Atletismo', 'Se convoca a la competencia anual de atletismo. Inscripciones abiertas.', 'https://colegio.edu/eventos/edufisica1', '2025-03-27','A016','P008'),
+	('AN032', 'Clase Especial de Yoga', 'Clase de yoga para mejorar la flexibilidad y concentración.', 'https://colegio.edu/clases/edufisica1', '2025-03-29','A016','P008');
     
 INSERT INTO Trabajo(ID, Tema_Trabajo, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, Archivo_Trabajo, aula_id) Values
 	-- Matemáticas																				
@@ -381,6 +381,20 @@ INSERT INTO Trabajo(ID, Tema_Trabajo, Titulo_Trabajo, Descripcion_Trabajo, Fecha
 	-- Educación Física 2
 	('T031', 'Aptitud Física', 'Bitácora de Ejercicio', 'Registra tus actividades físicas durante una semana.', '2025-04-21', 'archivos/edufisica_bitacora.docx','A016'),
 	('T032', 'Deportes', 'Reglamento del Fútbol', 'Investiga y presenta el reglamento oficial de la FIFA.', '2025-04-26', 'archivos/edufisica_futbol.pdf','A016');
+  
+INSERT INTO TrabajoEntregado(ID, Archivo_Trabajo, Fecha_Trabajo, trabajo_id, usuario_id) Values
+
+	('TE001', 'archivos/edufisica_bitacora.docx', '2025-04-21', 'T001', 'E001'),
+	('TE002', 'archivos/edufisica_futbol.pdf', '2025-04-26', 'T002', 'E002'),
+    ('TE003', 'archivos/edufisica_bitacora.docx', '2025-04-21', 'T003', 'E003'),
+	('TE004', 'archivos/edufisica_futbol.pd', '2025-04-26', 'T004', 'E004');
+    
+INSERT INTO Comentario(ID, Descripcion, Fecha, trabajo_id, anuncio_id, usuario_id) Values
+
+	('CA001', 'no entiendo', '2025-04-21', 'T001', null, 'E001'),
+	('CA002', 'facilito', '2025-04-26', null, 'AN002', 'E002'),
+    ('CA003', 'envio mi trabajo', '2025-04-21', 'T003', null, 'E003'),
+	('CA004', 'entendido', '2025-04-26', null, 'AN004', 'E004');
     
 INSERT INTO Nota_Trabajo(ID, Nota, trabajo_id, usuario_id) Values
 	

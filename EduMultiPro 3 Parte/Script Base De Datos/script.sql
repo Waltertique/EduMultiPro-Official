@@ -20,7 +20,8 @@ CREATE TABLE Informacion (
     Correo2 VARCHAR(50),
     Contacto1 VARCHAR(50) NOT NULL,
     Contacto2 VARCHAR(50),
-    Fecha_Nacimiento DATE NOT NULL
+    Fecha_Nacimiento DATE NOT NULL,
+    RutaFoto VARCHAR(50)
 );
 
 CREATE TABLE Grado (
@@ -129,7 +130,9 @@ CREATE TABLE Anuncio (
     Enlace_Anuncio VARCHAR(200),
     Fecha_Anuncio DATE NOT NULL,
     aula_id VARCHAR(10) NOT NULL,
-    FOREIGN KEY (aula_id) REFERENCES Aula(ID) ON DELETE CASCADE
+    usuario_id VARCHAR(10) NOT NULL,
+    FOREIGN KEY (aula_id) REFERENCES Aula(ID) ON DELETE CASCADE,
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Trabajo (
@@ -141,6 +144,28 @@ CREATE TABLE Trabajo (
     Archivo_Trabajo longblob,
     aula_id VARCHAR(10) NOT NULL,
     FOREIGN KEY (aula_id) REFERENCES Aula(ID) ON DELETE CASCADE
+);
+
+CREATE TABLE TrabajoEntregado (
+	ID VARCHAR(10) PRIMARY KEY,
+    Archivo_Trabajo longblob,
+    Fecha_Trabajo DATE NOT NULL,
+    trabajo_id VARCHAR(10) NOT NULL,
+    usuario_id VARCHAR(10) NOT NULL,
+    FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE,
+    FOREIGN KEY (Usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
+);
+
+CREATE TABLE Comentario (
+	ID VARCHAR(10) PRIMARY KEY,
+    Descripcion VARCHAR(200) NOT NULL,
+    Fecha DATE NOT NULL,
+    trabajo_id VARCHAR(10),
+    anuncio_id VARCHAR(10),
+    usuario_id VARCHAR(10) NOT NULL,
+    FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE,
+    FOREIGN KEY (anuncio_id) REFERENCES Anuncio(ID) ON DELETE CASCADE,
+    FOREIGN KEY (Usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Nota_Trabajo (
