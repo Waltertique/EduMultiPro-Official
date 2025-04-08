@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UsuarioEstudiantes</title>
+  <title>Usuariocoordinador</title>
   <link rel="icon" href="../img/icono.png" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,47 +34,12 @@
       </div>
     </div>
 
-    <div class="container-fluid" id="btn1">
-        <div class="row" id="rbtn">
-            <div class="btn-group d-block d-lg-none" role="group" aria-label="Button group with nested dropdown">
-                <div class="btn-group" role="group">
-                  <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="abtn">
-                    Opciones
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../estudiantes/2-usuario.html"><i class="fa-solid fa-user"><p>Usuario</p></i></a></li>
-                    <li><a class="dropdown-item" href="../estudiantes/3-curso.html"><i class="fa-solid fa-layer-group"><p>Cursos</p></i></a></li>
-                    <li><a class="dropdown-item" href="../estudiantes/4-horario.html"><i class="fa-solid fa-calendar-days"><p>Horarios</p></i></a></li>
-                    <li><a class="dropdown-item" href="../estudiantes/5-aula.html"><i class="fa-solid fa-users-rectangle"><p>Aulas</p></i></a></li>
-                    <li><a class="dropdown-item" href="../estudiantes/6-notas.html"><i class="fa-solid fa-ranking-star"><p>Notas</p></i></a></li>
-                    <li><a class="dropdown-item" href="../estudiantes/7-planillas.html"><i class="fa-solid fa-folder-open"><p>Planillas</p></i></a></li>
-                    <li><a class="dropdown-item" href="../estudiantes/8-noticia.html"><i class="fa-solid fa-radio"><p>Noticias</p></i></a></li>
-                    <li><a class="dropdown-item" href="../1-login.html"><i class="fa-solid fa-right-to-bracket"><p>Salir</p></i></a></li>
-                  </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Contenido central -->
     <div class="container-fluid" id="centro">
       <div class="row">
 
         <!-- Barra lateral -->
-        <div class="col-2 d-none d-lg-block" class="col-12 col-md-12 col-lg-4 col-xl-4" id="barraLateral">
-          <div class="opciones">
-            <div class="menu">
-              <a href="../estudiantes/2-usuario.html"><i class="fa-solid fa-user"><p>Usuario</p></i></a>
-              <a href="../estudiantes/3-curso.html"><i class="fa-solid fa-layer-group"><p>Cursos</p></i></a>
-              <a href="../estudiantes/4-horario.html"><i class="fa-solid fa-calendar-days"><p>Horarios</p></i></a>
-              <a href="../estudiantes/5-aula.html"><i class="fa-solid fa-users-rectangle"><p>Aulas</p></i></a>
-              <a href="../estudiantes/6-notas.html"><i class="fa-solid fa-ranking-star"><p>Notas</p></i></a>
-              <a href="../estudiantes/7-planillas.html"><i class="fa-solid fa-folder-open"><p>Planillas</p></i></a>
-              <a href="../estudiantes/8-noticia.html"><i class="fa-solid fa-radio"><p>Noticias</p></i></a>
-              <a href="../1-login.html"><i class="fa-solid fa-right-to-bracket"><p>Salir</p></i></a>
-            </div>
-          </div>
-        </div>
+
 
         <!-- Contenido principal -->
         <div class="col-12 col-md-12 col-lg-8 col-xl-9 col-xxl-10 py-3"  id="cPrincipal">
@@ -84,7 +49,7 @@
          <div class="containerUsuario">
             <h2>Mis Datos</h2>
             <div class="linea"></div>
-            <div class="containerInfoUsuario">
+            <div class="containerInfoUsuario ">
                 <div class="row d-flex align-items-start my-4">
                     <div class="col-12 col-lg-3 d-flex justify-content-center mb-1 mb-lg-0 left">
                         <div class="foto-container">
@@ -137,8 +102,12 @@
             
                             <div class="campo col-12 col-md-6 col-lg-4">
                                 <label for="codigo">Mi Código</label>
-                                <input type="text" id="codigo" name="codigo" value="2764927649" disabled>
+                                <input type="text" id="codigo" name="codigo" value="5432" disabled>
                             </div>
+                            <div class="campo col-12 col-md-6 col-lg-4">
+                              <label for="codigo">Correo institucional</label>
+                              <input type="text" id="codigo" name="codigo" value="juanperez@.edu.co" disabled>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -163,13 +132,13 @@
             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-2 col-xxl-2 d-flex justify-content-center align-items-center" id="n5"><a><i class="fa-solid fa-phone "></i>+546-160000</a></div>
             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-2 col-xxl-2 d-flex justify-content-center align-items-center" id="n6"><a target="_blank"><i class="fa-brands fa-facebook "></i>EduMultipro_08</a></div>
             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-2 col-xxl-2 d-flex justify-content-center align-items-center" id="n7"><a target="_blank"><i class="fa-brands fa-instagram "></i>EduMultipro_08</a></div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-2 col-xxl-2 d-flex justify-content-center align-items-center" id="n8"><a target="_blank"><i class="fa-regular fa-envelope "></i>Edu_Pro@gmail.com</a></div>
+            <div class="col-n 6 col-sm-6 col-md-6 col-lg-6 col-xl-2 col-xxl-2 d-flex justify-content-center align-items-center" id="n8"><a target="_blank"><i class="fa-regular fa-envelope "></i>Edu_Pro@gmail.com</a></div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 col-xxl-2 d-flex justify-content-center align-items-center" id="n9"><a target="_blank"><i class="fa-solid fa-globe "></i>EduMultiPro</a></div>
         </div>
       </div> 
 
   <!-- Scripts al final para mejor carga -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="JS/4.js"></script>
+  <script src="JS/3.js"></script>
 </body>
 </html>
