@@ -1,0 +1,268 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/14.css">
+    <link rel="icon" href="img/icono.png">
+    <title>Calificaciones</title>
+</head>
+<body>
+    <div class="contenedor">
+        <nav>
+            <div class="uno"><img src="img/logo.png" alt=""></div>
+            <div class="dos"><p>EduMultiPro</p></div>
+            <div class="tres"><p>Tu Aliado en el camino educativo</p></div>
+            <div class="cuatro">
+                <input type="text" placeholder="Buscar...">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </nav>
+        <article>
+            <!--Partes 1-->
+            <div class="parte1">
+                <button type="submit" id="subir">Subir Notas</button>
+                <button type="submit" id="guardar">Guardar</button>
+                <Button type="submit" id="salir">Salir</Button>
+            </div>
+
+            <div class="parte2">
+                <div class="contenedorTabla">
+                    <div class="titulo"><h2>Periodos academicos por lectivo</h2></div>
+                    <div class="selector">
+                        <input type="text" id="buscar" placeholder="Buscar" name="buscar">
+                        <button type="submit" id="boton1">Buscar</button>
+                    </div>
+                    <table class="periodos" id="periodos">
+                        <thead>
+                            <tr><th></th>
+                                <th><h2>COD</h2></th>
+                                <th><h2>Periodo</h2></th>
+                                <th><h2>Inicio</h2></th>
+                                <th><h2>Cierre</h2></th>
+                                <th><h2>Estado</h2></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><button></button></td>
+                                <td>1</td>
+                                <td>Primer Periodo</td>
+                                <td>7 de febrero de 2022</td>
+                                <td>22 de abril de 2022</td>
+                                <td>Abirto para calificar hasta el dia 22 de abril de 2022 </td>
+                            </tr>
+                            <tr>
+                                <td><button></button></td>
+                                <td>2</td>
+                                <td>Segundo Periodo</td>
+                                <td>7 de febrero de 2022</td>
+                                <td>22 de abril de 2022</td>
+                                <td>Abirto para calificar hasta el dia 22 de abril de 2022 </td>
+                            </tr>
+                            <tr>
+                                <td><button></button></td>
+                                <td>3</td>
+                                <td>Tercer Periodo</td>
+                                <td>7 de febrero de 2022</td>
+                                <td>22 de abril de 2022</td>
+                                <td>Abirto para calificar hasta el dia 22 de abril de 2022 </td>
+                            </tr>
+                            <tr>
+                                <td><button></button></td>
+                                <td>4</td>
+                                <td>Cuarto Periodo</td>
+                                <td>7 de febrero de 2022</td>
+                                <td>22 de abril de 2022</td>
+                                <td>Abirto para calificar hasta el dia 22 de abril de 2022 </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="logros">
+                    <div class="titulo"><h2>Logros del curso</h2></div>
+                    <table class="logo" id="logro">
+                        <thead>
+                            <tr>
+                                <th><h2>Tipo</h2></th>
+                                <th><h2>Agregar Logros</h2></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cognitivo</td>
+                                <td>
+                                    <select name="" id="tipoLogro">
+                                        <option value="">Ninguno</option>
+                                        <option value="">Codigo--Logro--Descripcion</option>
+                                        <option value="">Codigo--Logro--Descripcion</option>
+                                        <option value="">Codigo--Logro--Descripcion</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Procedimental</td>
+                                <td>
+                                    <select name="" id="tipoLogro">
+                                        <option value="">Ninguno</option>
+                                        <option value="">Codigo--Logro--Descripcion</option>
+                                        <option value="">Codigo--Logro--Descripcion</option>
+                                        <option value="">Codigo--Logro--Descripcion</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Actitudinal</td>
+                                <td>
+                                    <select name="" id="tipoLogro">
+                                        <option value="">Ninguno</option>
+                                        <option value="">Codigo--Logro--Descripcion</option>
+                                        <option value="">Codigo--Logro--Descripcion</option>
+                                        <option value="">Codigo--Logro--Descripcion</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Observaciones</td>
+                                <td>
+                                <input type="text" name="Observaciones" id="Observaciones" placeholder="Mis Observaciones">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="parte3">
+                <table class="estudiantesLista" id="estudiantesLista">
+                    <thead>
+                        <tr>
+                            <th><button></button></th>
+                            <th><h2>NO.</h2></th>
+                            <th><h2>Estudiante</h2></th>
+                            <th><h2>tranajo1</h2></th>
+                            <th><h2>trabajo2</h2></th>
+                            <th><h2>trabajo3</h2></th>
+                            <th><h2>trabajo4</h2></th>
+                            <th><h2>Final</h2></th>
+                            <th><h2>In</h2></th>
+                            <th><h2>Logro</h2></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><button></button></td>
+                            <td>1</td>
+                            <td>William Andres</td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"></td>
+                            <td><input type="number" name="" id="In" placeholder="In"></td>
+                            <td>
+                                <select name="" id="">
+                                    <option value="">Ninguno</option>
+                                    <option value="">Logro1</option>
+                                    <option value="">Logro2</option>
+                                    <option value="">Logro3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button></button></td>
+                            <td>2</td>
+                            <td>Juan Carlos</td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"></td>
+                            <td><input type="number" name="" id="In" placeholder="In"></td>
+                            <td>
+                                <select name="" id="">
+                                    <option value="">Ninguno</option>
+                                    <option value="">Logro1</option>
+                                    <option value="">Logro2</option>
+                                    <option value="">Logro3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button></button></td>
+                            <td>3</td>
+                            <td>Andres Quintero</td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"></td>
+                            <td><input type="number" name="" id="In" placeholder="In"></td>
+                            <td>
+                                <select name="" id="">
+                                    <option value="">Ninguno</option>
+                                    <option value="">Logro1</option>
+                                    <option value="">Logro2</option>
+                                    <option value="">Logro3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button></button></td>
+                            <td>4</td>
+                            <td>Miguel Segundo</td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"><img src="img/f13.png" alt=""></td>
+                            <td><input type="number" name="" id="nota" placeholder="Nota"></td>
+                            <td><input type="number" name="" id="In" placeholder="In"></td>
+                            <td>
+                                <select name="" id="">
+                                    <option value="">Ninguno</option>
+                                    <option value="">Logro1</option>
+                                    <option value="">Logro2</option>
+                                    <option value="">Logro3</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </article>
+        <!--Footer-->
+        <footer>
+            <div class="informacion1">
+                <h2>Contactos</h2>
+            </div>
+            <div class="informacion2">
+                <a>
+                    <i class="fa-solid fa-phone "></i>
+                    +546-160000
+                </a>
+
+                <a target="_blank">
+                    <i class="fa-brands fa-facebook "></i>
+                    EduMultipro_08
+                </a>
+
+                <a target="_blank">
+                    <i class="fa-brands fa-instagram "></i>
+                    EduMultipro_08
+                </a>
+
+                <a target="_blank">
+                    <i class="fa-regular fa-envelope "></i>
+                    Edu_Pro@gmail.com
+                </a>
+
+                <a target="_blank">
+                    <i class="fa-solid fa-globe "></i>
+                    EduMultiPro
+                </a>
+            </div>
+        </footer>
+    </div>
+    <script src="../Profesor/js/14.js"></script>
+</body>
+</html>

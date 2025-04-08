@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabajos</title>
+  <link rel="icon" href="../img/icono.png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" rel="stylesheet">
+  <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<style>
+  :root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-claro: #e6f2ff;
+    --blanco: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+    --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --sombra-hover: 0 8px 24px rgba(0, 102, 204, 0.2);
+    --borde-redondeado: 12px;
+    --transicion: all 0.3s ease;
+    --verde-aceptar: #4CAF50;
+    --rojo-eliminar: #f44336;
+    --naranja-modificar: #FF9800;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: var(--gris-claro);
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .contenedor {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Barra de navegación superior mejorada */
+  nav {
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+    padding: 1.2rem 2.5rem;
+    color: var(--blanco);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  nav .uno img {
+    max-width: 110px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+  
+  nav .uno img:hover {
+    transform: scale(1.05);
+  }
+  
+  nav .dos p {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+  }
+  
+  nav .tres p {
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.9;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  nav .cuatro {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+  }
+  
+  nav .form-control {
+    border-radius: 24px;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    min-width: 220px;
+    transition: var(--transicion);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    font-size: 0.95rem;
+  }
+  
+  nav .form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25), inset 0 1px 3px rgba(0,0,0,0.1);
+    outline: none;
+  }
+  
+  nav .btn-primary {
+    background-color: var(--blanco);
+    color: var(--azul-primario);
+    border: none;
+    border-radius: 24px;
+    padding: 0.6rem 1.2rem;
+    transition: var(--transicion);
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  nav .btn-primary:hover {
+    background-color: var(--azul-claro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 102, 204, 0.25);
+  }
+
+  /* Estilos para el menú principal */
+  .navbar {
+    background-color: var(--blanco);
+    border-radius: var(--borde-redondeado);
+    margin: 1rem 0;
+    box-shadow: var(--sombra);
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    color: var(--azul-primario);
+    font-weight: 600;
+    padding: 0.8rem 1.2rem;
+    background-color: var(--azul-claro);
+    border-radius: var(--borde-redondeado);
+  }
+  
+  .btn-icon {
+    background-color: var(--blanco);
+    color: var(--azul-primario);
+    border: 1px solid var(--gris-medio);
+    border-radius: 20px;
+    padding: 0.5rem 1.2rem;
+    margin: 0.2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  
+  .btn-icon:hover {
+    background-color: var(--azul-primario);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-hover);
+    border-color: var(--azul-primario);
+  }
+  
+  .btn-icon i {
+    font-size: 0.9rem;
+  }
+  
+  /* Contenido principal */
+  .container {
+    flex: 1;
+    padding: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  /* Encabezado de la página */
+  .titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .titulo h1 {
+    color: var(--azul-primario);
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .titulo h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--azul-secundario);
+  }
+  
+  .crear, .unirme {
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: var(--transicion);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid var(--azul-primario);
+    cursor: pointer;
+  }
+  
+  .crear {
+    background-color: var(--azul-primario);
+    color: var(--blanco);
+  }
+  
+  .crear:hover {
+    background-color: var(--azul-secundario);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-hover);
+    border-color: var(--azul-secundario);
+  }
+  
+  .unirme {
+    background-color: transparent;
+    color: var(--azul-primario);
+  }
+  
+  .unirme:hover {
+    background-color: var(--azul-claro);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-hover);
+  }
+
+  /* Estilos para los botones de filtro */
+  .parte2 {
+    margin: 1.5rem 0;
+  }
+  
+  .apartado1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 0.8rem 0;
+  }
+  
+  hr {
+    border-color: var(--gris-medio);
+    opacity: 0.5;
+    margin: 1rem 0;
+  }
+  
+  /* Tabla de trabajos */
+  .contenedor-tabla {
+    background-color: var(--blanco);
+    border-radius: var(--borde-redondeado);
+    box-shadow: var(--sombra);
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    transition: var(--transicion);
+  }
+  
+  .contenedor-tabla:hover {
+    box-shadow: 0 8px 24px rgba(0, 102, 204, 0.15);
+  }
+  
+  #tablaUsuarios {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  #tablaUsuarios thead th {
+    background-color: var(--azul-primario);
+    color: var(--blanco);
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    border: none;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  #tablaUsuarios tbody td {
+    padding: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--gris-medio);
+    transition: var(--transicion);
+  }
+  
+  #tablaUsuarios tbody tr:nth-child(even) {
+    background-color: rgba(0, 102, 204, 0.03);
+  }
+  
+  #tablaUsuarios tbody tr:hover {
+    background-color: var(--azul-claro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+  
+  /* Botones de acción */
+  .Tarea, .modificar, .eliminar {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transicion);
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Tarea {
+    color: var(--azul-primario);
+    background-color: rgba(0, 102, 204, 0.1);
+  }
+  
+  .Tarea:hover {
+    background-color: rgba(0, 102, 204, 0.2);
+    transform: scale(1.1);
+  }
+  
+  .modificar {
+    color: var(--naranja-modificar);
+    background-color: rgba(255, 152, 0, 0.1);
+  }
+  
+  .modificar:hover {
+    background-color: rgba(255, 152, 0, 0.2);
+    transform: scale(1.1);
+  }
+  
+  .eliminar {
+    color: var(--rojo-eliminar);
+    background-color: rgba(244, 67, 54, 0.1);
+  }
+  
+  .eliminar:hover {
+    background-color: rgba(244, 67, 54, 0.2);
+    transform: scale(1.1);
+  }
+  
+  /* Pie de página mejorado */
+  footer {
+    background: linear-gradient(135deg, var(--gris-oscuro), #555);
+    color: var(--blanco);
+    padding: 3rem 0;
+    margin-top: auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--azul-primario), var(--azul-secundario));
+  }
+  
+  footer h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+  }
+  
+  footer h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--azul-secundario);
+    border-radius: 2px;
+  }
+  
+  footer a {
+    color: var(--blanco);
+    text-decoration: none;
+    transition: var(--transicion);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+  }
+  
+  footer a:hover {
+    color: var(--azul-secundario);
+    transform: translateX(8px);
+    background-color: rgba(255,255,255,0.1);
+  }
+  
+  footer i {
+    font-size: 1.3rem;
+    min-width: 24px;
+    text-align: center;
+  }
+  
+  /* Efectos y animaciones */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .contenedor-tabla, .navbar, .titulo {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  /* Responsividad mejorada */
+  @media (max-width: 1200px) {
+    nav {
+      padding: 1.2rem 2rem;
+    }
+    
+    .container {
+      padding: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    nav {
+      flex-direction: column;
+      gap: 1.2rem;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    
+    nav .dos p {
+      font-size: 1.8rem;
+    }
+    
+    .titulo {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .titulo h1 {
+      font-size: 1.5rem;
+    }
+    
+    #tablaUsuarios thead th, 
+    #tablaUsuarios tbody td {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .btn-icon {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+    
+    .crear, .unirme {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+    }
+    
+    footer .d-flex {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    footer a {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    nav {
+      padding: 1rem;
+    }
+    
+    nav .dos p {
+      font-size: 1.5rem;
+    }
+    
+    nav .tres p {
+      font-size: 0.95rem;
+    }
+    
+    .container {
+      padding: 1rem;
+    }
+    
+    .contenedor-tabla {
+      padding: 0.8rem;
+    }
+    
+    #tablaUsuarios thead th, 
+    #tablaUsuarios tbody td {
+      padding: 0.6rem 0.4rem;
+      font-size: 0.8rem;
+    }
+    
+    footer h2 {
+      font-size: 1.5rem;
+    }
+    
+    footer a {
+      font-size: 0.95rem;
+    }
+    
+    .btn-icon {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* Scroll personalizado */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--gris-claro);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--azul-primario);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--azul-secundario);
+  }
+</style>
+</head>
+<body>
+  <div class="contenedor">
+    <nav>
+      <div class="uno"><img src="img/logo.png" alt=""></div>
+      <div class="dos"><p>EduMultiPro</p></div>
+      <div class="tres"><p>Tu Aliado en el camino educativo</p></div>
+      <div class="cuatro">
+        <input class="form-control" type="text" placeholder="Buscar...">
+        <button class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </nav>
+
+    <div class="container my-3">
+      <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuParte1" aria-controls="menuParte1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span> Menú
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="menuParte1">
+            <div class="d-flex flex-wrap gap-2 mt-2 mt-md-0">
+              <button class="btn-icon inicio"><i class="fa-solid fa-house"></i> Inicio</button>
+              <button class="btn-icon noticia"><i class="fa-solid fa-newspaper"></i> Noticia</button>
+              <button class="btn-icon Horarios"><i class="fa-solid fa-calendar-days"></i> Horarios</button>
+              <button class="btn-icon clase"><i class="fa-solid fa-chalkboard-user"></i> Clase</button>
+              <button class="btn-icon calificacion"><i class="fa-solid fa-star"></i> Calificacion</button>
+              <button class="btn-icon usuarios"><i class="fa-solid fa-users"></i> Usuario</button>
+              <button class="btn-icon cerrar"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="titulo">
+        <h1 class="fs-3">Trabajos Actuales</h1>
+        <div class="d-flex gap-2">
+          <button class="unirme"><i class="fa-solid fa-user-plus"></i> Unirme</button>
+          <button class="crear"><i class="fa-solid fa-plus"></i> Crear Trabajos</button>
+        </div>
+      </div>
+
+      <div class="parte2">
+        <hr>
+        <div class="apartado1">
+          <button class="btn-icon principal"><i class="fa-solid fa-house-chimney"></i> Principal</button>
+          <button class="btn-icon trabajos"><i class="fa-solid fa-file-pen"></i> Trabajos</button>
+          <button class="btn-icon persona"><i class="fa-solid fa-user"></i> Persona</button>
+          <button class="btn-icon notas"><i class="fa-solid fa-note-sticky"></i> Notas</button>
+        </div>
+        <hr>
+      </div>
+
+      <div class="contenedor-tabla">
+        <table class="table table-striped table-bordered" id="tablaUsuarios">
+          <thead class="table-dark">
+            <tr>
+              <th>NO</th>
+              <th>Trabajos</th>
+              <th>Fecha de Asignación</th>
+              <th>Fecha de Entrega</th>
+              <th>Puntos</th>
+              <th>Periodo</th>
+              <th>Tarea</th>
+              <th>Modificar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Lectura 1</td>
+              <td>00/00/0000</td>
+              <td>00/00/0000</td>
+              <td>10%</td>
+              <td>Primer periodo</td>
+              <td><button class="Tarea" title="Ver detalles"><i class="fa-solid fa-circle-info"></i></button></td>
+              <td><button class="modificar" title="Modificar"><i class="fa-solid fa-gear"></i></button></td>
+              <td><button class="eliminar" title="Eliminar"><i class="fa-solid fa-trash"></i></button></td>
+            </tr>
+            <!-- Resto de las filas de la tabla... -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer class="bg-dark text-white mt-5 p-4">
+      <div class="container">
+        <h2>Contactos</h2>
+        <div class="d-flex flex-column flex-md-row flex-wrap gap-3 mt-3">
+          <a class="text-white text-decoration-none"><i class="fa-solid fa-phone me-2"></i>+546-160000</a>
+          <a class="text-white text-decoration-none"><i class="fa-brands fa-facebook me-2"></i>EduMultipro_08</a>
+          <a class="text-white text-decoration-none"><i class="fa-brands fa-instagram me-2"></i>EduMultipro_08</a>
+          <a class="text-white text-decoration-none"><i class="fa-regular fa-envelope me-2"></i>Edu_Pro@gmail.com</a>
+          <a class="text-white text-decoration-none"><i class="fa-solid fa-globe me-2"></i>EduMultiPro</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../PROFESOR/js/7.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#tablaUsuarios').DataTable({
+        language: {
+          url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+        },
+        responsive: true
+      });
+    });
+  </script>
+</body>
+</html>

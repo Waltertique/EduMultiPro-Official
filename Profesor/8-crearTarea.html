@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias</title>
+  <link rel="icon" href="../img/icono.png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="../Profesor/css/8.css">
+  <link rel="stylesheet" href="../Profesor/css/2.css">
+  <link href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <nav>
+            <div class="uno"><img src="img/logo.png" alt="Logo EduMultiPro"></div>
+            <div class="dos"><p>EduMultiPro</p></div>
+            <div class="tres"><p>Tu Aliado en el camino educativo</p></div>
+          </nav>
+
+
+        <div class="d-flex flex-wrap">
+            <div class="border-end p-3 sidebar-scrollable col-12 col-md-3">
+                <div>
+                    <h5 class="fw-bold mb-4">Configuración</h5>
+                    <div class="mb-3">
+                        <label for="titulo-sidebar" class="form-label">Título</label>
+                        <input type="text" name="titulo" id="titulo-sidebar" placeholder="Titulo" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc-sidebar" class="form-label">Descripción</label>
+                        <input type="text" name="desc" id="desc-sidebar" placeholder="Descripcion" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Asignar A</label>
+                        <button type="submit" class="btn btn-outline-secondary w-100">Toda la clase</button>
+                    </div>
+                    <div class="mb-3">
+                        <label for="puntos" class="form-label">Puntos</label>
+                        <input type="number" placeholder="puntos" id="puntos" name="puntos" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha Entrega</label>
+                        <input type="date" placeholder="fecha" id="fecha" name="fecha" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tema" class="form-label">Tema</label>
+                        <input type="text" placeholder="tema" id="tema" name="tema" class="form-control">
+                    </div>
+                    <div class="form-check d-flex align-items-center gap-2 mb-4">
+                        <select class="form-select w-auto" id="cerrar">
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                        </select>
+                        <label class="form-check-label">Cerrar entregas después de la fecha límite</label>
+                    </div>
+                    <button type="submit" id="crear" class="btn btn-primary w-100 mb-2">Crear Tarea</button>
+                    <button class="btn btn-danger w-100" id="salir-sidebar">Salir</button>
+                </div>
+            </div>
+            <article class="col-12 col-md-9 my-4">
+                <div class="row mb-4 align-items-center">
+                    <div class="col-md-6">
+                        <h2 class="h5 mb-0">Adjuntar</h2>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="bg-light p-3 rounded">              
+                            <div id="tareas-creadas" class="row row-cols-1 row-cols-md-2 g-4">
+                                <div class="col">
+                                    <div class="tarea-item">
+                                        <h5>sapo</h5>
+                                        <p><strong>Descripción:</strong> asdfgh</p>
+                                        <p><strong>Puntos:</strong> 8563</p>
+                                        <p><strong>Fecha de Entrega:</strong> 875623</p>
+                                        <p><strong>Tema:</strong> sapo</p>
+                                        <p><strong>Cerrar después de fecha límite:</strong> sapo x3</p>
+                                        <div class="d-flex gap-2">
+                                            <button class="btn btn-sm btn-warning editar">Editar</button>
+                                            <button class="btn btn-sm btn-danger eliminar">Eliminar</button>
+                                            <button class="btn btn-sm btn-info text-white ver">Ver</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="tarea-item">
+                                        <h5>sapo</h5>
+                                        <p><strong>Descripción:</strong> asdfgh</p>
+                                        <p><strong>Puntos:</strong> 8563</p>
+                                        <p><strong>Fecha de Entrega:</strong> 875623</p>
+                                        <p><strong>Tema:</strong> sapo</p>
+                                        <p><strong>Cerrar después de fecha límite:</strong> sapo x3</p>
+                                        <div class="d-flex gap-2">
+                                            <button class="btn btn-sm btn-warning editar">Editar</button>
+                                            <button class="btn btn-sm btn-danger eliminar">Eliminar</button>
+                                            <button class="btn btn-sm btn-info text-white ver">Ver</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!--footer-->
+    <footer class="bg-dark text-white mt-5 p-4">
+        <div class="container">
+          <h2>Contactos</h2>
+          <div class="d-flex flex-column flex-md-row gap-3 mt-3">
+            <a class="text-white text-decoration-none"><i class="fa-solid fa-phone me-2"></i>+546-160000</a>
+            <a class="text-white text-decoration-none"><i class="fa-brands fa-facebook me-2"></i>EduMultipro_08</a>
+            <a class="text-white text-decoration-none"><i class="fa-brands fa-instagram me-2"></i>EduMultipro_08</a>
+            <a class="text-white text-decoration-none"><i class="fa-regular fa-envelope me-2"></i>Edu_Pro@gmail.com</a>
+            <a class="text-white text-decoration-none"><i class="fa-solid fa-globe me-2"></i>EduMultiPro</a>
+          </div>
+        </div>
+      </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../Profesor/js/8.js"></script>
+</body>
+</html>
