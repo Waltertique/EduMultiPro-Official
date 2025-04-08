@@ -16,7 +16,6 @@ CREATE TABLE Documento (
 
 CREATE TABLE Informacion (
 	ID VARCHAR(10) PRIMARY KEY,
-    Correo1 VARCHAR(50) NOT NULL,
     Correo2 VARCHAR(50),
     Contacto1 VARCHAR(50) NOT NULL,
     Contacto2 VARCHAR(50),
@@ -84,6 +83,8 @@ CREATE TABLE Usuario (
     Segundo_Nombre VARCHAR(100),
     Primer_Apellido VARCHAR(100) NOT NULL,
     Segundo_Apellido VARCHAR(100),
+    Correo1 VARCHAR(50) NOT NULL,
+    Contraseña VARCHAR(50) NOT NULL,
     rol_id VARCHAR(10) NOT NULL,
     documento_id VARCHAR(10) NOT NULL,
     curso_id VARCHAR(10),
