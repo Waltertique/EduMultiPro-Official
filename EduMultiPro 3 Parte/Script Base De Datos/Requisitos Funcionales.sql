@@ -3,14 +3,15 @@
 -- ---------- Usuarios ----------
 
 -- Crear Usuario
-INSERT INTO Informacion(ID, Correo2, Contacto1, Contacto2, Fecha_Nacimiento) Values
-	('I041', 'johan.alt01@gmail.com', '3123111111', '3201111341', '2008-01-15'),
-    ('I042', 'Zoe.alt01@gmail.com', '3113211111', '3245111111', '1990-01-15');
-    
-INSERT INTO Usuario(ID, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Correo1, Contraseña, rol_id, documento_id, curso_id, informacion_id) Values
-	("E031","johan","sneider","madrigal","tique", "johan@gmail.com", "johan123","R001","D001","Q1101X","I041"),
-    ("P032","Zoe","Sofia","Sanches",NULL, "Zoe@gmail.com", "Zoe123", "R002","D002","Q1101X","I042");
 
+INSERT INTO Usuario(ID, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Correo1, Contraseña, rol_id, documento_id) Values
+	("E031","johan","sneider","madrigal","tique", "johan@gmail.com", "johan123","R001","D001"),
+    ("P032","Zoe","Sofia","Sanches",NULL, "Zoe@gmail.com", "Zoe123", "R002","D002");
+    
+INSERT INTO Informacion(ID, Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto, usuario_id) Values
+	('I041', 'johan.alt01@gmail.com', '3123111111', '3201111341', '2008-01-15', null, 'E031'),
+    ('I042', 'Zoe.alt01@gmail.com', '3113211111', '3245111111', '1990-01-15',null, 'E031');
+    
 -- Modificar Usuario
 UPDATE Usuario SET Primer_Nombre = "sara" WHERE ID = "P032";
 UPDATE Informacion SET Correo2 = "Sara.alt01@gmail.com" WHERE ID = "P032";
@@ -23,13 +24,13 @@ DELETE FROM Usuario WHERE ID = "E001";
 DELETE FROM Usuario WHERE ID = "P001";
 
 -- Consultar Usuario
-SELECT Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Nombre_Rol, Tipo_Documento, Curso_Nombre, Correo1, Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto
-FROM Usuario
-INNER JOIN Rol ON rol_id = Rol.ID
-INNER JOIN Documento ON documento_id = Documento.ID
-LEFT JOIN Curso ON curso_id = Curso.ID
-INNER JOIN Informacion ON informacion_id = Informacion.ID;
+SELECT Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Correo1, Contraseña, Nombre_Rol, Tipo_Documento, Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto
+FROM Usuario u
+INNER JOIN Rol r ON u.rol_id = r.ID
+INNER JOIN Documento d ON u.documento_id = d.ID
+LEFT JOIN Informacion i ON u.ID = i.usuario_id;
 
+select * from Usuario;
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ---------- Noticias ----------
 

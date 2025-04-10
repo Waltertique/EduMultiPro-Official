@@ -14,15 +14,6 @@ CREATE TABLE Documento (
     Tipo_Documento VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Informacion (
-	ID VARCHAR(10) PRIMARY KEY,
-    Correo2 VARCHAR(50),
-    Contacto1 VARCHAR(50) NOT NULL,
-    Contacto2 VARCHAR(50),
-    Fecha_Nacimiento DATE NOT NULL,
-    RutaFoto VARCHAR(50)
-);
-
 CREATE TABLE Grado (
 	ID VARCHAR(10) PRIMARY KEY,
     Grado_Nombre VARCHAR(50) NOT NULL
@@ -87,12 +78,19 @@ CREATE TABLE Usuario (
     Contraseña VARCHAR(50) NOT NULL,
     rol_id VARCHAR(10) NOT NULL,
     documento_id VARCHAR(10) NOT NULL,
-    curso_id VARCHAR(10),
-    informacion_id VARCHAR(10),
     FOREIGN KEY (rol_id) REFERENCES Rol(ID),
-    FOREIGN KEY (documento_id) REFERENCES Documento(ID),
-    FOREIGN KEY (curso_id) REFERENCES Curso(ID) ON DELETE CASCADE,
-    FOREIGN KEY (informacion_id) REFERENCES Informacion(ID)
+    FOREIGN KEY (documento_id) REFERENCES Documento(ID)
+);
+
+CREATE TABLE Informacion (
+	ID VARCHAR(10) PRIMARY KEY,
+    Correo2 VARCHAR(50),
+    Contacto1 VARCHAR(50) NOT NULL,
+    Contacto2 VARCHAR(50),
+    Fecha_Nacimiento DATE NOT NULL,
+    RutaFoto VARCHAR(50),
+    usuario_id VARCHAR(10),
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Miembros_Curso (
