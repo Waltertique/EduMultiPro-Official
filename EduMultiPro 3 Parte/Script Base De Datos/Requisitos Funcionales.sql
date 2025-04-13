@@ -5,23 +5,23 @@
 -- Crear Usuario
 
 INSERT INTO Usuario(ID, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Correo1, Contraseña, rol_id, documento_id) Values
-	("E031","johan","sneider","madrigal","tique", "johan@gmail.com", "johan123","R001","D001"),
-    ("P032","Zoe","Sofia","Sanches",NULL, "Zoe@gmail.com", "Zoe123", "R002","D002");
+	("41","johan","sneider","madrigal","tique", "johan@gmail.com", "johan123","R001","D001"),
+    ("42","Zoe","Sofia","Sanches",NULL, "Zoe@gmail.com", "Zoe123", "R002","D002");
     
 INSERT INTO Informacion(ID, Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto, usuario_id) Values
-	('I041', 'johan.alt01@gmail.com', '3123111111', '3201111341', '2008-01-15', null, 'E031'),
-    ('I042', 'Zoe.alt01@gmail.com', '3113211111', '3245111111', '1990-01-15',null, 'E031');
+	('41', 'johan.alt01@gmail.com', '3123111111', '3201111341', '2008-01-15', null, '41'),
+    ('42', 'Zoe.alt01@gmail.com', '3113211111', '3245111111', '1990-01-15',null, '42');
     
 -- Modificar Usuario
-UPDATE Usuario SET Primer_Nombre = "sara" WHERE ID = "P032";
-UPDATE Informacion SET Correo2 = "Sara.alt01@gmail.com" WHERE ID = "P032";
+UPDATE Usuario SET Primer_Nombre = "sara" WHERE ID = "32";
+UPDATE Informacion SET Correo2 = "Sara.alt01@gmail.com" WHERE ID = "32";
 
-UPDATE Usuario SET Segundo_Nombre = "steven" WHERE ID = "E031";
-UPDATE Informacion SET Fecha_Nacimiento = "2006-06-10" WHERE ID = "E031";
+UPDATE Usuario SET Segundo_Nombre = "steven" WHERE ID = "31";
+UPDATE Informacion SET Fecha_Nacimiento = "2006-06-10" WHERE ID = "31";
 
 -- Eliminar Usuario
-DELETE FROM Usuario WHERE ID = "E001";
-DELETE FROM Usuario WHERE ID = "P001";
+DELETE FROM Usuario WHERE ID = "11";
+DELETE FROM Usuario WHERE ID = "3";
 
 -- Consultar Usuario
 SELECT Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Correo1, Contraseña, Nombre_Rol, Tipo_Documento, Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto
@@ -30,7 +30,9 @@ INNER JOIN Rol r ON u.rol_id = r.ID
 INNER JOIN Documento d ON u.documento_id = d.ID
 LEFT JOIN Informacion i ON u.ID = i.usuario_id;
 
+UPDATE Usuario SET Contraseña = 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646' WHERE ID = 1;
 select * from Usuario;
+
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ---------- Noticias ----------
 
@@ -64,8 +66,8 @@ INSERT INTO Horario(ID, Titulo_Horario, Imagen_Horario, Descripcion_Horario) Val
 	('H010', 'Horario Profesor 2', 'imagenes/horario_tercero.png', 'Horario para la profesora Pula Mendoza');
     
 INSERT INTO Horario_Curso(ID, horario_id, profesor_id, curso_id) Values
-	('HC009','H009', "P007", NULL),
-	('HC010','H010', "P008", NULL);
+	('HC009','H009', "9", NULL),
+	('HC010','H010', "10", NULL);
     
 -- Modificar Horario
 UPDATE Horario SET Titulo_Horario = "horario curso 101" WHERE ID= "H001";
@@ -114,8 +116,8 @@ INNER JOIN Usuario ON Miembros_Curso.usuario_id = Usuario.ID;
 
 -- Crear Aula
 INSERT INTO Aula(ID, Aula_Nombre, materia_id, usuario_id, curso_id) Values
-	('A017', 'Aula creada 1', 'M009', 'P007', 'Q0301M'),
-    ('A018', 'Aula creada 2', 'M010', 'P008', 'Q0301M');
+	('A017', 'Aula creada 1', 'M009', '9', 'Q0301M'),
+    ('A018', 'Aula creada 2', 'M010', '10', 'Q0301M');
 
 -- Modificar Aula
 UPDATE Aula SET Aula_Nombre = "aula modificada" WHERE ID = "A001";
@@ -160,8 +162,8 @@ INNER JOIN Aula ON Trabajo.aula_id = Aula.ID;
 
 -- Crear Anuncio
 INSERT INTO Anuncio(ID, Titulo_Anuncio, Descripcion_Anuncio, Enlace_Anuncio, Fecha_Anuncio, aula_id, usuario_id) Values
-	('AN033', 'nuevo trabajo de matenmaticas', 'nuevo trabajo, porfavor realizarlo', 'https://colegio.edu/anuncios/matematicas1', '2025-03-20','A006','P007'),
-	('AN034', 'notas entregadas', 'se hace la entrega de las notas de los trabajos realizados.', 'https://colegio.edu/guias/matematicas1', '2025-03-18','A006','P007');
+	('AN033', 'nuevo trabajo de matenmaticas', 'nuevo trabajo, porfavor realizarlo', 'https://colegio.edu/anuncios/matematicas1', '2025-03-20','A006','9'),
+	('AN034', 'notas entregadas', 'se hace la entrega de las notas de los trabajos realizados.', 'https://colegio.edu/guias/matematicas1', '2025-03-18','A006','9');
     
 -- Modificar Anuncio
 UPDATE Anuncio SET Titulo_Anuncio = "Realizar el examen" WHERE ID = "AN001";
@@ -182,16 +184,16 @@ INNER JOIN Aula ON Anuncio.aula_id = Aula.ID;
 
 -- Crear Boletin
 INSERT INTO Boletin(ID, Titulo_Boletin, Sede, Anio, Resolucion, Institucion, alumno_id, periodo_id) Values
-    ('B031', 'Boletín Final Periodo 4', 'Sede Principal', 2025, 'RES-2025-001', 'Colegio San Martín', 'E020', 'PR004'),
-	('B032', 'Boletín Final Periodo 3', 'Sede Principal', 2025, 'RES-2025-001', 'Colegio San Martín', 'E021', 'PR003');
+    ('B031', 'Boletín Final Periodo 4', 'Sede Principal', 2025, 'RES-2025-001', 'Colegio San Martín', '30', 'PR004'),
+	('B032', 'Boletín Final Periodo 3', 'Sede Principal', 2025, 'RES-2025-001', 'Colegio San Martín', '31', 'PR003');
     
 INSERT INTO Boletin_Nota(ID, nota_Final_id, valoracion_id, boletin_id) Values
     ('BN061', 'CF003', 'V001','B031'),
     ('BN062', 'CF004', 'V002','B032');
     
 INSERT INTO Boletin_Detalle(ID, Puesto, Comportamiento, Observaciones, profesor_id, boletin_id) Values
-	('BD031',1, 'Excelente', 'Buen desempeño académico.', 	'P008','B031'),
-	('BD032',2, 'Bueno', 'Debe mejorar la participación.', 	'P007','B032');
+	('BD031',1, 'Excelente', 'Buen desempeño académico.', 	'10','B031'),
+	('BD032',2, 'Bueno', 'Debe mejorar la participación.', 	'9','B032');
 
 -- Modificar Boletin
 UPDATE Boletin SET Titulo_Boletin = "boletin modificado" WHERE ID = "B031";
@@ -218,12 +220,12 @@ INNER JOIN Usuario a ON Boletin_Detalle.profesor_id = a.ID;
 
 -- Crear Notas 
 INSERT INTO Nota_Trabajo(ID, Nota, trabajo_id, usuario_id) Values
-	('CT121', 4.5, 'T031', 'E030'),
-    ('CT122', 3.8, 'T032', 'E030');
+	('CT121', 4.5, 'T031', '40'),
+    ('CT122', 3.8, 'T032', '40');
     
 INSERT INTO Nota_Final(ID, Nota_Final, Inasistencias, materia_id, logro_id, usuario_id) Values
-	('CF061', 4.50, 2, 'M005', 'LG001', 'E006'),
-	('CF062', 3.80, 1, 'M006', 'LG002', 'E006');
+	('CF061', 4.50, 2, 'M005', 'LG001', '16'),
+	('CF062', 3.80, 1, 'M006', 'LG002', '16');
     
 -- Modificar Notas
 UPDATE Nota_Trabajo SET Nota = 4.44 WHERE ID = "CT001";

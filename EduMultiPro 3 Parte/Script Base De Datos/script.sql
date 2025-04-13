@@ -69,13 +69,13 @@ CREATE TABLE Curso(
 );	
 
 CREATE TABLE Usuario (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT PRIMARY KEY,
     Primer_Nombre VARCHAR(100) NOT NULL,
     Segundo_Nombre VARCHAR(100),
     Primer_Apellido VARCHAR(100) NOT NULL,
     Segundo_Apellido VARCHAR(100),
     Correo1 VARCHAR(50) NOT NULL,
-    Contraseña VARCHAR(50) NOT NULL,
+    Contraseña VARCHAR(255) NOT NULL,
     rol_id VARCHAR(10) NOT NULL,
     documento_id VARCHAR(10) NOT NULL,
     FOREIGN KEY (rol_id) REFERENCES Rol(ID),
@@ -83,18 +83,18 @@ CREATE TABLE Usuario (
 );
 
 CREATE TABLE Informacion (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT auto_increment PRIMARY KEY,
     Correo2 VARCHAR(50),
     Contacto1 VARCHAR(50) NOT NULL,
     Contacto2 VARCHAR(50),
     Fecha_Nacimiento DATE NOT NULL,
-    RutaFoto VARCHAR(50),
-    usuario_id VARCHAR(10),
+    RutaFoto VARCHAR(100),
+    usuario_id INT,
     FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Miembros_Curso (
-	usuario_id	VARCHAR(10) NOT NULL,
+	usuario_id	INT NOT NULL,
     curso_id VARCHAR(10) NOT NULL,
     PRIMARY KEY (usuario_id, curso_id),
     FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE,
@@ -104,7 +104,7 @@ CREATE TABLE Miembros_Curso (
 CREATE TABLE Horario_Curso (
 	ID VARCHAR(10) PRIMARY KEY,
     horario_id	VARCHAR(10) NOT NULL,
-	profesor_id	VARCHAR(10),
+	profesor_id	INT,
     curso_id VARCHAR(10),
     FOREIGN KEY (horario_id) REFERENCES Horario(ID) ON DELETE CASCADE,
     FOREIGN KEY (profesor_id) REFERENCES Usuario(ID) ON DELETE CASCADE,
@@ -115,7 +115,7 @@ CREATE TABLE Aula (
 	ID VARCHAR(10) PRIMARY KEY,
     Aula_Nombre	VARCHAR(50) NOT NULL,
     materia_id	VARCHAR(10) NOT NULL,
-	usuario_id	VARCHAR(10) NOT NULL,
+	usuario_id	INT NOT NULL,
     curso_id VARCHAR(10) NOT NULL,
     FOREIGN KEY (materia_id) REFERENCES Materia(ID) ON DELETE CASCADE,
     FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE,
@@ -129,7 +129,7 @@ CREATE TABLE Anuncio (
     Enlace_Anuncio VARCHAR(200),
     Fecha_Anuncio DATE NOT NULL,
     aula_id VARCHAR(10) NOT NULL,
-    usuario_id VARCHAR(10) NOT NULL,
+    usuario_id INT NOT NULL,
     FOREIGN KEY (aula_id) REFERENCES Aula(ID) ON DELETE CASCADE,
     FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
 );
@@ -150,7 +150,7 @@ CREATE TABLE TrabajoEntregado (
     Archivo_Trabajo longblob,
     Fecha_Trabajo DATE NOT NULL,
     trabajo_id VARCHAR(10) NOT NULL,
-    usuario_id VARCHAR(10) NOT NULL,
+    usuario_id INT NOT NULL,
     FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE,
     FOREIGN KEY (Usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
 );
@@ -161,7 +161,7 @@ CREATE TABLE Comentario (
     Fecha DATE NOT NULL,
     trabajo_id VARCHAR(10),
     anuncio_id VARCHAR(10),
-    usuario_id VARCHAR(10) NOT NULL,
+    usuario_id INT NOT NULL,
     FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE,
     FOREIGN KEY (anuncio_id) REFERENCES Anuncio(ID) ON DELETE CASCADE,
     FOREIGN KEY (Usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
@@ -171,7 +171,7 @@ CREATE TABLE Nota_Trabajo (
 	ID VARCHAR(10) PRIMARY KEY,
 	Nota FLOAT NOT NULL,
 	trabajo_id	VARCHAR(10) NOT NULL,
-    usuario_id VARCHAR(10) NOT NULL,
+    usuario_id INT NOT NULL,
     FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE,
     FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
 );
@@ -182,7 +182,7 @@ CREATE TABLE Nota_Final (
     Inasistencias INT NOT NULL,
 	materia_id	VARCHAR(10) NOT NULL,
     logro_id VARCHAR(10) NOT NULL,
-    usuario_id VARCHAR(10) NOT NULL,
+    usuario_id INT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE,
     FOREIGN KEY (materia_id) REFERENCES Materia(ID) ON DELETE CASCADE,
     FOREIGN KEY (logro_id) REFERENCES Logro(ID)
@@ -212,7 +212,7 @@ CREATE TABLE Boletin (
     Anio year NOT NULL,
     Resolucion VARCHAR(50),
     Institucion VARCHAR(50) NOT NULL,
-    alumno_id VARCHAR(50) NOT NULL,
+    alumno_id INT NOT NULL,
     periodo_id VARCHAR(50) NOT NULL,
     FOREIGN KEY (alumno_id) REFERENCES Usuario(ID) ON DELETE CASCADE,
     FOREIGN KEY (periodo_id) REFERENCES Periodo(ID)
@@ -233,7 +233,7 @@ CREATE TABLE Boletin_Detalle (
     Puesto INT,
     Comportamiento VARCHAR(500),
     Observaciones VARCHAR(500),
-	profesor_id VARCHAR(10) NOT NULL,
+	profesor_id INT NOT NULL,
 	boletin_id VARCHAR(50) NOT NULL,
     FOREIGN KEY (profesor_id) REFERENCES Usuario(ID) ON DELETE CASCADE,
     FOREIGN KEY (boletin_id) REFERENCES Boletin(ID) ON DELETE CASCADE
