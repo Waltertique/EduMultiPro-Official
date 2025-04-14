@@ -38,19 +38,19 @@ select * from Usuario;
 
 -- Crear Noticia
 INSERT INTO Noticia(ID, Titulo_Noticia, Descripcion, Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id) Values
-	('NC007', 'El mundial 2026', 'Se anuncia el mundial de futbol el cual se realizara en el año 2026', '2025-03-20', 'img1.jpg', 'img2.jpg', 'img3.jpg', 'NT005'),
-	('NC008', 'el dolar subio', 'nuevamente se anuncia la subida del dolar', '2025-05-14', 'mercaplus1.jpg', NULL, NULL, 'NT006');
+	('7', 'El mundial 2026', 'Se anuncia el mundial de futbol el cual se realizara en el año 2026', '2025-03-20', 'img1.jpg', 'img2.jpg', 'img3.jpg', '5'),
+	('8', 'el dolar subio', 'nuevamente se anuncia la subida del dolar', '2025-05-14', 'mercaplus1.jpg', NULL, NULL, '6');
     
 -- Modificar Noticia
-UPDATE Noticia SET Titulo_Noticia = "la nueva plataforma" WHERE ID = "NC001";
-UPDATE Noticia SET Descripcion = "la plataforma se encuentra en desarrollo" WHERE ID = "NC001";
+UPDATE Noticia SET Titulo_Noticia = "la nueva plataforma" WHERE ID = "1";
+UPDATE Noticia SET Descripcion = "la plataforma se encuentra en desarrollo" WHERE ID = "1";
 
-UPDATE Noticia SET Titulo_Noticia = "la aplicacion para su inventario" WHERE ID = "NC002";
-UPDATE Noticia SET Descripcion = "haga un buen uso de su inventario con mercaplus" WHERE ID = "NC002";
+UPDATE Noticia SET Titulo_Noticia = "la aplicacion para su inventario" WHERE ID = "2";
+UPDATE Noticia SET Descripcion = "haga un buen uso de su inventario con mercaplus" WHERE ID = "2";
 
 -- Eliminar Noticia
-	DELETE FROM Noticia WHERE ID = "NC003";
-    DELETE FROM Noticia WHERE ID = "NC004";
+	DELETE FROM Noticia WHERE ID = "3";
+    DELETE FROM Noticia WHERE ID = "4";
     
 -- Consultar Noticia
 SELECT Titulo_Noticia, Descripcion, Fecha_Notica, Imagen1, Imagen2, Imagen3, Tipo

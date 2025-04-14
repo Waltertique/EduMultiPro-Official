@@ -73,12 +73,12 @@ INSERT INTO Periodo(ID, Nombre_Periodo) Values
 	('PR004', 'Cuarto Periodo');
     
 INSERT INTO Tipo_Noticia(ID, Tipo) Values
-	('NT001', 'Noticia Principal 1'),
-	('NT002', 'Noticia Principal 2'),
-	('NT003', 'Noticia Principal 3'),
-	('NT004', 'Noticia Secundaria 1'),
-    ('NT005', 'Noticia Secundaria 2'),
-    ('NT006', 'Noticia Secundaria 3');
+	('1', 'Noticia Principal 1'),
+	('2', 'Noticia Principal 2'),
+	('3', 'Noticia Principal 3'),
+	('4', 'Noticia Secundaria 1'),
+    ('5', 'Noticia Secundaria 2'),
+    ('6', 'Noticia Secundaria 3');
     
 INSERT INTO Curso(ID, Curso_Nombre, grado_id, jornada_id) Values
 	('Q0101M', '101', 'G01','J01'),
@@ -910,11 +910,11 @@ INSERT INTO Boletin_Detalle(ID, Puesto, Comportamiento, Observaciones, profesor_
 	('BD030',30, 'Excelente', 'Alumno ejemplar.',           '3','B030');
     
 INSERT INTO Noticia(ID, Titulo_Noticia, Descripcion, Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id) Values
-	('NC001', 'Lanzamiento de EduMultiPro', 'Se anuncia el lanzamiento de la plataforma EduMultiPro para mejorar la gestión educativa.', '2025-03-15', 'img1.jpg', 'img2.jpg', 'img3.jpg', 'NT001'),
-	('NC002', 'Nueva actualización de Mercaplus', 'La plataforma de control de inventarios Mercaplus recibe mejoras en la interfaz.', '2025-03-14', 'mercaplus1.jpg', NULL, NULL, 'NT002'),
-	('NC003', 'Conferencia sobre tecnología educativa', 'Expertos hablarán sobre el impacto de la tecnología en la educación.', '2025-03-12', 'conf1.jpg', 'conf2.jpg', NULL, 'NT003'),
-	('NC004', 'Taller de desarrollo de software', 'El SENA ofrece un nuevo taller para estudiantes de Análisis y Desarrollo de Software.', '2025-03-10', 'taller1.jpg', NULL, NULL, 'NT004'),
-	('NC005', 'Importancia del reciclaje en las instituciones', 'Se promueve una campaña de reciclaje para reducir el impacto ambiental.', '2025-03-08', 'reciclaje1.jpg', 'reciclaje2.jpg', 'reciclaje3.jpg', 'NT005'),
-	('NC006', 'Eventos académicos en 2025', 'Calendario con los principales eventos educativos y tecnológicos del año.', '2025-03-05', 'evento1.jpg', NULL, NULL, 'NT006');
+	('1', 'Lanzamiento de EduMultiPro', 'Se anuncia el lanzamiento de la plataforma EduMultiPro para mejorar la gestión educativa.', '2025-03-15', 'img1.jpg', 'img2.jpg', 'img3.jpg', '1'),
+	('2', 'Nueva actualización de Mercaplus', 'La plataforma de control de inventarios Mercaplus recibe mejoras en la interfaz.', '2025-03-14', 'mercaplus1.jpg', NULL, NULL, '2'),
+	('3', 'Conferencia sobre tecnología educativa', 'Expertos hablarán sobre el impacto de la tecnología en la educación.', '2025-03-12', 'conf1.jpg', 'conf2.jpg', NULL, '3'),
+	('4', 'Taller de desarrollo de software', 'El SENA ofrece un nuevo taller para estudiantes de Análisis y Desarrollo de Software.', '2025-03-10', 'taller1.jpg', NULL, NULL, '4'),
+	('5', 'Importancia del reciclaje en las instituciones', 'Se promueve una campaña de reciclaje para reducir el impacto ambiental.', '2025-03-08', 'reciclaje1.jpg', 'reciclaje2.jpg', 'reciclaje3.jpg', '5'),
+	('6', 'Eventos académicos en 2025', 'Calendario con los principales eventos educativos y tecnológicos del año.', '2025-03-05', 'evento1.jpg', NULL, NULL, '6');
     
                                

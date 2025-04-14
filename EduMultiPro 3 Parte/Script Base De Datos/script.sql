@@ -27,7 +27,7 @@ CREATE TABLE Jornada (
 CREATE TABLE Horario (
 	ID INT auto_increment PRIMARY KEY,
     Titulo_Horario VARCHAR(50) NOT NULL,
-    Imagen_Horario longblob,
+    Imagen_Horario VARCHAR(200),
     Descripcion_Horario TEXT(300) NOT NULL
 );
 
@@ -53,7 +53,7 @@ CREATE TABLE Periodo (
 );
 
 CREATE TABLE Tipo_Noticia (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT auto_increment PRIMARY KEY,
     Tipo VARCHAR(100) NOT NULL
 );
 
@@ -88,7 +88,7 @@ CREATE TABLE Informacion (
     Contacto1 VARCHAR(50) NOT NULL,
     Contacto2 VARCHAR(50),
     Fecha_Nacimiento DATE NOT NULL,
-    RutaFoto VARCHAR(100),
+    RutaFoto VARCHAR(200),
     usuario_id INT,
     FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
 );
@@ -240,14 +240,14 @@ CREATE TABLE Boletin_Detalle (
 );
 
 CREATE TABLE Noticia (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT auto_increment PRIMARY KEY,
 	Titulo_Noticia VARCHAR(100) NOT NULL,
 	Descripcion TEXT(2000),
     Fecha_Notica Date NOT NULL,
     Imagen1 longblob,
     Imagen2 longblob,
     Imagen3 longblob,
-	tipo_noticia_id VARCHAR(10) NOT NULL,
+	tipo_noticia_id INT NOT NULL,
     FOREIGN KEY (tipo_noticia_id) REFERENCES Tipo_Noticia(ID)
 );
 
