@@ -25,7 +25,7 @@ CREATE TABLE Jornada (
 );
 
 CREATE TABLE Horario (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT auto_increment PRIMARY KEY,
     Titulo_Horario VARCHAR(50) NOT NULL,
     Imagen_Horario longblob,
     Descripcion_Horario TEXT(300) NOT NULL
@@ -102,8 +102,8 @@ CREATE TABLE Miembros_Curso (
 );
 
 CREATE TABLE Horario_Curso (
-	ID VARCHAR(10) PRIMARY KEY,
-    horario_id	VARCHAR(10) NOT NULL,
+	ID INT auto_increment PRIMARY KEY,
+    horario_id	INT NOT NULL,
 	profesor_id	INT,
     curso_id VARCHAR(10),
     FOREIGN KEY (horario_id) REFERENCES Horario(ID) ON DELETE CASCADE,

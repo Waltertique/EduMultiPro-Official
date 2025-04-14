@@ -27,14 +27,14 @@ INSERT INTO Jornada(ID, Jornada_Nombre) Values
     ('J03', 'Mixto');
     
 INSERT INTO Horario(ID, Titulo_Horario, Imagen_Horario, Descripcion_Horario) Values
-	('H001', 'Horario Primero', 'imagenes/horario_primero.png', 'Horario académico del grado primero para el año 2025. Incluye materias básicas y actividades lúdicas.'),
-	('H002', 'Horario Tercero', 'imagenes/horario_tercero.png', 'Horario académico del grado tercero, con énfasis en lectura comprensiva y matemáticas.'),
-	('H003', 'Horario Quinto', 'imagenes/horario_quinto.png', 'Horario académico del grado quinto, con materias de ciencias naturales y sociales reforzadas.'),
-	('H004', 'Horario Sexto', 'imagenes/horario_sexto.png', 'Horario académico del grado sexto, inicio de secundaria básica con materias obligatorias y talleres.'),
-	('H005', 'Horario Séptimo', 'imagenes/horario_septimo.png', 'Horario académico del grado séptimo, incluye introducción a la tecnología y proyectos colaborativos.'),
-	('H006', 'Horario Noveno', 'imagenes/horario_noveno.png', 'Horario académico del grado noveno, incluye asignaturas avanzadas y orientación vocacional.'),
-	('H007', 'Horario Décimo', 'imagenes/horario_decimo.png', 'Horario académico del grado décimo, prepara a los estudiantes para pruebas de estado y competencias técnicas.'),
-	('H008', 'Horario Once', 'imagenes/horario_once.png', 'Horario académico del grado once, incluye énfasis en formación preuniversitaria y preparación para la vida laboral.');
+	('1', 'Horario Primero', 'imagenes/horario_primero.png', 'Horario académico del grado primero para el año 2025. Incluye materias básicas y actividades lúdicas.'),
+	('2', 'Horario Tercero', 'imagenes/horario_tercero.png', 'Horario académico del grado tercero, con énfasis en lectura comprensiva y matemáticas.'),
+	('3', 'Horario Quinto', 'imagenes/horario_quinto.png', 'Horario académico del grado quinto, con materias de ciencias naturales y sociales reforzadas.'),
+	('4', 'Horario Sexto', 'imagenes/horario_sexto.png', 'Horario académico del grado sexto, inicio de secundaria básica con materias obligatorias y talleres.'),
+	('5', 'Horario Séptimo', 'imagenes/horario_septimo.png', 'Horario académico del grado séptimo, incluye introducción a la tecnología y proyectos colaborativos.'),
+	('6', 'Horario Noveno', 'imagenes/horario_noveno.png', 'Horario académico del grado noveno, incluye asignaturas avanzadas y orientación vocacional.'),
+	('7', 'Horario Décimo', 'imagenes/horario_decimo.png', 'Horario académico del grado décimo, prepara a los estudiantes para pruebas de estado y competencias técnicas.'),
+	('8', 'Horario Once', 'imagenes/horario_once.png', 'Horario académico del grado once, incluye énfasis en formación preuniversitaria y preparación para la vida laboral.');
     
 INSERT INTO Materia(ID, Materia_Nombre, Descripcion_Materia) Values
 	('M001', 'Matemáticas', 'Estudia los números, las operaciones y las estructuras matemáticas básicas.'),
@@ -225,14 +225,14 @@ INSERT INTO Miembros_Curso(usuario_id, curso_id) Values
     
 INSERT INTO Horario_Curso(ID, horario_id, profesor_id, curso_id) Values
 
-	('HC001','H001', null, 'Q0101M'),
-	('HC002','H002', null, 'Q0301M'),
-	('HC003','H003', null, 'Q0501M'),
-	('HC004','H004', null, 'Q0601T'),
-	('HC005','H005', null, 'Q0701T'),
-    ('HC006','H006', null, 'Q0901T'),
-    ('HC007','H007', null, 'Q1001X'),
-    ('HC008','H008', null, 'Q1101X');
+	('1','1', null, 'Q0101M'),
+	('2','2', null, 'Q0301M'),
+	('3','3', null, 'Q0501M'),
+	('4','4', null, 'Q0601T'),
+	('5','5', null, 'Q0701T'),
+    ('6','6', null, 'Q0901T'),
+    ('7','7', null, 'Q1001X'),
+    ('8','8', null, 'Q1101X');
     
 INSERT INTO Aula(ID, Aula_Nombre, materia_id, usuario_id, curso_id) Values
 	('A001', 'Aula Matemáticas 101', 'M001', '2', 'Q0101M'),

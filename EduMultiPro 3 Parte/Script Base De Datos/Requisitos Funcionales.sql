@@ -84,6 +84,8 @@ LEFT JOIN Horario ON Horario_Curso.horario_id = Horario.ID
 LEFT JOIN Usuario ON Horario_Curso.profesor_id = Usuario.ID
 LEFT JOIN Curso ON Horario_Curso.curso_id = Curso.ID;
 
+SELECT * FROM Horario;
+
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ---------- Cursos ----------
 
@@ -291,6 +293,8 @@ DELETE FROM Grado WHERE ID = "G05";
 
 -- Consultar Notas
 SELECT * FROM Grado;
+
+SELECT * FROM Jornada;
 
 
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
