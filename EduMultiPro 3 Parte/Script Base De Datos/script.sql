@@ -241,12 +241,15 @@ CREATE TABLE Boletin_Detalle (
 
 CREATE TABLE Noticia (
 	ID INT auto_increment PRIMARY KEY,
-	Titulo_Noticia VARCHAR(100) NOT NULL,
-	Descripcion TEXT(2000),
+	Titulo_Noticia VARCHAR(200) NOT NULL,
+    Encabezado TEXT(1000),
+	Descripcion1 TEXT(2000),
+    Descripcion2 TEXT(2000),
+    Descripcion3 TEXT(2000),
     Fecha_Notica Date NOT NULL,
-    Imagen1 longblob,
-    Imagen2 longblob,
-    Imagen3 longblob,
+    Imagen1 VARCHAR(200),
+    Imagen2 VARCHAR(200),
+    Imagen3 VARCHAR(200),
 	tipo_noticia_id INT NOT NULL,
     FOREIGN KEY (tipo_noticia_id) REFERENCES Tipo_Noticia(ID)
 );

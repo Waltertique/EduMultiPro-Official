@@ -909,12 +909,23 @@ INSERT INTO Boletin_Detalle(ID, Puesto, Comportamiento, Observaciones, profesor_
 	('BD029',29, 'Bueno', 'Buen desempeño.',                '3','B029'),
 	('BD030',30, 'Excelente', 'Alumno ejemplar.',           '3','B030');
     
-INSERT INTO Noticia(ID, Titulo_Noticia, Descripcion, Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id) Values
-	('1', 'Lanzamiento de EduMultiPro', 'Se anuncia el lanzamiento de la plataforma EduMultiPro para mejorar la gestión educativa.', '2025-03-15', 'img1.jpg', 'img2.jpg', 'img3.jpg', '1'),
-	('2', 'Nueva actualización de Mercaplus', 'La plataforma de control de inventarios Mercaplus recibe mejoras en la interfaz.', '2025-03-14', 'mercaplus1.jpg', NULL, NULL, '2'),
-	('3', 'Conferencia sobre tecnología educativa', 'Expertos hablarán sobre el impacto de la tecnología en la educación.', '2025-03-12', 'conf1.jpg', 'conf2.jpg', NULL, '3'),
-	('4', 'Taller de desarrollo de software', 'El SENA ofrece un nuevo taller para estudiantes de Análisis y Desarrollo de Software.', '2025-03-10', 'taller1.jpg', NULL, NULL, '4'),
-	('5', 'Importancia del reciclaje en las instituciones', 'Se promueve una campaña de reciclaje para reducir el impacto ambiental.', '2025-03-08', 'reciclaje1.jpg', 'reciclaje2.jpg', 'reciclaje3.jpg', '5'),
-	('6', 'Eventos académicos en 2025', 'Calendario con los principales eventos educativos y tecnológicos del año.', '2025-03-05', 'evento1.jpg', NULL, NULL, '6');
+INSERT INTO Noticia (ID, Titulo_Noticia, Encabezado, Descripcion1, Descripcion2, Descripcion3, Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id) VALUES
+('1', 'Lanzamiento de EduMultiPro', 'Transformando la gestión educativa con innovación digital.','EduMultiPro es una plataforma diseñada para facilitar la administración escolar.',
+ 'Incluye herramientas como videollamadas, tareas y control institucional.','Busca mejorar la comunicación entre docentes, estudiantes y padres.','2025-03-15', 'img1.jpg', 'img2.jpg', 'img3.jpg', '1'),
+
+('2', 'Nueva actualización de Mercaplus', 'Interfaz mejorada para una mejor experiencia del usuario.','Mercaplus ahora permite reportes más detallados y análisis inteligentes.',
+ 'Se optimizó la carga de productos y el monitoreo de stock.','Estas mejoras responden al feedback de microempresarios locales.','2025-03-14', 'mercaplus1.jpg', NULL, NULL, '2'),
+
+('3', 'Conferencia sobre tecnología educativa', 'Expertos se reúnen para debatir el futuro de la educación digital.','Se hablará sobre plataformas de aprendizaje, inteligencia artificial y más.',
+ 'El evento está dirigido a docentes, estudiantes y desarrolladores.', 'La conferencia será transmitida en vivo para instituciones inscritas.','2025-03-12', 'conf1.jpg', 'conf2.jpg', NULL, '3'),
+
+('4', 'Taller de desarrollo de software',  'Oportunidad para potenciar habilidades técnicas en programación.', 'El SENA lanza un nuevo taller dirigido a estudiantes de tecnología.',
+ 'Incluye sesiones prácticas sobre HTML, CSS, JavaScript y bases de datos.', 'Los cupos son limitados y las inscripciones ya están abiertas.','2025-03-10', 'taller1.jpg', NULL, NULL, '4'),
+
+('5', 'Importancia del reciclaje en las instituciones', 'Una iniciativa verde para mejorar la cultura ambiental.','La campaña busca reducir residuos y promover hábitos sostenibles.',
+ 'Se implementarán puntos de reciclaje en varias sedes educativas.','También se realizarán charlas de concientización y actividades ecológicas.', '2025-03-08', 'reciclaje1.jpg', 'reciclaje2.jpg', 'reciclaje3.jpg', '5'),
+
+('6', 'Eventos académicos en 2025', 'Un año cargado de actividades educativas y tecnológicas.','Entre los eventos destacan ferias científicas y congresos de innovación.',
+ 'Las instituciones pueden inscribirse para participar con sus proyectos.','Consulta el calendario oficial para conocer fechas y requisitos.','2025-03-05', 'evento1.jpg', NULL, NULL, '6');
     
                                

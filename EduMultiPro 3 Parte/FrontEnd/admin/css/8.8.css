@@ -154,6 +154,9 @@ i:hover{
     cursor: pointer;
     transform: scale(1.1);
 }
+button:hover{
+    background-color: black;
+}
 #cont1{
     background: var(--azul);
     border-radius: 15px;
@@ -163,9 +166,6 @@ i:hover{
     height: auto;
 }
 
-button:hover{
-    background-color: black;
-}
 
 .cont2{
     width: 100%;

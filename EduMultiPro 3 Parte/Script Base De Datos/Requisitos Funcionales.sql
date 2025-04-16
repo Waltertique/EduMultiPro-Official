@@ -37,25 +37,28 @@ select * from Usuario;
 -- ---------- Noticias ----------
 
 -- Crear Noticia
-INSERT INTO Noticia(ID, Titulo_Noticia, Descripcion, Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id) Values
-	('7', 'El mundial 2026', 'Se anuncia el mundial de futbol el cual se realizara en el año 2026', '2025-03-20', 'img1.jpg', 'img2.jpg', 'img3.jpg', '5'),
-	('8', 'el dolar subio', 'nuevamente se anuncia la subida del dolar', '2025-05-14', 'mercaplus1.jpg', NULL, NULL, '6');
+INSERT INTO Noticia (ID, Titulo_Noticia, Encabezado, Descripcion1, Descripcion2, Descripcion3, Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id) VALUES
+	('7', 'El Mundial 2026', 'La gran fiesta del fútbol se acerca.','La FIFA ha anunciado oficialmente que el Mundial de Fútbol se celebrará en 2026.',
+	'Se espera una participación histórica de selecciones y millones de espectadores.','El evento se llevará a cabo en varias ciudades de Estados Unidos, México y Canadá.','2025-03-20', 'img1.jpg', 'img2.jpg', 'img3.jpg', '5'),
+	('8', 'El dólar subió', 'Nueva alza del dólar genera impacto en la economía.','El mercado cambiario reportó un aumento significativo en el valor del dólar.',
+	'Esto podría influir en los precios de productos importados y servicios financieros.','Expertos recomiendan cautela en transacciones internacionales.','2025-05-14', 'mercaplus1.jpg', NULL, NULL, '6');
     
 -- Modificar Noticia
 UPDATE Noticia SET Titulo_Noticia = "la nueva plataforma" WHERE ID = "1";
-UPDATE Noticia SET Descripcion = "la plataforma se encuentra en desarrollo" WHERE ID = "1";
+UPDATE Noticia SET Descripcion1 = "la plataforma se encuentra en desarrollo" WHERE ID = "1";
 
 UPDATE Noticia SET Titulo_Noticia = "la aplicacion para su inventario" WHERE ID = "2";
-UPDATE Noticia SET Descripcion = "haga un buen uso de su inventario con mercaplus" WHERE ID = "2";
+UPDATE Noticia SET Descripcion1 = "haga un buen uso de su inventario con mercaplus" WHERE ID = "2";
 
 -- Eliminar Noticia
 	DELETE FROM Noticia WHERE ID = "3";
     DELETE FROM Noticia WHERE ID = "4";
     
 -- Consultar Noticia
-SELECT Titulo_Noticia, Descripcion, Fecha_Notica, Imagen1, Imagen2, Imagen3, Tipo
+SELECT 
+    Titulo_Noticia,Encabezado,Descripcion1,Descripcion2,Descripcion3,Fecha_Notica,Imagen1,Imagen2,Imagen3,Tipo
 FROM Noticia
-LEFT JOIN Tipo_Noticia ON tipo_noticia_id = Tipo_Noticia.ID;
+LEFT JOIN Tipo_Noticia ON Noticia.tipo_noticia_id = Tipo_Noticia.ID;
 
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ---------- Horarios ----------
