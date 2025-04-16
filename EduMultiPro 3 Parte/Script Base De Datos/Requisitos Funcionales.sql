@@ -65,20 +65,20 @@ LEFT JOIN Tipo_Noticia ON Noticia.tipo_noticia_id = Tipo_Noticia.ID;
 
 -- Crear Horario
 INSERT INTO Horario(ID, Titulo_Horario, Imagen_Horario, Descripcion_Horario) Values
-	('H009', 'Horario Profesor 1', 'imagenes/horario_primero.png', 'Horario para la profesor David Castro'),
-	('H010', 'Horario Profesor 2', 'imagenes/horario_tercero.png', 'Horario para la profesora Pula Mendoza');
+	('9', 'Horario Profesor 1', 'imagenes/horario_primero.png', 'Horario para la profesor David Castro'),
+	('10', 'Horario Profesor 2', 'imagenes/horario_tercero.png', 'Horario para la profesora Pula Mendoza');
     
 INSERT INTO Horario_Curso(ID, horario_id, profesor_id, curso_id) Values
-	('HC009','H009', "9", NULL),
-	('HC010','H010', "10", NULL);
+	('9','9', "9", NULL),
+	('10','10', "10", NULL);
     
 -- Modificar Horario
-UPDATE Horario SET Titulo_Horario = "horario curso 101" WHERE ID= "H001";
-UPDATE Horario SET Descripcion_Horario = "horario para el curso 301 de tercero" WHERE ID= "H002";
+UPDATE Horario SET Titulo_Horario = "horario curso 101" WHERE ID= "1";
+UPDATE Horario SET Descripcion_Horario = "horario para el curso 301 de tercero" WHERE ID= "2";
 
 -- Eliminar Horario
-DELETE FROM Horario WHERE ID = "H005";
-DELETE FROM Horario WHERE ID = "H006";
+DELETE FROM Horario WHERE ID = "5";
+DELETE FROM Horario WHERE ID = "6";
 
 -- Consultar Horario
 SELECT horario_id, profesor_id, Primer_Nombre, Primer_Apellido, Curso_Nombre, Titulo_Horario, Imagen_Horario, Descripcion_Horario
@@ -145,16 +145,16 @@ LEFT JOIN Curso ON Aula.curso_id = Curso.ID;
 
 -- Crear Tarea
 INSERT INTO Trabajo(ID, Tema_Trabajo, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, Archivo_Trabajo, aula_id) Values
-	('T033', 'Filosofia', 'Ejercicios de filosofia', 'Resuelve la guia de filosofia.', '2025-04-10', 'archivos/filosofia.pdf','A006'),
-	('T034', 'Mecanica', 'Construcción de Figuras mecanicas', 'Dibuja las piezas mecanicas.', '2025-04-15', 'archivos/mecanica.pdf','A006');
+	('33', 'Filosofia', 'Ejercicios de filosofia', 'Resuelve la guia de filosofia.', '2025-04-10', 'archivos/filosofia.pdf','A006'),
+	('34', 'Mecanica', 'Construcción de Figuras mecanicas', 'Dibuja las piezas mecanicas.', '2025-04-15', 'archivos/mecanica.pdf','A006');
     
 -- Modificar Tarea
-UPDATE Trabajo SET Titulo_Trabajo = "trabajo de algebra" WHERE ID = "T001";
-UPDATE Trabajo SET Tema_Trabajo = "Figuras Geometricas" WHERE ID = "T002";
+UPDATE Trabajo SET Titulo_Trabajo = "trabajo de algebra" WHERE ID = "1";
+UPDATE Trabajo SET Tema_Trabajo = "Figuras Geometricas" WHERE ID = "2";
 
 -- Eliminar Tarea
-DELETE FROM Trabajo WHERE ID = "T004";
-DELETE FROM Trabajo WHERE ID = "T005";
+DELETE FROM Trabajo WHERE ID = "4";
+DELETE FROM Trabajo WHERE ID = "5";
 
 -- Consultar Tarea
 Select Tema_Trabajo, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, Archivo_Trabajo, Aula_Nombre
@@ -167,16 +167,16 @@ INNER JOIN Aula ON Trabajo.aula_id = Aula.ID;
 
 -- Crear Anuncio
 INSERT INTO Anuncio(ID, Titulo_Anuncio, Descripcion_Anuncio, Enlace_Anuncio, Fecha_Anuncio, aula_id, usuario_id) Values
-	('AN033', 'nuevo trabajo de matenmaticas', 'nuevo trabajo, porfavor realizarlo', 'https://colegio.edu/anuncios/matematicas1', '2025-03-20','A006','9'),
-	('AN034', 'notas entregadas', 'se hace la entrega de las notas de los trabajos realizados.', 'https://colegio.edu/guias/matematicas1', '2025-03-18','A006','9');
+	('33', 'nuevo trabajo de matenmaticas', 'nuevo trabajo, porfavor realizarlo', 'https://colegio.edu/anuncios/matematicas1', '2025-03-20','A006','9'),
+	('34', 'notas entregadas', 'se hace la entrega de las notas de los trabajos realizados.', 'https://colegio.edu/guias/matematicas1', '2025-03-18','A006','9');
     
 -- Modificar Anuncio
-UPDATE Anuncio SET Titulo_Anuncio = "Realizar el examen" WHERE ID = "AN001";
-UPDATE Anuncio SET Descripcion_Anuncio = "porfavor estudiar el siguiente documento" WHERE ID = "AN002";
+UPDATE Anuncio SET Titulo_Anuncio = "Realizar el examen" WHERE ID = "1";
+UPDATE Anuncio SET Descripcion_Anuncio = "porfavor estudiar el siguiente documento" WHERE ID = "2";
 
 -- Eliminar Anuncio
-DELETE FROM Anuncio WHERE ID = "AN004";
-DELETE FROM Anuncio WHERE ID = "AN005";
+DELETE FROM Anuncio WHERE ID = "4";
+DELETE FROM Anuncio WHERE ID = "5";
 
 -- Consultar Anuncio
 SELECT Titulo_Anuncio, Descripcion_Anuncio, Enlace_Anuncio, Fecha_Anuncio, Aula_Nombre
@@ -189,12 +189,12 @@ INNER JOIN Aula ON Anuncio.aula_id = Aula.ID;
 
 -- Crear Boletin
 INSERT INTO Boletin(ID, Titulo_Boletin, Sede, Anio, Resolucion, Institucion, alumno_id, periodo_id) Values
-    ('B031', 'Boletín Final Periodo 4', 'Sede Principal', 2025, 'RES-2025-001', 'Colegio San Martín', '30', 'PR004'),
-	('B032', 'Boletín Final Periodo 3', 'Sede Principal', 2025, 'RES-2025-001', 'Colegio San Martín', '31', 'PR003');
+    ('B031', 'Boletín Final Periodo 4', 'Sede Principal', 2025, 'RES-2025-001', 'Colegio San Martín', '30', '4'),
+	('B032', 'Boletín Final Periodo 3', 'Sede Principal', 2025, 'RES-2025-001', 'Colegio San Martín', '31', '3');
     
 INSERT INTO Boletin_Nota(ID, nota_Final_id, valoracion_id, boletin_id) Values
-    ('BN061', 'CF003', 'V001','B031'),
-    ('BN062', 'CF004', 'V002','B032');
+    ('BN061', '3', '1','B031'),
+    ('BN062', '4', '2','B032');
     
 INSERT INTO Boletin_Detalle(ID, Puesto, Comportamiento, Observaciones, profesor_id, boletin_id) Values
 	('BD031',1, 'Excelente', 'Buen desempeño académico.', 	'10','B031'),
@@ -225,26 +225,26 @@ INNER JOIN Usuario a ON Boletin_Detalle.profesor_id = a.ID;
 
 -- Crear Notas 
 INSERT INTO Nota_Trabajo(ID, Nota, trabajo_id, usuario_id) Values
-	('CT121', 4.5, 'T031', '40'),
-    ('CT122', 3.8, 'T032', '40');
+	('121', 4.5, '31', '40'),
+    ('122', 3.8, '32', '40');
     
 INSERT INTO Nota_Final(ID, Nota_Final, Inasistencias, materia_id, logro_id, usuario_id) Values
-	('CF061', 4.50, 2, 'M005', 'LG001', '16'),
-	('CF062', 3.80, 1, 'M006', 'LG002', '16');
+	('61', 4.50, 2, 'M005', '1', '16'),
+	('62', 3.80, 1, 'M006', '2', '16');
     
 -- Modificar Notas
-UPDATE Nota_Trabajo SET Nota = 4.44 WHERE ID = "CT001";
-UPDATE Nota_Trabajo SET Nota = 2.34 WHERE ID = "CT002";
+UPDATE Nota_Trabajo SET Nota = 4.44 WHERE ID = "1";
+UPDATE Nota_Trabajo SET Nota = 2.34 WHERE ID = "2";
 
-UPDATE Nota_Final SET Nota_Final = 5.0 WHERE ID = "CF001";
-UPDATE Nota_Final SET Inasistencias = 3 WHERE ID = "CF002";
+UPDATE Nota_Final SET Nota_Final = 5.0 WHERE ID = "1";
+UPDATE Nota_Final SET Inasistencias = 3 WHERE ID = "2";
 
 -- Eliminar Notas
-DELETE FROM Nota_Trabajo WHERE ID = "CT004";
-DELETE FROM Nota_Trabajo WHERE ID = "CT006";
+DELETE FROM Nota_Trabajo WHERE ID = "4";
+DELETE FROM Nota_Trabajo WHERE ID = "6";
 
-DELETE FROM Nota_Trabajo WHERE ID = "CF007";
-DELETE FROM Nota_Trabajo WHERE ID = "CF008";
+DELETE FROM Nota_Trabajo WHERE ID = "7";
+DELETE FROM Nota_Trabajo WHERE ID = "8";
 
 -- Consultar Notas
 SELECT Primer_Nombre, Primer_Apellido, Nota, trabajo_id
@@ -305,20 +305,20 @@ SELECT * FROM Jornada;
 
 -- Crear Planilla
 INSERT INTO Planilla(ID, Planilla_Nombre, periodo_id) Values
-	('PL009', 'Planilla curso 101', 'PR001'),
-    ('PL010', 'Planilla curso 301', 'PR002');
+	('9', 'Planilla curso 101', '1'),
+    ('10', 'Planilla curso 301', '2');
     
 INSERT INTO Nota_Planilla(ID, nota_final_id, curso_id, planilla_id) Values
-	('N061', 'CF059', 'Q0101M', 'PL009'),
-	('N062', 'CF060', 'Q0101M', 'PL010');
+	('61', '59', 'Q0101M', '9'),
+	('62', '60', 'Q0101M', '10');
     
 -- Modificar Planilla
-UPDATE Planilla SET Planilla_Nombre = "101 planilla" WHERE ID = "PL001";
-UPDATE Planilla SET Planilla_Nombre = "301 planilla" WHERE ID = "PL002";
+UPDATE Planilla SET Planilla_Nombre = "101 planilla" WHERE ID = "1";
+UPDATE Planilla SET Planilla_Nombre = "301 planilla" WHERE ID = "2";
 
 -- Eliminar Planilla
-DELETE FROM Planilla WHERE ID = "PL006";
-DELETE FROM Planilla WHERE ID = "PL007";
+DELETE FROM Planilla WHERE ID = "6";
+DELETE FROM Planilla WHERE ID = "7";
 
 -- Consultar Planilla
 SELECT Planilla_Nombre, periodo_id, Primer_Nombre, Primer_Apellido, Nota_Final, Materia_Nombre, Curso_Nombre, planilla_id

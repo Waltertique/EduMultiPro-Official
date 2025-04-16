@@ -38,17 +38,17 @@ CREATE TABLE Materia (
 );
 
 CREATE TABLE Logro (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT auto_increment PRIMARY KEY,
     Tipo_Logro VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE Valoracion (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT auto_increment PRIMARY KEY,
     Nombre_Valoracion VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE Periodo (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT auto_increment PRIMARY KEY,
     Nombre_Periodo VARCHAR(50) NOT NULL
 );
 
@@ -123,7 +123,7 @@ CREATE TABLE Aula (
 );
 
 CREATE TABLE Anuncio (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT auto_increment PRIMARY KEY,
     Titulo_Anuncio VARCHAR(100) NOT NULL,
 	Descripcion_Anuncio TEXT(300),
     Enlace_Anuncio VARCHAR(200),
@@ -135,32 +135,32 @@ CREATE TABLE Anuncio (
 );
 
 CREATE TABLE Trabajo (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT auto_increment PRIMARY KEY,
     Tema_Trabajo VARCHAR(100),
     Titulo_Trabajo VARCHAR(100) NOT NULL,
 	Descripcion_Trabajo TEXT(300),
     Fecha_Trabajo DATE NOT NULL,
-    Archivo_Trabajo longblob,
+    Archivo_Trabajo VARCHAR(200),
     aula_id VARCHAR(10) NOT NULL,
     FOREIGN KEY (aula_id) REFERENCES Aula(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE TrabajoEntregado (
-	ID VARCHAR(10) PRIMARY KEY,
-    Archivo_Trabajo longblob,
+	ID INT auto_increment PRIMARY KEY,
+    Archivo_Trabajo VARCHAR(200),
     Fecha_Trabajo DATE NOT NULL,
-    trabajo_id VARCHAR(10) NOT NULL,
+    trabajo_id INT NOT NULL,
     usuario_id INT NOT NULL,
     FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE,
     FOREIGN KEY (Usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Comentario (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT auto_increment PRIMARY KEY,
     Descripcion VARCHAR(200) NOT NULL,
     Fecha DATE NOT NULL,
-    trabajo_id VARCHAR(10),
-    anuncio_id VARCHAR(10),
+    trabajo_id INT,
+    anuncio_id int,
     usuario_id INT NOT NULL,
     FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE,
     FOREIGN KEY (anuncio_id) REFERENCES Anuncio(ID) ON DELETE CASCADE,
@@ -168,20 +168,20 @@ CREATE TABLE Comentario (
 );
 
 CREATE TABLE Nota_Trabajo (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT auto_increment PRIMARY KEY,
 	Nota FLOAT NOT NULL,
-	trabajo_id	VARCHAR(10) NOT NULL,
+	trabajo_id	INT NOT NULL,
     usuario_id INT NOT NULL,
     FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE,
     FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Nota_Final (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT PRIMARY KEY,
 	Nota_Final FLOAT NOT NULL,
     Inasistencias INT NOT NULL,
 	materia_id	VARCHAR(10) NOT NULL,
-    logro_id VARCHAR(10) NOT NULL,
+    logro_id INT NOT NULL,
     usuario_id INT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE,
     FOREIGN KEY (materia_id) REFERENCES Materia(ID) ON DELETE CASCADE,
@@ -189,17 +189,17 @@ CREATE TABLE Nota_Final (
 );
 
 CREATE TABLE Planilla (
-	ID VARCHAR(10) PRIMARY KEY,
+	ID INT PRIMARY KEY,
     Planilla_Nombre VARCHAR(50) NOT NULL,
-	periodo_id	VARCHAR(10) NOT NULL,
+	periodo_id	INT NOT NULL,
     FOREIGN KEY (periodo_id) REFERENCES Periodo(ID)
 );
 
 CREATE TABLE Nota_Planilla (
-	ID VARCHAR(10) PRIMARY KEY,
-	nota_final_id VARCHAR(10) NOT NULL,
+	ID INT PRIMARY KEY,
+	nota_final_id INT NOT NULL,
     curso_id VARCHAR(10) NOT NULL,
-    planilla_id VARCHAR(10) NOT NULL,
+    planilla_id INT NOT NULL,
     FOREIGN KEY (planilla_id) REFERENCES Planilla(ID) ON DELETE CASCADE,
     FOREIGN KEY (nota_final_id) REFERENCES Nota_Final(ID) ON DELETE CASCADE,
     FOREIGN KEY (curso_id) REFERENCES Curso(ID) ON DELETE CASCADE
@@ -213,15 +213,15 @@ CREATE TABLE Boletin (
     Resolucion VARCHAR(50),
     Institucion VARCHAR(50) NOT NULL,
     alumno_id INT NOT NULL,
-    periodo_id VARCHAR(50) NOT NULL,
+    periodo_id INT NOT NULL,
     FOREIGN KEY (alumno_id) REFERENCES Usuario(ID) ON DELETE CASCADE,
     FOREIGN KEY (periodo_id) REFERENCES Periodo(ID)
 );
 
 CREATE TABLE Boletin_Nota (
 	ID VARCHAR(10) PRIMARY KEY,
-	nota_Final_id VARCHAR(50) NOT NULL,
-	valoracion_id VARCHAR(10) NOT NULL,
+	nota_Final_id INT NOT NULL,
+	valoracion_id INT NOT NULL,
     boletin_id VARCHAR(10) NOT NULL,
     FOREIGN KEY (nota_Final_id) REFERENCES Nota_Final(ID) ON DELETE CASCADE,
     FOREIGN KEY (valoracion_id) REFERENCES Valoracion(ID),
