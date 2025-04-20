@@ -40,32 +40,70 @@ def horarios():
 
 # aula --------------------------------------------------------------------- aula
 
-@profesor_bp.route('/crear-aula')
-def crear_aula():
+@profesor_bp.route('/editar-aula/<string:id>', methods=['GET', 'POST'])
+def editar_aula(id):
     connection = current_app.connection
-    materias = []
-    cursos = []
-    profesores = []
+    
+    if request.method == 'GET':
+        try:
+            with connection.cursor() as cursor:
+                # Obtener los datos del aula
+                cursor.execute("""
+                    SELECT ID, Aula_Nombre, materia_id, curso_id, usuario_id
+                    FROM Aula
+                    WHERE ID = %s
+                """, (id,))
+                aula = cursor.fetchone()
+                
+                if not aula:
+                    flash('Aula no encontrada', 'danger')
+                    return redirect(url_for('profesor_bp.aula'))
+                
+                # Obtener materias, cursos y profesores para los select
+                cursor.execute("SELECT ID, Materia_Nombre FROM Materia")
+                materias = cursor.fetchall()
 
-    try:
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT ID, Materia_Nombre FROM Materia")
-            materias = cursor.fetchall()
+                cursor.execute("SELECT ID, Curso_Nombre FROM Curso")
+                cursos = cursor.fetchall()
 
-            cursor.execute("SELECT ID, Curso_Nombre FROM Curso")
-            cursos = cursor.fetchall()
-
-            cursor.execute("""
-                SELECT Usuario.ID, CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Nombre_Completo
-                FROM Usuario
-                WHERE Usuario.rol_id = 'R002'
-            """)
-            profesores = cursor.fetchall()
-
-    except Exception as e:
-        flash(f'Error al obtener datos: {str(e)}', 'danger')
-
-    return render_template('profesor/5.1crearaul.html', materias=materias, cursos=cursos, profesores=profesores)
+                cursor.execute("""
+                    SELECT Usuario.ID, CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Nombre_Completo
+                    FROM Usuario
+                    WHERE Usuario.rol_id = 'R002'
+                """)
+                profesores = cursor.fetchall()
+                
+            return render_template('profesor/editar_aula.html', 
+                                 aula=aula,
+                                 materias=materias,
+                                 cursos=cursos,
+                                 profesores=profesores)
+            
+        except Exception as e:
+            flash(f'Error al obtener datos del aula: {str(e)}', 'danger')
+            return redirect(url_for('profesor_bp.aula'))
+    
+    elif request.method == 'POST':
+        aula_nombre = request.form['aula_nombre']
+        materia_id = request.form['materia_id']
+        curso_id = request.form['curso_id']
+        usuario_id = request.form['usuario_id']
+        
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute("""
+                    UPDATE Aula 
+                    SET Aula_Nombre = %s, materia_id = %s, curso_id = %s, usuario_id = %s
+                    WHERE ID = %s
+                """, (aula_nombre, materia_id, curso_id, usuario_id, id))
+                
+            connection.commit()
+            flash('Aula actualizada correctamente', 'success')
+        except Exception as e:
+            connection.rollback()
+            flash(f'Error al actualizar aula: {str(e)}', 'danger')
+        
+        return redirect(url_for('profesor_bp.aula'))
 
 @profesor_bp.route('/guardar-aula', methods=['POST'])
 def guardar_aula():
@@ -94,9 +132,13 @@ def guardar_aula():
 def aula():
     connection = current_app.connection
     aulas = []
+    materias = []
+    cursos = []
+    profesores = []
 
     try:
         with connection.cursor() as cursor:
+            # Obtener aulas
             cursor.execute("""
                 SELECT Aula.ID, Aula.Aula_Nombre, Materia.Materia_Nombre, Curso.Curso_Nombre, 
                 CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Profesor
@@ -107,10 +149,28 @@ def aula():
             """)
             aulas = cursor.fetchall()
 
-    except Exception as e:
-        flash(f'Error al obtener aulas: {str(e)}', 'danger')
+            # Obtener materias, cursos y profesores para el modal
+            cursor.execute("SELECT ID, Materia_Nombre FROM Materia")
+            materias = cursor.fetchall()
 
-    return render_template('profesor/5-aula.html', aulas=aulas)
+            cursor.execute("SELECT ID, Curso_Nombre FROM Curso")
+            cursos = cursor.fetchall()
+
+            cursor.execute("""
+                SELECT Usuario.ID, CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Nombre_Completo
+                FROM Usuario
+                WHERE Usuario.rol_id = 'R002'
+            """)
+            profesores = cursor.fetchall()
+
+    except Exception as e:
+        flash(f'Error al obtener datos: {str(e)}', 'danger')
+
+    return render_template('profesor/5-aula.html', 
+                         aulas=aulas,
+                         materias=materias,
+                         cursos=cursos,
+                         profesores=profesores)
 
 @profesor_bp.route('/eliminar_aula/<string:id>', methods=['POST'])
 def eliminar_aula(id):
