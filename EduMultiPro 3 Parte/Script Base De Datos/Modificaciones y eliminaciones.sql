@@ -6,7 +6,7 @@ WHERE ID = 'Q0101M';
 
 UPDATE Usuario
 SET rol_id = 'R002'
-WHERE ID = 'E003';
+WHERE ID = '3';
 
 UPDATE Curso
 SET grado_id = 'G02'
@@ -18,27 +18,27 @@ WHERE ID = 'M001';
 
 UPDATE Informacion
 SET Correo2 = 'secundario@email.com'
-WHERE ID = 'I005';
+WHERE ID = '5';
 
 UPDATE Informacion
 SET Contacto2 = '555-9876'
-WHERE ID = 'I006';
+WHERE ID = '6';
 
 UPDATE Periodo
 SET Nombre_Periodo = 'Segundo Periodo 2025'
-WHERE ID = 'PR002';
+WHERE ID = '2';
 
 UPDATE Anuncio
 SET Titulo_Anuncio = 'Examen Final de Física'
-WHERE ID = 'AN004';
+WHERE ID = '4';
 
 UPDATE Nota_Final
 SET Nota_Final = 4.5
-WHERE ID = 'CF003';
+WHERE ID = '3';
 
 UPDATE Tipo_Noticia
 SET Tipo = 'Deportes'
-WHERE ID = 'NT003';
+WHERE ID = '3';
 
 SELECT * FROM Curso;
 SELECT * FROM Usuario;
@@ -55,31 +55,31 @@ DELETE FROM Curso
 WHERE ID = 'Q0101M';
 
 DELETE FROM Usuario
-WHERE ID = 'E008';
+WHERE ID = '8';
 
 DELETE FROM Materia
 WHERE ID = 'M004';
 
 DELETE FROM Anuncio
-WHERE ID = 'AN006';
+WHERE ID = '6';
 
 DELETE FROM Trabajo
-WHERE ID = 'T007';
+WHERE ID = '7';
 
 DELETE FROM Nota_Trabajo
-WHERE ID = 'CT005';
+WHERE ID = '5';
 
 DELETE FROM Boletin
-WHERE ID = 'B002';
+WHERE ID = '2';
 
 DELETE FROM Boletin_Detalle
-WHERE ID = 'BD003';
+WHERE ID = '3';
 
 DELETE FROM Valoracion
-WHERE ID = 'V005';
+WHERE ID = '5';
 
 DELETE FROM Noticia
-WHERE ID = 'NC004';
+WHERE ID = '4';
 
 SELECT * FROM Curso;
 SELECT * FROM Usuario;

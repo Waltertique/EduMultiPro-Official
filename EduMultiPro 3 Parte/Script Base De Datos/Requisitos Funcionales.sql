@@ -5,12 +5,12 @@
 -- Crear Usuario
 
 INSERT INTO Usuario(ID, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Correo1, Contraseña, rol_id, documento_id) Values
-	("41","johan","sneider","madrigal","tique", "johan@gmail.com", "johan123","R001","D001"),
-    ("42","Zoe","Sofia","Sanches",NULL, "Zoe@gmail.com", "Zoe123", "R002","D002");
+	("42","johan","sneider","madrigal","tique", "johan@gmail.com", "johan123","R001","D001"),
+    ("43","Zoe","Sofia","Sanches",NULL, "Zoe@gmail.com", "Zoe123", "R002","D002");
     
 INSERT INTO Informacion(ID, Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto, usuario_id) Values
-	('41', 'johan.alt01@gmail.com', '3123111111', '3201111341', '2008-01-15', null, '41'),
-    ('42', 'Zoe.alt01@gmail.com', '3113211111', '3245111111', '1990-01-15',null, '42');
+	('42', 'johan.alt01@gmail.com', '3123111111', '3201111341', '2008-01-15', null, '41'),
+    ('43', 'Zoe.alt01@gmail.com', '3113211111', '3245111111', '1990-01-15',null, '42');
     
 -- Modificar Usuario
 UPDATE Usuario SET Primer_Nombre = "sara" WHERE ID = "32";
@@ -30,7 +30,6 @@ INNER JOIN Rol r ON u.rol_id = r.ID
 INNER JOIN Documento d ON u.documento_id = d.ID
 LEFT JOIN Informacion i ON u.ID = i.usuario_id;
 
-UPDATE Usuario SET Contraseña = 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646' WHERE ID = 1;
 select * from Usuario;
 
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

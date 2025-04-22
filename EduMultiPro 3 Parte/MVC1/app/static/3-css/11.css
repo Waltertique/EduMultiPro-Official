@@ -1,0 +1,267 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--blanco);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+/* Baner -------------------- Baner*/
+.contenedor nav{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: flex-start;
+    background: var(--azul);
+    background-position: center;
+    background-size: cover;
+}
+.contenedor nav .uno{
+    margin: 20px 20px 0px 40px;
+    width: 130px;
+    height: 90px;
+
+}
+.contenedor nav .uno img{
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor nav .dos{
+    margin: 20px 0px;
+    width: 450px;
+    height: 90px;
+    justify-items: center;
+}
+.contenedor nav .dos p{
+    font-size: 80px;
+    color: white;
+}
+.contenedor nav .tres{
+    margin: 20px 0px 0px 40px;
+    width: 500px;
+    height: 90px;
+    display: grid;
+    place-items: center;
+   
+}
+.contenedor nav .tres p{
+    font-size: 35px;
+    line-height: center;
+    color: aqua;
+}
+.contenedor nav .cuatro{
+    margin: 0px 25px;
+    width: 200px;
+    display: grid;
+    place-content: center;
+    grid-template-columns: auto auto;
+    position: relative;
+}
+.contenedor nav .cuatro input{
+    padding: 0px 10px;
+    border-radius: 10px 0px 0px 10px;
+    width: 150px;
+    height: 35px;
+    border: 0;
+    outline: none;
+    font-size: 15px;
+}
+.contenedor nav .cuatro input::placeholder{
+    font-weight: normal;
+}
+.contenedor nav .cuatro input:hover::placeholder{
+    color: blue;
+}
+.contenedor nav .cuatro button{
+    width: 35px;
+    height: 36px;
+    float: right;
+    border-radius: 0 10px 10px 0;
+}
+.contenedor nav .cuatro button:hover{
+    transform: scale(1.1);
+    color: blue;
+    cursor: pointer;
+}
+/* centro -------------------- centro*/
+/* parte2 -------------------- centro*/
+.contenedor article{
+    flex: 1;
+}
+.contenedor article .parte2 .apartado1{
+    margin: 30px auto 0px ;
+    width: 1300px;
+    height: 60px;
+    background: var(--blanco);
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+}
+.contenedor article .parte2 .apartado1 button{
+    width: 300px;
+    height: 50px;
+    display: grid;
+    place-content: center;
+    font-size: 35px;
+    background: var(--blanco);
+    border: none;
+}
+.contenedor article .parte2 .apartado1 button:hover{
+    background: var(--azulClaro);
+    cursor: pointer;
+}
+
+.contenedor article .parte2 .linea{
+    margin: 0px auto;
+    width: 1400px;
+    border: 1px solid black;
+}
+/* parte3 -------------------- centro*/
+.contenedor article .parte3{
+    margin: 30px auto;
+    width: 1000px;
+}
+.parte3 .titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.parte3 .titulo .ti1{
+    display: flex;
+    flex-direction: row;
+}
+.parte3 .titulo .ti1 img{
+    height: 40px;
+    width: 40px;
+}
+.parte3 .titulo .ti1 h2{
+    font-size: 40px;
+    margin: 0px 0px 0px 15px;
+}
+.parte3 .titulo .ti2 img{
+    height: 30px;
+    width: 30px;
+}
+.parte3 .titulo .ti2 img:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.parte3 .atributo{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 925px;
+    margin: 15px 0px 0px 60px;
+}
+.parte3 .atributo p{
+    font-size: 20px;
+}
+.contenedor article .parte3 .linea{
+    margin: 10px auto;
+    width: 1000px;
+    border: 1px solid black;
+}
+
+/* parte4 -------------------- centro*/
+.contenedor article .parte4{
+    margin: 30px auto;
+    width: 1000px;
+}
+.contenedor article .parte4 h2{
+    font-size: 30px;
+}
+.contenedor article .parte4 p{
+    margin: 10px 0px 0px 0px;
+}
+.contenedor article .parte4 .tbj{
+    margin: 30px 0px;
+    width: 300px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(163, 159, 159);
+    border-radius: 20px;
+}
+.contenedor article .parte4 .tbj:hover{
+    background: rgb(226, 210, 191);
+    cursor: pointer;
+}
+.contenedor article .parte4 .linea{
+    margin: 10px auto;
+    width: 1000px;
+    border: 1px solid black;
+}
+/* parte5 -------------------- centro*/
+.contenedor article .parte5{
+    margin: 30px auto;
+    width: 1000px;
+}
+.contenedor article .parte5 h2{
+    font-size: 20px;
+}
+.contenedor article .parte5 .coment{
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: row;
+}
+.contenedor article .parte5 .coment img{
+    height: 40px;
+    width: 40px;
+}
+.contenedor article .parte5 .coment input{
+    margin: 0px 0px 0px 15px;
+    padding: 0px 15px;
+    height: 40px;
+    width: 800px;
+    border: none;
+    border-radius: 10px 0px 0px 10px;
+
+}
+.contenedor article .parte5 .coment button{
+    width: 50px;
+    border-radius: 0px 10px 10px 0px;
+    border: none;
+    background: black;
+    color: white;
+}
+.contenedor article .parte5 .coment button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    color:  red;
+}
+/* footer -------------------- footer*/
+.contenedor footer{
+    margin: 10px 0px 0px 0px;
+    width: 100%;
+    height: 130px;
+    background-image: url("../img/gris\ fondo.jpg");
+}
+
+footer .informacion1{
+    color: white;
+    font-size: 30px;
+    margin: 15px 0px 0px 50px;
+}
+footer .informacion2{
+    margin: 15px 0px;
+    color: white;
+    font-size: 23px;
+    display: flex;
+    justify-content: space-around;
+}

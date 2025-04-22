@@ -1,0 +1,579 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #ebebeb;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--gris-claro);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+/* nav -------------------- nav */
+
+#navegador{
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+    box-shadow: var(--sombra);
+    border-bottom: 3px solid var(--azulClaro);
+}
+
+#n2{
+    padding: 0;
+}
+#n2 h1{
+    font-size: 7rem;
+}
+
+#n3 h3{
+    font-size: 3.3rem;
+    color: aqua;
+}
+#img1{
+    max-width: 90px;
+    height: auto;
+    margin-top: 5px;
+}
+
+/* boton -------------------- boton*/
+#btn1{
+    padding: 0px 0px;
+    width: 100%;
+}
+#btn1 .row{
+    width: 100%;
+    margin: 10px 0px 5px 0px;
+}
+
+.btn-group{
+    width: 100%;
+    padding: 0px 0px;
+    background: var(--azulClaro);
+    border-radius: 0;
+    border: 1px solid var(--azulClaro);
+}
+#abtn{
+    color: white;
+    border: 1px solid var(--azulClaro);
+}
+.dropdown-menu{
+    width: 100%;
+    background: var(--azul);
+}
+.dropdown-menu a{
+    border-bottom: 1px solid var(--azulClaro);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+}
+.dropdown-menu i{
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+.dropdown-menu p{
+    margin: auto 10px;
+}
+.dropdown-item:hover{
+    background: var(--azulClaro);
+}
+
+
+/* article -------------------- article */
+
+#centro{
+    flex: 1;
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+}
+#centro .row {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    margin: 20px 0px;
+    background: linear-gradient(135deg, var(--azul-secundario2), var(--azul-secundario3));
+}
+.col-xl-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.col-xl-1 form{
+    width: 100%;
+    height: 100%;
+}
+.col-xl-1 form button{
+    background: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    color: white;
+}
+.col-xl-1 form button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background: var(--azul-secundario2);
+}
+
+/* parte2 -------------------- */
+.contenedor-noticia{
+    margin: 30px auto;
+    width: 70%;
+    height: auto;
+    background: var(--azul-primario);
+    text-align: center;
+    padding: 40px;
+}
+.contenedor-noticia h2{
+    font-size: 60px;
+    color: white;
+    font-weight: bold;
+}
+.noticia{
+    margin: 40px auto;
+    width: 100%;
+    height: 300px;
+    background: var(--blanco2);
+    border-radius: 20px;
+    padding: 15px 30px;
+}
+.noticia .row{
+    min-height: 225px;
+    background: var(--blanco2) !important;
+}
+
+.noticia .row .col-xl-4{
+    padding: 0px 0px;
+}
+.noticia .row .col-xl-4 img{
+    width: 100%;
+    height: 225px; 
+    overflow: hidden;
+    position: relative;
+}
+.noticia .row .col-xl-6{
+    padding: 10px 40px;
+    text-align: justify;
+}
+.noticia .row .col-xl-6 h2{
+    font-size: 30px;
+    color: var(--azul);
+}
+.noticia .row .col-xl-6 p{
+    font-size: 17px;
+    word-break: break-word; 
+    white-space: normal;
+}
+
+.noticia .row .col-xl-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.noticia .row .col-xl-2 button{
+    background: var(--azul-secundario2);
+    border: 4px solid var(--azul-primario);
+    width: 120px;
+    height: 50px;
+    border-radius: 20px;
+    color: white;
+}
+.noticia .row .col-xl-2 button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* footer -------------------- footer */
+
+#pie{
+    background-image: url("../img/gris fondo.jpg");
+    height: 130px;
+}
+#n4 h2{
+    color: white;
+    font-size: 45px;
+}
+#n5 a{
+    color: white;
+    font-size: 20px;
+}
+#n6 a{
+    color: white;
+    font-size: 20px;
+}
+#n7 a{
+    color: white;
+    font-size: 20px;
+}
+#n8 a{
+    color: white;
+    font-size: 20px;
+}
+#n9 a{
+    color: white;
+    font-size: 20px;
+}
+
+@media (min-width: 100px) and (max-width: 414px) {
+    #n2 h1 {
+        font-size: 3.5rem; 
+        margin: 0 auto;
+    }
+
+    #n3 h3 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+    #n1{
+        display: flex;
+        justify-content: center;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 60px;
+        height: auto;
+    }
+
+
+    #pie{
+        height: 200px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 575px) {
+    #n2 h1 {
+        font-size: 4.4rem; 
+        margin: 0 auto;
+    }
+
+    #n3 h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    #n1{
+        display: flex;
+        justify-content: center;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+    
+    #pie{
+        height: 160px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+    #n2 h1 {
+        font-size: 4.4rem; 
+        margin: 0 auto;
+    }
+
+    #n3 h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    #n1{
+        display: flex;
+        justify-content: center;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+    
+    #pie{
+        height: 200px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #n2 h1 {
+        font-size: 5.4rem; 
+        margin: 0 20px;
+    }
+
+    #n3 h3 {
+        font-size: 1.7rem;
+        margin-bottom: 15px;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+    
+    #pie{
+        height: 220px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2.8rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    #n2 h1 {
+        font-size: 3.7rem; 
+    }
+
+    #n3 h3 {
+        font-size: 1.8rem;
+    }
+    #n1{
+        display: flex;
+        justify-content: end;
+    }
+    #img1{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 55px;
+        height: auto;
+    }
+    
+    #pie{
+        height: 220px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2.8rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px){
+    #n2 h1 {
+        font-size: 4.9rem; 
+    }
+
+    #n3 h3 {
+        font-size: 2.1rem;
+    }
+    #n1{
+        display: flex;
+        justify-content: end;
+    }
+    #img1{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+    
+    #pie{
+        height: 130px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2.4rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+}
+@media (min-width: 1400px) and (max-width: 1775px){
+    #n2 h1 {
+        font-size: 5.6rem; 
+    }
+
+    #n3 h3 {
+        font-size: 2.4rem;
+    }
+    #n1{
+        display: flex;
+        justify-content: end;
+    }
+    #img1{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 75px;
+        height: auto;
+    }
+}

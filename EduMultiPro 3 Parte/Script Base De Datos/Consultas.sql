@@ -1,10 +1,10 @@
 -- SUB CONSULTAS
 
 -- 1) Mostrar el nombre del curso y la cantidad de usuarios que tiene cada curso
-	SELECT Curso_Nombre,
-    (SELECT COUNT(*) 
-     FROM Usuario 
-     WHERE Usuario.curso_id = Curso.ID) AS Total_Usuarios
+	SELECT Curso.Curso_Nombre,
+	(SELECT COUNT(*)
+	FROM Miembros_Curso
+	WHERE Miembros_Curso.curso_id = Curso.ID) AS Total_Usuarios
 	FROM Curso;
 
 -- 2) Mostrar el nombre de cada usuario y su nota final más alta
@@ -36,15 +36,15 @@
     SELECT MAX(ID)
     FROM Curso);
     
--- 6) nombres de los anuncios donde esta el trabajo T001
+-- 6) nombres de los anuncios que pertenecen al aula A002
 	SELECT Titulo_Anuncio
 	FROM Anuncio
 	WHERE aula_id = (
-    SELECT aula_id
-    FROM Trabajo
-    WHERE ID = 'T001');
+    SELECT ID
+    FROM Aula
+    WHERE ID = 'A002');
     
--- 7) materias que están asignadas a la misma aula que el anuncio AN002
+-- 7) materias que están asignadas a la misma aula que el anuncio 2
 	SELECT Materia_Nombre
 	FROM Materia
 	WHERE ID = (
@@ -53,7 +53,7 @@
     WHERE ID = (
         SELECT aula_id
         FROM Anuncio
-        WHERE ID = 'AN002'));
+        WHERE ID = '2'));
 
 -- 8) nombres de los usuarios que tienen notas finales superiores a 4.0
 	SELECT Primer_Nombre, Primer_Apellido
@@ -86,7 +86,7 @@
 
 SELECT Primer_Nombre, Primer_Apellido, Correo1, Correo2, Contacto1, Contacto2, Fecha_Nacimiento
 FROM Usuario
-INNER JOIN Informacion ON informacion_id = 	Informacion.ID;
+INNER JOIN Informacion ON Usuario.ID = Informacion.usuario_id;
 
 -- 2) Curso y su Horario
 
@@ -148,7 +148,7 @@ INNER JOIN Boletin_Detalle ON Boletin.ID = Boletin_Detalle.boletin_id;
 
 -- 10) Noticia y su Tipo
 
-SELECT Titulo_Noticia, Descripcion, Fecha_Notica, Imagen1, Imagen2, Imagen3, Tipo
-FROM Noticia 
-INNER JOIN Tipo_Noticia ON Noticia.tipo_noticia_id = Tipo_Noticia.ID;
+SELECT Titulo_Noticia,Encabezado,Descripcion1,Descripcion2,Descripcion3,Fecha_Notica,Imagen1,Imagen2,Imagen3,Tipo
+FROM Noticia
+LEFT JOIN Tipo_Noticia ON Noticia.tipo_noticia_id = Tipo_Noticia.ID;
 

@@ -254,3 +254,19 @@ CREATE TABLE Noticia (
     FOREIGN KEY (tipo_noticia_id) REFERENCES Tipo_Noticia(ID)
 );
 
+INSERT INTO Rol(ID, Nombre_Rol) Values
+	('R001','Alumno'),
+    ('R002','Profesor'),
+    ('R003','Coordinador'),
+    ('R004','Administrador');
+    
+INSERT INTO Documento(ID, Tipo_Documento) Values
+	('D001','T.Identidad'),
+    ('D002','Cedula'),
+    ('D003','Cedula de extangeria');
+    
+INSERT INTO Usuario(ID, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Correo1, Contraseña, rol_id, documento_id) Values
+    ('41', 'maradona', 'pedro', 'Guzmán', 'Roldán',     'maradona@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646', 'R004', 'D002');
+    
+INSERT INTO Informacion(ID, Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto, usuario_id) Values
+    ('41', 'maradona.alt40@gmail.com', '3101010133', '3291010133', '2000-12-25','h7.png' ,'41');
