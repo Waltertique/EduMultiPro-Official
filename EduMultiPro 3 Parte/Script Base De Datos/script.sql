@@ -270,3 +270,11 @@ INSERT INTO Usuario(ID, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_
     
 INSERT INTO Informacion(ID, Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto, usuario_id) Values
     ('41', 'maradona.alt40@gmail.com', '3101010133', '3291010133', '2000-12-25','h7.png' ,'41');
+    
+INSERT INTO Tipo_Noticia(ID, Tipo) Values
+	('1', 'Noticia Principal 1'),
+	('2', 'Noticia Principal 2'),
+	('3', 'Noticia Principal 3'),
+	('4', 'Noticia Secundaria 1'),
+    ('5', 'Noticia Secundaria 2'),
+    ('6', 'Noticia Secundaria 3');

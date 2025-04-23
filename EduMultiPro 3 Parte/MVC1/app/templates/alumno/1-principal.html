@@ -112,7 +112,7 @@
             <div class="row">
 
               <!-- Noticia principal 1-->
-              {% if noticia1 %}
+              {% if noticia1 and 'Imagen1' in noticia1 %}
                 <div class="col-xl-4">
                   <div class="imagen">
                     <a href="{{ url_for('alumno_bp.verNoticia') }}">
@@ -134,7 +134,7 @@
               {% endif %}
 
               <!-- Noticia principal 2-->
-              {% if noticia2 %}
+              {% if noticia2 and 'Imagen1' in noticia1 %}
                 <div class="col-xl-4">
                   <div class="imagen">
                     <a href="{{ url_for('alumno_bp.verNoticia') }}">
@@ -156,7 +156,7 @@
               {% endif %}
 
               <!-- Noticia principal 3-->
-              {% if noticia1 %}
+              {% if noticia3 and 'Imagen1' in noticia1 %}
                 <div class="col-xl-4">
                   <div class="imagen">
                     <a href="{{ url_for('alumno_bp.verNoticia') }}">

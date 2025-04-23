@@ -62,14 +62,6 @@ INSERT INTO Periodo(ID, Nombre_Periodo) Values
 	('3', 'Tercer Periodo'),
 	('4', 'Cuarto Periodo');
     
-INSERT INTO Tipo_Noticia(ID, Tipo) Values
-	('1', 'Noticia Principal 1'),
-	('2', 'Noticia Principal 2'),
-	('3', 'Noticia Principal 3'),
-	('4', 'Noticia Secundaria 1'),
-    ('5', 'Noticia Secundaria 2'),
-    ('6', 'Noticia Secundaria 3');
-    
 INSERT INTO Curso(ID, Curso_Nombre, grado_id, jornada_id) Values
 	('Q0101M', '101', 'G01','J01'),
 	('Q0301M', '301', 'G03','J01'),
