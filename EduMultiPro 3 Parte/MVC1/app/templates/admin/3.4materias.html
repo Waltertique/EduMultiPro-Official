@@ -99,7 +99,6 @@
                 <div class="contenedor-fromulario">
                   <form method="POST" action="{{ url_for('admin_bp.guardar_materia') }}">
                     <h3>Datos Materia</h3>
-                        <input type="text" name="id" placeholder="ID de la Materia" required>
                         <input type="text" name="materia_nombre" placeholder="Nombre de la Materia" required>
                         <input id="Descripcion" type="text" name="materia_descripcion" placeholder="Descripcion de la Materia" required>
                         <button type="submit">Guardar Materia</button>
@@ -150,7 +149,7 @@
                               {% endfor %}
                           {% else %}
                               <tr>
-                                  <td colspan="7">No hay cursos registrados.</td>
+                                  <td colspan="7">No hay materias registrados.</td>
                               </tr>
                           {% endif %}
                             

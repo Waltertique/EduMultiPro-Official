@@ -29,3 +29,32 @@ $(document).ready(function(){
     function confirmarEliminacion() {
         return confirm('¿Estás seguro que deseas eliminar este curso?');
     }
+
+    document.querySelectorAll('.modificar').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const fila = this.closest('tr');
+        const id = fila.children[0].textContent;
+        const nombre = fila.children[1].textContent;
+        const gradoNombre = fila.children[2].textContent;
+        const jornadaNombre = fila.children[3].textContent;
+
+        document.getElementById('editarCursoID').value = id.trim();
+        document.getElementById('editarCursoNombre').value = nombre.trim();
+
+        const gradoSelect = document.getElementById('editarGrado');
+        for (let option of gradoSelect.options) {
+        option.selected = option.text === gradoNombre.trim();
+        }
+
+        const jornadaSelect = document.getElementById('editarJornada');
+        for (let option of jornadaSelect.options) {
+        option.selected = option.text === jornadaNombre.trim();
+        }
+
+        document.getElementById('modificarCurso').style.display = 'block';
+    });
+    });
+
+    function cancelarEdicionCurso() {
+    document.getElementById('modificarCurso').style.display = "none";
+    }

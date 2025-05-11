@@ -40,15 +40,16 @@ def modificar_materia():
 def modificar_grado():
     id = request.form['id']
     nombre = request.form['nombre']
+    descripcion = request.form['descripcion']
 
     connection = current_app.connection
     with connection.cursor() as cursor:
         sql = """
             UPDATE Grado
-            SET Grado_Nombre = %s
+            SET Grado_Nombre = %s, Descripcion_Grado = %s
             WHERE ID = %s
         """
-        cursor.execute(sql, (nombre, id))
+        cursor.execute(sql, (nombre, descripcion, id))
     connection.commit()
 
     flash('Grado modificado exitosamente.')
@@ -60,15 +61,16 @@ def modificar_grado():
 def modificar_jornada():
     id = request.form['id']
     nombre = request.form['nombre']
+    descripcion = request.form['descripcion']
 
     connection = current_app.connection
     with connection.cursor() as cursor:
         sql = """
             UPDATE Jornada
-            SET Jornada_Nombre = %s
+            SET Jornada_Nombre = %s, Descripcion_Jornada = %s
             WHERE ID = %s
         """
-        cursor.execute(sql, (nombre, id))
+        cursor.execute(sql, (nombre, descripcion, id))
     connection.commit()
 
     flash('Jornada modificada exitosamente.')
@@ -109,103 +111,56 @@ def crear_horario():
     curso_id = request.form.get('curso_id') or None
     imagen = request.files['imagen']
     imagen_path = None
-    
+
+    # Validación: Solo uno puede ser seleccionado
+    if (profesor_id and curso_id) or (not profesor_id and not curso_id):
+        flash('Debes seleccionar solo un curso o un profesor, no ambos.', 'danger')
+        return redirect(url_for('admin2_bp.crearHorario'))
+
     if imagen and imagen.filename:
-        filename = secure_filename(imagen.filename)  # Asegúrate de que el nombre sea seguro
-        imagen_path = os.path.join('static', 'fotos', filename)  # Guarda la imagen en la ruta deseada
-        full_path = os.path.join(current_app.root_path, imagen_path)  # Ruta completa para guardar el archivo
-        os.makedirs(os.path.dirname(full_path), exist_ok=True)  # Crea la carpeta si no existe
-        imagen.save(full_path)  # Guarda la imagen en el sistema de archivos
+        filename = secure_filename(imagen.filename)
+        imagen_path = os.path.join('static', 'fotos', filename)
+        full_path = os.path.join(current_app.root_path, imagen_path)
+        os.makedirs(os.path.dirname(full_path), exist_ok=True)
+        imagen.save(full_path)
 
     connection = current_app.connection
     import pymysql.cursors
     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
-    # Insertar en la tabla Horario
-    sql_horario = """
-        INSERT INTO Horario (Titulo_Horario, Imagen_Horario, Descripcion_Horario)
-        VALUES (%s, %s, %s)
+    # Validar profesor si fue seleccionado
+    if profesor_id:
+        cursor.execute("SELECT COUNT(*) AS total FROM Usuario WHERE ID = %s", (profesor_id,))
+        if cursor.fetchone()['total'] == 0:
+            flash('El profesor seleccionado no existe.', 'danger')
+            return redirect(url_for('admin2_bp.crearHorario'))
+
+    # Validar curso si fue seleccionado
+    if curso_id:
+        cursor.execute("SELECT COUNT(*) AS total FROM Curso WHERE ID = %s", (curso_id,))
+        if cursor.fetchone()['total'] == 0:
+            flash('El curso seleccionado no existe.', 'danger')
+            return redirect(url_for('admin2_bp.crearHorario'))
+
+    # Insertar en Horario
+    sql = """
+        INSERT INTO Horario (Titulo_Horario, Imagen_Horario, Descripcion_Horario, profesor_id, curso_id)
+        VALUES (%s, %s, %s, %s, %s)
     """
     try:
-        cursor.execute(sql_horario, (titulo, imagen_path, descripcion))  # Guardamos la ruta de la imagen
-        horario_id = cursor.lastrowid
+        cursor.execute(sql, (
+            titulo,
+            imagen_path,
+            descripcion,
+            profesor_id if profesor_id else None,
+            curso_id if curso_id else None
+        ))
+        connection.commit()
+        flash('Horario creado exitosamente.', 'success')
     except pymysql.MySQLError as e:
         flash(f'Error al crear el horario: {e.args[0]} - {e.args[1]}', 'danger')
         return redirect(url_for('admin2_bp.crearHorario'))
 
-    # Si se seleccionó un curso y un profesor
-    if profesor_id and curso_id:
-        cursor.execute("SELECT COUNT(*) FROM Usuario WHERE ID = %s", (profesor_id,))
-        profesor_count = cursor.fetchone()['COUNT(*)']
-        if profesor_count == 0:
-            flash('El profesor seleccionado no existe.', 'danger')
-            return redirect(url_for('admin2_bp.crearHorario'))
-
-        cursor.execute("SELECT COUNT(*) FROM Curso WHERE ID = %s", (curso_id,))
-        curso_count = cursor.fetchone()['COUNT(*)']
-        if curso_count == 0:
-            flash('El curso seleccionado no existe.', 'danger')
-            return redirect(url_for('admin2_bp.crearHorario'))
-
-        # Insertar en Horario_Curso
-        sql_horario_curso = """
-            INSERT INTO Horario_Curso (horario_id, profesor_id, curso_id)
-            VALUES (%s, %s, %s)
-        """
-        try:
-            cursor.execute(sql_horario_curso, (horario_id, profesor_id, curso_id))
-            connection.commit()
-            flash('Horario y asignación de profesor y curso creados exitosamente.', 'success')
-        except pymysql.MySQLError as e:
-            flash(f'Error al asignar el curso y profesor al horario: {e.args[0]} - {e.args[1]}', 'danger')
-            return redirect(url_for('admin2_bp.crearHorario'))
-    
-    # Si solo se seleccionó un curso, se guarda solo el horario en la tabla Horario
-    elif curso_id:
-        cursor.execute("SELECT COUNT(*) FROM Curso WHERE ID = %s", (curso_id,))
-        curso_count = cursor.fetchone()['COUNT(*)']
-        if curso_count == 0:
-            flash('El curso seleccionado no existe.', 'danger')
-            return redirect(url_for('admin2_bp.crearHorario'))
-
-        # Insertar en Horario_Curso solo con el curso
-        sql_horario_curso = """
-            INSERT INTO Horario_Curso (horario_id, curso_id)
-            VALUES (%s, %s)
-        """
-        try:
-            cursor.execute(sql_horario_curso, (horario_id, curso_id))
-            connection.commit()
-            flash('Horario asignado al curso exitosamente.', 'success')
-        except pymysql.MySQLError as e:
-            flash(f'Error al asignar el curso al horario: {e.args[0]} - {e.args[1]}', 'danger')
-            return redirect(url_for('admin2_bp.crearHorario'))
-
-    # Si solo se seleccionó un profesor, se guarda solo el horario en la tabla Horario
-    elif profesor_id:
-        cursor.execute("SELECT COUNT(*) FROM Usuario WHERE ID = %s", (profesor_id,))
-        profesor_count = cursor.fetchone()['COUNT(*)']
-        if profesor_count == 0:
-            flash('El profesor seleccionado no existe.', 'danger')
-            return redirect(url_for('admin2_bp.crearHorario'))
-
-        # Insertar en Horario_Curso solo con el profesor
-        sql_horario_curso = """
-            INSERT INTO Horario_Curso (horario_id, profesor_id)
-            VALUES (%s, %s)
-        """
-        try:
-            cursor.execute(sql_horario_curso, (horario_id, profesor_id))
-            connection.commit()
-            flash('Horario asignado al profesor exitosamente.', 'success')
-        except pymysql.MySQLError as e:
-            flash(f'Error al asignar el profesor al horario: {e.args[0]} - {e.args[1]}', 'danger')
-            return redirect(url_for('admin2_bp.crearHorario'))
-
-    else:
-        flash('Por favor, seleccione un profesor o un curso.', 'danger')
-
-    connection.commit()
     return redirect(url_for('admin_bp.horario'))
 
 # ---------modificar horario---------------------------------------------------------- 
@@ -219,9 +174,8 @@ def modificarHorario(id):
     # Traer los datos del horario
     cursor.execute("""
         SELECT H.ID, H.Titulo_Horario, H.Descripcion_Horario, H.Imagen_Horario,
-               HC.profesor_id, HC.curso_id
+               H.profesor_id, H.curso_id
         FROM Horario H
-        LEFT JOIN Horario_Curso HC ON H.ID = HC.horario_id
         WHERE H.ID = %s
     """, (id,))
     horario = cursor.fetchone()
@@ -248,6 +202,30 @@ def guardarHorarioEditado(id):
     imagen = request.files['imagen']
     imagen_filename = None
 
+    # Validación: solo se permite curso o profesor, no ambos ni ninguno
+    if (profesor_id and curso_id) or (not profesor_id and not curso_id):
+        flash('Debes seleccionar solo un curso o un profesor, no ambos.', 'danger')
+        return redirect(url_for('admin2_bp.editarHorario', id=id))
+
+    connection = current_app.connection
+    import pymysql.cursors
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    # Validar existencia del profesor
+    if profesor_id:
+        cursor.execute("SELECT COUNT(*) AS total FROM Usuario WHERE ID = %s", (profesor_id,))
+        if cursor.fetchone()['total'] == 0:
+            flash('El profesor seleccionado no existe.', 'danger')
+            return redirect(url_for('admin2_bp.editarHorario', id=id))
+
+    # Validar existencia del curso
+    if curso_id:
+        cursor.execute("SELECT COUNT(*) AS total FROM Curso WHERE ID = %s", (curso_id,))
+        if cursor.fetchone()['total'] == 0:
+            flash('El curso seleccionado no existe.', 'danger')
+            return redirect(url_for('admin2_bp.editarHorario', id=id))
+
+    # Procesar imagen si se subió
     if imagen and imagen.filename:
         filename = secure_filename(imagen.filename)
         imagen_filename = f'static/fotos/{filename}'
@@ -255,39 +233,26 @@ def guardarHorarioEditado(id):
         os.makedirs(os.path.dirname(ruta_completa), exist_ok=True)
         imagen.save(ruta_completa)
 
-    connection = current_app.connection
-    import pymysql.cursors
-    cursor = connection.cursor(pymysql.cursors.DictCursor)
-
-    # Si se subió una imagen nueva, actualizamos la ruta en la base de datos
+    # Armar consulta según si hay imagen
     if imagen_filename:
         cursor.execute("""
             UPDATE Horario
-            SET Titulo_Horario = %s, Descripcion_Horario = %s, Imagen_Horario = %s
+            SET Titulo_Horario = %s,
+                Descripcion_Horario = %s,
+                Imagen_Horario = %s,
+                profesor_id = %s,
+                curso_id = %s
             WHERE ID = %s
-        """, (titulo, descripcion, imagen_filename, id))
+        """, (titulo, descripcion, imagen_filename, profesor_id, curso_id, id))
     else:
         cursor.execute("""
             UPDATE Horario
-            SET Titulo_Horario = %s, Descripcion_Horario = %s
+            SET Titulo_Horario = %s,
+                Descripcion_Horario = %s,
+                profesor_id = %s,
+                curso_id = %s
             WHERE ID = %s
-        """, (titulo, descripcion, id))
-
-    # Ver si ya tiene relación en Horario_Curso
-    cursor.execute("SELECT * FROM Horario_Curso WHERE horario_id = %s", (id,))
-    existente = cursor.fetchone()
-
-    if existente:
-        cursor.execute("""
-            UPDATE Horario_Curso
-            SET profesor_id = %s, curso_id = %s
-            WHERE horario_id = %s
-        """, (profesor_id, curso_id, id))
-    else:
-        cursor.execute("""
-            INSERT INTO Horario_Curso (horario_id, profesor_id, curso_id)
-            VALUES (%s, %s, %s)
-        """, (id, profesor_id, curso_id))
+        """, (titulo, descripcion, profesor_id, curso_id, id))
 
     connection.commit()
     flash('Horario actualizado correctamente.', 'success')
@@ -309,10 +274,9 @@ def verHorario(id):
             j.Jornada_Nombre AS Jornada_Nombre,
             CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Profesor_Nombre
         FROM Horario h
-        LEFT JOIN Horario_Curso hc ON hc.horario_id = h.ID
-        LEFT JOIN Curso c ON c.ID = hc.curso_id
+        LEFT JOIN Curso c ON c.ID = h.curso_id
         LEFT JOIN Jornada j ON j.ID = c.jornada_id
-        LEFT JOIN Usuario u ON u.ID = hc.profesor_id
+        LEFT JOIN Usuario u ON u.ID = h.profesor_id
         WHERE h.ID = %s
     """
     cursor.execute(sql, (id,))

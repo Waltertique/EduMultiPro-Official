@@ -36,9 +36,11 @@ $(document).ready(function(){
             const fila = boton.closest("tr");
             const id = fila.cells[0].textContent.trim();
             const nombre = fila.cells[1].textContent.trim();
+            const descripcion = fila.children[2].textContent;
     
             document.getElementById("editarJornadaID").value = id;
             document.getElementById("editarJornadaNombre").value = nombre;
+            document.getElementById('editarDescripcion').value = descripcion.trim();
     
             document.getElementById("formEditarJornada").style.display = "block";
           });

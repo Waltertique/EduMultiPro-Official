@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curso</title>
+  <title>Cursos</title>
   <link rel="icon" href="{{ url_for('static', filename='img/icono.png') }}">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!--libreria de logos-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -99,6 +99,32 @@
                         <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Crear Curso</button>
                     </a>
                 </div>
+
+                <!--modificar curso-->
+                  
+                <div class="modificarCurso" id="modificarCurso" style="display:none;">
+                  <h1>Modificar Curso</h1>
+                  <form action="{{ url_for('admin_bp.modificar_curso') }}" method="POST">
+                    <input type="hidden" name="id" id="editarCursoID">
+                    <input type="text" name="nombre" id="editarCursoNombre" placeholder="Nombre" required>
+                    
+                    <select name="grado" id="editarGrado" required>
+                      {% for grado in grados %}
+                        <option value="{{ grado['ID'] }}">{{ grado['Grado_Nombre'] }}</option>
+                      {% endfor %}
+                    </select>
+
+                    <select name="jornada" id="editarJornada" required>
+                      {% for jornada in jornadas %}
+                        <option value="{{ jornada['ID'] }}">{{ jornada['Jornada_Nombre'] }}</option>
+                      {% endfor %}
+                    </select>
+
+                    <button type="submit" class="btn-guardar">Guardar cambios</button>
+                    <button type="button" class="btn-cancelar" onclick="cancelarEdicionCurso()">Cancelar</button>
+                  </form>
+                </div>
+
                 <div class="contenedor-tabla">
                     <table class="tablaUsuarios" id="tablaUsuarios">
                         <thead>
@@ -108,6 +134,7 @@
                                 <th>Grado</th>
                                 <th>Jornada</th>
                                 <th>Información</th>
+                                <th>Modificar</th>
                                 <th>Eliminar</th>
                             </tr>
                         </thead>
@@ -127,6 +154,7 @@
                                           </button>
                                         </form>
                                       </td>
+                                      <td><button class="modificar"><i class="fa-solid fa-gear"></i></button></td>
                                       <td>
                                         <form action="{{ url_for('admin_bp.eliminar_curso', id=curso['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
                                           <button class="btn-icon eliminar" type="submit">

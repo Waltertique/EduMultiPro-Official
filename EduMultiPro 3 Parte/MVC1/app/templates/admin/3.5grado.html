@@ -99,8 +99,8 @@
                 <div class="contenedor-fromulario">
                   <form method="POST" action="{{ url_for('admin_bp.guardar_grado') }}">
                     <h3>Datos Grado</h3>
-                        <input type="text" name="id" placeholder="ID del grado" required>
                         <input type="text" name="grado_Nombre" placeholder="Nombre del grado" required>
+                        <input type="text" name="descripcion_Grado" placeholder="Descripcion" required>
                         <button type="submit">Guardar Grado</button>
                   </form>
 
@@ -111,6 +111,9 @@
                       
                       <label for="editarGradoNombre">Nombre del grado:</label>
                       <input type="text" name="nombre" id="editarGradoNombre" required>
+
+                      <label for="editarDescripcion">Descripción:</label>
+                      <input name="descripcion" id="editarDescripcion" rows="3" required>
                       
                       <button type="submit" class="btn-guardar">Guardar cambios</button>
                       <button type="button" class="btn-cancelar" onclick="ocultarFormularioGrado()">Cancelar</button>
@@ -124,6 +127,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
+                            <th>Descripcion</th>
                             <th>Modificar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -134,7 +138,8 @@
                               <tr>
                                   <td>{{ grado['ID'] }}</td>
                                   <td>{{ grado['Grado_Nombre'] }}</td>
-                                  <td><button class="modificar"><i class="fa-solid fa-gear"></button></td>
+                                  <td>{{ grado['Descripcion_Grado'] }}</td>
+                                  <td><button class="modificar"><i class="fa-solid fa-gear"></i></button></td>
                                   <td>
                                     <form action="{{ url_for('admin_bp.eliminar_grado', id=grado['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
                                       <button class="btn-icon eliminar" type="submit">
@@ -146,7 +151,7 @@
                             {% endfor %}
                         {% else %}
                             <tr>
-                                <td colspan="7">No hay cursos registrados.</td>
+                                <td colspan="7">No hay Grados registrados.</td>
                             </tr>
                         {% endif %}
                           

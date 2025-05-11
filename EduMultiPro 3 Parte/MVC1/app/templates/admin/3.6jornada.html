@@ -99,8 +99,8 @@
                 <div class="contenedor-fromulario">
                   <form method="POST" action="{{ url_for('admin_bp.guardar_jornada') }}">
                     <h3>Datos Jornada</h3>
-                        <input type="text" name="id" placeholder="ID de la jornada" required>
                         <input type="text" name="jornada_Nombre" placeholder="Nombre de la jornada" required>
+                        <input type="text" name="descripcion_Jornada" placeholder="Descripcion" required>
                         <button type="submit">Guardar Jornada</button>
                   </form>
 
@@ -111,7 +111,10 @@
                         
                         <label for="editarJornadaNombre">Nombre:</label>
                         <input type="text" name="nombre" id="editarJornadaNombre" required>
-                        
+
+                        <label for="editarDescripcion">Descripción:</label>
+                        <input name="descripcion" id="editarDescripcion" rows="3" required>
+
                         <button type="submit" class="btn-guardar">Guardar cambios</button>
                         <button type="button" class="btn-cancelar" onclick="cancelarEdicionJornada()">Cancelar</button>
                     </form>
@@ -124,6 +127,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
+                            <th>Descripcion</th>
                             <th>Modificar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -134,6 +138,7 @@
                               <tr>
                                   <td>{{ jornada['ID'] }}</td>
                                   <td>{{ jornada['Jornada_Nombre'] }}</td>
+                                  <td>{{ jornada['Descripcion_Jornada'] }}</td>
                                   <td><button class="modificar_jornada"><i class="fa-solid fa-gear"></button></td>
                                   <td>
                                     <form action="{{ url_for('admin_bp.eliminar_jornada', id=jornada['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">

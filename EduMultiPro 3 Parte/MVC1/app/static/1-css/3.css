@@ -190,6 +190,7 @@ i:hover{
     background: var(--azulClaro);
 }
 /* tabla -------------------- tabla*/
+
 #contenidoTabla{
     flex: 1;
     padding: 20px;
@@ -206,6 +207,33 @@ i:hover{
     font-weight: bold;
 }
 
+.modificarCurso{
+    height: auto;
+    background-color: white;
+    padding: 20px 20px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+.modificarCurso h1{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.modificarCurso input{
+    border: 1px solid var(--azul-primario);
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-right: 20px;
+}
+.btn-cancelar{
+    margin-left: 20px;
+}
+#editarGrado, #editarJornada{
+    border: 1px solid var(--azul-primario);
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-right: 20px;
+}
 .contenedor-tabla{  
     overflow-x: auto;
     margin: 0px 0px 20px 0px;
@@ -326,6 +354,23 @@ button:hover{
         width: 120px;
         margin-bottom: 10px;
     }
+    #modificarCurso form{
+        display: flex;
+        flex-direction: column;
+    }
+    .modificarCurso input{
+        width: 80%;
+        margin: 0px auto;
+    }
+    #editarGrado, #editarJornada{
+        width: 80%;
+        margin: 10px auto;
+    }
+    .btn-guardar, .btn-cancelar{
+        width: 80%;
+        margin: 10px auto;
+    }
+    
     /* footer -------------------- footer */
 
     #pie{
@@ -399,6 +444,23 @@ button:hover{
     .titulo a button{
         width: 120px;
         margin-bottom: 10px;
+    }
+
+    #modificarCurso form{
+        display: flex;
+        flex-direction: column;
+    }
+    .modificarCurso input{
+        width: 80%;
+        margin: 0px auto;
+    }
+    #editarGrado, #editarJornada{
+        width: 80%;
+        margin: 10px auto;
+    }
+    .btn-guardar, .btn-cancelar{
+        width: 80%;
+        margin: 10px auto;
     }
     
     /* footer -------------------- footer */
@@ -475,6 +537,22 @@ button:hover{
         width: 120px;
         margin-bottom: 10px;
     }
+    #modificarCurso form{
+        display: flex;
+        flex-direction: column;
+    }
+    .modificarCurso input{
+        width: 80%;
+        margin: 0px auto;
+    }
+    #editarGrado, #editarJornada{
+        width: 80%;
+        margin: 10px auto;
+    }
+    .btn-guardar, .btn-cancelar{
+        width: 80%;
+        margin: 10px auto;
+    }
     /* footer -------------------- footer */
     
     #pie{
@@ -528,6 +606,22 @@ button:hover{
         height: auto;
     }
     
+    #modificarCurso form{
+        display: flex;
+        flex-direction: column;
+    }
+    .modificarCurso input{
+        width: 50%;
+        margin: 0px auto;
+    }
+    #editarGrado, #editarJornada{
+        width: 50%;
+        margin: 10px auto;
+    }
+    .btn-guardar, .btn-cancelar{
+        width: 50%;
+        margin: 10px auto;
+    }
     /* footer -------------------- footer */
     #pie{
         background-image: url("../img/gris fondo.jpg");

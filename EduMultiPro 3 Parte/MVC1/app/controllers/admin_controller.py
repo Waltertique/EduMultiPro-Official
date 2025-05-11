@@ -65,10 +65,9 @@ def horario():
                     J.Jornada_Nombre,
                     CONCAT(U.Primer_Nombre, ' ', U.Primer_Apellido) AS Profesor_Nombre
                 FROM Horario H
-                LEFT JOIN Horario_Curso HC ON HC.horario_id = H.ID
-                LEFT JOIN Curso C ON HC.curso_id = C.ID
+                LEFT JOIN Curso C ON H.curso_id = C.ID
                 LEFT JOIN Jornada J ON C.jornada_id = J.ID
-                LEFT JOIN Usuario U ON HC.profesor_id = U.ID
+                LEFT JOIN Usuario U ON H.profesor_id = U.ID
             """)
             horarios = cursor.fetchall()
     except Exception as e:
@@ -179,15 +178,9 @@ def guardar_usuario():
         with connection.cursor() as cursor:
             # Insertar en Usuario con contraseña encriptada
             cursor.execute(""" 
-                INSERT INTO Usuario (ID, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Correo1, Contraseña, rol_id, documento_id)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-            """, (id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, correo1, contraseña_encriptada, rol_id, documento_id))
-
-            # Insertar en Informacion, ya no es necesario especificar el ID
-            cursor.execute(""" 
-                INSERT INTO Informacion (Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto, usuario_id)
-                VALUES (%s, %s, %s, %s, %s, %s)
-            """, (correo2, contacto1, contacto2, fecha_nacimiento, ruta_foto, id))
+                INSERT INTO Usuario (ID, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Correo1, Contraseña, rol_id, documento_id, Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, correo1, contraseña_encriptada, rol_id, documento_id, correo2, contacto1, contacto2, fecha_nacimiento, ruta_foto))
 
         # Confirmar los cambios
         connection.commit()
@@ -212,9 +205,8 @@ def informacion_usuario():
         cursor.execute("""
             SELECT u.ID, d.Tipo_Documento AS Documento, u.Primer_Nombre, u.Segundo_Nombre, 
                 u.Primer_Apellido, u.Segundo_Apellido, u.Correo1, r.Nombre_Rol AS Rol, 
-                i.Correo2, i.Contacto1, i.Contacto2, i.Fecha_Nacimiento, i.RutaFoto
+                u.Correo2, u.Contacto1, u.Contacto2, u.Fecha_Nacimiento, u.RutaFoto
             FROM Usuario u
-            LEFT JOIN Informacion i ON u.ID = i.usuario_id
             LEFT JOIN Documento d ON u.documento_id = d.ID
             LEFT JOIN Rol r ON u.rol_id = r.ID
             WHERE u.ID = %s
@@ -244,9 +236,8 @@ def actualizar_usuario():
             cursor.execute("""
                 SELECT u.ID, u.documento_id, u.Primer_Nombre, u.Segundo_Nombre, u.Primer_Apellido, 
                        u.Segundo_Apellido, u.Correo1, u.rol_id, 
-                       i.Correo2, i.Contacto1, i.Contacto2, i.Fecha_Nacimiento, i.RutaFoto
+                       u.Correo2, u.Contacto1, u.Contacto2, u.Fecha_Nacimiento, u.RutaFoto
                 FROM Usuario u
-                LEFT JOIN Informacion i ON u.ID = i.usuario_id
                 WHERE u.ID = %s
             """, (usuario_id,))
             usuario = cursor.fetchone()
@@ -309,28 +300,16 @@ def actualizar_usuario():
             conexion.execute("""UPDATE Usuario SET rol_id=%s WHERE ID=%s""", (rol_id, usuario_id))
         if documento_id:
             conexion.execute("""UPDATE Usuario SET documento_id=%s WHERE ID=%s""", (documento_id, usuario_id))
-
-        # Actualizar tabla Informacion
-        conexion.execute("SELECT ID FROM Informacion WHERE usuario_id=%s", (usuario_id,))
-        info = conexion.fetchone()
-
-        if info:
-            if Correo2:
-                conexion.execute("""UPDATE Informacion SET Correo2=%s WHERE usuario_id=%s""", (Correo2, usuario_id))
-            if Contacto1:
-                conexion.execute("""UPDATE Informacion SET Contacto1=%s WHERE usuario_id=%s""", (Contacto1, usuario_id))
-            if Contacto2:
-                conexion.execute("""UPDATE Informacion SET Contacto2=%s WHERE usuario_id=%s""", (Contacto2, usuario_id))
-            if Fecha_Nacimiento:
-                conexion.execute("""UPDATE Informacion SET Fecha_Nacimiento=%s WHERE usuario_id=%s""", (Fecha_Nacimiento, usuario_id))
-            if nombre_foto:
-                conexion.execute("""UPDATE Informacion SET RutaFoto=%s WHERE usuario_id=%s""", (nombre_foto, usuario_id))
-        else:
-            conexion.execute(""" 
-                INSERT INTO Informacion (Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto, usuario_id)
-                VALUES (%s, %s, %s, %s, %s, %s)
-            """, (Correo2, Contacto1, Contacto2, Fecha_Nacimiento, nombre_foto, usuario_id))
-
+        if Correo2:
+            conexion.execute("""UPDATE Usuario SET Correo2=%s WHERE ID=%s""", (Correo2, usuario_id))
+        if Contacto1:
+            conexion.execute("""UPDATE Usuario SET Contacto1=%s WHERE ID=%s""", (Contacto1, usuario_id))
+        if Contacto2:
+            conexion.execute("""UPDATE Usuario SET Contacto2=%s WHERE ID=%s""", (Contacto2, usuario_id))
+        if Fecha_Nacimiento:
+            conexion.execute("""UPDATE Usuario SET Fecha_Nacimiento=%s WHERE ID=%s""", (Fecha_Nacimiento, usuario_id))
+        if nombre_foto:
+            conexion.execute("""UPDATE Usuario SET RutaFoto=%s WHERE ID=%s""", (nombre_foto, usuario_id))
         if Contraseña:
             conexion.execute("""UPDATE Usuario SET Contraseña=%s WHERE ID=%s""", (Contraseña, usuario_id))
 
@@ -362,7 +341,6 @@ def crearCurso():
 def guardar_curso():
     connection = current_app.connection
 
-    id_curso = request.form['id']
     curso_nombre = request.form['curso_nombre']
     grado_id = request.form['grado_id']
     jornada_id = request.form['jornada_id']
@@ -371,9 +349,9 @@ def guardar_curso():
         with connection.cursor() as cursor:
             # Insertar el curso en la tabla Curso
             cursor.execute("""
-                INSERT INTO Curso (ID, Curso_Nombre, grado_id, jornada_id)
-                VALUES (%s, %s, %s, %s)
-            """, (id_curso, curso_nombre, grado_id, jornada_id))
+                INSERT INTO Curso (Curso_Nombre, grado_id, jornada_id)
+                VALUES (%s, %s, %s)
+            """, (curso_nombre, grado_id, jornada_id))
 
         connection.commit()
         flash('Curso creado correctamente', 'success')
@@ -381,6 +359,26 @@ def guardar_curso():
         connection.rollback()
         flash(f'Error al crear curso: {str(e)}', 'danger')
 
+    return redirect(url_for('admin_bp.curso'))
+
+@admin_bp.route('/modificar_curso', methods=['POST'])
+def modificar_curso():
+    id = request.form['id']
+    nombre = request.form['nombre']
+    grado = request.form['grado']
+    jornada = request.form['jornada']
+
+    connection = current_app.connection
+    with connection.cursor() as cursor:
+        sql = """
+            UPDATE Curso
+            SET Curso_Nombre = %s, grado_id = %s, jornada_id = %s
+            WHERE ID = %s
+        """
+        cursor.execute(sql, (nombre, grado, jornada, id))
+    connection.commit()
+
+    flash('Curso modificado exitosamente.')
     return redirect(url_for('admin_bp.curso'))
 
 
@@ -449,9 +447,12 @@ def agregar_usuario_a_curso(curso_id):
 def curso():
     connection = current_app.connection
     cursos = []
+    grados = []
+    jornadas = []
     try:
         print("Conectando a la base de datos...") 
         with connection.cursor() as cursor:
+            # Obtener cursos con sus grados y jornadas
             cursor.execute("""
                 SELECT Curso.ID, Curso.Curso_Nombre, Grado.Grado_Nombre, Jornada.Jornada_Nombre
                 FROM Curso
@@ -459,11 +460,20 @@ def curso():
                 INNER JOIN Jornada ON Curso.jornada_id = Jornada.ID
             """)
             cursos = cursor.fetchall()  
-            print("cursos obtenidos:", cursos)  
+            print("cursos obtenidos:", cursos)
+
+            # Obtener todos los grados
+            cursor.execute("SELECT ID, Grado_Nombre FROM Grado")
+            grados = cursor.fetchall()
+
+            # Obtener todas las jornadas
+            cursor.execute("SELECT ID, Jornada_Nombre FROM Jornada")
+            jornadas = cursor.fetchall()
+
     except Exception as e:
-        flash(f'Error al obtener cursos: {str(e)}', 'danger')
-    
-    return render_template('admin/3-curso.html', cursos=cursos)
+        flash(f'Error al obtener datos: {str(e)}', 'danger')
+
+    return render_template('admin/3-curso.html', cursos=cursos, grados=grados, jornadas=jornadas)
 
 @admin_bp.route('/eliminar-curso/<string:id>', methods=['POST'])
 def eliminar_curso(id):
@@ -488,20 +498,19 @@ def eliminar_curso(id):
 def guardar_materia():
     connection = current_app.connection
 
-    id_materia = request.form['id']
     materia_nombre = request.form['materia_nombre']
     materia_descripcion = request.form['materia_descripcion']
 
     try:
         with connection.cursor() as cursor:
-            # Insertar el curso en la tabla Curso
+            # Insertar la materia en la tabla sin incluir el ID
             cursor.execute("""
-                INSERT INTO Materia (ID, Materia_Nombre, Descripcion_Materia)
-                VALUES (%s, %s, %s)
-            """, (id_materia, materia_nombre, materia_descripcion))
+                INSERT INTO Materia (Materia_Nombre, Descripcion_Materia)
+                VALUES (%s, %s)
+            """, (materia_nombre, materia_descripcion))
 
         connection.commit()
-        flash('Materia creado correctamente', 'success')
+        flash('Materia creada correctamente', 'success')
     except Exception as e:
         connection.rollback()
         flash(f'Error al crear Materia: {str(e)}', 'danger')
@@ -549,16 +558,15 @@ def eliminar_materia(id):
 def guardar_grado():
     connection = current_app.connection
 
-    id_materia = request.form['id']
     grado_Nombre = request.form['grado_Nombre']
+    descripcion_Grado = request.form['descripcion_Grado']  # <-- Agregado
 
     try:
         with connection.cursor() as cursor:
-            # Insertar el curso en la tabla Curso
             cursor.execute("""
-                INSERT INTO Grado (ID, Grado_Nombre)
+                INSERT INTO Grado (Grado_Nombre, Descripcion_Grado)
                 VALUES (%s, %s)
-            """, (id_materia, grado_Nombre))
+            """, (grado_Nombre, descripcion_Grado))  # <-- Agregado
 
         connection.commit()
         flash('Grado creado correctamente', 'success')
@@ -576,7 +584,7 @@ def grado():
         print("Conectando a la base de datos...") 
         with connection.cursor() as cursor:
             cursor.execute("""
-                SELECT Grado.ID, Grado_Nombre
+                SELECT Grado.ID, Grado_Nombre, Descripcion_Grado
                 FROM Grado
             """)
             grados = cursor.fetchall()  
@@ -596,7 +604,7 @@ def eliminar_grado(id):
             """, (id,))
             
         connection.commit()
-        flash('grado eliminada correctamente', 'success')
+        flash('grado eliminado correctamente', 'success')
     except Exception as e:
         connection.rollback()
         flash(f'Error al eliminar grado: {str(e)}', 'danger')
@@ -609,16 +617,16 @@ def eliminar_grado(id):
 def guardar_jornada():
     connection = current_app.connection
 
-    id_jornada = request.form['id']
     jornada_Nombre = request.form['jornada_Nombre']
+    descripcion_Jornada = request.form['descripcion_Jornada']
 
     try:
         with connection.cursor() as cursor:
             # Insertar el curso en la tabla Curso
             cursor.execute("""
-                INSERT INTO Jornada (ID, Jornada_Nombre)
+                INSERT INTO Jornada (Jornada_Nombre, Descripcion_Jornada)
                 VALUES (%s, %s)
-            """, (id_jornada, jornada_Nombre))
+            """, (jornada_Nombre, descripcion_Jornada))
 
         connection.commit()
         flash('jornada creado correctamente', 'success')
@@ -636,7 +644,7 @@ def jornada():
         print("Conectando a la base de datos...") 
         with connection.cursor() as cursor:
             cursor.execute("""
-                SELECT Jornada.ID, Jornada_Nombre
+                SELECT Jornada.ID, Jornada_Nombre, Descripcion_Jornada
                 FROM Jornada
             """)
             jornadas = cursor.fetchall()  
