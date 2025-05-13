@@ -52,8 +52,6 @@
                     <li><a class="dropdown-item" href="{{ url_for('admin_bp.curso') }}"><i class="fa-solid fa-layer-group"><p>Cursos</p></i></a></li>
                     <li><a class="dropdown-item" href="{{ url_for('admin_bp.horario') }}"><i class="fa-solid fa-calendar-days"><p>Horarios</p></i></a></li>
                     <li><a class="dropdown-item" href="{{ url_for('admin_bp.aula') }}"><i class="fa-solid fa-users-rectangle"><p>Aulas</p></i></a></li>
-                    <li><a class="dropdown-item" href="{{ url_for('admin_bp.notas') }}"><i class="fa-solid fa-ranking-star"><p>Notas</p></i></a></li>
-                    <li><a class="dropdown-item" href="{{ url_for('admin_bp.planillas') }}"><i class="fa-solid fa-folder-open"><p>Planillas</p></i></a></li>
                     <li><a class="dropdown-item" href="{{ url_for('admin_bp.noticia') }}"><i class="fa-solid fa-radio"><p>Noticias</p></i></a></li>
                     <li><a class="dropdown-item" href="{{ url_for('admin_bp.login') }}"><i class="fa-solid fa-right-to-bracket"><p>Salir</p></i></a></li>
                   </ul>
@@ -72,8 +70,6 @@
                       <a href="{{ url_for('admin_bp.curso') }}"><i class="fa-solid fa-layer-group"><p>Cursos</p></i></a>
                       <a href="{{ url_for('admin_bp.horario') }}"><i class="fa-solid fa-calendar-days"><p>Horarios</p></i></a>
                       <a href="{{ url_for('admin_bp.aula') }}"><i class="fa-solid fa-users-rectangle"><p>Aulas</p></i></a>
-                      <a href="{{ url_for('admin_bp.notas') }}"><i class="fa-solid fa-ranking-star"><p>Notas</p></i></a>
-                      <a href="{{ url_for('admin_bp.planillas') }}"><i class="fa-solid fa-folder-open"><p>Planillas</p></i></a>
                       <a href="{{ url_for('admin_bp.noticia') }}"><i class="fa-solid fa-radio"><p>Noticias</p></i></a>
                       <a href="{{ url_for('admin_bp.login') }}"><i class="fa-solid fa-right-to-bracket"><p>Salir</p></i></a> 
                     </div>
@@ -84,9 +80,12 @@
             <div class="col-10" id="contenidoTabla">
                 <div class="titulo">
                     <h1>Informacion del Usuario</h1>
-                    <a href="{{ url_for('admin_bp.usuario') }}"> 
-                        <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Salir</button>
-                    </a>
+                    <div class="botones">
+                        <button id="btnMostrarModificar"><i class="fa-solid fa-gear"></i>Modificar</button>
+                        <a href="{{ url_for('admin_bp.usuario') }}"> 
+                            <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Salir</button>
+                        </a>
+                    </div>
                 </div>
                 <div class="contenidoTablaUsuario">
                     <table>
@@ -138,52 +137,53 @@
                         </tr>
                     </table>
                 </div>
-                <div class="contenidoFormulario">
+                <div class="contenidoFormulario" id="contenidoFormulario" style="display:none;">
+                    <button id="btnCancelar">Cancelar</button>
+                    <div class="formularioInterno">
+                        <form method="POST" enctype="multipart/form-data" action="{{ url_for('admin_bp.actualizar_usuario') }}" id="formulario">
+                            <input type="hidden" name="usuario_id" value="{{ usuario.ID }}">
+                            <div class="f1">
+                                <select name="documento_id" required>
+                                    <option value="">Documento</option>
+                                    {% for doc in documentos %}
+                                        <option value="{{ doc.ID }}" {% if doc.ID == usuario.documento_id %}selected{% endif %}>
+                                            {{ doc.Tipo_Documento }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                <input type="text" name="Primer_Nombre" value="{{ usuario.Primer_Nombre }}" required placeholder="Primer Nombre">
+                                <input type="text" name="Segundo_Nombre" value="{{ usuario.Segundo_Nombre }}" placeholder="Segundo Nombre">
+                            </div>
+                            <div class="f1">
+                                <input type="text" name="Primer_Apellido" value="{{ usuario.Primer_Apellido }}" required placeholder="Primer Apellido">
+                                <input type="text" name="Segundo_Apellido" value="{{ usuario.Segundo_Apellido }}" placeholder="Segundo Apellido">
+                                <input type="email" name="Correo1" value="{{ usuario.Correo1 }}" required placeholder="Correo 1">
+                            </div>
+                            <div class="f1">
+                                <input type="password" name="Contraseña" placeholder="Contraseña">
+                                <select name="rol_id" required>
+                                    <option value="">Selecciona un rol</option>
+                                    {% for rol in roles %}
+                                        <option value="{{ rol.ID }}" {% if rol.ID == usuario.rol_id %}selected{% endif %}>
+                                            {{ rol.Nombre_Rol }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                <input type="email" name="Correo2" value="{{ usuario.Correo2 }}" placeholder="Correo 2">
+                            </div>
 
-                    <form method="POST" enctype="multipart/form-data" action="{{ url_for('admin_bp.actualizar_usuario') }}" id="formulario">
-                        <input type="hidden" name="usuario_id" value="{{ usuario.ID }}">
-                        <div class="f1">
-                            <select name="documento_id" required>
-                                <option value="">Documento</option>
-                                {% for doc in documentos %}
-                                    <option value="{{ doc.ID }}" {% if doc.ID == usuario.documento_id %}selected{% endif %}>
-                                        {{ doc.Tipo_Documento }}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" name="Primer_Nombre" value="{{ usuario.Primer_Nombre }}" required placeholder="Primer Nombre">
-                            <input type="text" name="Segundo_Nombre" value="{{ usuario.Segundo_Nombre }}" placeholder="Segundo Nombre">
-                        </div>
-                        <div class="f1">
-                            <input type="text" name="Primer_Apellido" value="{{ usuario.Primer_Apellido }}" required placeholder="Primer Apellido">
-                            <input type="text" name="Segundo_Apellido" value="{{ usuario.Segundo_Apellido }}" placeholder="Segundo Apellido">
-                            <input type="email" name="Correo1" value="{{ usuario.Correo1 }}" required placeholder="Correo 1">
-                        </div>
-                        <div class="f1">
-                            <input type="password" name="Contraseña" placeholder="Contraseña">
-                            <select name="rol_id" required>
-                                <option value="">Selecciona un rol</option>
-                                {% for rol in roles %}
-                                    <option value="{{ rol.ID }}" {% if rol.ID == usuario.rol_id %}selected{% endif %}>
-                                        {{ rol.Nombre_Rol }}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                            <input type="email" name="Correo2" value="{{ usuario.Correo2 }}" placeholder="Correo 2">
-                        </div>
+                            <h3>Otros Datos</h3>
+                            <input type="text" name="Contacto1" value="{{ usuario.Contacto1 }}" required placeholder="Contacto 1">
+                            <input type="text" name="Contacto2" value="{{ usuario.Contacto2 }}" placeholder="Contacto 2">
+                            <input type="date" name="Fecha_Nacimiento" value="{{ usuario.Fecha_Nacimiento }}" required placeholder="Fecha Nacimiento">
+                            <input type="file" name="RutaFoto">
+                                {% if usuario.RutaFoto %}
+                                    <img src="{{ url_for('static', filename='fotos/' + usuario.RutaFoto) }}" width="100">
+                                {% endif %}
 
-                        <h3>Otros Datos</h3>
-                        <input type="text" name="Contacto1" value="{{ usuario.Contacto1 }}" required placeholder="Contacto 1">
-                        <input type="text" name="Contacto2" value="{{ usuario.Contacto2 }}" placeholder="Contacto 2">
-                        <input type="date" name="Fecha_Nacimiento" value="{{ usuario.Fecha_Nacimiento }}" required placeholder="Fecha Nacimiento">
-                        <input type="file" name="RutaFoto">
-                            {% if usuario.RutaFoto %}
-                                <img src="{{ url_for('static', filename='fotos/' + usuario.RutaFoto) }}" width="100">
-                            {% endif %}
-
-                        <button type="submit">Actualizar</button>
-                    </form>
-
+                            <button type="submit">Actualizar</button>
+                        </form>
+                    </div>
                 </div>
                 
             </div>
@@ -205,6 +205,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
- 
+  <script src="{{ url_for('static', filename='1-js/2.4.js') }}"></script>
 </body>
 </html>

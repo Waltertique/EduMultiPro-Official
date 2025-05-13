@@ -167,9 +167,9 @@ def guardar_usuario():
         ruta_carpeta_fotos = os.path.join(current_app.root_path, 'static', 'fotos')
         os.makedirs(ruta_carpeta_fotos, exist_ok=True)
 
-        ruta_foto = f'fotos/{filename}'
-        ruta_completa = os.path.join(ruta_carpeta_fotos, filename)
+        ruta_completa = os.path.join(current_app.root_path, 'static/fotos', filename)
         foto.save(ruta_completa)
+        ruta_foto = filename
 
     # Encriptar la contraseña antes de guardarla
     contraseña_encriptada = generate_password_hash(contraseña)
