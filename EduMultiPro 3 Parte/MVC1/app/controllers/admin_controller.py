@@ -685,7 +685,11 @@ def crear_aula():
             cursor.execute("SELECT ID, Materia_Nombre FROM Materia")
             materias = cursor.fetchall()
 
-            cursor.execute("SELECT ID, Curso_Nombre FROM Curso")
+            cursor.execute("""
+                SELECT c.ID, CONCAT(c.Curso_Nombre,' ',j.Jornada_Nombre) AS Curso_Nombre
+                FROM Curso c 
+                INNER JOIN Jornada j ON c.jornada_id = j.id
+            """)
             cursos = cursor.fetchall()
 
             cursor.execute("""
@@ -703,7 +707,6 @@ def crear_aula():
 @admin_bp.route('/guardar-aula', methods=['POST'])
 def guardar_aula():
     connection = current_app.connection
-    id = request.form['id']
     aula_nombre = request.form['aula_nombre']
     materia_id = request.form['materia_id']
     curso_id = request.form['curso_id']
@@ -712,9 +715,9 @@ def guardar_aula():
     try:
         with connection.cursor() as cursor:
             cursor.execute("""
-                INSERT INTO Aula (ID, Aula_Nombre, materia_id, curso_id, usuario_id)
-                VALUES (%s, %s, %s, %s, %s)
-            """, (id, aula_nombre, materia_id, curso_id, usuario_id))
+                INSERT INTO Aula (Aula_Nombre, materia_id, curso_id, usuario_id)
+                VALUES (%s, %s, %s, %s)
+            """, (aula_nombre, materia_id, curso_id, usuario_id))
         connection.commit()
         flash('Aula creada correctamente', 'success')
     except Exception as e:
@@ -731,11 +734,12 @@ def aula():
     try:
         with connection.cursor() as cursor:
             cursor.execute("""
-                SELECT Aula.ID, Aula.Aula_Nombre, Materia.Materia_Nombre, Curso.Curso_Nombre, 
+                SELECT Aula.ID, Aula.Aula_Nombre, Materia.Materia_Nombre, CONCAT(Curso.Curso_Nombre,' ',j.Jornada_Nombre) AS Curso_Jornada, 
                 CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Profesor
                 FROM Aula
                 JOIN Materia ON Aula.materia_id = Materia.ID
                 JOIN Curso ON Aula.curso_id = Curso.ID
+                JOIN Jornada j ON Curso.jornada_id = j.id
                 JOIN Usuario ON Aula.usuario_id = Usuario.ID
             """)
             aulas = cursor.fetchall()

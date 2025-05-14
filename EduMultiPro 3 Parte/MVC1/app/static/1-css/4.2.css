@@ -20,12 +20,14 @@
     --blanco: rgb(253, 243, 229);
     --gris: rgb(99, 95, 95);
     --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+
 }
 .contenedor{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: var(--gris-claro);
+    background: var(--fondo);
     margin: 0;
     padding: 0;
     width: 100%;

@@ -259,4 +259,3 @@ LEFT JOIN Tipo_Noticia ON Noticia.tipo_noticia_id = Tipo_Noticia.ID;
 
 
 
-

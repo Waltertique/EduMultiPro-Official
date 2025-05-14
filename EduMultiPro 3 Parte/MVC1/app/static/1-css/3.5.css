@@ -20,12 +20,13 @@
     --blanco: rgb(253, 243, 229);
     --gris: rgb(99, 95, 95);
     --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
 }
 .contenedor{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: var(--gris-claro);
+    background: var(--fondo);
     margin: 0;
     padding: 0;
     width: 100%;
@@ -109,7 +110,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background: var(--gris-claro);
+    background: var(--fondo);
     border: none;
 }
 .card a{
@@ -132,7 +133,7 @@
     color: var(--azul);
 }
 .targeta:hover{
-    background: var(--gris-medio);
+    background: #d1d1d1;
     border-top: 2px solid black;
     color: var(--azul-primario);
     cursor: pointer;
@@ -254,7 +255,7 @@ thead{
 #tablaUsuarios th, td{
     padding: 10px;
     text-align: center !important;
-    border-bottom: 1px solid rgb(173, 173, 173);
+    border-bottom: 1px solid var(--azul-primario) !important;
 }
 
 button{
