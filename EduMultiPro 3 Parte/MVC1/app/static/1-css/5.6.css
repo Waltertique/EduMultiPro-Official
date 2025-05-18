@@ -138,88 +138,31 @@ i:hover{
     cursor: pointer;
     background: var(--azulClaro);
 }
-/* tabla -------------------- tabla*/
+/* centro -------------------- centro */
+
 #contenidoTabla{
     flex: 1;
-    padding: 20px;
+    padding: 50px 100px;
 }
-.titulo{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 30px;
-}
-.titulo h1{
-    font-size: 30px;
-    color: var(--azul-primario);
-    font-weight: bold;
-}
-
-.modificarAula{
-    height: auto;
-    background-color: white;
-    padding: 20px 20px;
-    margin-bottom: 30px;
-    border-radius: 20px;
-    text-align: center;
-}
-.modificarAula h1{
-    font-size: 25px;
-    margin-bottom: 20px;
-}
-.modificarAula input{
-    border: 1px solid var(--azul-primario);
-    border-radius: 20px;
-    padding: 5px 20px;
-    margin-right: 20px;
-}
-.btn-cancelar{
-    margin-left: 20px;
-}
-#editarAulaNombre, #editarMateria{
-    border: 1px solid var(--azul-primario);
-    border-radius: 20px;
-    padding: 5px 20px;
-    margin-right: 20px;
-}
-
-.contenedor-tabla{  
-    overflow-x: auto;
-    margin: 0px 0px 20px 0px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
-    width: 100%; 
-}
-table{
+#nav{
+    border-bottom: 2px solid black;
     width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0px;
 }
-thead{
-    background-color: var(--azul-primario);
-    color: var(--blanco);
+#nav .col-xl-2{
+    display: flex;
+    justify-content: center;
 }
-#tablaUsuarios th, td{
-    padding: 10px;
-    text-align: center !important;
-    border-bottom: 1px solid var(--azul-primario) !important;
+#nav .col-xl-2 a{
+    width: 85%;
 }
-
-button{
-    background-color: var(--azul);
-    color: var(--blanco);
+#nav .col-xl-2 button{
     border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+    background: var(--fondo);
+    font-size: 32px;
+    width: 100%;
 }
-
-button:hover{
-    background-color: black;
+#nav .col-xl-2 button:hover{
+    background: var(--azul-secundario3);
 }
 
 /* footer -------------------- footer */
@@ -275,13 +218,23 @@ button:hover{
 
     /* centro -------------------- centro */
 
-    .titulo{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
     }
-    .titulo h1{
-        margin-bottom: 20px;
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
     }
 
     /* footer -------------------- footer */
@@ -345,13 +298,23 @@ button:hover{
 
     /* centro -------------------- centro */
 
-    .titulo{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
     }
-    .titulo h1{
-        margin-bottom: 20px;
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
     }
     
     /* footer -------------------- footer */
@@ -415,13 +378,23 @@ button:hover{
     
     /* centro -------------------- centro */
 
-    .titulo{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
     }
-    .titulo h1{
-        margin-bottom: 20px;
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
     }
 
     /* footer -------------------- footer */
@@ -477,6 +450,24 @@ button:hover{
         height: auto;
     }
     
+    /* centro -------------------- centro */
+
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 18px;
+    }
+
     /* footer -------------------- footer */
     #pie{
         background-image: url("../img/gris fondo.jpg");
@@ -533,7 +524,24 @@ button:hover{
         max-width: 55px;
         height: auto;
     }
-    
+    /* centro -------------------- centro */
+
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 20px;
+    }
+
     /* footer -------------------- footer */
     
     #pie{
@@ -592,6 +600,24 @@ button:hover{
         height: auto;
     }
     
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 20px;
+    }
+
+    /* footer -------------------- footer */
     #pie{
         height: 130px;
     }
@@ -643,5 +669,22 @@ button:hover{
         margin-bottom: 15px;
         max-width: 75px;
         height: auto;
+    }
+
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 25px;
     }
 }

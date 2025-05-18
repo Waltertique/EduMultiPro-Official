@@ -6,6 +6,7 @@ from flask import session
 from werkzeug.utils import secure_filename
 import os
 from werkzeug.security import generate_password_hash
+import uuid
 
 admin2_bp = Blueprint('admin2_bp', __name__, url_prefix='/admin')
 
@@ -461,8 +462,118 @@ def verNoticia(id):
 
     return render_template('admin/8.3verNoticia.html', noticia=noticia)
 
+# ------------Aulas-----------------------------------------------------------------------------
 
+@admin2_bp.route('/5.2verAula')
+def verAula():
+    aula_id = request.args.get('aula_id')
+    connection = current_app.connection
+    aula_info = {}
+    anuncios = []
 
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                SELECT Anuncio.ID,
+                    Aula.Aula_Nombre, Materia.Materia_Nombre, 
+                    CONCAT(Curso.Curso_Nombre, ' ', Jornada.Jornada_Nombre) AS Curso_Jornada,
+                    CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Profesor,
+                    Usuario.RutaFoto,
+                    Anuncio.Titulo_Anuncio, Anuncio.Descripcion_Anuncio, Anuncio.Fecha_Anuncio,
+                    Anuncio.Enlace_Anuncio
+                FROM Aula
+                JOIN Materia ON Aula.materia_id = Materia.ID
+                JOIN Curso ON Aula.curso_id = Curso.ID
+                JOIN Jornada ON Curso.jornada_id = Jornada.ID
+                JOIN Usuario ON Aula.usuario_id = Usuario.ID
+                LEFT JOIN Anuncio ON Anuncio.aula_id = Aula.ID
+                WHERE Aula.ID = %s
+            """, (aula_id,))
+            anuncios = cursor.fetchall()
+
+            # Si hay resultados, extraer info del aula
+            if anuncios:
+                aula_info = {
+                    'Aula_Nombre': anuncios[0]['Aula_Nombre'],
+                    'Materia_Nombre': anuncios[0]['Materia_Nombre'],
+                    'Curso_Jornada': anuncios[0]['Curso_Jornada'],
+                    'Profesor': anuncios[0]['Profesor']
+                }
+
+    except Exception as e:
+        flash(f'Error al obtener información del aula: {str(e)}', 'danger')
+
+    return render_template('admin/5.2verAula.html', aula=aula_info, anuncios=anuncios, aula_id=aula_id)
+
+@admin2_bp.route('/crear_anuncio', methods=['POST'])
+def crear_anuncio():
+    connection = current_app.connection
+
+    aula_id = request.form.get('aula_id')
+    usuario_id = session.get('usuario_id')  # Asegúrate de que el usuario esté autenticado
+
+    titulo = request.form.get('titulo')
+    descripcion = request.form.get('descripcion')
+    fecha = request.form.get('fecha')
+    archivo = request.files.get('archivo')
+
+    enlace_archivo = None
+
+    if archivo and archivo.filename != '':
+        # Asegurarse de que la carpeta existe
+        carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
+        os.makedirs(carpeta_destino, exist_ok=True)
+
+        # Limpiar nombre del archivo
+        ext = os.path.splitext(archivo.filename)[1]  # extensión con punto
+        nuevo_nombre = f"{uuid.uuid4().hex}{ext}"  # nombre único
+        ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+
+        # Guardar el archivo
+        archivo.save(ruta_guardado)
+
+        # Ruta para usar en href del navegador
+        enlace_archivo = f"fotos/{nuevo_nombre}"
+
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO Anuncio (aula_id, usuario_id, Titulo_Anuncio, Descripcion_Anuncio, Fecha_Anuncio, Enlace_Anuncio)
+                VALUES (%s, %s, %s, %s, %s, %s)
+            """, (aula_id, usuario_id, titulo, descripcion, fecha, enlace_archivo))
+        connection.commit()
+        flash('Anuncio creado correctamente.', 'success')
+    except Exception as e:
+        connection.rollback()
+        flash(f'Error al crear el anuncio: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
+@admin2_bp.route('/eliminar-anuncio/<string:id>/<string:aula_id>', methods=['POST'])
+def eliminar_anuncio(id, aula_id):
+    connection = current_app.connection
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM Anuncio WHERE ID = %s", (id,))
+        connection.commit()
+        flash('Anuncio eliminado correctamente.', 'success')
+    except Exception as e:
+        connection.rollback()
+        flash(f'Error al eliminar el anuncio: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
+@admin2_bp.route('/5.3Trabajos')
+def Trabajos():
+    return render_template('admin/5.3Trabajos.html')
+
+@admin2_bp.route('/5.4Personas')
+def Personas():
+    return render_template('admin/5.4Personas.html')
+
+@admin2_bp.route('/5.5notas')
+def Notas():
+    return render_template('admin/5.5notas.html')
 
 
 

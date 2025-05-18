@@ -730,6 +730,7 @@ def guardar_aula():
 def aula():
     connection = current_app.connection
     aulas = []
+    materias = []
 
     try:
         with connection.cursor() as cursor:
@@ -743,11 +744,15 @@ def aula():
                 JOIN Usuario ON Aula.usuario_id = Usuario.ID
             """)
             aulas = cursor.fetchall()
+            
+            # Consulta para materias
+            cursor.execute("SELECT * FROM Materia")
+            materias = cursor.fetchall()
 
     except Exception as e:
         flash(f'Error al obtener aulas: {str(e)}', 'danger')
 
-    return render_template('admin/5-aula.html', aulas=aulas)
+    return render_template('admin/5-aula.html', aulas=aulas, materias=materias)
 
 @admin_bp.route('/eliminar_aula/<string:id>', methods=['POST'])
 def eliminar_aula(id):
@@ -764,4 +769,23 @@ def eliminar_aula(id):
         connection.rollback()
         flash(f'Error al eliminar aula: {str(e)}', 'danger')
     
+    return redirect(url_for('admin_bp.aula'))
+
+@admin_bp.route('/modificar_aula', methods=['POST'])
+def modificar_aula():
+    id = request.form['id']
+    nombre = request.form['nombre']
+    materia_id = request.form['materia_id']
+
+    connection = current_app.connection
+    with connection.cursor() as cursor:
+        sql = """
+            UPDATE Aula
+            SET Aula_Nombre = %s, materia_id = %s
+            WHERE ID = %s
+        """
+        cursor.execute(sql, (nombre, materia_id, id))
+    connection.commit()
+
+    flash('Aula modificada exitosamente.')
     return redirect(url_for('admin_bp.aula'))

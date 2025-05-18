@@ -1,0 +1,1257 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fondo);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+/* nav -------------------- nav */
+
+#navegador{
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+    box-shadow: var(--sombra);
+    border-bottom: 3px solid var(--azulClaro);
+}
+
+#n2{
+    padding: 0;
+}
+#n2 h1{
+    font-size: 7rem;
+}
+
+#n3 h3{
+    font-size: 3.3rem;
+    color: aqua;
+}
+#img1{
+    max-width: 90px;
+    height: auto;
+    margin-top: 5px;
+}
+
+/* boton -------------------- boton*/
+#btn1{
+    padding: 0 0;
+}
+
+.btn-group{
+    width: 100%;
+    padding: 0;
+    background: #007bbd;
+    border-radius: 0;
+    border: 1px solid var(--azulClaro);
+}
+#abtn{
+    color: white;
+    border: 1px solid var(--azulClaro);
+}
+.dropdown-menu{
+    width: 100%;
+    background: var(--azul);
+}
+.dropdown-menu a{
+    border-bottom: 1px solid var(--azulClaro);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+}
+.dropdown-menu i{
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+.dropdown-menu p{
+    margin: auto 10px;
+}
+.dropdown-item:hover{
+    background: var(--azulClaro);
+}
+
+
+/* article -------------------- article */
+
+#centro{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+.row {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+#barraLateral{
+    width: 250px;
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+    display: flex;
+    flex-direction: column;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+.menu a{
+    text-decoration: none;
+}
+.menu  i{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    padding: 15px 25px;
+    border-bottom: 1px solid var(--azulClaro);
+}
+.menu i p{
+    margin: 0px 10px;
+}
+i:hover{
+    cursor: pointer;
+    background: var(--azulClaro);
+}
+/* centro -------------------- centro */
+#contenidoTabla{
+    flex: 1;
+    padding: 50px 100px;
+}
+#nav{
+    border-bottom: 2px solid black;
+    width: 100%;
+}
+#nav .col-xl-2{
+    display: flex;
+    justify-content: center;
+}
+#nav .col-xl-2 a{
+    width: 85%;
+}
+#nav .col-xl-2 button{
+    border: none;
+    background: var(--fondo);
+    font-size: 32px;
+    width: 100%;
+}
+#nav .col-xl-2 button:hover{
+    background: var(--azul-secundario3);
+}
+#baner{
+    margin: 20px auto;
+    border: none;
+    border-radius: 20px;
+    width: 90%;
+    height: auto;
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+}
+#titulo h2{
+    font-size: 50px;
+    margin: 20px 0px;
+    color: white;
+}
+#codigo{
+    margin-bottom: 10px;
+    color: white;
+}
+#novedad{
+    margin: 30px auto;
+    width: 87%;
+}
+#novedad h2{
+    font-size: 40px;
+    font-style: italic;
+}
+#canuncio{
+    display: flex;
+    justify-content: end;
+}
+#canuncio button{
+    background: var(--azul-secundario);
+    color: white;
+    border: 1px solid var(--azul);
+    border-radius: 20px;
+    padding: 10px;
+    height: auto;
+}
+#canuncio button:hover{
+    background: var(--azul);
+    border: 1px solid var(--azulClaro);
+    transform: scale(1.1);
+}
+.crearAnuncio{
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 10px 0px 20px 13%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 80%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%; 
+    text-align: center;
+}
+.crearAnuncio form{
+    display: flex;
+    flex-direction: column;
+}
+.crearAnuncio form input{
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: 1px solid var(--azul-primario);
+    background: var(--fondo);
+}
+.crearAnuncio form textarea{
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: 1px solid var(--azul-primario);
+    background: var(--fondo);
+}
+.crearAnuncio form button{
+    border-radius: 20px;
+    background: var(--azul-secundario);
+    border: 2px solid var(--azul-primario);
+    width: 200px;
+    color: white;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.crearAnuncio form button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    color: black;
+}
+.anuncio {
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 10px 0px 20px 13%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 80%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%; 
+}
+.anuncio .info{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.anuncio .info1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.anuncio .info1 img{
+    width: 30px;
+    height: auto;
+}
+.anuncio .info1 h1{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 25px;
+}
+.anuncio .info1 h2{
+    margin-top: 15px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+.control{
+    display: flex;
+    flex-direction: row;
+}
+.anuncio .info .b1,.btn-icon{
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 20px;
+    width: 90px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+.anuncio .info .b1:hover, .btn-icon:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.anuncio .descripcion{
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+}
+.anuncio .descripcion h2{
+    font-size: 20px;
+    font-weight: bold;
+}
+.botones{
+    margin-top: 20px;
+}
+.botones input{
+    margin-right: 0px;
+    padding: 0px 20px;
+    width: 80%;
+    height: 40px;
+    border-radius: 20px 0px 0px 20px;
+}
+.botones a button{
+    margin-left: 0px;
+    width: 80px;
+    height: 39px;
+    color: white;
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 0px 20px 20px 0px;
+}
+.botones a button:hover{
+    color: black;
+    cursor: pointer;
+}
+
+/* footer -------------------- footer */
+
+#pie{
+    background-image: url("../img/gris fondo.jpg");
+    height: 130px;
+}
+#n4 h2{
+    color: white;
+    font-size: 45px;
+}
+#n5 a{
+    color: white;
+    font-size: 20px;
+}
+#n6 a{
+    color: white;
+    font-size: 20px;
+}
+#n7 a{
+    color: white;
+    font-size: 20px;
+}
+#n8 a{
+    color: white;
+    font-size: 20px;
+}
+#n9 a{
+    color: white;
+    font-size: 20px;
+}
+
+@media (min-width: 100px) and (max-width: 414px) {
+    #n2 h1 {
+        font-size: 3.2rem; 
+        margin: 0 auto;
+    }
+
+    #n3 h3 {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    #n1{
+        display: flex;
+        justify-content: center;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 60px;
+        height: auto;
+    }
+
+    /* centro -------------------- centro */
+
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+    #titulo h2{
+        font-size: 30px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: center;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 50%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 10px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 10px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 10px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+    
+
+    /* footer -------------------- footer */
+
+    #pie{
+        background-image: url("../img/gris fondo.jpg");
+        height: 200px;
+    }
+    #n4 h2{
+        margin-top: 30px;
+        margin-bottom: 20px;
+        color: white;
+        font-size: 2rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 0.7rem;
+        margin-bottom: 15px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 575px) {
+    #n2 h1 {
+        font-size: 4.4rem; 
+        margin: 0 auto;
+    }
+
+    #n3 h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    #n1{
+        display: flex;
+        justify-content: center;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+
+    /* centro -------------------- centro */
+
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+    #titulo h2{
+        font-size: 30px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: center;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 50%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 10px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 10px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 10px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+    
+    /* footer -------------------- footer */
+
+    #pie{
+        background-image: url("../img/gris fondo.jpg");
+        height: 200px;
+    }
+    #n4 h2{
+        margin-top: 30px;
+        margin-bottom: 20px;
+        color: white;
+        font-size: 2rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+    #n2 h1 {
+        font-size: 4.4rem; 
+        margin: 0 auto;
+    }
+
+    #n3 h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    #n1{
+        display: flex;
+        justify-content: center;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+    
+    /* centro -------------------- centro */
+
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+    #titulo h2{
+        font-size: 30px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: center;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 50%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 10px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 10px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 10px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+
+    /* footer -------------------- footer */
+    
+    #pie{
+        background-image: url("../img/gris fondo.jpg");
+        height: 200px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #n2 h1 {
+        font-size: 5.4rem; 
+        margin: 0 20px;
+    }
+
+    #n3 h3 {
+        font-size: 1.7rem;
+        margin-bottom: 15px;
+    }
+    #img1{
+        margin-top: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+    
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 18px;
+    }
+    #titulo h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio{
+    margin: 0px auto;
+}
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 13px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 13px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 13px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+    /* footer -------------------- footer */
+    #pie{
+        background-image: url("../img/gris fondo.jpg");
+        height: 220px;
+    }
+    #n4 h2{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: white;
+        font-size: 2.8rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    #n2 h1 {
+        font-size: 3.7rem; 
+    }
+
+    #n3 h3 {
+        font-size: 1.8rem;
+    }
+    #n1{
+        display: flex;
+        justify-content: end;
+    }
+    #img1{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 55px;
+        height: auto;
+    }
+    
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 20px;
+    }
+    #titulo h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio{
+    margin: 0px auto;
+}
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 13px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 13px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 13px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+    /* footer -------------------- footer */
+    
+    #pie{
+        background-image: url("../img/gris fondo.jpg");
+        height: 220px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2.8rem;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px){
+    #n2 h1 {
+        font-size: 4.9rem; 
+    }
+
+    #n3 h3 {
+        font-size: 2.1rem;
+    }
+    #n1{
+        display: flex;
+        justify-content: end;
+    }
+    #img1{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 70px;
+        height: auto;
+    }
+
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 20px;
+    }
+    #titulo h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio{
+    margin: 0px auto;
+}
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 13px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 13px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 13px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+    
+    /* footer -------------------- footer */
+    #pie{
+        height: 130px;
+    }
+    #n4 h2{
+        color: white;
+        font-size: 2.4rem;
+    }
+    #n5 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n6 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n7 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n8 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    #n9 a{
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+}
+@media (min-width: 1400px) and (max-width: 1775px){
+    #n2 h1 {
+        font-size: 5.6rem; 
+    }
+
+    #n3 h3 {
+        font-size: 2.4rem;
+    }
+    #n1{
+        display: flex;
+        justify-content: end;
+    }
+    #img1{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        max-width: 75px;
+        height: auto;
+    }
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 25px;
+    }
+    #titulo h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #codigo h4{
+        font-size: 15px;
+    }
+
+    #novedad{
+        display: flex;
+        text-align: center;
+    }
+    #novedad h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncio{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncio button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    /* Primer botón (Modificar) */
+.anuncio{
+    margin: 0px auto;
+}
+.anuncio button:nth-child(1) {
+    margin: 20px 0px 10px 11px;
+    width: 28%;
+    font-size: 13px;
+}
+  
+/* Segundo botón (Eliminar) */
+.anuncio button:nth-child(2) {
+    margin: 20px 0px 10px 5px;
+    width: 28%;
+    font-size: 13px;
+}
+
+  /* Tercer botón (Comentar) */
+.anuncio button:nth-child(3) {
+    margin: 20px 0px 10px 5px;
+    width: 29%;
+    font-size: 13px;
+}
+
+.anuncio small {
+    margin-left: 18px; /* o más si quieres */
+    color: gray; /* opcional, para que no se vea tan fuerte */
+    font-size: 14px; /* opcional, para que se vea más discreto */
+  }
+}

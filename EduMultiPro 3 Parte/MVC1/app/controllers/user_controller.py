@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from werkzeug.security import check_password_hash  # Importa la función para comparar contraseñas encriptadas
+from flask import session
 
 user_bp = Blueprint('user_bp', __name__)
 
@@ -26,10 +27,11 @@ def login():
         user = cursor.fetchone()
 
     if user and check_password_hash(user['Contraseña'], contraseña):
+        session['usuario_id'] = user['ID']  # ✅ Guarda el ID en sesión
         rol = user['Nombre_Rol']
 
         if rol == 'Administrador':
-            return redirect(url_for('admin_bp.usuario'))  # admin/2-usuario.html
+            return redirect(url_for('admin_bp.usuario'))
         elif rol == 'Alumno':
             return redirect(url_for('alumno_bp.vista_alumno_principal'))
         elif rol == 'Profesor':

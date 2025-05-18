@@ -138,58 +138,59 @@ i:hover{
     cursor: pointer;
     background: var(--azulClaro);
 }
-/* tabla -------------------- tabla*/
+/* centro -------------------- centro */
+
 #contenidoTabla{
     flex: 1;
-    padding: 20px;
+    padding: 50px 100px;
 }
-.titulo{
+#nav{
+    border-bottom: 2px solid black;
+    width: 100%;
+}
+#nav .col-xl-2{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 30px;
+    justify-content: center;
 }
-.titulo h1{
-    font-size: 30px;
-    color: var(--azul-primario);
-    font-weight: bold;
+#nav .col-xl-2 a{
+    width: 85%;
+}
+#nav .col-xl-2 button{
+    border: none;
+    background: var(--fondo);
+    font-size: 32px;
+    width: 100%;
+}
+#nav .col-xl-2 button:hover{
+    background: var(--azul-secundario3);
 }
 
-.modificarAula{
-    height: auto;
-    background-color: white;
-    padding: 20px 20px;
-    margin-bottom: 30px;
+.titulo{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 0px 100px;
+    align-items: center;
+}
+.titulo h1{
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+}
+.titulo button{
     border-radius: 20px;
-    text-align: center;
-}
-.modificarAula h1{
-    font-size: 25px;
-    margin-bottom: 20px;
-}
-.modificarAula input{
-    border: 1px solid var(--azul-primario);
-    border-radius: 20px;
-    padding: 5px 20px;
-    margin-right: 20px;
-}
-.btn-cancelar{
-    margin-left: 20px;
-}
-#editarAulaNombre, #editarMateria{
-    border: 1px solid var(--azul-primario);
-    border-radius: 20px;
-    padding: 5px 20px;
-    margin-right: 20px;
+    padding: 7px 15px;
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    color: white;
 }
 
 .contenedor-tabla{  
     overflow-x: auto;
     margin: 0px 0px 20px 0px;
-    background-color: white;
+    background: var(--fondo);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
     width: 100%; 
 }
 table{
@@ -207,7 +208,7 @@ thead{
     border-bottom: 1px solid var(--azul-primario) !important;
 }
 
-button{
+table button{
     background-color: var(--azul);
     color: var(--blanco);
     border: none;
@@ -218,10 +219,12 @@ button{
     transition: background-color 0.3s ease;
 }
 
-button:hover{
+table button:hover{
     background-color: black;
 }
-
+tbody tr td{
+    color: black;
+}
 /* footer -------------------- footer */
 
 #pie{
@@ -275,13 +278,23 @@ button:hover{
 
     /* centro -------------------- centro */
 
-    .titulo{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
     }
-    .titulo h1{
-        margin-bottom: 20px;
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
     }
 
     /* footer -------------------- footer */
@@ -345,13 +358,23 @@ button:hover{
 
     /* centro -------------------- centro */
 
-    .titulo{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
     }
-    .titulo h1{
-        margin-bottom: 20px;
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
     }
     
     /* footer -------------------- footer */
@@ -415,13 +438,23 @@ button:hover{
     
     /* centro -------------------- centro */
 
-    .titulo{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
     }
-    .titulo h1{
-        margin-bottom: 20px;
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
     }
 
     /* footer -------------------- footer */
@@ -475,6 +508,24 @@ button:hover{
         margin-top: 15px;
         max-width: 70px;
         height: auto;
+    }
+    
+    /* centro -------------------- centro */
+
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 18px;
     }
     
     /* footer -------------------- footer */
@@ -534,6 +585,24 @@ button:hover{
         height: auto;
     }
     
+    /* centro -------------------- centro */
+
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 20px;
+    }
+
     /* footer -------------------- footer */
     
     #pie{
@@ -592,6 +661,24 @@ button:hover{
         height: auto;
     }
     
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 20px;
+    }
+
+    /* footer -------------------- footer */
     #pie{
         height: 130px;
     }
@@ -643,5 +730,22 @@ button:hover{
         margin-bottom: 15px;
         max-width: 75px;
         height: auto;
+    }
+
+    /* centro -------------------- cento */
+    #contenidoTabla{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #nav{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #nav .col-xl-2 button{
+        border: none;
+        background: var(--fondo);
+        font-size: 25px;
     }
 }
