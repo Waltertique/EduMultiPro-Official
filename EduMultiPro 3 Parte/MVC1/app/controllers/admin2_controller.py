@@ -7,6 +7,8 @@ from werkzeug.utils import secure_filename
 import os
 from werkzeug.security import generate_password_hash
 import uuid
+from datetime import datetime # importa tu modelo
+from conexion import obtener_conexion
 
 admin2_bp = Blueprint('admin2_bp', __name__, url_prefix='/admin')
 
@@ -467,20 +469,33 @@ def verNoticia(id):
 @admin2_bp.route('/5.2verAula')
 def verAula():
     aula_id = request.args.get('aula_id')
+
+    if not aula_id:
+        flash('No se especificó un aula.', 'warning')
+        return redirect(url_for('admin2_bp.algun_listado'))  # Cambia esto al nombre real de tu ruta de listado
+
+    try:
+        aula_id = int(aula_id)  # Conversión segura a entero
+    except ValueError:
+        flash('ID de aula no válido.', 'danger')
+        return redirect(url_for('admin2_bp.algun_listado'))
+
     connection = current_app.connection
     aula_info = {}
     anuncios = []
+    comentarios_por_anuncio = {}
 
     try:
         with connection.cursor() as cursor:
+            # Obtener anuncios e información del aula
             cursor.execute("""
                 SELECT Anuncio.ID,
-                    Aula.Aula_Nombre, Materia.Materia_Nombre, 
-                    CONCAT(Curso.Curso_Nombre, ' ', Jornada.Jornada_Nombre) AS Curso_Jornada,
-                    CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Profesor,
-                    Usuario.RutaFoto,
-                    Anuncio.Titulo_Anuncio, Anuncio.Descripcion_Anuncio, Anuncio.Fecha_Anuncio,
-                    Anuncio.Enlace_Anuncio
+                       Aula.Aula_Nombre, Materia.Materia_Nombre, 
+                       CONCAT(Curso.Curso_Nombre, ' ', Jornada.Jornada_Nombre) AS Curso_Jornada,
+                       CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Profesor,
+                       Usuario.RutaFoto,
+                       Anuncio.Titulo_Anuncio, Anuncio.Descripcion_Anuncio, Anuncio.Fecha_Anuncio,
+                       Anuncio.Enlace_Anuncio
                 FROM Aula
                 JOIN Materia ON Aula.materia_id = Materia.ID
                 JOIN Curso ON Aula.curso_id = Curso.ID
@@ -491,7 +506,7 @@ def verAula():
             """, (aula_id,))
             anuncios = cursor.fetchall()
 
-            # Si hay resultados, extraer info del aula
+            # Si hay anuncios, extraer la info general del aula
             if anuncios:
                 aula_info = {
                     'Aula_Nombre': anuncios[0]['Aula_Nombre'],
@@ -500,47 +515,78 @@ def verAula():
                     'Profesor': anuncios[0]['Profesor']
                 }
 
+                # Obtener comentarios de los anuncios
+                anuncio_ids = [anuncio['ID'] for anuncio in anuncios if anuncio['ID'] is not None]
+                if anuncio_ids:
+                    formato_ids = ','.join(['%s'] * len(anuncio_ids))
+                    cursor.execute(f"""
+                        SELECT Comentario.ID AS comentario_id,
+                               Comentario.anuncio_id,
+                               Comentario.Descripcion AS comentario,
+                               Comentario.Fecha AS fecha_comentario,
+                               CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Comentador,
+                               Usuario.RutaFoto
+                        FROM Comentario
+                        JOIN Usuario ON Comentario.usuario_id = Usuario.ID
+                        WHERE Comentario.anuncio_id IN ({formato_ids})
+                        ORDER BY Comentario.Fecha DESC
+                    """, anuncio_ids)
+
+                    comentarios = cursor.fetchall()
+
+                    # Agrupar comentarios por anuncio_id
+                    for com in comentarios:
+                        anuncio_id = com['anuncio_id']
+                        if anuncio_id not in comentarios_por_anuncio:
+                            comentarios_por_anuncio[anuncio_id] = []
+                        comentarios_por_anuncio[anuncio_id].append(com)
+
     except Exception as e:
         flash(f'Error al obtener información del aula: {str(e)}', 'danger')
 
-    return render_template('admin/5.2verAula.html', aula=aula_info, anuncios=anuncios, aula_id=aula_id)
+    return render_template(
+        'admin/5.2verAula.html',
+        aula=aula_info,
+        anuncios=anuncios,
+        aula_id=aula_id,
+        comentarios_por_anuncio=comentarios_por_anuncio
+    )
 
 @admin2_bp.route('/crear_anuncio', methods=['POST'])
 def crear_anuncio():
     connection = current_app.connection
 
     aula_id = request.form.get('aula_id')
-    usuario_id = session.get('usuario_id')  # Asegúrate de que el usuario esté autenticado
+    usuario_id = session.get('usuario_id')
 
     titulo = request.form.get('titulo')
     descripcion = request.form.get('descripcion')
-    fecha = request.form.get('fecha')
-    archivo = request.files.get('archivo')
+    
+    fecha = datetime.now().strftime('%Y-%m-%d')  # ← aquí se obtiene la fecha del sistema
 
-    enlace_archivo = None
+    archivos = request.files.getlist('archivo[]')
+    enlaces_archivos = []
 
-    if archivo and archivo.filename != '':
-        # Asegurarse de que la carpeta existe
+    if archivos:
         carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
         os.makedirs(carpeta_destino, exist_ok=True)
 
-        # Limpiar nombre del archivo
-        ext = os.path.splitext(archivo.filename)[1]  # extensión con punto
-        nuevo_nombre = f"{uuid.uuid4().hex}{ext}"  # nombre único
-        ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+        for archivo in archivos:
+            if archivo.filename != '':
+                ext = os.path.splitext(archivo.filename)[1]
+                nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
+                ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+                archivo.save(ruta_guardado)
+                enlaces_archivos.append(f"fotos/{nuevo_nombre}")
 
-        # Guardar el archivo
-        archivo.save(ruta_guardado)
-
-        # Ruta para usar en href del navegador
-        enlace_archivo = f"fotos/{nuevo_nombre}"
+    enlaces_concatenados = ';'.join(enlaces_archivos) if enlaces_archivos else None
 
     try:
         with connection.cursor() as cursor:
             cursor.execute("""
                 INSERT INTO Anuncio (aula_id, usuario_id, Titulo_Anuncio, Descripcion_Anuncio, Fecha_Anuncio, Enlace_Anuncio)
                 VALUES (%s, %s, %s, %s, %s, %s)
-            """, (aula_id, usuario_id, titulo, descripcion, fecha, enlace_archivo))
+            """, (aula_id, usuario_id, titulo, descripcion, fecha, enlaces_concatenados))
         connection.commit()
         flash('Anuncio creado correctamente.', 'success')
     except Exception as e:
@@ -563,17 +609,148 @@ def eliminar_anuncio(id, aula_id):
 
     return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
 
+@admin2_bp.route('/modificar_anuncio/<int:id>', methods=['POST'])
+def modificar_anuncio(id):
+    connection = current_app.connection
+
+    titulo = request.form.get('titulo')
+    descripcion = request.form.get('descripcion')
+    fecha = request.form.get('fecha')
+    archivos = request.files.getlist('archivo[]')
+
+    enlaces_archivos = []
+
+    if archivos:
+        carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
+        os.makedirs(carpeta_destino, exist_ok=True)
+
+        for archivo in archivos:
+            if archivo.filename != '':
+                ext = os.path.splitext(archivo.filename)[1]
+                nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
+                ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+                archivo.save(ruta_guardado)
+                enlaces_archivos.append(f"fotos/{nuevo_nombre}")
+
+    enlaces_concatenados = ';'.join(enlaces_archivos) if enlaces_archivos else None
+
+    try:
+        with connection.cursor() as cursor:
+            if enlaces_concatenados:
+                cursor.execute("""
+                    UPDATE Anuncio
+                    SET Titulo_Anuncio = %s, Descripcion_Anuncio = %s, Fecha_Anuncio = %s, Enlace_Anuncio = %s
+                    WHERE ID = %s
+                """, (titulo, descripcion, fecha, enlaces_concatenados, id))
+            else:
+                cursor.execute("""
+                    UPDATE Anuncio
+                    SET Titulo_Anuncio = %s, Descripcion_Anuncio = %s, Fecha_Anuncio = %s
+                    WHERE ID = %s
+                """, (titulo, descripcion, fecha, id))
+
+        connection.commit()
+        flash('Anuncio modificado correctamente.', 'success')
+    except Exception as e:
+        connection.rollback()
+        flash(f'Error al modificar el anuncio: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verAula', aula_id=request.form.get('aula_id')))
+
+@admin2_bp.route('/comentar/<int:anuncio_id>', methods=['POST'])
+def comentar(anuncio_id):
+    aula_id = request.args.get('aula_id')
+    usuario_id = session.get('usuario_id')  # ID del usuario logueado
+    nombre_comentador = session.get('usuario_nombre')  # Solo para validación
+
+    if not usuario_id:
+        flash('No has iniciado sesión', 'warning')
+        return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
+    texto_comentario = request.form.get('comentario')
+    if not texto_comentario:
+        flash('Debe escribir un comentario', 'warning')
+        return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
+    connection = current_app.connection
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO Comentario (anuncio_id, Descripcion, Fecha, usuario_id)
+                VALUES (%s, %s, NOW(), %s)
+            """, (anuncio_id, texto_comentario, usuario_id))
+            connection.commit()
+        flash('Comentario agregado con éxito', 'success')
+    except Exception as e:
+        flash(f'Error al agregar comentario: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
+@admin2_bp.route('/eliminar_comentario/<int:id>', methods=['POST'])
+def eliminar_comentario(id):
+    aula_id = request.args.get('aula_id')
+    connection = current_app.connection
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM Comentario WHERE ID = %s", (id,))
+            connection.commit()
+            flash('Comentario eliminado correctamente.', 'success')
+    except Exception as e:
+        flash(f'Error al eliminar comentario: {str(e)}', 'danger')
+    return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
 @admin2_bp.route('/5.3Trabajos')
 def Trabajos():
-    return render_template('admin/5.3Trabajos.html')
+    aula_id = request.args.get('aula_id')
+    if not aula_id:
+        flash("No se especificó aula", "error")
+        return redirect(url_for('admin2_bp.verAula'))
+
+    return render_template('admin/5.3Trabajos.html', aula_id=aula_id)
 
 @admin2_bp.route('/5.4Personas')
 def Personas():
-    return render_template('admin/5.4Personas.html')
+    aula_id = request.args.get('aula_id')
+    if not aula_id:
+        flash("No se especificó aula", "error")
+        return redirect(url_for('admin2_bp.verAula'))
+
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("SELECT curso_id FROM Aula WHERE ID = %s", (aula_id,))
+            resultado = cursor.fetchone()
+
+            if not resultado:
+                flash("Aula no encontrada", "error")
+                return redirect(url_for('admin2_bp.verAula'))
+
+            curso_id = resultado['curso_id']
+
+            query = """
+                SELECT u.ID, u.Primer_Nombre, u.Segundo_Nombre, u.Primer_Apellido, u.Segundo_Apellido
+                FROM Usuario u
+                JOIN Miembros_Curso mc ON u.ID = mc.usuario_id
+                WHERE mc.curso_id = %s
+            """
+            cursor.execute(query, (curso_id,))
+            usuarios = cursor.fetchall()
+    finally:
+        conexion.close()
+
+    return render_template('admin/5.4Personas.html', usuarios=usuarios, aula_id=aula_id)
 
 @admin2_bp.route('/5.5notas')
 def Notas():
-    return render_template('admin/5.5notas.html')
+    aula_id = request.args.get('aula_id')
+    if not aula_id:
+        flash("No se especificó aula", "error")
+        return redirect(url_for('admin2_bp.verAula'))
+
+    # Lógica para obtener notas...
+
+    notas = []  # ejemplo
+    return render_template('admin/5.5notas.html', notas=notas, aula_id=aula_id)
 
 
 

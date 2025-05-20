@@ -81,10 +81,10 @@
 
                 <div class="row" id="nav">
 
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.verAula') }}"><button id="principal">Pricipal</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Trabajos') }}"><button id="trabajo">Trabajos</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Notas') }}"><button id="nota">Notas</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Personas') }}"><button id="persona">Personas</button></a></div>
+                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.verAula', aula_id=aula_id) }}"><button id="principal">Pricipal</button></a></div>
+                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Trabajos', aula_id=aula_id) }}"><button id="trabajo">Trabajos</button></a></div>
+                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Notas', aula_id=aula_id) }}"><button id="persona">Notas</button></a></div>
+                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Personas', aula_id=aula_id) }}"><button id="persona">Personas</button></a></div>
                    <div class="col-12 col-md-4 col-xl-4"></div>
 
                 </div>
@@ -103,6 +103,8 @@
                   <div class="col-md-6 col-xl-6" id="canuncio"><button id="btn-crear">Crear Anuncio</button></div>
                 </div>
 
+                <!--Crear anuncio----------------------------------------->
+
                 <div class="crearAnuncio" id="crearAnuncio" style="display:none;">
                   <h1>Crear Anuncio</h1>
                   <form action="{{ url_for('admin2_bp.crear_anuncio') }}" method="POST" enctype="multipart/form-data">
@@ -112,14 +114,14 @@
 
                     <textarea name="descripcion" placeholder="Descripción del anuncio" rows="4" required></textarea>
 
-                    <input type="file" name="archivo"> <!-- Opcional -->
-
-                    <input type="date" name="fecha" required>
+                    <input type="file" name="archivo[]" multiple> <!-- Opcional -->
 
                     <button type="submit" class="btn-guardar" id="btn-guardar">Publicar anuncio</button>
                     <button type="button" class="btn-cancelar" id="btn-cancelar">Cancelar</button>
                   </form>
                 </div>
+
+        
 
                 {% for anuncio in anuncios %}
                   <div class="anuncio">
@@ -130,7 +132,7 @@
                         <h2>{{ anuncio.Fecha_Anuncio }}</h2>
                       </div>
                       <div class="control">
-                        <a><button class="b1">Modificar</button></a>
+                        <button class="b1" onclick="mostrarFormulario('modificarAnuncio-{{ anuncio.ID }}')">Modificar</button>
 
                         <form action="{{ url_for('admin2_bp.eliminar_anuncio', id=anuncio['ID'], aula_id=aula_id) }}" method="POST" onsubmit="return confirmarEliminacion()">
                           <button class="btn-icon eliminar" type="submit">Eliminar</button>
@@ -142,12 +144,52 @@
                       <p>{{ anuncio.Descripcion_Anuncio }}</p>
                     </div>
                     {% if anuncio.Enlace_Anuncio %}
-                      <a href="{{ url_for('static', filename=anuncio.Enlace_Anuncio) }}" target="_blank">Ver archivo</a>
+                      {% for enlace in anuncio.Enlace_Anuncio.split(';') %}
+                        <a href="{{ url_for('static', filename=enlace) }}" target="_blank">Ver archivo</a><br>
+                      {% endfor %}
                     {% endif %}
                     <div class="botones">
-                      <input type="text" placeholder="Comentar">
-                      <a><button id="principal">Enviar</button></a>
+                        <form action="{{ url_for('admin2_bp.comentar', anuncio_id=anuncio.ID) }}?aula_id={{ aula_id }}" method="POST">
+                          <input type="text" name="comentario" placeholder="Comentar" required>
+                          <button type="submit" id="principal">Enviar</button>
+                        </form>
                     </div>
+
+                    <!--Modificar anuncio----------------------------------------->
+
+                    <div class="modificarAnuncio" id="modificarAnuncio-{{ anuncio.ID }}" style="display:none;">
+                      <h1>modificar Anuncio</h1>
+                      <form action="{{ url_for('admin2_bp.modificar_anuncio', id=anuncio.ID) }}" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="aula_id" value="{{ aula_id }}">
+                        <input type="hidden" name="fecha" value="{{ anuncio.Fecha_Anuncio }}">  <!-- Aquí el campo faltante -->
+                        
+                        <input type="text" name="titulo" value="{{ anuncio.Titulo_Anuncio }}" required>
+                        <textarea name="descripcion" required>{{ anuncio.Descripcion_Anuncio }}</textarea>
+                        <input type="file" name="archivo[]" multiple>
+
+                        <button type="submit">Guardar cambios</button>
+                        <button type="button" class="btn-cancelarmod" onclick="ocultarFormulario('modificarAnuncio-{{ anuncio.ID }}')">Cancelar</button>
+                      </form>
+                    </div>
+
+                    <!--comentarios----------------------------------------->
+
+                    {% for comentario in comentarios_por_anuncio.get(anuncio.ID, []) %}
+                      <div class="comentario">
+                        <div class="info1">
+                          <img src="{{ url_for('static', filename='fotos/' + (comentario.RutaFoto or 'default.png')) }}" alt="">
+                          <h1>{{ comentario.Comentador }}</h1>
+                          <h2>{{ comentario.fecha_comentario }}</h2>
+                        </div>
+                        <div class="desc">
+                          <p>{{ comentario.comentario }}</p>
+                        </div>
+                        <form action="{{ url_for('admin2_bp.eliminar_comentario', id=comentario.comentario_id, aula_id=aula_id) }}" method="POST" onsubmit="return confirmarEliminacionComentario()">
+                          <button class="btn-icon eliminar" type="submit">Eliminar</button>
+                        </form>
+                      </div>
+                    {% endfor %}
+
                   </div>
                 {% endfor %}
 

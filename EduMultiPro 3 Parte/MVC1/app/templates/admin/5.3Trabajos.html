@@ -81,10 +81,20 @@
 
                 <div class="row" id="nav">
 
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.verAula') }}"><button id="principal">Pricipal</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Trabajos') }}"><button id="trabajo">Trabajos</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Notas') }}"><button id="nota">Notas</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Personas') }}"><button id="persona">Personas</button></a></div>
+                    <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.verAula', aula_id=aula_id) }}"><button id="principal">Pricipal</button></a></div>
+                    <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Trabajos', aula_id=aula_id) }}"><button id="trabajo">Trabajos</button></a></div>
+                    <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Notas', aula_id=aula_id) }}"><button id="persona">Notas</button></a></div>
+                    <div class="col-12 col-md-2 col-xl-2">
+                        {% if aula_id %}
+                            <a href="{{ url_for('admin2_bp.Personas', aula_id=aula_id) }}">
+                                <button id="persona">Personas</button>
+                            </a>
+                        {% else %}
+                            <a href="{{ url_for('admin2_bp.Personas') }}">
+                                <button id="persona">Personas</button>
+                            </a>
+                        {% endif %}
+                    </div>
                    <div class="col-12 col-md-4 col-xl-4"></div>
 
                 </div>

@@ -227,6 +227,8 @@ SELECT Titulo_Anuncio, Descripcion_Anuncio, Enlace_Anuncio, Fecha_Anuncio, Aula_
 FROM Anuncio
 INNER JOIN Aula ON Anuncio.aula_id = Aula.ID;
 
+select * from Comentario;
+
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ---------- Noticias ----------
 

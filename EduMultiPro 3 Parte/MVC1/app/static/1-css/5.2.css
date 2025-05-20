@@ -253,6 +253,55 @@ i:hover{
     cursor: pointer;
     color: black;
 }
+
+.modificarAnuncio{
+    margin-top: 30px;
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+.modificarAnuncio h1{
+    font-size: 30px;
+}
+.modificarAnuncio form{
+    display: flex;
+    flex-direction: column;
+}
+.modificarAnuncio form input{
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: 1px solid var(--azul-primario);
+    background: var(--fondo);
+}
+.modificarAnuncio form textarea{
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: 1px solid var(--azul-primario);
+    background: var(--fondo);
+}
+.modificarAnuncio form button{
+    border-radius: 20px;
+    background: var(--azul-secundario);
+    border: 2px solid var(--azul-primario);
+    width: 200px;
+    color: white;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.modificarAnuncio form button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    color: black;
+}
 .anuncio {
     background: var(--fondo);
     border: 1px solid black;
@@ -329,7 +378,7 @@ i:hover{
     height: 40px;
     border-radius: 20px 0px 0px 20px;
 }
-.botones a button{
+.botones button{
     margin-left: 0px;
     width: 80px;
     height: 39px;
@@ -338,7 +387,56 @@ i:hover{
     background: var(--azul-secundario);
     border-radius: 0px 20px 20px 0px;
 }
-.botones a button:hover{
+.botones button:hover{
+    color: black;
+    cursor: pointer;
+}
+
+.comentario{
+    margin-top: 20px;
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.comentario .info1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.comentario .info1 img{
+    width: 30px;
+    height: auto;
+}
+.comentario .info1 h1{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 25px;
+}
+.comentario .info1 h2{
+    margin-top: 15px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+.comentario button{
+    margin-left: 0px;
+    width: 80px;
+    height: 39px;
+    color: white;
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 20px;
+}
+.comentario button:hover{
+    transform: scale(1.1);
     color: black;
     cursor: pointer;
 }

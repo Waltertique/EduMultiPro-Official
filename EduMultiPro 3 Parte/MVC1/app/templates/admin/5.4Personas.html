@@ -81,11 +81,19 @@
 
                 <div class="row" id="nav">
 
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.verAula') }}"><button id="principal">Pricipal</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Trabajos') }}"><button id="trabajo">Trabajos</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Notas') }}"><button id="nota">Notas</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Personas') }}"><button id="persona">Personas</button></a></div>
-                   <div class="col-12 col-md-4 col-xl-4"></div>
+                  <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.verAula', aula_id=aula_id) }}"><button id="principal">Pricipal</button></a></div>
+                  <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Trabajos', aula_id=aula_id) }}"><button id="trabajo">Trabajos</button></a></div>
+                  <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Notas', aula_id=aula_id) }}"><button id="persona">Notas</button></a></div>
+                  <div class="col-12 col-md-2 col-xl-2">
+                    {% if aula_id %}
+                        <a href="{{ url_for('admin2_bp.Personas', aula_id=aula_id) }}">
+                            <button id="persona">Personas</button>
+                        </a>
+                    {% else %}
+                        <button id="persona" disabled title="No hay aula seleccionada">Personas</button>
+                    {% endif %}
+                  </div>
+                  <div class="col-12 col-md-4 col-xl-4"></div>
 
                 </div>
 
@@ -95,39 +103,29 @@
 
                     <div class="contenedor-tabla">
                         <table class="tablaUsuarios" id="tablaUsuarios">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Primer Nombre</th>
-                                    <th>Segundo Nombre</th>
-                                    <th>Primer Apellido</th>
-                                    <th>Segundo Apellido</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>juan</td>
-                                        <td>pedro</td>
-                                        <td>miguel</td>
-                                        <td>gonzales</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>sebastian</td>
-                                        <td>alejandro</td>
-                                        <td>castilla</td>
-                                        <td>zapata</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>juan</td>
-                                        <td>perez</td>
-                                        <td>quintero</td>
-                                        <td>domingo</td>
-                                    </tr>
-                            </tbody>
-                        </table>
+                          <thead>
+                              <tr>
+                                  <th>ID</th>
+                                  <th>Primer Nombre</th>
+                                  <th>Segundo Nombre</th>
+                                  <th>Primer Apellido</th>
+                                  <th>Segundo Apellido</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {% if usuarios %}
+                                  {% for usuario in usuarios %}
+                                      <tr>
+                                          <td>{{ usuario.ID }}</td>
+                                          <td>{{ usuario.Primer_Nombre }}</td>
+                                          <td>{{ usuario.Segundo_Nombre or '' }}</td>
+                                          <td>{{ usuario.Primer_Apellido }}</td>
+                                          <td>{{ usuario.Segundo_Apellido or '' }}</td>
+                                      </tr>
+                                  {% endfor %}
+                              {% endif %}
+                          </tbody>
+                      </table>
                     </div>
 
             </div>
