@@ -78,16 +78,27 @@
 
             <!--Tabla-->
             <div class="col-10" id="contenidoTabla">
+              <a href="{{ url_for('admin2_bp.Trabajos', aula_id=aula_id) }}">
+                <button id="salir">Salir</button>
+              </a>
+              <div class="parte1">
+                <h1>Crear Trabajo</h1>
+                <form action="{{ url_for('admin2_bp.guardarTrabajo') }}" method="POST" enctype="multipart/form-data">
+                  <input type="hidden" name="aula_id" value="{{ aula_id }}">
+                  
+                  <input type="text" placeholder="Titulo" name="titulo" required><br>
+                  
+                  <textarea placeholder="Descripción" name="descripcion"></textarea><br>
+                  
+                  <label for="fecha">Fecha de entrega:</label>
+                  <input type="date" name="fecha" required><br>
+                  
+                  <label for="archivo">Archivo (opcional):</label>
+                  <input type="file" name="archivo[]" multiple><br>
 
-                <div class="row" id="nav">
-
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.verAula') }}"><button id="principal">Pricipal</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Trabajos') }}"><button id="trabajo">Trabajos</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Notas') }}"><button id="nota">Notas</button></a></div>
-                   <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Personas') }}"><button id="persona">Personas</button></a></div>
-                   <div class="col-12 col-md-4 col-xl-4"></div>
-
-                </div>
+                  <button type="submit">Crear</button>
+                </form>
+              </div>
                 
             </div>
         </div>
@@ -108,6 +119,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="{{ url_for('static', filename='1-js/5.2.js') }}"></script>
+  
 </body>
 </html>

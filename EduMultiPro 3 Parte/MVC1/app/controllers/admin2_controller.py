@@ -706,7 +706,143 @@ def Trabajos():
         flash("No se especificó aula", "error")
         return redirect(url_for('admin2_bp.verAula'))
 
-    return render_template('admin/5.3Trabajos.html', aula_id=aula_id)
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
+            cursor.execute("""
+                SELECT ID, Titulo_Trabajo, Fecha_Trabajo, Descripcion_Trabajo, Archivo_Trabajo
+                FROM Trabajo
+                WHERE aula_id = %s
+            """, (aula_id,))
+            trabajos = cursor.fetchall()
+    finally:
+        conexion.close()
+
+    return render_template('admin/5.3Trabajos.html', trabajos=trabajos, aula_id=aula_id)
+
+@admin2_bp.route('/5.6crearTrabajo')
+def crearTrabajo():
+    aula_id = request.args.get('aula_id')
+    return render_template('admin/5.6crearTrabajo.html', aula_id=aula_id)
+
+
+
+
+@admin2_bp.route('/guardar_trabajo', methods=['POST'])
+def guardarTrabajo():
+    conexion = obtener_conexion()
+    
+    aula_id = request.form.get('aula_id')
+    titulo = request.form.get('titulo')
+    descripcion = request.form.get('descripcion')
+    fecha_entrega = request.form.get('fecha')
+    archivo = request.files.get('archivo')
+    
+    enlace_archivo = None
+
+    if archivo and archivo.filename != '':
+        carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
+        os.makedirs(carpeta_destino, exist_ok=True)
+        ext = os.path.splitext(archivo.filename)[1]
+        nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
+        ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+        archivo.save(ruta_guardado)
+        enlace_archivo = f"fotos/{nuevo_nombre}"
+
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO Trabajo (Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, Archivo_Trabajo, aula_id)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (titulo, descripcion, fecha_entrega, enlace_archivo, aula_id))
+        conexion.commit()
+        flash('Trabajo creado exitosamente.', 'success')
+    except Exception as e:
+        conexion.rollback()
+        flash(f'Error al guardar el trabajo: {str(e)}', 'danger')
+    
+    return redirect(url_for('admin2_bp.Trabajos', aula_id=aula_id))
+
+
+@admin2_bp.route('/5.7modificarTarea')
+def editarTrabajo():
+    aula_id = request.args.get('aula_id')
+    trabajo_id = request.args.get('trabajo_id')
+
+    conexion = obtener_conexion()
+    with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
+        cursor.execute("""
+            SELECT ID, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, Archivo_Trabajo, aula_id
+            FROM Trabajo
+            WHERE ID = %s
+        """, (trabajo_id,))
+        trabajo = cursor.fetchone()
+    
+    return render_template('admin/5.7modificarTarea.html', trabajo=trabajo, aula_id=aula_id)
+
+@admin2_bp.route('/guardar_cambios_trabajo', methods=['POST'])
+def guardarCambiosTrabajo():
+    conexion = obtener_conexion()
+
+    trabajo_id = request.form.get('trabajo_id')
+    aula_id = request.form.get('aula_id')
+    titulo = request.form.get('titulo')
+    descripcion = request.form.get('descripcion')
+    fecha_entrega = request.form.get('fecha')
+    archivo = request.files.get('archivo')
+
+    enlace_archivo = None
+    try:
+        with conexion.cursor() as cursor:
+            # Si subieron archivo, guardarlo y preparar el enlace
+            if archivo and archivo.filename != '':
+                carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
+                os.makedirs(carpeta_destino, exist_ok=True)
+                ext = os.path.splitext(archivo.filename)[1]
+                nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
+                ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+                archivo.save(ruta_guardado)
+                enlace_archivo = f"fotos/{nuevo_nombre}"
+            
+            # Actualizar según si hay archivo o no
+            if enlace_archivo:
+                cursor.execute("""
+                    UPDATE Trabajo
+                    SET Titulo_Trabajo=%s, Descripcion_Trabajo=%s, Fecha_Trabajo=%s, Archivo_Trabajo=%s
+                    WHERE ID=%s
+                """, (titulo, descripcion, fecha_entrega, enlace_archivo, trabajo_id))
+            else:
+                cursor.execute("""
+                    UPDATE Trabajo
+                    SET Titulo_Trabajo=%s, Descripcion_Trabajo=%s, Fecha_Trabajo=%s
+                    WHERE ID=%s
+                """, (titulo, descripcion, fecha_entrega, trabajo_id))
+
+        conexion.commit()
+        flash('Trabajo modificado exitosamente.', 'success')
+    except Exception as e:
+        conexion.rollback()
+        flash(f'Error al modificar el trabajo: {str(e)}', 'danger')
+    finally:
+        conexion.close()
+
+    return redirect(url_for('admin2_bp.Trabajos', aula_id=aula_id))
+
+@admin2_bp.route('/eliminar_trabajo/<int:id>', methods=['POST'])
+def eliminar_trabajo(id):
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("DELETE FROM Trabajo WHERE ID = %s", (id,))
+        conexion.commit()
+        flash("Trabajo eliminado correctamente.", "success")
+    except Exception as e:
+        conexion.rollback()
+        flash(f"Error al eliminar el trabajo: {str(e)}", "danger")
+
+    # Redirige a la vista de trabajos, puedes ajustar el aula_id si es necesario
+    return redirect(request.referrer or url_for('admin2_bp.inicio'))
+
 
 @admin2_bp.route('/5.4Personas')
 def Personas():

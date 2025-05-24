@@ -27,5 +27,5 @@ $(document).ready(function(){
     }); 
     
     function confirmarEliminacion() {
-        return confirm('¿Estás seguro que deseas eliminar este usuario?');
+        return confirm('¿Estás seguro que deseas eliminar este trabajo?');
     }
