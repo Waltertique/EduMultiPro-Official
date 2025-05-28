@@ -114,20 +114,34 @@ CREATE TABLE Trabajo (
     Titulo_Trabajo VARCHAR(100) NOT NULL,
 	Descripcion_Trabajo TEXT(300),
     Fecha_Trabajo DATE NOT NULL,
-    Archivo_Trabajo VARCHAR(200),
     aula_id INT NOT NULL,
     FOREIGN KEY (aula_id) REFERENCES Aula(ID) ON DELETE CASCADE
 );
 
+CREATE TABLE Trabajo_Archivo (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    trabajo_id INT NOT NULL,
+    ruta_archivo VARCHAR(200) NOT NULL,
+    nombre_original VARCHAR(150),
+    FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE
+);
+
 CREATE TABLE TrabajoEntregado (
 	ID INT auto_increment PRIMARY KEY,
-    Archivo_Trabajo VARCHAR(200),
     Fecha_Trabajo DATE NOT NULL,
     Nota FLOAT NOT NULL,
     trabajo_id INT NOT NULL,
     usuario_id INT NOT NULL,
     FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE,
     FOREIGN KEY (Usuario_id) REFERENCES Usuario(ID) ON DELETE CASCADE
+);
+
+CREATE TABLE TrabajoEntregado_Archivo (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    trabajo_entregado_id INT NOT NULL,
+    ruta_archivo VARCHAR(200) NOT NULL,
+    nombre_original VARCHAR(150),
+    FOREIGN KEY (trabajo_entregado_id) REFERENCES TrabajoEntregado(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Comentario (

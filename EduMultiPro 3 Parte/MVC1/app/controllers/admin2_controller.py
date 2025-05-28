@@ -710,7 +710,7 @@ def Trabajos():
     try:
         with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
             cursor.execute("""
-                SELECT ID, Titulo_Trabajo, Fecha_Trabajo, Descripcion_Trabajo, Archivo_Trabajo
+                SELECT ID, Titulo_Trabajo, Fecha_Trabajo, Descripcion_Trabajo
                 FROM Trabajo
                 WHERE aula_id = %s
             """, (aula_id,))
@@ -731,36 +731,48 @@ def crearTrabajo():
 @admin2_bp.route('/guardar_trabajo', methods=['POST'])
 def guardarTrabajo():
     conexion = obtener_conexion()
-    
+
     aula_id = request.form.get('aula_id')
     titulo = request.form.get('titulo')
     descripcion = request.form.get('descripcion')
     fecha_entrega = request.form.get('fecha')
-    archivo = request.files.get('archivo')
-    
-    enlace_archivo = None
-
-    if archivo and archivo.filename != '':
-        carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
-        os.makedirs(carpeta_destino, exist_ok=True)
-        ext = os.path.splitext(archivo.filename)[1]
-        nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
-        ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
-        archivo.save(ruta_guardado)
-        enlace_archivo = f"fotos/{nuevo_nombre}"
+    archivos = request.files.getlist('archivo[]')  # Recibe todos los archivos
 
     try:
         with conexion.cursor() as cursor:
+            # 1. Insertar en la tabla Trabajo
             cursor.execute("""
-                INSERT INTO Trabajo (Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, Archivo_Trabajo, aula_id)
-                VALUES (%s, %s, %s, %s, %s)
-            """, (titulo, descripcion, fecha_entrega, enlace_archivo, aula_id))
+                INSERT INTO Trabajo (Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, aula_id)
+                VALUES (%s, %s, %s, %s)
+            """, (titulo, descripcion, fecha_entrega, aula_id))
+            
+            trabajo_id = cursor.lastrowid  # Obtener el ID del trabajo recién insertado
+
+            # 2. Procesar y guardar cada archivo en la tabla Trabajo_Archivo
+            for archivo in archivos:
+                if archivo and archivo.filename != '':
+                    carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
+                    os.makedirs(carpeta_destino, exist_ok=True)
+
+                    ext = os.path.splitext(archivo.filename)[1]
+                    nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
+                    ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+                    archivo.save(ruta_guardado)
+
+                    enlace_archivo = f"fotos/{nuevo_nombre}"
+                    nombre_original = archivo.filename
+
+                    cursor.execute("""
+                        INSERT INTO Trabajo_Archivo (trabajo_id, ruta_archivo, nombre_original)
+                        VALUES (%s, %s, %s)
+                    """, (trabajo_id, enlace_archivo, nombre_original))
+
         conexion.commit()
         flash('Trabajo creado exitosamente.', 'success')
     except Exception as e:
         conexion.rollback()
         flash(f'Error al guardar el trabajo: {str(e)}', 'danger')
-    
+
     return redirect(url_for('admin2_bp.Trabajos', aula_id=aula_id))
 
 
@@ -771,14 +783,26 @@ def editarTrabajo():
 
     conexion = obtener_conexion()
     with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
+        # Obtener datos del trabajo
         cursor.execute("""
-            SELECT ID, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, Archivo_Trabajo, aula_id
+            SELECT ID, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, aula_id
             FROM Trabajo
             WHERE ID = %s
         """, (trabajo_id,))
         trabajo = cursor.fetchone()
-    
-    return render_template('admin/5.7modificarTarea.html', trabajo=trabajo, aula_id=aula_id)
+
+        # Obtener archivos asociados
+        cursor.execute("""
+            SELECT id, ruta_archivo, nombre_original
+            FROM Trabajo_Archivo
+            WHERE trabajo_id = %s
+        """, (trabajo_id,))
+        archivos_actuales = cursor.fetchall()
+
+    conexion.close()
+
+    return render_template('admin/5.7modificarTarea.html', trabajo=trabajo, aula_id=aula_id, archivos_actuales=archivos_actuales)
+
 
 @admin2_bp.route('/guardar_cambios_trabajo', methods=['POST'])
 def guardarCambiosTrabajo():
@@ -789,34 +813,52 @@ def guardarCambiosTrabajo():
     titulo = request.form.get('titulo')
     descripcion = request.form.get('descripcion')
     fecha_entrega = request.form.get('fecha')
-    archivo = request.files.get('archivo')
+    archivos = request.files.getlist('archivo[]')  # Archivos nuevos
+    eliminar_archivos = request.form.getlist('eliminar_archivos[]')  # IDs de archivos a eliminar
 
-    enlace_archivo = None
     try:
         with conexion.cursor() as cursor:
-            # Si subieron archivo, guardarlo y preparar el enlace
-            if archivo and archivo.filename != '':
-                carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
-                os.makedirs(carpeta_destino, exist_ok=True)
-                ext = os.path.splitext(archivo.filename)[1]
-                nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
-                ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
-                archivo.save(ruta_guardado)
-                enlace_archivo = f"fotos/{nuevo_nombre}"
-            
-            # Actualizar según si hay archivo o no
-            if enlace_archivo:
-                cursor.execute("""
-                    UPDATE Trabajo
-                    SET Titulo_Trabajo=%s, Descripcion_Trabajo=%s, Fecha_Trabajo=%s, Archivo_Trabajo=%s
-                    WHERE ID=%s
-                """, (titulo, descripcion, fecha_entrega, enlace_archivo, trabajo_id))
-            else:
-                cursor.execute("""
-                    UPDATE Trabajo
-                    SET Titulo_Trabajo=%s, Descripcion_Trabajo=%s, Fecha_Trabajo=%s
-                    WHERE ID=%s
-                """, (titulo, descripcion, fecha_entrega, trabajo_id))
+            # Actualizar datos del trabajo
+            cursor.execute("""
+                UPDATE Trabajo
+                SET Titulo_Trabajo = %s,
+                    Descripcion_Trabajo = %s,
+                    Fecha_Trabajo = %s
+                WHERE ID = %s
+            """, (titulo, descripcion, fecha_entrega, trabajo_id))
+
+            # Eliminar archivos marcados
+            if eliminar_archivos:
+                # Obtener rutas para eliminar archivos físicos (opcional)
+                query_placeholder = ','.join(['%s'] * len(eliminar_archivos))
+                cursor.execute(f"SELECT ruta_archivo FROM Trabajo_Archivo WHERE id IN ({query_placeholder})", eliminar_archivos)
+                rutas = cursor.fetchall()
+                for fila in rutas:
+                    ruta_archivo = os.path.join(current_app.root_path, 'static', fila['ruta_archivo'])
+                    if os.path.exists(ruta_archivo):
+                        os.remove(ruta_archivo)
+
+                # Eliminar de BD
+                cursor.execute(f"DELETE FROM Trabajo_Archivo WHERE id IN ({query_placeholder})", eliminar_archivos)
+
+            # Insertar nuevos archivos
+            for archivo in archivos:
+                if archivo and archivo.filename != '':
+                    carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
+                    os.makedirs(carpeta_destino, exist_ok=True)
+
+                    ext = os.path.splitext(archivo.filename)[1]
+                    nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
+                    ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+                    archivo.save(ruta_guardado)
+
+                    enlace_archivo = f"fotos/{nuevo_nombre}"
+                    nombre_original = archivo.filename
+
+                    cursor.execute("""
+                        INSERT INTO Trabajo_Archivo (trabajo_id, ruta_archivo, nombre_original)
+                        VALUES (%s, %s, %s)
+                    """, (trabajo_id, enlace_archivo, nombre_original))
 
         conexion.commit()
         flash('Trabajo modificado exitosamente.', 'success')
@@ -826,7 +868,9 @@ def guardarCambiosTrabajo():
     finally:
         conexion.close()
 
-    return redirect(url_for('admin2_bp.Trabajos', aula_id=aula_id))
+    return redirect(url_for('admin2_bp.Trabajos', trabajo_id=trabajo_id, aula_id=aula_id))
+
+
 
 @admin2_bp.route('/eliminar_trabajo/<int:id>', methods=['POST'])
 def eliminar_trabajo(id):
@@ -843,6 +887,96 @@ def eliminar_trabajo(id):
     # Redirige a la vista de trabajos, puedes ajustar el aula_id si es necesario
     return redirect(request.referrer or url_for('admin2_bp.inicio'))
 
+@admin2_bp.route('/6-verTrabajo')
+def verTrabajo():
+    trabajo_id = request.args.get('trabajo_id')
+    aula_id = request.args.get('aula_id')
+
+    conexion = obtener_conexion()
+    trabajo = None
+    archivos = []
+    comentarios_trabajo = []
+
+    try:
+        with conexion.cursor() as cursor:
+            # Obtener el trabajo
+            cursor.execute("SELECT * FROM Trabajo WHERE ID = %s", (trabajo_id,))
+            trabajo = cursor.fetchone()
+
+            # Obtener archivos asociados
+            cursor.execute("SELECT * FROM Trabajo_Archivo WHERE trabajo_id = %s", (trabajo_id,))
+            archivos = cursor.fetchall()
+
+            # Obtener comentarios del trabajo
+            cursor.execute("""
+                SELECT Comentario.ID AS comentario_id,
+                       Comentario.Descripcion AS comentario,
+                       Comentario.Fecha AS fecha_comentario,
+                       CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Comentador,
+                       Usuario.RutaFoto
+                FROM Comentario
+                JOIN Usuario ON Comentario.usuario_id = Usuario.ID
+                WHERE Comentario.trabajo_id = %s
+                ORDER BY Comentario.Fecha DESC
+            """, (trabajo_id,))
+            comentarios_trabajo = cursor.fetchall()
+
+    except Exception as e:
+        flash(f'Error al cargar el trabajo: {str(e)}', 'danger')
+
+    return render_template('admin/6-verTrabajo.html',
+                           trabajo=trabajo,
+                           archivos=archivos,
+                           aula_id=aula_id,
+                           trabajo_id=trabajo_id,
+                           comentarios_trabajo=comentarios_trabajo)
+
+@admin2_bp.route('/comentar_trabajo/<int:trabajo_id>', methods=['POST'])
+def comentar_trabajo(trabajo_id):
+    aula_id = request.args.get('aula_id')
+    usuario_id = session.get('usuario_id')
+
+    if not usuario_id:
+        flash('Debes iniciar sesión para comentar.', 'warning')
+        return redirect(url_for('admin2_bp.verTrabajo', trabajo_id=trabajo_id, aula_id=aula_id))
+
+    comentario = request.form.get('comentario')
+    if not comentario:
+        flash('No puedes enviar un comentario vacío.', 'warning')
+        return redirect(url_for('admin2_bp.verTrabajo', trabajo_id=trabajo_id, aula_id=aula_id))
+
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO Comentario (trabajo_id, Descripcion, Fecha, usuario_id)
+                VALUES (%s, %s, NOW(), %s)
+            """, (trabajo_id, comentario, usuario_id))
+            conexion.commit()
+            flash('Comentario agregado con éxito.', 'success')
+    except Exception as e:
+        flash(f'Error al agregar comentario: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verTrabajo', trabajo_id=trabajo_id, aula_id=aula_id))
+
+@admin2_bp.route('/eliminar_comentario_trabajo/<int:id>', methods=['POST'])
+def eliminar_comentario_trabajo(id):
+    trabajo_id = request.args.get('trabajo_id')
+    aula_id = request.args.get('aula_id')
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("DELETE FROM Comentario WHERE ID = %s", (id,))
+            conexion.commit()
+            flash('Comentario eliminado correctamente.', 'success')
+    except Exception as e:
+        flash(f'Error al eliminar comentario: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verTrabajo', trabajo_id=trabajo_id, aula_id=aula_id))
+
+@admin2_bp.route('/6.1-verEntregado')
+def verEntregado():
+    return render_template('admin/6.1-verEntregado.html')
 
 @admin2_bp.route('/5.4Personas')
 def Personas():

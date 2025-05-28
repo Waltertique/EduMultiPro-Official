@@ -219,77 +219,118 @@ INSERT INTO Anuncio(ID, Titulo_Anuncio, Descripcion_Anuncio, Enlace_Anuncio, Fec
 	('31', 'Competencia de Atletismo', 'Se convoca a la competencia anual de atletismo. Inscripciones abiertas.', 'https://colegio.edu/eventos/edufisica1', '2025-03-27','16','9'),
 	('32', 'Clase Especial de Yoga', 'Clase de yoga para mejorar la flexibilidad y concentración.', 'https://colegio.edu/clases/edufisica1', '2025-03-29','16','9');
     
-INSERT INTO Trabajo(ID, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, Archivo_Trabajo, aula_id) Values
+INSERT INTO Trabajo(ID, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, aula_id) Values
 	-- Matemáticas																				
-	('1', 'Ejercicios de Ecuaciones', 'Resuelve las ecuaciones lineales planteadas en la guía.', '2025-04-10', 'archivos/matematicas_ecuaciones.pdf','1'),
-	('2', 'Construcción de Figuras Geométricas', 'Dibuja y explica las propiedades de las figuras solicitadas.', '2025-04-15', 'archivos/matematicas_geometria.pdf','1'),
+	('1', 'Ejercicios de Ecuaciones', 'Resuelve las ecuaciones lineales planteadas en la guía.', '2025-04-10','1'),
+	('2', 'Construcción de Figuras Geométricas', 'Dibuja y explica las propiedades de las figuras solicitadas.', '2025-04-15','1'),
 
 	-- Lengua Castellana
-	('3', 'Análisis de Obra', 'Escribe un ensayo sobre el realismo mágico en "Cien años de soledad".', '2025-04-12', 'archivos/castellana_ensayo.docx','2'),
-	('4', 'Taller de Ortografía', 'Completa los ejercicios de tildación y puntuación.', '2025-04-18', 'archivos/castellana_ortografia.pdf','2'),
+	('3', 'Análisis de Obra', 'Escribe un ensayo sobre el realismo mágico en "Cien años de soledad".', '2025-04-12', '2'),
+	('4', 'Taller de Ortografía', 'Completa los ejercicios de tildación y puntuación.', '2025-04-18', '2'),
 
 	-- Ciencias Naturales
-	('5', 'Informe de Laboratorio - Células', 'Redacta un informe del laboratorio sobre observación de células.', '2025-04-20', 'archivos/naturales_celulas.docx','3'),
-	('6', 'Proyecto de Movimiento', 'Expón el proyecto sobre las leyes de Newton en un cartel explicativo.', '2025-04-22', 'archivos/naturales_movimiento.pdf','3'),
+	('5', 'Informe de Laboratorio - Células', 'Redacta un informe del laboratorio sobre observación de células.', '2025-04-20', '3'),
+	('6', 'Proyecto de Movimiento', 'Expón el proyecto sobre las leyes de Newton en un cartel explicativo.', '2025-04-22', '3'),
 
 	-- Ciencias Sociales
-	('7', 'Línea de Tiempo de la Segunda Guerra Mundial', 'Elabora una línea de tiempo con los eventos más relevantes.', '2025-04-17', 'archivos/sociales_historia.pdf','4'),
-	('8', 'Mapa Político de América', 'Dibuja un mapa político actualizado de América.', '2025-04-24', 'archivos/sociales_geografia.jpg','4'),
+	('7', 'Línea de Tiempo de la Segunda Guerra Mundial', 'Elabora una línea de tiempo con los eventos más relevantes.', '2025-04-17', '4'),
+	('8', 'Mapa Político de América', 'Dibuja un mapa político actualizado de América.', '2025-04-24', '4'),
 
 	-- Inglés
-	('9', 'Book Report', 'Elabora un reporte sobre el libro leído en inglés.', '2025-04-19', 'archivos/ingles_bookreport.docx','5'),
-	('10', 'Taller de Verbos Irregulares', 'Resuelve los ejercicios de verbos irregulares.', '2025-04-23', 'archivos/ingles_verbos.pdf','5'),
+	('9', 'Book Report', 'Elabora un reporte sobre el libro leído en inglés.', '2025-04-19', '5'),
+	('10', 'Taller de Verbos Irregulares', 'Resuelve los ejercicios de verbos irregulares.', '2025-04-23', '5'),
 
 	-- Educación Física
-	('11', 'Bitácora de Ejercicio', 'Registra tus actividades físicas durante una semana.', '2025-04-21', 'archivos/edufisica_bitacora.docx','6'),
-	('12', 'Reglamento del Fútbol', 'Investiga y presenta el reglamento oficial de la FIFA.', '2025-04-26', 'archivos/edufisica_futbol.pdf','6'),
+	('11', 'Bitácora de Ejercicio', 'Registra tus actividades físicas durante una semana.', '2025-04-21', '6'),
+	('12', 'Reglamento del Fútbol', 'Investiga y presenta el reglamento oficial de la FIFA.', '2025-04-26', '6'),
 
 	-- Tecnología e Informática
-	('13', 'Proyecto en Scratch', 'Crea un videojuego educativo en Scratch y adjunta el archivo.', '2025-04-25', 'archivos/tecnologia_scratch.sb3','7'),
-	('14', 'Presentación sobre Ciberseguridad', 'Diseña una presentación sobre cómo proteger la información personal en línea.', '2025-04-28', 'archivos/tecnologia_ciberseguridad.pptx','7'),
+	('13', 'Proyecto en Scratch', 'Crea un videojuego educativo en Scratch y adjunta el archivo.', '2025-04-25', '7'),
+	('14', 'Presentación sobre Ciberseguridad', 'Diseña una presentación sobre cómo proteger la información personal en línea.', '2025-04-28', '7'),
 
 	-- Ética y Valores
-	('15', 'Reflexión Personal', 'Escribe un ensayo sobre la importancia del respeto en la convivencia.', '2025-04-27', 'archivos/etica_reflexion.docx','8'),
-	('16', 'Proyecto Comunitario', 'Presenta una propuesta para realizar una campaña de ayuda social.', '2025-04-30', 'archivos/etica_proyecto.pdf','8'),
+	('15', 'Reflexión Personal', 'Escribe un ensayo sobre la importancia del respeto en la convivencia.', '2025-04-27', '8'),
+	('16', 'Proyecto Comunitario', 'Presenta una propuesta para realizar una campaña de ayuda social.', '2025-04-30', '8'),
 
 	-- Religión
-	('17', 'Investigación sobre el Cristianismo', 'Investiga el origen y expansión del cristianismo.', '2025-04-29', 'archivos/religion_cristianismo.docx','9'),
-	('18', 'Reflexión sobre la Fe', 'Redacta una reflexión personal sobre la fe en tiempos difíciles.', '2025-05-02', 'archivos/religion_reflexion.docx','9'),
+	('17', 'Investigación sobre el Cristianismo', 'Investiga el origen y expansión del cristianismo.', '2025-04-29','9'),
+	('18', 'Reflexión sobre la Fe', 'Redacta una reflexión personal sobre la fe en tiempos difíciles.', '2025-05-02', '9'),
 
 	-- Artes
-	('19', 'Obra Inspirada en el Renacimiento', 'Realiza una pintura inspirada en los artistas del Renacimiento.', '2025-05-01', 'archivos/artes_pintura.jpg','10'),
-	('20', 'Composición Musical', 'Compón una melodía corta e incluye la partitura.', '2025-05-03', 'archivos/artes_musica.pdf','10'),
+	('19', 'Obra Inspirada en el Renacimiento', 'Realiza una pintura inspirada en los artistas del Renacimiento.', '2025-05-01', '10'),
+	('20', 'Composición Musical', 'Compón una melodía corta e incluye la partitura.', '2025-05-03', '10'),
     
     -- Matemáticas 2
-	('21', 'Ejercicios de Ecuaciones', 'Resuelve las ecuaciones lineales planteadas en la guía.', '2025-04-10', 'archivos/matematicas_ecuaciones.pdf','11'),
-	('22', 'Construcción de Figuras Geométricas', 'Dibuja y explica las propiedades de las figuras solicitadas.', '2025-04-15', 'archivos/matematicas_geometria.pdf','11'),
+	('21', 'Ejercicios de Ecuaciones', 'Resuelve las ecuaciones lineales planteadas en la guía.', '2025-04-10', '11'),
+	('22', 'Construcción de Figuras Geométricas', 'Dibuja y explica las propiedades de las figuras solicitadas.', '2025-04-15', '11'),
 
 	-- Lengua Castellana 2
-	('23', 'Análisis de Obra', 'Escribe un ensayo sobre el realismo mágico en "Cien años de soledad".', '2025-04-12', 'archivos/castellana_ensayo.docx','12'),
-	('24', 'Taller de Ortografía', 'Completa los ejercicios de tildación y puntuación.', '2025-04-18', 'archivos/castellana_ortografia.pdf','12'),
+	('23', 'Análisis de Obra', 'Escribe un ensayo sobre el realismo mágico en "Cien años de soledad".', '2025-04-12', '12'),
+	('24', 'Taller de Ortografía', 'Completa los ejercicios de tildación y puntuación.', '2025-04-18', '12'),
 
 	-- Ciencias Naturales 2
-	('25', 'Informe de Laboratorio - Células', 'Redacta un informe del laboratorio sobre observación de células.', '2025-04-20', 'archivos/naturales_celulas.docx','13'),
-	('26', 'Proyecto de Movimiento', 'Expón el proyecto sobre las leyes de Newton en un cartel explicativo.', '2025-04-22', 'archivos/naturales_movimiento.pdf','13'),
+	('25', 'Informe de Laboratorio - Células', 'Redacta un informe del laboratorio sobre observación de células.', '2025-04-20', '13'),
+	('26', 'Proyecto de Movimiento', 'Expón el proyecto sobre las leyes de Newton en un cartel explicativo.', '2025-04-22', '13'),
 
 	-- Ciencias Sociales 2
-	('27', 'Línea de Tiempo de la Segunda Guerra Mundial', 'Elabora una línea de tiempo con los eventos más relevantes.', '2025-04-17', 'archivos/sociales_historia.pdf','14'),
-	('28', 'Mapa Político de América', 'Dibuja un mapa político actualizado de América.', '2025-04-24', 'archivos/sociales_geografia.jpg','14'),
+	('27', 'Línea de Tiempo de la Segunda Guerra Mundial', 'Elabora una línea de tiempo con los eventos más relevantes.', '2025-04-17', '14'),
+	('28', 'Mapa Político de América', 'Dibuja un mapa político actualizado de América.', '2025-04-24', '14'),
 
 	-- Inglés 2
-	('29', 'Book Report', 'Elabora un reporte sobre el libro leído en inglés.', '2025-04-19', 'archivos/ingles_bookreport.docx','15'),
-	('30',  'Taller de Verbos Irregulares', 'Resuelve los ejercicios de verbos irregulares.', '2025-04-23', 'archivos/ingles_verbos.pdf','15'),
+	('29', 'Book Report', 'Elabora un reporte sobre el libro leído en inglés.', '2025-04-19', '15'),
+	('30',  'Taller de Verbos Irregulares', 'Resuelve los ejercicios de verbos irregulares.', '2025-04-23', '15'),
 
 	-- Educación Física 2
-	('31', 'Bitácora de Ejercicio', 'Registra tus actividades físicas durante una semana.', '2025-04-21', 'archivos/edufisica_bitacora.docx','16'),
-	('32', 'Reglamento del Fútbol', 'Investiga y presenta el reglamento oficial de la FIFA.', '2025-04-26', 'archivos/edufisica_futbol.pdf','16');
+	('31', 'Bitácora de Ejercicio', 'Registra tus actividades físicas durante una semana.', '2025-04-21', '16'),
+	('32', 'Reglamento del Fútbol', 'Investiga y presenta el reglamento oficial de la FIFA.', '2025-04-26', '16');
+    
+INSERT INTO Trabajo_Archivo(ID, trabajo_id, ruta_archivo, nombre_original) values 
+	('1','1','archivos/matematicas_ecuaciones.pdf','trabajo 1'),
+    ('2','2','archivos/matematicas_geometria.pdf','trabajo 2'),
+    ('3','3','archivos/castellana_ensayo.docx','trabajo 3'),
+    ('4','4','archivos/castellana_ortografia.pdf','trabajo 4'),
+    ('5','5','archivos/naturales_celulas.docx','trabajo 5'),
+    ('6','6','archivos/naturales_movimiento.pdf','trabajo 6'),
+    ('7','7','archivos/sociales_historia.pdf','trabajo 7'),
+    ('8','8','archivos/sociales_geografia.jpg','trabajo 8'),
+    ('9','9','archivos/ingles_bookreport.docx','trabajo 9'),
+    ('10','10','archivos/ingles_verbos.pdf','trabajo 10'),
+    ('11','11','archivos/edufisica_bitacora.docx','trabajo 11'),
+    ('12','12','archivos/edufisica_futbol.pdf','trabajo 12'),
+    ('13','13','archivos/tecnologia_scratch.sb3','trabajo 13'),
+    ('14','14','archivos/tecnologia_ciberseguridad.pptx','trabajo 14'),
+    ('15','15','archivos/etica_reflexion.docx','trabajo 15'),
+    ('16','16','archivos/etica_proyecto.pdf','trabajo 16'),
+    ('17','17','archivos/etica_proyecto.pdf','trabajo 17'),
+    ('18','18','archivos/etica_proyecto.pdf','trabajo 18'),
+    ('19','19','archivos/etica_proyecto.pdf','trabajo 19'),
+    ('20','20','archivos/etica_proyecto.pdf','trabajo 20'),
+    ('21','21','archivos/etica_proyecto.pdf','trabajo 21'),
+    ('22','22','archivos/etica_proyecto.pdf','trabajo 22'),
+    ('23','23','archivos/etica_proyecto.pdf','trabajo 23'),
+    ('24','24','archivos/etica_proyecto.pdf','trabajo 24'),
+    ('25','25','archivos/etica_proyecto.pdf','trabajo 25'),
+    ('26','26','archivos/etica_proyecto.pdf','trabajo 26'),
+    ('27','27','archivos/etica_proyecto.pdf','trabajo 27'),
+    ('28','28','archivos/etica_proyecto.pdf','trabajo 28'),
+    ('29','29','archivos/etica_proyecto.pdf','trabajo 29'),
+    ('30','30','archivos/etica_proyecto.pdf','trabajo 30'),
+    ('31','31','archivos/etica_proyecto.pdf','trabajo 31'),
+    ('32','32','archivos/etica_proyecto.pdf','trabajo 32');
   
-INSERT INTO TrabajoEntregado(ID, Archivo_Trabajo, Fecha_Trabajo, Nota, trabajo_id, usuario_id) Values
+INSERT INTO TrabajoEntregado(ID, Fecha_Trabajo, Nota, trabajo_id, usuario_id) Values
 
-	('1', 'archivos/edufisica_bitacora.docx', '2025-04-21', 4.5,'1', '11'),
-	('2', 'archivos/edufisica_futbol.pdf', '2025-04-26', 2.5,'2', '12'),
-    ('3', 'archivos/edufisica_bitacora.docx', '2025-04-21', 3.5,'3', '13'),
-	('4', 'archivos/edufisica_futbol.pd', '2025-04-26', 5.0,'4', '14');
+	('1', '2025-04-21', 4.5, '1', '11'),
+	('2', '2025-04-26', 2.5, '2', '12'),
+    ('3', '2025-04-21', 3.5, '3', '13'),
+	('4', '2025-04-26', 5.0, '4', '14');
+    
+INSERT INTO TrabajoEntregado_Archivo(ID, trabajo_entregado_id, ruta_archivo, nombre_original) Values
+
+	('1', '1','archivos/edufisica_bitacora.docx','trabajo entregado 1'),
+    ('2', '2','archivos/edufisica_futbol.pdf','trabajo entregado 2'),
+    ('3', '3','archivos/edufisica_bitacora.docx','trabajo entregado 3'),
+    ('4', '4','archivos/edufisica_futbol.pd','trabajo entregado 4');
     
 INSERT INTO Comentario(ID, Descripcion, Fecha, trabajo_id, anuncio_id, usuario_id) Values
 

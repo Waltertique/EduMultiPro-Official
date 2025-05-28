@@ -142,79 +142,149 @@ i:hover{
 
 #contenidoTabla{
     flex: 1;
-    padding: 20px 20px;
+    padding: 20px 100px;
+}
+.botones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    height: auto;
+    padding-left: 20px;
+    margin-top: 20px;
+}
+.botones a button{
+    width: 250px;
+    height: 50px;
+    font-size: 30px;
+    background: var(--fondo);
+    border: none;
+    font-weight: bold;
+}
+.botones a button:hover{
+    background: var(--azul-secundario);
+    cursor: pointer;
+}
+#equix{
+    width: 150px;
+    height: 50px;
+    font-size: 30px;
+    background: var(--fondo);
+    border: none;
+}
+.cont1{
+    display: flex;
+    flex-direction: row;
+}
+
+.contenedor-tabla{  
+    overflow-x: auto;
+    margin: 0px 0px 20px 0px;
+    background-color: var(--fondo);
+    padding: 50px 20px 20px 20px;
+    width: 30%; 
+    height: auto;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0px;
+}
+thead{
+    background-color: var(--azul-primario);
+    color: var(--blanco);
+}
+#tablaUsuarios th, td{
+    padding: 10px;
+    text-align: center !important;
+    border-bottom: 1px solid var(--azul-primario) !important;
+}
+
+table button{
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+table button:hover{
+    background-color: black;
+}
+
+.trabajos{
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 70%;
+    height: 471px;
+}
+
+.autor{
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+.autor div{
+    display: flex;
+    flex-direction: row;
+}
+.autor div p{
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.trabajos .archivos{
+    height: 290px;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+}
+.trabajos .archivos .archivo1{
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 10px;
+    width: 120px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
-#salir{
-    margin-right: 1400px;
-    width: 90px;
-    height: 40px;
+.trabajos .nota{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.trabajos .nota form input{
+    margin: 25px 0px 0px 40px;
+    width: 130px;
+    border-radius: 20px 0px 0px 20px;
+    padding: 0px 10px;
+}
+.trabajos .nota form button{
+    width: 120px;
     background: var(--azul-secundario);
     border: 2px solid var(--azul-primario);
-    border-radius: 20px;
     color: white;
 }
-#salir:hover{
-    transform: scale(1.1);
-    cursor: pointer;
-}
-.parte1{
-    width: 60%;
-    border: 1px solid var(--azul-primario);
-    padding: 20px 20px;
-    height: auto;
-    background: var(--azul-secundario);
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-}
-.parte1 form{
-    display: flex;
-    flex-direction: column;
-}
-.parte1 h1{
-    color: white;
-    margin-bottom: 30px;
-}
-.parte1 form input{
-    border-radius: 20px;
-    width: 80%;
-    height: 50px;
-    margin: 0px auto 30px auto;
-    padding: 0px 20px;
-}
-.parte1 form textarea{
-    border-radius: 20px;
-    width: 80%;
-    height: 100px;
-    margin: 0px auto 30px auto;
-    padding: 10px 20px;
-}
-.parte1 form button{
-    margin: 0px auto 0px auto;
-    width: 90px;
+#salir1{
+    width: 40px;
     height: 40px;
-    background: white;
-    border: 2px solid var(--azul-primario);
-    border-radius: 20px;
-    color: var(--azul-primario);
+    margin: 20px 40px;
+    background: var(--azul-secundario);
+    border: none;
 }
-.parte1 form button:hover{
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-form ul{
-    list-style: none;
-}
-#check{
-    width: 15px;
-    height: 15px;
-}
-
 /* footer -------------------- footer */
 
 #pie{

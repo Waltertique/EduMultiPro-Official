@@ -142,79 +142,161 @@ i:hover{
 
 #contenidoTabla{
     flex: 1;
-    padding: 20px 20px;
+    padding: 20px 100px;
+}
+.botones{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-#salir{
-    margin-right: 1400px;
-    width: 90px;
-    height: 40px;
-    background: var(--azul-secundario);
-    border: 2px solid var(--azul-primario);
-    border-radius: 20px;
-    color: white;
-}
-#salir:hover{
-    transform: scale(1.1);
-    cursor: pointer;
-}
-.parte1{
-    width: 60%;
-    border: 1px solid var(--azul-primario);
-    padding: 20px 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
     height: auto;
-    background: var(--azul-secundario);
-    display: flex;
-    text-align: center;
-    flex-direction: column;
+    padding-left: 20px;
+    margin-top: 20px;
 }
-.parte1 form{
-    display: flex;
-    flex-direction: column;
-}
-.parte1 h1{
-    color: white;
-    margin-bottom: 30px;
-}
-.parte1 form input{
-    border-radius: 20px;
-    width: 80%;
+.botones a button{
+    width: 250px;
     height: 50px;
-    margin: 0px auto 30px auto;
-    padding: 0px 20px;
+    font-size: 30px;
+    background: var(--fondo);
+    border: none;
+    font-weight: bold;
 }
-.parte1 form textarea{
-    border-radius: 20px;
-    width: 80%;
-    height: 100px;
-    margin: 0px auto 30px auto;
-    padding: 10px 20px;
-}
-.parte1 form button{
-    margin: 0px auto 0px auto;
-    width: 90px;
-    height: 40px;
-    background: white;
-    border: 2px solid var(--azul-primario);
-    border-radius: 20px;
-    color: var(--azul-primario);
-}
-.parte1 form button:hover{
-    transform: scale(1.1);
+.botones a button:hover{
+    background: var(--azul-secundario);
     cursor: pointer;
 }
-
-form ul{
-    list-style: none;
+#equix{
+    width: 150px;
+    height: 50px;
+    font-size: 30px;
+    background: var(--fondo);
+    border: none;
 }
-#check{
-    width: 15px;
-    height: 15px;
+.titulo{
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0px auto 0px auto;
+    margin-top: 25px;
+    padding-bottom: 10px;
+}
+.titulo div{
+    display: flex;
+    flex-direction: row;
+}
+.titulo div h1{
+    font-weight: bold;
+}
+.titulo div h4{
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.titulo img{
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
 }
 
+.descripcion{
+    width: 80%;
+    margin: 0px auto 0px auto;
+    border-bottom: 2px solid black;
+    padding: 25px 0px;
+}
+.descripcion h3{
+    font-weight: bolder;
+}
+.enlace{
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 20px;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.enlace a{
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration: none;
+}
+.comentarios{
+    width: 80%;
+    margin: 10px auto 0px auto;
+    padding: 20px 0px;
+}
+.comentarios #titu{
+    font-weight: bold;
+}
+.comentarios input{
+    width: 90%;
+    height: 40px;
+    border-radius: 20px 0px 0px 20px;
+    padding: 5px 10px;
+}
+.comentarios button{
+    border-radius: 0px 20px 20px 0px;
+    width: 80px;
+    height: 37px;
+    border: 1px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    color: white;
+}
+.comentario{
+    margin-top: 30px;
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.comentario .info1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.comentario .info1 img{
+    width: 30px;
+    height: auto;
+}
+.comentario .info1 h1{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 25px;
+}
+.comentario .info1 h2{
+    margin-top: 15px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+.comentario button{
+    margin-left: 0px;
+    width: 80px;
+    height: 39px;
+    color: white;
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 20px;
+}
+.comentario button:hover{
+    transform: scale(1.1);
+    color: black;
+    cursor: pointer;
+}
 /* footer -------------------- footer */
 
 #pie{

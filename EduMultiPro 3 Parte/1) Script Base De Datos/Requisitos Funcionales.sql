@@ -161,27 +161,39 @@ select * from Aula;
 
 
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- ---------- Tareas ----------
+-- ---------- Trabajos ----------
 
--- Crear Tarea
-INSERT INTO Trabajo(ID, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, Archivo_Trabajo, aula_id) Values
-	('33', 'Ejercicios de filosofia', 'Resuelve la guia de filosofia.', '2025-04-10', 'archivos/filosofia.pdf','17'),
-	('34', 'Construcción de Figuras mecanicas', 'Dibuja las piezas mecanicas.', '2025-04-15', 'archivos/mecanica.pdf','17');
+-- Crear Trabajo
+INSERT INTO Trabajo(ID, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, aula_id) Values
+	('33', 'Ejercicios de filosofia', 'Resuelve la guia de filosofia.', '2025-04-10','17'),
+	('34', 'Construcción de Figuras mecanicas', 'Dibuja las piezas mecanicas.', '2025-04-15','17');
     
--- Modificar Tarea
+INSERT INTO Trabajo_Archivo(ID, trabajo_id, ruta_archivo, nombre_original) values 
+	('33','33','archivos/matematicas_ecuaciones.pdf','trabajo 33'),
+    ('34','34','archivos/matematicas_geometria.pdf','trabajo 34');
+    
+-- Modificar Trabajo
 UPDATE Trabajo SET Titulo_Trabajo = "trabajo de algebra" WHERE ID = "1";
 UPDATE Trabajo SET Descripcion_Trabajo = "Figuras Geometricas" WHERE ID = "2";
 
--- Eliminar Tarea
+-- Eliminar Trabajo
 DELETE FROM Trabajo WHERE ID = "4";
 DELETE FROM Trabajo WHERE ID = "5";
 
--- Consultar Tarea
-Select Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, Archivo_Trabajo, Aula_Nombre
+-- Consultar Trabajo
+Select Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, Aula_Nombre, ruta_archivo, nombre_original
 FROM Trabajo 
-INNER JOIN Aula ON Trabajo.aula_id = Aula.ID;
+INNER JOIN Aula ON Trabajo.aula_id = Aula.ID
+INNER JOIN Trabajo_Archivo ON Trabajo.ID = Trabajo_Archivo.trabajo_id;
 
 select * from Trabajo;
+
+-- Consultar Tarea
+SELECT b.ruta_archivo, b.nombre_original, a.Fecha_Trabajo, a.Nota, c.Titulo_Trabajo, d.Primer_Nombre, d.Primer_Apellido
+From TrabajoEntregado a
+INNER JOIN TrabajoEntregado_Archivo b ON a.ID = b.trabajo_entregado_id
+INNER JOIN Trabajo c ON a.trabajo_id = c.ID
+INNER JOIN Usuario d ON a.usuario_id = d.ID;
 
 -- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ---------- Anuncio ----------
