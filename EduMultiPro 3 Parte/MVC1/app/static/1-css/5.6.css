@@ -165,7 +165,7 @@ i:hover{
     width: 60%;
     border: 1px solid var(--azul-primario);
     padding: 20px 20px;
-    height: 85%;
+    height: auto;
     background: var(--azul-secundario);
     display: flex;
     text-align: center;
@@ -278,7 +278,17 @@ i:hover{
         margin-bottom: 10px;
         padding: 3px;
     }
-
+    #salir{
+        margin: 0px auto;
+    }
+    .parte1{
+        margin-top: 20px;
+        width: 90%;
+        height: auto;
+    }
+    .parte1 form input, .parte1 form textarea{
+        width: 95%;
+    }
     /* footer -------------------- footer */
 
     #pie{
@@ -358,7 +368,17 @@ i:hover{
         margin-bottom: 10px;
         padding: 3px;
     }
-    
+    #salir{
+        margin: 0px auto;
+    }
+    .parte1{
+        margin-top: 20px;
+        width: 90%;
+        height: auto;
+    }
+    .parte1 form input, .parte1 form textarea{
+        width: 95%;
+    }
     /* footer -------------------- footer */
 
     #pie{
@@ -438,7 +458,17 @@ i:hover{
         margin-bottom: 10px;
         padding: 3px;
     }
-
+    #salir{
+        margin: 0px auto;
+    }
+    .parte1{
+        margin-top: 20px;
+        width: 90%;
+        height: auto;
+    }
+    .parte1 form input, .parte1 form textarea{
+        width: 95%;
+    }
     /* footer -------------------- footer */
     
     #pie{
@@ -509,7 +539,17 @@ i:hover{
         background: var(--fondo);
         font-size: 18px;
     }
-
+    #salir{
+        margin: 0px auto;
+    }
+    .parte1{
+        margin-top: 20px;
+        width: 90%;
+        height: auto;
+    }
+    .parte1 form input, .parte1 form textarea{
+        width: 95%;
+    }
     /* footer -------------------- footer */
     #pie{
         background-image: url("../img/gris fondo.jpg");
@@ -583,7 +623,16 @@ i:hover{
         background: var(--fondo);
         font-size: 20px;
     }
-
+    #salir{
+        margin: 0px auto;
+    }
+    .parte1{
+        margin-top: 20px;
+        height: auto;
+    }
+    .parte1 form input, .parte1 form textarea{
+        width: 95%;
+    }
     /* footer -------------------- footer */
     
     #pie{
@@ -658,7 +707,16 @@ i:hover{
         background: var(--fondo);
         font-size: 20px;
     }
-
+    #salir{
+        margin: 0px auto;
+    }
+    .parte1{
+        margin-top: 20px;
+        height: auto;
+    }
+    .parte1 form input, .parte1 form textarea{
+        width: 95%;
+    }
     /* footer -------------------- footer */
     #pie{
         height: 130px;
@@ -728,5 +786,12 @@ i:hover{
         border: none;
         background: var(--fondo);
         font-size: 25px;
+    }
+    #salir{
+        margin-right: 950px;
+    }
+    .parte1{
+        margin-top: 20px;
+        height: auto;
     }
 }

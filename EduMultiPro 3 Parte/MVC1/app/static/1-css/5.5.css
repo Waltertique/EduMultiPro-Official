@@ -296,7 +296,13 @@ tbody tr td{
         margin-bottom: 10px;
         padding: 3px;
     }
-
+    .titulo{
+        padding: 0px 0px;
+    }
+    .titulo h1{
+        font-size: 30px;
+        margin: 0px auto;
+    }
     /* footer -------------------- footer */
 
     #pie{
@@ -376,7 +382,13 @@ tbody tr td{
         margin-bottom: 10px;
         padding: 3px;
     }
-    
+    .titulo{
+        padding: 0px 0px;
+    }
+    .titulo h1{
+        font-size: 40px;
+        margin: 0px auto;
+    }
     /* footer -------------------- footer */
 
     #pie{
@@ -456,7 +468,13 @@ tbody tr td{
         margin-bottom: 10px;
         padding: 3px;
     }
-
+    .titulo{
+        padding: 0px 0px;
+    }
+    .titulo h1{
+        font-size: 40px;
+        margin: 0px auto;
+    }
     /* footer -------------------- footer */
     
     #pie{

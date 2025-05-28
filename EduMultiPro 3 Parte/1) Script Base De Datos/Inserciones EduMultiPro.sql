@@ -40,48 +40,48 @@ INSERT INTO Curso(ID, Curso_Nombre, grado_id, jornada_id) Values
 
 INSERT INTO Usuario(ID, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Correo1, Contraseña, Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto, rol_id, documento_id) Values
 	('1', 'Juan', 'Alberto', 'Pérez', 'Gómez',          'juan01@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',       'juan.alt01@gmail.com', '3111111111', '3201111111', '1990-01-15','h5.png'      ,'R003', 'D002'),
-	('2', 'Maria', 'Elena', 'Rodríguez', 'López',       'maria02@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'maria.alt02@gmail.com', '3122222222', '3212222222', '1988-05-22',null         ,'R003', 'D002'),
+	('2', 'Maria', 'Elena', 'Rodríguez', 'López',       'maria02@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'maria.alt02@gmail.com', '3122222222', '3212222222', '1988-05-22','m1.png'         ,'R003', 'D002'),
 	('3', 'Pedro', 'Antonio', 'García', 'Martínez',     'pedro03@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'pedro.alt03@gmail.com', '3133333333', '3223333333', '1995-07-10','h6.png'     ,'R002', 'D002'),
-	('4', 'Laura', 'Isabel', 'Hernández', 'Ramírez',    'laura04@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'laura.alt04@gmail.com', '3144444444', '3234444444', '1992-12-01',null         ,'R002', 'D002'),
+	('4', 'Laura', 'Isabel', 'Hernández', 'Ramírez',    'laura04@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'laura.alt04@gmail.com', '3144444444', '3234444444', '1992-12-01','m2.png'         ,'R002', 'D002'),
 	('5', 'Carlos', 'Andrés', 'Torres', 'Moreno',       'carlos05@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'carlos.alt05@gmail.com', '3155555555', '3245555555', '1985-09-18','h7.png'    ,'R002', 'D002'),
-	('6', 'Ana', 'Lucía', 'Ruiz', 'Ortiz',              'ana06@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',        'ana.alt06@gmail.com', '3166666666', '3256666666', '1993-03-12',null           ,'R002', 'D002'),
+	('6', 'Ana', 'Lucía', 'Ruiz', 'Ortiz',              'ana06@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',        'ana.alt06@gmail.com', '3166666666', '3256666666', '1993-03-12','m3.png'          ,'R002', 'D002'),
 	('7', 'Jose', 'Manuel', 'Morales', 'Jiménez',       'jose07@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',       'jose.alt07@gmail.com', '3177777777', '3267777777', '1997-08-27','h8.png'      ,'R002', 'D002'),
-	('8', 'Sofia', 'Alejandra', 'Suárez', 'Paredes',    'sofia08@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'sofia.alt08@gmail.com', '3188888888', '3278888888', '1991-11-09',null         ,'R002', 'D003'),
+	('8', 'Sofia', 'Alejandra', 'Suárez', 'Paredes',    'sofia08@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'sofia.alt08@gmail.com', '3188888888', '3278888888', '1991-11-09','m4.png'         ,'R002', 'D003'),
 	('9', 'David', 'Enrique', 'Castro', 'Rivas',        'david09@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'david.alt09@gmail.com', '3199999999', '3289999999', '1989-06-14','h9.png'     ,'R002', 'D003'),
-	('10', 'Paula', 'Andrea', 'Mendoza', 'Vargas',       'paula10@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'paula.alt10@gmail.com', '3101010101', '3291010101', '1994-02-20',null        ,'R002', 'D003'),
+	('10', 'Paula', 'Andrea', 'Mendoza', 'Vargas',       'paula10@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'paula.alt10@gmail.com', '3101010101', '3291010101', '1994-02-20','m5.png'        ,'R002', 'D003'),
                                                                                                                                                                                                                                                                             
 	('11', 'Lucas', 'Mateo', 'Reyes', 'Córdoba',         'lucas11@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'lucas.alt11@gmail.com', '3111111112', '3201111112', '2008-04-05','h10.png'   ,'R001', 'D001'),
-	('12', 'Valeria', 'Sofía', 'Silva', 'Carrillo',      'valeria12@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'valeria.alt12@gmail.com', '3122222223', '3212222223', '2010-07-22',null      ,'R001', 'D001'),
+	('12', 'Valeria', 'Sofía', 'Silva', 'Carrillo',      'valeria12@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'valeria.alt12@gmail.com', '3122222223', '3212222223', '2010-07-22','m1.png'      ,'R001', 'D001'),
 	('13', 'Diego', 'Esteban', 'Castaño', 'Delgado',     'diego13@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'diego.alt13@gmail.com', '3133333334', '3223333334', '2009-01-30','h5.png'    ,'R001', 'D001'),
-	('14', 'Camila', 'Gabriela', 'Cruz', 'Salazar',      'camila14@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'camila.alt14@gmail.com', '3144444445', '3234444445', '2011-10-11',null       ,'R001', 'D001'),
+	('14', 'Camila', 'Gabriela', 'Cruz', 'Salazar',      'camila14@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'camila.alt14@gmail.com', '3144444445', '3234444445', '2011-10-11','m2.png'       ,'R001', 'D001'),
 	('15', 'Andres', 'Felipe', 'Pineda', 'Barrios',      'andres15@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'andres.alt15@gmail.com', '3155555556', '3245555556', '2012-03-25','h6.png'   ,'R001', 'D001'),
-	('16', 'Natalia', 'Lorena', 'Rojas', 'Peña',         'natalia16@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'natalia.alt16@gmail.com', '3166666667', '3256666667', '2008-05-18',null      ,'R001', 'D001'),
+	('16', 'Natalia', 'Lorena', 'Rojas', 'Peña',         'natalia16@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'natalia.alt16@gmail.com', '3166666667', '3256666667', '2008-05-18','m3.png'      ,'R001', 'D001'),
 	('17', 'Sergio', 'Alejandro', 'Peñaloza', 'Navarro', 'sergio17@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'sergio.alt17@gmail.com', '3177777778', '3267777778', '2013-09-29','h7.png'   ,'R001', 'D001'),
-	('18', 'Carolina', 'Fernanda', 'Gómez', 'Quintero',  'carolina18@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',   'carolina.alt18@gmail.com', '3188888889', '3278888889', '2010-12-03',null     ,'R001', 'D001'),
+	('18', 'Carolina', 'Fernanda', 'Gómez', 'Quintero',  'carolina18@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',   'carolina.alt18@gmail.com', '3188888889', '3278888889', '2010-12-03','m4.png'     ,'R001', 'D001'),
 	('19', 'Felipe', 'Alonso', 'Vargas', 'Maldonado',    'felipe19@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'felipe.alt19@gmail.com', '3199999900', '3289999900', '2009-02-28','h8.png'   ,'R001', 'D001'),
-	('20', 'Daniela', 'Patricia', 'Mejía', 'Castillo',   'daniela20@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'daniela.alt20@gmail.com', '3101010111', '3291010111', '2011-08-06',null      ,'R001', 'D001'),
+	('20', 'Daniela', 'Patricia', 'Mejía', 'Castillo',   'daniela20@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'daniela.alt20@gmail.com', '3101010111', '3291010111', '2011-08-06','m5.png'      ,'R001', 'D001'),
 												                                                                                                                                            																			
 	('21', 'Sebastian', 'Iván', 'Ortiz', 'Velásquez',    'sebastian21@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',  'sebastian.alt21@gmail.com', '3111111122', '3201111122', '2008-03-17','h9.png','R001', 'D001'),
-	('22', 'Andrea', 'Milena', 'Fernández', 'Rosales',   'andrea22@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'andrea.alt22@gmail.com', '3122222233', '3212222233', '2010-06-26',null       ,'R001', 'D001'),
+	('22', 'Andrea', 'Milena', 'Fernández', 'Rosales',   'andrea22@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'andrea.alt22@gmail.com', '3122222233', '3212222233', '2010-06-26','m1.png'       ,'R001', 'D001'),
 	('23', 'Oscar', 'Eduardo', 'Aguilar', 'Padilla',     'oscar23@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'oscar.alt23@gmail.com', '3133333344', '3223333344', '2011-09-15','h10.png'   ,'R001', 'D001'),
-	('24', 'Alejandra', 'Juliana', 'Benítez', 'Palacios','alejandra24@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',  'alejandra.alt24@gmail.com', '3144444455', '3234444455', '2012-04-08',null    ,'R001', 'D001'),
+	('24', 'Alejandra', 'Juliana', 'Benítez', 'Palacios','alejandra24@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',  'alejandra.alt24@gmail.com', '3144444455', '3234444455', '2012-04-08','m2.png'    ,'R001', 'D001'),
 	('25', 'Enrique', 'Javier', 'León', 'Herrera',       'enrique25@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'enrique.alt25@gmail.com', '3155555566', '3245555566', '2013-12-21','h5.png'  ,'R001', 'D001'),
-	('26', 'Karen', 'Tatiana', 'Campos', 'Chávez',       'karen26@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'karen.alt26@gmail.com', '3166666677', '3256666677', '2014-01-03',null        ,'R001', 'D001'),
+	('26', 'Karen', 'Tatiana', 'Campos', 'Chávez',       'karen26@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',      'karen.alt26@gmail.com', '3166666677', '3256666677', '2014-01-03','m3.png'        ,'R001', 'D001'),
 	('27', 'Manuel', 'Jesús', 'Sánchez', 'Figueroa',     'manuel27@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'manuel.alt27@gmail.com', '3177777788', '3267777788', '2015-05-12','h6.png'   ,'R001', 'D001'),
-	('28', 'Isabela', 'María', 'Bautista', 'Gallardo',   'isabela28@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'isabela.alt28@gmail.com', '3188888899', '3278888899', '2016-07-19',null      ,'R001', 'D001'),
+	('28', 'Isabela', 'María', 'Bautista', 'Gallardo',   'isabela28@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'isabela.alt28@gmail.com', '3188888899', '3278888899', '2016-07-19','m4.png'      ,'R001', 'D001'),
 	('29', 'Martin', 'Leandro', 'Arango', 'Bermúdez',    'martin29@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'martin.alt29@gmail.com', '3199999000', '3289999000', '2017-11-02','h7.png'   ,'R001', 'D001'),
-	('30', 'Juliana', 'Natalia', 'Cárdenas', 'Zapata',   'juliana30@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'juliana.alt30@gmail.com', '3101010122', '3291010122', '2018-03-23',null      ,'R001', 'D001'),
+	('30', 'Juliana', 'Natalia', 'Cárdenas', 'Zapata',   'juliana30@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'juliana.alt30@gmail.com', '3101010122', '3291010122', '2018-03-23','m5.png'      ,'R001', 'D001'),
                                                                                                                                                                                             																			
 	('31', 'Leonardo', 'Daniel', 'Valencia', 'Montoya',  'leonardo31@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',   'leonardo.alt31@gmail.com', '3111111133', '3201111133', '2010-06-10','h8.png' ,'R001', 'D001'),
-	('32', 'Ximena', 'Carolina', 'Patiño', 'Benavides',  'ximena32@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'ximena.alt32@gmail.com', '3122222244', '3212222244', '2011-09-29',null       ,'R001', 'D001'),
+	('32', 'Ximena', 'Carolina', 'Patiño', 'Benavides',  'ximena32@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'ximena.alt32@gmail.com', '3122222244', '3212222244', '2011-09-29','m1.png'       ,'R001', 'D001'),
 	('33', 'Brayan', 'Adrián', 'Nieto', 'Escobar',       'brayan33@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'brayan.alt33@gmail.com', '3133333355', '3223333355', '2012-01-14','h9.png'   ,'R001', 'D001'),
-	('34', 'Nataly', 'Estefanía', 'Palma', 'Cuellar',    'nataly34@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'nataly.alt34@gmail.com', '3144444466', '3234444466', '2013-08-05',null       ,'R001', 'D001'),
+	('34', 'Nataly', 'Estefanía', 'Palma', 'Cuellar',    'nataly34@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'nataly.alt34@gmail.com', '3144444466', '3234444466', '2013-08-05','m2.png'       ,'R001', 'D001'),
 	('35', 'Ricardo', 'Samuel', 'Barrera', 'Sierra',     'ricardo35@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',    'ricardo.alt35@gmail.com', '3155555577', '3245555577', '2014-02-17','h10.png' ,'R001', 'D001'),
-	('36', 'Monica', 'Patricia', 'Delgado', 'Acosta',    'monica36@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'monica.alt36@gmail.com', '3166666688', '3256666688', '2015-04-24',null       ,'R001', 'D001'),
+	('36', 'Monica', 'Patricia', 'Delgado', 'Acosta',    'monica36@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',     'monica.alt36@gmail.com', '3166666688', '3256666688', '2015-04-24','m3.png'       ,'R001', 'D001'),
 	('37', 'Santiago', 'Emilio', 'Mora', 'Arenas',       'santiago37@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',   'santiago.alt37@gmail.com', '3177777799', '3267777799', '2016-11-30','h5.png' ,'R001', 'D001'),
-	('38', 'Victoria', 'Luciana', 'Estupiñán', 'Cadavid','victoria38@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',   'victoria.alt38@gmail.com', '3188888800', '3278888800', '2017-01-07',null     ,'R001', 'D001'),
+	('38', 'Victoria', 'Luciana', 'Estupiñán', 'Cadavid','victoria38@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',   'victoria.alt38@gmail.com', '3188888800', '3278888800', '2017-01-07','m4.png'     ,'R001', 'D001'),
 	('39', 'Hugo', 'Francisco', 'Marín', 'Correa',       'hugo39@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',       'hugo.alt39@gmail.com', '3199999011', '3289999011', '2018-05-13','h6.png'     ,'R001', 'D001'),
-	('40', 'Estefania', 'Paola', 'Guzmán', 'Roldán',     'estefania40@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',  'estefania.alt40@gmail.com', '3101010133', '3291010133', '2019-12-25',null    ,'R001', 'D001');
+	('40', 'Estefania', 'Paola', 'Guzmán', 'Roldán',     'estefania40@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',  'estefania.alt40@gmail.com', '3101010133', '3291010133', '2019-12-25','m5.png'    ,'R001', 'D001');
     
 INSERT INTO Miembros_Curso(usuario_id, curso_id) Values
 	('3', '1'),
@@ -320,17 +320,24 @@ INSERT INTO Trabajo_Archivo(ID, trabajo_id, ruta_archivo, nombre_original) value
   
 INSERT INTO TrabajoEntregado(ID, Fecha_Trabajo, Nota, trabajo_id, usuario_id) Values
 
-	('1', '2025-04-21', 4.5, '1', '11'),
-	('2', '2025-04-26', 2.5, '2', '12'),
-    ('3', '2025-04-21', 3.5, '3', '13'),
-	('4', '2025-04-26', 5.0, '4', '14');
+	('1', '2025-04-21', 4.5, '1', '3'),
+	('2', '2020-06-26', 2.5, '1', '30'),
+    ('3', '2024-02-21', 3.5, '2', '38'),
+	('4', '2022-05-26', 2.0, '2', '39'),
+    ('5', '2023-07-2', 3.3, '3', '3'),
+    ('6', '2025-03-18', 4.4, '3', '30'),
+    ('7', '2021-010-30', 1.1, '4', '38');
     
 INSERT INTO TrabajoEntregado_Archivo(ID, trabajo_entregado_id, ruta_archivo, nombre_original) Values
 
 	('1', '1','archivos/edufisica_bitacora.docx','trabajo entregado 1'),
-    ('2', '2','archivos/edufisica_futbol.pdf','trabajo entregado 2'),
-    ('3', '3','archivos/edufisica_bitacora.docx','trabajo entregado 3'),
-    ('4', '4','archivos/edufisica_futbol.pd','trabajo entregado 4');
+    ('2', '1','archivos/edufisica_bitacora.docx','trabajo entregado 1.1'),
+    ('3', '2','archivos/edufisica_futbol.pdf','trabajo entregado 2'),
+    ('4', '3','archivos/edufisica_bitacora.docx','trabajo entregado 3'),
+    ('5', '4','archivos/edufisica_futbol.pd','trabajo entregado 4'),
+    ('6', '5','archivos/edufisica_futbol.pd','trabajo entregado 5'),
+    ('7', '6','archivos/edufisica_futbol.pd','trabajo entregado 6'),
+    ('8', '7','archivos/edufisica_futbol.pd','trabajo entregado 7');
     
 INSERT INTO Comentario(ID, Descripcion, Fecha, trabajo_id, anuncio_id, usuario_id) Values
 

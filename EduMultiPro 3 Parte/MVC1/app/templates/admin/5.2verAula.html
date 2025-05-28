@@ -126,11 +126,15 @@
                 {% for anuncio in anuncios %}
                   <div class="anuncio">
                     <div class="info">
+
                       <div class="info1">
-                        <img class="img-fluid" src="{{ url_for('static', filename='fotos/' + (anuncio.RutaFoto or 'default.png')) }}" alt="" id="img1">
-                        <h1>{{ anuncio.Profesor }}</h1>
-                        <h2>{{ anuncio.Fecha_Anuncio }}</h2>
+                        <div class="foto">
+                          <img class="img-fluid" src="{{ url_for('static', filename='fotos/' + (anuncio.RutaFoto or 'default.png')) }}" alt="" id="img1">
+                          <h1>{{ anuncio.Profesor }}</h1>
+                        </div>
+                          <h2>{{ anuncio.Fecha_Anuncio }}</h2>
                       </div>
+
                       <div class="control">
                         <button class="b1" onclick="mostrarFormulario('modificarAnuncio-{{ anuncio.ID }}')">Modificar</button>
 
@@ -177,8 +181,10 @@
                     {% for comentario in comentarios_por_anuncio.get(anuncio.ID, []) %}
                       <div class="comentario">
                         <div class="info1">
-                          <img src="{{ url_for('static', filename='fotos/' + (comentario.RutaFoto or 'default.png')) }}" alt="">
-                          <h1>{{ comentario.Comentador }}</h1>
+                          <div class="fotoComentario">
+                            <img src="{{ url_for('static', filename='fotos/' + (comentario.RutaFoto or 'default.png')) }}" alt="">
+                            <h1>{{ comentario.Comentador }}</h1>
+                          </div>
                           <h2>{{ comentario.fecha_comentario }}</h2>
                         </div>
                         <div class="desc">

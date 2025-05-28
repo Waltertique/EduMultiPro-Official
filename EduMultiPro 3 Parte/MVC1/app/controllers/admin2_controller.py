@@ -976,8 +976,88 @@ def eliminar_comentario_trabajo(id):
 
 @admin2_bp.route('/6.1-verEntregado')
 def verEntregado():
-    return render_template('admin/6.1-verEntregado.html')
+    trabajo_id = request.args.get('trabajo_id')
+    aula_id = request.args.get('aula_id')
 
+    if not trabajo_id or not aula_id:
+        flash("Faltan parámetros", "error")
+        return redirect(url_for('admin2_bp.Trabajos'))
+
+    conexion = obtener_conexion()
+    alumnos_entregados = []
+
+    try:
+        with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
+            cursor.execute("""
+                SELECT 
+                    te.ID AS trabajo_entregado_id,
+                    CONCAT(u.Primer_Nombre, ' ', u.Segundo_Nombre, ' ', u.Primer_Apellido, ' ', u.Segundo_Apellido) AS nombre_completo,
+                    te.Nota,
+                    te.Fecha_Trabajo,
+                    ta.ruta_archivo,
+                    ta.nombre_original
+                FROM TrabajoEntregado te
+                JOIN Usuario u ON te.usuario_id = u.ID
+                JOIN Trabajo t ON te.trabajo_id = t.ID
+                LEFT JOIN TrabajoEntregado_Archivo ta ON ta.trabajo_entregado_id = te.ID
+                WHERE te.trabajo_id = %s AND t.aula_id = %s
+                ORDER BY u.ID
+            """, (trabajo_id, aula_id))
+
+            resultados = cursor.fetchall()
+
+            for fila in resultados:
+                # Busca si ya está el alumno en la lista
+                alumno = next((a for a in alumnos_entregados if a['trabajo_entregado_id'] == fila['trabajo_entregado_id']), None)
+                if not alumno:
+                    alumno = {
+                        'trabajo_entregado_id': fila['trabajo_entregado_id'],  # <-- agregado aquí
+                        'nombre_completo': fila['nombre_completo'],
+                        'Nota': fila['Nota'],
+                        'Fecha_Trabajo': fila['Fecha_Trabajo'],
+                        'archivos': []
+                    }
+                    alumnos_entregados.append(alumno)
+                if fila['ruta_archivo']:
+                    alumno['archivos'].append({
+                        'ruta': fila['ruta_archivo'],
+                        'nombre': fila['nombre_original']
+                    })
+
+    finally:
+        conexion.close()
+
+    return render_template('admin/6.1-verEntregado.html',
+                           alumnos_entregados=alumnos_entregados,
+                           trabajo_id=trabajo_id,
+                           aula_id=aula_id)
+
+@admin2_bp.route('/asignar-nota', methods=['POST'])
+def asignar_nota():
+    trabajo_entregado_id = request.form.get('trabajo_entregado_id')
+    nueva_nota = request.form.get('nuevaNota')
+
+    if not trabajo_entregado_id or nueva_nota is None:
+        flash("Faltan datos para actualizar la nota", "error")
+        return redirect(request.referrer or url_for('admin2_bp.verEntregado'))
+
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("""
+                UPDATE TrabajoEntregado
+                SET Nota = %s
+                WHERE ID = %s
+            """, (nueva_nota, trabajo_entregado_id))
+        conexion.commit()
+        flash("Nota actualizada correctamente", "success")
+    except Exception as e:
+        flash(f"Error al actualizar nota: {e}", "error")
+    finally:
+        conexion.close()
+
+    return redirect(request.referrer or url_for('admin2_bp.verEntregado'))
+        
 @admin2_bp.route('/5.4Personas')
 def Personas():
     aula_id = request.args.get('aula_id')
@@ -1017,10 +1097,48 @@ def Notas():
         flash("No se especificó aula", "error")
         return redirect(url_for('admin2_bp.verAula'))
 
-    # Lógica para obtener notas...
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
+            # Obtener todos los estudiantes del curso relacionado con el aula
+            cursor.execute("""
+                SELECT u.ID, CONCAT(u.Primer_Nombre, ' ', u.Segundo_Nombre, ' ', u.Primer_Apellido, ' ', u.Segundo_Apellido) AS nombre
+                FROM Usuario u
+                JOIN Miembros_Curso mc ON u.ID = mc.usuario_id
+                JOIN Aula a ON mc.curso_id = a.curso_id
+                WHERE a.ID = %s
+            """, (aula_id,))
+            estudiantes = cursor.fetchall()
 
-    notas = []  # ejemplo
-    return render_template('admin/5.5notas.html', notas=notas, aula_id=aula_id)
+            # Obtener los trabajos del aula
+            cursor.execute("SELECT ID, Titulo_Trabajo FROM Trabajo WHERE aula_id = %s", (aula_id,))
+            trabajos = cursor.fetchall()
+
+            # Obtener las notas entregadas
+            cursor.execute("""
+                SELECT te.usuario_id, te.trabajo_id, te.Nota
+                FROM TrabajoEntregado te
+                JOIN Trabajo t ON te.trabajo_id = t.ID
+                WHERE t.aula_id = %s
+            """, (aula_id,))
+            notas_raw = cursor.fetchall()
+
+        # Organizar las notas en un diccionario: {(usuario_id, trabajo_id): nota}
+        notas_dict = {(n["usuario_id"], n["trabajo_id"]): n["Nota"] for n in notas_raw}
+
+        # Construir una tabla con los estudiantes y sus notas por trabajo
+        tabla_notas = []
+        for estudiante in estudiantes:
+            fila = {"nombre": estudiante["nombre"], "notas": []}
+            for trabajo in trabajos:
+                nota = notas_dict.get((estudiante["ID"], trabajo["ID"]), "Sin nota")
+                fila["notas"].append(nota)
+            tabla_notas.append(fila)
+
+    finally:
+        conexion.close()
+
+    return render_template('admin/5.5notas.html', trabajos=trabajos, tabla_notas=tabla_notas, aula_id=aula_id)
 
 
 

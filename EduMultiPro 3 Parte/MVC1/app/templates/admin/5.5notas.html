@@ -102,40 +102,30 @@
                 </div>
 
                     <div class="contenedor-tabla">
-                        <table class="tablaUsuarios" id="tablaUsuarios">
-                            <thead>
+                      <table class="tablaUsuarios" id="tablaUsuarios">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                {% for trabajo in trabajos %}
+                                    <th>{{ trabajo.Titulo_Trabajo }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for fila in tabla_notas %}
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Primer Nombre</th>
-                                    <th>Segundo Nombre</th>
-                                    <th>Primer Apellido</th>
-                                    <th>Segundo Apellido</th>
+                                    <td>{{ fila.nombre }}</td>
+                                    {% for nota in fila.notas %}
+                                        <td>{{ nota }}</td>
+                                    {% endfor %}
                                 </tr>
-                            </thead>
-                            <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>juan</td>
-                                        <td>pedro</td>
-                                        <td>miguel</td>
-                                        <td>gonzales</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>sebastian</td>
-                                        <td>alejandro</td>
-                                        <td>castilla</td>
-                                        <td>zapata</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>juan</td>
-                                        <td>perez</td>
-                                        <td>quintero</td>
-                                        <td>domingo</td>
-                                    </tr>
-                            </tbody>
-                        </table>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+
+                      {% if not trabajos %}
+                          <p>No hay trabajos registrados en esta aula.</p>
+                      {% endif %}
                     </div>
             </div>
         </div>

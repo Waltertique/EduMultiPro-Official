@@ -80,8 +80,8 @@
             <div class="col-10" id="contenidoTabla">
                 <div class="botones">
                   <div>
-                    <a href=""><button>Instrucciones</button></a>
-                    <a href="{{ url_for('admin2_bp.verEntregado')}}"><button>Ver Subidos</button></a>
+                    <a href="{{ url_for('admin2_bp.verTrabajo', trabajo_id=trabajo_id, aula_id=aula_id) }}"><button>Instrucciones</button></a>
+                    <a href="{{ url_for('admin2_bp.verEntregado', trabajo_id=trabajo_id, aula_id=aula_id) }}"><button>Ver Subidos</button></a>
                   </div>
                     <a href="{{ url_for('admin2_bp.Trabajos', aula_id=aula_id) }}"><button id="equix"><i class="fa-solid fa-x"></i></button></a>
                 </div>
@@ -93,71 +93,55 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
-                                    <th></th>
+                                    <th>Ver</th>
                                 </tr>
                             </thead>
-                            
                             <tbody>
+                                {% for alumno in alumnos_entregados %}
                                 <tr>
-                                    <td>juan peres</td>
+                                    <td>{{ alumno.nombre_completo }}</td>
                                     <td>
-                                        <form>
-                                            <button type="submit" class="informacion" id="mostrarEntregados">
-                                                <i class="fa-solid fa-circle-info"></i>
-                                            </button>
-                                        </form>
+                                        <button class="mostrarEntregado"
+                                                data-id="{{ alumno.trabajo_entregado_id }}"
+                                                data-nombre="{{ alumno.nombre_completo }}"
+                                                data-nota="{{ alumno.Nota }}"
+                                                data-fecha="{{ alumno.Fecha_Trabajo }}"
+                                                data-archivos='{{ alumno.archivos | tojson }}'>
+                                          Ver entrega
+                                        </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>miguel santos</td>
-                                    <td>
-                                        <form>
-                                            <button type="submit" class="informacion" >
-                                                <i class="fa-solid fa-circle-info"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>tomas quinto</td>
-                                    <td>
-                                        <form>
-                                            <button type="submit" class="informacion" >
-                                                <i class="fa-solid fa-circle-info"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
 
+                    
                     <div class="trabajos" id="trabajosEntregados" style="display:none;">
-                        <div class="autor">
-                            <h3>Juan Perez</h3>
-                            <div>
-                                <p>Nota:</p>
-                                <p>3.5</p>
-                            </div>
-                        </div>
-                        <div class="archivos">
-                            <div class="archivo1">
-                                <a href="">Archivo1</a>
-                            </div>
-                            <div class="archivo1">
-                                <a href="">Archivo2</a>
-                            </div>
-                            <div class="archivo1">
-                                <a href="">Archivo3</a>
-                            </div>
-                        </div>
-                        <div class="nota">
-                            <form action="">
-                                <input type="number" placeholder="Nota" step="0.01">
-                                <button>Asignar Nota</button>
-                            </form>
-                            <button id="salir1"><i class="fa-solid fa-x"></i></button>
-                        </div>
+                      <div class="autor">
+                          <h3 id="nombreAlumno"></h3>
+                          <div>
+                              <p>Nota:</p>
+                              <p id="notaAlumno"></p>
+                          </div>
+                      </div>
+                      <div class="archivos" id="listaArchivos">
+                          <!-- Aquí se insertarán los archivos -->
+                      </div>
+                      <div class="nota">
+                          <div class="fecha">
+                              <h5>Fecha de Entrega:</h5>
+                              <p id="fechaEntrega"></p>
+                          </div>
+                          <div class="form1">
+                              <form action="{{ url_for('admin2_bp.asignar_nota') }}" method="post">
+                                <input type="hidden" name="trabajo_entregado_id" id="trabajoEntregadoId" value="">
+                                <input type="number" name="nuevaNota" placeholder="Nota" step="0.01" id="inputNota" required>
+                                <button type="submit">Asignar Nota</button>
+                              </form>
+                              <button id="salir1"><i class="fa-solid fa-x"></i></button>
+                          </div>
+                      </div>
                     </div>
 
                 </div>

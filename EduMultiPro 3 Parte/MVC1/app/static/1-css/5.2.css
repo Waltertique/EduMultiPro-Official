@@ -329,8 +329,12 @@ i:hover{
     flex-direction: row;
     align-items: center;
 }
+.anuncio .info1 .foto{
+    display: flex;
+    flex-direction: row;
+}
 .anuncio .info1 img{
-    width: 30px;
+    width: 45px;
     height: auto;
 }
 .anuncio .info1 h1{
@@ -411,9 +415,14 @@ i:hover{
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 20px;
+}
+.comentario .info1 .fotoComentario{
+    display: flex;
+    flex-direction: row;
 }
 .comentario .info1 img{
-    width: 30px;
+    width: 45px;
     height: auto;
 }
 .comentario .info1 h1{
@@ -539,35 +548,72 @@ i:hover{
         height: auto;
         font-size: 15px;
     }
-
-    /* Primer botón (Modificar) */
-.anuncio button:nth-child(1) {
-    margin: 20px 0px 10px 11px;
-    width: 28%;
-    font-size: 10px;
-}
-  
-/* Segundo botón (Eliminar) */
-.anuncio button:nth-child(2) {
-    margin: 20px 0px 10px 5px;
-    width: 28%;
-    font-size: 10px;
-}
-
-  /* Tercer botón (Comentar) */
-.anuncio button:nth-child(3) {
-    margin: 20px 0px 10px 5px;
-    width: 29%;
-    font-size: 10px;
-}
-
-.anuncio small {
-    margin-left: 18px; /* o más si quieres */
-    color: gray; /* opcional, para que no se vea tan fuerte */
-    font-size: 14px; /* opcional, para que se vea más discreto */
-  }
-    
-
+    .anuncio{
+        width: 85%;
+        margin: 20px auto;
+        padding: 10px 15px;
+    }
+    .anuncio .info{
+        display: flex;
+        flex-direction: column;
+    }
+    .info .info1{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .info .info1 .foto{
+        display: flex;
+        align-items: center;
+    }
+    .info .info1 .foto h1{
+        font-size: 20px;
+    }
+    .info .info1 h2{
+        margin-right: 130px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .anuncio .control button{
+        font-size: 15px;
+    }
+    .anuncio .control form{
+        margin-right: 20px;
+    }
+    .anuncio .botones input{
+        width: 160px;
+        height: 30px;
+    }
+    .anuncio .botones button{
+        width: 60px;
+        height: 30px;
+    }
+    .comentario{
+        padding: 15px 15px;
+    }
+    .comentario .info1{
+        display: flex;
+        flex-direction: column;
+    }
+    .comentario .info1 .fotoComentario{
+        display: flex;
+        flex-direction: row;
+    }
+    .comentario .info1 h2{
+        margin-right: 120px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .comentario .info1 .fotoComentario h1{
+        font-size: 20px;
+    }
+    .anuncio .modificarAnuncio{
+        padding: 10px;
+    }
+    .anuncio .modificarAnuncio form button{
+        margin: auto;
+        margin-bottom: 10px;
+    }
     /* footer -------------------- footer */
 
     #pie{
@@ -675,32 +721,75 @@ i:hover{
         font-size: 15px;
     }
 
-    /* Primer botón (Modificar) */
-.anuncio button:nth-child(1) {
-    margin: 20px 0px 10px 11px;
-    width: 28%;
-    font-size: 10px;
-}
-  
-/* Segundo botón (Eliminar) */
-.anuncio button:nth-child(2) {
-    margin: 20px 0px 10px 5px;
-    width: 28%;
-    font-size: 10px;
-}
-
-  /* Tercer botón (Comentar) */
-.anuncio button:nth-child(3) {
-    margin: 20px 0px 10px 5px;
-    width: 29%;
-    font-size: 10px;
-}
-
-.anuncio small {
-    margin-left: 18px; /* o más si quieres */
-    color: gray; /* opcional, para que no se vea tan fuerte */
-    font-size: 14px; /* opcional, para que se vea más discreto */
-  }
+    .anuncio{
+        width: 85%;
+        margin: 20px auto;
+        padding: 10px 15px;
+    }
+    .anuncio .info{
+        display: flex;
+        flex-direction: column;
+    }
+    .info .info1{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .info .info1 .foto{
+        display: flex;
+        align-items: center;
+    }
+    .info .info1 .foto img{
+        margin-left: 0px;
+    }
+    .info .info1 .foto h1{
+        font-size: 20px;
+    }
+    .info .info1 h2{
+        margin-right: 130px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .anuncio .control button{
+        font-size: 15px;
+    }
+    .anuncio .control form{
+        margin-right: 20px;
+    }
+    .anuncio .botones input{
+        width: 250px;
+        height: 30px;
+    }
+    .anuncio .botones button{
+        width: 60px;
+        height: 30px;
+    }
+    .comentario{
+        padding: 15px 15px;
+    }
+    .comentario .info1{
+        display: flex;
+        flex-direction: column;
+    }
+    .comentario .info1 .fotoComentario{
+        display: flex;
+        flex-direction: row;
+    }
+    .comentario .info1 h2{
+        margin-right: 120px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .comentario .info1 .fotoComentario h1{
+        font-size: 20px;
+    }
+    .anuncio .modificarAnuncio{
+        padding: 10px;
+    }
+    .anuncio .modificarAnuncio form button{
+        margin: auto;
+        margin-bottom: 10px;
+    }
     
     /* footer -------------------- footer */
 
@@ -809,32 +898,75 @@ i:hover{
         font-size: 15px;
     }
 
-    /* Primer botón (Modificar) */
-.anuncio button:nth-child(1) {
-    margin: 20px 0px 10px 11px;
-    width: 28%;
-    font-size: 10px;
-}
-  
-/* Segundo botón (Eliminar) */
-.anuncio button:nth-child(2) {
-    margin: 20px 0px 10px 5px;
-    width: 28%;
-    font-size: 10px;
-}
-
-  /* Tercer botón (Comentar) */
-.anuncio button:nth-child(3) {
-    margin: 20px 0px 10px 5px;
-    width: 29%;
-    font-size: 10px;
-}
-
-.anuncio small {
-    margin-left: 18px; /* o más si quieres */
-    color: gray; /* opcional, para que no se vea tan fuerte */
-    font-size: 14px; /* opcional, para que se vea más discreto */
-  }
+    .anuncio{
+        width: 85%;
+        margin: 20px auto;
+        padding: 10px 15px;
+    }
+    .anuncio .info{
+        display: flex;
+        flex-direction: column;
+    }
+    .info .info1{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .info .info1 .foto{
+        display: flex;
+        align-items: center;
+    }
+    .info .info1 .foto img{
+        margin-left: 0px;
+    }
+    .info .info1 .foto h1{
+        font-size: 20px;
+    }
+    .info .info1 h2{
+        margin-right: 130px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .anuncio .control button{
+        font-size: 15px;
+    }
+    .anuncio .control form{
+        margin-right: 20px;
+    }
+    .anuncio .botones input{
+        width: 250px;
+        height: 30px;
+    }
+    .anuncio .botones button{
+        width: 60px;
+        height: 30px;
+    }
+    .comentario{
+        padding: 15px 15px;
+    }
+    .comentario .info1{
+        display: flex;
+        flex-direction: column;
+    }
+    .comentario .info1 .fotoComentario{
+        display: flex;
+        flex-direction: row;
+    }
+    .comentario .info1 h2{
+        margin-right: 120px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .comentario .info1 .fotoComentario h1{
+        font-size: 20px;
+    }
+    .anuncio .modificarAnuncio{
+        padding: 10px;
+    }
+    .anuncio .modificarAnuncio form button{
+        margin: auto;
+        margin-bottom: 10px;
+    }
 
     /* footer -------------------- footer */
     
@@ -933,35 +1065,77 @@ i:hover{
         font-size: 15px;
     }
 
-    /* Primer botón (Modificar) */
-.anuncio{
-    margin: 0px auto;
-}
-.anuncio button:nth-child(1) {
-    margin: 20px 0px 10px 11px;
-    width: 28%;
-    font-size: 13px;
-}
-  
-/* Segundo botón (Eliminar) */
-.anuncio button:nth-child(2) {
-    margin: 20px 0px 10px 5px;
-    width: 28%;
-    font-size: 13px;
-}
+    .anuncio{
+        width: 85%;
+        margin: 20px auto;
+        padding: 10px 20px;
+    }
+    .anuncio .info{
+        display: flex;
+        flex-direction: column;
+    }
+    .info .info1{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .info .info1 .foto{
+        display: flex;
+        align-items: center;
+    }
+    .info .info1 .foto img{
+        margin-left: 0px;
+    }
+    .info .info1 .foto h1{
+        font-size: 20px;
+    }
+    .info .info1 h2{
+        margin-right: 130px;
+        margin-left: 30px;
+        font-size: 15px;
+    }
+    .anuncio .control button{
+        font-size: 15px;
+    }
+    .anuncio .control form{
+        margin-right: 20px;
+    }
+    .anuncio .botones input{
+        width: 500px;
+        height: 40px;
+    }
+    .anuncio .botones button{
+        width: 70px;
+        height: 40px;
+    }
+    .comentario{
+        padding: 15px 15px;
+    }
+    .comentario .info1{
+        display: flex;
+        flex-direction: row;
+    }
+    .comentario .info1 .fotoComentario{
+        display: flex;
+        flex-direction: row;
+    }
+    .comentario .info1 h2{
+        margin-right: 120px;
+        margin-left: 30px;
+        margin-top: 7px;
+        font-size: 15px;
 
-  /* Tercer botón (Comentar) */
-.anuncio button:nth-child(3) {
-    margin: 20px 0px 10px 5px;
-    width: 29%;
-    font-size: 13px;
-}
-
-.anuncio small {
-    margin-left: 18px; /* o más si quieres */
-    color: gray; /* opcional, para que no se vea tan fuerte */
-    font-size: 14px; /* opcional, para que se vea más discreto */
-  }
+    }
+    .comentario .info1 .fotoComentario h1{
+        font-size: 20px;
+    }
+    .anuncio .modificarAnuncio{
+        padding: 10px;
+    }
+    .anuncio .modificarAnuncio form button{
+        margin: auto;
+        margin-bottom: 10px;
+    }
     /* footer -------------------- footer */
     #pie{
         background-image: url("../img/gris fondo.jpg");
@@ -1062,36 +1236,18 @@ i:hover{
         height: auto;
         font-size: 15px;
     }
-
-    /* Primer botón (Modificar) */
-.anuncio{
-    margin: 0px auto;
-}
-.anuncio button:nth-child(1) {
-    margin: 20px 0px 10px 11px;
-    width: 28%;
-    font-size: 13px;
-}
-  
-/* Segundo botón (Eliminar) */
-.anuncio button:nth-child(2) {
-    margin: 20px 0px 10px 5px;
-    width: 28%;
-    font-size: 13px;
-}
-
-  /* Tercer botón (Comentar) */
-.anuncio button:nth-child(3) {
-    margin: 20px 0px 10px 5px;
-    width: 29%;
-    font-size: 13px;
-}
-
-.anuncio small {
-    margin-left: 18px; /* o más si quieres */
-    color: gray; /* opcional, para que no se vea tan fuerte */
-    font-size: 14px; /* opcional, para que se vea más discreto */
-  }
+    
+    .info .info1 .foto h1{
+        margin-top: 22px;
+    }
+    .anuncio .botones input{
+        width: 600px;
+        height: 40px;
+    }
+    .anuncio .botones button{
+        width: 70px;
+        height: 40px;
+    }
     /* footer -------------------- footer */
     
     #pie{
@@ -1195,35 +1351,17 @@ i:hover{
         font-size: 15px;
     }
 
-    /* Primer botón (Modificar) */
-.anuncio{
-    margin: 0px auto;
-}
-.anuncio button:nth-child(1) {
-    margin: 20px 0px 10px 11px;
-    width: 28%;
-    font-size: 13px;
-}
-  
-/* Segundo botón (Eliminar) */
-.anuncio button:nth-child(2) {
-    margin: 20px 0px 10px 5px;
-    width: 28%;
-    font-size: 13px;
-}
-
-  /* Tercer botón (Comentar) */
-.anuncio button:nth-child(3) {
-    margin: 20px 0px 10px 5px;
-    width: 29%;
-    font-size: 13px;
-}
-
-.anuncio small {
-    margin-left: 18px; /* o más si quieres */
-    color: gray; /* opcional, para que no se vea tan fuerte */
-    font-size: 14px; /* opcional, para que se vea más discreto */
-  }
+    .info .info1 .foto h1{
+        margin-top: 22px;
+    }
+    .anuncio .botones input{
+        width: 600px;
+        height: 40px;
+    }
+    .anuncio .botones button{
+        width: 70px;
+        height: 40px;
+    }
     
     /* footer -------------------- footer */
     #pie{
@@ -1323,33 +1461,15 @@ i:hover{
         font-size: 15px;
     }
 
-    /* Primer botón (Modificar) */
-.anuncio{
-    margin: 0px auto;
-}
-.anuncio button:nth-child(1) {
-    margin: 20px 0px 10px 11px;
-    width: 28%;
-    font-size: 13px;
-}
-  
-/* Segundo botón (Eliminar) */
-.anuncio button:nth-child(2) {
-    margin: 20px 0px 10px 5px;
-    width: 28%;
-    font-size: 13px;
-}
-
-  /* Tercer botón (Comentar) */
-.anuncio button:nth-child(3) {
-    margin: 20px 0px 10px 5px;
-    width: 29%;
-    font-size: 13px;
-}
-
-.anuncio small {
-    margin-left: 18px; /* o más si quieres */
-    color: gray; /* opcional, para que no se vea tan fuerte */
-    font-size: 14px; /* opcional, para que se vea más discreto */
-  }
+    .info .info1 .foto h1{
+        margin-top: 22px;
+    }
+    .anuncio .botones input{
+        width: 700px;
+        height: 40px;
+    }
+    .anuncio .botones button{
+        width: 80px;
+        height: 40px;
+    }
 }
