@@ -100,9 +100,9 @@
 
                         <!-- Botón Ver Más -->
                         <div class="col-xl-2">
-                          <form action="{{ url_for('alumno_bp.verNoticia') }}">
-                                <button>Ver Más</button>
-                            </form>
+                          <form action="{{ url_for('alumno_bp.verNoticia', noticia_id=noticia['ID']) }}">
+                            <button>Ver Más</button>
+                          </form>
                         </div>
                     </div>
                 </div>

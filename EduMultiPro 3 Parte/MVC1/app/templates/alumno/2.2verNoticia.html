@@ -83,43 +83,47 @@
 
               <!-- Título -->
               <div id="h0">
-                <h2 style="word-break: break-word; white-space: normal;">Nuevas Tecnologias</h2>
+                <h2 style="word-break: break-word; white-space: normal;">{{ noticia.Titulo_Noticia }}</h2>
               </div>
 
               <!-- Descripción 1 -->
               <div class="text">
                 <p style="word-break: break-word; white-space: normal;">
-                    La tecnología avanza a pasos agigantados y su impacto en el ámbito educativo es cada vez más notorio. Plataformas como EduMultiPro están incorporando herramientas emergentes como inteligencia artificial, realidad aumentada y sistemas de automatización para transformar el proceso de enseñanza-aprendizaje. Estas soluciones no solo hacen más dinámico el contenido, sino que también permiten personalizar el ritmo y estilo de aprendizaje de cada estudiante.
+                  {{ noticia.Descripcion1 }}
                 </p>
               </div>
 
               <!-- Imagen 2 -->
               <div class="imagen">
-                <img src="{{ url_for('static', filename='img/f2.png') }}" alt="" style="display: block; margin: 0 auto; margin-bottom: 40px; margin-top: 30px;">
+                {% if noticia.Imagen2 %}
+                  <img src="{{ '/' + noticia.Imagen2.replace('\\', '/') }}" alt="Imagen 2" style="display: block; margin: 0 auto; margin-bottom: 40px; margin-top: 30px;">
+                {% endif %}
               </div>
 
               <!-- Descripción 2 -->
               <div class="text">
                 <p style="word-break: break-word; white-space: normal;">
-                  Gracias a estas nuevas tecnologías, los docentes pueden acceder a datos en tiempo real sobre el rendimiento académico de sus estudiantes, identificar debilidades específicas y adaptar sus métodos pedagógicos. Además, las aulas virtuales se vuelven más interactivas con el uso de simulaciones, videos inmersivos y entornos colaborativos que fomentan la participación activa.
+                  {{ noticia.Descripcion2 }}
                 </p>
               </div>
 
               <!-- Imagen 3 -->
               <div class="imagen">
-                <img src="{{ url_for('static', filename='img/2.png') }}" alt="" style="display: block; margin: 0 auto; margin-bottom: 40px; margin-top: 30px;">
+                {% if noticia.Imagen3 %}
+                  <img src="{{ '/' + noticia.Imagen3.replace('\\', '/') }}" alt="Imagen 3" style="display: block; margin: 0 auto; margin-bottom: 40px; margin-top: 30px;">
+                {% endif %}
               </div>
 
               <!-- Descripción 3 -->
               <div class="text">
                 <p style="word-break: break-word; white-space: normal;">
-                  En EduMultiPro creemos firmemente que integrar tecnología educativa no es solo una opción, sino una necesidad. Por eso, seguimos trabajando para ofrecer herramientas modernas que preparen a nuestros estudiantes para los desafíos del futuro, desarrollando no solo conocimientos, sino también habilidades digitales clave para el siglo XXI.
+                  {{ noticia.Descripcion3 }}
                 </p>
               </div>
 
               <!-- Fecha -->
               <div class="col-xl-12" id="h6" style="margin-top: 30px;">
-                <p><strong>Fecha:</strong> 2/3/2005</p>
+                <p><strong>Fecha:</strong> {{ noticia.Fecha_Notica.strftime('%d/%m/%Y') }}</p>
               </div>
 
             </div>

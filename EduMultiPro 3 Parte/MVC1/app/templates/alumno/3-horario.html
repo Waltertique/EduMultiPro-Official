@@ -80,12 +80,15 @@
 
         <div class="cont1">
           <div class="tituloho">
-            <h2>Mi Horario: Horario curso 702</h2>
+            <h2>{{ horario.Titulo_Horario }}: {{ curso.Curso_Nombre }} - {{ curso.Grado_Nombre }} jornada {{ curso.Jornada_Nombre }}</h2>
           </div>
         
           <div class="imghorario">
-              <img 
-                src="{{ url_for('static', filename='img/imghorario.png') }}" alt="Imagen Horario" id="imagenPequena"  style="cursor: pointer; width: 900px; height: 500px;">
+            <img 
+              src="{{ url_for('static', filename=horario.Imagen_Horario) }}" 
+              alt="Imagen Horario" 
+              id="imagenPequena"  
+              style="cursor: pointer; width: 900px; height: 500px;">
           </div>
         
           <!-- Modal para mostrar imagen grande -->
@@ -95,16 +98,13 @@
           </div>
         
           <div class="descripcion">
-            <h3>Descripcion:</h3>
+            <h3>Descripción:</h3>
             <p style="word-break: break-word; white-space: normal;">
-              horario del curso 701 jornada tarde
+              {{ horario.Descripcion_Horario }}
             </p>
           </div>
         </div>
-        
-
-        
-
+    
     </div>
 
     <!--footer-->
