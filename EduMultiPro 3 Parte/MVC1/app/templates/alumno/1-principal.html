@@ -48,13 +48,11 @@
                     Opciones
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ url_for('admin_bp.usuario') }}"><i class="fa-solid fa-user"><p>Usuario</p></i></a></li>
-                    <li><a class="dropdown-item" href="{{ url_for('admin_bp.curso') }}"><i class="fa-solid fa-layer-group"><p>Cursos</p></i></a></li>
-                    <li><a class="dropdown-item" href="{{ url_for('admin_bp.horario') }}"><i class="fa-solid fa-calendar-days"><p>Horarios</p></i></a></li>
-                    <li><a class="dropdown-item" href="{{ url_for('admin_bp.aula') }}"><i class="fa-solid fa-users-rectangle"><p>Aulas</p></i></a></li>
-                    <li><a class="dropdown-item" href="{{ url_for('admin_bp.notas') }}"><i class="fa-solid fa-ranking-star"><p>Notas</p></i></a></li>
-                    <li><a class="dropdown-item" href="{{ url_for('admin_bp.planillas') }}"><i class="fa-solid fa-folder-open"><p>Planillas</p></i></a></li>
-                    <li><a class="dropdown-item" href="{{ url_for('admin_bp.noticia') }}"><i class="fa-solid fa-radio"><p>Noticias</p></i></a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('alumno_bp.vista_alumno_principal') }}"><i class="fa-solid fa-layer-group"><p>Inicio</p></i></a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('alumno_bp.vista_todas_las_noticias') }}"><i class="fa-solid fa-radio"><p>Noticias</p></i></a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('alumno_bp.horario') }}"><i class="fa-solid fa-calendar-days"><p>Horarios</p></i></a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('alumno_bp.Aulas') }}"><i class="fa-solid fa-users-rectangle"><p>Aulas</p></i></a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('alumno_bp.perfil') }}"><i class="fa-solid fa-user"><p>Usuario</p></i></a></li>
                     <li><a class="dropdown-item" href="{{ url_for('admin_bp.login') }}"><i class="fa-solid fa-right-to-bracket"><p>Salir</p></i></a></li>
                   </ul>
                 </div>
@@ -64,15 +62,13 @@
 
     <!--article-->
     <div class="container-fluid" id="centro">
-        <div class="row d-none d-xl-flex">
+        <div class="row d-none d-xl-flex" id="navegador2">
                 
                 <div class="col-xl-4"></div>
                 <div class="col-xl-1"><form action="{{ url_for('alumno_bp.vista_alumno_principal') }}"><button>INICIO</button></form></div>
                 <div class="col-xl-1"><form action="{{ url_for('alumno_bp.vista_todas_las_noticias') }}"><button>NOTICIAS</button></form></div>
                 <div class="col-xl-1"><form action="{{ url_for('alumno_bp.horario') }}"><button>HORARIOS</button></form></div>
-                <div class="col-xl-1"><form action=""><button type="button">CLASES</button></form></div>
-                <div class="col-xl-1"><form action=""><button type="button">NOTAS</button></form></div>
-                <div class="col-xl-1"><form action=""><button type="button">BOLETINES</button></form></div>
+                <div class="col-xl-1"><form action="{{ url_for('alumno_bp.Aulas') }}"><button>CLASES</button></form></div>
                 <div class="col-xl-1"><form action="{{ url_for('alumno_bp.perfil') }}"><button>USUARIO</button></form></div>
                 <div class="col-xl-1"><form action="{{ url_for('admin_bp.login') }}"><button>SALIR</button></form></div>
 

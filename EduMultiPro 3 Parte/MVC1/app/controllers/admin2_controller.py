@@ -1007,11 +1007,10 @@ def verEntregado():
             resultados = cursor.fetchall()
 
             for fila in resultados:
-                # Busca si ya está el alumno en la lista
                 alumno = next((a for a in alumnos_entregados if a['trabajo_entregado_id'] == fila['trabajo_entregado_id']), None)
                 if not alumno:
                     alumno = {
-                        'trabajo_entregado_id': fila['trabajo_entregado_id'],  # <-- agregado aquí
+                        'trabajo_entregado_id': fila['trabajo_entregado_id'],
                         'nombre_completo': fila['nombre_completo'],
                         'Nota': fila['Nota'],
                         'Fecha_Trabajo': fila['Fecha_Trabajo'],
@@ -1020,7 +1019,7 @@ def verEntregado():
                     alumnos_entregados.append(alumno)
                 if fila['ruta_archivo']:
                     alumno['archivos'].append({
-                        'ruta': fila['ruta_archivo'],
+                        'ruta': url_for('static', filename=fila['ruta_archivo']),
                         'nombre': fila['nombre_original']
                     })
 

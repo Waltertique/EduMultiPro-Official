@@ -142,40 +142,89 @@
 }
 
 /* parte2 -------------------- */
-.titulo{
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 30px 30px 10px 30px;
-    border-bottom: 2px solid black;
+#contenidoTabla{
     margin: 0px auto;
+    padding: 30px 0px;
 }
-.titulo h1{
-    font-size: 50px;
-    font-weight: bold;
-    
+#nav{
+    border-bottom: 2px solid black;
+    width: 100%;
 }
-.contenidoTablaUsuario{
-    overflow-x: auto;
-    margin: auto;
-    background-color: var(--gris-medio);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
-    width: 90%; 
+#nav .col-xl-2{
     display: flex;
     justify-content: center;
+}
+#nav .col-xl-2 a{
+    width: 85%;
+}
+#nav .col-xl-2 button{
+    border: none;
+    background: var(--fondo);
+    font-size: 32px;
+    width: 100%;
+}
+#nav .col-xl-2 button:hover{
+    background: var(--azul-secundario3);
+}
+.titulo{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 0px 100px;
+    align-items: center;
+}
+.titulo h1{
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+}
+.titulo button{
+    border-radius: 20px;
+    padding: 7px 15px;
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    color: white;
+}
+
+.contenedor-tabla{  
+    overflow-x: auto;
+    margin: 0px 0px 20px 0px;
+    background: var(--fondo);
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%; 
 }
 table{
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0px;
 }
-th, td{
+thead{
+    background-color: var(--azul-primario);
+    color: var(--blanco);
+}
+#tablaUsuarios th, td{
     padding: 10px;
     text-align: center !important;
-    border: 1px solid rgb(173, 173, 173);
+    border-bottom: 1px solid var(--azul-primario) !important;
+}
+
+table button{
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+table button:hover{
+    background-color: black;
+}
+tbody tr td{
+    color: black;
 }
 /* footer -------------------- footer */
 

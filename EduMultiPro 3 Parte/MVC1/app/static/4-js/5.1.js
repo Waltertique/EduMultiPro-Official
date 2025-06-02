@@ -1,4 +1,3 @@
-// Variables para el manejo de la tabla
 $(document).ready(function(){
     $('.tablaUsuarios').DataTable({
        language:{
@@ -26,13 +25,3 @@ $(document).ready(function(){
        
     });
     }); 
-
-    // Variables para el manejo de la tabla
-
-    function confirmarEliminacion() {
-        return confirm('¿Está seguro que desea eliminar este alumno? Esta acción no se puede deshacer.');
-    }
-    
-    function confirmarModificacion() {
-        return confirm('¿Está seguro que desea modificar los datos de este alumno?');
-    }

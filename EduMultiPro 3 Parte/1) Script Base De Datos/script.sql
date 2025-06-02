@@ -129,7 +129,7 @@ CREATE TABLE Trabajo_Archivo (
 CREATE TABLE TrabajoEntregado (
 	ID INT auto_increment PRIMARY KEY,
     Fecha_Trabajo DATE NOT NULL,
-    Nota FLOAT NOT NULL,
+    Nota FLOAT,
     trabajo_id INT NOT NULL,
     usuario_id INT NOT NULL,
     FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE,

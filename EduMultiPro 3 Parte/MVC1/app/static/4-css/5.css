@@ -142,40 +142,202 @@
 }
 
 /* parte2 -------------------- */
-.titulo{
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 30px 30px 10px 30px;
-    border-bottom: 2px solid black;
+#contenidoTabla{
     margin: 0px auto;
+    padding: 30px 0px;
 }
-.titulo h1{
-    font-size: 50px;
-    font-weight: bold;
-    
+#nav{
+    border-bottom: 2px solid black;
+    width: 100%;
 }
-.contenidoTablaUsuario{
-    overflow-x: auto;
-    margin: auto;
-    background-color: var(--gris-medio);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
-    width: 90%; 
+#nav .col-xl-2{
     display: flex;
     justify-content: center;
 }
-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0px;
+#nav .col-xl-2 a{
+    width: 85%;
 }
-th, td{
+#nav .col-xl-2 button{
+    border: none;
+    background: var(--fondo);
+    font-size: 32px;
+    width: 100%;
+}
+#nav .col-xl-2 button:hover{
+    background: var(--azul-secundario3);
+}
+#baner{
+    margin: 20px auto;
+    padding: 0px 20px;
+    border: none;
+    border-radius: 20px;
+    width: 90%;
+    height: auto;
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+}
+#titulo h2{
+    font-size: 50px;
+    margin: 20px 0px;
+    color: white;
+}
+#codigo{
+    margin-bottom: 10px;
+    color: white;
+}
+#novedad{
+    margin: 30px auto;
+    width: 87%;
+}
+#novedad h2{
+    font-size: 40px;
+    font-style: italic;
+}
+.anuncio {
+    background: var(--fondo);
+    border: 1px solid black;
     padding: 10px;
-    text-align: center !important;
-    border: 1px solid rgb(173, 173, 173);
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 10px 0px 20px 13%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 80%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%; 
+}
+.anuncio .info{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.anuncio .info1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.anuncio .info1 .foto{
+    display: flex;
+    flex-direction: row;
+}
+.anuncio .info1 img{
+    width: 45px;
+    height: auto;
+}
+.anuncio .info1 h1{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 25px;
+}
+.anuncio .info1 h2{
+    margin-top: 15px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+.control{
+    display: flex;
+    flex-direction: row;
+}
+.anuncio .info .b1,.btn-icon{
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 20px;
+    width: 90px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+.anuncio .info .b1:hover, .btn-icon:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.anuncio .descripcion{
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+}
+.anuncio .descripcion h2{
+    font-size: 20px;
+    font-weight: bold;
+}
+.botones{
+    margin-top: 20px;
+}
+.botones input{
+    margin-right: 0px;
+    padding: 0px 20px;
+    width: 80%;
+    height: 40px;
+    border-radius: 20px 0px 0px 20px;
+}
+.botones button{
+    margin-left: 0px;
+    width: 80px;
+    height: 39px;
+    color: white;
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 0px 20px 20px 0px;
+}
+.botones button:hover{
+    color: black;
+    cursor: pointer;
+}
+
+.comentario{
+    margin-top: 20px;
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.comentario .info1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.comentario .info1 .fotoComentario{
+    display: flex;
+    flex-direction: row;
+}
+.comentario .info1 img{
+    width: 45px;
+    height: auto;
+}
+.comentario .info1 h1{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 25px;
+}
+.comentario .info1 h2{
+    margin-top: 15px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+.comentario button{
+    margin-left: 0px;
+    width: 80px;
+    height: 39px;
+    color: white;
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 20px;
+}
+.comentario button:hover{
+    transform: scale(1.1);
+    color: black;
+    cursor: pointer;
 }
 /* footer -------------------- footer */
 
