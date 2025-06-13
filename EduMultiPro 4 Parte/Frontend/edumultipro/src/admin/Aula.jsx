@@ -63,15 +63,15 @@ function Aula(){
                         <BarraLateral />
 
                         {/*---Tabla---*/}
-                        <div class="col-10" id="contenidoTabla">
-                            <div class="titulo">
+                        <div className="col-10" id="contenidoTabla">
+                            <div className="titulo3">
                                 <h1>Aulas Actuales</h1>
                                 <a href="{{ url_for('admin_bp.crear_aula') }}">
-                                    <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Crear Aula</button>
+                                    <button className="crear" id="btnAgregarUsuario"> <i className="fas fa-user-plus"></i>Crear Aula</button>
                                 </a>
                             </div>
 
-                            <div class="modificarAula" id="modificarAula">
+                            <div className="modificarAula" id="modificarAula">
                             <h1>Modificar Aula</h1>
                             <form action="{{ url_for('admin_bp.modificar_aula') }}" method="POST">
                                 <input type="hidden" name="id" id="editarAulaID"></input>
@@ -84,13 +84,13 @@ function Aula(){
                                 {/*-- % endfor % --*/}
                                 </select>
 
-                                <button type="submit" class="btn-guardar">Guardar cambios</button>
-                                <button type="button" class="btn-cancelar" onclick="cancelarEdicionAula()">Cancelar</button>
+                                <button type="submit" className="btn-guardar">Guardar cambios</button>
+                                <button type="button" className="btn-cancelar" onclick="cancelarEdicionAula()">Cancelar</button>
                             </form>
                             </div>
 
-                            <div class="contenedor-tabla">
-                                <table class="tablaUsuarios" id="tablaUsuarios">
+                            <div className="contenedor-tabla">
+                                <table className="tablaUsuarios" id="tablaUsuarios">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -116,16 +116,16 @@ function Aula(){
                                                     <td>
                                                     <form action="{{ url_for('admin2_bp.verAula') }}" method="GET">
                                                         <input type="hidden" name="aula_id" value="{{ aula['ID'] }}"></input>
-                                                        <button type="submit" class="informacion" id="btninformacion">
-                                                        <i class="fa-solid fa-circle-info"></i>
+                                                        <button type="submit" className="informacion" id="btninformacion">
+                                                        <i className="fa-solid fa-circle-info"></i>
                                                         </button>
                                                     </form>
                                                     </td>
-                                                    <td><button class="modificar"><i class="fa-solid fa-gear"></i></button></td>
+                                                    <td><button className="modificar"><i className="fa-solid fa-gear"></i></button></td>
                                                     <td>
                                                     <form action="{{ url_for('admin_bp.eliminar_aula', id=aula['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                    <button class="btn-icon eliminar" type="submit">
-                                                        <i class="fa-solid fa-trash"></i> Eliminar
+                                                    <button className="btn-icon eliminar" type="submit">
+                                                        <i className="fa-solid fa-trash"></i> Eliminar
                                                     </button>
                                                     </form>
                                                 </td>

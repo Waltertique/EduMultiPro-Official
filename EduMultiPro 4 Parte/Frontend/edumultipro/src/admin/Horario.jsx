@@ -10,6 +10,7 @@ import './css/Horario.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
+import { Link } from 'react-router-dom';
 
 function Horario(){
 
@@ -63,15 +64,15 @@ function Horario(){
                         <BarraLateral />
 
                         {/*---Tabla---*/}
-                        <div class="col-10" id="contenidoTabla">
-                            <div class="titulo">
+                        <div className="col-10" id="contenidoTabla">
+                            <div className="titulo2">
                                 <h1>Horarios Actuales</h1>
-                                <a href="{{ url_for('admin2_bp.crearHorario') }}">
-                                <button class="crear" id="btnAgregarHorario"> <i class="fas fa-user-plus"></i>Crear Horario</button>
-                                </a>
+                                <Link to={"/CrearHorario"}>
+                                <button className="crear" id="btnAgregarHorario"> <i className="fas fa-user-plus"></i>Crear Horario</button>
+                                </Link>
                             </div>
-                            <div class="contenedor-tabla">
-                            <table class="tablaUsuarios" id="tablaUsuarios">
+                            <div className="contenedor-tabla">
+                            <table className="tablaUsuarios" id="tablaUsuarios">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -96,23 +97,23 @@ function Horario(){
                                                     profesor
                                                 </td>
                                                 <td>
-                                                <form action="{{ url_for('admin2_bp.verHorario', id=horario['ID']) }}" method="GET">
-                                                    <button type="submit" class="informacion" id="btninformacion">
-                                                    <i class="fa-solid fa-circle-info"></i>
+                                                    <Link to={"/VerHorario"}>
+                                                    <button type="submit" className="informacion" id="btninformacion">
+                                                        <i className="fa-solid fa-circle-info"></i>
                                                     </button>
-                                                </form>
+                                                    </Link>
                                                 </td>
                                                 <td>
-                                                    <form action="{{ url_for('admin2_bp.modificarHorario', id=horario['ID']) }}" method="GET">
+                                                    <Link to={"/ActualizarHorario"}>
                                                     <button type="submit" class="modificar" id="btnmodificar">
-                                                        <i class="fa-solid fa-gear"></i>
+                                                        <i className="fa-solid fa-gear"></i>
                                                     </button>
-                                                    </form>
+                                                    </Link>
                                                 </td>
                                                 <td>
                                                     <form action="{{ url_for('admin_bp.eliminar_horario', id=horario['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                        <button class="btn-icon eliminar" type="submit">
-                                                            <i class="fa-solid fa-trash"></i> Eliminar
+                                                        <button className="btn-icon eliminar" type="submit">
+                                                            <i className="fa-solid fa-trash"></i> Eliminar
                                                         </button>
                                                     </form>
                                                 </td>

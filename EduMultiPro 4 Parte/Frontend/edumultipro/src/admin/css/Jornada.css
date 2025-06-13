@@ -52,53 +52,17 @@
     flex: 1;
     padding: 20px;
 }
-.titulo3{
+.titulo8{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 30px;
 }
-.titulo3 h1{
+ h1{
     font-size: 30px;
-    color: var(--azul-primario);
-    font-weight: bold;
 }
 
-.modificarAula{
-    height: auto;
-    background-color: white;
-    padding: 20px 20px;
-    margin-bottom: 30px;
-    border-radius: 20px;
-    text-align: center;
-}
-.modificarAula h1{
-    font-size: 25px;
-    margin-bottom: 20px;
-}
-.modificarAula input{
-    border: 1px solid var(--azul-primario);
-    border-radius: 20px;
-    padding: 5px 20px;
-    margin-right: 20px;
-    background: white;
-    color: black;
-}
-.modificarAula select{
-    background: white;
-    color: black;
-}
-.btn-cancelar{
-    margin-left: 20px;
-}
-#editarAulaNombre, #editarMateria{
-    border: 1px solid var(--azul-primario);
-    border-radius: 20px;
-    padding: 5px 20px;
-    margin-right: 20px;
-}
-
-.contenedor-tabla{  
+.contenedor-fromularioJornada{
     overflow-x: auto;
     margin: 0px 0px 20px 0px;
     background-color: white;
@@ -106,74 +70,75 @@
     border-radius: 15px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
     width: 100%; 
+    text-align: center;
 }
-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0px;
+.contenedor-fromularioJornada button{
+    margin-left: 10px;
 }
-thead{
-    background-color: var(--azul-primario);
-    color: var(--blanco);
+.contenedor-fromularioJornada form input{
+    background-color: white;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    margin: 10px 10px;
 }
-#tablaUsuarios th, td{
-    padding: 10px;
-    text-align: center !important;
-    border-bottom: 1px solid var(--azul-primario) !important;
-}
-
-button{
-    background-color: var(--azul);
-    color: var(--blanco);
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+.contenedor-fromularioJornada form{
+    margin-bottom: 30px;
 }
 
-button:hover{
-    background-color: black;
-}
 @media (min-width: 100px) and (max-width: 414px) {
-
-    /* centro -------------------- centro */
-
-    .titulo3{
+    .titulo8{
         display: flex;
-        flex-direction: column;
         text-align: center;
     }
-    .titulo3 h1{
+
+    form input{
+        width: 90%;
+    }
+
+    #Descripcion{
+        width: 90%;
         margin-bottom: 20px;
     }
 }
 
 @media (min-width: 415px) and (max-width: 575px) {
-
+    
     /* centro -------------------- centro */
+    .titulo8 h1{
+        margin-left: 30px;
+    }
 
-    .titulo3{
+    .contenedor-fromularioJornada form{
         display: flex;
         flex-direction: column;
-        text-align: center;
     }
-    .titulo3 h1{
+
+    .contenedor-fromularioJornada form #Descripcion{
+        width: 95%;
+    }
+    .btn-guardar5{
         margin-bottom: 20px;
     }
 }
 
 @media (min-width: 576px) and (max-width: 767px){
-    
-    /* centro -------------------- centro */
 
-    .titulo3{
+    /* centro -------------------- centro */
+    .titulo8 h1{
+        margin-left: 30px;
+    }
+
+    .contenedor-fromularioJornada form{
         display: flex;
         flex-direction: column;
-        text-align: center;
     }
-    .titulo3 h1{
+
+    .contenedor-fromularioJornada form #Descripcion{
+        width: 95%;
+    }
+
+    .btn-guardar5{
         margin-bottom: 20px;
     }
 }

@@ -14,7 +14,7 @@ function Encabezado() {
                     </div>
                 </div>
                 <div className="col-12 col-sm-12 col-md-9 col-lg-4 col-xl-4 col-xxl-4 d-flex justify-content-start align-items-center" id="n2">
-                    <h1 className="text-white">EduMultiPro</h1>
+                    <h1 className="primerTitulo">EduMultiPro</h1>
                 </div>
                 <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 d-flex justify-content-center align-items-center" id="n3">
                     <div className="">

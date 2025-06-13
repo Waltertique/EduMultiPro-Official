@@ -52,20 +52,20 @@
     flex: 1;
     padding: 20px;
 }
-.card{
+.carda{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     background: var(--fondo);
     border: none;
 }
-.card a{
+.carda a{
     margin: 10px 15px;
     width: 100%;
     height: 120px;
     text-decoration: none;
 }
-.targeta{
+.carda a .targeta{
     border-top: 1px solid var(--azul);
     background: white;
     display: flex;
@@ -78,28 +78,28 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1) ;
     color: var(--azul);
 }
-.targeta:hover{
+.carda a .targeta:hover{
     background: #d1d1d1;
     border-top: 2px solid black;
     color: var(--azul-primario);
     cursor: pointer;
 }
-.targeta i{
+.carda a .targeta i{
     margin: 10px;
     font-size: 25px;
 }
-.targeta h1{
+.carda a .targeta h1{
     margin: 10px;
     font-size: 25px;
 }
 
-.titulo{
+.titulo5{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 30px;
 }
-.titulo h1{
+.titulo5 h1{
     font-size: 30px;
     color: var(--azul-primario);
     font-weight: bold;
@@ -127,7 +127,7 @@
     background: white;
     color: black;
 }
-.btn-cancelar{
+.btn-cancelar1{
     margin-left: 20px;
 }
 #editarGrado, #editarJornada{
@@ -176,33 +176,33 @@ button:hover{
 }
 @media (min-width: 100px) and (max-width: 414px) {
 
-    .targeta i{
+    .carda a .targeta i{
         margin: 10px;
         font-size: 15px;
         
     }
-    .targeta h1{
+    .carda a .targeta h1{
         margin: 10px;
         font-size: 10px;
     }
 
     /* centro -------------------- centro */
-    .card a{
+    .carda a{
         height: 80px;
     }
 
-    .titulo{
+    .titulo5{
         display: flex;
         flex-direction: column;
         text-align: center;
         justify-content: center;
         align-items: center;
     }
-    .titulo h1{
+    .titulo5 h1{
         font-size: 25px;
         margin-bottom: 20px;
     }
-    .titulo a button{
+    .titulo5 a button{
         width: 120px;
         margin-bottom: 10px;
     }
@@ -218,7 +218,7 @@ button:hover{
         width: 80%;
         margin: 10px auto;
     }
-    .btn-guardar, .btn-cancelar{
+    .btn-guardar1, .btn-cancelar1{
         width: 80%;
         margin: 10px auto;
     }
@@ -226,18 +226,33 @@ button:hover{
 
 @media (min-width: 415px) and (max-width: 575px) {
 
-    .titulo{
+    .carda a .targeta i{
+        margin: 10px;
+        font-size: 15px;
+        
+    }
+    .carda a .targeta h1{
+        margin: 10px;
+        font-size: 10px;
+    }
+
+    /* centro -------------------- centro */
+    .carda a{
+        height: 80px;
+    }
+
+    .titulo5{
         display: flex;
         flex-direction: column;
         text-align: center;
         justify-content: center;
         align-items: center;
     }
-    .titulo h1{
+    .titulo5 h1{
         font-size: 25px;
         margin-bottom: 20px;
     }
-    .titulo a button{
+    .titulo5 a button{
         width: 120px;
         margin-bottom: 10px;
     }
@@ -254,7 +269,7 @@ button:hover{
         width: 80%;
         margin: 10px auto;
     }
-    .btn-guardar, .btn-cancelar{
+    .btn-guardar1, .btn-cancelar1{
         width: 80%;
         margin: 10px auto;
     }
@@ -262,18 +277,18 @@ button:hover{
 
 @media (min-width: 576px) and (max-width: 767px){
     
-    .titulo{
+    .titulo5{
         display: flex;
         flex-direction: column;
         text-align: center;
         justify-content: center;
         align-items: center;
     }
-    .titulo h1{
+    .titulo5 h1{
         font-size: 25px;
         margin-bottom: 20px;
     }
-    .titulo a button{
+    .titulo5 a button{
         width: 120px;
         margin-bottom: 10px;
     }
@@ -289,7 +304,7 @@ button:hover{
         width: 80%;
         margin: 10px auto;
     }
-    .btn-guardar, .btn-cancelar{
+    .btn-guardar1, .btn-cancelar1{
         width: 80%;
         margin: 10px auto;
     }
@@ -309,7 +324,7 @@ button:hover{
         width: 50%;
         margin: 10px auto;
     }
-    .btn-guardar, .btn-cancelar{
+    .btn-guardar1, .btn-cancelar1{
         width: 50%;
         margin: 10px auto;
     }

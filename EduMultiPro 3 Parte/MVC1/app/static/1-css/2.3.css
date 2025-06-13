@@ -148,7 +148,7 @@ i:hover{
     flex-direction: row;
     justify-content: space-between;
     padding: 30px 30px 10px 30px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--azul-primario);
     margin-bottom: 30px;
 }
 .titulo h1{

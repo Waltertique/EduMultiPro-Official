@@ -52,77 +52,67 @@
     flex: 1;
     padding: 20px;
 }
-.titulo3{
+
+.tituloCrearHorario{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 30px;
-}
-.titulo3 h1{
-    font-size: 30px;
-    color: var(--azul-primario);
-    font-weight: bold;
-}
-
-.modificarAula{
-    height: auto;
-    background-color: white;
-    padding: 20px 20px;
+    padding: 30px 30px 10px 30px;
+    border-bottom: 2px solid var(--azul-primario);
     margin-bottom: 30px;
-    border-radius: 20px;
-    text-align: center;
 }
-.modificarAula h1{
-    font-size: 25px;
-    margin-bottom: 20px;
-}
-.modificarAula input{
-    border: 1px solid var(--azul-primario);
-    border-radius: 20px;
-    padding: 5px 20px;
-    margin-right: 20px;
-    background: white;
-    color: black;
-}
-.modificarAula select{
-    background: white;
-    color: black;
-}
-.btn-cancelar{
-    margin-left: 20px;
-}
-#editarAulaNombre, #editarMateria{
-    border: 1px solid var(--azul-primario);
-    border-radius: 20px;
-    padding: 5px 20px;
-    margin-right: 20px;
+.tituloCrearHorario h1{
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--azul-primario)
 }
 
-.contenedor-tabla{  
+.contenidoCrearHorario{  
     overflow-x: auto;
-    margin: 0px 0px 20px 0px;
+    margin: auto;
     background-color: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
-    width: 100%; 
+    width: 90%; 
+    display: flex;
+    justify-content: center;
 }
-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0px;
-}
-thead{
-    background-color: var(--azul-primario);
-    color: var(--blanco);
-}
-#tablaUsuarios th, td{
-    padding: 10px;
-    text-align: center !important;
-    border-bottom: 1px solid var(--azul-primario) !important;
+.contenidoCrearHorario form{
+    display: flex;
+    flex-direction: column;
 }
 
-button{
+.contenidoCrearHorario form input{
+    background: white;
+    color: black;
+    padding: 7px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    margin: 10px 10px;
+}
+.contenidoCrearHorario form textarea{
+    background: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    margin: 10px 10px;
+}
+.contenidoCrearHorario form select{
+    background: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    margin: 10px 10px;
+    width: 94%;
+}
+.contenidoCrearHorario form #selecCurso{
+    margin-bottom: 30px;
+}
+
+.contenidoCrearHorario form button{
     background-color: var(--azul);
     color: var(--blanco);
     border: none;
@@ -133,34 +123,59 @@ button{
     transition: background-color 0.3s ease;
 }
 
-button:hover{
+.contenidoCrearHorario form button:hover{
     background-color: black;
 }
+
 @media (min-width: 100px) and (max-width: 414px) {
 
     /* centro -------------------- centro */
 
-    .titulo3{
+    .tituloCrearHorario{
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-    .titulo3 h1{
+    .tituloCrearHorario h1{
         margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .contenidoCrearHorario{
+        padding: 20px 10px;
+    }
+    .contenidoCrearHorario form input{
+        width: 90%;
+    }
+
+    .contenidoCrearHorario form select{
+        width: 90%;
     }
 }
 
 @media (min-width: 415px) and (max-width: 575px) {
-
+    
     /* centro -------------------- centro */
 
-    .titulo3{
+    .tituloCrearHorario{
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-    .titulo3 h1{
+    .tituloCrearHorario h1{
         margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .contenidoCrearHorario{
+        padding: 20px 10px;
+    }
+    .contenidoCrearHorario form input{
+        width: 92%;
+    }
+
+    .contenidoCrearHorario form select{
+        width: 92%;
     }
 }
 
@@ -168,12 +183,24 @@ button:hover{
     
     /* centro -------------------- centro */
 
-    .titulo3{
+    .tituloCrearHorario{
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-    .titulo3 h1{
+    .tituloCrearHorario h1{
         margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .contenidoCrearHorario{
+        padding: 20px 10px;
+    }
+    .contenidoCrearHorario form input{
+        width: 92%;
+    }
+
+    .contenidoCrearHorario form select{
+        width: 92%;
     }
 }

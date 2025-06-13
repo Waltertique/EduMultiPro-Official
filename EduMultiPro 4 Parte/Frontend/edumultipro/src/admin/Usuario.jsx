@@ -10,6 +10,7 @@ import './css/Usuario.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
+import { Link } from 'react-router-dom';
 
 function Usuario() {
 
@@ -63,15 +64,15 @@ function Usuario() {
                     <BarraLateral />
 
                     {/*---Tabla---*/}
-                    <div class="col-10" id="contenidoTabla">
-                      <div class="titulo">
+                    <div className="col-10" id="contenidoTabla">
+                      <div className="titulo1">
                           <h1>Gestion de Usuarios</h1>
-                          <a href="{{ url_for('admin_bp.crearUsuario') }}">
-                            <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Crear Usuario</button>
-                          </a>
+                          <Link to="/CrearUsuario">
+                            <button className="crear" id="btnAgregarUsuario"> <i className="fas fa-user-plus"></i>Crear Usuario</button>
+                          </Link>
                       </div>
-                      <div class="contenedor-tabla">
-                          <table class="tablaUsuarios" id="tablaUsuarios">
+                      <div className="contenedor-tabla">
+                          <table className="tablaUsuarios" id="tablaUsuarios">
                               <thead>
                                   <tr>
                                       <th>Identificación</th>
@@ -91,17 +92,17 @@ function Usuario() {
                                             <td>zapata</td>
                                             <td>ortiz</td>
                                             <td>
-                                              <form action="{{ url_for('admin_bp.informacion_usuario') }}" method="GET">
+                                              <Link to="/VerUsuario">
                                                 <input type="hidden" name="usuario_id" value="{{ usuario['ID'] }}"></input>
-                                                <button type="submit" class="informacion" id="btninformacion">
-                                                  <i class="fa-solid fa-circle-info"></i>
+                                                <button type="submit" className="informacion" id="btninformacion">
+                                                  <i className="fa-solid fa-circle-info"></i>
                                                 </button>
-                                              </form>
+                                              </Link>
                                             </td>
                                             <td>
                                               <form action="{{ url_for('admin_bp.eliminar_usuario', id=usuario['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                <button class="btn-icon eliminar" type="submit">
-                                                    <i class="fa-solid fa-trash"></i> Eliminar
+                                                <button className="btn-icon eliminar" type="submit">
+                                                    <i className="fa-solid fa-trash"></i> Eliminar
                                                 </button>
                                               </form>
                                             </td>
@@ -116,14 +117,14 @@ function Usuario() {
                                               <form action="{{ url_for('admin_bp.informacion_usuario') }}" method="GET">
                                                 <input type="hidden" name="usuario_id" value="{{ usuario['ID'] }}"></input>
                                                 <button type="submit" class="informacion" id="btninformacion">
-                                                  <i class="fa-solid fa-circle-info"></i>
+                                                  <i className="fa-solid fa-circle-info"></i>
                                                 </button>
                                               </form>
                                             </td>
                                             <td>
                                               <form action="{{ url_for('admin_bp.eliminar_usuario', id=usuario['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                <button class="btn-icon eliminar" type="submit">
-                                                    <i class="fa-solid fa-trash"></i> Eliminar
+                                                <button className="btn-icon eliminar" type="submit">
+                                                    <i className="fa-solid fa-trash"></i> Eliminar
                                                 </button>
                                               </form>
                                             </td>
@@ -137,15 +138,15 @@ function Usuario() {
                                             <td>
                                               <form action="{{ url_for('admin_bp.informacion_usuario') }}" method="GET">
                                                 <input type="hidden" name="usuario_id" value="{{ usuario['ID'] }}"></input>
-                                                <button type="submit" class="informacion" id="btninformacion">
-                                                  <i class="fa-solid fa-circle-info"></i>
+                                                <button type="submit" className="informacion" id="btninformacion">
+                                                  <i className="fa-solid fa-circle-info"></i>
                                                 </button>
                                               </form>
                                             </td>
                                             <td>
                                               <form action="{{ url_for('admin_bp.eliminar_usuario', id=usuario['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                <button class="btn-icon eliminar" type="submit">
-                                                    <i class="fa-solid fa-trash"></i> Eliminar
+                                                <button className="btn-icon eliminar" type="submit">
+                                                    <i className="fa-solid fa-trash"></i> Eliminar
                                                 </button>
                                               </form>
                                             </td>

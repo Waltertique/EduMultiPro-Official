@@ -10,6 +10,7 @@ import './css/Curso.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
+import { Link } from 'react-router-dom';
 
 function Curso(){
 
@@ -63,28 +64,28 @@ function Curso(){
                         <BarraLateral />
 
                         {/*---Tabla---*/}
-                        <div class="col-10" id="contenidoTabla">
+                        <div className="col-10" id="contenidoTabla">
 
-                            <div class="card">
+                            <div className="carda">
 
-                                <a href="{{ url_for('admin_bp.materia') }}"><div class="targeta"><i class="fa-solid fa-book"></i><h1>Materia</h1></div></a>
+                                <Link to="/materia" ><div className="targeta"><i className="fa-solid fa-book"></i><h1>Materia</h1></div></Link>
                                 
-                                <a href="{{ url_for('admin_bp.grado') }}"><div class="targeta"><i class="fa-solid fa-temperature-low"></i><h1>Grado</h1></div></a>
+                                <Link to="/grado" ><div className="targeta"><i className="fa-solid fa-temperature-low"></i><h1>Grado</h1></div></Link>
 
-                                <a href="{{ url_for('admin_bp.jornada') }}"><div class="targeta"><i class="fa-solid fa-clock"></i><h1>Jornada</h1></div></a>
+                                <Link to="/jornada" ><div className="targeta"><i className="fa-solid fa-clock"></i><h1>Jornada</h1></div></Link>
 
                             </div>
 
-                            <div class="titulo">
+                            <div className="titulo5">
                                 <h1>Cursos Actuales</h1>
-                                <a href="{{ url_for('admin_bp.crearCurso') }}">
-                                    <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Crear Curso</button>
-                                </a>
+                                <Link to={"/CrearCurso"}>
+                                    <button className="crear" id="btnAgregarUsuario"> <i className="fas fa-user-plus"></i>Crear Curso</button>
+                                </Link>
                             </div>
 
                             {/*---Modificar Curso---*/}
                   
-                            <div class="modificarCurso" id="modificarCurso">
+                            <div className="modificarCurso" id="modificarCurso">
                                 <h1>Modificar Curso</h1>
                                 <form>
                                     
@@ -100,13 +101,13 @@ function Curso(){
                                     {/*---% endfor %---*/}
                                     </select>
 
-                                    <button type="submit" class="btn-guardar">Guardar cambios</button>
-                                    <button type="button" class="btn-cancelar">Cancelar</button>
+                                    <button type="submit" className="btn-guardar1">Guardar cambios</button>
+                                    <button type="button" className="btn-cancelar1">Cancelar</button>
                                 </form>
                             </div>
 
-                            <div class="contenedor-tabla">
-                                <table class="tablaUsuarios" id="tablaUsuarios">
+                            <div className="contenedor-tabla">
+                                <table className="tablaUsuarios" id="tablaUsuarios">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -127,18 +128,18 @@ function Curso(){
                                                 <td>primero</td>
                                                 <td>tarde</td>
                                                 <td>
-                                                    <form action="{{ url_for('admin_bp.verCurso') }}" method="GET">
+                                                    <Link to={"/VerCurso"}>
                                                     <input type="hidden" name="curso_id" value="{{ curso['ID'] }}"></input>
-                                                    <button type="submit" class="informacion" id="btninformacion">
-                                                        <i class="fa-solid fa-circle-info"></i>
+                                                    <button type="submit" className="informacion" id="btninformacion">
+                                                        <i className="fa-solid fa-circle-info"></i>
                                                     </button>
-                                                    </form>
+                                                    </Link>
                                                 </td>
-                                                <td><button class="modificar"><i class="fa-solid fa-gear"></i></button></td>
+                                                <td><button className="modificar"><i className="fa-solid fa-gear"></i></button></td>
                                                 <td>
                                                     <form action="{{ url_for('admin_bp.eliminar_curso', id=curso['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                    <button class="btn-icon eliminar" type="submit">
-                                                        <i class="fa-solid fa-trash"></i> Eliminar
+                                                    <button className="btn-icon eliminar" type="submit">
+                                                        <i className="fa-solid fa-trash"></i> Eliminar
                                                     </button>
                                                     </form>
                                                 </td>
@@ -153,16 +154,16 @@ function Curso(){
                                                 <td>
                                                     <form action="{{ url_for('admin_bp.verCurso') }}" method="GET">
                                                     <input type="hidden" name="curso_id" value="{{ curso['ID'] }}"></input>
-                                                    <button type="submit" class="informacion" id="btninformacion">
-                                                        <i class="fa-solid fa-circle-info"></i>
+                                                    <button type="submit" className="informacion" id="btninformacion">
+                                                        <i className="fa-solid fa-circle-info"></i>
                                                     </button>
                                                     </form>
                                                 </td>
-                                                <td><button class="modificar"><i class="fa-solid fa-gear"></i></button></td>
+                                                <td><button className="modificar"><i class="fa-solid fa-gear"></i></button></td>
                                                 <td>
                                                     <form action="{{ url_for('admin_bp.eliminar_curso', id=curso['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                    <button class="btn-icon eliminar" type="submit">
-                                                        <i class="fa-solid fa-trash"></i> Eliminar
+                                                    <button className="btn-icon eliminar" type="submit">
+                                                        <i className="fa-solid fa-trash"></i> Eliminar
                                                     </button>
                                                     </form>
                                                 </td>
@@ -175,16 +176,16 @@ function Curso(){
                                                 <td>
                                                     <form action="{{ url_for('admin_bp.verCurso') }}" method="GET">
                                                     <input type="hidden" name="curso_id" value="{{ curso['ID'] }}"></input>
-                                                    <button type="submit" class="informacion" id="btninformacion">
-                                                        <i class="fa-solid fa-circle-info"></i>
+                                                    <button type="submit" className="informacion" id="btninformacion">
+                                                        <i className="fa-solid fa-circle-info"></i>
                                                     </button>
                                                     </form>
                                                 </td>
-                                                <td><button class="modificar"><i class="fa-solid fa-gear"></i></button></td>
+                                                <td><button className="modificar"><i className="fa-solid fa-gear"></i></button></td>
                                                 <td>
                                                     <form action="{{ url_for('admin_bp.eliminar_curso', id=curso['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                    <button class="btn-icon eliminar" type="submit">
-                                                        <i class="fa-solid fa-trash"></i> Eliminar
+                                                    <button className="btn-icon eliminar" type="submit">
+                                                        <i className="fa-solid fa-trash"></i> Eliminar
                                                     </button>
                                                     </form>
                                                 </td>

@@ -52,13 +52,13 @@
     flex: 1;
     padding: 20px;
 }
-.titulo{
+.titulo4{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 30px;
 }
-.titulo h1{
+.titulo4 h1{
     font-size: 30px;
     color: var(--azul-primario);
     font-weight: bold;
@@ -106,12 +106,12 @@ button:hover{
 
     /* centro -------------------- centro */
 
-    .titulo{
+    .titulo4{
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-    .titulo h1{
+    .titulo4 h1{
         margin-bottom: 20px;
     }
 }
@@ -120,12 +120,12 @@ button:hover{
 
     /* centro -------------------- centro */
 
-    .titulo{
+    .titulo4{
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-    .titulo h1{
+    .titulo4 h1{
         margin-bottom: 20px;
     }
 }
@@ -133,12 +133,12 @@ button:hover{
 @media (min-width: 576px) and (max-width: 767px){
     /* centro -------------------- centro */
 
-    .titulo{
+    .titulo4{
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-    .titulo h1{
+    .titulo4 h1{
         margin-bottom: 20px;
     }
 }

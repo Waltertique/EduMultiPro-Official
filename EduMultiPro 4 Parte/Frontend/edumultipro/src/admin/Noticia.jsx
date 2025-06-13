@@ -64,7 +64,7 @@ function Noticia(){
 
                         {/*---Tabla---*/}
                         <div className="col-10" id="contenidoTabla">
-                            <div className="titulo">
+                            <div className="titulo4">
                                 <h1>Gestion de Noticias</h1>
                                 <a href="{{ url_for('admin2_bp.crear_noticia') }}">
                                 <button className="crear" id="btnAgregarNoticia"> <i className="fas fa-user-plus"></i>Crear Noticia</button>
