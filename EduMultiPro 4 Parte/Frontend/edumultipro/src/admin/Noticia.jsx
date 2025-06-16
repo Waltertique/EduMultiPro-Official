@@ -10,6 +10,7 @@ import './css/Noticia.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
+import { Link } from 'react-router-dom';
 
 function Noticia(){
 
@@ -66,9 +67,9 @@ function Noticia(){
                         <div className="col-10" id="contenidoTabla">
                             <div className="titulo4">
                                 <h1>Gestion de Noticias</h1>
-                                <a href="{{ url_for('admin2_bp.crear_noticia') }}">
+                                <Link to={"/CrearNoticia"}>
                                 <button className="crear" id="btnAgregarNoticia"> <i className="fas fa-user-plus"></i>Crear Noticia</button>
-                                </a>
+                                </Link>
                             </div>
                             <div className="contenedor-tabla">
                                 <table className="tablaUsuarios" id="tablaUsuarios">
@@ -86,26 +87,26 @@ function Noticia(){
                                         {/*-- % if noticias % --*/}
                                             {/*-- % for noticia in noticias % --*/}
                                             <tr>
-                                                <td>ID</td>
+                                                <td>1</td>
                                                 <td>Titulo_Noticia</td>
                                                 <td>Tipo</td>
                                                 <td>
                                                 
                                                 
-                                                <form action="{{ url_for('admin2_bp.verNoticia', id=noticia['ID']) }}">
+                                                <Link to={"/VerNoticia"}>
                                                     <button type="submit" className="informacion" id="informacion">
                                                     <i className="fa-solid fa-circle-info"></i>
                                                     </button>
-                                                </form>
+                                                </Link>
                                                 
                                                 </td>
                                                 <td>
                                                 
-                                                <form action="{{ url_for('admin2_bp.modificar_noticia', id=noticia['ID']) }}" method="GET">
+                                                <Link to={"/ActualizarNoticia"}>
                                                     <button type="submit" className="modificar" id="btnmodificar">
                                                     <i className="fa-solid fa-gear"></i>
                                                     </button>
-                                                </form>
+                                                </Link>
                                         
                                                 </td>
                                                 <td>

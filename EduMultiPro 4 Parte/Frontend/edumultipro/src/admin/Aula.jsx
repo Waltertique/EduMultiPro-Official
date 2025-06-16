@@ -10,6 +10,7 @@ import './css/Aula.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
+import { Link } from 'react-router-dom';
 
 function Aula(){
 
@@ -66,9 +67,9 @@ function Aula(){
                         <div className="col-10" id="contenidoTabla">
                             <div className="titulo3">
                                 <h1>Aulas Actuales</h1>
-                                <a href="{{ url_for('admin_bp.crear_aula') }}">
+                                <Link to={"/CrearAula"}>
                                     <button className="crear" id="btnAgregarUsuario"> <i className="fas fa-user-plus"></i>Crear Aula</button>
-                                </a>
+                                </Link>
                             </div>
 
                             <div className="modificarAula" id="modificarAula">
@@ -114,12 +115,12 @@ function Aula(){
                                                     <td>Curso_Jornada'</td>
                                                     <td>Profesor'</td>
                                                     <td>
-                                                    <form action="{{ url_for('admin2_bp.verAula') }}" method="GET">
+                                                    <Link to={"/VerAula"}>
                                                         <input type="hidden" name="aula_id" value="{{ aula['ID'] }}"></input>
                                                         <button type="submit" className="informacion" id="btninformacion">
                                                         <i className="fa-solid fa-circle-info"></i>
                                                         </button>
-                                                    </form>
+                                                    </Link>
                                                     </td>
                                                     <td><button className="modificar"><i className="fa-solid fa-gear"></i></button></td>
                                                     <td>

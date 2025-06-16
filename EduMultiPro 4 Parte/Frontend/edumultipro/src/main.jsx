@@ -18,6 +18,12 @@ import CrearCurso from './admin/CrearCurso.jsx';
 import CrearHorario from './admin/CrearHorario.jsx';
 import VerHorario from './admin/VerHorario.jsx';
 import ActualizarHorario from './admin/ActualizarHorario.jsx';
+import CrearAula from './admin/CrearAula.jsx';
+import CrearNoticia from './admin/CrearNoticia.jsx';
+import ActualizarNoticia from './admin/ActualizarNoticia.jsx';
+import VerNoticia from './admin/VerNoticia.jsx';
+import VerAula from './admin/VerAula.jsx';
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -39,6 +45,11 @@ createRoot(document.getElementById('root')).render(
         <Route path="/CrearHorario" element={<CrearHorario />} />
         <Route path="/VerHorario" element={<VerHorario />} />
         <Route path="/ActualizarHorario" element={<ActualizarHorario />} />
+        <Route path="/CrearAula" element={<CrearAula />} />
+        <Route path="/CrearNoticia" element={<CrearNoticia />} />
+        <Route path="/ActualizarNoticia" element={<ActualizarNoticia />} />
+        <Route path="/VerNoticia" element={<VerNoticia />} />
+        <Route path="/VerAula" element={<VerAula />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
