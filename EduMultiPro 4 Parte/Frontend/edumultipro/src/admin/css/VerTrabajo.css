@@ -1,0 +1,454 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fondo);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+
+/* article -------------------- article */
+
+#centro1{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+#contenido {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+/* tabla -------------------- tabla*/
+#contenidoVerTrabajo{
+    flex: 1;
+    padding: 20px 100px;
+}
+.botonesVerTrabajo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    height: auto;
+    padding-left: 20px;
+    margin-top: 20px;
+}
+.botonesVerTrabajo .btn{
+    padding: 0px;
+}
+.botonesVerTrabajo .btn a button{
+    width: 250px;
+    height: auto;
+    font-size: 30px;
+    background: var(--fondo);
+    color: black;
+    border: none;
+    font-weight: bold;
+}
+.botonesVerTrabajo .btn a button:hover{
+    background: var(--azul-secundario);
+    cursor: pointer;
+}
+.botonesVerTrabajo a #equix{
+    width: 150px;
+    height: 50px;
+    font-size: 30px;
+    background: var(--fondo);
+    border: none;
+}
+.botonesVerTrabajo a #equix i{
+    color: black;
+}
+.tituloVerTrabajo{
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0px auto 0px auto;
+    margin-top: 25px;
+    padding-bottom: 10px;
+}
+.tituloVerTrabajo div{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+.tituloVerTrabajo div h1{
+    font-size: 40px;
+    font-weight: bold;
+    word-break: break-word; 
+    white-space: normal;
+}
+.tituloVerTrabajo div h4{
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.tituloVerTrabajo img{
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.descripcionVerTrabajo{
+    width: 80%;
+    margin: 0px auto 0px auto;
+    border-bottom: 2px solid black;
+    padding: 25px 0px;
+}
+.descripcionVerTrabajo h3{
+    font-weight: bolder;
+}
+.descripcionVerTrabajo p{
+    word-break: break-word; 
+    white-space: normal;
+}
+.descripcionVerTrabajo .enlace{
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 20px;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.descripcionVerTrabajo .enlace a{
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.comentariosVerTrabajo{
+    width: 80%;
+    margin: 10px auto 0px auto;
+    padding: 20px 0px;
+}
+.comentariosVerTrabajo #titu{
+    font-weight: bold;
+}
+.comentariosVerTrabajo input{
+    background: white;
+    color: black;
+    width: 90%;
+    height: 38px;
+    border-radius: 20px 0px 0px 20px;
+    padding: 5px 10px;
+}
+.comentariosVerTrabajo button{
+    border-radius: 0px 20px 20px 0px;
+    width: 80px;
+    height: 37px;
+    border: 1px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    color: white;
+}
+.comentarioVerTrabajo{
+    margin-top: 30px;
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.comentarioVerTrabajo .info1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.comentarioVerTrabajo .info1 .foto{
+    display: flex;
+    flex-direction: row;
+}
+.comentarioVerTrabajo .info1 img{
+    width: 40px;
+    height: auto;
+}
+.comentarioVerTrabajo .info1 h1{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 25px;
+}
+.comentarioVerTrabajo .info1 h2{
+    margin-top: 15px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+.comentarioVerTrabajo button{
+    margin-left: 0px;
+    width: 80px;
+    height: 39px;
+    color: white;
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 20px;
+}
+.comentarioVerTrabajo button:hover{
+    transform: scale(1.1);
+    color: black;
+    cursor: pointer;
+}
+
+@media (min-width: 100px) and (max-width: 414px) {
+
+    /* centro -------------------- centro */
+
+    #contenidoVerTrabajo{
+        flex: 1;
+        padding: 50px 0px;
+    }
+    .tituloVerTrabajo div h1{
+        font-size: 28px;
+    }
+    .botonesVerTrabajo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        margin: 0px auto;
+    }
+    .botonesVerTrabajo .btn{
+        margin: 0px auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .comentariosVerTrabajo form{
+        display: flex;
+        align-items: center;
+        
+    }
+    .comentariosVerTrabajo form input{
+        width: 160px;
+        height: 30px;
+        font-size: 12px;
+    }
+    .comentariosVerTrabajo form button{
+        height: 30px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+    }
+    .comentarioVerTrabajo .info1{
+        display: flex;
+        flex-direction: column;
+    }
+    .comentarioVerTrabajo .info1 .foto h1{
+        font-size: 17px;
+        word-break: break-word; 
+        white-space: normal;
+    }
+    .comentarioVerTrabajo .info1 h2{
+        font-size: 15px;
+        margin-left: 0px;
+        margin-right: 130px;
+    }
+    .comentarioVerTrabajo #eliminarVerTrabajo{
+        width: 80px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 575px) {
+
+    /* centro -------------------- centro */
+
+    #contenidoVerTrabajo{
+        flex: 1;
+        padding: 50px 0px;
+    }
+    .tituloVerTrabajo div h1{
+        font-size: 28px;
+    }
+    .botonesVerTrabajo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        margin: 0px auto;
+    }
+    .botonesVerTrabajo .btn{
+        margin: 0px auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .comentariosVerTrabajo form{
+        display: flex;
+        align-items: center;  
+    }
+    .comentariosVerTrabajo form input{
+        width: 210px;
+        height: 30px;
+    }
+    .comentariosVerTrabajo form button{
+        height: 30px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+    .comentarioVerTrabajo .info1{
+        display: flex;
+        flex-direction: row;
+    }
+    .comentarioVerTrabajo .info1 h1{
+        font-size: 17px;
+        word-break: break-word; 
+        white-space: normal;
+    }
+    .comentarioVerTrabajo .info1 h2{
+        font-size: 15px;
+        margin-left: 20px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+    
+    /* centro -------------------- centro */
+
+    #contenidoVerTrabajo{
+        flex: 1;
+        padding: 50px 0px;
+    }
+    .tituloVerTrabajo div h1{
+        font-size: 28px;
+    }
+    .botonesVerTrabajo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        margin: 0px auto;
+    }
+    .botonesVerTrabajo .btn{
+        margin: 0px auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .comentariosVerTrabajo form{
+        display: flex;
+        align-items: center;  
+    }
+    .comentariosVerTrabajo form input{
+        width: 210px;
+        height: 30px;
+    }
+    .comentariosVerTrabajo form button{
+        height: 30px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+    .comentarioVerTrabajo .info1{
+        display: flex;
+        flex-direction: row;
+    }
+    .comentarioVerTrabajo .info1 h1{
+        font-size: 17px;
+        word-break: break-word; 
+        white-space: normal;
+    }
+    .comentarioVerTrabajo .info1 h2{
+        font-size: 15px;
+        margin-left: 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    
+    /* centro -------------------- centro */
+
+    #contenidoVerTrabajo{
+        flex: 1;
+        padding: 50px 0px;
+    }
+    .tituloVerTrabajo div h1{
+        font-size: 35px;
+    }
+    .comentariosVerTrabajo form{
+        display: flex;
+        align-items: center;  
+    }
+    .comentariosVerTrabajo form input{
+        width: 500px;
+        height: 30px;
+    }
+    .comentariosVerTrabajo form button{
+        height: 30px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    /* centro -------------------- centro */
+
+    #contenidoVerTrabajo{
+        flex: 1;
+        padding: 50px 0px;
+    }
+    .comentariosVerTrabajo form input{
+        width: 500px;
+        height: 40px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px){
+    
+    /* centro -------------------- cento */
+    #contenidoVerTrabajo{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+}
+@media (min-width: 1400px) and (max-width: 1775px){
+    /* centro -------------------- cento */
+    #contenidoVerTrabajo{
+        flex: 1;
+        padding: 50px 0px;
+    }
+}

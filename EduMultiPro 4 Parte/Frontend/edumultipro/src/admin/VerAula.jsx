@@ -1,7 +1,3 @@
-import { useEffect } from 'react'; // datatables
-import $ from 'jquery';
-import 'datatables.net-dt'; // JS
-
 import Encabezado from '../Encabezado.jsx';
 import Footer from '../footer.jsx';
 import Desplegable from '../Desplegable.jsx';
@@ -14,37 +10,6 @@ import { Link } from 'react-router-dom';
 import imgAula from '../assets/usuario.png';
 
 function VerAula(){
-
-    useEffect(() => {
-    const table = $('#tablaUsuarios').DataTable();
-
-    // Verifica si ya está inicializado
-    if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-        table.destroy(); // Destruye la instancia anterior
-    }
-
-    $('#tablaUsuarios').DataTable({
-        language: {
-            processing: "Procesando...",
-            search: "Buscar:",
-            lengthMenu: "Mostrar _MENU_ registros",
-            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            infoEmpty: "Mostrando 0 a 0 de 0 registros",
-            infoFiltered: "(filtrado de _MAX_ registros totales)",
-            loadingRecords: "Cargando...",
-            zeroRecords: "No se encontraron resultados",
-            emptyTable: "No hay datos en la tabla",
-            paginate: {
-                previous: "Anterior",
-                next: "Siguiente"
-            },
-            aria: {
-                sortAscending: ": activar para ordenar la columna ascendente",
-                sortDescending: ": activar para ordenar la columna descendente"
-            }
-        }
-    });
-    }, []);
 
     return(
         <>
@@ -68,10 +33,10 @@ function VerAula(){
                             
                             <div class="row" id="navAula">
 
-                                <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.verAula', aula_id=aula_id) }}"><button id="principal">Pricipal</button></a></div>
-                                <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Trabajos', aula_id=aula_id) }}"><button id="trabajo">Trabajos</button></a></div>
-                                <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Notas', aula_id=aula_id) }}"><button id="persona">Notas</button></a></div>
-                                <div class="col-12 col-md-2 col-xl-2"><a href="{{ url_for('admin2_bp.Personas', aula_id=aula_id) }}"><button id="persona">Personas</button></a></div>
+                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/VerAula"}><button id="principal">Pricipal</button></Link></div>
+                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/Trabajos"}><button id="trabajo">Trabajos</button></Link></div>
+                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/Notas"}><button id="persona">Notas</button></Link></div>
+                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/Personas"}><button id="persona">Personas</button></Link></div>
                                 <div class="col-12 col-md-4 col-xl-4"></div>
 
                             </div>

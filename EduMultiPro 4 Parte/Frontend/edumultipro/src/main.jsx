@@ -23,7 +23,13 @@ import CrearNoticia from './admin/CrearNoticia.jsx';
 import ActualizarNoticia from './admin/ActualizarNoticia.jsx';
 import VerNoticia from './admin/VerNoticia.jsx';
 import VerAula from './admin/VerAula.jsx';
-
+import Trabajos from './admin/Trabajos.jsx';
+import Notas from './admin/Notas.jsx';
+import Personas from './admin/Personas.jsx';
+import CrearTrabajo from './admin/CrearTrabajo.jsx';
+import ActualizarTrabajo from './admin/ActualizarTrabajo.jsx';
+import VerTrabajo from './admin/VerTrabajo.jsx';
+import VerTrabajoEntregado from './admin/VerTrabajoEntregado.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -50,6 +56,13 @@ createRoot(document.getElementById('root')).render(
         <Route path="/ActualizarNoticia" element={<ActualizarNoticia />} />
         <Route path="/VerNoticia" element={<VerNoticia />} />
         <Route path="/VerAula" element={<VerAula />} />
+        <Route path="/Trabajos" element={<Trabajos />} />
+        <Route path="/Notas" element={<Notas />} />
+        <Route path="/Personas" element={<Personas />} />
+        <Route path="/CrearTrabajo" element={<CrearTrabajo />} />
+        <Route path="/ActualizarTrabajo" element={<ActualizarTrabajo />} />
+        <Route path="/VerTrabajo" element={<VerTrabajo />} />
+        <Route path="/VerTrabajoEntregado" element={<VerTrabajoEntregado />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
