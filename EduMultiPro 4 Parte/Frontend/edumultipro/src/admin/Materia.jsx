@@ -89,7 +89,7 @@ function Materia(){
                                         <button type="submit">Guardar Materia</button>
                                 </form>
 
-                                <div id="formEditarMateria" class="formulario-editar">
+                                <div id="formEditarMateria" className="formulario-editar">
                                     <h3>Modificar Materia</h3>
                                     <form action="{{ url_for('admin2_bp.modificar_materia') }}" method="POST">
                                     <input type="hidden" name="id" id="editarID"></input>
@@ -125,11 +125,11 @@ function Materia(){
                                                 <td>'ID'</td>
                                                 <td>Materia_Nombre</td>
                                                 <td>'Descripcion_Materia</td>
-                                                <td><button className="modificar"><i class="fa-solid fa-gear"></i></button></td>
+                                                <td><button className="modificar"><i className="fa-solid fa-gear"></i></button></td>
                                                 <td>
                                                 <form action="{{ url_for('admin_bp.eliminar_materia', id=materia['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
                                                     <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i> Eliminar
+                                                        <i className="fa-solid fa-trash"></i>
                                                     </button>
                                                 </form>
                                                 </td>

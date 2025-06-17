@@ -29,14 +29,14 @@ function ActualizarNoticia(){
                         {/*---Tabla---*/}
                         <div className="col-10" id="contenidoTabla">
 
-                            <div class="tituloModificarNoticia">
+                            <div className="tituloModificarNoticia">
                                 <h1>Modificar Noticia</h1>
                                 <Link to={"/Noticia"}>
-                                    <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Salir</button>
+                                    <button className="crear" id="btnAgregarUsuario">Salir</button>
                                 </Link>
                             </div>
 
-                            <div class="contenidoModificarNoticia">
+                            <div className="contenidoModificarNoticia">
                     
                                 <form action="{{ url_for('admin2_bp.guardar_noticia_editada', id=noticia.ID) }}" method="POST" enctype="multipart/form-data">
                                     <label for="titulo">Título:</label>

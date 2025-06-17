@@ -65,22 +65,22 @@ function Notas(){
                         {/*---Tabla---*/}
                         <div className="col-10" id="contenidoTablaAula">
                             
-                            <div class="row" id="navAula">
+                            <div className="row" id="navAula">
 
-                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/VerAula"}><button id="principal">Pricipal</button></Link></div>
-                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/Trabajos"}><button id="trabajo">Trabajos</button></Link></div>
-                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/Notas"}><button id="persona">Notas</button></Link></div>
-                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/Personas"}><button id="persona">Personas</button></Link></div>
-                                <div class="col-12 col-md-4 col-xl-4"></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/VerAula"}><button id="principal">Pricipal</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Trabajos"}><button id="trabajo">Trabajos</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Notas"}><button id="persona">Notas</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Personas"}><button id="persona">Personas</button></Link></div>
+                                <div className="col-12 col-md-4 col-xl-4"></div>
 
                             </div>
 
-                            <div class="tituloNota">
+                            <div className="tituloNota">
                                 <h1>Notas Del Aula</h1>
                             </div>
 
-                            <div class="contenedor-tablaNota">
-                                <table class="tablaUsuarios" id="tablaUsuarios">
+                            <div className="contenedor-tablaNota">
+                                <table className="tablaUsuarios" id="tablaUsuarios">
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>

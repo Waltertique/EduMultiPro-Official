@@ -113,7 +113,7 @@ function Horario(){
                                                 <td>
                                                     <form action="{{ url_for('admin_bp.eliminar_horario', id=horario['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
                                                         <button className="btn-icon eliminar" type="submit">
-                                                            <i className="fa-solid fa-trash"></i> Eliminar
+                                                            <i className="fa-solid fa-trash"></i>
                                                         </button>
                                                     </form>
                                                 </td>

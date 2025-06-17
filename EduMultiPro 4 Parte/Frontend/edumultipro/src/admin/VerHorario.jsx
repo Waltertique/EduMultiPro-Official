@@ -38,7 +38,7 @@ function VerHorario(){
                                 </div>
                                 <div className="col-12 col-lg-3 col-xl-3" id="ttbtn">
                                 <Link to={"/Horario"}>
-                                    <button className="crear" id="btnAgregarUsuario"> <i className="fas fa-user-plus"></i>Salir</button>
+                                    <button className="crear" id="btnAgregarUsuario">Salir</button>
                                 </Link>
                                 </div>
                             </div>

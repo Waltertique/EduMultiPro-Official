@@ -33,7 +33,7 @@ function CrearTrabajo(){
                             <Link to={"/Trabajos"}>
                                 <button id="salirCrearTrabajo">Salir</button>
                             </Link>
-                            <div class="parte1CrearTrabajo">
+                            <div className="parte1CrearTrabajo">
                                 <h1>Crear Trabajo</h1>
                                 <form action="{{ url_for('admin2_bp.guardarTrabajo') }}" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="aula_id" value="{{ aula_id }}" />

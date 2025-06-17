@@ -162,3 +162,211 @@
     background: var(--azul-secundario);
     border: none;
 }
+
+@media (min-width: 100px) and (max-width: 414px) {
+
+    #contenidoTrabajoEntregado{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    .cont1TrabajoEntregado{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cont1TrabajoEntregado .contenedorTrabajoEntregado{  
+        overflow-x: auto;
+        margin: 0px 0px 20px 0px;
+        background-color: var(--fondo);
+        padding: 50px 10px 20px 10px;
+        width: 100%; 
+        height: auto;
+    }
+
+    .trabajosTrabajoEntregado{
+        margin: 0px auto;
+        border: 1px solid black;
+        width: 90%;
+        height: 471px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .fechaTrabajoEntregado{
+        margin-left: 10px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado{
+        margin-left: 10px;
+        padding: 0px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado form input{
+        margin-left: 0px;
+        width: 80px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado form button{
+        width: 100px;
+        height: 28px;
+        font-size: 12px;
+    }
+    #salirTrabajoEntregado{
+        height: 30px;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 575px) {
+
+    #contenidoTrabajoEntregado{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    .cont1TrabajoEntregado{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cont1TrabajoEntregado .contenedorTrabajoEntregado{  
+        overflow-x: auto;
+        margin: 0px 0px 20px 0px;
+        background-color: var(--fondo);
+        padding: 50px 10px 20px 10px;
+        width: 100%; 
+        height: auto;
+    }
+
+    .trabajosTrabajoEntregado{
+        margin: 0px auto;
+        border: 1px solid black;
+        width: 90%;
+        height: 471px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .fechaTrabajoEntregado{
+        margin-left: 10px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado{
+        margin-left: 10px;
+        padding: 0px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado form input{
+        margin-left: 0px;
+        width: 130px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado form button{
+        width: 100px;
+        height: 28px;
+        font-size: 12px;
+    }
+    #salirTrabajoEntregado{
+        height: 30px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+    
+    #contenidoTrabajoEntregado{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    .cont1TrabajoEntregado{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cont1TrabajoEntregado .contenedorTrabajoEntregado{  
+        overflow-x: auto;
+        margin: 0px 0px 20px 0px;
+        background-color: var(--fondo);
+        padding: 50px 10px 20px 10px;
+        width: 100%; 
+        height: auto;
+    }
+
+    .trabajosTrabajoEntregado{
+        margin: 0px auto;
+        border: 1px solid black;
+        width: 90%;
+        height: 471px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .fechaTrabajoEntregado{
+        margin-left: 10px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado{
+        margin-left: 10px;
+        padding: 0px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado form input{
+        margin-left: 0px;
+        width: 130px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado form button{
+        width: 100px;
+        height: 28px;
+        font-size: 12px;
+    }
+    #salirTrabajoEntregado{
+        height: 30px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+
+    #contenidoTrabajoEntregado{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    .cont1TrabajoEntregado{
+        display: flex;
+        flex-direction: column;
+        padding: 0px 20px;
+    }
+
+    .cont1TrabajoEntregado .contenedorTrabajoEntregado{  
+        overflow-x: auto;
+        margin: 0px 0px 20px 0px;
+        background-color: var(--fondo);
+        padding: 50px 10px 20px 10px;
+        width: 100%; 
+        height: auto;
+    }
+
+    .trabajosTrabajoEntregado{
+        margin: 0px auto;
+        border: 1px solid black;
+        width: 90%;
+        height: 471px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .fechaTrabajoEntregado{
+        margin-left: 10px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado{
+        margin-left: 10px;
+        padding: 0px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado form input{
+        margin-left: 0px;
+        width: 130px;
+    }
+    .trabajosTrabajoEntregado .notaTrabajoEntregado .form1TrabajoEntregado form button{
+        width: 100px;
+        height: 28px;
+        font-size: 12px;
+    }
+    #salirTrabajoEntregado{
+        height: 30px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    #contenidoTrabajoEntregado{
+        flex: 1;
+        padding: 50px 0px;
+    }
+    .cont1TrabajoEntregado{
+        padding: 0px 20px;
+    }
+}
+@media (min-width: 1200px) and (max-width: 1399px){
+    #contenidoTrabajoEntregado{
+        flex: 1;
+        padding: 50px 0px;
+    }
+}

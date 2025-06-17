@@ -31,14 +31,14 @@ function ActualizarHorario(){
                         {/*---Tabla---*/}
                         <div className="col-10" id="contenidoTabla">
 
-                            <div class="tituloActualizarHorario">
+                            <div className="tituloActualizarHorario">
                                 <h1>Modificar Horario</h1>
                                 <Link to={"/Horario"}>
-                                    <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Salir</button>
+                                    <button className="crear" id="btnAgregarUsuario"> <i className="fas fa-user-plus"></i>Salir</button>
                                 </Link>
                             </div>
 
-                            <div class="contenidoActualizarHorario">
+                            <div className="contenidoActualizarHorario">
                     
                                 <form method="POST" action="{{ url_for('admin2_bp.guardarHorarioEditado', id=horario['ID']) }}" enctype="multipart/form-data">
                                     <input type="text" name="titulo" value="{{ horario['Titulo_Horario'] }}" required></input>

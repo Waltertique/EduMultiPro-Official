@@ -31,22 +31,22 @@ function CrearCurso(){
                         {/*---Tabla---*/}
                         <div className="col-10" id="contenidoTabla">
 
-                            <div class="tituloCrearCurso">
+                            <div className="tituloCrearCurso">
                                 <h1>Crear Curso</h1>
                                 <Link to={"/Curso"}>
-                                    <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Salir</button>
+                                    <button className="crear" id="btnAgregarUsuario"> <i className="fas fa-user-plus"></i>Salir</button>
                                 </Link>
                             </div>
 
-                            <div class="contenidoCrearCurso">
+                            <div className="contenidoCrearCurso">
                     
                                 <form method="POST" action="{{ url_for('admin_bp.guardar_curso') }}">
                                     <h3>Datos Curso</h3>
                                     <div class="f1">
                                         <input type="text" name="curso_nombre" placeholder="Nombre del Curso" required></input>
                                     </div>
-                                    <div class="f1">
-                                        <select name="grado_id" required>
+                                    <div className="f1">
+                                        <select nameName="grado_id" required>
                                             <option value="" disabled selected>Selecciona un Grado</option>
                                             {/*-- % for grado in grados % --*/}
                                                 <option value="{{ grado.ID }}">grado.Grado_Nombre</option>

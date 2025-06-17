@@ -139,7 +139,7 @@ function Curso(){
                                                 <td>
                                                     <form action="{{ url_for('admin_bp.eliminar_curso', id=curso['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
                                                     <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i> Eliminar
+                                                        <i className="fa-solid fa-trash"></i>
                                                     </button>
                                                     </form>
                                                 </td>
@@ -163,7 +163,7 @@ function Curso(){
                                                 <td>
                                                     <form action="{{ url_for('admin_bp.eliminar_curso', id=curso['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
                                                     <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i> Eliminar
+                                                        <i className="fa-solid fa-trash"></i>
                                                     </button>
                                                     </form>
                                                 </td>
@@ -185,7 +185,7 @@ function Curso(){
                                                 <td>
                                                     <form action="{{ url_for('admin_bp.eliminar_curso', id=curso['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
                                                     <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i> Eliminar
+                                                        <i className="fa-solid fa-trash"></i>
                                                     </button>
                                                     </form>
                                                 </td>

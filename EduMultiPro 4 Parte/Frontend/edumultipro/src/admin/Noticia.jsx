@@ -113,7 +113,7 @@ function Noticia(){
                                             
                                                 <form action="{{ url_for('admin2_bp.eliminar_noticia', id=noticia['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
                                                     <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i> Eliminar
+                                                        <i className="fa-solid fa-trash"></i>
                                                     </button>
                                                 </form>
                                             
@@ -146,7 +146,7 @@ function Noticia(){
                                             
                                                 <form action="{{ url_for('admin2_bp.eliminar_noticia', id=noticia['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
                                                     <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i> Eliminar
+                                                        <i className="fa-solid fa-trash"></i>
                                                     </button>
                                                 </form>
                                             

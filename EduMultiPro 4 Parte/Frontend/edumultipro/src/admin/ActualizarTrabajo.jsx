@@ -33,7 +33,7 @@ function ActualizarTrabajo(){
                             <Link to={"/Trabajos"}>
                                 <button id="salirModificarTabla">Salir</button>
                             </Link>
-                            <div class="parte1ModificarTabla">
+                            <div className="parte1ModificarTabla">
                                 <h1>Modificar Trabajo</h1>
                                 <form action="{{ url_for('admin2_bp.guardarCambiosTrabajo') }}" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="trabajo_id" value="{{ trabajo.ID }}" />

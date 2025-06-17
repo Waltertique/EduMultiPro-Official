@@ -129,7 +129,7 @@ function Jornada(){
                                                 <td>
                                                     <form action="{{ url_for('admin_bp.eliminar_jornada', id=jornada['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
                                                     <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i> Eliminar
+                                                        <i className="fa-solid fa-trash"></i>
                                                     </button>
                                                     </form>
                                                 </td>

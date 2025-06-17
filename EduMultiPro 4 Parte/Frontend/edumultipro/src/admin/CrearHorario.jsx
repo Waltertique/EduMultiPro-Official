@@ -31,14 +31,14 @@ function CrearHorario(){
                         {/*---Tabla---*/}
                         <div className="col-10" id="contenidoTabla">
 
-                            <div class="tituloCrearHorario">
+                            <div className="tituloCrearHorario">
                                 <h1>Crear Horario</h1>
                                 <Link to={"/Horario"}>
-                                    <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Salir</button>
+                                    <button className="crear" id="btnAgregarUsuario"> <i className="fas fa-user-plus"></i>Salir</button>
                                 </Link>
                             </div>
 
-                            <div class="contenidoCrearHorario">
+                            <div className="contenidoCrearHorario">
                     
                                 <form method="POST" action="{{ url_for('admin2_bp.crear_horario') }}" enctype="multipart/form-data">
                                     <input type="text" name="titulo" placeholder="Título del Horario" required></input>

@@ -36,10 +36,10 @@ function VerTrabajo(){
                                     <Link to={"/VerTrabajo"}><button>Instrucciones</button></Link>
                                     <Link to={"/VerTrabajoEntregado"}><button>Ver Subidos</button></Link>
                                 </div>
-                                <Link to={"/Trabajos"}><button id="equix"><i class="fa-solid fa-x"></i></button></Link>
+                                <Link to={"/Trabajos"}><button id="equix"><i className="fa-solid fa-x"></i></button></Link>
                             </div>
 
-                            <div class="tituloVerTrabajo">
+                            <div className="tituloVerTrabajo">
                                 <div>
                                     <img src={imgTrabajo} alt=""></img>
                                     <h1> trabajo.Titulo_Trabajo </h1>
@@ -50,18 +50,18 @@ function VerTrabajo(){
                                 </div>
                             </div>
 
-                            <div class="descripcionVerTrabajo">
+                            <div className="descripcionVerTrabajo">
                                 <h3>Descripcion:</h3>
                                 <p> trabajo.Descripcion_Trabajo </p>
 
                                 {/*-- % for archivo in archivos % --*/}
-                                <div class="enlace">
+                                <div className="enlace">
                                     <a href="{{ url_for('static', filename=archivo.ruta_archivo) }}" target="_blank"> archivo.nombre_original </a>
                                 </div>
                                 {/*-- % endfor % --*/}
                             </div>
 
-                            <div class="comentariosVerTrabajo">
+                            <div className="comentariosVerTrabajo">
                                 <p id="titu">Agregar comentarios</p>
 
                                 <form action="{{ url_for('admin2_bp.comentar_trabajo', trabajo_id=trabajo_id, aula_id=aula_id) }}" method="POST">
@@ -70,15 +70,15 @@ function VerTrabajo(){
                                 </form>
 
                                 {/*-- % for comentario in comentarios_trabajo % --*/}
-                                <div class="comentarioVerTrabajo">
-                                    <div class="info1">
-                                        <div class="foto">
+                                <div className="comentarioVerTrabajo">
+                                    <div className="info1">
+                                        <div className="foto">
                                             <img src={imgTrabajo} alt="Foto" width="40"></img>
                                             <h1> comentario.Comentador </h1>
                                         </div>
                                         <h2> 76/65/65 </h2>
                                     </div>
-                                    <div class="desc">
+                                    <div className="desc">
                                     <p> comentario.comentario </p>
                                     </div>
                                     <form action="{{ url_for('admin2_bp.eliminar_comentario_trabajo', id=comentario.comentario_id, trabajo_id=trabajo_id, aula_id=aula_id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este comentario?')">

@@ -29,14 +29,14 @@ function CrearNoticia(){
                         {/*---Tabla---*/}
                         <div className="col-10" id="contenidoTabla">
 
-                            <div class="tituloCrearNoticia">
+                            <div className="tituloCrearNoticia">
                                 <h1>Crear Noticia</h1>
                                 <Link to={"/Noticia"}>
-                                    <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Salir</button>
+                                    <button className="crear" id="btnAgregarUsuario">Salir</button>
                                 </Link>
                             </div>
 
-                            <div class="contenidoCrearNoticia">
+                            <div className="contenidoCrearNoticia">
                     
                                 <form method="POST" action="{{ url_for('admin2_bp.guardar_noticia') }}" enctype="multipart/form-data">
                                     <input type="text" name="titulo" placeholder="Título de la Noticia" required />

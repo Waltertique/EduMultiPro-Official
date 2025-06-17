@@ -29,14 +29,14 @@ function CrearAula(){
                         {/*---Tabla---*/}
                         <div className="col-10" id="contenidoTabla">
 
-                            <div class="tituloCrearAula">
+                            <div className="tituloCrearAula">
                                 <h1>Crear Aula</h1>
                                 <Link to={"/Aula"}>
-                                    <button class="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Salir</button>
+                                    <button className="crear" id="btnAgregarUsuario">Salir</button>
                                 </Link>
                             </div>
 
-                            <div class="contenidoCrearAula">
+                            <div className="contenidoCrearAula">
                     
                                 <form method="POST" action="{{ url_for('admin_bp.guardar_aula') }}">
                                     <input type="text" name="aula_nombre" placeholder="Nombre del Aula" required />

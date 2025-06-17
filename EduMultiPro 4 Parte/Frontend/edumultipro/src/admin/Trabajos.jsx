@@ -65,25 +65,25 @@ function Trabajos(){
                         {/*---Tabla---*/}
                         <div className="col-10" id="contenidoTablaAula">
 
-                            <div class="row" id="navAula">
+                            <div className="row" id="navAula">
 
-                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/VerAula"}><button id="principal">Pricipal</button></Link></div>
-                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/Trabajos"}><button id="trabajo">Trabajos</button></Link></div>
-                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/Notas"}><button id="persona">Notas</button></Link></div>
-                                <div class="col-12 col-md-2 col-xl-2"><Link to={"/Personas"}><button id="persona">Personas</button></Link></div>
-                                <div class="col-12 col-md-4 col-xl-4"></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/VerAula"}><button id="principal">Pricipal</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Trabajos"}><button id="trabajo">Trabajos</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Notas"}><button id="persona">Notas</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Personas"}><button id="persona">Personas</button></Link></div>
+                                <div className="col-12 col-md-4 col-xl-4"></div>
 
                             </div>
 
-                            <div class="tituloTrabajo">
+                            <div className="tituloTrabajo">
                                 <h1>Trabajos</h1>
                                 <Link to={"/CrearTrabajo"}>
-                                    <button class="crear" id="btnAgregarUsuario">Crear Trabajo</button>
+                                    <button className="crear" id="btnAgregarUsuario">Crear Trabajo</button>
                                 </Link>
                             </div>
 
-                            <div class="contenedor-tablaTrabajo">
-                                <table class="tablaUsuarios" id="tablaUsuarios">
+                            <div className="contenedor-tablaTrabajo">
+                                <table className="tablaUsuarios" id="tablaUsuarios">
                                     <thead>
                                         <tr>
                                             <th>Título</th>
@@ -102,8 +102,8 @@ function Trabajos(){
                                                     <Link to={"/VerTrabajo"}>
                                                         <input type="hidden" name="trabajo_id" value="{{ trabajo.ID }}" />
                                                         <input type="hidden" name="aula_id" value="{{ aula_id }}" />
-                                                        <button type="submit" class="informacion" id="btninformacion">
-                                                            <i class="fa-solid fa-circle-info"></i>
+                                                        <button type="submit" className="informacion" id="btninformacion">
+                                                            <i className="fa-solid fa-circle-info"></i>
                                                         </button>
                                                     </Link>
                                                 </td>
@@ -111,13 +111,13 @@ function Trabajos(){
                                                     <Link to={"/ActualizarTrabajo"}>
                                                         <input type="hidden" name="aula_id" value="{{ aula_id }}" />
                                                         <input type="hidden" name="trabajo_id" value="{{ trabajo.ID }}" />
-                                                        <button type="submit" class="crear" id="btnAgregarUsuario">Modificar</button>
+                                                        <button type="submit" className="crear" id="btnAgregarUsuario"><i class="fa-solid fa-gear"></i></button>
                                                     </Link>
                                                 </td>
                                                 <td>
                                                     <form action="{{ url_for('admin2_bp.eliminar_trabajo', id=trabajo.ID) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                        <button class="btn-icon eliminar" type="submit">
-                                                            <i class="fa-solid fa-trash"></i> Eliminar
+                                                        <button className="btn-icon eliminar" type="submit">
+                                                            <i className="fa-solid fa-trash"></i>
                                                         </button>
                                                     </form>
                                                 </td>

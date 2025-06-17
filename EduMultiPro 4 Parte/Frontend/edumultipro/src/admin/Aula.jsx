@@ -73,21 +73,21 @@ function Aula(){
                             </div>
 
                             <div className="modificarAula" id="modificarAula">
-                            <h1>Modificar Aula</h1>
-                            <form action="{{ url_for('admin_bp.modificar_aula') }}" method="POST">
-                                <input type="hidden" name="id" id="editarAulaID"></input>
+                                <h1>Modificar Aula</h1>
+                                <form action="{{ url_for('admin_bp.modificar_aula') }}" method="POST">
+                                    <input type="hidden" name="id" id="editarAulaID"></input>
 
-                                <input type="text" name="nombre" id="editarAulaNombre" placeholder="Nombre del Aula" required></input>
+                                    <input type="text" name="nombre" id="editarAulaNombre" placeholder="Nombre del Aula" required></input>
 
-                                <select name="materia_id" id="editarMateria" required>
-                                {/*-- % for materia in materias % --*/}
-                                    <option value="{{ materia['ID'] }}">materia['Materia_Nombre']</option>
-                                {/*-- % endfor % --*/}
-                                </select>
+                                    <select name="materia_id" id="editarMateria" required>
+                                    {/*-- % for materia in materias % --*/}
+                                        <option value="{{ materia['ID'] }}">materia['Materia_Nombre']</option>
+                                    {/*-- % endfor % --*/}
+                                    </select>
 
-                                <button type="submit" className="btn-guardar">Guardar cambios</button>
-                                <button type="button" className="btn-cancelar" onclick="cancelarEdicionAula()">Cancelar</button>
-                            </form>
+                                    <button type="submit" className="btn-guardar">Guardar cambios</button>
+                                    <button type="button" className="btn-cancelar" onclick="cancelarEdicionAula()">Cancelar</button>
+                                </form>
                             </div>
 
                             <div className="contenedor-tabla">
@@ -126,7 +126,7 @@ function Aula(){
                                                     <td>
                                                     <form action="{{ url_for('admin_bp.eliminar_aula', id=aula['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
                                                     <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i> Eliminar
+                                                        <i className="fa-solid fa-trash"></i>
                                                     </button>
                                                     </form>
                                                 </td>

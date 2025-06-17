@@ -87,7 +87,6 @@ thead{
     text-align: center !important;
     border-bottom: 1px solid var(--azul-primario) !important;
 }
-
 button{
     background-color: var(--azul);
     color: var(--blanco);
