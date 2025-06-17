@@ -75,7 +75,9 @@
 <li><a href='#Tipo Noticia'>Tipo Noticia</a></li>
 <li><a href='#Tipo_Documento'>Tipo_Documento</a></li>
 <li><a href='#Trabajo'>Trabajo</a></li>
+<li><a href='#Trabajo Archivo'>Trabajo Archivo</a></li>
 <li><a href='#Trabajo Entregado'>Trabajo Entregado</a></li>
+<li><a href='#Trabajo Entregado Archivo'>Trabajo Entregado Archivo</a></li>
 <li><a href='#Usuario'>Usuario</a></li>
 </ul>
 <table id='Anuncio'>
@@ -1083,19 +1085,6 @@
     <td>Fecha de asignación del trabajo.</td>
 </tr>
 <tr>
-    <td>Archivo</td>
-    <td>VARCHAR(200)</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td class='attr'>&nbsp;</td>
-    <td></td>
-    <td>Ruta del archivo adjunto relacionado con el trabajo (si aplica).</td>
-</tr>
-<tr>
     <td>Aulas_idAulas</td>
     <td>INT</td>
     <td>&#10004;</td>
@@ -1107,6 +1096,74 @@
     <td class='attr'>&nbsp;</td>
     <td></td>
     <td>Identificador del aula asociado con el trabajo.</td>
+</tr>
+<table id='Trabajo Archivo'>
+<caption>Trabajo Archivo</caption>
+<tr><td colspan='11'></td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idTrabajo Entregado Archivo</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador único del Archivo del trabajo.</td>
+</tr>
+<tr>
+    <td>Archivo</td>
+    <td>VARCHAR(200)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Ruta del archivo del trabajo.</td>
+</tr>
+<tr>
+    <td>NombreOriginal</td>
+    <td>DATE</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Es el nombre original asignado al archivo</td>
+</tr>
+<tr>
+    <td>Trabajo_idTrabajo</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador del trabajo asociado al archivo.</td>
 </tr>
 <table id='Trabajo Entregado'>
 <caption>Trabajo Entregado</caption>
@@ -1136,19 +1193,6 @@
     <td>&#10004;</td>
     <td></td>
     <td>Identificador único del trabajo entregado.</td>
-</tr>
-<tr>
-    <td>Archivo</td>
-    <td>VARCHAR(200)</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td class='attr'>&nbsp;</td>
-    <td></td>
-    <td>Ruta del archivo entregado.</td>
 </tr>
 <tr>
     <td>Fecha</td>
@@ -1201,6 +1245,74 @@
     <td class='attr'>&nbsp;</td>
     <td></td>
     <td>Número de documento del usuario que entregó el trabajo.</td>
+</tr>
+<table id='Trabajo Entregado Archivo'>
+<caption>Trabajo Entregado Archivo</caption>
+<tr><td colspan='11'></td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idTrabajo Entregado Archivo</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador único del Archivo del trabajo entregado.</td>
+</tr>
+<tr>
+    <td>Archivo</td>
+    <td>VARCHAR(200)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Ruta del archivo entregado.</td>
+</tr>
+<tr>
+    <td>NombreOriginal</td>
+    <td>DATE</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Es el nombre original asignado al archivo</td>
+</tr>
+<tr>
+    <td>TrabajoEntregado_idTrabajoEntregado</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador del trabajo Entregado asociado al archivo.</td>
 </tr>
 <table id='Usuario'>
 <caption>Usuario</caption>
