@@ -183,7 +183,7 @@ INSERT INTO Documento(ID, Tipo_Documento) Values
     ('D003','Cedula de extangeria');
     
 INSERT INTO Usuario(ID, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_Apellido, Correo1, Contraseña, Correo2, Contacto1, Contacto2, Fecha_Nacimiento, RutaFoto, rol_id, documento_id) Values
-    ('41', 'maradona', 'pedro', 'Guzmán', 'Roldán', 'maradona@gmail.com','pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646', 'maradona.alt40@gmail.com', '3101010133', '3291010133', '2000-12-25','h7.png','R004', 'D002');
+    ('41', 'maradona', 'pedro', 'Guzmán', 'Roldán', 'maradona@gmail.com', 'pepito123', 'maradona.alt40@gmail.com', '3101010133', '3291010133', '2000-12-25','h7.png','R004', 'D002');
     
 INSERT INTO Tipo_Noticia(ID, Tipo) Values
 	('1', 'Noticia Principal 1'),
