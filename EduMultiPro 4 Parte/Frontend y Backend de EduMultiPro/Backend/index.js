@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Rutas
-app.use("/api/usuarios", require("./routes/usuarios"));
+app.use("/api/edumultipro", require("./routes/usuarios"));
 
 // Ruta principal
 app.get("/", (req, res) => {
@@ -20,3 +20,6 @@ app.get("/", (req, res) => {
 app.listen(PUERTO, () => {
     console.log(`🚀 Servidor escuchando en http://localhost:${PUERTO}`);
 });
+
+const path = require("path");
+app.use('/imagenes', express.static(path.join(__dirname, 'imagenes')));

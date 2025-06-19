@@ -45,7 +45,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/grado" element={<Grado />} />
         <Route path="/jornada" element={<Jornada />} />
         <Route path="/CrearUsuario" element={<CrearUsuario />} />
-        <Route path="/VerUsuario" element={<VerUsuario />} />
+        <Route path="/VerUsuario/:id" element={<VerUsuario />} />
         <Route path="/VerCurso" element={<VerCurso />} />
         <Route path="/CrearCurso" element={<CrearCurso />} />
         <Route path="/CrearHorario" element={<CrearHorario />} />
