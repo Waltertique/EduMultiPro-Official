@@ -44,7 +44,7 @@ router.post('/login', (req, res) => {
       }
 
       if (coinciden) {
-        res.json({ mensaje: 'Login exitoso', usuario: { id: usuario.ID, nombre: usuario.Primer_Nombre } });
+        res.json({ mensaje: 'Login exitoso', usuario: { id: usuario.ID, nombre: usuario.Primer_Nombre, rol: usuario.rol_id } });
       } else {
         res.status(401).json({ mensaje: 'Contraseña incorrecta' });
       }

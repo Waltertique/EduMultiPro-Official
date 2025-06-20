@@ -80,8 +80,8 @@ INSERT INTO Usuario(ID, Primer_Nombre, Segundo_Nombre, Primer_Apellido, Segundo_
 	('36', 'Monica', 'Patricia', 'Delgado', 'Acosta',    'monica36@gmail.com', '$2b$10$O15vwcJY2AqN66oLwbH/Kuew7xjKhOksgZLfxylJ23S.asJOSYCqK',     'monica.alt36@gmail.com', '3166666688', '3256666688', '2015-04-24','m3.png'       ,'R001', 'D001'),
 	('37', 'Santiago', 'Emilio', 'Mora', 'Arenas',       'santiago37@gmail.com', '$2b$10$O15vwcJY2AqN66oLwbH/Kuew7xjKhOksgZLfxylJ23S.asJOSYCqK',   'santiago.alt37@gmail.com', '3177777799', '3267777799', '2016-11-30','h9.png' ,'R001', 'D001'),
 	('38', 'Victoria', 'Luciana', 'Estupiñán', 'Cadavid','victoria38@gmail.com', '$2b$10$O15vwcJY2AqN66oLwbH/Kuew7xjKhOksgZLfxylJ23S.asJOSYCqK',   'victoria.alt38@gmail.com', '3188888800', '3278888800', '2017-01-07','m4.png'     ,'R001', 'D001'),
-	('39', 'Hugo', 'Francisco', 'Marín', 'Correa',       'hugo39@gmail.com', '$2b$10$O15vwcJY2AqN66oLwbH/Kuew7xjKhOksgZLfxylJ23S.asJOSYCqK',       'hugo.alt39@gmail.com', '3199999011', '3289999011', '2018-05-13','h10.png'     ,'R001', 'D001'),
-	('40', 'Estefania', 'Paola', 'Guzmán', 'Roldán',     'estefania40@gmail.com', '$2b$10$O15vwcJY2AqN66oLwbH/Kuew7xjKhOksgZLfxylJ23S.asJOSYCqK',  'estefania.alt40@gmail.com', '3101010133', '3291010133', '2019-12-25','m5.png'    ,'R001', 'D001');
+	('39', 'Hugo', 'Francisco', 'Marín', 'Correa',       'hugo39@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',       'hugo.alt39@gmail.com', '3199999011', '3289999011', '2018-05-13','h10.png'     ,'R004', 'D001'),
+	('40', 'Estefania', 'Paola', 'Guzmán', 'Roldán',     'estefania40@gmail.com', 'pbkdf2:sha256:260000$7HLlYZufDov3JgrX$87880d161bf5c37b7e08b6535c7c93387855ac71c9e109ee1eb5d2f17e062646',  'estefania.alt40@gmail.com', '3101010133', '3291010133', '2019-12-25','m5.png'    ,'R001', 'D001');
     
 INSERT INTO Miembros_Curso(usuario_id, curso_id) Values
 	('3', '1'),

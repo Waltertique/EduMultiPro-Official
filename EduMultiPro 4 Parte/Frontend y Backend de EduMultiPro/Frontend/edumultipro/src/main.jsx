@@ -31,6 +31,16 @@ import ActualizarTrabajo from './admin/ActualizarTrabajo.jsx';
 import VerTrabajo from './admin/VerTrabajo.jsx';
 import VerTrabajoEntregado from './admin/VerTrabajoEntregado.jsx';
 
+//--Aqui los links del Coordinador--
+import PrincipalCoordinador from './coordinador/PrincipalCoordinador.jsx';
+
+//--Aqui los links del Profesor--
+import PrincipalProfesor from './profesor/PrincipalProfesor.jsx';
+
+//--Aqui los links del Alumno--
+import PrincipalAlumno from './alumno/PrincipalAlumno.jsx';
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter> {/* 👈 ENVOLVER CON BROWSERROUTER */}
@@ -63,6 +73,16 @@ createRoot(document.getElementById('root')).render(
         <Route path="/ActualizarTrabajo" element={<ActualizarTrabajo />} />
         <Route path="/VerTrabajo" element={<VerTrabajo />} />
         <Route path="/VerTrabajoEntregado" element={<VerTrabajoEntregado />} />
+
+        {/*--Aqui los links del Coordinador--*/}
+        <Route path="/PrincipalCoordinador" element={<PrincipalCoordinador />} />
+
+        {/*--Aqui los links del Profesor--*/}
+        <Route path="/PrincipalProfesor" element={<PrincipalProfesor />} />
+
+        {/*--Aqui los links del Alumno--*/}
+        <Route path="/PrincipalAlumno" element={<PrincipalAlumno />} />
+
       </Routes>
     </BrowserRouter>
   </StrictMode>

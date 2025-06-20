@@ -27,8 +27,27 @@ function App() {
 
     if (response.ok) {
       const data = await response.json();
-      console.log('Usuario autenticado:', data.usuario);
-      navigate('/usuario'); // Redirige si el login es exitoso
+      const { rol } = data.usuario;
+
+      // Redireccionar según el rol
+      switch (rol) {
+        case 'R004': // Administrador
+          navigate('/usuario');
+          break;
+        case 'R003': // Coordinador
+          navigate('/PrincipalCoordinador');
+          break;
+        case 'R002': // Profesor
+          navigate('/PrincipalProfesor');
+          break;
+        case 'R001': // Alumno
+          navigate('/PrincipalAlumno');
+          break;
+        default:
+          alert('Rol no reconocido');
+          break;
+      }
+
     } else {
       const err = await response.json();
       alert(err.mensaje);
@@ -36,7 +55,7 @@ function App() {
 
   } catch (error) {
     console.error('Error al iniciar sesión:', error);
-    alert('Hubo un error en el servidor');
+    alert('❌ Hubo un error en el servidor');
   }
 };
 
