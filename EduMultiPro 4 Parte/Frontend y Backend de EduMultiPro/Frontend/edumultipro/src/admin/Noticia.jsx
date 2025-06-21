@@ -1,4 +1,4 @@
-import { useEffect } from 'react'; // datatables
+import { useEffect, useState } from 'react'; // datatables
 import $ from 'jquery';
 import 'datatables.net-dt'; // JS
 
@@ -14,36 +14,84 @@ import { Link } from 'react-router-dom';
 
 function Noticia(){
 
-    useEffect(() => {
-    const table = $('#tablaUsuarios').DataTable();
+    const [noticias, setNoticias] = useState([]);
 
-    // Verifica si ya está inicializado
+  // Obtener Noticias
+  const obtenerNoticias = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/edumultipro/Noticias");
+      const data = await res.json();
+      setNoticias(data);
+    } catch (err) {
+      console.error("Error al obtener Noticias:", err);
+    }
+  };
+
+  // Inicializar DataTable
+  const inicializarDataTable = () => {
     if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-        table.destroy(); // Destruye la instancia anterior
+      $('#tablaUsuarios').DataTable().destroy();
     }
 
     $('#tablaUsuarios').DataTable({
-        language: {
-            processing: "Procesando...",
-            search: "Buscar:",
-            lengthMenu: "Mostrar _MENU_ registros",
-            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            infoEmpty: "Mostrando 0 a 0 de 0 registros",
-            infoFiltered: "(filtrado de _MAX_ registros totales)",
-            loadingRecords: "Cargando...",
-            zeroRecords: "No se encontraron resultados",
-            emptyTable: "No hay datos en la tabla",
-            paginate: {
-                previous: "Anterior",
-                next: "Siguiente"
-            },
-            aria: {
-                sortAscending: ": activar para ordenar la columna ascendente",
-                sortDescending: ": activar para ordenar la columna descendente"
-            }
+      language: {
+        processing: "Procesando...",
+        search: "Buscar:",
+        lengthMenu: "Mostrar _MENU_ registros",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        infoEmpty: "Mostrando 0 a 0 de 0 registros",
+        infoFiltered: "(filtrado de _MAX_ registros totales)",
+        loadingRecords: "Cargando...",
+        zeroRecords: "No se encontraron resultados",
+        emptyTable: "No hay datos en la tabla",
+        paginate: {
+          previous: "Anterior",
+          next: "Siguiente"
+        },
+        aria: {
+          sortAscending: ": activar para ordenar la columna ascendente",
+          sortDescending: ": activar para ordenar la columna descendente"
         }
+      }
     });
-    }, []);
+  };
+
+  // Eliminar Noticia
+  const eliminarNoticia = async (id) => {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar esta Noticia?");
+    if (!confirmacion) return;
+
+    if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+      $('#tablaUsuarios').DataTable().destroy();
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/edumultipro/Noticias/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+      alert(data.mensaje);
+
+      const nuevasNoticias = noticias.filter((noticia) => noticia.ID !== id);
+      setNoticias(nuevasNoticias);
+    } catch (error) {
+      console.error("Error al eliminar la Noticia:", error);
+      alert("Hubo un error al intentar eliminar la Noticias.");
+    }
+  };
+
+  useEffect(() => {
+    obtenerNoticias();
+  }, []);
+
+  useEffect(() => {
+    if (noticias.length > 0) {
+      setTimeout(() => {
+        inicializarDataTable();
+      }, 100);
+    }
+  }, [noticias]);
 
     return(
         <>
@@ -84,76 +132,30 @@ function Noticia(){
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        {/*-- % if noticias % --*/}
-                                            {/*-- % for noticia in noticias % --*/}
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Titulo_Noticia</td>
-                                                <td>Tipo</td>
-                                                <td>
-                                                
-                                                
-                                                <Link to={"/VerNoticia"}>
-                                                    <button type="submit" className="informacion" id="informacion">
-                                                    <i className="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                </Link>
-                                                
-                                                </td>
-                                                <td>
-                                                
-                                                <Link to={"/ActualizarNoticia"}>
-                                                    <button type="submit" className="modificar" id="btnmodificar">
-                                                    <i className="fa-solid fa-gear"></i>
-                                                    </button>
-                                                </Link>
-                                        
-                                                </td>
-                                                <td>
-                                            
-                                                <form action="{{ url_for('admin2_bp.eliminar_noticia', id=noticia['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                    <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Titulo_Noticia</td>
-                                                <td>Tipo</td>
-                                                <td>
-                                                
-                                                
-                                                <form action="{{ url_for('admin2_bp.verNoticia', id=noticia['ID']) }}">
-                                                    <button type="submit" className="informacion" id="informacion">
-                                                    <i className="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                </form>
-                                                
-                                                </td>
-                                                <td>
-                                                
-                                                <form action="{{ url_for('admin2_bp.modificar_noticia', id=noticia['ID']) }}" method="GET">
-                                                    <button type="submit" className="modificar" id="btnmodificar">
-                                                    <i className="fa-solid fa-gear"></i>
-                                                    </button>
-                                                </form>
-                                        
-                                                </td>
-                                                <td>
-                                            
-                                                <form action="{{ url_for('admin2_bp.eliminar_noticia', id=noticia['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                    <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            
-                                                </td>
-                                            </tr>
-                                            {/*-- % endfor % --*/}
-                                        {/*-- % endif % --*/}
+                                        {noticias.map((noticia) => (
+                                        <tr key={noticia.ID}>
+                                            <td>{noticia.ID}</td>
+                                            <td>{noticia.Titulo_Noticia}</td>
+                                            <td>{noticia.Tipo}</td>
+                                            <td>
+                                            <Link to={"/VerCurso"}>
+                                                <button type="button" className="informacion" id="btninformacion">
+                                                <i className="fa-solid fa-circle-info"></i>
+                                                </button>
+                                            </Link>
+                                            </td>
+                                            <td>
+                                            <button className="modificar">
+                                                <i className="fa-solid fa-gear"></i>
+                                            </button>
+                                            </td>
+                                            <td>
+                                            <button className="btn-icon eliminar" type="button" onClick={() => eliminarNoticia(noticia.ID)}>
+                                                <i className="fa-solid fa-trash"></i>
+                                            </button>
+                                            </td>
+                                        </tr>
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>

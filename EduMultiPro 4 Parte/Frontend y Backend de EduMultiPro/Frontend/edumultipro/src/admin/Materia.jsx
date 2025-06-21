@@ -1,4 +1,4 @@
-import { useEffect } from 'react'; // datatables
+import { useEffect, useState } from 'react'; // datatables
 import $ from 'jquery';
 import 'datatables.net-dt'; // JS
 
@@ -14,36 +14,115 @@ import { Link } from 'react-router-dom';
 
 function Materia(){
 
-    useEffect(() => {
-    const table = $('#tablaUsuarios').DataTable();
+    const [materias, setMaterias] = useState([]);
 
-    // Verifica si ya está inicializado
+  // Obtener Materias
+  const obtenerMaterias = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/edumultipro/Materias");
+      const data = await res.json();
+      setMaterias(data);
+    } catch (err) {
+      console.error("Error al obtener Materias:", err);
+    }
+  };
+
+  // Inicializar DataTable
+  const inicializarDataTable = () => {
     if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-        table.destroy(); // Destruye la instancia anterior
+      $('#tablaUsuarios').DataTable().destroy();
     }
 
     $('#tablaUsuarios').DataTable({
-        language: {
-            processing: "Procesando...",
-            search: "Buscar:",
-            lengthMenu: "Mostrar _MENU_ registros",
-            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            infoEmpty: "Mostrando 0 a 0 de 0 registros",
-            infoFiltered: "(filtrado de _MAX_ registros totales)",
-            loadingRecords: "Cargando...",
-            zeroRecords: "No se encontraron resultados",
-            emptyTable: "No hay datos en la tabla",
-            paginate: {
-                previous: "Anterior",
-                next: "Siguiente"
-            },
-            aria: {
-                sortAscending: ": activar para ordenar la columna ascendente",
-                sortDescending: ": activar para ordenar la columna descendente"
-            }
+      language: {
+        processing: "Procesando...",
+        search: "Buscar:",
+        lengthMenu: "Mostrar _MENU_ registros",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        infoEmpty: "Mostrando 0 a 0 de 0 registros",
+        infoFiltered: "(filtrado de _MAX_ registros totales)",
+        loadingRecords: "Cargando...",
+        zeroRecords: "No se encontraron resultados",
+        emptyTable: "No hay datos en la tabla",
+        paginate: {
+          previous: "Anterior",
+          next: "Siguiente"
+        },
+        aria: {
+          sortAscending: ": activar para ordenar la columna ascendente",
+          sortDescending: ": activar para ordenar la columna descendente"
         }
+      }
     });
-    }, []);
+  };
+
+  // Eliminar Materias
+  const eliminarMateria = async (id) => {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar esta Materia?");
+    if (!confirmacion) return;
+
+    if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+      $('#tablaUsuarios').DataTable().destroy();
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/edumultipro/Materias/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+      alert(data.mensaje);
+
+      const nuevasMaterias = materias.filter((materia) => materia.ID !== id);
+      setMaterias(nuevasMaterias);
+    } catch (error) {
+      console.error("Error al eliminar la Materia:", error);
+      alert("Hubo un error al intentar eliminar la Materia.");
+    }
+  };
+
+  // Modificar Materias
+  const [materiaSeleccionada, setMateriaSeleccionada] = useState({
+  ID: "",
+  Materia_Nombre: "",
+  Descripcion_Materia: ""
+  });
+
+  const [mostrarFormularioEditar, setMostrarFormularioEditar] = useState(false);
+
+  const abrirFormularioEditar = (materia) => {
+  setMateriaSeleccionada(materia);
+  setMostrarFormularioEditar(true);
+};
+
+const cancelarEdicion = () => {
+  setMostrarFormularioEditar(false);
+  setMateriaSeleccionada({
+    ID: "",
+    Materia_Nombre: "",
+    Descripcion_Materia: ""
+  });
+};
+
+  const manejarCambio = (e) => {
+  const { name, value } = e.target;
+  setMateriaSeleccionada((prev) => ({
+    ...prev,
+    [name === "nombre" ? "Materia_Nombre" : "Descripcion_Materia"]: value,
+  }));
+};
+
+  useEffect(() => {
+    obtenerMaterias();
+  }, []);
+
+  useEffect(() => {
+    if (materias.length > 0) {
+      setTimeout(() => {
+        inicializarDataTable();
+      }, 100);
+    }
+  }, [materias]);
 
     return(
         <>
@@ -89,21 +168,45 @@ function Materia(){
                                         <button type="submit">Guardar Materia</button>
                                 </form>
 
+                                {mostrarFormularioEditar && (
                                 <div id="formEditarMateria" className="formulario-editar">
                                     <h3>Modificar Materia</h3>
-                                    <form action="{{ url_for('admin2_bp.modificar_materia') }}" method="POST">
-                                    <input type="hidden" name="id" id="editarID"></input>
+                                    <form onSubmit={async (e) => {
+                                      e.preventDefault();
+                                      try {
+                                        const res = await fetch(`http://localhost:3000/api/edumultipro/Materias/${materiaSeleccionada.ID}`, {
+                                          method: "PUT",
+                                          headers: {
+                                            "Content-Type": "application/json",
+                                          },
+                                          body: JSON.stringify({
+                                            Materia_Nombre: materiaSeleccionada.Materia_Nombre,
+                                            Descripcion_Materia: materiaSeleccionada.Descripcion_Materia,
+                                          }),
+                                        });
+
+                                        const data = await res.json();
+                                        alert(data.mensaje);
+                                        setMostrarFormularioEditar(false);
+                                        obtenerMaterias(); // recargar la lista
+                                      } catch (error) {
+                                        console.error("Error al actualizar la materia:", error);
+                                        alert("Hubo un error al actualizar la materia.");
+                                      }
+                                    }}>
+                                    <input type="hidden" name="id" value={materiaSeleccionada.ID} />
                                     
                                     <label for="editarNombre">Nombre:</label>
-                                    <input type="text" name="nombre" id="editarNombre" required></input>
+                                    <input type="text" name="nombre" id="editarNombre" value={materiaSeleccionada.Materia_Nombre} onChange={manejarCambio} required></input>
                                     
                                     <label for="editarDescripcion">Descripción:</label>
-                                    <input name="descripcion" id="editarDescripcion" rows="3" required></input>
+                                    <input name="descripcion" id="editarDescripcion" rows="3" value={materiaSeleccionada.Descripcion_Materia} onChange={manejarCambio} required></input>
                                     
                                     <button type="submit" className="btn-guardar2">Guardar cambios</button>
-                                    <button type="button" className="btn-cancelar" onclick="cancelarEdicion()">Cancelar</button>
+                                    <button type="button" className="btn-cancelar" onClick={cancelarEdicion}>Cancelar</button>
                                     </form>
                                 </div>
+                                )}
 
                             </div>
 
@@ -119,24 +222,23 @@ function Materia(){
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {/*-- % if materias % --*/}
-                                        {/*-- % for materia in materias % --*/}
-                                            <tr>
-                                                <td>'ID'</td>
-                                                <td>Materia_Nombre</td>
-                                                <td>'Descripcion_Materia</td>
-                                                <td><button className="modificar"><i className="fa-solid fa-gear"></i></button></td>
-                                                <td>
-                                                <form action="{{ url_for('admin_bp.eliminar_materia', id=materia['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                    <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                                </td>
-                                            </tr>
-                                        {/*-- % endfor % --*/}
-                                    {/*-- % endif % --*/}
-                                        
+                                        {materias.map((materia) => (
+                                        <tr key={materia.ID}>
+                                            <td>{materia.ID}</td>
+                                            <td>{materia.Materia_Nombre}</td>
+                                            <td>{materia.Descripcion_Materia}</td>
+                                            <td>
+                                            <button className="modificar" onClick={() => abrirFormularioEditar(materia)}>
+                                                <i className="fa-solid fa-gear"></i>
+                                            </button>
+                                            </td>
+                                            <td>
+                                            <button className="btn-icon eliminar" type="button" onClick={() => eliminarMateria(materia.ID)}>
+                                                <i className="fa-solid fa-trash"></i>
+                                            </button>
+                                            </td>
+                                        </tr>
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>

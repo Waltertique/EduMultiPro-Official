@@ -1,4 +1,4 @@
-import { useEffect } from 'react'; // datatables
+import { useEffect, useState } from 'react'; // datatables
 import $ from 'jquery';
 import 'datatables.net-dt'; // JS
 
@@ -14,15 +14,26 @@ import { Link } from 'react-router-dom';
 
 function Horario(){
 
-    useEffect(() => {
-    const table = $('#tablaUsuarios').DataTable();
+    const [horarios, setHorarios] = useState([]);
 
-    // Verifica si ya está inicializado
-    if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-        table.destroy(); // Destruye la instancia anterior
-    }
+    // Obtener Horarios
+    const obtenerHorarios = async () => {
+        try {
+        const res = await fetch("http://localhost:3000/api/edumultipro/Horarios");
+        const data = await res.json();
+        setHorarios(data);
+        } catch (err) {
+        console.error("Error al obtener Horarios:", err);
+        }
+    };
 
-    $('#tablaUsuarios').DataTable({
+    // Inicializar DataTable
+    const inicializarDataTable = () => {
+        if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+        $('#tablaUsuarios').DataTable().destroy();
+        }
+
+        $('#tablaUsuarios').DataTable({
         language: {
             processing: "Procesando...",
             search: "Buscar:",
@@ -34,16 +45,53 @@ function Horario(){
             zeroRecords: "No se encontraron resultados",
             emptyTable: "No hay datos en la tabla",
             paginate: {
-                previous: "Anterior",
-                next: "Siguiente"
+            previous: "Anterior",
+            next: "Siguiente"
             },
             aria: {
-                sortAscending: ": activar para ordenar la columna ascendente",
-                sortDescending: ": activar para ordenar la columna descendente"
+            sortAscending: ": activar para ordenar la columna ascendente",
+            sortDescending: ": activar para ordenar la columna descendente"
             }
         }
-    });
+        });
+    };
+
+    // Eliminar Horario
+    const eliminarHorario = async (id) => {
+        const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar este Horario?");
+        if (!confirmacion) return;
+
+        if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+        $('#tablaUsuarios').DataTable().destroy();
+        }
+
+        try {
+        const res = await fetch(`http://localhost:3000/api/edumultipro/Horarios/${id}`, {
+            method: "DELETE",
+        });
+
+        const data = await res.json();
+        alert(data.mensaje);
+
+        const nuevosHorarios = horarios.filter((horario) => horario.ID !== id);
+        setHorarios(nuevosHorarios);
+        } catch (error) {
+        console.error("Error al eliminar el Horario:", error);
+        alert("Hubo un error al intentar eliminar el Horario.");
+        }
+    };
+
+    useEffect(() => {
+        obtenerHorarios();
     }, []);
+
+    useEffect(() => {
+        if (horarios.length > 0) {
+        setTimeout(() => {
+            inicializarDataTable();
+        }, 100);
+        }
+    }, [horarios]);
 
     return(
         <>
@@ -86,40 +134,32 @@ function Horario(){
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/*-- % if horarios % --*/}
-                                        {/*--% for horario in horarios % --*/}
-                                            <tr>
-                                                <td>ID</td>
-                                                <td>Titulo_Horario</td>
-                                                <td>Curso_Nombre</td>
-                                                <td>Jornada_Nombre</td>
-                                                <td>
-                                                    profesor
-                                                </td>
-                                                <td>
-                                                    <Link to={"/VerHorario"}>
-                                                    <button type="submit" className="informacion" id="btninformacion">
-                                                        <i className="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    </Link>
-                                                </td>
-                                                <td>
-                                                    <Link to={"/ActualizarHorario"}>
-                                                    <button type="submit" class="modificar" id="btnmodificar">
-                                                        <i className="fa-solid fa-gear"></i>
-                                                    </button>
-                                                    </Link>
-                                                </td>
-                                                <td>
-                                                    <form action="{{ url_for('admin_bp.eliminar_horario', id=horario['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                        <button className="btn-icon eliminar" type="submit">
-                                                            <i className="fa-solid fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        { /*--% endfor % --*/}
-                                    { /*--% endif % --*/}
+                                        {horarios.map((horario) => (
+                                        <tr key={horario.ID}>
+                                            <td>{horario.ID}</td>
+                                            <td>{horario.Titulo_Horario}</td>
+                                            <td>{horario.Curso_Nombre}</td>
+                                            <td>{horario.Jornada_Nombre}</td>
+                                            <td>{horario.Profesor_Nombre || "Sin Asignar"}</td>
+                                            <td>
+                                            <Link to={"/VerCurso"}>
+                                                <button type="button" className="informacion" id="btninformacion">
+                                                <i className="fa-solid fa-circle-info"></i>
+                                                </button>
+                                            </Link>
+                                            </td>
+                                            <td>
+                                            <button className="modificar">
+                                                <i className="fa-solid fa-gear"></i>
+                                            </button>
+                                            </td>
+                                            <td>
+                                            <button className="btn-icon eliminar" type="button" onClick={() => eliminarHorario(horario.ID)}>
+                                                <i className="fa-solid fa-trash"></i>
+                                            </button>
+                                            </td>
+                                        </tr>
+                                        ))}
                                 </tbody>
                             </table>
                             </div>

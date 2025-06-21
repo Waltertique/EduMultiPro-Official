@@ -1,4 +1,4 @@
-import { useEffect } from 'react'; // datatables
+import { useEffect, useState } from 'react'; // datatables
 import $ from 'jquery';
 import 'datatables.net-dt'; // JS
 
@@ -14,36 +14,108 @@ import { Link } from 'react-router-dom';
 
 function Curso(){
 
-    useEffect(() => {
-    const table = $('#tablaUsuarios').DataTable();
+    const [cursos, setCursos] = useState([]);
 
-    // Verifica si ya está inicializado
+  // Obtener cursos
+  const obtenerCursos = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/edumultipro/Cursos");
+      const data = await res.json();
+      setCursos(data);
+    } catch (err) {
+      console.error("Error al obtener cursos:", err);
+    }
+  };
+
+  // Inicializar DataTable
+  const inicializarDataTable = () => {
     if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-        table.destroy(); // Destruye la instancia anterior
+      $('#tablaUsuarios').DataTable().destroy();
     }
 
     $('#tablaUsuarios').DataTable({
-        language: {
-            processing: "Procesando...",
-            search: "Buscar:",
-            lengthMenu: "Mostrar _MENU_ registros",
-            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            infoEmpty: "Mostrando 0 a 0 de 0 registros",
-            infoFiltered: "(filtrado de _MAX_ registros totales)",
-            loadingRecords: "Cargando...",
-            zeroRecords: "No se encontraron resultados",
-            emptyTable: "No hay datos en la tabla",
-            paginate: {
-                previous: "Anterior",
-                next: "Siguiente"
-            },
-            aria: {
-                sortAscending: ": activar para ordenar la columna ascendente",
-                sortDescending: ": activar para ordenar la columna descendente"
-            }
+      language: {
+        processing: "Procesando...",
+        search: "Buscar:",
+        lengthMenu: "Mostrar _MENU_ registros",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        infoEmpty: "Mostrando 0 a 0 de 0 registros",
+        infoFiltered: "(filtrado de _MAX_ registros totales)",
+        loadingRecords: "Cargando...",
+        zeroRecords: "No se encontraron resultados",
+        emptyTable: "No hay datos en la tabla",
+        paginate: {
+          previous: "Anterior",
+          next: "Siguiente"
+        },
+        aria: {
+          sortAscending: ": activar para ordenar la columna ascendente",
+          sortDescending: ": activar para ordenar la columna descendente"
         }
+      }
     });
-    }, []);
+  };
+
+  // Eliminar curso
+  const eliminarCurso = async (id) => {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar este curso?");
+    if (!confirmacion) return;
+
+    if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+      $('#tablaUsuarios').DataTable().destroy();
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/edumultipro/Cursos/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+      alert(data.mensaje);
+
+      const nuevosCursos = cursos.filter((curso) => curso.ID !== id);
+      setCursos(nuevosCursos);
+    } catch (error) {
+      console.error("Error al eliminar el curso:", error);
+      alert("Hubo un error al intentar eliminar el curso.");
+    }
+  };
+
+  // Modificar curso
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [cursoSeleccionado, setCursoSeleccionado] = useState(null);
+  const [grados, setGrados] = useState([]);
+  const [jornadas, setJornadas] = useState([]);
+
+  const obtenerGrados = async () => {
+  const res = await fetch("http://localhost:3000/api/edumultipro/Grados");
+  const data = await res.json();
+  setGrados(data);
+  };
+
+  const obtenerJornadas = async () => {
+  const res = await fetch("http://localhost:3000/api/edumultipro/Jornadas");
+  const data = await res.json();
+  setJornadas(data);
+  };
+
+  useEffect(() => {
+    obtenerCursos();
+  }, []);
+
+  useEffect(() => {
+    if (cursos.length > 0) {
+      setTimeout(() => {
+        inicializarDataTable();
+      }, 100);
+    }
+  }, [cursos]);
+
+  useEffect(() => {
+  obtenerCursos();
+  obtenerGrados();
+  obtenerJornadas();
+  }, []);
 
     return(
         <>
@@ -84,27 +156,68 @@ function Curso(){
                             </div>
 
                             {/*---Modificar Curso---*/}
-                  
+
+                            {mostrarFormulario && cursoSeleccionado && (
                             <div className="modificarCurso" id="modificarCurso">
                                 <h1>Modificar Curso</h1>
-                                <form>
+                                <form onSubmit={async (e) => {
+                                  e.preventDefault();
+                                  const res = await fetch(`http://localhost:3000/api/edumultipro/Cursos/${cursoSeleccionado.ID}`, {
+                                    method: "PUT",
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({
+                                      grado_id: cursoSeleccionado.grado_id,
+                                      jornada_id: cursoSeleccionado.jornada_id,
+                                    }),
+                                  });
+                                  const data = await res.json();
+                                  alert(data.mensaje || "Curso actualizado");
+
+                                  setMostrarFormulario(false);
+                                  obtenerCursos(); // actualizar tabla
+                                }}> 
                                     
-                                    <select name="grado" id="editarGrado" required>
-                                    {/*---% for grado in grados %---*/}
-                                        <option value="{{ grado['ID'] }}">grado['Grado_Nombre']</option>
-                                    {/*---% endfor %---*/}
+                                    <select
+                                      id='editarGrado'
+                                      name="grado"
+                                      value={cursoSeleccionado.grado_id}
+                                      onChange={(e) =>
+                                        setCursoSeleccionado({ ...cursoSeleccionado, grado_id: parseInt(e.target.value) })
+                                      }
+                                      required
+                                    >
+                                      <option value="">Seleccione grado</option>
+                                      {grados.map((grado) => (
+                                        <option key={grado.ID} value={grado.ID}>
+                                          {grado.Grado_Nombre}
+                                        </option>
+                                      ))}
                                     </select>
 
-                                    <select name="jornada" id="editarJornada" required>
-                                    {/*---% for jornada in jornadas %---*/}
-                                        <option value="{{ jornada['ID'] }}">jornada['Jornada_Nombre']</option>
-                                    {/*---% endfor %---*/}
+                                    <select
+                                    id='editarJornada'
+                                      name="jornada"
+                                      value={cursoSeleccionado.jornada_id}
+                                      onChange={(e) =>
+                                        setCursoSeleccionado({ ...cursoSeleccionado, jornada_id: parseInt(e.target.value) })
+                                      }
+                                      required
+                                    >
+                                      <option value="">Seleccione jornada</option>
+                                      {jornadas.map((jornada) => (
+                                        <option key={jornada.ID} value={jornada.ID}>
+                                          {jornada.Jornada_Nombre}
+                                        </option>
+                                      ))}
                                     </select>
 
                                     <button type="submit" className="btn-guardar1">Guardar cambios</button>
-                                    <button type="button" className="btn-cancelar1">Cancelar</button>
+                                    <button type="button" className="btn-cancelar1" onClick={() => setMostrarFormulario(false)}>Cancelar</button>
                                 </form>
                             </div>
+                            )}
 
                             <div className="contenedor-tabla">
                                 <table className="tablaUsuarios" id="tablaUsuarios">
@@ -120,76 +233,31 @@ function Curso(){
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {/*-- % if cursos % --*/}
-                                        {/*-- % for curso in cursos % --*/}
-                                            <tr>
-                                                <td>1</td>
-                                                <td>101</td>
-                                                <td>primero</td>
-                                                <td>tarde</td>
-                                                <td>
-                                                    <Link to={"/VerCurso"}>
-                                                    <input type="hidden" name="curso_id" value="{{ curso['ID'] }}"></input>
-                                                    <button type="submit" className="informacion" id="btninformacion">
-                                                        <i className="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    </Link>
-                                                </td>
-                                                <td><button className="modificar"><i className="fa-solid fa-gear"></i></button></td>
-                                                <td>
-                                                    <form action="{{ url_for('admin_bp.eliminar_curso', id=curso['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                    <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i>
-                                                    </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        {/*-- % endfor % --*/}
-                                        {/*-- % endif % --*/}
-                                            <tr>
-                                                <td>1</td>
-                                                <td>101</td>
-                                                <td>primero</td>
-                                                <td>tarde</td>
-                                                <td>
-                                                    <form action="{{ url_for('admin_bp.verCurso') }}" method="GET">
-                                                    <input type="hidden" name="curso_id" value="{{ curso['ID'] }}"></input>
-                                                    <button type="submit" className="informacion" id="btninformacion">
-                                                        <i className="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    </form>
-                                                </td>
-                                                <td><button className="modificar"><i class="fa-solid fa-gear"></i></button></td>
-                                                <td>
-                                                    <form action="{{ url_for('admin_bp.eliminar_curso', id=curso['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                    <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i>
-                                                    </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>101</td>
-                                                <td>primero</td>
-                                                <td>tarde</td>
-                                                <td>
-                                                    <form action="{{ url_for('admin_bp.verCurso') }}" method="GET">
-                                                    <input type="hidden" name="curso_id" value="{{ curso['ID'] }}"></input>
-                                                    <button type="submit" className="informacion" id="btninformacion">
-                                                        <i className="fa-solid fa-circle-info"></i>
-                                                    </button>
-                                                    </form>
-                                                </td>
-                                                <td><button className="modificar"><i className="fa-solid fa-gear"></i></button></td>
-                                                <td>
-                                                    <form action="{{ url_for('admin_bp.eliminar_curso', id=curso['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                    <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i>
-                                                    </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
+                                        {cursos.map((curso) => (
+                                        <tr key={curso.ID}>
+                                            <td>{curso.ID}</td>
+                                            <td>{curso.Curso_Nombre}</td>
+                                            <td>{curso.Grado_Nombre}</td>
+                                            <td>{curso.Jornada_Nombre}</td>
+                                            <td>
+                                            <Link to={`/VerCurso/${curso.ID}`}>
+                                                <button type="button" className="informacion" id="btninformacion">
+                                                <i className="fa-solid fa-circle-info"></i>
+                                                </button>
+                                            </Link>
+                                            </td>
+                                            <td>
+                                            <button className="modificar" onClick={() => {setCursoSeleccionado(curso); setMostrarFormulario(true);}}>
+                                                <i className="fa-solid fa-gear"></i>
+                                            </button>
+                                            </td>
+                                            <td>
+                                            <button className="btn-icon eliminar" type="button" onClick={() => eliminarCurso(curso.ID)}>
+                                                <i className="fa-solid fa-trash"></i>
+                                            </button>
+                                            </td>
+                                        </tr>
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>

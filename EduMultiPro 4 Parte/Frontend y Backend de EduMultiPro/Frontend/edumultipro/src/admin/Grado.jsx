@@ -1,4 +1,4 @@
-import { useEffect } from 'react'; // datatables
+import { useEffect, useState } from 'react'; // datatables
 import $ from 'jquery';
 import 'datatables.net-dt'; // JS
 
@@ -14,36 +14,84 @@ import { Link } from 'react-router-dom';
 
 function Grado(){
 
-    useEffect(() => {
-    const table = $('#tablaUsuarios').DataTable();
+    const [grados, setGrados] = useState([]);
 
-    // Verifica si ya está inicializado
+  // Obtener Grados
+  const obtenerGrados = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/edumultipro/Grados");
+      const data = await res.json();
+      setGrados(data);
+    } catch (err) {
+      console.error("Error al obtener Grados:", err);
+    }
+  };
+
+  // Inicializar DataTable
+  const inicializarDataTable = () => {
     if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-        table.destroy(); // Destruye la instancia anterior
+      $('#tablaUsuarios').DataTable().destroy();
     }
 
     $('#tablaUsuarios').DataTable({
-        language: {
-            processing: "Procesando...",
-            search: "Buscar:",
-            lengthMenu: "Mostrar _MENU_ registros",
-            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            infoEmpty: "Mostrando 0 a 0 de 0 registros",
-            infoFiltered: "(filtrado de _MAX_ registros totales)",
-            loadingRecords: "Cargando...",
-            zeroRecords: "No se encontraron resultados",
-            emptyTable: "No hay datos en la tabla",
-            paginate: {
-                previous: "Anterior",
-                next: "Siguiente"
-            },
-            aria: {
-                sortAscending: ": activar para ordenar la columna ascendente",
-                sortDescending: ": activar para ordenar la columna descendente"
-            }
+      language: {
+        processing: "Procesando...",
+        search: "Buscar:",
+        lengthMenu: "Mostrar _MENU_ registros",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        infoEmpty: "Mostrando 0 a 0 de 0 registros",
+        infoFiltered: "(filtrado de _MAX_ registros totales)",
+        loadingRecords: "Cargando...",
+        zeroRecords: "No se encontraron resultados",
+        emptyTable: "No hay datos en la tabla",
+        paginate: {
+          previous: "Anterior",
+          next: "Siguiente"
+        },
+        aria: {
+          sortAscending: ": activar para ordenar la columna ascendente",
+          sortDescending: ": activar para ordenar la columna descendente"
         }
+      }
     });
-    }, []);
+  };
+
+  // Eliminar Grados
+  const eliminarGrado = async (id) => {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar este Grado?");
+    if (!confirmacion) return;
+
+    if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+      $('#tablaUsuarios').DataTable().destroy();
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/edumultipro/Grados/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+      alert(data.mensaje);
+
+      const nuevosGrados = grados.filter((grado) => grado.ID !== id);
+      setGrados(nuevosGrados);
+    } catch (error) {
+      console.error("Error al eliminar el Grado:", error);
+      alert("Hubo un error al intentar eliminar el Grado.");
+    }
+  };
+
+  useEffect(() => {
+    obtenerGrados();
+  }, []);
+
+  useEffect(() => {
+    if (grados.length > 0) {
+      setTimeout(() => {
+        inicializarDataTable();
+      }, 100);
+    }
+  }, [grados]);
 
     return(
         <>
@@ -108,35 +156,34 @@ function Grado(){
 
                             <div className="contenedor-tabla">
                                     <table className="tablaUsuarios" id="tablaUsuarios">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nombre</th>
-                                            <th>Descripcion</th>
-                                            <th>Modificar</th>
-                                            <th>Eliminar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {/*-- % if grados % --*/}
-                                        {/*-- % for grado in grados % --*/}
+                                        <thead>
                                             <tr>
-                                                <td>ID</td>
-                                                <td>Grado_Nombre</td>
-                                                <td>Descripcion_Grado</td>
-                                                <td><button className="modificar"><i className="fa-solid fa-gear"></i></button></td>
+                                                <th>ID</th>
+                                                <th>Nombre</th>
+                                                <th>Descripcion</th>
+                                                <th>Modificar</th>
+                                                <th>Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {grados.map((grado) => (
+                                            <tr key={grado.ID}>
+                                                <td>{grado.ID}</td>
+                                                <td>{grado.Grado_Nombre}</td>
+                                                <td>{grado.Descripcion_Grado}</td>
                                                 <td>
-                                                    <form action="{{ url_for('admin_bp.eliminar_grado', id=grado['ID']) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                                    <button className="btn-icon eliminar" type="submit">
-                                                        <i className="fa-solid fa-trash"></i>
-                                                    </button>
-                                                    </form>
+                                                <button className="modificar">
+                                                    <i className="fa-solid fa-gear"></i>
+                                                </button>
+                                                </td>
+                                                <td>
+                                                <button className="btn-icon eliminar" type="button" onClick={() => eliminarGrado(grado.ID)}>
+                                                    <i className="fa-solid fa-trash"></i>
+                                                </button>
                                                 </td>
                                             </tr>
-                                        {/*-- % endfor % --*/}
-                                        {/*-- % endif % --*/}
-                                        
-                                    </tbody>
+                                            ))}
+                                        </tbody>
                                     </table>
                                 </div>
                             

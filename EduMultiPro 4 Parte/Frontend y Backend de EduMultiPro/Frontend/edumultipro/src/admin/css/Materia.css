@@ -77,6 +77,7 @@
 }
 .contenedor-fromulario form input{
     background-color: white;
+    color: black;
     padding: 5px 20px;
     border-radius: 20px;
     border: 1px solid var(--azul-primario);

@@ -52,6 +52,8 @@ router.post('/login', (req, res) => {
   });
 });
 
+//---------------------------------------------------------------------------------------------------------
+
 // Obtener todos los usuarios
 router.get("/Usuarios", (req, res) => {
     const query = `
@@ -236,3 +238,272 @@ router.post("/actualizarUsuario", upload.single("RutaFoto"), (req, res) => {
 });
 
 module.exports = router;
+
+//---------------------------------------------------------------------------------------------------------
+
+// Obtener todos los cursos
+router.get("/Cursos", (req, res) => {
+  const query = `
+    SELECT c.ID, c.Curso_Nombre, g.Grado_Nombre, j.Jornada_Nombre
+    FROM Curso c
+    INNER JOIN Grado g ON c.grado_id = g.ID
+    INNER JOIN Jornada j ON c.jornada_id = j.ID
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error en la base de datos" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Eliminar curso
+router.delete("/Cursos/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "DELETE FROM Curso WHERE ID = ?";
+  conexion.query(query, [id], (error, result) => {
+    if (error) {
+      res.status(500).json({ mensaje: "Error al eliminar el curso" });
+    } else {
+      res.json({ mensaje: "Curso eliminado exitosamente" });
+    }
+  });
+});
+
+// Actualizar curso
+router.put("/Cursos/:id", (req, res) => {
+  const { id } = req.params;
+  const { grado_id, jornada_id } = req.body;
+
+  const query = `
+    UPDATE Curso
+    SET grado_id = ?, jornada_id = ?
+    WHERE ID = ?
+  `;
+
+  conexion.query(query, [grado_id, jornada_id, id], (error, result) => {
+    if (error) {
+      res.status(500).json({ error: "Error al actualizar el curso" });
+    } else {
+      res.json({ mensaje: "Curso actualizado correctamente" });
+    }
+  });
+});
+
+//---------------------------------------------------------------------------------------------------------
+
+// Obtener todos las Materias
+router.get("/Materias", (req, res) => {
+  const query = `
+    SELECT ID, Materia_Nombre, Descripcion_Materia
+    FROM Materia
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error en la base de datos" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Eliminar materias
+router.delete("/Materias/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "DELETE FROM Materia WHERE ID = ?";
+  conexion.query(query, [id], (error, result) => {
+    if (error) {
+      res.status(500).json({ mensaje: "Error al eliminar el Materias" });
+    } else {
+      res.json({ mensaje: "Materias eliminado exitosamente" });
+    }
+  });
+});
+
+// Actualizar materia
+router.put("/Materias/:id", (req, res) => {
+  const { id } = req.params;
+  const { Materia_Nombre, Descripcion_Materia } = req.body;
+
+  const query = `
+    UPDATE Materia
+    SET Materia_Nombre = ?, Descripcion_Materia = ?
+    WHERE ID = ?
+  `;
+
+  conexion.query(query, [Materia_Nombre, Descripcion_Materia, id], (error, result) => {
+    if (error) {
+      res.status(500).json({ error: "Error al actualizar la materia" });
+    } else {
+      res.json({ mensaje: "Materia actualizada correctamente" });
+    }
+  });
+});
+
+//---------------------------------------------------------------------------------------------------------
+
+// Obtener todos los Grados
+router.get("/Grados", (req, res) => {
+  const query = `
+    SELECT ID, Grado_Nombre, Descripcion_Grado
+    FROM Grado 
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error en la base de datos" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Eliminar Grados
+router.delete("/Grados/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "DELETE FROM Grado WHERE ID = ?";
+  conexion.query(query, [id], (error, result) => {
+    if (error) {
+      res.status(500).json({ mensaje: "Error al eliminar el Grado" });
+    } else {
+      res.json({ mensaje: "Grado eliminado exitosamente" });
+    }
+  });
+});
+
+//---------------------------------------------------------------------------------------------------------
+
+// Obtener todas las jornadas
+router.get("/Jornadas", (req, res) => {
+  const query = `
+    SELECT ID, Jornada_Nombre, Descripcion_Jornada
+    FROM Jornada 
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error en la base de datos" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Eliminar jornadas
+router.delete("/Jornadas/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "DELETE FROM Jornada WHERE ID = ?";
+  conexion.query(query, [id], (error, result) => {
+    if (error) {
+      res.status(500).json({ mensaje: "Error al eliminar el Jornada" });
+    } else {
+      res.json({ mensaje: "Jornada eliminado exitosamente" });
+    }
+  });
+});
+
+//---------------------------------------------------------------------------------------------------------
+
+// Obtener todos los horarios
+router.get("/Horarios", (req, res) => {
+  const query = `
+    SELECT H.ID, H.Titulo_Horario, C.Curso_Nombre, J.Jornada_Nombre,
+    CONCAT(U.Primer_Nombre, ' ', U.Primer_Apellido) AS Profesor_Nombre
+    FROM Horario H
+    LEFT JOIN Curso C ON H.curso_id = C.ID
+    LEFT JOIN Jornada J ON C.jornada_id = J.ID
+    LEFT JOIN Usuario U ON H.profesor_id = U.ID
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error en la base de datos" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Eliminar horarios
+router.delete("/Horarios/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "DELETE FROM Horario WHERE ID = ?";
+  conexion.query(query, [id], (error, result) => {
+    if (error) {
+      res.status(500).json({ mensaje: "Error al eliminar el Horario" });
+    } else {
+      res.json({ mensaje: "Horario eliminado exitosamente" });
+    }
+  });
+});
+
+//---------------------------------------------------------------------------------------------------------
+
+// Obtener todas las aulas
+router.get("/Aulas", (req, res) => {
+  const query = `
+    SELECT Aula.ID, Aula.Aula_Nombre, Materia.Materia_Nombre, CONCAT(Curso.Curso_Nombre,' ',j.Jornada_Nombre) AS Curso_Jornada, 
+    CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Profesor
+    FROM Aula
+    JOIN Materia ON Aula.materia_id = Materia.ID
+    JOIN Curso ON Aula.curso_id = Curso.ID
+    JOIN Jornada j ON Curso.jornada_id = j.id
+    JOIN Usuario ON Aula.usuario_id = Usuario.ID
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error en la base de datos" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Eliminar aulas
+router.delete("/Aulas/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "DELETE FROM Aula WHERE ID = ?";
+  conexion.query(query, [id], (error, result) => {
+    if (error) {
+      res.status(500).json({ mensaje: "Error al eliminar el Aula" });
+    } else {
+      res.json({ mensaje: "Aula eliminado exitosamente" });
+    }
+  });
+});
+
+//---------------------------------------------------------------------------------------------------------
+
+// Obtener todas las noticias
+router.get("/Noticias", (req, res) => {
+  const query = `
+    SELECT n.ID, n.Titulo_Noticia, t.Tipo
+    FROM Noticia n
+    INNER JOIN Tipo_Noticia t ON n.tipo_noticia_id = t.ID
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error en la base de datos" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Eliminar noticias
+router.delete("/Noticias/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "DELETE FROM Noticia WHERE ID = ?";
+  conexion.query(query, [id], (error, result) => {
+    if (error) {
+      res.status(500).json({ mensaje: "Error al eliminar la Noticia" });
+    } else {
+      res.json({ mensaje: "Noticia eliminado exitosamente" });
+    }
+  });
+});
