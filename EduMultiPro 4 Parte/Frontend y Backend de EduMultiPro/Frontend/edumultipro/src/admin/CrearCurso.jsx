@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 import Encabezado from '../Encabezado.jsx';
 import Footer from '../footer.jsx';
 import Desplegable from '../Desplegable.jsx';
@@ -9,6 +12,53 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
 
 function CrearCurso(){
+
+    const [cursoNombre, setCursoNombre] = useState("");
+  const [grados, setGrados] = useState([]);
+  const [jornadas, setJornadas] = useState([]);
+  const [gradoId, setGradoId] = useState("");
+  const [jornadaId, setJornadaId] = useState("");
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Obtener grados
+    fetch("http://localhost:3000/api/edumultipro/Grados")
+      .then(res => res.json())
+      .then(data => setGrados(data));
+
+    // Obtener jornadas
+    fetch("http://localhost:3000/api/edumultipro/Jornadas")
+      .then(res => res.json())
+      .then(data => setJornadas(data));
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const nuevoCurso = {
+      Curso_Nombre: cursoNombre,
+      grado_id: gradoId,
+      jornada_id: jornadaId
+    };
+
+    fetch("http://localhost:3000/api/edumultipro/Cursos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(nuevoCurso)
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert("Curso creado correctamente");
+        navigate("/Curso"); // Redirige al listado
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Error al crear el curso");
+      });
+  };
     
     return(
         <>
@@ -40,23 +90,33 @@ function CrearCurso(){
 
                             <div className="contenidoCrearCurso">
                     
-                                <form method="POST" action="{{ url_for('admin_bp.guardar_curso') }}">
+                                <form onSubmit={handleSubmit}>
                                     <h3>Datos Curso</h3>
-                                    <div class="f1">
-                                        <input type="text" name="curso_nombre" placeholder="Nombre del Curso" required></input>
+                                    <div className="f1">
+                                        <input type="text" name="curso_nombre" placeholder="Nombre del Curso" value={cursoNombre} onChange={(e) => setCursoNombre(e.target.value)} required></input>
                                     </div>
                                     <div className="f1">
-                                        <select nameName="grado_id" required>
-                                            <option value="" disabled selected>Selecciona un Grado</option>
-                                            {/*-- % for grado in grados % --*/}
-                                                <option value="{{ grado.ID }}">grado.Grado_Nombre</option>
-                                            {/*-- % endfor % --*/}
+                                        <select
+                                            name="grado_id"
+                                            required
+                                            value={gradoId}
+                                            onChange={(e) => setGradoId(e.target.value)}
+                                            >
+                                            <option value="" disabled>Selecciona un Grado</option>
+                                            {grados.map((grado) => (
+                                                <option key={grado.ID} value={grado.ID}>{grado.Grado_Nombre}</option>
+                                            ))}
                                         </select>
-                                        <select name="jornada_id" required>
-                                            <option value="" disabled selected>Selecciona una Jornada</option>
-                                            {/*-- % for jornada in jornadas % --*/}
-                                                <option value="{{ jornada.ID }}">jornada.Jornada_Nombre </option>
-                                            {/*-- % endfor % --*/}
+                                        <select
+                                            name="jornada_id"
+                                            required
+                                            value={jornadaId}
+                                            onChange={(e) => setJornadaId(e.target.value)}
+                                            >
+                                            <option value="" disabled>Selecciona una Jornada</option>
+                                            {jornadas.map((jornada) => (
+                                                <option key={jornada.ID} value={jornada.ID}>{jornada.Jornada_Nombre}</option>
+                                            ))}
                                         </select>
                                     </div>
                                 

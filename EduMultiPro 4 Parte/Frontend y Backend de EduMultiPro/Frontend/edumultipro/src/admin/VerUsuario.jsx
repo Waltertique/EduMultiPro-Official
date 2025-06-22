@@ -20,6 +20,7 @@ const { id } = useParams(); // URL: /VerUsuario/:id
   const [documentos, setDocumentos] = useState([]);
   const [roles, setRoles] = useState([]);
   const [nuevaContraseña, setNuevaContraseña] = useState('');
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   const handleChange = (e) => {
   const { name, value, files } = e.target;
@@ -105,7 +106,7 @@ const { id } = useParams(); // URL: /VerUsuario/:id
                             <div className="tituloVer">
                                 <h1>Informacion del Usuario</h1>
                                 <div className="botones">
-                                    <button id="btnMostrarModificar"><i className="fa-solid fa-gear"></i>Modificar</button>
+                                    <button id="btnMostrarModificar" onClick={() => setMostrarFormulario(true)}><i className="fa-solid fa-gear"></i>Modificar</button>
                                     <Link to="/Usuario">
                                         <button className="crear" id="btnAgregarUsuario"> <i class="fas fa-user-plus"></i>Salir</button>
                                     </Link>
@@ -126,8 +127,9 @@ const { id } = useParams(); // URL: /VerUsuario/:id
                                 </table>
                             </div>
 
+                            {mostrarFormulario && (
                             <div className="contenidoFormularioVerUsuario" id="contenidoFormulario">
-                                <button id="btnCancelarVer">Cancelar</button>
+                                <button id="btnCancelarVer" onClick={() => setMostrarFormulario(false)}>Cancelar</button>
                                 <div className="formularioInterno">
                                     <form onSubmit={handleSubmit} encType="multipart/form-data">
                                         <input type="hidden" name="ID" value={usuario.ID} />
@@ -168,6 +170,7 @@ const { id } = useParams(); // URL: /VerUsuario/:id
                                     </form>
                                 </div>
                             </div>
+                            )}
 
                         </div>
                     </div>        

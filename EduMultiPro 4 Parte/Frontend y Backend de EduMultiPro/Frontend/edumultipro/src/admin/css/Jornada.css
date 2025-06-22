@@ -58,8 +58,10 @@
     justify-content: space-between;
     padding: 30px;
 }
- h1{
+.titulo8 h1{
     font-size: 30px;
+    color: var(--azul-primario);
+    font-weight: bold;
 }
 
 .contenedor-fromularioJornada{
@@ -77,6 +79,7 @@
 }
 .contenedor-fromularioJornada form input{
     background-color: white;
+    color: black;
     padding: 5px 20px;
     border-radius: 20px;
     border: 1px solid var(--azul-primario);
@@ -84,6 +87,9 @@
 }
 .contenedor-fromularioJornada form{
     margin-bottom: 30px;
+}
+#formEditarJornada form input{
+    color: black;
 }
 
 @media (min-width: 100px) and (max-width: 414px) {

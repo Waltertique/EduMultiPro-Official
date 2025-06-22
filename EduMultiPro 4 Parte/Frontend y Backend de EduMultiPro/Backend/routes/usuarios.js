@@ -292,6 +292,45 @@ router.put("/Cursos/:id", (req, res) => {
   });
 });
 
+// Crear curso
+router.post("/Cursos", (req, res) => {
+  const { Curso_Nombre, grado_id, jornada_id } = req.body;
+
+  const query = `
+    INSERT INTO Curso (Curso_Nombre, grado_id, jornada_id)
+    VALUES (?, ?, ?)
+  `;
+
+  conexion.query(query, [Curso_Nombre, grado_id, jornada_id], (error, result) => {
+    if (error) {
+      res.status(500).json({ mensaje: "Error al crear el curso" });
+    } else {
+      res.json({ mensaje: "Curso creado correctamente", id: result.insertId });
+    }
+  });
+});
+
+router.get("/Cursos/:id/integrantes", (req, res) => {
+  const cursoId = req.params.id;
+
+  const query = `
+    SELECT u.ID, u.Primer_Nombre, u.Segundo_Nombre, u.Primer_Apellido, u.Segundo_Apellido
+    FROM Miembros_Curso mc
+    INNER JOIN Usuario u ON mc.usuario_id = u.ID
+    WHERE mc.curso_id = ?
+  `;
+
+  conexion.query(query, [cursoId], (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error al obtener los integrantes del curso" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+
+
 //---------------------------------------------------------------------------------------------------------
 
 // Obtener todos las Materias
@@ -343,6 +382,24 @@ router.put("/Materias/:id", (req, res) => {
   });
 });
 
+// Crear nueva materia
+router.post("/Materias", (req, res) => {
+  const { Materia_Nombre, Descripcion_Materia } = req.body;
+
+  const query = `
+    INSERT INTO Materia (Materia_Nombre, Descripcion_Materia)
+    VALUES (?, ?)
+  `;
+
+  conexion.query(query, [Materia_Nombre, Descripcion_Materia], (error, result) => {
+    if (error) {
+      res.status(500).json({ error: "Error al crear la materia" });
+    } else {
+      res.status(201).json({ mensaje: "Materia creada correctamente" });
+    }
+  });
+});
+
 //---------------------------------------------------------------------------------------------------------
 
 // Obtener todos los Grados
@@ -374,6 +431,44 @@ router.delete("/Grados/:id", (req, res) => {
   });
 });
 
+// Actualizar Grados
+router.put("/Grados/:id", (req, res) => {
+  const { id } = req.params;
+  const { Grado_Nombre, Descripcion_Grado } = req.body;
+
+  const query = `
+    UPDATE Grado
+    SET Grado_Nombre = ?, Descripcion_Grado = ?
+    WHERE ID = ?
+  `;
+
+  conexion.query(query, [Grado_Nombre, Descripcion_Grado, id], (error, result) => {
+    if (error) {
+      res.status(500).json({ error: "Error al actualizar el Grado" });
+    } else {
+      res.json({ mensaje: "Grado actualizado correctamente" });
+    }
+  });
+});
+
+// Crear nuevo Grado
+router.post("/Grados", (req, res) => {
+  const { Grado_Nombre, Descripcion_Grado } = req.body;
+
+  const query = `
+    INSERT INTO Grado (Grado_Nombre, Descripcion_Grado)
+    VALUES (?, ?)
+  `;
+
+  conexion.query(query, [Grado_Nombre, Descripcion_Grado], (error, result) => {
+    if (error) {
+      res.status(500).json({ error: "Error al crear el grado" });
+    } else {
+      res.status(201).json({ mensaje: "Grado creada correctamente" });
+    }
+  });
+});
+
 //---------------------------------------------------------------------------------------------------------
 
 // Obtener todas las jornadas
@@ -401,6 +496,44 @@ router.delete("/Jornadas/:id", (req, res) => {
       res.status(500).json({ mensaje: "Error al eliminar el Jornada" });
     } else {
       res.json({ mensaje: "Jornada eliminado exitosamente" });
+    }
+  });
+});
+
+// Actualizar Jornada
+router.put("/Jornadas/:id", (req, res) => {
+  const { id } = req.params;
+  const { Jornada_Nombre, Descripcion_Jornada } = req.body;
+
+  const query = `
+    UPDATE Jornada
+    SET Jornada_Nombre = ?, Descripcion_Jornada = ?
+    WHERE ID = ?
+  `;
+
+  conexion.query(query, [Jornada_Nombre, Descripcion_Jornada, id], (error, result) => {
+    if (error) {
+      res.status(500).json({ error: "Error al actualizar la jornada" });
+    } else {
+      res.json({ mensaje: "jornada actualizado correctamente" });
+    }
+  });
+});
+
+// Crear nueva jornada
+router.post("/Jornadas", (req, res) => {
+  const { Jornada_Nombre, Descripcion_Jornada } = req.body;
+
+  const query = `
+    INSERT INTO Jornada (Jornada_Nombre, Descripcion_Jornada)
+    VALUES (?, ?)
+  `;
+
+  conexion.query(query, [Jornada_Nombre, Descripcion_Jornada], (error, result) => {
+    if (error) {
+      res.status(500).json({ error: "Error al crear la jornada" });
+    } else {
+      res.status(201).json({ mensaje: "Jornada creada correctamente" });
     }
   });
 });

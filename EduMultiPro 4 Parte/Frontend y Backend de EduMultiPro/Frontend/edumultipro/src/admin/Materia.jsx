@@ -112,6 +112,52 @@ const cancelarEdicion = () => {
   }));
 };
 
+  // Crear Materias
+  const [nuevaMateria, setNuevaMateria] = useState({
+    materia_nombre: "",
+    materia_descripcion: "",
+  });
+  const manejarCambioNueva = (e) => {
+    const { name, value } = e.target;
+    setNuevaMateria((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const guardarMateria = async (e) => {
+  e.preventDefault();
+
+  // ⚠️ Destruir DataTable antes de cambiar datos
+  if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+    $('#tablaUsuarios').DataTable().destroy();
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/api/edumultipro/Materias", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Materia_Nombre: nuevaMateria.materia_nombre,
+        Descripcion_Materia: nuevaMateria.materia_descripcion,
+      }),
+    });
+
+    const data = await res.json();
+    alert(data.mensaje);
+
+    // Limpiar el formulario
+    setNuevaMateria({ materia_nombre: "", materia_descripcion: "" });
+
+    // ⚠️ Esperar a que el DOM actualice antes de volver a inicializar la tabla
+    await obtenerMaterias(); // Actualizar lista
+  } catch (error) {
+    console.error("Error al crear la materia:", error);
+    alert("Hubo un error al crear la materia.");
+  }
+};
+
   useEffect(() => {
     obtenerMaterias();
   }, []);
@@ -161,10 +207,10 @@ const cancelarEdicion = () => {
 
                             <div className="contenedor-fromulario">
 
-                                <form method="POST" action="{{ url_for('admin_bp.guardar_materia') }}">
+                                <form onSubmit={guardarMateria}>
                                     <h3>Datos Materia</h3>
-                                        <input type="text" name="materia_nombre" placeholder="Nombre de la Materia" required></input>
-                                        <input id="Descripcion" type="text" name="materia_descripcion" placeholder="Descripcion de la Materia" required></input>
+                                        <input type="text" name="materia_nombre" placeholder="Nombre de la Materia" value={nuevaMateria.materia_nombre} onChange={manejarCambioNueva} required></input>
+                                        <input id="Descripcion" type="text" name="materia_descripcion" placeholder="Descripcion de la Materia" value={nuevaMateria.materia_descripcion} onChange={manejarCambioNueva} required></input>
                                         <button type="submit">Guardar Materia</button>
                                 </form>
 

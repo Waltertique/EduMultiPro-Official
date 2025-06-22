@@ -8,7 +8,7 @@ import Curso from './admin/Curso.jsx';
 import Horario from './admin/Horario.jsx';
 import Aula from './admin/Aula.jsx';
 import Noticia from './admin/Noticia.jsx';
-import Materia from './admin/materia.jsx';
+import Materia from './admin/Materia.jsx';
 import Grado from './admin/Grado.jsx';
 import Jornada from './admin/Jornada.jsx';
 import CrearUsuario from './admin/CrearUsuario.jsx';

@@ -81,6 +81,83 @@ function Grado(){
     }
   };
 
+  // Modificar Grado
+  const [gradoSeleccionada, setGradoSeleccionada] = useState({
+  ID: "",
+  Grado_Nombre: "",
+  Descripcion_Grado: ""
+  });
+
+  const [mostrarFormularioEditar, setMostrarFormularioEditar] = useState(false);
+
+  const abrirFormularioEditar = (grado) => {
+  setGradoSeleccionada(grado);
+  setMostrarFormularioEditar(true);
+};
+
+const cancelarEdicion = () => {
+  setMostrarFormularioEditar(false);
+  setGradoSeleccionada({
+    ID: "",
+    Grado_Nombre: "",
+    Descripcion_Grado: ""
+  });
+};
+
+  const manejarCambio = (e) => {
+  const { name, value } = e.target;
+  setGradoSeleccionada((prev) => ({
+    ...prev,
+    [name === "nombre" ? "Grado_Nombre" : "Descripcion_Grado"]: value,
+  }));
+};
+
+  // Crear grado
+  const [nuevaGrado, setNuevaGrado] = useState({
+    grado_nombre: "",
+    grado_descripcion: "",
+  });
+  const manejarCambioNueva = (e) => {
+    const { name, value } = e.target;
+    setNuevaGrado((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const guardarGrado = async (e) => {
+  e.preventDefault();
+
+  // ⚠️ Destruir DataTable antes de cambiar datos
+  if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+    $('#tablaUsuarios').DataTable().destroy();
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/api/edumultipro/Grados", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Grado_Nombre: nuevaGrado.grado_nombre,
+        Descripcion_Grado: nuevaGrado.grado_descripcion,
+      }),
+    });
+
+    const data = await res.json();
+    alert(data.mensaje);
+
+    // Limpiar el formulario
+    setNuevaGrado({ grado_nombre: "", grado_descripcion: "" });
+
+    // ⚠️ Esperar a que el DOM actualice antes de volver a inicializar la tabla
+    await obtenerGrados(); // Actualizar lista
+  } catch (error) {
+    console.error("Error al crear el grado:", error);
+    alert("Hubo un error al crear el grado.");
+  }
+};
+
   useEffect(() => {
     obtenerGrados();
   }, []);
@@ -129,28 +206,52 @@ function Grado(){
                             </div>
 
                             <div className="contenedor-fromularioGrado">
-                                <form method="POST" action="{{ url_for('admin_bp.guardar_grado') }}">
+                                <form onSubmit={guardarGrado}>
                                     <h3>Datos Grado</h3>
-                                        <input type="text" name="grado_Nombre" placeholder="Nombre del grado" required></input>
-                                        <input type="text" name="descripcion_Grado" placeholder="Descripcion" required></input>
+                                        <input type="text" name="grado_nombre" placeholder="Nombre del grado" value={nuevaGrado.grado_nombre} onChange={manejarCambioNueva} required></input>
+                                        <input type="text" name="grado_descripcion" placeholder="Descripcion" value={nuevaGrado.grado_descripcion} onChange={manejarCambioNueva} required></input>
                                         <button type="submit">Guardar Grado</button>
                                 </form>
 
+                              {mostrarFormularioEditar && (
                                 <div id="formEditarGrado" className="formulario-editar" >
                                     <h3>Modificar Grado</h3>
-                                    <form action="{{ url_for('admin2_bp.modificar_grado') }}" method="POST">
-                                    <input type="hidden" name="id" id="editarGradoID"></input>
+                                    <form onSubmit={async (e) => {
+                                      e.preventDefault();
+                                      try {
+                                        const res = await fetch(`http://localhost:3000/api/edumultipro/Grados/${gradoSeleccionada.ID}`, {
+                                          method: "PUT",
+                                          headers: {
+                                            "Content-Type": "application/json",
+                                          },
+                                          body: JSON.stringify({
+                                            Grado_Nombre: gradoSeleccionada.Grado_Nombre,
+                                            Descripcion_Grado: gradoSeleccionada.Descripcion_Grado,
+                                          }),
+                                        });
+
+                                        const data = await res.json();
+                                        alert(data.mensaje);
+                                        setMostrarFormularioEditar(false);
+                                        obtenerGrados(); // recargar la lista
+                                      } catch (error) {
+                                        console.error("Error al actualizar el grado:", error);
+                                        alert("Hubo un error al actualizar el grado.");
+                                      }
+                                    }}>
+                                    <input type="hidden" name="id" value={gradoSeleccionada.ID} />
                                     
                                     <label for="editarGradoNombre">Nombre del grado:</label>
-                                    <input type="text" name="nombre" id="editarGradoNombre" required></input>
+                                    <input type="text" name="nombre" id="editarGradoNombre" value={gradoSeleccionada.Grado_Nombre} onChange={manejarCambio} required></input>
 
                                     <label for="editarDescripcion">Descripción:</label>
-                                    <input name="descripcion" id="editarDescripcion" rows="3" required></input>
+                                    <input name="descripcion" id="editarDescripcion" rows="3" value={gradoSeleccionada.Descripcion_Grado} onChange={manejarCambio} required></input>
                                     
                                     <button type="submit" className="btn-guardar4">Guardar cambios</button>
-                                    <button type="button" className="btn-cancelar" onclick="ocultarFormularioGrado()">Cancelar</button>
+                                    <button type="button" className="btn-cancelar" onClick={cancelarEdicion}>Cancelar</button>
                                     </form>
                                 </div>
+                              )}
 
                             </div>
 
@@ -172,7 +273,7 @@ function Grado(){
                                                 <td>{grado.Grado_Nombre}</td>
                                                 <td>{grado.Descripcion_Grado}</td>
                                                 <td>
-                                                <button className="modificar">
+                                                <button className="modificar" onClick={() => abrirFormularioEditar(grado)}>
                                                     <i className="fa-solid fa-gear"></i>
                                                 </button>
                                                 </td>

@@ -81,6 +81,83 @@ function Jornada(){
     }
   };
 
+  // Modificar Jornada
+  const [jornadaSeleccionada, setJornadaSeleccionada] = useState({
+  ID: "",
+  Jornada_Nombre: "",
+  Descripcion_Jornada: ""
+  });
+
+  const [mostrarFormularioEditar, setMostrarFormularioEditar] = useState(false);
+
+  const abrirFormularioEditar = (jornada) => {
+  setJornadaSeleccionada(jornada);
+  setMostrarFormularioEditar(true);
+};
+
+const cancelarEdicion = () => {
+  setMostrarFormularioEditar(false);
+  setJornadaSeleccionada({
+    ID: "",
+    Jornada_Nombre: "",
+    Descripcion_Jornada: ""
+  });
+};
+
+  const manejarCambio = (e) => {
+  const { name, value } = e.target;
+  setJornadaSeleccionada((prev) => ({
+    ...prev,
+    [name === "nombre" ? "Jornada_Nombre" : "Descripcion_Jornada"]: value,
+  }));
+};
+
+  // Crear jornada
+  const [nuevaJornada, setNuevaJornada] = useState({
+    jornada_nombre: "",
+    jornada_descripcion: "",
+  });
+  const manejarCambioNueva = (e) => {
+    const { name, value } = e.target;
+    setNuevaJornada((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const guardarJornada = async (e) => {
+  e.preventDefault();
+
+  // ⚠️ Destruir DataTable antes de cambiar datos
+  if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+    $('#tablaUsuarios').DataTable().destroy();
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/api/edumultipro/Jornadas", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Jornada_Nombre: nuevaJornada.jornada_nombre,
+        Descripcion_Jornada: nuevaJornada.jornada_descripcion,
+      }),
+    });
+
+    const data = await res.json();
+    alert(data.mensaje);
+
+    // Limpiar el formulario
+    setNuevaJornada({ jornada_nombre: "", jornada_descripcion: "" });
+
+    // ⚠️ Esperar a que el DOM actualice antes de volver a inicializar la tabla
+    await obtenerJornadas(); // Actualizar lista
+  } catch (error) {
+    console.error("Error al crear la jornada:", error);
+    alert("Hubo un error al crear la jornada.");
+  }
+};
+
   useEffect(() => {
     obtenerJornadas();
   }, []);
@@ -130,28 +207,52 @@ function Jornada(){
                             
                             <div className="contenedor-fromularioJornada">
 
-                                <form method="POST" action="{{ url_for('admin_bp.guardar_jornada') }}">
+                                <form onSubmit={guardarJornada}>
                                     <h3>Datos Jornada</h3>
-                                        <input type="text" name="jornada_Nombre" placeholder="Nombre de la jornada" required></input>
-                                        <input type="text" name="descripcion_Jornada" placeholder="Descripcion" required></input>
+                                        <input type="text" name="jornada_nombre" placeholder="Nombre de la jornada" value={nuevaJornada.jornada_nombre} onChange={manejarCambioNueva} required></input>
+                                        <input type="text" name="jornada_descripcion" placeholder="Descripcion" value={nuevaJornada.jornada_descripcion} onChange={manejarCambioNueva} required></input>
                                         <button type="submit">Guardar Jornada</button>
                                 </form>
 
+                              {mostrarFormularioEditar && (
                                 <div id="formEditarJornada" className="formulario-editar">
                                     <h3>Modificar Jornada</h3>
-                                    <form action="{{ url_for('admin2_bp.modificar_jornada') }}" method="POST">
+                                    <form onSubmit={async (e) => {
+                                      e.preventDefault();
+                                      try {
+                                        const res = await fetch(`http://localhost:3000/api/edumultipro/Jornadas/${jornadaSeleccionada.ID}`, {
+                                          method: "PUT",
+                                          headers: {
+                                            "Content-Type": "application/json",
+                                          },
+                                          body: JSON.stringify({
+                                            Jornada_Nombre: jornadaSeleccionada.Jornada_Nombre,
+                                            Descripcion_Jornada: jornadaSeleccionada.Descripcion_Jornada,
+                                          }),
+                                        });
+
+                                        const data = await res.json();
+                                        alert(data.mensaje);
+                                        setMostrarFormularioEditar(false);
+                                        obtenerJornadas(); // recargar la lista
+                                      } catch (error) {
+                                        console.error("Error al actualizar la jornada:", error);
+                                        alert("Hubo un error al actualizar la jornada.");
+                                      }
+                                    }}>
                                         <input type="hidden" name="id" id="editarJornadaID"></input>
                                         
                                         <label for="editarJornadaNombre">Nombre:</label>
-                                        <input type="text" name="nombre" id="editarJornadaNombre" required></input>
+                                        <input type="text" name="nombre" id="editarJornadaNombre" value={jornadaSeleccionada.Jornada_Nombre} onChange={manejarCambio} required></input>
 
                                         <label for="editarDescripcion">Descripción:</label>
-                                        <input name="descripcion" id="editarDescripcion" rows="3" required></input>
+                                        <input name="descripcion" id="editarDescripcion" rows="3" value={jornadaSeleccionada.Descripcion_Jornada} onChange={manejarCambio} required></input>
 
                                         <button type="submit" className="btn-guardar5">Guardar cambios</button>
-                                        <button type="button" className="btn-cancelar" onclick="cancelarEdicionJornada()">Cancelar</button>
+                                        <button type="button" className="btn-cancelar" onClick={cancelarEdicion}>Cancelar</button>
                                     </form>
                                 </div>
+                              )}
 
                             </div>
 
@@ -173,7 +274,7 @@ function Jornada(){
                                             <td>{jornada.Jornada_Nombre}</td>
                                             <td>{jornada.Descripcion_Jornada}</td>
                                             <td>
-                                            <button className="modificar">
+                                            <button className="modificar" onClick={() => abrirFormularioEditar(jornada)}>
                                                 <i className="fa-solid fa-gear"></i>
                                             </button>
                                             </td>
