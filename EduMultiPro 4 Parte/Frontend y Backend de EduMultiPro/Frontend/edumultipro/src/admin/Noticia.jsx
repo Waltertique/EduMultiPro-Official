@@ -138,16 +138,18 @@ function Noticia(){
                                             <td>{noticia.Titulo_Noticia}</td>
                                             <td>{noticia.Tipo}</td>
                                             <td>
-                                            <Link to={"/VerCurso"}>
+                                            <Link to={`/VerNoticia/${noticia.ID}`}>
                                                 <button type="button" className="informacion" id="btninformacion">
                                                 <i className="fa-solid fa-circle-info"></i>
                                                 </button>
                                             </Link>
                                             </td>
                                             <td>
-                                            <button className="modificar">
-                                                <i className="fa-solid fa-gear"></i>
-                                            </button>
+                                            <Link to={`/ActualizarNoticia/${noticia.ID}`}>
+                                              <button className="modificar">
+                                                  <i className="fa-solid fa-gear"></i>
+                                              </button>
+                                            </Link>
                                             </td>
                                             <td>
                                             <button className="btn-icon eliminar" type="button" onClick={() => eliminarNoticia(noticia.ID)}>

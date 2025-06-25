@@ -141,6 +141,7 @@
 }
 .contenidoCrearNoticia form textarea{
     background-color: var(--gris-claro);
+    color: black;
     padding: 5px 10px;
     border-radius: 20px;
     border: 1px solid var(--azul-primario);

@@ -6,9 +6,83 @@ import './css/ActualizarNoticia.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
 function ActualizarNoticia(){
+
+    const { id } = useParams();
+  const navigate = useNavigate();
+  const [formulario, setFormulario] = useState({
+    titulo: "",
+    encabezado: "",
+    descripcion1: "",
+    descripcion2: "",
+    descripcion3: "",
+    fecha: "",
+    tipo_noticia_id: ""
+  });
+  const [imagenesActuales, setImagenesActuales] = useState({});
+  const [nuevasImagenes, setNuevasImagenes] = useState({});
+  const [tipos, setTipos] = useState([]);
+
+  // Carga datos existentes
+  useEffect(() => {
+    const cargar = async () => {
+      const [nota, tiposData] = await Promise.all([
+        fetch(`http://localhost:3000/api/edumultipro/Noticias/${id}`).then(r => r.json()),
+        fetch("http://localhost:3000/api/edumultipro/TiposNoticia").then(r => r.json())
+      ]);
+
+      setFormulario({
+        titulo: nota.Titulo_Noticia,
+        encabezado: nota.Encabezado,
+        descripcion1: nota.Descripcion1,
+        descripcion2: nota.Descripcion2 || "",
+        descripcion3: nota.Descripcion3 || "",
+        fecha: nota.Fecha_Notica?.split('T')[0],
+        tipo_noticia_id: nota.tipo_noticia_id.toString()
+      });
+      setImagenesActuales({
+        imagen1: nota.Imagen1,
+        imagen2: nota.Imagen2,
+        imagen3: nota.Imagen3
+      });
+      setTipos(tiposData);
+    };
+    cargar();
+  }, [id]);
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (files) {
+      setNuevasImagenes(prev => ({ ...prev, [name]: files[0] }));
+    } else {
+      setFormulario(prev => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    Object.entries(formulario).forEach(([k,v]) => data.append(k, v));
+    Object.entries(nuevasImagenes).forEach(([k,v]) => data.append(k, v));
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/edumultipro/Noticias/${id}`, {
+        method: "PUT",
+        body: data
+      });
+      const resp = await res.json();
+      if (!res.ok) return alert(resp.error);
+      alert(resp.mensaje);
+      navigate("/Noticia");
+    } catch (err) {
+      console.error(err);
+      alert("Error al actualizar noticia");
+    }
+  };
+
     return(
         <>
             <div className='contenedor'>
@@ -38,57 +112,26 @@ function ActualizarNoticia(){
 
                             <div className="contenidoModificarNoticia">
                     
-                                <form action="{{ url_for('admin2_bp.guardar_noticia_editada', id=noticia.ID) }}" method="POST" enctype="multipart/form-data">
-                                    <label for="titulo">Título:</label>
-                                    <input type="text" id="titulo" name="titulo" value="{{ noticia.Titulo_Noticia }}" />
-                                
-                                    <label for="encabezado">Encabezado:</label>
-                                    <textarea id="encabezado" name="encabezado">noticia.Encabezado</textarea>
-                                
-                                    <label for="descripcion1">Descripción 1:</label>
-                                    <textarea id="descripcion1" name="descripcion1">noticia.Descripcion1 </textarea>
-                                
-                                    <label for="descripcion2">Descripción 2:</label>
-                                    <textarea id="descripcion2" name="descripcion2"> noticia.Descripcion2 </textarea>
-                                
-                                    <label for="descripcion3">Descripción 3:</label>
-                                    <textarea id="descripcion3" name="descripcion3"> noticia.Descripcion3 </textarea>
-                                
-                                    <label for="fecha">Fecha:</label>
-                                    <input type="date" id="fecha" name="fecha" value="{{ noticia.Fecha_Notica }}" />
-                                
-                                    <label for="tipo_noticia_id">Tipo de Noticia:</label>
-                                    <select name="tipo_noticia_id">
-                                                 tipo.Tipo 
+                                <form onSubmit={handleSubmit}>
+                                    <input name="titulo" value={formulario.titulo} onChange={handleChange} required />
+                                    <textarea name="encabezado" value={formulario.encabezado} onChange={handleChange} required />
+                                    <textarea name="descripcion1" value={formulario.descripcion1} onChange={handleChange} required />
+                                    <textarea name="descripcion2" value={formulario.descripcion2} onChange={handleChange} />
+                                    <textarea name="descripcion3" value={formulario.descripcion3} onChange={handleChange} />
+                                    <input type="date" name="fecha" value={formulario.fecha} onChange={handleChange} required />
+                                    <select name="tipo_noticia_id" value={formulario.tipo_noticia_id} onChange={handleChange} required>
+                                    <option value="">-- Selecciona tipo --</option>
+                                    {tipos.map(t => <option key={t.ID} value={t.ID}>{t.Tipo}</option>)}
                                     </select>
-                                
-                                    <label for="imagen1">Imagen 1:</label>
-                                    <input type="file" name="imagen1" />
-                                    {/*-- % if noticia['Imagen1'] and noticia['Imagen1']|length > 0 % --*/}
-                                        <p>Imagen actual:</p>
-                                        <img src="{{ '/' + noticia['Imagen1'].replace('\\', '/') }}" alt="Imagen actual" width="200"></img>
-                                    {/*-- % else % --*/}
-                                        <p>No hay imagen actual.</p>
-                                    {/*-- % endif % --*/}
-
-                                    <label for="imagen2">Imagen 2:</label>
-                                    <input type="file" name="imagen2" />
-                                    {/*-- % if noticia['Imagen2'] and noticia['Imagen2']|length > 0 % --*/}
-                                        <p>Imagen actual:</p>
-                                        <img src="{{ '/' + noticia['Imagen2'].replace('\\', '/') }}" alt="Imagen actual" width="200"></img>
-                                    {/*-- % else % --*/}
-                                        <p>No hay imagen actual.</p>
-                                    {/*-- % endif % --*/}
-
-                                    <label for="imagen3">Imagen 3:</label>
-                                    <input type="file" name="imagen3" />
-                                    {/*-- % if noticia['Imagen3'] and noticia['Imagen3']|length > 0 % --*/}
-                                        <p>Imagen actual:</p>
-                                        <img src="{{ '/' + noticia['Imagen3'].replace('\\', '/') }}" alt="Imagen actual" width="200"></img>
-                                    {/*-- % else % --*/}
-                                        <p>No hay imagen actual.</p>
-                                    {/*-- % endif % --*/} 
-                                
+                                    {["imagen1","imagen2","imagen3"].map(key => (
+                                    <div key={key}>
+                                        <label>{key.toUpperCase()} Actual:</label><br/>
+                                        {imagenesActuales[key] 
+                                        ? <img src={`http://localhost:3000/imagenes/${imagenesActuales[key]}`} alt={key} width="150" />
+                                        : <p>No hay imagen actual</p>}
+                                        <input type="file" name={key} accept="image/*" onChange={handleChange} />
+                                    </div>
+                                    ))}
                                     <button type="submit">Guardar cambios</button>
                                 </form>
 

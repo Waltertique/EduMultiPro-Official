@@ -110,6 +110,8 @@
 }
 .contenidoCrearHorario form #selecCurso{
     margin-bottom: 30px;
+    background: white;
+    color: black;
 }
 
 .contenidoCrearHorario form button{

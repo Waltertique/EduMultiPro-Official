@@ -138,20 +138,22 @@ function Horario(){
                                         <tr key={horario.ID}>
                                             <td>{horario.ID}</td>
                                             <td>{horario.Titulo_Horario}</td>
-                                            <td>{horario.Curso_Nombre}</td>
-                                            <td>{horario.Jornada_Nombre}</td>
+                                            <td>{horario.Curso_Nombre || "Sin Asignar"}</td>
+                                            <td>{horario.Jornada_Nombre || "Sin Asignar"}</td>
                                             <td>{horario.Profesor_Nombre || "Sin Asignar"}</td>
                                             <td>
-                                            <Link to={"/VerCurso"}>
+                                            <Link to={`/VerHorario/${horario.ID}`}>
                                                 <button type="button" className="informacion" id="btninformacion">
                                                 <i className="fa-solid fa-circle-info"></i>
                                                 </button>
                                             </Link>
                                             </td>
                                             <td>
-                                            <button className="modificar">
-                                                <i className="fa-solid fa-gear"></i>
-                                            </button>
+                                            <Link to={`/ActualizarHorario/${horario.ID}`}>
+                                                <button className="modificar">
+                                                    <i className="fa-solid fa-gear"></i>
+                                                </button>
+                                            </Link>
                                             </td>
                                             <td>
                                             <button className="btn-icon eliminar" type="button" onClick={() => eliminarHorario(horario.ID)}>

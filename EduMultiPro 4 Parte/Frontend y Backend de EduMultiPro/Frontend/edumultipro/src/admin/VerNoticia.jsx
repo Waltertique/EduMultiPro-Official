@@ -6,9 +6,28 @@ import './css/VerNoticia.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function VerNoticia(){
+
+    const [noticia, setNoticia] = useState(null);
+    const { id } = useParams();
+
+    useEffect(() => {
+    const fetchNoticia = async () => {
+        try {
+        const res = await fetch(`http://localhost:3000/api/edumultipro/Noticias/${id}`);
+        const data = await res.json();
+        setNoticia(data);
+        } catch (error) {
+        console.error("Error al cargar la noticia", error);
+        }
+    };
+    fetchNoticia();
+    }, [id]);
+
     return(
         <>
             <div className='contenedor'>
@@ -46,53 +65,41 @@ function VerNoticia(){
                             
                                     {/*-- Título -->*/}
                                     <div className="col-xl-12" id="h0">
-                                    <h2> noticia['Titulo_Noticia'] </h2>
+                                    <h2> {noticia?.Titulo_Noticia} </h2>
                                     </div>
                             
                                     {/*-- Descripción 1 -->*/}
-                                    {/*-- % if noticia['Descripcion1'] % --*/}
                                     <div className="col-xl-12 text">
-                                    <p>
-                                         noticia['Descripcion1'] 
-                                    </p>
+                                        <p>{noticia?.Descripcion1}</p> 
                                     </div>
-                                    {/*-- % endif % --*/}
                             
                                     {/*-- Imagen 2 -->*/}
-                                    {/*-- % if noticia['Imagen2'] % --*/}
-                                    <div className="col-xl-12 imagen">
-                                    <img src="{{ '/' + noticia['Imagen2'].replace('\\', '/') }}" alt=""></img>
-                                    </div>
-                                    {/*-- % endif % --*/}
+                                    {noticia?.Imagen2 && (
+                                        <div className="col-xl-12 imagen">
+                                            <img src={`http://localhost:3000/imagenes/${noticia.Imagen2}`} alt="Imagen 2" />
+                                        </div>
+                                    )}
                             
                                     {/*-- Descripción 2 -->*/}
-                                    {/*-- % if noticia['Descripcion2'] % --*/}
                                     <div className="col-xl-12 text">
-                                    <p>
-                                         noticia['Descripcion2'] 
-                                    </p>
+                                        <p>{noticia?.Descripcion2}</p>
                                     </div>
-                                    {/*-- % endif % --*/}
                             
                                     {/*-- Imagen 3 -->*/}
-                                    {/*-- % if noticia['Imagen3'] % --*/}
-                                    <div className="col-xl-12 imagen">
-                                    <img src="{{ '/' + noticia['Imagen3'].replace('\\', '/') }}" alt=""></img>
-                                    </div>
-                                    {/*-- % endif % --*/}
+                                    {noticia?.Imagen3 && (
+                                        <div className="col-xl-12 imagen">
+                                            <img src={`http://localhost:3000/imagenes/${noticia.Imagen3}`} alt="Imagen 3" />
+                                        </div>
+                                    )}
                             
                                     {/*-- Descripción 3 -->*/}
-                                    {/*-- % if noticia['Descripcion3'] % --*/}
                                     <div className="col-xl-12 text">
-                                    <p>
-                                         noticia['Descripcion3'] 
-                                    </p>
+                                        <p>{noticia?.Descripcion3}</p>
                                     </div>
-                                    {/*-- % endif % --*/}
                             
                                     {/*-- Fecha -->*/}
                                     <div className="col-xl-12" id="h6">
-                                    <p><strong>Fecha:</strong> 'Fecha_Notica'</p>
+                                    <p><strong>Fecha:</strong> {new Date(noticia?.Fecha_Notica).toLocaleDateString()}</p>
                                     </div>
                             
                                 </div>

@@ -8,8 +8,27 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import imghorario from '../assets/imghorario.png';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 function VerHorario(){
+
+    const { id } = useParams();
+const [horario, setHorario] = useState(null);
+
+useEffect(() => {
+  const obtenerHorario = async () => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/edumultipro/Horarios/${id}`);
+      const data = await res.json();
+      setHorario(data);
+    } catch (error) {
+      console.error("Error al obtener el horario:", error);
+    }
+  };
+
+  obtenerHorario();
+}, [id]);
     
     return(
         <>
@@ -45,23 +64,25 @@ function VerHorario(){
 
                             <div className="row" id="cont1Horario">
                                 <div className="row" id="tituloho">
-                                <h2>Mi Horario:</h2>
+                                    <h2>{horario?.Titulo_Horario || "Horario sin título"}</h2>
                                 </div>
                             
                                 <div className="row" id="imghorario">
-                                {/*-- % if horario['Imagen_Horario'] % --*/}
-                                    <img src={imghorario} alt="Imagen Horario" id="imagenPequena"></img>
-                                {/*-- % else % --*/}
-                                    <p>No se ha subido una imagen para este horario.</p>
-                                {/*-- % endif % --*/}
+                                    {horario?.Imagen_Horario ? (
+                                        <img
+                                            src={`http://localhost:3000/imagenes/${horario.Imagen_Horario}`}
+                                            alt="Imagen Horario"
+                                            id="imagenPequena"
+                                        />
+                                        ) : (
+                                        <p>No se ha subido una imagen para este horario.</p>
+                                    )}
                                 </div>
                             
                             
                                 <div className="row" id="descripcion">
                                     <h3>Descripcion:</h3>
-                                    <p>
-                                        'Descripcion_Horario
-                                    </p>
+                                    <p>{horario?.Descripcion_Horario || "Sin descripción"}</p>
                                 </div>
                             </div>
 

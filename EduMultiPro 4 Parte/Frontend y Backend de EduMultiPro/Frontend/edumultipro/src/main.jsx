@@ -56,15 +56,15 @@ createRoot(document.getElementById('root')).render(
         <Route path="/jornada" element={<Jornada />} />
         <Route path="/CrearUsuario" element={<CrearUsuario />} />
         <Route path="/VerUsuario/:id" element={<VerUsuario />} />
-        <Route path="/VerCurso" element={<VerCurso />} />
+        <Route path="/VerCurso/:id" element={<VerCurso />} />
         <Route path="/CrearCurso" element={<CrearCurso />} />
         <Route path="/CrearHorario" element={<CrearHorario />} />
-        <Route path="/VerHorario" element={<VerHorario />} />
-        <Route path="/ActualizarHorario" element={<ActualizarHorario />} />
+        <Route path="/VerHorario/:id" element={<VerHorario />} />
+        <Route path="/ActualizarHorario/:id" element={<ActualizarHorario />} />
         <Route path="/CrearAula" element={<CrearAula />} />
         <Route path="/CrearNoticia" element={<CrearNoticia />} />
-        <Route path="/ActualizarNoticia" element={<ActualizarNoticia />} />
-        <Route path="/VerNoticia" element={<VerNoticia />} />
+        <Route path="/ActualizarNoticia/:id" element={<ActualizarNoticia />} />
+        <Route path="/VerNoticia/:id" element={<VerNoticia />} />
         <Route path="/VerAula" element={<VerAula />} />
         <Route path="/Trabajos" element={<Trabajos />} />
         <Route path="/Notas" element={<Notas />} />

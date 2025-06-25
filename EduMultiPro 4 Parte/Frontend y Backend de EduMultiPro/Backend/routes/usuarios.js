@@ -310,26 +310,57 @@ router.post("/Cursos", (req, res) => {
   });
 });
 
+// Obtener integrantes de un curso específico
 router.get("/Cursos/:id/integrantes", (req, res) => {
-  const cursoId = req.params.id;
+  const idCurso = req.params.id;
 
-  const query = `
+  const sql = `
     SELECT u.ID, u.Primer_Nombre, u.Segundo_Nombre, u.Primer_Apellido, u.Segundo_Apellido
-    FROM Miembros_Curso mc
-    INNER JOIN Usuario u ON mc.usuario_id = u.ID
+    FROM Usuario u
+    INNER JOIN Miembros_Curso mc ON u.ID = mc.usuario_id
     WHERE mc.curso_id = ?
   `;
 
-  conexion.query(query, [cursoId], (error, results) => {
+  conexion.query(sql, [idCurso], (error, results) => {
     if (error) {
-      res.status(500).json({ error: "Error al obtener los integrantes del curso" });
-    } else {
-      res.json(results);
+      console.error("Error al obtener integrantes:", error);
+      return res.status(500).json({ mensaje: "Error en la base de datos" });
     }
+
+    res.json(results);
   });
 });
 
+// Eliminar integrante de un curso
+router.delete("/Cursos/:cursoId/integrantes/:usuarioId", (req, res) => {
+  const { cursoId, usuarioId } = req.params;
 
+  const query = "DELETE FROM Miembros_Curso WHERE curso_id = ? AND usuario_id = ?";
+  conexion.query(query, [cursoId, usuarioId], (error, result) => {
+    if (error) {
+      console.error("Error al eliminar integrante:", error);
+      return res.status(500).json({ mensaje: "Error al eliminar el integrante" });
+    }
+
+    res.json({ mensaje: "Integrante eliminado correctamente" });
+  });
+});
+
+// Agregar integrante a un curso
+router.post("/Cursos/:cursoId/integrantes", (req, res) => {
+  const { cursoId } = req.params;
+  const { usuario_id } = req.body;
+
+  const query = "INSERT INTO Miembros_Curso (curso_id, usuario_id) VALUES (?, ?)";
+  conexion.query(query, [cursoId, usuario_id], (error, result) => {
+    if (error) {
+      console.error("Error al agregar integrante:", error);
+      return res.status(500).json({ mensaje: "Error al agregar el integrante" });
+    }
+
+    res.json({ mensaje: "Integrante agregado correctamente" });
+  });
+});
 
 //---------------------------------------------------------------------------------------------------------
 
@@ -573,6 +604,125 @@ router.delete("/Horarios/:id", (req, res) => {
   });
 });
 
+// Obtener profesores (rol_id = 'R002')
+router.get("/Profesores", (req, res) => {
+  const query = `
+    SELECT ID, CONCAT(Primer_Nombre, ' ', Primer_Apellido) AS Nombre_Completo
+    FROM Usuario
+    WHERE rol_id = 'R002'
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) return res.status(500).json({ error: "Error en la base de datos" });
+    res.json(results);
+  });
+});
+
+// Crear horario
+router.post("/Horarios", upload.single('imagen'), (req, res) => {
+  const { titulo, descripcion, profesor_id, curso_id } = req.body;
+  const imagen = req.file ? req.file.filename : null;
+
+  // Validación: Solo uno debe tener valor
+  if ((profesor_id && curso_id) || (!profesor_id && !curso_id)) {
+    return res.status(400).json({ error: "Debe seleccionar solo profesor o curso" });
+  }
+
+  // Validar si ya existe horario con ese profesor o curso
+  let verificarQuery = '';
+  let verificarParams = [];
+
+  if (profesor_id) {
+    verificarQuery = "SELECT * FROM Horario WHERE profesor_id = ?";
+    verificarParams = [profesor_id];
+  } else {
+    verificarQuery = "SELECT * FROM Horario WHERE curso_id = ?";
+    verificarParams = [curso_id];
+  }
+
+  conexion.query(verificarQuery, verificarParams, (error, results) => {
+    if (error) return res.status(500).json({ error: "Error al verificar existencia" });
+    if (results.length > 0) {
+      return res.status(400).json({ error: "Ya existe un horario asignado para ese profesor o curso." });
+    }
+
+    // Si no existe, insertar nuevo horario
+    const query = `
+      INSERT INTO Horario (Titulo_Horario, Imagen_Horario, Descripcion_Horario, profesor_id, curso_id)
+      VALUES (?, ?, ?, ?, ?)
+    `;
+    conexion.query(query, [titulo, imagen, descripcion, profesor_id || null, curso_id || null], (error, result) => {
+      if (error) return res.status(500).json({ error: "Error al guardar horario" });
+      res.json({ mensaje: "Horario creado exitosamente" });
+    });
+  });
+});
+
+// Obtener cursos
+router.get("/Cursos-jornada", (req, res) => {
+  const query = `
+    SELECT C.ID, CONCAT(C.Curso_Nombre, ' - ', J.Jornada_Nombre) AS Curso_Con_Jornada
+    FROM Curso C
+    INNER JOIN Jornada J ON C.jornada_id = J.ID
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) return res.status(500).json({ error: "Error en la base de datos" });
+    res.json(results);
+  });
+});
+
+// Obtener un horario específico por ID
+router.get("/Horarios/:id", (req, res) => {
+  const id = req.params.id;
+  const query = `
+    SELECT * FROM Horario
+    WHERE ID = ?
+  `;
+  conexion.query(query, [id], (error, results) => {
+    if (error) return res.status(500).json({ error: "Error en la base de datos" });
+    if (!results.length) return res.status(404).json({ error: "Horario no encontrado" });
+    res.json(results[0]);
+  });
+});
+
+// Actualizar horario
+router.put("/Horarios/:id", upload.single('imagen'), (req, res) => {
+  const id = req.params.id;
+  const { titulo, descripcion, profesor_id, curso_id } = req.body;
+  const imagen = req.file ? req.file.filename : null;
+
+  if ((profesor_id && curso_id) || (!profesor_id && !curso_id)) {
+    return res.status(400).json({ error: "Debe seleccionar solo profesor o curso" });
+  }
+
+  // Verificar si ya existe un horario con ese profesor o curso, excluyendo el actual
+  let checkQuery = `SELECT * FROM Horario WHERE (profesor_id = ? OR curso_id = ?) AND ID != ?`;
+  conexion.query(checkQuery, [profesor_id || 0, curso_id || 0, id], (err, resultados) => {
+    if (err) return res.status(500).json({ error: "Error al validar horario existente" });
+
+    if (resultados.length > 0) {
+      return res.status(400).json({ error: "Ese profesor o curso ya tiene un horario asignado" });
+    }
+
+    // Construcción dinámica de UPDATE
+    let query = `UPDATE Horario SET Titulo_Horario = ?, Descripcion_Horario = ?, profesor_id = ?, curso_id = ?`;
+    const params = [titulo, descripcion, profesor_id || null, curso_id || null];
+
+    if (imagen) {
+      query += `, Imagen_Horario = ?`;
+      params.push(imagen);
+    }
+
+    query += ` WHERE ID = ?`;
+    params.push(id);
+
+    conexion.query(query, params, (error, result) => {
+      if (error) return res.status(500).json({ error: "Error al actualizar el horario" });
+      res.json({ mensaje: "Horario actualizado correctamente" });
+    });
+  });
+});
+
+
 //---------------------------------------------------------------------------------------------------------
 
 // Obtener todas las aulas
@@ -638,5 +788,137 @@ router.delete("/Noticias/:id", (req, res) => {
     } else {
       res.json({ mensaje: "Noticia eliminado exitosamente" });
     }
+  });
+});
+
+// Crear noticia
+router.post("/Noticias", upload.fields([
+  { name: "imagen1" },
+  { name: "imagen2" },
+  { name: "imagen3" }
+]), (req, res) => {
+  const {
+    titulo,
+    encabezado,
+    descripcion1,
+    descripcion2,
+    descripcion3,
+    fecha,
+    tipo_noticia_id
+  } = req.body;
+
+  const imagen1 = req.files['imagen1']?.[0]?.filename || null;
+  const imagen2 = req.files['imagen2']?.[0]?.filename || null;
+  const imagen3 = req.files['imagen3']?.[0]?.filename || null;
+
+  // Validar que no exista otra noticia con el mismo tipo
+  const checkQuery = "SELECT * FROM Noticia WHERE tipo_noticia_id = ?";
+  conexion.query(checkQuery, [tipo_noticia_id], (err, results) => {
+    if (err) return res.status(500).json({ error: "Error al validar tipo de noticia" });
+    if (results.length > 0) {
+      return res.status(400).json({ error: "Ya hay una noticia con este tipo" });
+    }
+
+    // Insertar nueva noticia
+    const insertQuery = `
+      INSERT INTO Noticia (
+        Titulo_Noticia, Encabezado, Descripcion1, Descripcion2, Descripcion3,
+        Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    conexion.query(insertQuery, [
+      titulo,
+      encabezado,
+      descripcion1,
+      descripcion2 || null,
+      descripcion3 || null,
+      fecha,
+      imagen1,
+      imagen2,
+      imagen3,
+      tipo_noticia_id
+    ], (err2, result) => {
+      if (err2) return res.status(500).json({ error: "Error al crear la noticia" });
+      res.json({ mensaje: "Noticia creada exitosamente" });
+    });
+  });
+});
+
+// Obtener tipos de noticia
+router.get("/TiposNoticia", (req, res) => {
+  conexion.query("SELECT * FROM Tipo_Noticia", (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error al obtener tipos de noticia" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Actualizar Noticia
+router.put("/Noticias/:id", upload.fields([
+  { name: "imagen1" },
+  { name: "imagen2" },
+  { name: "imagen3" }
+]), (req, res) => {
+  const id = req.params.id;
+  const {
+    titulo,
+    encabezado,
+    descripcion1,
+    descripcion2,
+    descripcion3,
+    fecha,
+    tipo_noticia_id
+  } = req.body;
+
+  // Validar duplicado de tipo (ajustar solo si cambió)
+  const checkQuery = `
+    SELECT * FROM Noticia
+    WHERE tipo_noticia_id = ? AND ID != ?
+  `;
+  conexion.query(checkQuery, [tipo_noticia_id, id], (err, results) => {
+    if (err) return res.status(500).json({ error: "Error al validar tipo de noticia" });
+    if (results.length > 0) {
+      return res.status(400).json({ error: "Otra noticia ya tiene este tipo" });
+    }
+
+    // Preparar imágenes
+    const imagen1 = req.files['imagen1']?.[0]?.filename;
+    const imagen2 = req.files['imagen2']?.[0]?.filename;
+    const imagen3 = req.files['imagen3']?.[0]?.filename;
+
+    let query = `UPDATE Noticia SET Titulo_Noticia = ?, Encabezado = ?, Descripcion1 = ?, Descripcion2 = ?, Descripcion3 = ?, Fecha_Notica = ?, tipo_noticia_id = ?`;
+    const params = [titulo, encabezado, descripcion1, descripcion2 || null, descripcion3 || null, fecha, tipo_noticia_id];
+
+    if (imagen1) { query += ", Imagen1 = ?"; params.push(imagen1); }
+    if (imagen2) { query += ", Imagen2 = ?"; params.push(imagen2); }
+    if (imagen3) { query += ", Imagen3 = ?"; params.push(imagen3); }
+
+    query += " WHERE ID = ?";
+    params.push(id);
+
+    conexion.query(query, params, (error, result) => {
+      if (error) return res.status(500).json({ error: "Error al actualizar la noticia" });
+      res.json({ mensaje: "Noticia actualizada correctamente" });
+    });
+  });
+});
+
+// Obtener una noticia por ID
+router.get("/Noticias/:id", (req, res) => {
+  const { id } = req.params;
+
+  const query = "SELECT * FROM Noticia WHERE ID = ?";
+  conexion.query(query, [id], (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: "Error al obtener la noticia" });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ error: "Noticia no encontrada" });
+    }
+    res.json(results[0]);
   });
 });

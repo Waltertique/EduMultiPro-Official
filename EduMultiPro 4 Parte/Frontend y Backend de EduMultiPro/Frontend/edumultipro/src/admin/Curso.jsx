@@ -240,7 +240,7 @@ function Curso(){
                                             <td>{curso.Grado_Nombre}</td>
                                             <td>{curso.Jornada_Nombre}</td>
                                             <td>
-                                            <Link to={`/VerCurso`}>
+                                            <Link to={`/VerCurso/${curso.ID}`}>
                                                 <button type="button" className="informacion" id="btninformacion">
                                                 <i className="fa-solid fa-circle-info"></i>
                                                 </button>
