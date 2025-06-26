@@ -965,6 +965,28 @@ router.delete("/Comentarios/:id", (req, res) => {
   });
 });
 
+// Obtener integrantes del aula (por curso)
+router.get("/Aulas/:id/integrantes", (req, res) => {
+  const aulaId = req.params.id;
+
+  const sql = `
+    SELECT u.ID, u.Primer_Nombre, u.Segundo_Nombre, u.Primer_Apellido, u.Segundo_Apellido
+    FROM Usuario u
+    INNER JOIN Miembros_Curso mc ON u.ID = mc.usuario_id
+    INNER JOIN Aula a ON mc.curso_id = a.curso_id
+    WHERE a.ID = ?
+  `;
+
+  conexion.query(sql, [aulaId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener los integrantes del aula:", error);
+      return res.status(500).json({ mensaje: "Error en la base de datos" });
+    }
+
+    res.json(results);
+  });
+});
+
 //---------------------------------------------------------------------------------------------------------
 
 // Obtener todas las noticias

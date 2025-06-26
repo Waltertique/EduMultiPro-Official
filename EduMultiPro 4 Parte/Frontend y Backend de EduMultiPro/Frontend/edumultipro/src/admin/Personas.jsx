@@ -1,4 +1,3 @@
-import { useEffect } from 'react'; // datatables
 import $ from 'jquery';
 import 'datatables.net-dt'; // JS
 
@@ -11,18 +10,33 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 function Personas(){
 
+    const { id } = useParams(); // id del aula
+    const [usuarios, setUsuarios] = useState([]);
+
     useEffect(() => {
-    const table = $('#tablaUsuarios').DataTable();
+    const obtenerUsuarios = async () => {
+        try {
+        const res = await fetch(`http://localhost:3000/api/edumultipro/Aulas/${id}/integrantes`);
+        const data = await res.json();
+        setUsuarios(data);
+        } catch (error) {
+        console.error("Error al obtener los usuarios del aula:", error);
+        }
+    };
 
-    // Verifica si ya está inicializado
-    if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-        table.destroy(); // Destruye la instancia anterior
-    }
+    obtenerUsuarios();
 
-    $('#tablaUsuarios').DataTable({
+    // Inicializar DataTable
+    setTimeout(() => {
+        if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+        $('#tablaUsuarios').DataTable().destroy();
+        }
+        $('#tablaUsuarios').DataTable({
         language: {
             processing: "Procesando...",
             search: "Buscar:",
@@ -34,16 +48,17 @@ function Personas(){
             zeroRecords: "No se encontraron resultados",
             emptyTable: "No hay datos en la tabla",
             paginate: {
-                previous: "Anterior",
-                next: "Siguiente"
+            previous: "Anterior",
+            next: "Siguiente"
             },
             aria: {
-                sortAscending: ": activar para ordenar la columna ascendente",
-                sortDescending: ": activar para ordenar la columna descendente"
+            sortAscending: ": activar para ordenar la columna ascendente",
+            sortDescending: ": activar para ordenar la columna descendente"
             }
         }
-    });
-    }, []);
+        });
+    }, 500); 
+    }, [id]);
 
     return(
         <>
@@ -67,10 +82,10 @@ function Personas(){
 
                             <div className="row" id="navAula">
 
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/VerAula"}><button id="principal">Pricipal</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={`/VerAula/${id}`}><button id="principal">Principal</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={"/Trabajos"}><button id="trabajo">Trabajos</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={"/Notas"}><button id="persona">Notas</button></Link></div>
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Personas"}><button id="persona">Personas</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={`/Personas/${id}`}><button id="persona">Personas</button></Link></div>
                                 <div className="col-12 col-md-4 col-xl-4"></div>
 
                             </div>
@@ -91,17 +106,15 @@ function Personas(){
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {/*-- % if usuarios % --*/}
-                                            {/*-- % for usuario in usuarios % --*/}
-                                                <tr>
-                                                    <td> usuario.ID </td>
-                                                    <td> usuario.Primer_Nombre </td>
-                                                    <td> usuario.Segundo_Nombre or '' </td>
-                                                    <td> usuario.Primer_Apellido </td>
-                                                    <td> usuario.Segundo_Apellido or '' </td>
-                                                </tr>
-                                            {/*-- % endfor % --*/}
-                                        {/*--% endif % --*/}
+                                        {usuarios.map((usuario) => (
+                                            <tr key={usuario.ID}>
+                                            <td>{usuario.ID}</td>
+                                            <td>{usuario.Primer_Nombre}</td>
+                                            <td>{usuario.Segundo_Nombre || ''}</td>
+                                            <td>{usuario.Primer_Apellido}</td>
+                                            <td>{usuario.Segundo_Apellido || ''}</td>
+                                            </tr>
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>

@@ -68,7 +68,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/VerAula/:id" element={<VerAula />} />
         <Route path="/Trabajos" element={<Trabajos />} />
         <Route path="/Notas" element={<Notas />} />
-        <Route path="/Personas" element={<Personas />} />
+        <Route path="/Personas/:id" element={<Personas />} />
         <Route path="/CrearTrabajo" element={<CrearTrabajo />} />
         <Route path="/ActualizarTrabajo" element={<ActualizarTrabajo />} />
         <Route path="/VerTrabajo" element={<VerTrabajo />} />
