@@ -141,6 +141,7 @@
     flex-direction: column;
 }
 .crearAnuncio form input{
+    color: black;
     border-radius: 20px;
     padding: 5px 20px;
     margin-bottom: 10px;
@@ -148,6 +149,7 @@
     background: var(--fondo);
 }
 .crearAnuncio form textarea{
+    color: black;
     border-radius: 20px;
     padding: 5px 20px;
     margin-bottom: 10px;
@@ -270,7 +272,7 @@
     display: flex;
     flex-direction: row;
 }
-.anuncioAula .info .control .b1, .anuncioAula .info .control form .btn-icon{
+.anuncioAula .info .control .b1, .anuncioAula .info .control .btn-icon{
     border: 2px solid var(--azul-primario);
     background: var(--azul-secundario);
     border-radius: 20px;
@@ -278,7 +280,7 @@
     margin-top: 5px;
     margin-left: 20px;
 }
-.anuncioAula .info .b1:hover, .anuncioAula .info .control form .btn-icon:hover{
+.anuncioAula .info .b1:hover, .anuncioAula .info .control .btn-icon:hover{
     cursor: pointer;
     transform: scale(1.1);
 }
@@ -302,6 +304,9 @@
     width: 80%;
     height: 40px;
     border-radius: 20px 0px 0px 20px;
+}
+.anuncioAula a{
+    margin-right: 30px;
 }
 .anuncioAula .botones button{
     margin-left: 0px;

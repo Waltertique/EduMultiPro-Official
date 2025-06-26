@@ -6,10 +6,171 @@ import './css/VerAula.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import imgAula from '../assets/usuario.png';
 
 function VerAula(){
+
+    // obtener el usuario logueado del localStorage
+    const usuarioLogueado = JSON.parse(localStorage.getItem('usuario'));
+    const usuarioId = usuarioLogueado?.id; // null si no existe
+    const { id } = useParams();
+    const [aula, setAula] = useState(null);
+    const [anuncios, setAnuncios] = useState([]);
+    const [mostrarFormularioAnuncio, setMostrarFormularioAnuncio] = useState(false);
+    const [nuevoAnuncio, setNuevoAnuncio] = useState({
+    titulo: '',
+    descripcion: '',
+    archivos: null,
+    });
+
+    const [anuncioEditandoId, setAnuncioEditandoId] = useState(null);
+    const [anuncioEditado, setAnuncioEditado] = useState({
+    titulo: '',
+    descripcion: '',
+    archivos: null,
+    });
+    const handleMostrarEditar = (anuncio) => {
+    setAnuncioEditandoId(anuncio.ID);
+    setAnuncioEditado({
+        titulo: anuncio.Titulo_Anuncio,
+        descripcion: anuncio.Descripcion_Anuncio,
+        archivos: null
+    });
+    };
+
+    //ver comentario
+    const [comentarios, setComentarios] = useState({});
+    
+
+    useEffect(() => {
+        const obtenerAula = async () => {
+        try {
+            const res = await fetch(`http://localhost:3000/api/edumultipro/Aulas/${id}`);
+            const data = await res.json();
+            setAula(data);
+        } catch (err) {
+            console.error("Error al obtener los datos del aula:", err);
+        }
+        };
+        obtenerAula();
+    }, [id]);
+
+    useEffect(() => {
+        const obtenerAulaYAnuncios = async () => {
+            try {
+                const resAula = await fetch(`http://localhost:3000/api/edumultipro/Aulas/${id}`);
+                const dataAula = await resAula.json();
+                setAula(dataAula);
+
+                const resAnuncios = await fetch(`http://localhost:3000/api/edumultipro/Anuncios/Aula/${id}`);
+                const dataAnuncios = await resAnuncios.json();
+                setAnuncios(dataAnuncios);
+
+                // Obtener comentarios por cada anuncio
+                const comentariosPorAnuncio = {};
+                for (const anuncio of dataAnuncios) {
+                    const resComentarios = await fetch(`http://localhost:3000/api/edumultipro/Comentarios/Anuncio/${anuncio.ID}`);
+                    const dataComentarios = await resComentarios.json();
+                    comentariosPorAnuncio[anuncio.ID] = dataComentarios;
+                }
+                setComentarios(comentariosPorAnuncio);
+            } catch (err) {
+                console.error("Error al obtener datos del aula o anuncios:", err);
+            }
+        };
+        obtenerAulaYAnuncios();
+    }, [id]);
+
+    //crear anuncio
+    const handleCrearAnuncio = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("titulo", nuevoAnuncio.titulo);
+    formData.append("descripcion", nuevoAnuncio.descripcion);
+    formData.append("aula_id", aula.ID);
+    formData.append("usuario_id", usuarioId); // puedes reemplazar con el ID del usuario logueado
+
+    if (nuevoAnuncio.archivos) {
+        for (let i = 0; i < nuevoAnuncio.archivos.length; i++) {
+            formData.append("archivo", nuevoAnuncio.archivos[i]);
+        }
+    }
+
+    try {
+        const res = await fetch("http://localhost:3000/api/edumultipro/Anuncios", {
+        method: "POST",
+        body: formData,
+        });
+
+        const data = await res.json();
+        alert(data.mensaje);
+        setMostrarFormularioAnuncio(false);
+        setNuevoAnuncio({ titulo: '', descripcion: '', archivos: null });
+        // Recargar los anuncios
+        const resAnuncios = await fetch(`http://localhost:3000/api/edumultipro/Anuncios/Aula/${id}`);
+        const dataAnuncios = await resAnuncios.json();
+        setAnuncios(dataAnuncios);
+    } catch (error) {
+        console.error("Error al crear el anuncio:", error);
+        alert("Error al crear anuncio");
+    }
+    };
+
+    //eliminar anuncio
+    const handleEliminarAnuncio = async (idAnuncio) => {
+    if (!window.confirm("¿Estás seguro de que deseas eliminar este anuncio?")) return;
+
+    try {
+        const res = await fetch(`http://localhost:3000/api/edumultipro/Anuncios/${idAnuncio}`, {
+        method: "DELETE",
+        });
+
+        const data = await res.json();
+        alert(data.mensaje);
+
+        // Recargar los anuncios actualizados
+        const resAnuncios = await fetch(`http://localhost:3000/api/edumultipro/Anuncios/Aula/${id}`);
+        const dataAnuncios = await resAnuncios.json();
+        setAnuncios(dataAnuncios);
+    } catch (error) {
+        console.error("Error al eliminar el anuncio:", error);
+        alert("No se pudo eliminar el anuncio.");
+    }
+    };
+    //editar anuncio
+    const handleModificarAnuncio = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("titulo", anuncioEditado.titulo);
+    formData.append("descripcion", anuncioEditado.descripcion);
+    if (anuncioEditado.archivos) {
+        for (let i = 0; i < anuncioEditado.archivos.length; i++) {
+        formData.append("archivo", anuncioEditado.archivos[i]);
+        }
+    }
+
+    try {
+        const res = await fetch(`http://localhost:3000/api/edumultipro/Anuncios/${anuncioEditandoId}`, {
+        method: "PUT",
+        body: formData,
+        });
+        const data = await res.json();
+        alert(data.mensaje);
+        setAnuncioEditandoId(null);
+        
+        // Recargar anuncios
+        const resAnuncios = await fetch(`http://localhost:3000/api/edumultipro/Anuncios/Aula/${id}`);
+        const dataAnuncios = await resAnuncios.json();
+        setAnuncios(dataAnuncios);
+    } catch (error) {
+        console.error("Error al modificar el anuncio:", error);
+        alert("No se pudo modificar el anuncio.");
+    }
+    };
+
+    if (!aula) return <div className="cargando">Cargando aula...</div>;
 
     return(
         <>
@@ -33,7 +194,7 @@ function VerAula(){
                             
                             <div className="row" id="navAula">
 
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/VerAula"}><button id="principal">Pricipal</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={`/VerAula/${aula.ID}`}><button id="principal">Pricipal</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={"/Trabajos"}><button id="trabajo">Trabajos</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={"/Notas"}><button id="persona">Notas</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={"/Personas"}><button id="persona">Personas</button></Link></div>
@@ -43,111 +204,207 @@ function VerAula(){
 
                             <div className="row" id="banerAula">
                                 <div className="row" id="tituloAula">
-                                    <h2> aula 'Aula_Nombre'</h2>
+                                    <h2>{aula.Aula_Nombre}</h2>
                                 </div>
                                 <div className="row" id="codigoAula">
-                                    <h4> aula 'Profesor'  </h4>
+                                    <h4>Profesor: {aula.Profesor}</h4>
                                 </div>  
                             </div>
 
                             <div className="row" id="novedadAula">
                                 <div className="col-md-6 col-xl-6"><h2>Novedades</h2></div>
-                                <div className="col-md-6 col-xl-6" id="canuncioAula"><button id="btn-crear">Crear Anuncio</button></div>
+                                <div className="col-md-6 col-xl-6" id="canuncioAula"><button id="btn-crear" onClick={() => setMostrarFormularioAnuncio(true)}>Crear Anuncio</button></div>
                             </div>
 
                             {/*-- <!--Crear anuncio-----------------------------------------> --*/}
-
+                            
+                            {mostrarFormularioAnuncio && (
                             <div className="crearAnuncio" id="crearAnuncio">
                                 <h1>Crear Anuncio</h1>
-                                <form action="{{ url_for('admin2_bp.crear_anuncio') }}" method="POST" enctype="multipart/form-data">
-                                    <input type="hidden" name="aula_id" value="{{ aula_id }}" /> 
+                                <form onSubmit={handleCrearAnuncio} encType="multipart/form-data">
+                                    <input type="hidden" name="aula_id" value={aula.ID} />
 
-                                    <input type="text" name="titulo" placeholder="Título del anuncio" required />
+                                    <input
+                                        type="text"
+                                        name="titulo"
+                                        placeholder="Título del anuncio"
+                                        required
+                                        value={nuevoAnuncio.titulo}
+                                        onChange={(e) => setNuevoAnuncio({ ...nuevoAnuncio, titulo: e.target.value })}
+                                    />
 
-                                    <textarea name="descripcion" placeholder="Descripción del anuncio" rows="4" required></textarea>
+                                    <textarea
+                                        name="descripcion"
+                                        placeholder="Descripción del anuncio"
+                                        rows="4"
+                                        required
+                                        value={nuevoAnuncio.descripcion}
+                                        onChange={(e) => setNuevoAnuncio({ ...nuevoAnuncio, descripcion: e.target.value })}
+                                    ></textarea>
 
-                                    <input type="file" name="archivo[]" multiple />
+                                    <input
+                                        type="file"
+                                        name="archivo"
+                                        multiple
+                                        onChange={(e) => setNuevoAnuncio({ ...nuevoAnuncio, archivos: e.target.files })}
+                                    />
 
                                     <button type="submit" className="btn-guardar" id="btn-guardar">Publicar anuncio</button>
-                                    <button type="button" className="btn-cancelarAnuncio" id="btn-cancelar">Cancelar</button>
+                                    <button type="button" className="btn-cancelarAnuncio" id="btn-cancelar" onClick={() => setMostrarFormularioAnuncio(false)}>Cancelar</button>
                                 </form>
                             </div>
+                            )}
 
-                            {/*-- % for anuncio in anuncios % --*/}
-                                <div className="anuncioAula">
+                            {anuncios.map((anuncio) => (
+                                <div className="anuncioAula" key={anuncio.ID}>
                                     <div className="info">
 
                                         <div className="info1">
                                             <div className="foto">
-                                            <img className="img-fluid" src={imgAula} alt="" id="img1"></img>
-                                            <h1> anuncio.Profesor </h1>
+                                            <img className="img-fluid" src={`http://localhost:3000/imagenes/${anuncio.RutaFoto || 'usuario.png'}`} alt="" id="img1" />
+                                            <h1>{anuncio.Profesor}</h1>
                                             </div>
-                                            <h2> anuncio.Fecha_Anuncio </h2>
+                                            <h2>{new Date(anuncio.Fecha_Anuncio).toLocaleDateString()}</h2>
                                         </div>
 
                                         <div className="control">
-                                            <button className="b1" onclick="mostrarFormulario('modificarAnuncio-{{ anuncio.ID }}')">Modificar</button>
+                                            <button className="b1" onClick={() => handleMostrarEditar(anuncio)}>Modificar</button>
 
-                                            <form action="{{ url_for('admin2_bp.eliminar_anuncio', id=anuncio['ID'], aula_id=aula_id) }}" method="POST" onsubmit="return confirmarEliminacion()">
-                                            <button className="btn-icon eliminar" type="submit">Eliminar</button>
-                                            </form>
+                                            <button
+                                                className="btn-icon eliminar"
+                                                onClick={() => handleEliminarAnuncio(anuncio.ID)}
+                                            >
+                                                Eliminar
+                                            </button>
                                         </div>
                                     </div>
                                     <div className="descripcion">
-                                        <h2> anuncio.Titulo_Anuncio </h2>
-                                        <p> anuncio.Descripcion_Anuncio </p>
+                                        <h2>{anuncio.Titulo_Anuncio}</h2>
+                                        <p>{anuncio.Descripcion_Anuncio}</p>
                                     </div>
-                                    {/*-- % if anuncio.Enlace_Anuncio % --*/}
-                                    {/*-- % for enlace in anuncio.Enlace_Anuncio.split(';') % --*/}
-                                        <a href="{{ url_for('static', filename=enlace) }}" target="_blank">Ver archivo</a><br></br>
-                                    {/*-- % endfor % --*/}
-                                    {/*-- % endif % --*/}
+                                    
+                                    {anuncio.Enlace_Anuncio && anuncio.Enlace_Anuncio.split(";").map((enlace, i) => (
+                                        <a key={i} href={`http://localhost:3000/imagenes/${enlace}`} target="_blank" rel="noreferrer">Ver archivo</a>
+                                    ))}
+
                                     <div className="botones">
-                                        <form action="{{ url_for('admin2_bp.comentar', anuncio_id=anuncio.ID) }}?aula_id={{ aula_id }}" method="POST">
+                                        <form onSubmit={async (e) => {
+                                            e.preventDefault();
+                                            const input = e.target.comentario;
+                                            const descripcion = input.value;
+
+                                            try {
+                                            const res = await fetch("http://localhost:3000/api/edumultipro/Comentarios", {
+                                                method: "POST",
+                                                headers: {
+                                                "Content-Type": "application/json"
+                                                },
+                                                body: JSON.stringify({
+                                                descripcion,
+                                                anuncio_id: anuncio.ID,
+                                                usuario_id: usuarioId
+                                                })
+                                            });
+
+                                            const data = await res.json();
+                                            alert(data.mensaje);
+
+                                            // Recargar los comentarios solo para ese anuncio
+                                            const resComentarios = await fetch(`http://localhost:3000/api/edumultipro/Comentarios/Anuncio/${anuncio.ID}`);
+                                            const nuevosComentarios = await resComentarios.json();
+                                            setComentarios(prev => ({
+                                                ...prev,
+                                                [anuncio.ID]: nuevosComentarios
+                                            }));
+
+                                            input.value = "";
+                                            } catch (err) {
+                                            console.error("Error al comentar:", err);
+                                            alert("Error al crear comentario");
+                                            }
+                                        }}>
                                         <input type="text" name="comentario" placeholder="Comentar" required />
                                         <button type="submit" id="principal">Enviar</button>
                                         </form>
                                     </div>
 
                                     {/*-- <!--Modificar anuncio-----------------------------------------> --*/}
-
-                                    <div className="modificarAnuncio" id="modificarAnuncio-{{ anuncio.ID }}" >
+                                    
+                                    {anuncioEditandoId === anuncio.ID && (
+                                    <div className="modificarAnuncio">
                                         <h1>modificar Anuncio</h1>
-                                        <form action="{{ url_for('admin2_bp.modificar_anuncio', id=anuncio.ID) }}" method="POST" enctype="multipart/form-data">
-                                            <input type="hidden" name="aula_id" value="{{ aula_id }}" />
-                                            <input type="hidden" name="fecha" value="{{ anuncio.Fecha_Anuncio }}" /> 
-                                            
-                                            <input type="text" name="titulo" value="{{ anuncio.Titulo_Anuncio }}" required />
-                                            <textarea name="descripcion" required> anuncio.Descripcion_Anuncio </textarea>
-                                            <input type="file" name="archivo[]" multiple />
-
+                                        <form onSubmit={handleModificarAnuncio} encType="multipart/form-data">
+                                            <input
+                                                type="text"
+                                                name="titulo"
+                                                value={anuncioEditado.titulo}
+                                                onChange={(e) => setAnuncioEditado({ ...anuncioEditado, titulo: e.target.value })}
+                                                required
+                                            />
+                                            <textarea
+                                                name="descripcion"
+                                                value={anuncioEditado.descripcion}
+                                                onChange={(e) => setAnuncioEditado({ ...anuncioEditado, descripcion: e.target.value })}
+                                                required
+                                            />
+                                            <input
+                                                type="file"
+                                                name="archivo"
+                                                multiple
+                                                onChange={(e) => setAnuncioEditado({ ...anuncioEditado, archivos: e.target.files })}
+                                            />
                                             <button type="submit">Guardar cambios</button>
-                                            <button type="button" className="btn-cancelarmod" onclick="ocultarFormulario('modificarAnuncio-{{ anuncio.ID }}')">Cancelar</button>
+                                            <button type="button" className="btn-cancelarmod" onClick={() => setAnuncioEditandoId(null)}>Cancelar</button>
                                         </form>
                                     </div>
+                                    )}
 
                                     {/*-- <!--comentarios-----------------------------------------> --*/}
 
-                                    {/*-- % for comentario in comentarios_por_anuncio.get(anuncio.ID, []) % --*/}
+                                    {comentarios[anuncio.ID] && comentarios[anuncio.ID].map((comentario) => (
                                     <div className="comentario">
                                         <div className="info1">
                                         <div className="fotoComentario">
-                                            <img src={imgAula} alt=""></img>
-                                            <h1> comentario.Comentador </h1>
+                                            <img src={`http://localhost:3000/imagenes/${comentario.RutaFoto || 'usuario.png'}`} alt="" />
+                                            <h1>{comentario.Nombre_Usuario}</h1>
                                         </div>
-                                        <h2> comentar </h2>
+                                        <h2>{new Date(comentario.Fecha).toLocaleDateString()}</h2>
                                         </div>
                                         <div className="desc">
-                                        <p> comentario.comentario </p>
+                                        <p>{comentario.Descripcion}</p>
                                         </div>
-                                        <form action="{{ url_for('admin2_bp.eliminar_comentario', id=comentario.comentario_id, aula_id=aula_id) }}" method="POST" onsubmit="return confirmarEliminacionComentario()">
-                                        <button className="btn-icon eliminar" type="submit">Eliminar</button>
-                                        </form>
+                                        <button
+                                            className="btn-icon eliminar"
+                                            onClick={async () => {
+                                                if (!window.confirm("¿Estás seguro de que deseas eliminar este comentario?")) return;
+
+                                                try {
+                                                const res = await fetch(`http://localhost:3000/api/edumultipro/Comentarios/${comentario.ID}`, {
+                                                    method: "DELETE"
+                                                });
+                                                const data = await res.json();
+                                                alert(data.mensaje);
+
+                                                // Recargar comentarios de ese anuncio
+                                                const resComentarios = await fetch(`http://localhost:3000/api/edumultipro/Comentarios/Anuncio/${anuncio.ID}`);
+                                                const nuevosComentarios = await resComentarios.json();
+                                                setComentarios(prev => ({
+                                                    ...prev,
+                                                    [anuncio.ID]: nuevosComentarios
+                                                }));
+                                                } catch (error) {
+                                                console.error("Error al eliminar el comentario:", error);
+                                                alert("No se pudo eliminar el comentario.");
+                                                }
+                                            }}
+                                            >
+                                            Eliminar
+                                        </button>
                                     </div>
-                                    {/*-- % endfor % --*/}
+                                    ))}
 
                                 </div>
-                            {/*-- % endfor % --*/}
+                            ))}
 
                         </div>
                     </div>        

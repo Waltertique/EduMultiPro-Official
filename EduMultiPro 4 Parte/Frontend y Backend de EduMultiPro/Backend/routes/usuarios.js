@@ -759,6 +759,212 @@ router.delete("/Aulas/:id", (req, res) => {
   });
 });
 
+// Crear Aula
+router.post("/Aulas", (req, res) => {
+  const { aula_nombre, materia_id, curso_id, usuario_id } = req.body;
+
+  const query = `
+    INSERT INTO Aula (Aula_Nombre, materia_id, curso_id, usuario_id)
+    VALUES (?, ?, ?, ?)
+  `;
+
+  conexion.query(query, [aula_nombre, materia_id, curso_id, usuario_id], (error, result) => {
+    if (error) {
+      res.status(500).json({ mensaje: "Error al crear el Aula" });
+    } else {
+      res.json({ mensaje: "Aula creada exitosamente" });
+    }
+  });
+});
+
+router.put("/Aulas/:id", (req, res) => {
+  const { id } = req.params;
+  const { Aula_Nombre, materia_id } = req.body;
+
+  const query = `UPDATE Aula SET Aula_Nombre = ?, materia_id = ? WHERE ID = ?`;
+  conexion.query(query, [Aula_Nombre, materia_id, id], (error, result) => {
+    if (error) {
+      res.status(500).json({ mensaje: "Error al actualizar el Aula" });
+    } else {
+      res.json({ mensaje: "Aula actualizada correctamente" });
+    }
+  });
+});
+
+// Obtener una aula por ID
+router.get("/Aulas/:id", (req, res) => {
+  const id = req.params.id;
+  const query = `
+    SELECT Aula.ID, Aula.Aula_Nombre, Materia.Materia_Nombre, 
+    CONCAT(Curso.Curso_Nombre,' ',j.Jornada_Nombre) AS Curso_Jornada,
+    CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Profesor
+    FROM Aula
+    JOIN Materia ON Aula.materia_id = Materia.ID
+    JOIN Curso ON Aula.curso_id = Curso.ID
+    JOIN Jornada j ON Curso.jornada_id = j.id
+    JOIN Usuario ON Aula.usuario_id = Usuario.ID
+    WHERE Aula.ID = ?
+  `;
+  conexion.query(query, [id], (error, results) => {
+    if (error || results.length === 0) {
+      res.status(404).json({ error: "Aula no encontrada" });
+    } else {
+      res.json(results[0]);
+    }
+  });
+});
+
+// Obtener todos los anuncios de un aula
+router.get("/Anuncios/Aula/:aula_id", (req, res) => {
+  const aula_id = req.params.aula_id;
+
+  const query = `
+    SELECT a.ID, a.Titulo_Anuncio, a.Descripcion_Anuncio, a.Enlace_Anuncio, a.Fecha_Anuncio,
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Profesor,
+           u.RutaFoto
+    FROM Anuncio a
+    JOIN Usuario u ON a.usuario_id = u.ID
+    WHERE a.aula_id = ?
+    ORDER BY a.Fecha_Anuncio DESC
+  `;
+
+  conexion.query(query, [aula_id], (error, results) => {
+    if (error) {
+      console.error("Error al obtener los anuncios del aula:", error);
+      return res.status(500).json({ error: "Error al obtener anuncios" });
+    }
+    res.json(results);
+  });
+});
+
+//Crear Anuncio
+router.post("/Anuncios", upload.array('archivo'), (req, res) => {
+  const { titulo, descripcion, aula_id, usuario_id } = req.body;
+  const fecha = new Date().toISOString().split("T")[0]; // formato YYYY-MM-DD
+
+  // Guardar los nombres de los archivos
+  const archivos = req.files && req.files.length > 0
+  ? req.files.map(file => file.filename).join(";")
+  : null;
+
+  const query = `
+    INSERT INTO Anuncio (Titulo_Anuncio, Descripcion_Anuncio, Enlace_Anuncio, Fecha_Anuncio, aula_id, usuario_id)
+    VALUES (?, ?, ?, ?, ?, ?)
+  `;
+
+  conexion.query(
+    query,
+    [titulo, descripcion, archivos, fecha, aula_id, usuario_id],
+    (error, result) => {
+      if (error) {
+        console.error("Error al guardar anuncio:", error);
+        res.status(500).json({ mensaje: "Error al crear el anuncio" });
+      } else {
+        res.json({ mensaje: "Anuncio creado con éxito" });
+      }
+    }
+  );
+});
+
+// Eliminar anuncio por ID
+router.delete("/Anuncios/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "DELETE FROM Anuncio WHERE ID = ?";
+  conexion.query(query, [id], (error, result) => {
+    if (error) {
+      console.error("❌ Error al eliminar el anuncio:", error);
+      res.status(500).json({ mensaje: "Error al eliminar el anuncio" });
+    } else {
+      res.json({ mensaje: "Anuncio eliminado correctamente" });
+    }
+  });
+});
+
+//Editar Anuncio
+router.put("/Anuncios/:id", upload.array('archivo'), (req, res) => {
+  const id = req.params.id;
+  const { titulo, descripcion } = req.body;
+
+  // Guardar archivos nuevos si se suben
+  const archivos = req.files && req.files.length > 0
+    ? req.files.map(file => file.filename).join(";")
+    : null;
+
+  const query = archivos
+    ? `UPDATE Anuncio SET Titulo_Anuncio = ?, Descripcion_Anuncio = ?, Enlace_Anuncio = ? WHERE ID = ?`
+    : `UPDATE Anuncio SET Titulo_Anuncio = ?, Descripcion_Anuncio = ? WHERE ID = ?`;
+
+  const params = archivos
+    ? [titulo, descripcion, archivos, id]
+    : [titulo, descripcion, id];
+
+  conexion.query(query, params, (error, result) => {
+    if (error) {
+      console.error("Error al actualizar el anuncio:", error);
+      return res.status(500).json({ mensaje: "Error al actualizar anuncio" });
+    }
+    res.json({ mensaje: "Anuncio actualizado correctamente" });
+  });
+});
+
+// Obtener comentarios por anuncio
+router.get("/Comentarios/Anuncio/:anuncio_id", (req, res) => {
+  const anuncioId = req.params.anuncio_id;
+  const query = `
+    SELECT c.ID, c.Descripcion, c.Fecha,
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Nombre_Usuario,
+           u.RutaFoto
+    FROM Comentario c
+    JOIN Usuario u ON c.usuario_id = u.ID
+    WHERE c.anuncio_id = ?
+    ORDER BY c.Fecha DESC
+  `;
+  conexion.query(query, [anuncioId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener los comentarios:", error);
+      res.status(500).json({ error: "Error al obtener comentarios" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Crear comentario
+router.post("/Comentarios", (req, res) => {
+  const { descripcion, anuncio_id, usuario_id } = req.body;
+  const fecha = new Date().toISOString().split("T")[0];
+
+  const query = `
+    INSERT INTO Comentario (Descripcion, Fecha, anuncio_id, usuario_id)
+    VALUES (?, ?, ?, ?)
+  `;
+
+  conexion.query(query, [descripcion, fecha, anuncio_id, usuario_id], (error, result) => {
+    if (error) {
+      console.error("Error al crear comentario:", error);
+      res.status(500).json({ mensaje: "Error al crear el comentario" });
+    } else {
+      res.json({ mensaje: "Comentario creado correctamente" });
+    }
+  });
+});
+
+// Eliminar comentario por ID
+router.delete("/Comentarios/:id", (req, res) => {
+  const id = req.params.id;
+
+  const query = "DELETE FROM Comentario WHERE ID = ?";
+  conexion.query(query, [id], (error, result) => {
+    if (error) {
+      console.error("❌ Error al eliminar el comentario:", error);
+      res.status(500).json({ mensaje: "Error al eliminar el comentario" });
+    } else {
+      res.json({ mensaje: "Comentario eliminado correctamente" });
+    }
+  });
+});
+
 //---------------------------------------------------------------------------------------------------------
 
 // Obtener todas las noticias

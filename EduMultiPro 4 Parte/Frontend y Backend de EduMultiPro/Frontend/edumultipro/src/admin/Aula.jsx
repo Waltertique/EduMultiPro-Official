@@ -13,8 +13,12 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
 
 function Aula(){
-
+    
     const [aulas, setAulas] = useState([]);
+    //para modificar
+    const [mostrarFormulario, setMostrarFormulario] = useState(false);
+    const [aulaSeleccionada, setAulaSeleccionada] = useState(null);
+    const [materias, setMaterias] = useState([]); // Para cargar materias
 
     // Obtener Aulas
     const obtenerAulas = async () => {
@@ -80,6 +84,53 @@ function Aula(){
         alert("Hubo un error al intentar eliminar el Aula.");
         }
     };
+    //Modificar Aula
+    const obtenerMaterias = async () => {
+    try {
+        const res = await fetch("http://localhost:3000/api/edumultipro/Materias");
+        const data = await res.json();
+        setMaterias(data);
+    } catch (err) {
+        console.error("Error al obtener materias:", err);
+    }
+    };
+
+    const handleModificarClick = (aula) => {
+    setAulaSeleccionada(aula);
+    setMostrarFormulario(true);
+    };
+
+    const cancelarEdicionAula = () => {
+    setMostrarFormulario(false);
+    setAulaSeleccionada(null);
+    };
+
+    const guardarCambios = async (e) => {
+    e.preventDefault();
+    try {
+        const res = await fetch(`http://localhost:3000/api/edumultipro/Aulas/${aulaSeleccionada.ID}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(aulaSeleccionada)
+        });
+
+        const data = await res.json();
+        alert(data.mensaje || "Aula modificada con éxito");
+
+        obtenerAulas(); // Actualizar la lista
+        setMostrarFormulario(false); // Cerrar el formulario
+    } catch (err) {
+        console.error("Error al modificar aula:", err);
+        alert("Error al modificar aula.");
+    }
+    };
+
+    useEffect(() => {
+    obtenerAulas();
+    obtenerMaterias();
+    }, []);
 
     useEffect(() => {
         obtenerAulas();
@@ -120,23 +171,40 @@ function Aula(){
                                 </Link>
                             </div>
 
+                            {mostrarFormulario && aulaSeleccionada && (
                             <div className="modificarAula" id="modificarAula">
                                 <h1>Modificar Aula</h1>
-                                <form action="{{ url_for('admin_bp.modificar_aula') }}" method="POST">
-                                    <input type="hidden" name="id" id="editarAulaID"></input>
+                                <form onSubmit={guardarCambios}>
+                                    <input type="hidden" value={aulaSeleccionada.ID} />
 
-                                    <input type="text" name="nombre" id="editarAulaNombre" placeholder="Nombre del Aula" required></input>
+                                    <input
+                                        type="text"
+                                        name="nombre"
+                                        id='editarAulaNombre'
+                                        value={aulaSeleccionada.Aula_Nombre}
+                                        placeholder="Nombre del Aula"
+                                        required
+                                        onChange={(e) => setAulaSeleccionada({ ...aulaSeleccionada, Aula_Nombre: e.target.value })}
+                                    />
 
-                                    <select name="materia_id" id="editarMateria" required>
-                                    {/*-- % for materia in materias % --*/}
-                                        <option value="{{ materia['ID'] }}">materia['Materia_Nombre']</option>
-                                    {/*-- % endfor % --*/}
+                                    <select
+                                        name="materia_id"
+                                        required
+                                        id='editarMateria'
+                                        value={aulaSeleccionada.materia_id || ''}
+                                        onChange={(e) => setAulaSeleccionada({ ...aulaSeleccionada, materia_id: e.target.value })}
+                                    >
+                                        <option value="" disabled>Seleccione una Materia</option>
+                                        {materias.map((materia) => (
+                                        <option key={materia.ID} value={materia.ID}>{materia.Materia_Nombre}</option>
+                                        ))}
                                     </select>
 
                                     <button type="submit" className="btn-guardar">Guardar cambios</button>
-                                    <button type="button" className="btn-cancelar" onclick="cancelarEdicionAula()">Cancelar</button>
+                                    <button type="button" className="btn-cancelar" onClick={cancelarEdicionAula}>Cancelar</button>
                                 </form>
                             </div>
+                            )}
 
                             <div className="contenedor-tabla">
                                 <table className="tablaUsuarios" id="tablaUsuarios">
@@ -162,14 +230,14 @@ function Aula(){
                                             <td>{aula.Curso_Jornada}</td>
                                             <td>{aula.Profesor}</td>
                                             <td>
-                                            <Link to={"/VerCurso"}>
+                                            <Link to={`/VerAula/${aula.ID}`}>
                                                 <button type="button" className="informacion" id="btninformacion">
                                                 <i className="fa-solid fa-circle-info"></i>
                                                 </button>
                                             </Link>
                                             </td>
                                             <td>
-                                            <button className="modificar">
+                                            <button className="modificar" onClick={() => handleModificarClick(aula)}>
                                                 <i className="fa-solid fa-gear"></i>
                                             </button>
                                             </td>

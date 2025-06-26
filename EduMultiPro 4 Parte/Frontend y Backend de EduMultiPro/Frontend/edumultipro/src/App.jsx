@@ -27,6 +27,7 @@ function App() {
 
     if (response.ok) {
       const data = await response.json();
+      localStorage.setItem('usuario', JSON.stringify(data.usuario)); // ✅ Guarda el usuario
       const { rol } = data.usuario;
 
       // Redireccionar según el rol

@@ -65,7 +65,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/CrearNoticia" element={<CrearNoticia />} />
         <Route path="/ActualizarNoticia/:id" element={<ActualizarNoticia />} />
         <Route path="/VerNoticia/:id" element={<VerNoticia />} />
-        <Route path="/VerAula" element={<VerAula />} />
+        <Route path="/VerAula/:id" element={<VerAula />} />
         <Route path="/Trabajos" element={<Trabajos />} />
         <Route path="/Notas" element={<Notas />} />
         <Route path="/Personas" element={<Personas />} />
