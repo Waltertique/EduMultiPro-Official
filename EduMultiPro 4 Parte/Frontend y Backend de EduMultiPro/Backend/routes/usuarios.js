@@ -930,24 +930,27 @@ router.get("/Comentarios/Anuncio/:anuncio_id", (req, res) => {
   });
 });
 
-// Crear comentario
+// Crear comentario (para trabajo o anuncio)
 router.post("/Comentarios", (req, res) => {
-  const { descripcion, anuncio_id, usuario_id } = req.body;
-  const fecha = new Date().toISOString().split("T")[0];
+  const { descripcion, trabajo_id, anuncio_id, usuario_id, fecha } = req.body;
 
   const query = `
-    INSERT INTO Comentario (Descripcion, Fecha, anuncio_id, usuario_id)
-    VALUES (?, ?, ?, ?)
+    INSERT INTO Comentario (Descripcion, Fecha, trabajo_id, anuncio_id, usuario_id)
+    VALUES (?, ?, ?, ?, ?)
   `;
 
-  conexion.query(query, [descripcion, fecha, anuncio_id, usuario_id], (error, result) => {
-    if (error) {
-      console.error("Error al crear comentario:", error);
-      res.status(500).json({ mensaje: "Error al crear el comentario" });
-    } else {
-      res.json({ mensaje: "Comentario creado correctamente" });
+  conexion.query(
+    query,
+    [descripcion, fecha || new Date().toISOString().split("T")[0], trabajo_id || null, anuncio_id || null, usuario_id],
+    (error, result) => {
+      if (error) {
+        console.error("Error al crear comentario:", error);
+        res.status(500).json({ mensaje: "Error al crear el comentario" });
+      } else {
+        res.json({ mensaje: "Comentario creado correctamente" });
+      }
     }
-  });
+  );
 });
 
 // Eliminar comentario por ID
@@ -986,6 +989,294 @@ router.get("/Aulas/:id/integrantes", (req, res) => {
     res.json(results);
   });
 });
+
+// Obtener trabajos por aula
+router.get("/Trabajos/Aula/:id", (req, res) => {
+  const aulaId = req.params.id;
+
+  const sql = `
+    SELECT ID, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo
+    FROM Trabajo
+    WHERE aula_id = ?
+  `;
+
+  conexion.query(sql, [aulaId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener los trabajos:", error);
+      return res.status(500).json({ mensaje: "Error en la base de datos" });
+    }
+
+    res.json(results);
+  });
+});
+
+router.post("/CrearTrabajo", upload.array('archivos'), (req, res) => {
+  const { titulo, descripcion, fecha, aula_id } = req.body;
+  const archivos = req.files;
+
+  const sqlTrabajo = `
+    INSERT INTO Trabajo (Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, aula_id)
+    VALUES (?, ?, ?, ?)
+  `;
+
+  conexion.query(sqlTrabajo, [titulo, descripcion, fecha, aula_id], (error, result) => {
+    if (error) {
+      console.error("Error al insertar trabajo:", error);
+      return res.status(500).json({ mensaje: "Error al guardar el trabajo" });
+    }
+
+    const trabajoId = result.insertId;
+
+    if (archivos && archivos.length > 0) {
+      const sqlArchivos = `
+        INSERT INTO Trabajo_Archivo (trabajo_id, ruta_archivo, nombre_original)
+        VALUES ?
+      `;
+
+      const valores = archivos.map((archivo) => [
+        trabajoId,
+        archivo.filename,
+        archivo.originalname
+      ]);
+
+      conexion.query(sqlArchivos, [valores], (err2) => {
+        if (err2) {
+          console.error("Error al guardar archivos:", err2);
+          return res.status(500).json({ mensaje: "Error al guardar archivos" });
+        }
+
+        res.status(200).json({ mensaje: "Trabajo y archivos guardados" });
+      });
+    } else {
+      res.status(200).json({ mensaje: "Trabajo guardado sin archivos" });
+    }
+  });
+});
+
+// Obtener datos de un trabajo por ID
+router.get("/Trabajo/:id", (req, res) => {
+  const id = req.params.id;
+
+  const sqlTrabajo = "SELECT * FROM Trabajo WHERE ID = ?";
+  const sqlArchivos = "SELECT * FROM Trabajo_Archivo WHERE trabajo_id = ?";
+
+  conexion.query(sqlTrabajo, [id], (err, trabajoResult) => {
+    if (err || trabajoResult.length === 0) {
+      return res.status(404).json({ error: "Trabajo no encontrado" });
+    }
+
+    conexion.query(sqlArchivos, [id], (err2, archivosResult) => {
+      if (err2) {
+        return res.status(500).json({ error: "Error al obtener archivos" });
+      }
+
+      res.json({
+        trabajo: trabajoResult[0],
+        archivos: archivosResult
+      });
+    });
+  });
+});
+
+// Actualizar trabajo
+router.post("/ActualizarTrabajo", upload.array("archivos"), (req, res) => {
+  const { trabajo_id, titulo, descripcion, fecha, aula_id, eliminar_archivos } = req.body;
+  const archivosNuevos = req.files;
+
+  // 1. Actualiza datos del trabajo
+  const sqlUpdate = `
+    UPDATE Trabajo
+    SET Titulo_Trabajo = ?, Descripcion_Trabajo = ?, Fecha_Trabajo = ?
+    WHERE ID = ?
+  `;
+  conexion.query(sqlUpdate, [titulo, descripcion, fecha, trabajo_id], (err) => {
+    if (err) return res.status(500).json({ error: "Error al actualizar trabajo" });
+
+    // 2. Eliminar archivos seleccionados (si los hay)
+    if (eliminar_archivos) {
+      const idsEliminar = Array.isArray(eliminar_archivos) ? eliminar_archivos : [eliminar_archivos];
+      const sqlDeleteArchivos = `DELETE FROM Trabajo_Archivo WHERE ID IN (?)`;
+
+      conexion.query(sqlDeleteArchivos, [idsEliminar], (err) => {
+        if (err) console.error("Error al eliminar archivos:", err);
+      });
+    }
+
+    // 3. Insertar nuevos archivos
+    if (archivosNuevos.length > 0) {
+      const valores = archivosNuevos.map(file => [
+        trabajo_id,
+        'imagenes/' + file.filename,
+        file.originalname
+      ]);
+
+      const sqlInsertArchivos = `INSERT INTO Trabajo_Archivo (trabajo_id, ruta_archivo, nombre_original) VALUES ?`;
+      conexion.query(sqlInsertArchivos, [valores], (err) => {
+        if (err) console.error("Error al insertar nuevos archivos:", err);
+      });
+    }
+
+    res.json({ mensaje: "Trabajo actualizado correctamente" });
+  });
+});
+
+//Eliminar Trabajo
+router.delete("/Trabajo/:id", (req, res) => {
+  const id = req.params.id;
+
+  const sqlArchivos = "DELETE FROM Trabajo_Archivo WHERE trabajo_id = ?";
+  const sqlTrabajo = "DELETE FROM Trabajo WHERE ID = ?";
+
+  conexion.query(sqlArchivos, [id], (err) => {
+    if (err) {
+      console.error("Error al eliminar archivos del trabajo:", err);
+      return res.status(500).json({ error: "Error al eliminar archivos" });
+    }
+
+    conexion.query(sqlTrabajo, [id], (err2) => {
+      if (err2) {
+        console.error("Error al eliminar trabajo:", err2);
+        return res.status(500).json({ error: "Error al eliminar el trabajo" });
+      }
+
+      res.json({ mensaje: "Trabajo eliminado correctamente" });
+    });
+  });
+});
+
+// Obtener comentarios por trabajo
+router.get("/Comentarios/Trabajo/:trabajo_id", (req, res) => {
+  const trabajoId = req.params.trabajo_id;
+  const query = `
+    SELECT c.ID, c.Descripcion, c.Fecha,
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Nombre_Usuario,
+           u.RutaFoto
+    FROM Comentario c
+    JOIN Usuario u ON c.usuario_id = u.ID
+    WHERE c.trabajo_id = ?
+    ORDER BY c.Fecha DESC
+  `;
+
+  conexion.query(query, [trabajoId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener los comentarios:", error);
+      res.status(500).json({ error: "Error al obtener comentarios" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Obtener estudiantes que entregaron un trabajo específico
+router.get("/Trabajos/:id/Entregados", (req, res) => {
+  const trabajoId = req.params.id;
+
+  const sql = `
+    SELECT 
+      te.ID AS trabajo_entregado_id,
+      te.Fecha_Trabajo,
+      te.Nota,
+      u.ID AS usuario_id,
+      CONCAT(u.Primer_Nombre, ' ', u.Segundo_Nombre, ' ', u.Primer_Apellido, ' ', u.Segundo_Apellido) AS nombre_completo
+    FROM TrabajoEntregado te
+    JOIN Usuario u ON te.usuario_id = u.ID
+    WHERE te.trabajo_id = ?
+  `;
+
+  conexion.query(sql, [trabajoId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener entregas:", error);
+      return res.status(500).json({ mensaje: "Error al consultar las entregas" });
+    }
+
+    res.json(results);
+  });
+});
+
+router.put("/Trabajos/Entregado/:id/Nota", (req, res) => {
+    const id = req.params.id;
+    const { nota } = req.body;
+    const sql = `UPDATE TrabajoEntregado SET Nota = ? WHERE ID = ?`;
+
+    conexion.query(sql, [nota, id], (error) => {
+        if (error) return res.status(500).json({ mensaje: "Error al actualizar nota" });
+        res.json({ mensaje: "Nota asignada correctamente" });
+    });
+});
+
+// Obtener entrega con sus archivos
+router.get("/TrabajoEntregado/:id/Archivos", (req, res) => {
+    const entregaId = req.params.id;
+
+    const sql = `
+        SELECT 
+            ruta_archivo,
+            nombre_original
+        FROM TrabajoEntregado_Archivo
+        WHERE trabajo_entregado_id = ?
+    `;
+
+    conexion.query(sql, [entregaId], (error, results) => {
+        if (error) {
+            console.error("Error al obtener archivos:", error);
+            return res.status(500).json({ mensaje: "Error al consultar los archivos" });
+        }
+
+        res.json(results);
+    });
+});
+
+//Notas
+router.get("/Aulas/:id/Notas", (req, res) => {
+  const aulaId = req.params.id;
+
+  const sql = `
+    SELECT 
+      u.ID AS usuario_id,
+      CONCAT(u.Primer_Nombre, ' ', u.Segundo_Nombre, ' ', u.Primer_Apellido, ' ', u.Segundo_Apellido) AS nombre_completo,
+      t.ID AS trabajo_id,
+      t.Titulo_Trabajo,
+      te.Nota
+    FROM Usuario u
+    INNER JOIN Miembros_Curso mc ON u.ID = mc.usuario_id
+    INNER JOIN Aula a ON mc.curso_id = a.curso_id
+    LEFT JOIN Trabajo t ON a.ID = t.aula_id
+    LEFT JOIN TrabajoEntregado te ON te.usuario_id = u.ID AND te.trabajo_id = t.ID
+    WHERE a.ID = ?
+    ORDER BY u.ID, t.ID
+  `;
+
+  conexion.query(sql, [aulaId], (err, results) => {
+    if (err) {
+      console.error("Error al consultar notas:", err);
+      return res.status(500).json({ mensaje: "Error en la base de datos" });
+    }
+
+    const alumnos = {};
+    const trabajosSet = new Set();
+
+    results.forEach(row => {
+      if (!row.Titulo_Trabajo) return;
+
+      trabajosSet.add(row.Titulo_Trabajo);
+
+      if (!alumnos[row.usuario_id]) {
+        alumnos[row.usuario_id] = {
+          nombre: row.nombre_completo,
+          notas: {}
+        };
+      }
+
+      alumnos[row.usuario_id].notas[row.Titulo_Trabajo] = row.Nota !== null ? row.Nota : "sin nota";
+    });
+
+    const trabajos = Array.from(trabajosSet);
+    const tabla_notas = Object.values(alumnos);
+
+    res.json({ trabajos, tabla_notas });
+  });
+});
+
 
 //---------------------------------------------------------------------------------------------------------
 

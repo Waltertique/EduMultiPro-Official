@@ -2,7 +2,7 @@
 /* footer -------------------- footer */
 
 #pie{
-    background-image: url("../src/assets/gris\ fondo.jpg");
+    background: rgb(66, 66, 66);
     height: 130px;
 }
 #n4 h2{
@@ -34,7 +34,6 @@
     /* footer -------------------- footer */
 
     #pie{
-        background-image: url("../src/assets/gris\ fondo.jpg");
         height: 200px;
     }
     #n4 h2{
@@ -75,7 +74,6 @@
     /* footer -------------------- footer */
 
     #pie{
-        background-image: url("../src/assets/gris\ fondo.jpg");
         height: 200px;
     }
     #n4 h2{
@@ -114,7 +112,6 @@
 @media (min-width: 576px) and (max-width: 767px){
 
     #pie{
-        background-image: url("../src/assets/gris\ fondo.jpg");
         height: 200px;
     }
     #n4 h2{
@@ -152,7 +149,6 @@
 
     /* footer -------------------- footer */
     #pie{
-        background-image: url("../src/assets/gris\ fondo.jpg");
         height: 220px;
     }
     #n4 h2{
@@ -191,7 +187,6 @@
 @media (min-width: 992px) and (max-width: 1199px){
 
     #pie{
-        background-image: url("../src/assets/gris\ fondo.jpg");
         height: 220px;
     }
     #n4 h2{
@@ -230,7 +225,6 @@
 @media (min-width: 1200px) and (max-width: 1399px){
     
     #pie{
-        background-image: url("../src/assets/gris\ fondo.jpg");
         height: 130px;
     }
     #n4 h2{

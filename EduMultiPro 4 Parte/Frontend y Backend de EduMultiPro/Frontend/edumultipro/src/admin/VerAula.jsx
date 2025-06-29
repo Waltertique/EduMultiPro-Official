@@ -194,9 +194,9 @@ function VerAula(){
                             
                             <div className="row" id="navAula">
 
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={`/VerAula/${aula.ID}`}><button id="principal">Pricipal</button></Link></div>
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Trabajos"}><button id="trabajo">Trabajos</button></Link></div>
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Notas"}><button id="persona">Notas</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={`/VerAula/${aula.ID}`}><button id="principal">Principal</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={`/Trabajos/${aula.ID}`}><button id="trabajo">Trabajos</button></Link></div>
+                                <div className="col-12 col-md-2 col-xl-2"><Link to={`/Notas/${aula.ID}`}><button id="nota">Notas</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/Personas/${aula.ID}`}><button id="persona">Personas</button></Link></div>
                                 <div className="col-12 col-md-4 col-xl-4"></div>
 

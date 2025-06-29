@@ -126,6 +126,9 @@
 .parte1ModificarTabla form ul{
     list-style: none;
 }
+#TA{
+    margin-bottom: 20px;
+}
 #check{
     width: 15px;
     height: 15px;

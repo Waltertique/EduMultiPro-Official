@@ -66,13 +66,13 @@ createRoot(document.getElementById('root')).render(
         <Route path="/ActualizarNoticia/:id" element={<ActualizarNoticia />} />
         <Route path="/VerNoticia/:id" element={<VerNoticia />} />
         <Route path="/VerAula/:id" element={<VerAula />} />
-        <Route path="/Trabajos" element={<Trabajos />} />
-        <Route path="/Notas" element={<Notas />} />
+        <Route path="/Trabajos/:id" element={<Trabajos />} />
+        <Route path="/Notas/:id" element={<Notas />} />
         <Route path="/Personas/:id" element={<Personas />} />
-        <Route path="/CrearTrabajo" element={<CrearTrabajo />} />
-        <Route path="/ActualizarTrabajo" element={<ActualizarTrabajo />} />
-        <Route path="/VerTrabajo" element={<VerTrabajo />} />
-        <Route path="/VerTrabajoEntregado" element={<VerTrabajoEntregado />} />
+        <Route path="/CrearTrabajo/:id" element={<CrearTrabajo />} />
+        <Route path="/ActualizarTrabajo/:id" element={<ActualizarTrabajo />} />
+        <Route path="/VerTrabajo/:trabajoId/:aulaId" element={<VerTrabajo />} />
+        <Route path="/VerTrabajoEntregado/:trabajoId/:aulaId" element={<VerTrabajoEntregado />} />
 
         {/*--Aqui los links del Coordinador--*/}
         <Route path="/PrincipalCoordinador" element={<PrincipalCoordinador />} />
