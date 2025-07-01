@@ -44,3 +44,51 @@
 }
 
 /* Centro -------------------- Centro*/
+
+.horarioAlumno{
+    background: #cfcfcf;
+    border-radius: 15px;
+    margin: 40px auto 20px auto;
+    padding: 20px;
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.horarioAlumno .tituAlumno{
+    padding: 20px;
+    width: 90%;
+    height: auto;
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+    border: 5px solid var(--azul-secundario);
+    border-radius: 20px;
+    text-align: center;
+    margin: 10px auto 50px auto;
+}
+.horarioAlumno .tituAlumno h2{
+    color: white;
+    font-size: 40px;
+}
+.horarioAlumno .imghorarioAlumno{
+    width: 90%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+}
+.horarioAlumno .imghorarioAlumno img{
+    cursor: pointer; 
+    width: 900px; 
+    height: 500px;
+}
+.horarioAlumno .imghorarioAlumno img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.horarioAlumno .descripcion{
+    margin: 50px auto 0px auto;
+    width: 90%;
+}
+.horarioAlumno .descripcion p{
+    word-break: break-word; 
+    white-space: normal;
+}

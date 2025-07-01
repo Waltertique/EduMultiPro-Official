@@ -45,69 +45,50 @@
 
 /* Centro -------------------- Centro*/
 
-#carouselExampleIndicators{
+.tituloPerfilAlumno{
     width: 90%;
-    margin: 10px auto;
-}
-
-.noticiasAlumno{
-    padding-bottom: 70px;
-    width: 100%;
-    height: auto;
-    background: linear-gradient(135deg, var(--azul-secundario2), var(--azul-secundario3));
-    margin-top: 30px
-}
-.tituloAlumno{
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-.tituloAlumno h2{
-    font-size: 50px;
-    color: white;
-    font-weight: bold;
-}
-.noticiasAlumno .row{
-    width: 100%;
-    min-height: 420px ;
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 30px 10px 30px;
+    border-bottom: 2px solid black;
+    margin: 0px auto;
 }
-.noticiasAlumno .row .col-xl-4{
-    width: 20%;
-    padding: 0px 0px;
+.tituloPerfilAlumno h1{
+    font-size: 50px;
+    font-weight: bold;
+    
 }
-.noticiasAlumno .row .col-xl-4:hover{
-    cursor: pointer;
-    transform: scale(1.1);
+.contenidoTablaAlumno2{
+    overflow-x: auto;
+    margin: auto;
+    background-color: var(--gris-medio);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
+    width: 90%; 
+    display: flex;
+    justify-content: center;
 }
-.noticiasAlumno .row .col-xl-4 .imagen{
+.contenidoTablaAlumno2 #PerfilUsuario{
     width: 100%;
-    height: auto;;
+    border-collapse: collapse;
+    margin: 20px 0px;
 }
-.noticiasAlumno .row .col-xl-4 .imagen img{
-    width: 100%;
-    height: 230px; 
-    overflow: hidden;
-    position: relative;
-    border-radius: 20px 20px 0px 0px;
+.contenidoTablaAlumno2 #PerfilUsuario th{
+    padding: 10px;
+    text-align: center !important;
+    border: 1px solid rgb(173, 173, 173);
 }
-.noticiasAlumno .row .col-xl-4 .encabezado{
-    padding: 20px;
-    width: 100%;
-    height: auto;;
-    background: white;
-    border-radius: 0px 0px 20px 20px;
-    text-align: center;
+.contenidoTablaAlumno2 #PerfilUsuario td{
+    padding: 10px;
+    text-align: center !important;
+    border: 1px solid rgb(173, 173, 173);
+    border-bottom: 1px solid rgb(173, 173, 173) !important;
 }
-.noticiasAlumno .row .encabezado h2{
-    font-size: 25px;
-    color: var(--azul);
-    word-break: break-word; 
-    white-space: normal;
+.contenidoTablaAlumno2 #PerfilUsuario td img{
+    width: 160px;
 }
-.noticiasAlumno .row .encabezado p{
-    font-size: 13px;
-    word-break: break-word; 
-    white-space: normal;
+#espaciofoto{
+    padding: 0px;
 }
