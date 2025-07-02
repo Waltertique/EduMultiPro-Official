@@ -48,9 +48,9 @@ function NoticiaAlumno(){
 
                                 {/*<!-- Botón Ver Más -->*/}
                                 <div class="col-xl-2">
-                                <form>
+                                <Link to={"/VerNoticiaAlumno"}>
                                     <button>Ver Más</button>
-                                </form>
+                                </Link>
                                 </div>
                             </div>
                         </div>

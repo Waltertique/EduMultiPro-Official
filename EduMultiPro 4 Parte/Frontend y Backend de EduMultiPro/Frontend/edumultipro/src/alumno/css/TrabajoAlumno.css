@@ -39,52 +39,48 @@
 #centroAlumno{
     flex: 1;
     display: flex;
-    flex-direction: column;
     padding: 0;
 }
 
 /* Centro -------------------- Centro*/
 
-.tituloAulaAlumno{
-    width: 90%;
+.tituloTrabajoAlumno{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    padding: 30px 30px 10px 30px;
-    border-bottom: 2px solid black;
-    margin: 0px auto;
+    margin-top: 40px;
+    padding: 0px 100px;
+    align-items: center;
 }
-.tituloAulaAlumno h1{
-    font-size: 50px;
+.tituloTrabajoAlumno h1{
+    font-size: 40px;
     font-weight: bold;
-    
+    font-style: italic;
 }
 
-.contenedor-tablaAulaAlumno{  
+.contenedor-tablaTrabajoAlumno{  
     overflow-x: auto;
-    margin: 20px auto;
-    background-color: white;
+    margin: 0px 0px 20px 0px;
+    background: var(--fondo);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
-    width: 80%; 
+    width: 100%; 
 }
-.contenedor-tablaAulaAlumno table{
+.contenedor-tablaTrabajoAlumno table{
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0px;
 }
-.contenedor-tablaAulaAlumno table thead{
+.contenedor-tablaTrabajoAlumno table thead{
     background-color: var(--azul-primario);
     color: var(--blanco);
 }
-.contenedor-tablaAulaAlumno table th, .contenedor-tablaAulaAlumno table td{
+.contenedor-tablaTrabajoAlumno table th, .contenedor-tablaTrabajoAlumno table td{
     padding: 10px;
     text-align: center !important;
     border-bottom: 1px solid var(--azul-primario) !important;
 }
 
-.contenedor-tablaAulaAlumno table td button{
+.contenedor-tablaTrabajoAlumno table button{
     background-color: var(--azul);
     color: var(--blanco);
     border: none;
@@ -95,25 +91,33 @@
     transition: background-color 0.3s ease;
 }
 
-.contenedor-tablaAulaAlumno table td button:hover{
+.contenedor-tablaTrabajoAlumno table button:hover{
     background-color: black;
 }
+.contenedor-tablaTrabajoAlumno table tbody tr td{
+    color: black;
+}
 @media (min-width: 100px) and (max-width: 414px) {
-
-    .tituloAulaAlumno{
+    .tituloTrabajoAlumno{
         display: flex;
         justify-content: center;
     }
-    .tituloAulaAlumno h1{
-        font-size: 35px;  
+}    
+@media (min-width: 415px) and (max-width: 575px) {
+    .tituloTrabajoAlumno{
+        display: flex;
+        justify-content: center;
     }
 }
-@media (min-width: 415px) and (max-width: 575px) {
-    .tituloAulaAlumno{
+@media (min-width: 576px) and (max-width: 767px){
+    .tituloTrabajoAlumno{
         display: flex;
         justify-content: center;
     }
-    .tituloAulaAlumno h1{
-        font-size: 40px;  
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .tituloTrabajoAlumno{
+        display: flex;
+        justify-content: center;
     }
 }

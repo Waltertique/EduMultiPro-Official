@@ -70,9 +70,9 @@ function PrincipalAlumno(){
                         {/*% if noticia1 and 'Imagen1' in noticia1 %*/}
                             <div class="col-xl-4">
                                 <div class="imagen">
-                                    <a>
+                                    <Link to={"/VerNoticiaAlumno"}>
                                     <img src={Img1Noticia} alt="Imagen de noticia"/>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div class="encabezado">
                                     <h2>Titulo_Noticia</h2>
@@ -92,9 +92,9 @@ function PrincipalAlumno(){
                         {/*% if noticia2 and 'Imagen1' in noticia2 %*/}
                             <div class="col-xl-4">
                                 <div class="imagen">
-                                    <a>
+                                    <Link to={"/VerNoticiaAlumno"}>
                                     <img src={Img2Noticia} alt="Imagen de noticia"/>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div class="encabezado">
                                     <h2>Titulo_Noticia</h2>
@@ -114,9 +114,9 @@ function PrincipalAlumno(){
                         {/*% if noticia3 and 'Imagen1' in noticia3 %*/}
                             <div class="col-xl-4">
                                 <div class="imagen">
-                                    <a>
+                                    <Link to={"/VerNoticiaAlumno"}>
                                     <img src={Img3Noticia} alt="Imagen de noticia"/>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div class="encabezado">
                                     <h2>Titulo_Noticia</h2>

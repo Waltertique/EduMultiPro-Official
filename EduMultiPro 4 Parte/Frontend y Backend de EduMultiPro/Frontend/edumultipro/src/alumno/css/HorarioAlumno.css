@@ -68,6 +68,8 @@
 .horarioAlumno .tituAlumno h2{
     color: white;
     font-size: 40px;
+    word-break: break-word;
+    white-space: normal;
 }
 .horarioAlumno .imghorarioAlumno{
     width: 90%;
@@ -91,4 +93,106 @@
 .horarioAlumno .descripcion p{
     word-break: break-word; 
     white-space: normal;
+}
+
+@media (min-width: 100px) and (max-width: 414px) {
+
+    .horarioAlumno{
+        padding: 0px;
+    }
+
+    .horarioAlumno .imghorarioAlumno img{
+        width: 95% !important;
+        height: auto !important;
+    }
+    .horarioAlumno .tituAlumno h2{
+        color: white;
+        font-size: 18px;
+    }
+    .horarioAlumno .descripcion h3{
+        font-size: 18px;
+    }
+    .horarioAlumno .descripcion p{
+        font-size: 12px;
+    }
+}
+@media (min-width: 415px) and (max-width: 575px) {
+    .horarioAlumno{
+        padding: 0px;
+    }
+
+    .horarioAlumno .imghorarioAlumno img{
+        width: 95% !important;
+        height: auto !important;
+    }
+    .horarioAlumno .tituAlumno h2{
+        color: white;
+        font-size: 18px;
+    }
+    .horarioAlumno .descripcion h3{
+        font-size: 18px;
+    }
+    .horarioAlumno .descripcion p{
+        font-size: 12px;
+    }
+}
+@media (min-width: 576px) and (max-width: 767px){
+    .horarioAlumno{
+        padding: 0px;
+    }
+
+    .horarioAlumno .imghorarioAlumno img{
+        width: 95% !important;
+        height: auto !important;
+    }
+    .horarioAlumno .tituAlumno h2{
+        color: white;
+        font-size: 18px;
+    }
+    .horarioAlumno .descripcion h3{
+        font-size: 18px;
+    }
+    .horarioAlumno .descripcion p{
+        font-size: 12px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .horarioAlumno{
+        padding: 0px;
+    }
+
+    .horarioAlumno .imghorarioAlumno img{
+        width: 95% !important;
+        height: auto !important;
+    }
+    .horarioAlumno .tituAlumno h2{
+        color: white;
+        font-size: 28px;
+    }
+    .horarioAlumno .descripcion h3{
+        font-size: 20px;
+    }
+    .horarioAlumno .descripcion p{
+        font-size: 15px;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    .horarioAlumno{
+        padding: 0px;
+    }
+
+    .horarioAlumno .imghorarioAlumno img{
+        width: 95% !important;
+        height: auto !important;
+    }
+    .horarioAlumno .tituAlumno h2{
+        color: white;
+        font-size: 32px;
+    }
+    .horarioAlumno .descripcion h3{
+        font-size: 25px;
+    }
+    .horarioAlumno .descripcion p{
+        font-size: 18px;
+    }
 }

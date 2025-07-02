@@ -44,6 +44,10 @@ import VerNoticiaAlumno from './alumno/VerNoticiaAlumno.jsx';
 import HorarioAlumno from './alumno/HorarioAlumno.jsx';
 import ClaseAlumno from './alumno/ClaseAlumno.jsx';
 import PerfilAlumno from './alumno/PerfilAlumno.jsx';
+import VerAulaAlumno from './alumno/VerAulaAlumno.jsx';
+import TrabajoAlumno from './alumno/TrabajoAlumno.jsx';
+import PersonaAlumno from './alumno/PersonaAlumno.jsx';
+import VerTrabajoAlumno from './alumno/VerTrabajoAlumno.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -92,6 +96,10 @@ createRoot(document.getElementById('root')).render(
         <Route path="/HorarioAlumno" element={<HorarioAlumno />} />
         <Route path="/ClaseAlumno" element={<ClaseAlumno />} />
         <Route path="/PerfilAlumno" element={<PerfilAlumno />} />
+        <Route path="/VerAulaAlumno" element={<VerAulaAlumno />} />
+        <Route path="/TrabajoAlumno" element={<TrabajoAlumno />} />
+        <Route path="/PersonaAlumno" element={<PersonaAlumno />} />
+        <Route path="/VerTrabajoAlumno" element={<VerTrabajoAlumno />} />
 
       </Routes>
     </BrowserRouter>

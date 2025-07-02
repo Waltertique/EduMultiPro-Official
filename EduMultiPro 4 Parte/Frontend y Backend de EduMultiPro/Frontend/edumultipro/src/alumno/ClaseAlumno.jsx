@@ -85,9 +85,11 @@ function ClaseAlumno(){
                                 <td> aula.Curso_Nombre </td>
                                 <td> aula.Profesor </td>
                                 <td>
+                                    <Link to={"/VerAulaAlumno"}>
                                     <button type="submit" className="informacion" id="btninformacion">
                                         <i className="fa-solid fa-circle-info"></i>
                                     </button>
+                                    </Link>
                                 </td>
                             </tr>
                             {/*% endfor %*/}

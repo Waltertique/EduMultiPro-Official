@@ -111,3 +111,105 @@
     word-break: break-word; 
     white-space: normal;
 }
+
+@media (min-width: 100px) and (max-width: 414px) {
+
+    .noticiasAlumno .tituloAlumno{
+        margin-bottom: 20px;
+    }
+    .noticiasAlumno .tituloAlumno h2{
+        font-size: 30px;
+    }
+    .noticiasAlumno .row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0px;
+    }
+    .noticiasAlumno .row .col-xl-4{
+        width: 80%;
+        margin: 0px auto 30px auto;
+        height: 285px;
+    }
+    .noticiasAlumno .row .col-xl-4 .imagen img{
+        height: 170px;
+    }
+    .noticiasAlumno .row .encabezado h2{
+        font-size: 18px;
+    }
+    .noticiasAlumno .row .encabezado p{
+        font-size: 9px;
+    }
+}
+@media (min-width: 415px) and (max-width: 575px) {
+    .noticiasAlumno .tituloAlumno{
+        margin-bottom: 20px;
+    }
+    .noticiasAlumno .tituloAlumno h2{
+        font-size: 35px;
+    }
+    .noticiasAlumno .row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0px;
+    }
+    .noticiasAlumno .row .col-xl-4{
+        width: 80%;
+        margin: 0px auto 30px auto;
+        height: 285px;
+    }
+    .noticiasAlumno .row .col-xl-4 .imagen img{
+        height: 170px;
+    }
+    .noticiasAlumno .row .encabezado h2{
+        font-size: 20px;
+    }
+    .noticiasAlumno .row .encabezado p{
+        font-size: 10px;
+    }
+}
+@media (min-width: 576px) and (max-width: 767px){
+    .noticiasAlumno .tituloAlumno{
+        margin-bottom: 20px;
+    }
+    .noticiasAlumno .tituloAlumno h2{
+        font-size: 35px;
+    }
+    .noticiasAlumno .row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0px;
+    }
+    .noticiasAlumno .row .col-xl-4{
+        width: 80%;
+        margin: 0px auto 30px auto;
+        height: 285px;
+    }
+    .noticiasAlumno .row .col-xl-4 .imagen img{
+        height: 170px;
+    }
+    .noticiasAlumno .row .encabezado h2{
+        font-size: 20px;
+    }
+    .noticiasAlumno .row .encabezado p{
+        font-size: 10px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .noticiasAlumno .row{
+        margin: 0px;
+    }
+    .noticiasAlumno .row .col-xl-4{
+        width: 28%;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    .noticiasAlumno .row{
+        margin: 0px;
+    }
+    .noticiasAlumno .row .col-xl-4{
+        width: 26%;
+    }
+}

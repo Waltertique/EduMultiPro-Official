@@ -56,8 +56,7 @@
 }
 .tituloPerfilAlumno h1{
     font-size: 50px;
-    font-weight: bold;
-    
+    font-weight: bold;  
 }
 .contenidoTablaAlumno2{
     overflow-x: auto;
@@ -69,6 +68,8 @@
     width: 90%; 
     display: flex;
     justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 .contenidoTablaAlumno2 #PerfilUsuario{
     width: 100%;
@@ -91,4 +92,95 @@
 }
 #espaciofoto{
     padding: 0px;
+}
+
+@media (min-width: 100px) and (max-width: 414px) {
+    .tituloPerfilAlumno{
+        display: flex;
+        justify-content: center;
+    }
+    .tituloPerfilAlumno h1{
+        font-size: 30px;
+    }
+    .contenidoTablaAlumno2{
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .contenidoTablaAlumno2 #PerfilUsuario,
+    .contenidoTablaAlumno2 #PerfilUsuario thead,
+    .contenidoTablaAlumno2 #PerfilUsuario tbody,
+    .contenidoTablaAlumno2 #PerfilUsuario th,
+    .contenidoTablaAlumno2 #PerfilUsuario td,
+    .contenidoTablaAlumno2 #PerfilUsuario tr {
+        display: block;
+        width: 100%;
+    }
+}
+@media (min-width: 415px) and (max-width: 575px) {
+    .tituloPerfilAlumno{
+        display: flex;
+        justify-content: center;
+    }
+    .tituloPerfilAlumno h1{
+        font-size: 30px;
+    }
+    .contenidoTablaAlumno2{
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .contenidoTablaAlumno2 #PerfilUsuario,
+    .contenidoTablaAlumno2 #PerfilUsuario thead,
+    .contenidoTablaAlumno2 #PerfilUsuario tbody,
+    .contenidoTablaAlumno2 #PerfilUsuario th,
+    .contenidoTablaAlumno2 #PerfilUsuario td,
+    .contenidoTablaAlumno2 #PerfilUsuario tr {
+        display: block;
+        width: 100%;
+    }
+}
+@media (min-width: 576px) and (max-width: 767px){
+    .tituloPerfilAlumno{
+        display: flex;
+        justify-content: center;
+    }
+    .tituloPerfilAlumno h1{
+        font-size: 30px;
+    }
+    .contenidoTablaAlumno2{
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .contenidoTablaAlumno2 #PerfilUsuario,
+    .contenidoTablaAlumno2 #PerfilUsuario thead,
+    .contenidoTablaAlumno2 #PerfilUsuario tbody,
+    .contenidoTablaAlumno2 #PerfilUsuario th,
+    .contenidoTablaAlumno2 #PerfilUsuario td,
+    .contenidoTablaAlumno2 #PerfilUsuario tr {
+        display: block;
+        width: 100%;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .contenidoTablaAlumno2{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .contenidoTablaAlumno2 #PerfilUsuario,
+    .contenidoTablaAlumno2 #PerfilUsuario thead,
+    .contenidoTablaAlumno2 #PerfilUsuario tbody,
+    .contenidoTablaAlumno2 #PerfilUsuario th,
+    .contenidoTablaAlumno2 #PerfilUsuario td,
+    .contenidoTablaAlumno2 #PerfilUsuario tr {
+        display: block;
+        width: 100%;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    .contenidoTablaAlumno2{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
