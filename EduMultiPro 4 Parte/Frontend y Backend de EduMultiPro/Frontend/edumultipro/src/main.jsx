@@ -36,6 +36,11 @@ import PrincipalCoordinador from './coordinador/PrincipalCoordinador.jsx';
 
 //--Aqui los links del Profesor--
 import PrincipalProfesor from './profesor/PrincipalProfesor.jsx';
+import NoticiaProfesor from './profesor/NoticiaProfesor.jsx';
+import VerNoticiaProfesor from './profesor/VerNoticiaProfesor.jsx';
+import HorarioProfesor from './profesor/HorarioProfesor.jsx';
+import ClaseProfesor from './profesor/ClaseProfesor.jsx';
+import PerfilProfesor from './profesor/PerfilProfesor.jsx';
 
 //--Aqui los links del Alumno--
 import PrincipalAlumno from './alumno/PrincipalAlumno.jsx';
@@ -88,6 +93,11 @@ createRoot(document.getElementById('root')).render(
 
         {/*--Aqui los links del Profesor--*/}
         <Route path="/PrincipalProfesor" element={<PrincipalProfesor />} />
+        <Route path="/NoticiaProfesor" element={<NoticiaProfesor />} />
+        <Route path="/VerNoticiaProfesor" element={<VerNoticiaProfesor />} />
+        <Route path="/HorarioProfesor" element={<HorarioProfesor />} />
+        <Route path="/ClaseProfesor" element={<ClaseProfesor />} />
+        <Route path="/PerfilProfesor" element={<PerfilProfesor />} />
 
         {/*--Aqui los links del Alumno--*/}
         <Route path="/PrincipalAlumno" element={<PrincipalAlumno />} />

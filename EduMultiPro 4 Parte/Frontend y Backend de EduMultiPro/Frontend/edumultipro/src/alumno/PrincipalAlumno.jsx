@@ -60,29 +60,29 @@ function PrincipalAlumno(){
                     </button>
                 </div>
 
-                <div class="noticiasAlumno">
-                    <div class="tituloAlumno">
+                <div className="noticiasAlumno">
+                    <div className="tituloAlumno">
                         <h2>Noticias</h2>
                     </div>
-                    <div class="row">
+                    <div className="row">
 
                         {/*<!-- Noticia principal 1-->*/}
                         {/*% if noticia1 and 'Imagen1' in noticia1 %*/}
-                            <div class="col-xl-4">
-                                <div class="imagen">
+                            <div className="col-xl-4">
+                                <div className="imagen">
                                     <Link to={"/VerNoticiaAlumno"}>
                                     <img src={Img1Noticia} alt="Imagen de noticia"/>
                                     </Link>
                                 </div>
-                                <div class="encabezado">
+                                <div className="encabezado">
                                     <h2>Titulo_Noticia</h2>
                                     <p>Encabezado</p>
                                 </div>
                             </div>
                         {/*% else %
-                            <div class="col-xl-4">
-                            <div class="imagen"><img src="{{ url_for('static', filename='img/error.png') }}" alt="Imagen de noticia"></div>
-                            <div class="encabezado">
+                            <div className="col-xl-4">
+                            <div className="imagen"><img src="{{ url_for('static', filename='img/error.png') }}" alt="Imagen de noticia"></div>
+                            <div className="encabezado">
                                 <h2>No hay Noticias Disponibles</h2>
                             </div>
                             </div>
@@ -90,21 +90,21 @@ function PrincipalAlumno(){
 
                         {/*<!-- Noticia principal 2-->*/}
                         {/*% if noticia2 and 'Imagen1' in noticia2 %*/}
-                            <div class="col-xl-4">
-                                <div class="imagen">
+                            <div className="col-xl-4">
+                                <div className="imagen">
                                     <Link to={"/VerNoticiaAlumno"}>
                                     <img src={Img2Noticia} alt="Imagen de noticia"/>
                                     </Link>
                                 </div>
-                                <div class="encabezado">
+                                <div className="encabezado">
                                     <h2>Titulo_Noticia</h2>
                                     <p>Encabezado</p>
                                 </div>
                             </div>
                         {/*% else %*
-                            <div class="col-xl-4">
-                            <div class="imagen"><img src="{{ url_for('static', filename='img/error.png') }}" alt="Imagen de noticia"></div>
-                            <div class="encabezado">
+                            <div className="col-xl-4">
+                            <div className="imagen"><img src="{{ url_for('static', filename='img/error.png') }}" alt="Imagen de noticia"></div>
+                            <div className="encabezado">
                                 <h2>No hay Noticias Disponibles</h2>
                             </div>
                             </div>
@@ -112,21 +112,21 @@ function PrincipalAlumno(){
 
                         {/*<!-- Noticia principal 3-->*/}
                         {/*% if noticia3 and 'Imagen1' in noticia3 %*/}
-                            <div class="col-xl-4">
-                                <div class="imagen">
+                            <div className="col-xl-4">
+                                <div className="imagen">
                                     <Link to={"/VerNoticiaAlumno"}>
                                     <img src={Img3Noticia} alt="Imagen de noticia"/>
                                     </Link>
                                 </div>
-                                <div class="encabezado">
+                                <div className="encabezado">
                                     <h2>Titulo_Noticia</h2>
                                     <p>Encabezado</p>
                                 </div>
                             </div>
                         {/*% else %*
-                            <div class="col-xl-4">
-                            <div class="imagen"><img src="{{ url_for('static', filename='img/error.png') }}" alt="Imagen de noticia"></div>
-                            <div class="encabezado">
+                            <div className="col-xl-4">
+                            <div className="imagen"><img src="{{ url_for('static', filename='img/error.png') }}" alt="Imagen de noticia"></div>
+                            <div className="encabezado">
                                 <h2>No hay Noticias Disponibles</h2>
                             </div>
                             </div>

@@ -1,15 +1,15 @@
 import Encabezado from '../Encabezado.jsx';
 import Footer from '../footer.jsx';
-import DesplegableAlumno from './DesplegableAlumno.jsx';
-import NavAlumno from './NavAlumno.jsx';
-import './css/HorarioAlumno.css';
+import DesplegableProfesor from './DesplegableProfesor.jsx';
+import NavProfesor from './NavProfesor.jsx';
+import './css/HorarioProfesor.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
 import ImgHorario from '../assets/imgHorario.png';
 
-function HorarioAlumno(){
+function HorarioProfesor(){
     return (
     <>
         <div className='contenedor'>
@@ -18,21 +18,21 @@ function HorarioAlumno(){
             <Encabezado />
 
             {/*---Desplegable---*/}
-            <DesplegableAlumno />
+            <DesplegableProfesor />
 
             {/*---Article---*/}
-            <div className="container-fluid" id="centroAlumno">
+            <div className="container-fluid" id="centroProfesor">
 
-                {/*---navegador alumno---*/}
-                <NavAlumno />
+                {/*---navegador Profesor---*/}
+                <NavProfesor />
                 
-                <div className="horarioAlumno">
+                <div className="horarioProfesor">
                     {/*% if horario %*/}
-                        <div className="tituAlumno">
+                        <div className="tituProfesor">
                             <h2>horario.Titulo_Horario </h2>
                         </div>
                     
-                        <div className="imghorarioAlumno">
+                        <div className="imghorarioProfesor">
                         {/*% if horario['Imagen_Horario'] %*/}
                                 <img 
                                     src={ImgHorario} alt="Imagen Horario" id="imagenPequena"  />
@@ -70,4 +70,4 @@ function HorarioAlumno(){
   );
 }
 
-export default HorarioAlumno;
+export default HorarioProfesor;

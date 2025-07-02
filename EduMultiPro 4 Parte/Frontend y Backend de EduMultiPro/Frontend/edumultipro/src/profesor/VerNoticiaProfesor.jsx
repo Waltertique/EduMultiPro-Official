@@ -1,8 +1,8 @@
 import Encabezado from '../Encabezado.jsx';
 import Footer from '../footer.jsx';
-import DesplegableAlumno from './DesplegableAlumno.jsx';
-import NavAlumno from './NavAlumno.jsx';
-import './css/VerNoticiaAlumno.css';
+import DesplegableProfesor from './DesplegableProfesor.jsx';
+import NavProfesor from './NavProfesor.jsx';
+import './css/VerNoticiaProfesor.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import Img1Carrucel from '../assets/f1.png';
 import Img1Noticia from '../assets/1.png';
 
-function VerNoticiaAlumno(){
+function VerNoticiaProfesor(){
     return (
     <>
         <div className='contenedor'>
@@ -19,16 +19,16 @@ function VerNoticiaAlumno(){
             <Encabezado />
 
             {/*---Desplegable---*/}
-            <DesplegableAlumno />
+            <DesplegableProfesor />
 
             {/*---Article---*/}
-            <div className="container-fluid" id="centroAlumno">
+            <div className="container-fluid" id="centroProfesor">
 
-                {/*---navegador alumno---*/}
-                <NavAlumno />
+                {/*---navegador Profesor---*/}
+                <NavProfesor />
 
-                <div className="contenerdo-VerNoticiaAlumno">    
-                    <div className="contenerdorVerNoticiaAlumno">
+                <div className="contenerdo-VerNoticiaProfesor">    
+                    <div className="contenerdorVerNoticiaProfesor">
 
                         {/*<!-- Título -->*/}
                         <div id="h0Titulo">
@@ -88,4 +88,4 @@ function VerNoticiaAlumno(){
   );
 }
 
-export default VerNoticiaAlumno;
+export default VerNoticiaProfesor;

@@ -61,23 +61,23 @@ function TrabajoAlumno(){
                 {/*---navegador alumno---*/}
                 <NavAlumno />
 
-                <div class="col-10" id="contenidoTablaAulaAlumno">
+                <div className="col-10" id="contenidoTablaAulaAlumno">
 
-                    <div class="row" id="navAulaAlumno">
+                    <div className="row" id="navAulaAlumno">
 
-                    <div class="col-12 col-md-2 col-xl-2"><Link to={"/VerAulaAlumno"}><button id="principal">Pricipal</button></Link></div>
-                    <div class="col-12 col-md-2 col-xl-2"><Link to={"/TrabajoAlumno"}><button id="trabajo">Trabajos</button></Link></div>
-                    <div class="col-12 col-md-2 col-xl-2"><Link to={"/PersonaAlumno"}><button id="persona">Personas</button></Link></div>
-                    <div class="col-12 col-md-4 col-xl-4"></div>
+                    <div className="col-12 col-md-2 col-xl-2"><Link to={"/VerAulaAlumno"}><button id="principal">Pricipal</button></Link></div>
+                    <div className="col-12 col-md-2 col-xl-2"><Link to={"/TrabajoAlumno"}><button id="trabajo">Trabajos</button></Link></div>
+                    <div className="col-12 col-md-2 col-xl-2"><Link to={"/PersonaAlumno"}><button id="persona">Personas</button></Link></div>
+                    <div className="col-12 col-md-4 col-xl-4"></div>
 
                     </div>
 
-                    <div class="tituloTrabajoAlumno">
+                    <div className="tituloTrabajoAlumno">
                         <h1>Trabajos</h1>
                     </div>
 
-                    <div class="contenedor-tablaTrabajoAlumno">
-                        <table class="tablaUsuarios" id="tablaUsuarios">
+                    <div className="contenedor-tablaTrabajoAlumno">
+                        <table className="tablaUsuarios" id="tablaUsuarios">
                             <thead>
                                 <tr>
                                     <th>Título</th>
@@ -92,8 +92,8 @@ function TrabajoAlumno(){
                                         <td> trabajo.Fecha_Trabajo </td>
                                         <td>
                                             <Link to={"/VerTrabajoAlumno"}>
-                                                <button type="submit" class="informacion" id="btninformacion">
-                                                    <i class="fa-solid fa-circle-info"></i>
+                                                <button type="submit" className="informacion" id="btninformacion">
+                                                    <i className="fa-solid fa-circle-info"></i>
                                                 </button>
                                             </Link>
                                         </td>

@@ -27,13 +27,13 @@ function VerTrabajoAlumno(){
                 {/*---navegador alumno---*/}
                 <NavAlumno />
 
-                <div class="col-10" id="contenidoTablaVerTrabajoAlumno">
-                    <div class="contenido1VerTrabajoAlumno">
-                            <div class="ti">
+                <div className="col-10" id="contenidoTablaVerTrabajoAlumno">
+                    <div className="contenido1VerTrabajoAlumno">
+                            <div className="ti">
                                 <img src={Imgtrabajo} alt=""/> 
                                 <h2> trabajo.Titulo_Trabajo</h2>
                             </div>
-                            <div class="fecha">
+                            <div className="fecha">
                                 <div>
                                     <p>Fecha de Entrega:</p><p> 34/435/454</p>
                                 </div>
@@ -41,32 +41,32 @@ function VerTrabajoAlumno(){
                                     <p>Nota:</p><p>Sin Nota</p>
                                 </div>
                             </div>
-                            <div class="descripcion">
+                            <div className="descripcion">
                                 <h2 id="desc">Descripcion:</h2>
                                 <p> trabajo.Descripcion_Trabajo Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet quaerat tempora natus at obcaecati beatae fugit enim animi, alias ipsam perferendis aliquam! Fuga assumenda sapiente ut dignissimos voluptatibus animi eius!</p>
                             </div>
-                            <div class="adjunto">
+                            <div className="adjunto">
                                 {/*% for archivo in archivos %*/}
-                                <div class="material1">
+                                <div className="material1">
                                     <a href="{{ url_for('static', filename=archivo.ruta_archivo) }}" target="_blank"> archivo.nombre_original </a>
                                 </div>
                                 {/*% endfor %*/}
                             </div>
-                            <div class="mensaje">
+                            <div className="mensaje">
                                 <img src={Imgtrabajo2}/>
                                     <input name="comentario" placeholder="Escribe tu comentario" required/>
                                     <button type="submit">Comentar</button>
                             </div>
                             {/*% for comentario in comentarios_trabajo %*/}
-                            <div class="comentarioVerTrabajoAlumno">
-                                <div class="info1">
-                                    <div class="foto">
+                            <div className="comentarioVerTrabajoAlumno">
+                                <div className="info1">
+                                    <div className="foto">
                                         <img src={Imgtrabajo2} alt="Foto" width="40"/>
                                         <h1> comentario.Comentador </h1>
                                     </div>
                                     <h2> comentario.fecha_comentario </h2>
                                 </div>
-                                <div class="desc">
+                                <div className="desc">
                                     <p> comentario.comentario </p>
                                 </div>
                                 {/*% if comentario.usuario_id == session['usuario_id'] %*/}
@@ -77,8 +77,8 @@ function VerTrabajoAlumno(){
                             </div>
                             {/*% endfor %*/}
                     </div>
-                        <div class="contenido2VerTrabajoAlumno">
-                            <div class="subirtr">
+                        <div className="contenido2VerTrabajoAlumno">
+                            <div className="subirtr">
                                 <h2>Tu trabajo</h2>
 
                                 {/*% if fecha_entrega %*/}
@@ -88,7 +88,7 @@ function VerTrabajoAlumno(){
                                 {/*% endif %*/}
                                 
                                 {/*% for archivo in archivos_entregados %*/}
-                                <div class="mitrabajo">
+                                <div className="mitrabajo">
                                     <a href="" target="_blank">
                                          archivo.nombre_original 
                                     </a>

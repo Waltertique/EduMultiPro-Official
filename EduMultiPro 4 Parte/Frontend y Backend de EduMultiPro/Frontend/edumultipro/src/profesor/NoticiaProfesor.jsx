@@ -1,15 +1,15 @@
 import Encabezado from '../Encabezado.jsx';
 import Footer from '../footer.jsx';
-import DesplegableAlumno from './DesplegableAlumno.jsx';
-import NavAlumno from './NavAlumno.jsx';
-import './css/NoticiaAlumno.css';
+import DesplegableProfesor from './DesplegableProfesor.jsx';
+import NavProfesor from './NavProfesor.jsx';
+import './css/NoticiaProfesor.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
 import Img1Noticia from '../assets/1.png';
 
-function NoticiaAlumno(){
+function NoticiaProfesor(){
     return (
     <>
         <div className='contenedor'>
@@ -18,18 +18,18 @@ function NoticiaAlumno(){
             <Encabezado />
 
             {/*---Desplegable---*/}
-            <DesplegableAlumno />
+            <DesplegableProfesor />
 
             {/*---Article---*/}
-            <div className="container-fluid" id="centroAlumno">
+            <div className="container-fluid" id="centroProfesor">
 
-                {/*---navegador alumno---*/}
-                <NavAlumno />
+                {/*---navegador Profesor---*/}
+                <NavProfesor />
                 
-                <div className="contenedor-noticiaAlumno">
+                <div className="contenedor-noticiaProfesor">
                     <h2>Noticias</h2>
                     {/*% for noticia in noticias %*/}
-                        <div className="noticiaAlumno">
+                        <div className="noticiaProfesor">
                             <div className="row">
                                 {/*<!-- Imagen -->*/}
                                 <div className="col-xl-4">
@@ -48,7 +48,7 @@ function NoticiaAlumno(){
 
                                 {/*<!-- Botón Ver Más -->*/}
                                 <div className="col-xl-2">
-                                <Link to={"/VerNoticiaAlumno"}>
+                                <Link to={"/VerNoticiaProfesor"}>
                                     <button>Ver Más</button>
                                 </Link>
                                 </div>
@@ -72,4 +72,4 @@ function NoticiaAlumno(){
   );
 }
 
-export default NoticiaAlumno;
+export default NoticiaProfesor;

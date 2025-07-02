@@ -1,15 +1,15 @@
 import Encabezado from '../Encabezado.jsx';
 import Footer from '../footer.jsx';
-import DesplegableAlumno from './DesplegableAlumno.jsx';
-import NavAlumno from './NavAlumno.jsx';
-import './css/PerfilAlumno.css';
+import DesplegableProfesor from './DesplegableProfesor.jsx';
+import NavProfesor from './NavProfesor.jsx';
+import './css/PerfilProfesor.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
 import FotoUsuario from '../assets/foto.jpg';
 
-function PerfilAlumno(){
+function PerfilProfesor(){
     return (
     <>
         <div className='contenedor'>
@@ -18,18 +18,18 @@ function PerfilAlumno(){
             <Encabezado />
 
             {/*---Desplegable---*/}
-            <DesplegableAlumno />
+            <DesplegableProfesor />
 
             {/*---Article---*/}
-            <div className="container-fluid" id="centroAlumno">
+            <div className="container-fluid" id="centroProfesor">
 
-                {/*---navegador alumno---*/}
-                <NavAlumno />
+                {/*---navegador Profesor---*/}
+                <NavProfesor />
                 
-                <div className="tituloPerfilAlumno">
+                <div className="tituloPerfilProfesor">
                     <h1>Mi Infromacion</h1>
                 </div>
-                <div className="contenidoTablaAlumno2">
+                <div className="contenidoTablaProfesor2">
                     <table id='PerfilUsuario'>
                     <tr>
                         <th>Foto</th>
@@ -84,4 +84,4 @@ function PerfilAlumno(){
   );
 }
 
-export default PerfilAlumno;
+export default PerfilProfesor;
