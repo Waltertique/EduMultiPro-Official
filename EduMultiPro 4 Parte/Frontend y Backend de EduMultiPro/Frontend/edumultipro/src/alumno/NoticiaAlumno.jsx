@@ -9,7 +9,20 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
 import Img1Noticia from '../assets/1.png';
 
+import { useEffect, useState } from 'react';
+import ErrorImg from '../assets/error.png';
+
 function NoticiaAlumno(){
+
+    const [noticias, setNoticias] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3000/api/edumultipro/NoticiasDatos")
+        .then(res => res.json())
+        .then(data => setNoticias(data))
+        .catch(err => console.error("Error al cargar noticias:", err));
+    }, []);
+
     return (
     <>
         <div className='contenedor'>
@@ -28,37 +41,46 @@ function NoticiaAlumno(){
                 
                 <div className="contenedor-noticiaAlumno">
                     <h2>Noticias</h2>
-                    {/*% for noticia in noticias %*/}
-                        <div className="noticiaAlumno">
-                            <div className="row">
-                                {/*<!-- Imagen -->*/}
-                                <div className="col-xl-4">
-                                    {/*% if noticia['Imagen1'] %*/}
-                                        <img src={Img1Noticia} alt="Imagen de noticia"/>
-                                    {/*% else %}
-                                        <img src="{{ url_for('static', filename='img/default.png') }}" alt="Sin imagen" />
-                                    {/*% endif %*/}
-                                </div>
 
-                                {/*<!-- Título y encabezado -->*/}
-                                <div className="col-xl-6">
-                                    <h2>Titulo_Noticia</h2>
-                                    <p>Encabezado</p>
-                                </div>
+                    {noticias.length === 0 ? (
+                    <div className="alert alert-warning text-center">
+                        No hay noticias disponibles.
+                    </div>
+                    ) : (
+                    noticias.map(noticia => (
+                        <div key={noticia.ID} className="noticiaAlumno">
+                        <div className="row align-items-center">
 
-                                {/*<!-- Botón Ver Más -->*/}
-                                <div className="col-xl-2">
-                                <Link to={"/VerNoticiaAlumno"}>
-                                    <button>Ver Más</button>
-                                </Link>
-                                </div>
+                            {/* Imagen */}
+                            <div className="col-xl-4">
+                            {noticia.Imagen1 ? (
+                                <img
+                                src={`http://localhost:3000/imagenes/${noticia.Imagen1}`}
+                                alt="Imagen de noticia"
+                                className="img-fluid"
+                                />
+                            ) : (
+                                <img src={ErrorImg} alt="Sin imagen" className="img-fluid" />
+                            )}
                             </div>
-                        </div>
-                    {/*% endfor %}
 
-                    {% if noticias|length == 0 %}
-                        <div className="alert alert-warning text-center">No hay noticias disponibles.</div>
-                    {% endif %*/}
+                            {/* Título y Encabezado */}
+                            <div className="col-xl-6">
+                            <h2>{noticia.Titulo_Noticia}</h2>
+                            <p>{noticia.Encabezado}</p>
+                            </div>
+
+                            {/* Botón Ver más */}
+                            <div className="col-xl-2">
+                            <Link to={`/VerNoticiaAlumno/${noticia.ID}`}>
+                                <button className="btn btn-primary">Ver Más</button>
+                            </Link>
+                            </div>
+
+                        </div>
+                        </div>
+                    ))
+                    )}
                 
                 </div>
 

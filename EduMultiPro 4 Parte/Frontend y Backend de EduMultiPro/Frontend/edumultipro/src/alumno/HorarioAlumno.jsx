@@ -7,9 +7,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
-import ImgHorario from '../assets/imgHorario.png';
+import { useEffect, useState } from 'react';
 
 function HorarioAlumno(){
+
+    const [horario, setHorario] = useState(null);
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+    useEffect(() => {
+        if (usuario) {
+        fetch(`http://localhost:3000/api/edumultipro/HorarioUsuario/${usuario.id}`)
+            .then(res => res.json())
+            .then(data => {
+            if (!data.mensaje) {
+                setHorario(data);
+            } else {
+                setHorario(null);
+            }
+            })
+            .catch(err => {
+            console.error("Error al cargar el horario:", err);
+            });
+        }
+    }, []);
+
     return (
     <>
         <div className='contenedor'>
@@ -27,37 +48,34 @@ function HorarioAlumno(){
                 <NavAlumno />
                 
                 <div className="horarioAlumno">
-                    {/*% if horario %*/}
-                        <div className="tituAlumno">
-                            <h2>horario.Titulo_Horario </h2>
-                        </div>
-                    
-                        <div className="imghorarioAlumno">
-                        {/*% if horario['Imagen_Horario'] %*/}
-                                <img 
-                                    src={ImgHorario} alt="Imagen Horario" id="imagenPequena"  />
-                                {/*% else %}
-                                <p>No se ha subido una imagen para este horario.</p>
-                        {/*% endif %*/}
-                        </div>
-                    
-                        {/*<!-- Modal para mostrar imagen grande -->*/}
-                        <div id="modalImagen" className="modal">
-                        <span className="cerrar">&times;</span>
-                        <img className="contenido-modal" id="imagenGrande"/>
-                        </div>
-                    
-                        <div className="descripcion">
+                    {horario ? (
+                        <>
+                            <div className="tituAlumno">
+                            <h2>{horario.Titulo_Horario}</h2>
+                            </div>
+
+                            <div className="imghorarioAlumno">
+                            {horario.Imagen_Horario ? (
+                                <img
+                                src={`http://localhost:3000/imagenes/${horario.Imagen_Horario}`}
+                                alt="Imagen Horario"
+                                id="imagenPequena"
+                                />
+                            ) : (
+                                <img src="" alt="Sin Imagen" id="imagenPequena" />
+                            )}
+                            </div>
+
+                            <div className="descripcion">
                             <h3>Descripción:</h3>
-                            <p>
-                                horario.Descripcion_Horario
-                            </p>
-                        </div>
-                    {/*% else %}
+                            <p>{horario.Descripcion_Horario}</p>
+                            </div>
+                        </>
+                        ) : (
                         <div className="no-horario">
-                        <h2>No hay horarios creados para tu curso aún.</h2>
+                            <h2>No hay horarios creados para ti aún.</h2>
                         </div>
-                    {/*% endif %*/}
+                    )}
                 </div>
 
             </div>

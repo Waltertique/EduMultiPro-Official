@@ -102,7 +102,7 @@ createRoot(document.getElementById('root')).render(
         {/*--Aqui los links del Alumno--*/}
         <Route path="/PrincipalAlumno" element={<PrincipalAlumno />} />
         <Route path="/NoticiaAlumno" element={<NoticiaAlumno />} />
-        <Route path="/VerNoticiaAlumno" element={<VerNoticiaAlumno />} />
+        <Route path="/VerNoticiaAlumno/:id" element={<VerNoticiaAlumno />} />
         <Route path="/HorarioAlumno" element={<HorarioAlumno />} />
         <Route path="/ClaseAlumno" element={<ClaseAlumno />} />
         <Route path="/PerfilAlumno" element={<PerfilAlumno />} />

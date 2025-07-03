@@ -1441,3 +1441,122 @@ router.get("/Noticias/:id", (req, res) => {
     res.json(results[0]);
   });
 });
+
+//Llamar Noticias A vista Alumno y profesor
+router.get("/NoticiasPrincipales", (req, res) => {
+  const query = `
+    SELECT n.ID, n.Titulo_Noticia, n.Encabezado, n.Imagen1, t.Tipo
+    FROM Noticia n
+    INNER JOIN Tipo_Noticia t ON n.tipo_noticia_id = t.ID
+    WHERE t.Tipo IN ('Noticia Principal 1', 'Noticia Principal 2', 'Noticia Principal 3')
+    ORDER BY t.ID ASC
+  `;
+
+  conexion.query(query, (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: "Error al obtener noticias principales" });
+    }
+
+    // Organizar resultados por tipo
+    const noticias = {
+      noticia1: null,
+      noticia2: null,
+      noticia3: null,
+    };
+
+    results.forEach(n => {
+      if (n.Tipo === 'Noticia Principal 1') noticias.noticia1 = n;
+      if (n.Tipo === 'Noticia Principal 2') noticias.noticia2 = n;
+      if (n.Tipo === 'Noticia Principal 3') noticias.noticia3 = n;
+    });
+
+    res.json(noticias);
+  });
+});
+
+//Trae las noticas con el titulo, encabezado e imagen1
+router.get("/NoticiasDatos", (req, res) => {
+  const query = `
+    SELECT ID, Titulo_Noticia, Encabezado, Imagen1
+    FROM Noticia
+    ORDER BY Fecha_Notica DESC
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error en la base de datos" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// 🔁 Obtener horario del usuario según su rol (alumno o profesor)
+router.get("/HorarioUsuario/:id", (req, res) => {
+  const idUsuario = req.params.id;
+
+  const rolQuery = "SELECT rol_id FROM Usuario WHERE ID = ?";
+  conexion.query(rolQuery, [idUsuario], (err, rolRes) => {
+    if (err || rolRes.length === 0) {
+      return res.status(500).json({ error: "No se pudo determinar el rol del usuario" });
+    }
+
+    const rol = rolRes[0].rol_id;
+
+    if (rol === 'R001') {
+      // 🧑 Alumno - obtener horario del curso al que pertenece
+      const query = `
+        SELECT H.*
+        FROM Horario H
+        INNER JOIN Miembros_Curso MC ON H.curso_id = MC.curso_id
+        WHERE MC.usuario_id = ?
+        LIMIT 1
+      `;
+      conexion.query(query, [idUsuario], (err, result) => {
+        if (err) return res.status(500).json({ error: "Error al obtener horario del alumno" });
+        if (!result.length) return res.status(404).json({ mensaje: "No hay horario asignado a este alumno" });
+        res.json(result[0]);
+      });
+
+    } else if (rol === 'R002') {
+      // 👨‍🏫 Profesor - obtener horario asignado a él
+      const query = `SELECT * FROM Horario WHERE profesor_id = ? LIMIT 1`;
+      conexion.query(query, [idUsuario], (err, result) => {
+        if (err) return res.status(500).json({ error: "Error al obtener horario del profesor" });
+        if (!result.length) return res.status(404).json({ mensaje: "No hay horario asignado a este profesor" });
+        res.json(result[0]);
+      });
+
+    } else {
+      res.status(400).json({ mensaje: "Este usuario no tiene horario asignado por rol" });
+    }
+  });
+});
+
+// Obtener aulas por usuario (alumno o profesor)
+router.get("/Aulas/usuario/:id", (req, res) => {
+  const usuarioId = req.params.id;
+
+  const sql = `
+    SELECT a.ID, a.Aula_Nombre, m.Materia_Nombre, 
+           CONCAT(c.Curso_Nombre, ' ', j.Jornada_Nombre) AS Curso_Nombre, 
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Profesor
+    FROM Aula a
+    JOIN Materia m ON a.materia_id = m.ID
+    JOIN Curso c ON a.curso_id = c.ID
+    JOIN Jornada j ON c.jornada_id = j.ID
+    JOIN Usuario u ON a.usuario_id = u.ID
+    WHERE a.curso_id IN (
+      SELECT curso_id FROM Miembros_Curso WHERE usuario_id = ?
+    )
+    OR a.usuario_id = ?
+  `;
+
+  conexion.query(sql, [usuarioId, usuarioId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener aulas del usuario:", error);
+      return res.status(500).json({ mensaje: "Error en la base de datos" });
+    }
+
+    res.json(results);
+  });
+});

@@ -14,35 +14,49 @@ import { Link } from 'react-router-dom';
 
 function ClaseAlumno(){
 
+    const [aulas, setAulas] = useState([]);
+
     useEffect(() => {
-        const table = $('#tablaUsuarios').DataTable();
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        if (!usuario) return;
 
-        // Verifica si ya está inicializado
-        if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-            table.destroy(); // Destruye la instancia anterior
-        }
+        fetch(`http://localhost:3000/api/edumultipro/Aulas/usuario/${usuario.id}`)
+        .then(res => res.json())
+        .then(data => {
+            setAulas(data);
 
-        $('#tablaUsuarios').DataTable({
-            language: {
-                processing: "Procesando...",
-                search: "Buscar:",
-                lengthMenu: "Mostrar _MENU_ registros",
-                info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-                infoEmpty: "Mostrando 0 a 0 de 0 registros",
-                infoFiltered: "(filtrado de _MAX_ registros totales)",
-                loadingRecords: "Cargando...",
-                zeroRecords: "No se encontraron resultados",
-                emptyTable: "No hay datos en la tabla",
-                paginate: {
-                    previous: "Anterior",
-                    next: "Siguiente"
-                },
-                aria: {
-                    sortAscending: ": activar para ordenar la columna ascendente",
-                    sortDescending: ": activar para ordenar la columna descendente"
+            // Esperamos a que React actualice el DOM
+            setTimeout(() => {
+                // Si ya existe la tabla, destruirla
+                if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+                    $('#tablaUsuarios').DataTable().destroy();
                 }
-            }
-        });
+
+                // Inicializar de nuevo con idioma español
+                $('#tablaUsuarios').DataTable({
+                    language: {
+                        processing: "Procesando...",
+                        search: "Buscar:",
+                        lengthMenu: "Mostrar _MENU_ registros",
+                        info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                        infoEmpty: "Mostrando 0 a 0 de 0 registros",
+                        infoFiltered: "(filtrado de _MAX_ registros totales)",
+                        loadingRecords: "Cargando...",
+                        zeroRecords: "No se encontraron resultados",
+                        emptyTable: "No hay datos en la tabla",
+                        paginate: {
+                            previous: "Anterior",
+                            next: "Siguiente"
+                        },
+                        aria: {
+                            sortAscending: ": activar para ordenar la columna ascendente",
+                            sortDescending: ": activar para ordenar la columna descendente"
+                        }
+                    }
+                });
+            }, 100);
+        })
+        .catch(err => console.error("❌ Error cargando aulas:", err));
     }, []);
 
 
@@ -78,21 +92,21 @@ function ClaseAlumno(){
                             </tr>
                         </thead>
                         <tbody>
-                            {/*% for aula in aulas %*/}
-                            <tr>
-                                <td> aula.Aula_Nombre </td>
-                                <td> aula.Materia_Nombre </td>
-                                <td> aula.Curso_Nombre </td>
-                                <td> aula.Profesor </td>
+                            {aulas.map((aula) => (
+                            <tr key={aula.ID}>
+                                <td>{aula.Aula_Nombre}</td>
+                                <td>{aula.Materia_Nombre}</td>
+                                <td>{aula.Curso_Nombre}</td>
+                                <td>{aula.Profesor}</td>
                                 <td>
-                                    <Link to={"/VerAulaAlumno"}>
-                                    <button type="submit" className="informacion" id="btninformacion">
-                                        <i className="fa-solid fa-circle-info"></i>
+                                <Link to={`/VerAulaAlumno`}>
+                                    <button className="informacion">
+                                    <i className="fa-solid fa-circle-info"></i>
                                     </button>
-                                    </Link>
+                                </Link>
                                 </td>
                             </tr>
-                            {/*% endfor %*/}
+                            ))}
                         </tbody>
                     </table>
                 </div>
