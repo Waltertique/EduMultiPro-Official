@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fondo);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+
+/* article -------------------- article */
+
+#centro1{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+#contenido {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+/* tabla -------------------- tabla*/
+#contenidoTabla{
+    flex: 1;
+    padding: 20px;
+}
+.titulo8{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px;
+}
+.titulo8 h1{
+    font-size: 30px;
+    color: var(--azul-primario);
+    font-weight: bold;
+}
+
+.contenedor-fromularioJornada{
+    overflow-x: auto;
+    margin: 0px 0px 20px 0px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
+    width: 100%; 
+    text-align: center;
+}
+.contenedor-fromularioJornada button{
+    margin-left: 10px;
+}
+.contenedor-fromularioJornada form input{
+    background-color: white;
+    color: black;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    margin: 10px 10px;
+}
+.contenedor-fromularioJornada form{
+    margin-bottom: 30px;
+}
+#formEditarJornada form input{
+    color: black;
+}
+
+@media (min-width: 100px) and (max-width: 414px) {
+    .titulo8{
+        display: flex;
+        text-align: center;
+    }
+
+    form input{
+        width: 90%;
+    }
+
+    #Descripcion{
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 575px) {
+    
+    /* centro -------------------- centro */
+    .titulo8 h1{
+        margin-left: 30px;
+    }
+
+    .contenedor-fromularioJornada form{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contenedor-fromularioJornada form #Descripcion{
+        width: 95%;
+    }
+    .btn-guardar5{
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+
+    /* centro -------------------- centro */
+    .titulo8 h1{
+        margin-left: 30px;
+    }
+
+    .contenedor-fromularioJornada form{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contenedor-fromularioJornada form #Descripcion{
+        width: 95%;
+    }
+
+    .btn-guardar5{
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,1081 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fondo);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+
+/* article -------------------- article */
+
+#centro1{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+#contenido {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+/* tabla -------------------- tabla*/
+#contenidoTablaAula{
+    flex: 1;
+    padding: 40px 115px;
+}
+#navAula{
+    border-bottom: 2px solid black;
+    width: 100%;
+}
+#navAula .col-xl-2{
+    display: flex;
+    justify-content: center;
+}
+#navAula .col-xl-2 a{
+    width: 85%;
+}
+#navAula .col-xl-2 a button{
+    border: none;
+    color: black;
+    background: var(--fondo);
+    font-size: 32px;
+    width: 100%;
+}
+#navAula .col-xl-2 button:hover{
+    background: var(--azul-secundario3);
+}
+#banerAula{
+    margin: 20px auto;
+    border: none;
+    border-radius: 20px;
+    width: 90%;
+    height: auto;
+    background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+}
+#tituloAula h2{
+    font-size: 50px;
+    margin: 20px 10px;
+    color: white;
+}
+#codigoAula{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    color: white;
+}
+#novedadAula{
+    margin: 30px auto;
+    width: 87%;
+}
+#novedadAula h2{
+    font-size: 40px;
+    font-style: italic;
+}
+#canuncioAula{
+    display: flex;
+    justify-content: end;
+}
+#canuncioAula button{
+    background: var(--azul-secundario);
+    color: white;
+    border: 1px solid var(--azul);
+    border-radius: 20px;
+    padding: 10px;
+    height: auto;
+}
+#canuncioAula button:hover{
+    background: var(--azul);
+    border: 1px solid var(--azulClaro);
+    transform: scale(1.1);
+}
+
+.crearAnuncio{
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 10px 0px 20px 13%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 80%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%; 
+    text-align: center;
+}
+.crearAnuncio h1{
+    font-size: 40px;
+}
+.crearAnuncio form{
+    display: flex;
+    flex-direction: column;
+}
+.crearAnuncio form input{
+    color: black;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: 1px solid var(--azul-primario);
+    background: var(--fondo);
+}
+.crearAnuncio form textarea{
+    color: black;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: 1px solid var(--azul-primario);
+    background: var(--fondo);
+}
+.crearAnuncio form button{
+    border-radius: 20px;
+    background: var(--azul-secundario);
+    border: 2px solid var(--azul-primario);
+    width: 200px;
+    color: white;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.crearAnuncio form button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    color: black;
+}
+.crearAnuncio form .btn-cancelarAnuncio{
+    margin-left: 0px;
+}
+.anuncioAula .modificarAnuncio{
+    margin-top: 30px;
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+.anuncioAula .modificarAnuncio h1{
+    font-size: 30px;
+}
+.anuncioAula .modificarAnuncio form{
+    display: flex;
+    flex-direction: column;
+}
+.anuncioAula .modificarAnuncio form input{
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: 1px solid var(--azul-primario);
+    background: var(--fondo);
+    color: black;
+}
+.anuncioAula .modificarAnuncio form textarea{
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    border: 1px solid var(--azul-primario);
+    background: var(--fondo);
+    color: black;
+}
+.anuncioAula .modificarAnuncio form button{
+    border-radius: 20px;
+    background: var(--azul-secundario);
+    border: 2px solid var(--azul-primario);
+    width: 200px;
+    color: white;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.anuncioAula .modificarAnuncio form button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    color: black;
+}
+.anuncioAula {
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 10px 0px 20px 13%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 80%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%; 
+}
+.anuncioAula .info{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.anuncioAula .info .info1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.anuncioAula .info .info1 .foto{
+    display: flex;
+    flex-direction: row;
+}
+.anuncioAula .info .info1 img{
+    width: 45px;
+    height: auto;
+}
+.anuncioAula .info .info1 h1{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 25px;
+}
+.anuncioAula .info .info1 h2{
+    margin-top: 15px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+.anuncioAula .info .control{
+    display: flex;
+    flex-direction: row;
+}
+.anuncioAula .info .control .b1, .anuncioAula .info .control .btn-icon{
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 20px;
+    width: 90px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+.anuncioAula .info .b1:hover, .anuncioAula .info .control .btn-icon:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.anuncioAula .descripcion{
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+}
+.anuncioAula .descripcion h2{
+    font-size: 20px;
+    font-weight: bold;
+}
+.anuncioAula .botones{
+    margin-top: 20px;
+}
+.anuncioAula .botones input{
+    background: white;
+    color: black;
+    margin-right: 0px;
+    padding: 0px 20px;
+    width: 80%;
+    height: 40px;
+    border-radius: 20px 0px 0px 20px;
+}
+.anuncioAula a{
+    margin-right: 30px;
+}
+.anuncioAula .botones button{
+    margin-left: 0px;
+    width: 80px;
+    height: 39px;
+    color: white;
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 0px 20px 20px 0px;
+}
+.anuncioAula .botones button:hover{
+    color: black;
+    cursor: pointer;
+}
+
+.anuncioAula .comentario{
+    margin-top: 20px;
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.anuncioAula .comentario .info1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.anuncioAula .comentario .info1 .fotoComentario{
+    display: flex;
+    flex-direction: row;
+}
+.anuncioAula .comentario .info1 img{
+    width: 45px;
+    height: auto;
+}
+.anuncioAula .comentario .info1 h1{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 25px;
+}
+.anuncioAula .comentario .info1 h2{
+    margin-top: 15px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+.anuncioAula .comentario button{
+    margin-left: 0px;
+    width: 80px;
+    height: 39px;
+    color: white;
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 20px;
+}
+.anuncioAula .comentario button:hover{
+    transform: scale(1.1);
+    color: black;
+    cursor: pointer;
+}
+
+@media (min-width: 100px) and (max-width: 414px) {
+    #contenidoTablaAula{
+        flex: 1;
+        padding: 50px 0px;
+    }
+    #navAula{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95% !important;
+    }
+    #navAula .col-xl-2 a button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+    #banerAula #tituloAula h2{
+        font-size: 30px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #banerAula #codigoAula{
+        width: 100%;
+        padding: 0px;
+    }
+    #banerAula #codigoAula h4{
+        font-size: 15px;
+    }
+
+    #novedadAula{
+        display: flex;
+        text-align: center;
+    }
+    #novedadAula h2{
+        font-size: 40px;
+        font-style: italic;
+    }
+    #canuncioAula{
+        display: flex;
+        justify-content: center;
+    }
+    #canuncioAula button{
+        padding: 5px;
+        width: 50%;
+        height: auto;
+        font-size: 15px;
+    }
+    .anuncioAula{
+        width: 85%;
+        margin: 20px auto;
+        padding: 10px 15px;
+    }
+    .anuncioAula .info{
+        display: flex;
+        flex-direction: column;
+    }
+    .anuncioAula .info .info1{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .anuncioAula .info .info1 .foto{
+        display: flex;
+        align-items: center;
+    }
+    .anuncioAula .info .info1 .foto h1{
+        font-size: 20px;
+    }
+    .anuncioAula .info .info1 h2{
+        margin-right: 60px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .anuncioAula .control button{
+        font-size: 15px;
+    }
+    .anuncioAula .control form{
+        margin-right: 20px;
+    }
+    .anuncioAula .botones input{
+        width: 160px;
+        height: 30px;
+    }
+    .anuncioAula .botones button{
+        width: 60px;
+        height: 30px;
+    }
+    .anuncioAula .comentario{
+        padding: 15px 15px;
+    }
+    .anuncioAula .comentario .info1{
+        display: flex;
+        flex-direction: column;
+    }
+    .anuncioAula .comentario .info1 .fotoComentario{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .anuncioAula .comentario .info1 h2{
+        margin-right: 140px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .anuncioAula .comentario .info1 .fotoComentario h1{
+        font-size: 20px;
+        word-break: break-word;
+        white-space: normal;
+    }
+    .anuncioAula .comentario .info1 .fotoComentario img{
+        width: 50px;
+        height: 50px;
+    }
+    .anuncioAula .modificarAnuncio{
+        padding: 10px;
+    }
+    .anuncioAula .modificarAnuncio form input{
+        width: 100%;
+    }
+    .anuncioAula .modificarAnuncio form button{
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    #crearAnuncio h1{
+        font-size: 30px;
+    }
+    #crearAnuncio form input{
+        width: 100%;
+    }
+    .anuncioAula .botones form{
+        display: flex;
+        align-items: center;
+    }
+    .anuncioAula .botones form input{
+        width: 170px;
+        height: 35px;
+    }
+    .anuncioAula .botones form button{
+        width: 68px;
+        height: 35px;
+        
+    }
+}
+
+@media (min-width: 415px) and (max-width: 575px) {
+
+    #contenidoTablaAula{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #navAula{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #navAula .col-xl-2 a button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+    #banerAula #tituloAula h2{
+        font-size: 30px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #banerAula #codigoAula h4{
+        font-size: 15px;
+    }
+
+    #novedadAula{
+        display: flex;
+        text-align: center;
+    }
+    #novedadAula h2{
+        font-size: 40px;
+        font-style: italic;
+    }
+    #canuncioAula{
+        display: flex;
+        justify-content: center;
+    }
+    #canuncioAula button{
+        padding: 5px;
+        width: 50%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    .anuncioAula{
+        width: 85%;
+        margin: 20px auto;
+        padding: 10px 15px;
+    }
+    .anuncioAula .info{
+        display: flex;
+        flex-direction: column;
+    }
+    .anuncioAula .info .info1{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .anuncioAula .info .info1 .foto{
+        display: flex;
+        align-items: center;
+    }
+    .anuncioAula .info .info1 .foto img{
+        margin-left: 0px;
+    }
+    .anuncioAula .info .info1 .foto h1{
+        font-size: 20px;
+    }
+    .anuncioAula .info .info1 h2{
+        margin-right: 50px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .anuncioAula .control button{
+        font-size: 15px;
+    }
+    .anuncioAula .control form{
+        margin-right: 20px;
+    }
+    .anuncioAula .botones input{
+        width: 250px;
+        height: 30px;
+    }
+    .anuncioAula .botones button{
+        width: 60px;
+        height: 30px;
+    }
+     .anuncioAula.comentario{
+        padding: 15px 15px;
+    }
+    .anuncioAula .comentario .info1{
+        display: flex;
+        flex-direction: column;
+    }
+    .anuncioAula .comentario .info1 .fotoComentario{
+        display: flex;
+        flex-direction: row;
+    }
+    .anuncioAula .comentario .info1 h2{
+        margin-right: 210px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .anuncioAula .comentario .info1 .fotoComentario h1{
+        font-size: 20px;
+    }
+    .anuncioAula .modificarAnuncio{
+        padding: 10px;
+    }
+    .anuncioAula .modificarAnuncio form button{
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .anuncioAula .botones form{
+        display: flex;
+        align-items: center;
+    }
+    .anuncioAula .botones form input{
+        width: 250px;
+        height: 35px;
+    }
+    .anuncioAula .botones form button{
+        width: 68px;
+        height: 35px;
+        
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+    #contenidoTablaAula{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #navAula{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #navAula .col-xl-2 a button{
+        border: 1px solid var(--azul-primario);
+        border-radius: 10px;
+        background: var(--fondo);
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+    #banerAula #tituloAula h2{
+        font-size: 30px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #banerAula #codigoAula h4{
+        font-size: 15px;
+    }
+
+    #novedadAula{
+        display: flex;
+        text-align: center;
+    }
+    #novedadAula h2{
+        font-size: 40px;
+        font-style: italic;
+    }
+    #canuncioAula{
+        display: flex;
+        justify-content: center;
+    }
+    #canuncioAula button{
+        padding: 5px;
+        width: 50%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    .anuncioAula{
+        width: 85%;
+        margin: 20px auto;
+        padding: 10px 15px;
+    }
+    .anuncioAula .info{
+        display: flex;
+        flex-direction: column;
+    }
+    .anuncioAula .info .info1{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .anuncioAula .info .info1 .foto{
+        display: flex;
+        align-items: center;
+    }
+    .anuncioAula.info .info1 .foto img{
+        margin-left: 0px;
+    }
+    .anuncioAula.info .info1 .foto h1{
+        font-size: 20px;
+    }
+    .anuncioAula.info .info1 h2{
+        margin-right: 130px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .anuncioAula .control button{
+        font-size: 15px;
+    }
+    .anuncioAula .control form{
+        margin-right: 20px;
+    }
+    .anuncioAula .botones input{
+        width: 250px;
+        height: 30px;
+    }
+    .anuncioAula .botones button{
+        width: 60px;
+        height: 30px;
+    }
+    .anuncioAula .comentario{
+        padding: 15px 15px;
+    }
+    .anuncioAula .comentario .info1{
+        display: flex;
+        flex-direction: column;
+    }
+    .anuncioAula .comentario .info1 .fotoComentario{
+        display: flex;
+        flex-direction: row;
+    }
+    .anuncioAula .comentario .info1 h2{
+        margin-right: 120px;
+        margin-left: 0px;
+        font-size: 15px;
+    }
+    .anuncioAula .comentario .info1 .fotoComentario h1{
+        font-size: 20px;
+    }
+    .anuncioAula .anuncio .modificarAnuncio{
+        padding: 10px;
+    }
+    .anuncioAula .anuncio .modificarAnuncio form button{
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .anuncioAula .botones form{
+        display: flex;
+        align-items: center;
+    }
+    .anuncioAula .botones form input{
+        width: 350px;
+        height: 35px;
+    }
+    .anuncioAula .botones form button{
+        width: 68px;
+        height: 35px;
+        
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #contenidoTablaAula{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #navAula{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #navAula .col-xl-2 a button{
+        border: none;
+        background: var(--fondo);
+        font-size: 18px;
+    }
+    #banerAula #tituloAula h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #banerAula #codigoAula h4{
+        font-size: 15px;
+    }
+
+    #novedadAula{
+        display: flex;
+        text-align: center;
+    }
+    #novedadAula h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncioAula{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncioAula button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    .anuncioAula{
+        width: 85%;
+        margin: 20px auto;
+        padding: 10px 20px;
+    }
+    .anuncioAula .info{
+        display: flex;
+        flex-direction: column;
+    }
+    .anuncioAula .info .info1{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .anuncioAula .info .info1 .foto{
+        display: flex;
+        align-items: center;
+    }
+    .anuncioAula .info .info1 .foto img{
+        margin-left: 0px;
+    }
+    .anuncioAula .info .info1 .foto h1{
+        font-size: 20px;
+    }
+    .anuncioAula .info .info1 h2{
+        margin-right: 130px;
+        margin-left: 30px;
+        font-size: 15px;
+    }
+    .anuncioAula .control button{
+        font-size: 15px;
+    }
+    .anuncioAula .control form{
+        margin-right: 20px;
+    }
+    .anuncioAula .botones input{
+        width: 500px;
+        height: 40px;
+    }
+    .anuncioAula .botones button{
+        width: 70px;
+        height: 40px;
+    }
+    .anuncioAula .comentario{
+        padding: 15px 15px;
+    }
+    .anuncioAula .comentario .info1{
+        display: flex;
+        flex-direction: row;
+    }
+    .anuncioAula .comentario .info1 .fotoComentario{
+        display: flex;
+        flex-direction: row;
+    }
+    .anuncioAula .comentario .info1 h2{
+        margin-right: 120px;
+        margin-left: 30px;
+        margin-top: 7px;
+        font-size: 15px;
+
+    }
+    .anuncioAula .comentario .info1 .fotoComentario h1{
+        font-size: 20px;
+    }
+    .anuncioAula .modificarAnuncio{
+        padding: 10px;
+    }
+    .anuncioAula .modificarAnuncio form button{
+        margin: auto;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    #contenidoTablaAula{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #navAula{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #navAula .col-xl-2 a button{
+        border: none;
+        background: var(--fondo);
+        font-size: 20px;
+    }
+    #banerAula #tituloAula h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #banerAula #codigoAula h4{
+        font-size: 15px;
+    }
+
+    #novedadAula{
+        display: flex;
+        text-align: center;
+    }
+    #novedadAula h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncioAula{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncioAula button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+    
+    .info .info1 .foto h1{
+        margin-top: 22px;
+    }
+    .anuncioAula .botones input{
+        width: 600px;
+        height: 40px;
+    }
+    .anuncioAula .botones button{
+        width: 70px;
+        height: 40px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px){
+
+    /* centro -------------------- cento */
+    #contenidoTablaAula{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #navAula{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #navAula .col-xl-2 a button{
+        border: none;
+        background: var(--fondo);
+        font-size: 20px;
+    }
+    #banerAula #tituloAula h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #banerAula #codigoAula h4{
+        font-size: 15px;
+    }
+
+    #novedadAula{
+        display: flex;
+        text-align: center;
+    }
+    #novedadAula h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncioAula{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncioAula button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    .info .info1 .foto h1{
+        margin-top: 22px;
+    }
+    .anuncioAula .botones input{
+        width: 600px;
+        height: 40px;
+    }
+    .anuncioAula .botones button{
+        width: 70px;
+        height: 40px;
+    }
+
+}
+@media (min-width: 1400px) and (max-width: 1775px){
+    #contenidoTablaAula{
+        flex: 1;
+        padding: 50px 0px;
+    }
+
+    #navAula{
+        margin: 0px auto;
+        border-bottom: 2px solid black;
+        width: 95%;
+    }
+    #navAula .col-xl-2 a button{
+        border: none;
+        background: var(--fondo);
+        font-size: 25px;
+    }
+    #banerAula #tituloAula h2{
+        font-size: 35px;
+        margin: 20px 0px;
+        color: white;
+    }
+    #banerAula #codigoAula h4{
+        font-size: 15px;
+    }
+
+    #novedadAula{
+        display: flex;
+        text-align: center;
+    }
+    #novedadAula h2{
+        font-size: 40px;
+        font-style: italic;
+        text-align: start;
+    }
+    #canuncioAula{
+        display: flex;
+        justify-content: end;
+    }
+    #canuncioAula button{
+        padding: 5px;
+        width: 45%;
+        height: auto;
+        font-size: 15px;
+    }
+
+    .info .info1 .foto h1{
+        margin-top: 22px;
+    }
+    .anuncioAula .botones input{
+        width: 700px;
+        height: 40px;
+    }
+    .anuncioAula .botones button{
+        width: 80px;
+        height: 40px;
+    }
+}

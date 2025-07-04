@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fondo);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+
+/* article -------------------- article */
+
+#centro1{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+#contenido {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+/* tabla -------------------- tabla*/
+#contenidoTabla{
+    flex: 1;
+    padding: 20px;
+}
+.tituloCrearAula{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 30px 10px 30px;
+    border-bottom: 2px solid var(--azul-primario);
+    margin-bottom: 30px;
+}
+.tituloCrearAula h1{
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--azul-primario);
+}
+
+.contenidoCrearAula{  
+    overflow-x: auto;
+    margin: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
+    width: 90%; 
+    display: flex;
+    justify-content: center;
+}
+.contenidoCrearAula form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.contenidoCrearAula form h3{
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.contenidoCrearAula form .f1 input{
+    background: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    margin: 10px 10px;
+}
+.contenidoCrearAula form select{
+    background: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    margin: 10px 10px;
+    width: 92%;
+}
+.contenidoCrearAula form input{
+    background: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    margin: 10px 10px;
+}
+.contenidoCrearAula form button{
+    margin-top: 10px;
+    width: 50%;
+    margin-left: 27%;
+}
+
+.contenidoCrearAula form button{
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.contenidoCrearAula form button:hover{
+    background-color: black;
+}
+
+@media (min-width: 100px) and (max-width: 414px) {
+
+    /* centro -------------------- centro */
+
+    .tituloCrearAula{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .tituloCrearAula h1{
+        margin-bottom: 20px;
+    }
+}
