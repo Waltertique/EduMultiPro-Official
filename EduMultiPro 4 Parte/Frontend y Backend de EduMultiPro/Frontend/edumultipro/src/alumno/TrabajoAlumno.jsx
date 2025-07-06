@@ -10,40 +10,56 @@ import './css/TrabajoAlumno.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function TrabajoAlumno(){
 
+    const { id } = useParams(); // ID del aula
+    const [trabajos, setTrabajos] = useState([]);
+
     useEffect(() => {
-        const table = $('#tablaUsuarios').DataTable();
-
-        // Verifica si ya está inicializado
-        if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-            table.destroy(); // Destruye la instancia anterior
-        }
-
-        $('#tablaUsuarios').DataTable({
-            language: {
-                processing: "Procesando...",
-                search: "Buscar:",
-                lengthMenu: "Mostrar _MENU_ registros",
-                info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-                infoEmpty: "Mostrando 0 a 0 de 0 registros",
-                infoFiltered: "(filtrado de _MAX_ registros totales)",
-                loadingRecords: "Cargando...",
-                zeroRecords: "No se encontraron resultados",
-                emptyTable: "No hay datos en la tabla",
-                paginate: {
-                    previous: "Anterior",
-                    next: "Siguiente"
-                },
-                aria: {
-                    sortAscending: ": activar para ordenar la columna ascendente",
-                    sortDescending: ": activar para ordenar la columna descendente"
-                }
+        const obtenerTrabajos = async () => {
+            try {
+                const res = await fetch(`http://localhost:3000/api/edumultipro/Trabajos/Aula/${id}`);
+                const data = await res.json();
+                setTrabajos(data);
+            } catch (err) {
+                console.error("Error al obtener trabajos:", err);
             }
-        });
-    }, []);
+        };
+
+        obtenerTrabajos();
+    }, [id]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+                $('#tablaUsuarios').DataTable().destroy();
+            }
+
+            $('#tablaUsuarios').DataTable({
+                language: {
+                    processing: "Procesando...",
+                    search: "Buscar:",
+                    lengthMenu: "Mostrar _MENU_ registros",
+                    info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                    infoEmpty: "Mostrando 0 a 0 de 0 registros",
+                    infoFiltered: "(filtrado de _MAX_ registros totales)",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron resultados",
+                    emptyTable: "No hay datos en la tabla",
+                    paginate: {
+                        previous: "Anterior",
+                        next: "Siguiente"
+                    },
+                    aria: {
+                        sortAscending: ": activar para ordenar la columna ascendente",
+                        sortDescending: ": activar para ordenar la columna descendente"
+                    }
+                }
+            });
+        }, 300);
+    }, [trabajos]);
 
     return (
     <>
@@ -65,9 +81,9 @@ function TrabajoAlumno(){
 
                     <div className="row" id="navAulaAlumno">
 
-                    <div className="col-12 col-md-2 col-xl-2"><Link to={"/VerAulaAlumno"}><button id="principal">Pricipal</button></Link></div>
-                    <div className="col-12 col-md-2 col-xl-2"><Link to={"/TrabajoAlumno"}><button id="trabajo">Trabajos</button></Link></div>
-                    <div className="col-12 col-md-2 col-xl-2"><Link to={"/PersonaAlumno"}><button id="persona">Personas</button></Link></div>
+                    <div className="col-12 col-md-2 col-xl-2"><Link to={`/VerAulaAlumno/${id}`}><button id="principal">Pricipal</button></Link></div>
+                    <div className="col-12 col-md-2 col-xl-2"><Link to={`/TrabajoAlumno/${id}`}><button id="trabajo">Trabajos</button></Link></div>
+                    <div className="col-12 col-md-2 col-xl-2"><Link to={`/PersonaAlumno/${id}`}><button id="persona">Personas</button></Link></div>
                     <div className="col-12 col-md-4 col-xl-4"></div>
 
                     </div>
@@ -86,19 +102,19 @@ function TrabajoAlumno(){
                                 </tr>
                             </thead>
                             <tbody>
-                                {/*% for trabajo in trabajos %*/}
-                                    <tr>
-                                        <td> trabajo.Titulo_Trabajo</td>
-                                        <td> trabajo.Fecha_Trabajo </td>
+                                {trabajos.map((trabajo) => (
+                                    <tr key={trabajo.ID}> 
+                                        <td>{trabajo.Titulo_Trabajo}</td>
+                                        <td>{trabajo.Titulo_Trabajo}</td>
                                         <td>
-                                            <Link to={"/VerTrabajoAlumno"}>
+                                            <Link to={`/VerTrabajoAlumno/${trabajo.ID}/${id}`}>
                                                 <button type="submit" className="informacion" id="btninformacion">
                                                     <i className="fa-solid fa-circle-info"></i>
                                                 </button>
                                             </Link>
                                         </td>
                                     </tr>
-                                {/*% endfor %*/}
+                                ))}
                             </tbody>
                         </table>
                     </div>

@@ -1279,6 +1279,7 @@ router.get("/Aulas/:id/Notas", (req, res) => {
 
 
 //---------------------------------------------------------------------------------------------------------
+//Alumno y Profesor --------------------------------------------------------------------- Alumno y Profesor
 
 // Obtener todas las noticias
 router.get("/Noticias", (req, res) => {
@@ -1539,7 +1540,8 @@ router.get("/Aulas/usuario/:id", (req, res) => {
   const sql = `
     SELECT a.ID, a.Aula_Nombre, m.Materia_Nombre, 
            CONCAT(c.Curso_Nombre, ' ', j.Jornada_Nombre) AS Curso_Nombre, 
-           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Profesor
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Profesor,
+           a.usuario_id  -- 👈 IMPORTANTE: para verificar si el usuario creó el aula
     FROM Aula a
     JOIN Materia m ON a.materia_id = m.ID
     JOIN Curso c ON a.curso_id = c.ID
@@ -1558,5 +1560,198 @@ router.get("/Aulas/usuario/:id", (req, res) => {
     }
 
     res.json(results);
+  });
+});
+
+// Eliminar comentario por ID (con validación del usuario opcional)
+router.delete("/ComentariosAlum/:id", (req, res) => {
+  const comentarioId = req.params.id;
+  const usuarioId = parseInt(req.query.usuario_id);
+
+  const queryVerificar = "SELECT * FROM Comentario WHERE ID = ?";
+
+  conexion.query(queryVerificar, [comentarioId], (err, result) => {
+    if (err || result.length === 0) {
+      return res.status(404).json({ mensaje: "Comentario no encontrado" });
+    }
+
+    if (result[0].usuario_id !== usuarioId) {
+      return res.status(403).json({ mensaje: "No tienes permiso para eliminar este comentario" });
+    }
+
+    // Eliminar si es del usuario logueado
+    const queryEliminar = "DELETE FROM Comentario WHERE ID = ?";
+    conexion.query(queryEliminar, [comentarioId], (error) => {
+      if (error) {
+        console.error("❌ Error al eliminar el comentario:", error);
+        res.status(500).json({ mensaje: "Error al eliminar el comentario" });
+      } else {
+        res.json({ mensaje: "Comentario eliminado correctamente" });
+      }
+    });
+  });
+});
+
+// obtener comentario
+router.get("/ComentariosAlum/Trabajo/:trabajo_id", (req, res) => {
+  const trabajoId = req.params.trabajo_id;
+  const query = `
+    SELECT c.ID, c.Descripcion, c.Fecha,
+           c.usuario_id,
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Nombre_Usuario,
+           u.RutaFoto
+    FROM Comentario c
+    JOIN Usuario u ON c.usuario_id = u.ID
+    WHERE c.trabajo_id = ?
+    ORDER BY c.Fecha DESC
+  `;
+
+  conexion.query(query, [trabajoId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener los comentarios:", error);
+      res.status(500).json({ error: "Error al obtener comentarios" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Obtener comentarios por anuncio (versión para alumno)
+router.get("/ComentariosAlum/Anuncio/:anuncio_id", (req, res) => {
+  const anuncioId = req.params.anuncio_id;
+
+  const query = `
+    SELECT c.ID, c.Descripcion, c.Fecha,
+           c.usuario_id,
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Nombre_Usuario,
+           u.RutaFoto
+    FROM Comentario c
+    JOIN Usuario u ON c.usuario_id = u.ID
+    WHERE c.anuncio_id = ?
+    ORDER BY c.Fecha DESC
+  `;
+
+  conexion.query(query, [anuncioId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener comentarios:", error);
+      res.status(500).json({ mensaje: "Error al obtener comentarios" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Eliminar comentario (con validación de usuario)
+router.delete("/ComentariosAlumAnuncio/:id", (req, res) => {
+  const comentarioId = req.params.id;
+  const usuarioId = parseInt(req.query.usuario_id);
+
+  const queryVerificar = "SELECT * FROM Comentario WHERE ID = ?";
+  conexion.query(queryVerificar, [comentarioId], (err, result) => {
+    if (err || result.length === 0) {
+      return res.status(404).json({ mensaje: "Comentario no encontrado" });
+    }
+
+    if (result[0].usuario_id !== usuarioId) {
+      return res.status(403).json({ mensaje: "No tienes permiso para eliminar este comentario" });
+    }
+
+    const queryEliminar = "DELETE FROM Comentario WHERE ID = ?";
+    conexion.query(queryEliminar, [comentarioId], (error) => {
+      if (error) {
+        console.error("Error al eliminar comentario:", error);
+        res.status(500).json({ mensaje: "Error al eliminar comentario" });
+      } else {
+        res.json({ mensaje: "Comentario eliminado correctamente" });
+      }
+    });
+  });
+});
+
+// -------------------------------------Subir trabajos como Alumno------------------------------------------
+
+router.get("/TrabajoEntregado/:trabajoId/:usuarioId", (req, res) => {
+  const { trabajoId, usuarioId } = req.params;
+
+  const sqlEntrega = "SELECT * FROM TrabajoEntregado WHERE trabajo_id = ? AND usuario_id = ?";
+  const sqlArchivos = `
+    SELECT * FROM TrabajoEntregado_Archivo 
+    WHERE trabajo_entregado_id = ?
+  `;
+
+  conexion.query(sqlEntrega, [trabajoId, usuarioId], (err, entregaResult) => {
+    if (err) return res.status(500).json({ error: "Error al obtener la entrega" });
+
+    if (entregaResult.length === 0) return res.json(null); // No entregado
+
+    const entrega = entregaResult[0];
+
+    conexion.query(sqlArchivos, [entrega.ID], (err2, archivosResult) => {
+      if (err2) return res.status(500).json({ error: "Error al obtener archivos entregados" });
+
+      res.json({
+        entrega,
+        archivos: archivosResult
+      });
+    });
+  });
+});
+
+router.post("/TrabajoEntregado", upload.array("archivo"), (req, res) => {
+  const { trabajo_id, usuario_id } = req.body;
+  const fecha = new Date().toISOString().split("T")[0];
+
+  const sqlInsertar = `
+    INSERT INTO TrabajoEntregado (Fecha_Trabajo, trabajo_id, usuario_id) 
+    VALUES (?, ?, ?)
+  `;
+
+  conexion.query(sqlInsertar, [fecha, trabajo_id, usuario_id], (err, result) => {
+    if (err) return res.status(500).json({ error: "Error al registrar entrega" });
+
+    const trabajoEntregadoId = result.insertId;
+
+    const archivos = req.files.map(file => [
+      trabajoEntregadoId,
+      file.filename,
+      file.originalname
+    ]);
+
+    const sqlInsertarArchivos = `
+      INSERT INTO TrabajoEntregado_Archivo 
+      (trabajo_entregado_id, ruta_archivo, nombre_original) 
+      VALUES ?
+    `;
+
+    conexion.query(sqlInsertarArchivos, [archivos], (err2) => {
+      if (err2) return res.status(500).json({ error: "Error al guardar archivos" });
+
+      res.json({ mensaje: "Trabajo entregado exitosamente" });
+    });
+  });
+});
+
+router.delete("/TrabajoEntregado/:trabajoId/:usuarioId", (req, res) => {
+  const { trabajoId, usuarioId } = req.params;
+
+  const sqlObtener = `
+    SELECT ID FROM TrabajoEntregado 
+    WHERE trabajo_id = ? AND usuario_id = ?
+  `;
+
+  conexion.query(sqlObtener, [trabajoId, usuarioId], (err, result) => {
+    if (err) return res.status(500).json({ error: "Error al buscar entrega" });
+
+    if (result.length === 0) return res.status(404).json({ mensaje: "Entrega no encontrada" });
+
+    const entregaId = result[0].ID;
+
+    const sqlEliminar = "DELETE FROM TrabajoEntregado WHERE ID = ?";
+
+    conexion.query(sqlEliminar, [entregaId], (err2) => {
+      if (err2) return res.status(500).json({ error: "Error al eliminar entrega" });
+
+      res.json({ mensaje: "Entrega cancelada correctamente" });
+    });
   });
 });

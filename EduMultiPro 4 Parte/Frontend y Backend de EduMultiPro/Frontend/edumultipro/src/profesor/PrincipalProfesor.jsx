@@ -8,14 +8,28 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
 
+import { useEffect, useState } from 'react';
+import ErrorImg from '../assets/error.png'; // Imagen por defecto
+
 import Img1Carrucel from '../assets/f1.png';
 import Img2Carrucel from '../assets/f2.png';
 import Img3Carrucel from '../assets/f3.png';
-import Img1Noticia from '../assets/1.png';
-import Img2Noticia from '../assets/2.png';
-import Img3Noticia from '../assets/3.png';
 
 function PrincipalProfesor(){
+
+    const [noticias, setNoticias] = useState({
+        noticia1: null,
+        noticia2: null,
+        noticia3: null,
+    });
+
+    useEffect(() => {
+    fetch("http://localhost:3000/api/edumultipro/NoticiasPrincipales")
+        .then(res => res.json())
+        .then(data => setNoticias(data))
+        .catch(error => console.error("Error al cargar noticias:", error));
+    }, []);
+
     return (
     <>
         <div className='contenedor'>
@@ -66,71 +80,29 @@ function PrincipalProfesor(){
                     </div>
                     <div className="row">
 
-                        {/*<!-- Noticia principal 1-->*/}
-                        {/*% if noticia1 and 'Imagen1' in noticia1 %*/}
-                            <div className="col-xl-4">
-                                <div className="imagen">
-                                    <Link to={"/VerNoticiaProfesor"}>
-                                    <img src={Img1Noticia} alt="Imagen de noticia"/>
-                                    </Link>
-                                </div>
-                                <div className="encabezado">
-                                    <h2>Titulo_Noticia</h2>
-                                    <p>Encabezado</p>
-                                </div>
+                        {[noticias.noticia1, noticias.noticia2, noticias.noticia3].map((noticia, index) => (
+                            <div key={index} className="col-xl-4">
+                            <div className="imagen">
+                                {noticia && noticia.Imagen1 ? (
+                                <Link to={`/VerNoticiaProfesor/${noticia.ID}`}>
+                                    <img src={`http://localhost:3000/imagenes/${noticia.Imagen1}`} alt="Imagen de noticia" />
+                                </Link>
+                                ) : (
+                                <img src={ErrorImg} alt="No hay imagen" />
+                                )}
                             </div>
-                        {/*% else %
-                            <div className="col-xl-4">
-                            <div className="imagen"><img src="{{ url_for('static', filename='img/error.png') }}" alt="Imagen de noticia"></div>
                             <div className="encabezado">
-                                <h2>No hay Noticias Disponibles</h2>
+                                {noticia ? (
+                                <>
+                                    <h2>{noticia.Titulo_Noticia}</h2>
+                                    <p>{noticia.Encabezado}</p>
+                                </>
+                                ) : (
+                                <p>No hay Noticia</p>
+                                )}
                             </div>
                             </div>
-                        {% endif %*/}
-
-                        {/*<!-- Noticia principal 2-->*/}
-                        {/*% if noticia2 and 'Imagen1' in noticia2 %*/}
-                            <div className="col-xl-4">
-                                <div className="imagen">
-                                    <Link to={"/VerNoticiaProfesor"}>
-                                    <img src={Img2Noticia} alt="Imagen de noticia"/>
-                                    </Link>
-                                </div>
-                                <div className="encabezado">
-                                    <h2>Titulo_Noticia</h2>
-                                    <p>Encabezado</p>
-                                </div>
-                            </div>
-                        {/*% else %*
-                            <div className="col-xl-4">
-                            <div className="imagen"><img src="{{ url_for('static', filename='img/error.png') }}" alt="Imagen de noticia"></div>
-                            <div className="encabezado">
-                                <h2>No hay Noticias Disponibles</h2>
-                            </div>
-                            </div>
-                        {% endif %*/}
-
-                        {/*<!-- Noticia principal 3-->*/}
-                        {/*% if noticia3 and 'Imagen1' in noticia3 %*/}
-                            <div className="col-xl-4">
-                                <div className="imagen">
-                                    <Link to={"/VerNoticiaProfesor"}>
-                                    <img src={Img3Noticia} alt="Imagen de noticia"/>
-                                    </Link>
-                                </div>
-                                <div className="encabezado">
-                                    <h2>Titulo_Noticia</h2>
-                                    <p>Encabezado</p>
-                                </div>
-                            </div>
-                        {/*% else %*
-                            <div className="col-xl-4">
-                            <div className="imagen"><img src="{{ url_for('static', filename='img/error.png') }}" alt="Imagen de noticia"></div>
-                            <div className="encabezado">
-                                <h2>No hay Noticias Disponibles</h2>
-                            </div>
-                            </div>
-                        {% endif %*/}
+                        ))}
 
                     </div>
                 </div>

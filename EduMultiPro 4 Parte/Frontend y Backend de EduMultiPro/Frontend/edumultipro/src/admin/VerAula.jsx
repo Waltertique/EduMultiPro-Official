@@ -8,7 +8,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import imgAula from '../assets/usuario.png';
 
 function VerAula(){
 
@@ -371,7 +370,7 @@ function VerAula(){
                                         <h2>{new Date(comentario.Fecha).toLocaleDateString()}</h2>
                                         </div>
                                         <div className="desc">
-                                        <p>{comentario.Descripcion}</p>
+                                            <p>{comentario.Descripcion}</p>
                                         </div>
                                         <button
                                             className="btn-icon eliminar"

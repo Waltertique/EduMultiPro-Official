@@ -1,0 +1,234 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fondo);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+
+/* article -------------------- article */
+
+#centro1{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+#contenido {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+/* tabla -------------------- tabla*/
+#contenidoTabla{
+    flex: 1;
+    padding: 20px;
+}
+.tituloCrearNoticia{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 30px 10px 30px;
+    border-bottom: 2px solid var(--azul-primario);
+    margin-bottom: 30px;
+}
+.tituloCrearNoticia h1{
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--azul-primario);
+}
+
+.contenidoCrearNoticia{  
+    overflow-x: auto;
+    margin: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
+    width: 90%; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.flash-message {
+    font-size: 0.8rem; /* Letra pequeña */
+    padding: 6px 10px;
+    margin: 10px auto;
+    border-radius: 4px;
+    max-width: 350px;
+    text-align: center;
+    width: 250px;
+    height: 70px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  .flash-message.success {
+    background-color: #e0f7e9;
+    color: #1a6f3c;
+    border: 1px solid #b2dfdb;
+  }
+
+  .flash-message.danger {
+    background-color: #fde2e2;
+    color: #a94442;
+    border: 1px solid #f5c6cb;
+  }
+
+  .flash-message.warning {
+    background-color: #fff9d6;
+    color: #8a6d3b;
+    border: 1px solid #ffeeba;
+  }
+
+.contenidoCrearNoticia form{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0px auto;
+}
+.contenidoCrearNoticia form input{
+    background: var(--gris-claro);
+    color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    margin-bottom: 30px;
+}
+.contenidoCrearNoticia form select{
+    background: var(--gris-claro);
+    color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    margin: 10px 10px;
+}
+.contenidoCrearNoticia form #encabezado{
+    background-color: var(--gris-claro);
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    height: 60px;
+}
+.contenidoCrearNoticia form textarea{
+    background-color: var(--gris-claro);
+    color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--azul-primario);
+    height: 200px;
+    margin-bottom: 30px;
+}
+.contenidoCrearNoticia form button{
+    margin: 30px auto;
+    width: 40%;
+}
+.contenidoCrearNoticia form button{
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.contenidoCrearNoticia form button:hover{
+    background-color: black;
+}
+
+@media (min-width: 100px) and (max-width: 414px) {
+
+    /* centro -------------------- centro */
+
+    .tituloCrearNoticia{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .tituloCrearNoticia h1{
+        margin-bottom: 20px;
+    }
+
+    .contenidoCrearNoticia{
+        padding: 30px 5px;
+    }
+    .contenidoCrearNoticia form input{
+        width: 100%;
+    }
+    .contenidoCrearNoticia form button{
+        width: 160px;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 575px) {
+    
+    /* centro -------------------- centro */
+
+    .tituloCrearNoticia{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .tituloCrearNoticia h1{
+        margin-bottom: 20px;
+    }
+
+    .contenidoCrearNoticia{
+        padding: 30px 5px;
+    }
+    .contenidoCrearNoticia form button{
+        width: 160px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+
+    /* centro -------------------- centro */
+
+    .tituloCrearNoticia{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .tituloCrearNoticia h1{
+        margin-bottom: 20px;
+    }
+
+    .contenidoCrearNoticia{
+        padding: 30px 5px;
+    }
+    .contenidoCrearNoticia form button{
+        width: 160px;
+    }
+}

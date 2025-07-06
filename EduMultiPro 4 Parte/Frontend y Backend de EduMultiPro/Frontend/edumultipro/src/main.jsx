@@ -33,6 +33,20 @@ import VerTrabajoEntregado from './admin/VerTrabajoEntregado.jsx';
 
 //--Aqui los links del Coordinador--
 import PrincipalCoordinador from './coordinador/PrincipalCoordinador.jsx';
+import HorarioCoordinador from './coordinador/HorarioCoordinador.jsx';
+import NoticiaCoordinador from './coordinador/NoticiaCoordinador.jsx';
+import MateriaCoordinador from './coordinador/MateriaCoordinador.jsx';
+import GradoCoordinador from './coordinador/GradoCoordinador.jsx';
+import JornadaCoordinador from './coordinador/JornadaCoordinador.jsx';
+import CrearCursoCoordinador from './coordinador/CrearCursoCoordinador.jsx';
+import VerCursoCoordinador from './coordinador/VerCursoCoordinador.jsx';
+import CrearHorarioCoordinador from './coordinador/CrearHorarioCoordinador.jsx';
+import ActualizarHorarioCoordinador from './coordinador/ActualizarHorarioCoordinador.jsx';
+import VerHorarioCoordinador from './coordinador/VerHorarioCoordinador.jsx';
+import VerNoticiaCoordinador from './coordinador/VerNoticiaCoordinador.jsx';
+import ActualizarNoticiaCoordinador from './coordinador/ActualizarNoticiaCoordinador.jsx';
+import CrearNoticiaCoordinador from './coordinador/CrearNoticiaCoordinador.jsx';
+import PerfilCoordinador from './coordinador/PerfilCoordinador.jsx';
 
 //--Aqui los links del Profesor--
 import PrincipalProfesor from './profesor/PrincipalProfesor.jsx';
@@ -41,6 +55,15 @@ import VerNoticiaProfesor from './profesor/VerNoticiaProfesor.jsx';
 import HorarioProfesor from './profesor/HorarioProfesor.jsx';
 import ClaseProfesor from './profesor/ClaseProfesor.jsx';
 import PerfilProfesor from './profesor/PerfilProfesor.jsx';
+import CrearAulaProfesor from './profesor/CrearAulaProfesor.jsx';
+import VerAulaProfesor from './profesor/VerAulaProfesor.jsx';
+import TrabajoProfesor from './profesor/TrabajoProfesor.jsx';
+import PersonasProfesor from './profesor/PersonasProfesor.jsx';
+import NotaProfesor from './profesor/NotaProfesor.jsx';
+import CrearTrabajoProfesor from './profesor/CrearTrabajoProfesor.jsx';
+import ActualizarTrabajoProfesor from './profesor/ActualizarTrabajoProfesor.jsx';
+import VerTrabajoProfesor from './profesor/VerTrabajoProfesor.jsx';
+import VerTrabajoEntregadoProfesor from './profesor/VerTrabajoEntregadoProfesor.jsx';
 
 //--Aqui los links del Alumno--
 import PrincipalAlumno from './alumno/PrincipalAlumno.jsx';
@@ -90,14 +113,37 @@ createRoot(document.getElementById('root')).render(
 
         {/*--Aqui los links del Coordinador--*/}
         <Route path="/PrincipalCoordinador" element={<PrincipalCoordinador />} />
+        <Route path="/HorarioCoordinador" element={<HorarioCoordinador />} />
+        <Route path="/NoticiaCoordinador" element={<NoticiaCoordinador />} />
+        <Route path="/MateriaCoordinador" element={<MateriaCoordinador />} />
+        <Route path="/GradoCoordinador" element={<GradoCoordinador />} />
+        <Route path="/JornadaCoordinador" element={<JornadaCoordinador />} />
+        <Route path="/CrearCursoCoordinador" element={<CrearCursoCoordinador />} />
+        <Route path="/VerCursoCoordinador/:id" element={<VerCursoCoordinador />} />
+        <Route path="/CrearHorarioCoordinador" element={<CrearHorarioCoordinador />} />
+        <Route path="/ActualizarHorarioCoordinador/:id" element={<ActualizarHorarioCoordinador />} />
+        <Route path="/VerHorarioCoordinador/:id" element={<VerHorarioCoordinador />} />
+        <Route path="/VerNoticiaCoordinador/:id" element={<VerNoticiaCoordinador />} />
+        <Route path="/ActualizarNoticiaCoordinador/:id" element={<ActualizarNoticiaCoordinador />} />
+        <Route path="/CrearNoticiaCoordinador" element={<CrearNoticiaCoordinador />} />
+        <Route path="/PerfilCoordinador" element={<PerfilCoordinador />} />
 
         {/*--Aqui los links del Profesor--*/}
         <Route path="/PrincipalProfesor" element={<PrincipalProfesor />} />
         <Route path="/NoticiaProfesor" element={<NoticiaProfesor />} />
-        <Route path="/VerNoticiaProfesor" element={<VerNoticiaProfesor />} />
+        <Route path="/VerNoticiaProfesor/:id" element={<VerNoticiaProfesor />} />
         <Route path="/HorarioProfesor" element={<HorarioProfesor />} />
         <Route path="/ClaseProfesor" element={<ClaseProfesor />} />
         <Route path="/PerfilProfesor" element={<PerfilProfesor />} />
+        <Route path="/CrearAulaProfesor" element={<CrearAulaProfesor />} />
+        <Route path="/VerAulaProfesor/:id" element={<VerAulaProfesor />} />
+        <Route path="/TrabajoProfesor/:id" element={<TrabajoProfesor />} />
+        <Route path="/PersonasProfesor/:id" element={<PersonasProfesor />} />
+        <Route path="/NotaProfesor/:id" element={<NotaProfesor />} />
+        <Route path="/CrearTrabajoProfesor/:id" element={<CrearTrabajoProfesor />} />
+        <Route path="/ActualizarTrabajoProfesor/:id" element={<ActualizarTrabajoProfesor />} />
+        <Route path="/VerTrabajoProfesor/:trabajoId/:aulaId" element={<VerTrabajoProfesor />} />
+        <Route path="/VerTrabajoEntregadoProfesor/:trabajoId/:aulaId" element={<VerTrabajoEntregadoProfesor />} />
 
         {/*--Aqui los links del Alumno--*/}
         <Route path="/PrincipalAlumno" element={<PrincipalAlumno />} />
@@ -106,10 +152,10 @@ createRoot(document.getElementById('root')).render(
         <Route path="/HorarioAlumno" element={<HorarioAlumno />} />
         <Route path="/ClaseAlumno" element={<ClaseAlumno />} />
         <Route path="/PerfilAlumno" element={<PerfilAlumno />} />
-        <Route path="/VerAulaAlumno" element={<VerAulaAlumno />} />
-        <Route path="/TrabajoAlumno" element={<TrabajoAlumno />} />
-        <Route path="/PersonaAlumno" element={<PersonaAlumno />} />
-        <Route path="/VerTrabajoAlumno" element={<VerTrabajoAlumno />} />
+        <Route path="/VerAulaAlumno/:id" element={<VerAulaAlumno />} />
+        <Route path="/TrabajoAlumno/:id" element={<TrabajoAlumno />} />
+        <Route path="/PersonaAlumno/:id" element={<PersonaAlumno />} />
+        <Route path="/VerTrabajoAlumno/:trabajoId/:aulaId" element={<VerTrabajoAlumno />} />
 
       </Routes>
     </BrowserRouter>

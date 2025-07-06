@@ -60,9 +60,44 @@
     
 }
 
+.modificarAulaProfesor{
+    width: 80%;
+    height: auto;
+    background-color: white;
+    padding: 20px 20px;
+    margin: 30px auto 0px auto;
+    border-radius: 20px;
+    text-align: center;
+}
+.modificarAulaProfesor h1{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.modificarAulaProfesor input{
+    border: 1px solid var(--azul-primario);
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-right: 20px;
+    background: white;
+    color: black;
+}
+.modificarAulaProfesor select{
+    background: white;
+    color: black;
+}
+.btn-cancelar{
+    margin-left: 20px;
+}
+#editarAulaNombre, #editarMateria{
+    border: 1px solid var(--azul-primario);
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-right: 20px;
+}
+
 .contenedor-tablaAulaProfesor{  
     overflow-x: auto;
-    margin: 20px auto;
+    margin: 40px auto;
     background-color: white;
     padding: 20px;
     border-radius: 15px;

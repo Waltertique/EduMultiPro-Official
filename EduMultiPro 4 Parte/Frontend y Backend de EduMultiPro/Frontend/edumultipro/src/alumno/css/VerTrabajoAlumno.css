@@ -60,7 +60,7 @@
     padding: 15px 0px;
     width: 280px;
     height: auto;
-    border: 1px solid rgb(185, 120, 29);
+    border: 1px solid var(--azul-primario);
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -73,7 +73,7 @@
 .contenido2VerTrabajoAlumno .subirtr .mitrabajo{
     width: 220px;
     height: 40px;
-    border: 1px solid rgb(185, 120, 29);
+    border: 1px solid var(--azul-primario);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -103,7 +103,7 @@
     margin-top: 15px;
     width: 220px;
     height: 40px;
-    border: 1px solid rgb(185, 120, 29);
+    border: 1px solid var(--azul-primario);
     border-radius: 20px;
     font-size: 17px;
     background: var(--azulClaro);
@@ -136,8 +136,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-top: 1px solid rgb(185, 120, 29);
-    border-bottom: 1px solid rgb(185, 120, 29);
+    border-top: 1px solid var(--azul-primario);
+    border-bottom: 1px solid var(--azul-primario);
 }
 .contenido1VerTrabajoAlumno .fecha div{
     display: flex;
@@ -167,7 +167,7 @@
     width: 150px;
     margin-right: 20px;
     height: 50px;
-    border: 1px solid rgb(185, 120, 29);
+    border: 1px solid var(--azul-primario);
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -186,7 +186,7 @@
     margin: 30px 0px 0px 0px;
     width: 820px;
     height: 100px;
-    border-top: 1px solid rgb(185, 120, 29);
+    border-top: 1px solid var(--azul-primario);
     display: flex;
     flex-direction: row;
 }

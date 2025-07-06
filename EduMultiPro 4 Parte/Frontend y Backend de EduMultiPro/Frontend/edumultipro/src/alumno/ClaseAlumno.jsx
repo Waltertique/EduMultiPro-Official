@@ -99,7 +99,7 @@ function ClaseAlumno(){
                                 <td>{aula.Curso_Nombre}</td>
                                 <td>{aula.Profesor}</td>
                                 <td>
-                                <Link to={`/VerAulaAlumno`}>
+                                <Link to={`/VerAulaAlumno/${aula.ID}`}>
                                     <button className="informacion">
                                     <i className="fa-solid fa-circle-info"></i>
                                     </button>

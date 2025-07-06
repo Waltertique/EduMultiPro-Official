@@ -1,0 +1,193 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fondo);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+
+/* article -------------------- article */
+
+#centro1{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+#contenido {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+/* tabla -------------------- tabla*/
+#contenidoTabla{
+    flex: 1;
+    padding: 20px;
+}
+
+.tituloPerfilCoordinador{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 30px 10px 30px;
+    border-bottom: 2px solid black;
+    margin: 0px auto;
+}
+.tituloPerfilCoordinador h1{
+    font-size: 50px;
+    font-weight: bold;  
+}
+.contenidoTablaCoordinador2{
+    overflow-x: auto;
+    margin: auto;
+    background-color: var(--gris-medio);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); 
+    width: 90%; 
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.contenidoTablaCoordinador2 #PerfilUsuario{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0px;
+}
+.contenidoTablaCoordinador2 #PerfilUsuario th{
+    padding: 10px;
+    text-align: center !important;
+    border: 1px solid rgb(173, 173, 173);
+}
+.contenidoTablaCoordinador2 #PerfilUsuario td{
+    padding: 10px;
+    text-align: center !important;
+    border: 1px solid rgb(173, 173, 173);
+    border-bottom: 1px solid rgb(173, 173, 173) !important;
+}
+.contenidoTablaCoordinador2 #PerfilUsuario td img{
+    width: 160px;
+}
+#espaciofoto{
+    padding: 0px;
+}
+@media (min-width: 100px) and (max-width: 414px) {
+    .tituloPerfilCoordinador{
+        display: flex;
+        justify-content: center;
+    }
+    .tituloPerfilCoordinador h1{
+        font-size: 30px;
+    }
+    .contenidoTablaCoordinador2{
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .contenidoTablaCoordinador2 #PerfilUsuario,
+    .contenidoTablaCoordinador2 #PerfilUsuario thead,
+    .contenidoTablaCoordinador2 #PerfilUsuario tbody,
+    .contenidoTablaCoordinador2 #PerfilUsuario th,
+    .contenidoTablaCoordinador2 #PerfilUsuario td,
+    .contenidoTablaCoordinador2 #PerfilUsuario tr {
+        display: block;
+        width: 100%;
+    }
+}
+@media (min-width: 415px) and (max-width: 575px) {
+    .tituloPerfilCoordinador{
+        display: flex;
+        justify-content: center;
+    }
+    .tituloPerfilCoordinador h1{
+        font-size: 30px;
+    }
+    .contenidoTablaCoordinador2{
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .contenidoTablaCoordinador2 #PerfilUsuario,
+    .contenidoTablaCoordinador2 #PerfilUsuario thead,
+    .contenidoTablaCoordinador2 #PerfilUsuario tbody,
+    .contenidoTablaCoordinador2 #PerfilUsuario th,
+    .contenidoTablaCoordinador2 #PerfilUsuario td,
+    .contenidoTablaCoordinador2 #PerfilUsuario tr {
+        display: block;
+        width: 100%;
+    }
+}
+@media (min-width: 576px) and (max-width: 767px){
+    .tituloPerfilCoordinador{
+        display: flex;
+        justify-content: center;
+    }
+    .tituloPerfilCoordinador h1{
+        font-size: 30px;
+    }
+    .contenidoTablaCoordinador2{
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .contenidoTablaCoordinador2 #PerfilUsuario,
+    .contenidoTablaCoordinador2 #PerfilUsuario thead,
+    .contenidoTablaCoordinador2 #PerfilUsuario tbody,
+    .contenidoTablaCoordinador2 #PerfilUsuario th,
+    .contenidoTablaCoordinador2 #PerfilUsuario td,
+    .contenidoTablaCoordinador2 #PerfilUsuario tr {
+        display: block;
+        width: 100%;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .contenidoTablaCoordinador2{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .contenidoTablaCoordinador2 #PerfilUsuario,
+    .contenidoTablaCoordinador2 #PerfilUsuario thead,
+    .contenidoTablaCoordinador2 #PerfilUsuario tbody,
+    .contenidoTablaCoordinador2 #PerfilUsuario th,
+    .contenidoTablaCoordinador2 #PerfilUsuario td,
+    .contenidoTablaCoordinador2 #PerfilUsuario tr {
+        display: block;
+        width: 100%;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    .contenidoTablaCoordinador2{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
