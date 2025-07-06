@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 import { useEffect, useState } from 'react';
 import ErrorImg from '../assets/error.png';
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 function NoticiaProfesor(){
 
@@ -24,6 +25,7 @@ function NoticiaProfesor(){
     
     return (
     <>
+        <ProteccionRuta rolRequerido="R002" />
         <div className='contenedor'>
 
             {/*---Nav---*/}

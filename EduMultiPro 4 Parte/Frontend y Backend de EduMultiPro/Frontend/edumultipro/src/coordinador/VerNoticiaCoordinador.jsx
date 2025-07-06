@@ -9,6 +9,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 function VerNoticiaCoordinador(){
 
@@ -30,6 +31,7 @@ function VerNoticiaCoordinador(){
 
     return(
         <>
+            <ProteccionRuta rolRequerido="R003" />
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />

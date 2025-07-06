@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 import { useEffect, useState } from 'react';
 import ErrorImg from '../assets/error.png'; // Imagen por defecto
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 import Img1Carrucel from '../assets/f1.png';
 import Img2Carrucel from '../assets/f2.png';
@@ -32,6 +33,7 @@ function PrincipalProfesor(){
 
     return (
     <>
+        <ProteccionRuta rolRequerido="R002" />
         <div className='contenedor'>
 
             {/*---Nav---*/}

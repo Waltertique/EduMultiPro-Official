@@ -8,6 +8,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 function ActualizarNoticia(){
 
@@ -85,6 +86,7 @@ function ActualizarNoticia(){
 
     return(
         <>
+          <ProteccionRuta rolRequerido="R004" />
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />

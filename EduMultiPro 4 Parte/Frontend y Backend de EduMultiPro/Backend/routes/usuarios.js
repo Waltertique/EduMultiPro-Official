@@ -3,6 +3,10 @@ const router = express.Router();
 const conexion = require("../db/conexion");
 const bcrypt = require('bcryptjs');
 
+//JSON WEB TOKEN
+const jwt = require('jsonwebtoken');
+const JWT_SECRETO = 'mi_clave_super_secreta';
+
 const multer = require('multer');
 const path = require('path');
 
@@ -20,6 +24,24 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 //Controlador del Login
+
+const verificarToken = (req, res, next) => { //Sirve para verificar si el cliente (frontend) envió un token válido en la solicitud
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1]; //sirve para obtener solo el token
+
+  if (!token) return res.status(401).json({ mensaje: 'Token no proporcionado' });
+
+  jwt.verify(token, JWT_SECRETO, (err, usuario) => {
+    if (err) return res.status(403).json({ mensaje: 'Token inválido o expirado' });
+    req.usuario = usuario; // se guarda en la petición
+    next();
+  });
+};
+
+router.get('/perfil', verificarToken, (req, res) => { //Esta ruta está protegida por el middleware verificarToken. Si el token es válido, responde con el mensaje y los datos del usuario.
+  res.json({ mensaje: 'Acceso a perfil autorizado', usuario: req.usuario });
+});
+
 router.post('/login', (req, res) => {
   const { correo, contrasena } = req.body;
 
@@ -36,7 +58,6 @@ router.post('/login', (req, res) => {
 
     const usuario = resultados[0];
 
-    // Comparar la contraseña ingresada con el hash
     bcrypt.compare(contrasena, usuario.Contraseña, (err, coinciden) => {
       if (err) {
         console.error('❌ Error al comparar contraseñas:', err);
@@ -44,7 +65,20 @@ router.post('/login', (req, res) => {
       }
 
       if (coinciden) {
-        res.json({ mensaje: 'Login exitoso', usuario: { id: usuario.ID, nombre: usuario.Primer_Nombre, rol: usuario.rol_id } });
+        const payload = {
+          id: usuario.ID,
+          nombre: usuario.Primer_Nombre,
+          rol: usuario.rol_id
+        };
+
+        // Crear token sin duración
+        const token = jwt.sign(payload, JWT_SECRETO); // ✅ Sin expiración
+
+        res.json({
+          mensaje: 'Login exitoso',
+          token,
+          usuario: payload
+        });
       } else {
         res.status(401).json({ mensaje: 'Contraseña incorrecta' });
       }

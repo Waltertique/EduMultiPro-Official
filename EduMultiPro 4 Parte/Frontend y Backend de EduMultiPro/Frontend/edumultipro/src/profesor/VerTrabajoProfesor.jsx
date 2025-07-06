@@ -12,6 +12,7 @@ import './css/VerTrabajoProfesor.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 
 function VerTrabajoProfesor(){ 
@@ -56,6 +57,7 @@ function VerTrabajoProfesor(){
 
     return (
     <>
+        <ProteccionRuta rolRequerido="R002" />
         <div className='contenedor'>
 
             {/*---Nav---*/}

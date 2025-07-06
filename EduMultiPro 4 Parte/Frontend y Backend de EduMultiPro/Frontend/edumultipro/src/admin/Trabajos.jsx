@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link, useParams } from 'react-router-dom';
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 function Trabajos(){
 
@@ -103,6 +104,7 @@ function Trabajos(){
 
     return(
         <>
+            <ProteccionRuta rolRequerido="R004" />
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />

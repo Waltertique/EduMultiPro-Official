@@ -8,6 +8,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 function VerAula(){
 
@@ -173,6 +174,7 @@ function VerAula(){
 
     return(
         <>
+            <ProteccionRuta rolRequerido="R004" />
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />

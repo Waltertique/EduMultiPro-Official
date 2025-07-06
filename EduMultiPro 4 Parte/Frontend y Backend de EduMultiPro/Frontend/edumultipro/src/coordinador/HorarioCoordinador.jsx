@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 function HorarioCoordinador(){
 
@@ -95,6 +96,7 @@ function HorarioCoordinador(){
 
     return(
         <>
+            <ProteccionRuta rolRequerido="R003" />
             <div className='contenedor'>
 
                 {/*---Nav---*/}

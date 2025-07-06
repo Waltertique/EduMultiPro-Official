@@ -12,6 +12,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 function Personas(){
 
@@ -62,6 +63,7 @@ function Personas(){
 
     return(
         <>
+            <ProteccionRuta rolRequerido="R004" />
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />

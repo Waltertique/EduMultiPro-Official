@@ -10,6 +10,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Imgtrabajo from '../assets/f9.png';
 import Imgtrabajo2 from '../assets/f8.png';
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 function VerTrabajoAlumno(){
 
@@ -117,6 +118,7 @@ function VerTrabajoAlumno(){
 
     return (
     <>
+        <ProteccionRuta rolRequerido="R001" />
         <div className='contenedor'>
 
             {/*---Nav---*/}

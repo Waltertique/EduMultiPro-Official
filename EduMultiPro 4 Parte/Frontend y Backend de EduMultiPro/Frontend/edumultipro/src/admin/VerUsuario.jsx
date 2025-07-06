@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 function VerUsuario(){
 
@@ -85,6 +86,7 @@ const { id } = useParams(); // URL: /VerUsuario/:id
 
     return(
         <>
+          <ProteccionRuta rolRequerido="R004" />
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />

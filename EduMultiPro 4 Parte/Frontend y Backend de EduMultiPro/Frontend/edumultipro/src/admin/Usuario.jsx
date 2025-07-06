@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'; // datatables
 import $ from 'jquery';
 import 'datatables.net-dt'; // JS
 
+import ProteccionRuta from '../ProteccionRuta.jsx';
 import Encabezado from '../Encabezado.jsx';
 import Footer from '../footer.jsx';
 import Desplegable from '../Desplegable.jsx';
@@ -16,91 +17,93 @@ function Usuario() {
 
   const [usuarios, setUsuarios] = useState([]);
 
-const obtenerUsuarios = async () => {
-  try {
-    const res = await fetch("http://localhost:3000/api/edumultipro/Usuarios");
-    const data = await res.json();
-    setUsuarios(data);
-  } catch (err) {
-    console.error("Error al obtener usuarios:", err);
-  }
-};
-
-// ⚙️ Inicializa DataTable
-const inicializarDataTable = () => {
-  if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-    $('#tablaUsuarios').DataTable().destroy();
-  }
-
-  $('#tablaUsuarios').DataTable({
-    language: {
-      processing: "Procesando...",
-      search: "Buscar:",
-      lengthMenu: "Mostrar _MENU_ registros",
-      info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-      infoEmpty: "Mostrando 0 a 0 de 0 registros",
-      infoFiltered: "(filtrado de _MAX_ registros totales)",
-      loadingRecords: "Cargando...",
-      zeroRecords: "No se encontraron resultados",
-      emptyTable: "No hay datos en la tabla",
-      paginate: {
-        previous: "Anterior",
-        next: "Siguiente"
-      },
-      aria: {
-        sortAscending: ": activar para ordenar la columna ascendente",
-        sortDescending: ": activar para ordenar la columna descendente"
-      }
+  const obtenerUsuarios = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/edumultipro/Usuarios");
+      const data = await res.json();
+      setUsuarios(data);
+    } catch (err) {
+      console.error("Error al obtener usuarios:", err);
     }
-  });
-};
+  };
 
-// ✅ Eliminar usuario sin recargar datos
-const eliminarUsuario = async (id) => {
-  const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar este usuario?");
-  if (!confirmacion) return;
+  // ⚙️ Inicializa DataTable
+  const inicializarDataTable = () => {
+    if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+      $('#tablaUsuarios').DataTable().destroy();
+    }
 
-  // 🔴 1. Destruir DataTable antes de cambiar los datos
-  if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-    $('#tablaUsuarios').DataTable().destroy();
-  }
-
-  try {
-    const res = await fetch(`http://localhost:3000/api/edumultipro/usuarios/${id}`, {
-      method: "DELETE",
-    });
-
-    const data = await res.json();
-    alert(data.mensaje);
-
-    // 🟡 2. Actualizar usuarios SIN volver a hacer fetch
-    const nuevosUsuarios = usuarios.filter((usuario) => usuario.ID !== id);
-    setUsuarios(nuevosUsuarios); // Aquí React actualiza la tabla
-
-  } catch (error) {
-    console.error("Error al eliminar el usuario:", error);
-    alert("Hubo un error al intentar eliminar el usuario.");
-  }
-};
-
-// ⚡ Se ejecuta una vez al cargar el componente
-useEffect(() => {
-  if (usuarios.length > 0) {
-    setTimeout(() => {
-      if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-        $('#tablaUsuarios').DataTable().destroy();
+    $('#tablaUsuarios').DataTable({
+      language: {
+        processing: "Procesando...",
+        search: "Buscar:",
+        lengthMenu: "Mostrar _MENU_ registros",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        infoEmpty: "Mostrando 0 a 0 de 0 registros",
+        infoFiltered: "(filtrado de _MAX_ registros totales)",
+        loadingRecords: "Cargando...",
+        zeroRecords: "No se encontraron resultados",
+        emptyTable: "No hay datos en la tabla",
+        paginate: {
+          previous: "Anterior",
+          next: "Siguiente"
+        },
+        aria: {
+          sortAscending: ": activar para ordenar la columna ascendente",
+          sortDescending: ": activar para ordenar la columna descendente"
+        }
       }
-      inicializarDataTable();
-    }, 100);
-  }
-}, [usuarios]);
+    });
+  };
 
-useEffect(() => {
-  obtenerUsuarios();
-}, []);
+  // ✅ Eliminar usuario sin recargar datos
+  const eliminarUsuario = async (id) => {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar este usuario?");
+    if (!confirmacion) return;
+
+    // 🔴 1. Destruir DataTable antes de cambiar los datos
+    if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+      $('#tablaUsuarios').DataTable().destroy();
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/edumultipro/usuarios/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+      alert(data.mensaje);
+
+      // 🟡 2. Actualizar usuarios SIN volver a hacer fetch
+      const nuevosUsuarios = usuarios.filter((usuario) => usuario.ID !== id);
+      setUsuarios(nuevosUsuarios); // Aquí React actualiza la tabla
+
+    } catch (error) {
+      console.error("Error al eliminar el usuario:", error);
+      alert("Hubo un error al intentar eliminar el usuario.");
+    }
+  };
+
+  // ⚡ Se ejecuta una vez al cargar el componente
+  useEffect(() => {
+    if (usuarios.length > 0) {
+      setTimeout(() => {
+        if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
+          $('#tablaUsuarios').DataTable().destroy();
+        }
+        inicializarDataTable();
+      }, 100);
+    }
+  }, [usuarios]);
+
+  useEffect(() => {
+    obtenerUsuarios();
+  }, []);
 
   return (
-    <>
+    <>  
+      <ProteccionRuta rolRequerido="R004" />
+
         <div className='contenedor'>
 
             {/*---Nav---*/}

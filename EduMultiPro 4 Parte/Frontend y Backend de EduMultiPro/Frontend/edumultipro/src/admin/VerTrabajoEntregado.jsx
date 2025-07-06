@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import 'datatables.net-dt'; // JS
 
+import ProteccionRuta from '../ProteccionRuta.jsx';
 import Encabezado from '../Encabezado.jsx';
 import Footer from '../footer.jsx';
 import Desplegable from '../Desplegable.jsx';
@@ -111,6 +112,7 @@ function VerTrabajoEntregado(){
 
     return(
         <>
+            <ProteccionRuta rolRequerido="R004" />
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />

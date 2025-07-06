@@ -9,6 +9,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 function ActualizarHorarioCoordinador(){
 
@@ -89,6 +90,7 @@ function ActualizarHorarioCoordinador(){
     
     return(
         <>
+          <ProteccionRuta rolRequerido="R003" />
             <div className='contenedor'>
 
                 {/*---Nav---*/}

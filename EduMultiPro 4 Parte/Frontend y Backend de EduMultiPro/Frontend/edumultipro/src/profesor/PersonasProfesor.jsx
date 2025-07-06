@@ -11,6 +11,7 @@ import './css/PersonasProfesor.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 
 function PersonasProfesor(){ 
@@ -62,6 +63,7 @@ function PersonasProfesor(){
 
     return (
     <>
+        <ProteccionRuta rolRequerido="R002" />
         <div className='contenedor'>
 
             {/*---Nav---*/}

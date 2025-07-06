@@ -9,6 +9,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import imgTrabajo from '../assets/f9.png';
+import ProteccionRuta from '../ProteccionRuta.jsx';
 
 function VerTrabajo(){
 
@@ -49,6 +50,7 @@ function VerTrabajo(){
 
     return(
         <>
+            <ProteccionRuta rolRequerido="R004" />
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />
