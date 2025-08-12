@@ -1789,3 +1789,283 @@ router.delete("/TrabajoEntregado/:trabajoId/:usuarioId", (req, res) => {
     });
   });
 });
+
+// Obtener totales de usuarios por rol
+router.get('/reportes/usuarios-totales', (req, res) => {
+  const query = `
+    SELECT 
+      COUNT(*) AS totalUsuarios,
+      SUM(CASE WHEN rol_id = 'R003' THEN 1 ELSE 0 END) AS totalCoordinadores,
+      SUM(CASE WHEN rol_id = 'R002' THEN 1 ELSE 0 END) AS totalProfesores,
+      SUM(CASE WHEN rol_id = 'R001' THEN 1 ELSE 0 END) AS totalAlumnos
+    FROM Usuario
+  `;
+
+  conexion.query(query, (error, resultados) => {
+    if (error) {
+      console.error('❌ Error al obtener totales:', error);
+      return res.status(500).json({ mensaje: 'Error en el servidor' });
+    }
+    res.json(resultados[0]);
+  });
+});
+
+// Obtener totales de cursos por jornada
+router.get("/reportes/cursos", (req, res) => {
+  const sql = `
+    SELECT 
+        'Total Cursos' AS Jornada,
+        COUNT(*) AS Total
+    FROM Curso
+
+    UNION ALL
+
+    SELECT 
+        j.Jornada_Nombre,
+        COUNT(c.ID) AS Total
+    FROM Jornada j
+    LEFT JOIN Curso c ON j.ID = c.jornada_id
+    GROUP BY j.ID, j.Jornada_Nombre
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error obteniendo reportes de cursos:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    res.json(resultados);
+  });
+});
+
+// Obtener totales de materias, grados y jornadas
+router.get("/reportes/estructura", (req, res) => {
+  const sql = `
+    SELECT 
+        (SELECT COUNT(*) FROM Materia) AS total_materias,
+        (SELECT COUNT(*) FROM Grado) AS total_grados,
+        (SELECT COUNT(*) FROM Jornada) AS total_jornadas
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error obteniendo datos de estructura:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    res.json(resultados[0]); // devolvemos el objeto directamente
+  });
+});
+
+// Obtener materias y aulas que la usan
+router.get("/reportes/materias-aulas", (req, res) => {
+  const sql = `
+    SELECT 
+        m.Materia_Nombre,
+        COUNT(a.ID) AS total_aulas
+    FROM Materia m
+    LEFT JOIN Aula a ON m.ID = a.materia_id
+    GROUP BY m.Materia_Nombre
+    ORDER BY m.Materia_Nombre;
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error obteniendo materias y aulas:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    res.json(resultados);
+  });
+});
+
+// Obtener grados y cursos que lo usan
+router.get("/reportes/grados-cursos", (req, res) => {
+  const sql = `
+    SELECT 
+        g.Grado_Nombre,
+        COUNT(c.ID) AS total_cursos
+    FROM Grado g
+    LEFT JOIN Curso c ON g.ID = c.grado_id
+    GROUP BY g.Grado_Nombre
+    ORDER BY g.Grado_Nombre;
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error obteniendo grados y cursos:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    res.json(resultados);
+  });
+});
+
+// Obtener jornadas y cursos que lo usan
+router.get("/reportes/jornadas-cursos", (req, res) => {
+  const sql = `
+    SELECT 
+        j.Jornada_Nombre,
+        COUNT(c.ID) AS total_cursos
+    FROM Jornada j
+    LEFT JOIN Curso c ON j.ID = c.jornada_id
+    GROUP BY j.Jornada_Nombre
+    ORDER BY j.Jornada_Nombre;
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error obteniendo jornadas y cursos:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    res.json(resultados);
+  });
+});
+
+// Obtener usuario por id
+router.get("/buscar-usuario/:id", (req, res) => {
+  const id = req.params.id;
+
+  const sql = `
+    SELECT 
+        u.ID,
+        u.Primer_Nombre,
+        u.Primer_Apellido,
+        r.Nombre_Rol AS Rol,
+        CONCAT(c.Curso_Nombre, ' ', j.Jornada_Nombre) AS Curso_Jornada
+    FROM Usuario u
+    LEFT JOIN Rol r ON u.rol_id = r.ID
+    LEFT JOIN Miembros_Curso mc ON u.ID = mc.usuario_id
+    LEFT JOIN Curso c ON mc.curso_id = c.ID
+    LEFT JOIN Jornada j ON c.jornada_id = j.ID
+    WHERE u.ID = ?
+  `;
+
+  conexion.query(sql, [id], (err, resultados) => {
+    if (err) {
+      console.error("Error buscando usuario:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    if (resultados.length === 0) {
+      return res.status(404).json({ mensaje: "Usuario no encontrado" });
+    }
+    res.json(resultados[0]);
+  });
+});
+
+// Obtener datos para ReportesClase
+router.get("/reportes/aulas", (req, res) => {
+  const sql = `
+    SELECT 
+        a.ID AS aula_id,
+        a.Aula_Nombre,
+        m.Materia_Nombre,
+        CONCAT(c.Curso_Nombre, ' - ', j.Jornada_Nombre) AS curso_jornada,
+        CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS profesor,
+        (SELECT COUNT(*) FROM Miembros_Curso mc WHERE mc.curso_id = a.curso_id) AS total_usuarios,
+        (SELECT COUNT(*) FROM Anuncio an WHERE an.aula_id = a.ID) AS total_anuncios,
+        (
+          SELECT COUNT(*) 
+          FROM Comentario co 
+          INNER JOIN Anuncio an2 ON co.anuncio_id = an2.ID
+          WHERE an2.aula_id = a.ID
+        ) 
+        + 
+        (
+          SELECT COUNT(*) 
+          FROM Comentario co 
+          INNER JOIN Trabajo tr2 ON co.trabajo_id = tr2.ID
+          WHERE tr2.aula_id = a.ID
+        ) AS total_comentarios,
+        (SELECT COUNT(*) FROM Trabajo t WHERE t.aula_id = a.ID) AS total_trabajos
+    FROM Aula a
+    INNER JOIN Materia m ON a.materia_id = m.ID
+    INNER JOIN Curso c ON a.curso_id = c.ID
+    INNER JOIN Jornada j ON c.jornada_id = j.ID
+    INNER JOIN Usuario u ON a.usuario_id = u.ID
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error al obtener reportes de aulas:", err);
+      return res.status(500).json({ mensaje: "Error en el servidor" });
+    }
+
+    res.json({
+      totalAulas: resultados.length,
+      aulas: resultados
+    });
+  });
+});
+
+// 📊 Ruta para totales de horarios y profesores
+router.get("/reportes/horarios-totales", (req, res) => {
+    const query = `
+        SELECT
+            (SELECT COUNT(*) FROM Horario) AS total_horarios,
+            (SELECT COUNT(DISTINCT curso_id) FROM Horario WHERE curso_id IS NOT NULL) AS cursos_con_horario,
+            (SELECT COUNT(*) FROM Curso WHERE ID NOT IN (SELECT DISTINCT curso_id FROM Horario WHERE curso_id IS NOT NULL)) AS cursos_sin_horario,
+            (SELECT COUNT(DISTINCT profesor_id) FROM Horario WHERE profesor_id IS NOT NULL) AS profesores_con_horario,
+            (SELECT COUNT(*) FROM Usuario WHERE rol_id = 'R002' AND ID NOT IN (SELECT DISTINCT profesor_id FROM Horario WHERE profesor_id IS NOT NULL)) AS profesores_sin_horario
+    `;
+
+    conexion.query(query, (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results[0]);
+    });
+});
+
+// 📰 Ruta para total de noticias
+router.get("/reportes/noticias-totales", (req, res) => {
+    conexion.query(`SELECT COUNT(*) AS total_noticias FROM Noticia`, (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results[0]);
+    });
+});
+
+router.get("/reportes/cursos-horarios", (req, res) => {
+    const queryConHorario = `
+        SELECT c.Curso_Nombre AS curso, j.Jornada_Nombre AS jornada
+        FROM Curso c
+        JOIN Horario h ON h.curso_id = c.ID
+        JOIN Jornada j ON c.jornada_id = j.ID
+        GROUP BY c.ID, c.Curso_Nombre, j.Jornada_Nombre
+    `;
+
+    const querySinHorario = `
+        SELECT c.Curso_Nombre AS curso, j.Jornada_Nombre AS jornada
+        FROM Curso c
+        LEFT JOIN Horario h ON h.curso_id = c.ID
+        JOIN Jornada j ON c.jornada_id = j.ID
+        WHERE h.ID IS NULL
+        GROUP BY c.ID, c.Curso_Nombre, j.Jornada_Nombre
+    `;
+
+    conexion.query(queryConHorario, (err, conHorario) => {
+        if (err) return res.status(500).json({ error: err.message });
+        conexion.query(querySinHorario, (err2, sinHorario) => {
+            if (err2) return res.status(500).json({ error: err2.message });
+            res.json({ conHorario, sinHorario });
+        });
+    });
+});
+
+router.get("/reportes/profesores-horarios", (req, res) => {
+    const queryConHorario = `
+        SELECT DISTINCT u.ID, u.Primer_Nombre AS nombre, u.Primer_Apellido AS apellido
+        FROM Usuario u
+        JOIN Horario h ON h.profesor_id = u.ID
+        WHERE u.rol_id = 'R002'
+    `;
+
+    const querySinHorario = `
+        SELECT u.ID, u.Primer_Nombre AS nombre, u.Primer_Apellido AS apellido
+        FROM Usuario u
+        LEFT JOIN Horario h ON h.profesor_id = u.ID
+        WHERE u.rol_id = 'R002' AND h.ID IS NULL
+    `;
+
+    conexion.query(queryConHorario, (err, conHorario) => {
+        if (err) return res.status(500).json({ error: err.message });
+        conexion.query(querySinHorario, (err2, sinHorario) => {
+            if (err2) return res.status(500).json({ error: err2.message });
+            res.json({ conHorario, sinHorario });
+        });
+    });
+});

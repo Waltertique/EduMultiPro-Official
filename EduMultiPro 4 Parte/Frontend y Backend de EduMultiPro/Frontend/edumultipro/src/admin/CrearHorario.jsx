@@ -111,7 +111,7 @@ function CrearHorario(){
                         <div className="col-10" id="contenidoTabla">
 
                             <div className="tituloCrearHorario">
-                                <h1>Crear Horario</h1>
+                                <h1>Subir Horario</h1>
                                 <Link to={"/Horario"}>
                                     <button className="crear" id="btnAgregarUsuario"> <i className="fas fa-user-plus"></i>Salir</button>
                                 </Link>

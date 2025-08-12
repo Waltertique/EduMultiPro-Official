@@ -124,7 +124,7 @@ function ActualizarHorario(){
                                     <textarea name="descripcion" value={formulario.descripcion} onChange={handleChange} required />
                                     {formulario.imagenActual && (
                                     <>
-                                        <p>Imagen actual:</p>
+                                        <p>Horario actual:</p>
                                         <img src={`http://localhost:3000/imagenes/${formulario.imagenActual}`} width="200" alt="Actual" />
                                     </>
                                     )}

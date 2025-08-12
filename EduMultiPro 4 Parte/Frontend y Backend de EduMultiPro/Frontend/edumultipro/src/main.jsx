@@ -30,6 +30,9 @@ import CrearTrabajo from './admin/CrearTrabajo.jsx';
 import ActualizarTrabajo from './admin/ActualizarTrabajo.jsx';
 import VerTrabajo from './admin/VerTrabajo.jsx';
 import VerTrabajoEntregado from './admin/VerTrabajoEntregado.jsx';
+import Reportes from './admin/Reportes.jsx';
+import ReportesClase from './admin/ReportesClase.jsx';
+import ReportesAgenda from './admin/ReportesAgenda.jsx';
 
 //--Aqui los links del Coordinador--
 import PrincipalCoordinador from './coordinador/PrincipalCoordinador.jsx';
@@ -110,6 +113,9 @@ createRoot(document.getElementById('root')).render(
         <Route path="/ActualizarTrabajo/:id" element={<ActualizarTrabajo />} />
         <Route path="/VerTrabajo/:trabajoId/:aulaId" element={<VerTrabajo />} />
         <Route path="/VerTrabajoEntregado/:trabajoId/:aulaId" element={<VerTrabajoEntregado />} />
+        <Route path="/Reportes" element={<Reportes />} />
+        <Route path="/ReportesClase" element={<ReportesClase />} />
+        <Route path="/ReportesAgenda" element={<ReportesAgenda />} />
 
         {/*--Aqui los links del Coordinador--*/}
         <Route path="/PrincipalCoordinador" element={<PrincipalCoordinador />} />

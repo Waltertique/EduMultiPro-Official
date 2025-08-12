@@ -25,6 +25,7 @@ function BarraLateral() {
                     <Link to="/horario"><i className="fa-solid fa-calendar-days"><p>Horarios</p></i></Link>
                     <Link to="/aula"><i className="fa-solid fa-user-group"><p>Aulas</p></i></Link>
                     <Link to="/noticia"><i className="fa-solid fa-newspaper"><p>Noticias</p></i></Link>
+                    <Link to="/Reportes"><i class="fa-regular fa-folder-open"><p>Reportes</p></i></Link>
                     <button onClick={cerrarSesion} className="btn btn-link salir-link">
                       <i className="fa-solid fa-right-to-bracket"><p>Salir</p></i>
                     </button>

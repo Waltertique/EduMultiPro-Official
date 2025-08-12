@@ -118,7 +118,7 @@ function Horario(){
                             <div className="titulo2">
                                 <h1>Horarios Actuales</h1>
                                 <Link to={"/CrearHorario"}>
-                                <button className="crear" id="btnAgregarHorario"> <i className="fas fa-user-plus"></i>Crear Horario</button>
+                                <button className="crear" id="btnAgregarHorario"> <i className="fas fa-user-plus"></i>Subir Horario</button>
                                 </Link>
                             </div>
                             <div className="contenedor-tabla">
