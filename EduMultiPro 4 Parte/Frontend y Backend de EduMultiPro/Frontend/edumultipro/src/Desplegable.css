@@ -48,6 +48,8 @@
     color: white;
     display: flex;
     flex-direction: row;
+    width: 100%;
+    justify-content: center;
 }
 .dropdown-menu p{
     margin: auto 10px;
