@@ -114,6 +114,10 @@ const verificarToken = (req, res, next) => { //Sirve para verificar si el client
   });
 };
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/perfil:
@@ -150,6 +154,10 @@ const verificarToken = (req, res, next) => { //Sirve para verificar si el client
 router.get('/perfil', verificarToken, (req, res) => { //Esta ruta está protegida por el middleware verificarToken. Si el token es válido, responde con el mensaje y los datos del usuario.
   res.json({ mensaje: 'Acceso a perfil autorizado', usuario: req.usuario });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -514,6 +522,10 @@ router.get("/Usuarios", (req, res) => {
     });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/usuarios/{id}:
@@ -560,6 +572,10 @@ router.delete("/usuarios/:id", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -664,6 +680,10 @@ router.post("/crearUsuario", upload.single("foto"), (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/roles:
@@ -703,6 +723,10 @@ router.get("/roles", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/documentos:
@@ -741,6 +765,10 @@ router.get("/documentos", (req, res) => {
     res.json(results);
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -827,6 +855,10 @@ router.get("/verUsuario/:id", (req, res) => {
     });
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -1112,6 +1144,10 @@ router.get("/Cursos", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/Cursos/{id}:
@@ -1162,6 +1198,10 @@ router.delete("/Cursos/:id", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -1226,6 +1266,10 @@ router.put("/Cursos/:id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/Cursos:
@@ -1283,6 +1327,10 @@ router.post("/Cursos", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/Cursos/{id}/integrantes:
@@ -1338,6 +1386,10 @@ router.get("/Cursos/:id/integrantes", (req, res) => {
     res.json(results);
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -1396,6 +1448,10 @@ router.delete("/Cursos/:cursoId/integrantes/:usuarioId", (req, res) => {
     res.json({ mensaje: "Integrante eliminado correctamente" });
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -1588,6 +1644,10 @@ router.get("/Materias", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/Materias/{id}:
@@ -1638,6 +1698,10 @@ router.delete("/Materias/:id", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -1702,6 +1766,10 @@ router.put("/Materias/:id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/Materias:
@@ -1755,8 +1823,10 @@ router.post("/Materias", (req, res) => {
     }
   });
 });
+ 
 
 //---------------------------------------------------------------------------------------------------------
+ 
 
 /**
  * @swagger
@@ -1800,6 +1870,10 @@ router.get("/Grados", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -1851,6 +1925,10 @@ router.delete("/Grados/:id", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -1914,6 +1992,10 @@ router.put("/Grados/:id", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -2164,6 +2246,10 @@ router.get("/Jornadas", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/Jornadas/{id}:
@@ -2214,6 +2300,10 @@ router.delete("/Jornadas/:id", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -2278,6 +2368,10 @@ router.put("/Jornadas/:id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/Jornadas:
@@ -2332,7 +2426,9 @@ router.post("/Jornadas", (req, res) => {
   });
 });
 
+
 //---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -2380,6 +2476,10 @@ router.get("/Horarios", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -2432,6 +2532,10 @@ router.delete("/Horarios/:id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/Profesores:
@@ -2472,6 +2576,10 @@ router.get("/Profesores", (req, res) => {
     res.json(results);
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -2561,6 +2669,10 @@ router.post("/Horarios", upload.single('imagen'), (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /api/edumultipro/Cursos-jornada:
@@ -2601,6 +2713,10 @@ router.get("/Cursos-jornada", (req, res) => {
     res.json(results);
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -2658,6 +2774,10 @@ router.get("/Horarios/:id", (req, res) => {
     res.json(results[0]);
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -2912,6 +3032,10 @@ router.get("/Aulas", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Aulas/{id}:
@@ -2962,6 +3086,10 @@ router.delete("/Aulas/:id", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -3039,6 +3167,10 @@ router.post("/Aulas", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Aulas/{id}:
@@ -3108,6 +3240,10 @@ router.put("/Aulas/:id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Aulas/{id}:
@@ -3163,6 +3299,10 @@ router.get("/Aulas/:id", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -3221,6 +3361,11 @@ router.get("/Anuncios/Aula/:aula_id", (req, res) => {
     res.json(results);
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
+
 
 /**
  * @swagger
@@ -3315,6 +3460,10 @@ router.post("/Anuncios", upload.array('archivo'), (req, res) => {
   );
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Anuncios/{id}:
@@ -3366,6 +3515,10 @@ router.delete("/Anuncios/:id", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -3456,8 +3609,8 @@ router.put("/Anuncios/:id", upload.array('archivo'), (req, res) => {
 });
 
 
-
 //---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -3652,6 +3805,10 @@ router.get("/Comentarios/Anuncio/:anuncio_id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Comentarios:
@@ -3719,6 +3876,10 @@ router.post("/Comentarios", (req, res) => {
   );
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Comentarios/{id}:
@@ -3766,9 +3927,11 @@ router.delete("/Comentarios/:id", (req, res) => {
   });
 });
 
+
 // ============================================================================
 // SECCIÓN: AULAS
 // ============================================================================
+
 
 /**
  * @swagger
@@ -3835,9 +3998,11 @@ router.get("/Aulas/:id/integrantes", (req, res) => {
   });
 });
 
+
 // ============================================================================
 // SECCIÓN: TRABAJOS
 // ============================================================================
+
 
 /**
  * @swagger
@@ -3899,6 +4064,10 @@ router.get("/Trabajos/Aula/:id", (req, res) => {
     res.json(results);
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -4009,6 +4178,10 @@ router.post("/CrearTrabajo", upload.array('archivos'), (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Trabajo/{id}:
@@ -4088,6 +4261,10 @@ router.get("/Trabajo/:id", (req, res) => {
     });
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -4201,6 +4378,10 @@ router.post("/ActualizarTrabajo", upload.array("archivos"), (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Trabajo/{id}:
@@ -4267,10 +4448,8 @@ router.delete("/Trabajo/:id", (req, res) => {
 });
 
 
-
 //---------------------------------------------------------------------------------------------------------
 
-// ACA VAMOS 
 
 /**
  * @swagger
@@ -4465,6 +4644,10 @@ router.get("/Comentarios/Anuncio/:anuncio_id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Comentarios:
@@ -4532,6 +4715,10 @@ router.post("/Comentarios", (req, res) => {
   );
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Comentarios/{id}:
@@ -4579,9 +4766,11 @@ router.delete("/Comentarios/:id", (req, res) => {
   });
 });
 
+
 // ============================================================================
 // SECCIÓN: AULAS
 // ============================================================================
+
 
 /**
  * @swagger
@@ -4648,9 +4837,11 @@ router.get("/Aulas/:id/integrantes", (req, res) => {
   });
 });
 
+
 // ============================================================================
 // SECCIÓN: TRABAJOS
 // ============================================================================
+
 
 /**
  * @swagger
@@ -4712,6 +4903,10 @@ router.get("/Trabajos/Aula/:id", (req, res) => {
     res.json(results);
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -4822,6 +5017,10 @@ router.post("/CrearTrabajo", upload.array('archivos'), (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Trabajo/{id}:
@@ -4901,6 +5100,10 @@ router.get("/Trabajo/:id", (req, res) => {
     });
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -5014,6 +5217,10 @@ router.post("/ActualizarTrabajo", upload.array("archivos"), (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Trabajo/{id}:
@@ -5078,10 +5285,12 @@ router.delete("/Trabajo/:id", (req, res) => {
     });
   });
 });
+
 
 // ============================================================================
 // SECCIÓN: COMENTARIOS DE TRABAJOS
 // ============================================================================
+
 
 /**
  * @swagger
@@ -5151,9 +5360,11 @@ router.get("/Comentarios/Trabajo/:trabajo_id", (req, res) => {
   });
 });
 
+
 // ============================================================================
 // SECCIÓN: TRABAJOS ENTREGADOS
 // ============================================================================
+
 
 /**
  * @swagger
@@ -5287,6 +5498,10 @@ router.get("/Trabajos/:id/Entregados", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Trabajos/Entregado/{id}/Nota:
@@ -5346,6 +5561,10 @@ router.put("/Trabajos/Entregado/:id/Nota", (req, res) => {
         res.json({ mensaje: "Nota asignada correctamente" });
     });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -5408,9 +5627,11 @@ router.get("/TrabajoEntregado/:id/Archivos", (req, res) => {
     });
 });
 
+
 // ============================================================================
 // SECCIÓN: NOTAS Y CALIFICACIONES
 // ============================================================================
+
 
 /**
  * @swagger
@@ -5512,7 +5733,6 @@ router.get("/Aulas/:id/Notas", (req, res) => {
 });
 
 
-// ACA VAMOS 
 //---------------------------------------------------------------------------------------------------------
 
 
@@ -5570,6 +5790,10 @@ router.get("/Noticias", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Noticias/{id}:
@@ -5613,6 +5837,10 @@ router.delete("/Noticias/:id", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -5751,6 +5979,10 @@ router.post("/Noticias", upload.fields([
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /TiposNoticia:
@@ -5785,6 +6017,10 @@ router.get("/TiposNoticia", (req, res) => {
     }
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -5926,6 +6162,10 @@ router.put("/Noticias/:id", upload.fields([
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
 /**
  * @swagger
  * /Noticias/{id}:
@@ -5977,6 +6217,10 @@ router.get("/Noticias/:id", (req, res) => {
     res.json(results[0]);
   });
 });
+
+
+//---------------------------------------------------------------------------------------------------------
+
 
 /**
  * @swagger
@@ -6094,19 +6338,165 @@ router.get("/NoticiasPrincipales", (req, res) => {
 });
 
 
-//---------------------------------------------------------------------------------------------------------
-
-// aca vamos
+//--------------------------------------------------------------------------------------------------------
 
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Noticia:
+ *       type: object
+ *       properties:
+ *         ID:
+ *           type: integer
+ *           description: ID único de la noticia
+ *         Titulo_Noticia:
+ *           type: string
+ *           description: Título de la noticia
+ *         Encabezado:
+ *           type: string
+ *           description: Encabezado o descripción breve de la noticia
+ *         Imagen1:
+ *           type: string
+ *           description: URL o ruta de la imagen principal de la noticia
+ *       example:
+ *         ID: 1
+ *         Titulo_Noticia: "Nueva actualización del sistema"
+ *         Encabezado: "Se han implementado mejoras importantes"
+ *         Imagen1: "/images/noticia1.jpg"
+ *     
+ *     Horario:
+ *       type: object
+ *       properties:
+ *         ID:
+ *           type: integer
+ *           description: ID único del horario
+ *         curso_id:
+ *           type: string
+ *           description: ID del curso asociado
+ *         profesor_id:
+ *           type: string
+ *           description: ID del profesor asignado
+ *       example:
+ *         ID: 1
+ *         curso_id: "C001"
+ *         profesor_id: "P001"
+ *     
+ *     Aula:
+ *       type: object
+ *       properties:
+ *         ID:
+ *           type: integer
+ *           description: ID única del aula
+ *         Aula_Nombre:
+ *           type: string
+ *           description: Nombre del aula
+ *         Materia_Nombre:
+ *           type: string
+ *           description: Nombre de la materia
+ *         Curso_Nombre:
+ *           type: string
+ *           description: Nombre del curso con jornada
+ *         Profesor:
+ *           type: string
+ *           description: Nombre completo del profesor
+ *         usuario_id:
+ *           type: string
+ *           description: ID del usuario que creó el aula
+ *       example:
+ *         ID: 1
+ *         Aula_Nombre: "Aula 101"
+ *         Materia_Nombre: "Matemáticas"
+ *         Curso_Nombre: "10A Mañana"
+ *         Profesor: "Juan Pérez"
+ *         usuario_id: "U001"
+ *     
+ *     Comentario:
+ *       type: object
+ *       properties:
+ *         ID:
+ *           type: integer
+ *           description: ID único del comentario
+ *         Descripcion:
+ *           type: string
+ *           description: Contenido del comentario
+ *         Fecha:
+ *           type: string
+ *           format: date-time
+ *           description: Fecha y hora del comentario
+ *         usuario_id:
+ *           type: integer
+ *           description: ID del usuario que hizo el comentario
+ *         Nombre_Usuario:
+ *           type: string
+ *           description: Nombre completo del usuario
+ *         RutaFoto:
+ *           type: string
+ *           description: Ruta de la foto de perfil del usuario
+ *       example:
+ *         ID: 1
+ *         Descripcion: "Excelente trabajo"
+ *         Fecha: "2024-01-15T10:30:00Z"
+ *         usuario_id: 123
+ *         Nombre_Usuario: "María García"
+ *         RutaFoto: "/images/perfil123.jpg"
+ *   
+ *   responses:
+ *     NotFound:
+ *       description: Recurso no encontrado
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               mensaje:
+ *                 type: string
+ *                 example: "No se encontró el recurso solicitado"
+ *     
+ *     DatabaseError:
+ *       description: Error en la base de datos
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               error:
+ *                 type: string
+ *                 example: "Error en la base de datos"
+ *     
+ *     Unauthorized:
+ *       description: No autorizado para realizar esta acción
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               mensaje:
+ *                 type: string
+ *                 example: "No tienes permiso para realizar esta acción"
+ */
 
-
-
-
-
-
-
-
+/**
+ * @swagger
+ * /NoticiasDatos:
+ *   get:
+ *     summary: Obtener todas las noticias con información básica
+ *     description: Retorna todas las noticias con título, encabezado e imagen principal, ordenadas por fecha descendente
+ *     tags:
+ *       - Noticias
+ *     responses:
+ *       200:
+ *         description: Lista de noticias obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Noticia'
+ *       500:
+ *         $ref: '#/components/responses/DatabaseError'
+ */
 //Trae las noticas con el titulo, encabezado e imagen1
 router.get("/NoticiasDatos", (req, res) => {
   const query = `
@@ -6123,6 +6513,67 @@ router.get("/NoticiasDatos", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /HorarioUsuario/{id}:
+ *   get:
+ *     summary: Obtener horario según el rol del usuario
+ *     description: |
+ *       Obtiene el horario de un usuario específico basado en su rol:
+ *       - Si es alumno (R001): obtiene el horario del curso al que pertenece
+ *       - Si es profesor (R002): obtiene el horario asignado a él directamente
+ *     tags:
+ *       - Horarios
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID del usuario
+ *         example: "U001"
+ *     responses:
+ *       200:
+ *         description: Horario obtenido exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Horario'
+ *       404:
+ *         description: No se encontró horario para el usuario
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "No hay horario asignado a este alumno"
+ *       400:
+ *         description: Usuario sin rol válido para horario
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Este usuario no tiene horario asignado por rol"
+ *       500:
+ *         description: Error al determinar rol o consultar horario
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "No se pudo determinar el rol del usuario"
+ */
 // 🔁 Obtener horario del usuario según su rol (alumno o profesor)
 router.get("/HorarioUsuario/:id", (req, res) => {
   const idUsuario = req.params.id;
@@ -6165,6 +6616,49 @@ router.get("/HorarioUsuario/:id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /Aulas/usuario/{id}:
+ *   get:
+ *     summary: Obtener aulas asociadas a un usuario
+ *     description: |
+ *       Retorna todas las aulas a las que tiene acceso un usuario específico.
+ *       Incluye aulas del curso al que pertenece el usuario y aulas creadas por él.
+ *       Muestra información completa del aula, materia, curso, jornada y profesor.
+ *     tags:
+ *       - Aulas
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID del usuario
+ *         example: "U001"
+ *     responses:
+ *       200:
+ *         description: Lista de aulas obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Aula'
+ *       500:
+ *         description: Error en la base de datos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Error en la base de datos"
+ */
 // Obtener aulas por usuario (alumno o profesor)
 router.get("/Aulas/usuario/:id", (req, res) => {
   const usuarioId = req.params.id;
@@ -6195,6 +6689,69 @@ router.get("/Aulas/usuario/:id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /ComentariosAlum/{id}:
+ *   delete:
+ *     summary: Eliminar un comentario específico
+ *     description: |
+ *       Elimina un comentario por su ID. Solo el usuario que creó el comentario 
+ *       puede eliminarlo. Incluye validación de permisos.
+ *     tags:
+ *       - Comentarios
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del comentario a eliminar
+ *         example: 123
+ *       - in: query
+ *         name: usuario_id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del usuario que intenta eliminar el comentario
+ *         example: 456
+ *     responses:
+ *       200:
+ *         description: Comentario eliminado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Comentario eliminado correctamente"
+ *       403:
+ *         $ref: '#/components/responses/Unauthorized'
+ *       404:
+ *         description: Comentario no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Comentario no encontrado"
+ *       500:
+ *         description: Error al eliminar el comentario
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Error al eliminar el comentario"
+ */
 // Eliminar comentario por ID (con validación del usuario opcional)
 router.delete("/ComentariosAlum/:id", (req, res) => {
   const comentarioId = req.params.id;
@@ -6224,6 +6781,49 @@ router.delete("/ComentariosAlum/:id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /ComentariosAlum/Trabajo/{trabajo_id}:
+ *   get:
+ *     summary: Obtener comentarios de un trabajo específico
+ *     description: |
+ *       Retorna todos los comentarios asociados a un trabajo específico,
+ *       incluyendo información del usuario que hizo cada comentario.
+ *       Los comentarios se ordenan por fecha descendente (más recientes primero).
+ *     tags:
+ *       - Comentarios
+ *     parameters:
+ *       - in: path
+ *         name: trabajo_id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del trabajo del cual se quieren obtener los comentarios
+ *         example: 789
+ *     responses:
+ *       200:
+ *         description: Lista de comentarios obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Comentario'
+ *       500:
+ *         description: Error al obtener comentarios
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error al obtener comentarios"
+ */
 // obtener comentario
 router.get("/ComentariosAlum/Trabajo/:trabajo_id", (req, res) => {
   const trabajoId = req.params.trabajo_id;
@@ -6248,6 +6848,560 @@ router.get("/ComentariosAlum/Trabajo/:trabajo_id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Noticia:
+ *       type: object
+ *       properties:
+ *         ID:
+ *           type: integer
+ *           description: ID único de la noticia
+ *         Titulo_Noticia:
+ *           type: string
+ *           description: Título de la noticia
+ *         Encabezado:
+ *           type: string
+ *           description: Encabezado o descripción breve de la noticia
+ *         Imagen1:
+ *           type: string
+ *           description: URL o ruta de la imagen principal de la noticia
+ *       example:
+ *         ID: 1
+ *         Titulo_Noticia: "Nueva actualización del sistema"
+ *         Encabezado: "Se han implementado mejoras importantes"
+ *         Imagen1: "/images/noticia1.jpg"
+ *     
+ *     Horario:
+ *       type: object
+ *       properties:
+ *         ID:
+ *           type: integer
+ *           description: ID único del horario
+ *         curso_id:
+ *           type: string
+ *           description: ID del curso asociado
+ *         profesor_id:
+ *           type: string
+ *           description: ID del profesor asignado
+ *       example:
+ *         ID: 1
+ *         curso_id: "C001"
+ *         profesor_id: "P001"
+ *     
+ *     Aula:
+ *       type: object
+ *       properties:
+ *         ID:
+ *           type: integer
+ *           description: ID única del aula
+ *         Aula_Nombre:
+ *           type: string
+ *           description: Nombre del aula
+ *         Materia_Nombre:
+ *           type: string
+ *           description: Nombre de la materia
+ *         Curso_Nombre:
+ *           type: string
+ *           description: Nombre del curso con jornada
+ *         Profesor:
+ *           type: string
+ *           description: Nombre completo del profesor
+ *         usuario_id:
+ *           type: string
+ *           description: ID del usuario que creó el aula
+ *       example:
+ *         ID: 1
+ *         Aula_Nombre: "Aula 101"
+ *         Materia_Nombre: "Matemáticas"
+ *         Curso_Nombre: "10A Mañana"
+ *         Profesor: "Juan Pérez"
+ *         usuario_id: "U001"
+ *     
+ *     Comentario:
+ *       type: object
+ *       properties:
+ *         ID:
+ *           type: integer
+ *           description: ID único del comentario
+ *         Descripcion:
+ *           type: string
+ *           description: Contenido del comentario
+ *         Fecha:
+ *           type: string
+ *           format: date-time
+ *           description: Fecha y hora del comentario
+ *         usuario_id:
+ *           type: integer
+ *           description: ID del usuario que hizo el comentario
+ *         Nombre_Usuario:
+ *           type: string
+ *           description: Nombre completo del usuario
+ *         RutaFoto:
+ *           type: string
+ *           description: Ruta de la foto de perfil del usuario
+ *       example:
+ *         ID: 1
+ *         Descripcion: "Excelente trabajo"
+ *         Fecha: "2024-01-15T10:30:00Z"
+ *         usuario_id: 123
+ *         Nombre_Usuario: "María García"
+ *         RutaFoto: "/images/perfil123.jpg"
+ *   
+ *   responses:
+ *     NotFound:
+ *       description: Recurso no encontrado
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               mensaje:
+ *                 type: string
+ *                 example: "No se encontró el recurso solicitado"
+ *     
+ *     DatabaseError:
+ *       description: Error en la base de datos
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               error:
+ *                 type: string
+ *                 example: "Error en la base de datos"
+ *     
+ *     Unauthorized:
+ *       description: No autorizado para realizar esta acción
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               mensaje:
+ *                 type: string
+ *                 example: "No tienes permiso para realizar esta acción"
+ */
+
+/**
+ * @swagger
+ * /NoticiasDatos:
+ *   get:
+ *     summary: Obtener todas las noticias con información básica
+ *     description: Retorna todas las noticias con título, encabezado e imagen principal, ordenadas por fecha descendente
+ *     tags:
+ *       - Noticias
+ *     responses:
+ *       200:
+ *         description: Lista de noticias obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Noticia'
+ *       500:
+ *         $ref: '#/components/responses/DatabaseError'
+ */
+//Trae las noticas con el titulo, encabezado e imagen1
+router.get("/NoticiasDatos", (req, res) => {
+  const query = `
+    SELECT ID, Titulo_Noticia, Encabezado, Imagen1
+    FROM Noticia
+    ORDER BY Fecha_Notica DESC
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error en la base de datos" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /HorarioUsuario/{id}:
+ *   get:
+ *     summary: Obtener horario según el rol del usuario
+ *     description: |
+ *       Obtiene el horario de un usuario específico basado en su rol:
+ *       - Si es alumno (R001): obtiene el horario del curso al que pertenece
+ *       - Si es profesor (R002): obtiene el horario asignado a él directamente
+ *     tags:
+ *       - Horarios
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID del usuario
+ *         example: "U001"
+ *     responses:
+ *       200:
+ *         description: Horario obtenido exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Horario'
+ *       404:
+ *         description: No se encontró horario para el usuario
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "No hay horario asignado a este alumno"
+ *       400:
+ *         description: Usuario sin rol válido para horario
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Este usuario no tiene horario asignado por rol"
+ *       500:
+ *         description: Error al determinar rol o consultar horario
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "No se pudo determinar el rol del usuario"
+ */
+// 🔁 Obtener horario del usuario según su rol (alumno o profesor)
+router.get("/HorarioUsuario/:id", (req, res) => {
+  const idUsuario = req.params.id;
+
+  const rolQuery = "SELECT rol_id FROM Usuario WHERE ID = ?";
+  conexion.query(rolQuery, [idUsuario], (err, rolRes) => {
+    if (err || rolRes.length === 0) {
+      return res.status(500).json({ error: "No se pudo determinar el rol del usuario" });
+    }
+
+    const rol = rolRes[0].rol_id;
+
+    if (rol === 'R001') {
+      // 🧑 Alumno - obtener horario del curso al que pertenece
+      const query = `
+        SELECT H.*
+        FROM Horario H
+        INNER JOIN Miembros_Curso MC ON H.curso_id = MC.curso_id
+        WHERE MC.usuario_id = ?
+        LIMIT 1
+      `;
+      conexion.query(query, [idUsuario], (err, result) => {
+        if (err) return res.status(500).json({ error: "Error al obtener horario del alumno" });
+        if (!result.length) return res.status(404).json({ mensaje: "No hay horario asignado a este alumno" });
+        res.json(result[0]);
+      });
+
+    } else if (rol === 'R002') {
+      // 👨‍🏫 Profesor - obtener horario asignado a él
+      const query = `SELECT * FROM Horario WHERE profesor_id = ? LIMIT 1`;
+      conexion.query(query, [idUsuario], (err, result) => {
+        if (err) return res.status(500).json({ error: "Error al obtener horario del profesor" });
+        if (!result.length) return res.status(404).json({ mensaje: "No hay horario asignado a este profesor" });
+        res.json(result[0]);
+      });
+
+    } else {
+      res.status(400).json({ mensaje: "Este usuario no tiene horario asignado por rol" });
+    }
+  });
+});
+
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /Aulas/usuario/{id}:
+ *   get:
+ *     summary: Obtener aulas asociadas a un usuario
+ *     description: |
+ *       Retorna todas las aulas a las que tiene acceso un usuario específico.
+ *       Incluye aulas del curso al que pertenece el usuario y aulas creadas por él.
+ *       Muestra información completa del aula, materia, curso, jornada y profesor.
+ *     tags:
+ *       - Aulas
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID del usuario
+ *         example: "U001"
+ *     responses:
+ *       200:
+ *         description: Lista de aulas obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Aula'
+ *       500:
+ *         description: Error en la base de datos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Error en la base de datos"
+ */
+// Obtener aulas por usuario (alumno o profesor)
+router.get("/Aulas/usuario/:id", (req, res) => {
+  const usuarioId = req.params.id;
+
+  const sql = `
+    SELECT a.ID, a.Aula_Nombre, m.Materia_Nombre, 
+           CONCAT(c.Curso_Nombre, ' ', j.Jornada_Nombre) AS Curso_Nombre, 
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Profesor,
+           a.usuario_id  -- 👈 IMPORTANTE: para verificar si el usuario creó el aula
+    FROM Aula a
+    JOIN Materia m ON a.materia_id = m.ID
+    JOIN Curso c ON a.curso_id = c.ID
+    JOIN Jornada j ON c.jornada_id = j.ID
+    JOIN Usuario u ON a.usuario_id = u.ID
+    WHERE a.curso_id IN (
+      SELECT curso_id FROM Miembros_Curso WHERE usuario_id = ?
+    )
+    OR a.usuario_id = ?
+  `;
+
+  conexion.query(sql, [usuarioId, usuarioId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener aulas del usuario:", error);
+      return res.status(500).json({ mensaje: "Error en la base de datos" });
+    }
+
+    res.json(results);
+  });
+});
+
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /ComentariosAlum/{id}:
+ *   delete:
+ *     summary: Eliminar un comentario específico
+ *     description: |
+ *       Elimina un comentario por su ID. Solo el usuario que creó el comentario 
+ *       puede eliminarlo. Incluye validación de permisos.
+ *     tags:
+ *       - Comentarios
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del comentario a eliminar
+ *         example: 123
+ *       - in: query
+ *         name: usuario_id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del usuario que intenta eliminar el comentario
+ *         example: 456
+ *     responses:
+ *       200:
+ *         description: Comentario eliminado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Comentario eliminado correctamente"
+ *       403:
+ *         $ref: '#/components/responses/Unauthorized'
+ *       404:
+ *         description: Comentario no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Comentario no encontrado"
+ *       500:
+ *         description: Error al eliminar el comentario
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Error al eliminar el comentario"
+ */
+// Eliminar comentario por ID (con validación del usuario opcional)
+router.delete("/ComentariosAlum/:id", (req, res) => {
+  const comentarioId = req.params.id;
+  const usuarioId = parseInt(req.query.usuario_id);
+
+  const queryVerificar = "SELECT * FROM Comentario WHERE ID = ?";
+
+  conexion.query(queryVerificar, [comentarioId], (err, result) => {
+    if (err || result.length === 0) {
+      return res.status(404).json({ mensaje: "Comentario no encontrado" });
+    }
+
+    if (result[0].usuario_id !== usuarioId) {
+      return res.status(403).json({ mensaje: "No tienes permiso para eliminar este comentario" });
+    }
+
+    // Eliminar si es del usuario logueado
+    const queryEliminar = "DELETE FROM Comentario WHERE ID = ?";
+    conexion.query(queryEliminar, [comentarioId], (error) => {
+      if (error) {
+        console.error("❌ Error al eliminar el comentario:", error);
+        res.status(500).json({ mensaje: "Error al eliminar el comentario" });
+      } else {
+        res.json({ mensaje: "Comentario eliminado correctamente" });
+      }
+    });
+  });
+});
+
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /ComentariosAlum/Trabajo/{trabajo_id}:
+ *   get:
+ *     summary: Obtener comentarios de un trabajo específico
+ *     description: |
+ *       Retorna todos los comentarios asociados a un trabajo específico,
+ *       incluyendo información del usuario que hizo cada comentario.
+ *       Los comentarios se ordenan por fecha descendente (más recientes primero).
+ *     tags:
+ *       - Comentarios
+ *     parameters:
+ *       - in: path
+ *         name: trabajo_id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del trabajo del cual se quieren obtener los comentarios
+ *         example: 789
+ *     responses:
+ *       200:
+ *         description: Lista de comentarios obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Comentario'
+ *       500:
+ *         description: Error al obtener comentarios
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error al obtener comentarios"
+ */
+// obtener comentario
+router.get("/ComentariosAlum/Trabajo/:trabajo_id", (req, res) => {
+  const trabajoId = req.params.trabajo_id;
+  const query = `
+    SELECT c.ID, c.Descripcion, c.Fecha,
+           c.usuario_id,
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Nombre_Usuario,
+           u.RutaFoto
+    FROM Comentario c
+    JOIN Usuario u ON c.usuario_id = u.ID
+    WHERE c.trabajo_id = ?
+    ORDER BY c.Fecha DESC
+  `;
+
+  conexion.query(query, [trabajoId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener los comentarios:", error);
+      res.status(500).json({ error: "Error al obtener comentarios" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /ComentariosAlum/Anuncio/{anuncio_id}:
+ *   get:
+ *     summary: Obtener comentarios de un anuncio específico
+ *     description: |
+ *       Retorna todos los comentarios asociados a un anuncio específico,
+ *       incluyendo información del usuario que hizo cada comentario.
+ *       Los comentarios se ordenan por fecha descendente (más recientes primero).
+ *     tags:
+ *       - Comentarios
+ *     parameters:
+ *       - in: path
+ *         name: anuncio_id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del anuncio del cual se quieren obtener los comentarios
+ *         example: 456
+ *     responses:
+ *       200:
+ *         description: Lista de comentarios obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Comentario'
+ *       500:
+ *         description: Error al obtener comentarios
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Error al obtener comentarios"
+ */
 // Obtener comentarios por anuncio (versión para alumno)
 router.get("/ComentariosAlum/Anuncio/:anuncio_id", (req, res) => {
   const anuncioId = req.params.anuncio_id;
@@ -6273,6 +7427,70 @@ router.get("/ComentariosAlum/Anuncio/:anuncio_id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /ComentariosAlumAnuncio/{id}:
+ *   delete:
+ *     summary: Eliminar comentario de anuncio
+ *     description: |
+ *       Elimina un comentario específico de un anuncio por su ID. 
+ *       Solo el usuario que creó el comentario puede eliminarlo.
+ *       Incluye validación de permisos de usuario.
+ *     tags:
+ *       - Comentarios
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del comentario a eliminar
+ *         example: 789
+ *       - in: query
+ *         name: usuario_id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del usuario que intenta eliminar el comentario
+ *         example: 123
+ *     responses:
+ *       200:
+ *         description: Comentario eliminado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Comentario eliminado correctamente"
+ *       403:
+ *         $ref: '#/components/responses/Unauthorized'
+ *       404:
+ *         description: Comentario no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Comentario no encontrado"
+ *       500:
+ *         description: Error al eliminar comentario
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Error al eliminar comentario"
+ */
 // Eliminar comentario (con validación de usuario)
 router.delete("/ComentariosAlumAnuncio/:id", (req, res) => {
   const comentarioId = req.params.id;
@@ -6300,114 +7518,41 @@ router.delete("/ComentariosAlumAnuncio/:id", (req, res) => {
   });
 });
 
-// -------------------------------------Subir trabajos como Alumno------------------------------------------
 
-router.get("/TrabajoEntregado/:trabajoId/:usuarioId", (req, res) => {
-  const { trabajoId, usuarioId } = req.params;
+//---------------------------------------------------------------------------------------------------------
 
-  const sqlEntrega = "SELECT * FROM TrabajoEntregado WHERE trabajo_id = ? AND usuario_id = ?";
-  const sqlArchivos = `
-    SELECT * FROM TrabajoEntregado_Archivo 
-    WHERE trabajo_entregado_id = ?
-  `;
 
-  conexion.query(sqlEntrega, [trabajoId, usuarioId], (err, entregaResult) => {
-    if (err) return res.status(500).json({ error: "Error al obtener la entrega" });
-
-    if (entregaResult.length === 0) return res.json(null); // No entregado
-
-    const entrega = entregaResult[0];
-
-    conexion.query(sqlArchivos, [entrega.ID], (err2, archivosResult) => {
-      if (err2) return res.status(500).json({ error: "Error al obtener archivos entregados" });
-
-      res.json({
-        entrega,
-        archivos: archivosResult
-      });
-    });
-  });
-});
-
-router.post("/TrabajoEntregado", upload.array("archivo"), (req, res) => {
-  const { trabajo_id, usuario_id } = req.body;
-  const fecha = new Date().toISOString().split("T")[0];
-
-  const sqlInsertar = `
-    INSERT INTO TrabajoEntregado (Fecha_Trabajo, trabajo_id, usuario_id) 
-    VALUES (?, ?, ?)
-  `;
-
-  conexion.query(sqlInsertar, [fecha, trabajo_id, usuario_id], (err, result) => {
-    if (err) return res.status(500).json({ error: "Error al registrar entrega" });
-
-    const trabajoEntregadoId = result.insertId;
-
-    const archivos = req.files.map(file => [
-      trabajoEntregadoId,
-      file.filename,
-      file.originalname
-    ]);
-
-    const sqlInsertarArchivos = `
-      INSERT INTO TrabajoEntregado_Archivo 
-      (trabajo_entregado_id, ruta_archivo, nombre_original) 
-      VALUES ?
-    `;
-
-    conexion.query(sqlInsertarArchivos, [archivos], (err2) => {
-      if (err2) return res.status(500).json({ error: "Error al guardar archivos" });
-
-      res.json({ mensaje: "Trabajo entregado exitosamente" });
-    });
-  });
-});
-
-router.delete("/TrabajoEntregado/:trabajoId/:usuarioId", (req, res) => {
-  const { trabajoId, usuarioId } = req.params;
-
-  const sqlObtener = `
-    SELECT ID FROM TrabajoEntregado 
-    WHERE trabajo_id = ? AND usuario_id = ?
-  `;
-
-  conexion.query(sqlObtener, [trabajoId, usuarioId], (err, result) => {
-    if (err) return res.status(500).json({ error: "Error al buscar entrega" });
-
-    if (result.length === 0) return res.status(404).json({ mensaje: "Entrega no encontrada" });
-
-    const entregaId = result[0].ID;
-
-    const sqlEliminar = "DELETE FROM TrabajoEntregado WHERE ID = ?";
-
-    conexion.query(sqlEliminar, [entregaId], (err2) => {
-      if (err2) return res.status(500).json({ error: "Error al eliminar entrega" });
-
-      res.json({ mensaje: "Entrega cancelada correctamente" });
-    });
-  });
-});
-
-// Obtener totales de usuarios por rol
-router.get('/reportes/usuarios-totales', (req, res) => {
-  const query = `
-    SELECT 
-      COUNT(*) AS totalUsuarios,
-      SUM(CASE WHEN rol_id = 'R003' THEN 1 ELSE 0 END) AS totalCoordinadores,
-      SUM(CASE WHEN rol_id = 'R002' THEN 1 ELSE 0 END) AS totalProfesores,
-      SUM(CASE WHEN rol_id = 'R001' THEN 1 ELSE 0 END) AS totalAlumnos
-    FROM Usuario
-  `;
-
-  conexion.query(query, (error, resultados) => {
-    if (error) {
-      console.error('❌ Error al obtener totales:', error);
-      return res.status(500).json({ mensaje: 'Error en el servidor' });
-    }
-    res.json(resultados[0]);
-  });
-});
-
+/**
+ * @swagger
+ * /reportes/cursos:
+ *   get:
+ *     summary: Obtener reporte de cursos por jornada
+ *     description: |
+ *       Retorna estadísticas de cursos desglosadas por jornada.
+ *       Incluye el total general de cursos y el total por cada jornada específica.
+ *       Útil para analizar la distribución de cursos en el sistema educativo.
+ *     tags:
+ *       - Reportes
+ *     responses:
+ *       200:
+ *         description: Reporte de cursos obtenido exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/ReporteCursos'
+ *       500:
+ *         description: Error en el servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error en el servidor"
+ */
 // Obtener totales de cursos por jornada
 router.get("/reportes/cursos", (req, res) => {
   const sql = `
@@ -6435,6 +7580,39 @@ router.get("/reportes/cursos", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /reportes/estructura:
+ *   get:
+ *     summary: Obtener totales de estructura educativa
+ *     description: |
+ *       Retorna un resumen con los totales de materias, grados y jornadas
+ *       registrados en el sistema. Información básica para dashboards
+ *       y reportes de estructura organizacional.
+ *     tags:
+ *       - Reportes
+ *     responses:
+ *       200:
+ *         description: Datos de estructura obtenidos exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ReporteEstructura'
+ *       500:
+ *         description: Error en el servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error en el servidor"
+ */
 // Obtener totales de materias, grados y jornadas
 router.get("/reportes/estructura", (req, res) => {
   const sql = `
@@ -6453,6 +7631,41 @@ router.get("/reportes/estructura", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /reportes/materias-aulas:
+ *   get:
+ *     summary: Obtener reporte de materias y sus aulas asociadas
+ *     description: |
+ *       Retorna todas las materias del sistema junto con el conteo
+ *       de aulas que utilizan cada materia. Útil para analizar
+ *       la distribución y uso de las materias en el sistema.
+ *     tags:
+ *       - Reportes
+ *     responses:
+ *       200:
+ *         description: Reporte de materias y aulas obtenido exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/ReporteMateriaAulas'
+ *       500:
+ *         description: Error en el servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error en el servidor"
+ */
 // Obtener materias y aulas que la usan
 router.get("/reportes/materias-aulas", (req, res) => {
   const sql = `
@@ -6474,6 +7687,41 @@ router.get("/reportes/materias-aulas", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /reportes/grados-cursos:
+ *   get:
+ *     summary: Obtener reporte de grados y sus cursos asociados
+ *     description: |
+ *       Retorna todos los grados del sistema junto con el conteo
+ *       de cursos que pertenecen a cada grado. Permite analizar
+ *       la distribución de cursos por nivel educativo.
+ *     tags:
+ *       - Reportes
+ *     responses:
+ *       200:
+ *         description: Reporte de grados y cursos obtenido exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/ReporteGradoCursos'
+ *       500:
+ *         description: Error en el servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error en el servidor"
+ */
 // Obtener grados y cursos que lo usan
 router.get("/reportes/grados-cursos", (req, res) => {
   const sql = `
@@ -6495,6 +7743,41 @@ router.get("/reportes/grados-cursos", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /reportes/jornadas-cursos:
+ *   get:
+ *     summary: Obtener reporte de jornadas y sus cursos asociados
+ *     description: |
+ *       Retorna todas las jornadas del sistema junto con el conteo
+ *       de cursos que pertenecen a cada jornada. Permite analizar
+ *       la distribución de cursos por horario de estudio.
+ *     tags:
+ *       - Reportes
+ *     responses:
+ *       200:
+ *         description: Reporte de jornadas y cursos obtenido exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/ReporteJornadaCursos'
+ *       500:
+ *         description: Error en el servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error en el servidor"
+ */
 // Obtener jornadas y cursos que lo usan
 router.get("/reportes/jornadas-cursos", (req, res) => {
   const sql = `
@@ -6516,6 +7799,57 @@ router.get("/reportes/jornadas-cursos", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /buscar-usuario/{id}:
+ *   get:
+ *     summary: Buscar información detallada de un usuario
+ *     description: |
+ *       Obtiene información completa de un usuario específico incluyendo
+ *       su rol, nombre completo y curso/jornada (si aplica).
+ *       Realiza JOIN con todas las tablas relacionadas para información completa.
+ *     tags:
+ *       - Usuarios
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID del usuario a buscar
+ *         example: "U001"
+ *     responses:
+ *       200:
+ *         description: Usuario encontrado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Usuario'
+ *       404:
+ *         description: Usuario no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Usuario no encontrado"
+ *       500:
+ *         description: Error en el servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error en el servidor"
+ */
 // Obtener usuario por id
 router.get("/buscar-usuario/:id", (req, res) => {
   const id = req.params.id;
@@ -6547,6 +7881,39 @@ router.get("/buscar-usuario/:id", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /reportes/aulas:
+ *   get:
+ *     summary: Obtener reporte completo de aulas con estadísticas
+ *     description: |
+ *       Retorna un reporte detallado de todas las aulas del sistema incluyendo:
+ *       estadísticas de usuarios, anuncios, comentarios y trabajos por aula.
+ *       Información completa para análisis de actividad y uso de aulas.
+ *     tags:
+ *       - Reportes
+ *     responses:
+ *       200:
+ *         description: Reporte de aulas obtenido exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ReporteAulas'
+ *       500:
+ *         description: Error en el servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: "Error en el servidor"
+ */
 // Obtener datos para ReportesClase
 router.get("/reportes/aulas", (req, res) => {
   const sql = `
@@ -6592,6 +7959,39 @@ router.get("/reportes/aulas", (req, res) => {
   });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /reportes/horarios-totales:
+ *   get:
+ *     summary: Obtener estadísticas de horarios y profesores
+ *     description: |
+ *       Retorna un resumen completo de horarios en el sistema incluyendo:
+ *       total de horarios, cursos con/sin horario y profesores con/sin horario asignado.
+ *       Ideal para identificar cursos o profesores que necesitan asignación de horarios.
+ *     tags:
+ *       - Reportes
+ *     responses:
+ *       200:
+ *         description: Estadísticas de horarios obtenidas exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ReporteHorarios'
+ *       500:
+ *         description: Error en el servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error en el servidor"
+ */
 // 📊 Ruta para totales de horarios y profesores
 router.get("/reportes/horarios-totales", (req, res) => {
     const query = `
@@ -6609,6 +8009,38 @@ router.get("/reportes/horarios-totales", (req, res) => {
     });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /reportes/noticias-totales:
+ *   get:
+ *     summary: Obtener total de noticias publicadas
+ *     description: |
+ *       Retorna el conteo total de noticias publicadas en el sistema.
+ *       Estadística simple pero útil para dashboards de administración.
+ *     tags:
+ *       - Reportes
+ *     responses:
+ *       200:
+ *         description: Total de noticias obtenido exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ReporteNoticias'
+ *       500:
+ *         description: Error en el servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error en el servidor"
+ */
 // 📰 Ruta para total de noticias
 router.get("/reportes/noticias-totales", (req, res) => {
     conexion.query(`SELECT COUNT(*) AS total_noticias FROM Noticia`, (err, results) => {
@@ -6617,6 +8049,50 @@ router.get("/reportes/noticias-totales", (req, res) => {
     });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /reportes/cursos-horarios:
+ *   get:
+ *     summary: Obtener cursos con y sin horarios asignados
+ *     description: |
+ *       Retorna dos listas separadas: cursos que tienen horario asignado
+ *       y cursos que no tienen horario. Útil para identificar cursos
+ *       que necesitan asignación de horarios y gestión académica.
+ *     tags:
+ *       - Reportes
+ *     responses:
+ *       200:
+ *         description: Reporte de cursos y horarios obtenido exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 conHorario:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/CursoHorario'
+ *                   description: Lista de cursos que tienen horario asignado
+ *                 sinHorario:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/CursoHorario'
+ *                   description: Lista de cursos que no tienen horario asignado
+ *       500:
+ *         description: Error en el servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Error en el servidor"
+ */
 router.get("/reportes/cursos-horarios", (req, res) => {
     const queryConHorario = `
         SELECT c.Curso_Nombre AS curso, j.Jornada_Nombre AS jornada
@@ -6644,6 +8120,65 @@ router.get("/reportes/cursos-horarios", (req, res) => {
     });
 });
 
+
+//---------------------------------------------------------------------------------------------------------
+
+
+/**
+ * @swagger
+ * /reportes/profesores-horarios:
+ *   get:
+ *     summary: Obtiene un reporte de profesores con y sin horarios asignados
+ *     description: >
+ *       Este endpoint retorna dos listas separadas:
+ *       - **conHorario** → Profesores que tienen al menos un horario registrado.  
+ *       - **sinHorario** → Profesores que no tienen ningún horario asignado.  
+ *
+ *       El sistema identifica a los profesores porque en la tabla `Usuario`  
+ *       el campo `rol_id` debe ser igual a `'R002'`.
+ *     tags:
+ *       - Reportes
+ *     responses:
+ *       200:
+ *         description: Listado de profesores organizados según tengan o no tengan horario.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 conHorario:
+ *                   type: array
+ *                   description: Lista de profesores con horarios asignados
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       ID:
+ *                         type: string
+ *                         example: "U001"
+ *                       nombre:
+ *                         type: string
+ *                         example: "Carlos"
+ *                       apellido:
+ *                         type: string
+ *                         example: "Ramírez"
+ *                 sinHorario:
+ *                   type: array
+ *                   description: Lista de profesores sin horarios asignados
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       ID:
+ *                         type: string
+ *                         example: "U010"
+ *                       nombre:
+ *                         type: string
+ *                         example: "Ana"
+ *                       apellido:
+ *                         type: string
+ *                         example: "Gómez"
+ *       500:
+ *         description: Error al ejecutar la consulta en la base de datos.
+ */
 router.get("/reportes/profesores-horarios", (req, res) => {
     const queryConHorario = `
         SELECT DISTINCT u.ID, u.Primer_Nombre AS nombre, u.Primer_Apellido AS apellido
