@@ -268,6 +268,8 @@ SELECT
 FROM Noticia
 LEFT JOIN Tipo_Noticia ON Noticia.tipo_noticia_id = Tipo_Noticia.ID;
 
+select * from Noticia;
+
 
 
 
