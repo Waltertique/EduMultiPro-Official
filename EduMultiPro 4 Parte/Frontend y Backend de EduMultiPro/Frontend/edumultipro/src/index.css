@@ -24,11 +24,11 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  display: block;
+  place-items: unset;
 }
+
 
 h1 {
   font-size: 3.2em;
@@ -65,4 +65,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+
+.app-container {
+  padding-top: 70px; /* Altura del nav */
 }
