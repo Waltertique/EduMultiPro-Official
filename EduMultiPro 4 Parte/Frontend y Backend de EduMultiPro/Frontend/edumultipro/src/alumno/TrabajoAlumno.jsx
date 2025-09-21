@@ -107,7 +107,7 @@ function TrabajoAlumno(){
                                 {trabajos.map((trabajo) => (
                                     <tr key={trabajo.ID}> 
                                         <td>{trabajo.Titulo_Trabajo}</td>
-                                        <td>{trabajo.Titulo_Trabajo}</td>
+                                        <td>{new Date(trabajo.Fecha_Trabajo).toLocaleDateString()}</td>
                                         <td>
                                             <Link to={`/VerTrabajoAlumno/${trabajo.ID}/${id}`}>
                                                 <button type="submit" className="informacion" id="btninformacion">
