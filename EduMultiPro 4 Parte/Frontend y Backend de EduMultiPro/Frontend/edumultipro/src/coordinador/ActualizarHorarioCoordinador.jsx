@@ -123,12 +123,31 @@ function ActualizarHorarioCoordinador(){
                                     <input type="text" name="titulo" value={formulario.titulo} onChange={handleChange} required />
                                     <textarea name="descripcion" value={formulario.descripcion} onChange={handleChange} required />
                                     {formulario.imagenActual && (
-                                    <>
-                                        <p>Imagen actual:</p>
-                                        <img src={`http://localhost:3000/imagenes/${formulario.imagenActual}`} width="200" alt="Actual" />
-                                    </>
+                                      <>
+                                        <p>Horario actual:</p>
+                                        {formulario.imagenActual.toLowerCase().endsWith(".pdf") ? (
+                                          <iframe
+                                            src={`http://localhost:3000/imagenes/${formulario.imagenActual}`}
+                                            title="Horario PDF actual"
+                                            width="100%"
+                                            height="300px"
+                                            style={{
+                                              border: "2px solid #ccc",
+                                              borderRadius: "10px",
+                                              marginBottom: "15px"
+                                            }}
+                                          />
+                                        ) : (
+                                          <img
+                                            src={`http://localhost:3000/imagenes/${formulario.imagenActual}`}
+                                            width="200"
+                                            alt="Horario actual"
+                                            style={{ borderRadius: "10px", marginBottom: "15px" }}
+                                          />
+                                        )}
+                                      </>
                                     )}
-                                    <input type="file" name="imagen" accept="image/png,image/jpeg" onChange={handleChange} />
+                                    <input type="file" name="imagen" accept="image/png, image/jpeg, application/pdf" onChange={handleChange} />
                                     <select name="profesor_id" value={formulario.profesor_id} onChange={handleChange}>
                                     <option value="">-- Sin profesor --</option>
                                     {profesores.map(p => <option key={p.ID} value={p.ID}>{p.Nombre_Completo}</option>)}

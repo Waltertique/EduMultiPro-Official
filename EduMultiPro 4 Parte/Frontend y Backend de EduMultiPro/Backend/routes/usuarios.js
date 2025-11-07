@@ -309,15 +309,15 @@ router.delete("/Cursos/:id", (req, res) => {
 // Actualizar curso
 router.put("/Cursos/:id", (req, res) => {
   const { id } = req.params;
-  const { grado_id, jornada_id } = req.body;
+  const { Curso_Nombre, grado_id, jornada_id } = req.body;
 
   const query = `
     UPDATE Curso
-    SET grado_id = ?, jornada_id = ?
+    SET Curso_Nombre = ?, grado_id = ?, jornada_id = ?
     WHERE ID = ?
   `;
 
-  conexion.query(query, [grado_id, jornada_id, id], (error, result) => {
+  conexion.query(query, [Curso_Nombre, grado_id, jornada_id, id], (error, result) => {
     if (error) {
       res.status(500).json({ error: "Error al actualizar el curso" });
     } else {
@@ -1346,59 +1346,81 @@ router.delete("/Noticias/:id", (req, res) => {
 });
 
 // Crear noticia
-router.post("/Noticias", upload.fields([
-  { name: "imagen1" },
-  { name: "imagen2" },
-  { name: "imagen3" }
-]), (req, res) => {
-  const {
-    titulo,
-    encabezado,
-    descripcion1,
-    descripcion2,
-    descripcion3,
-    fecha,
-    tipo_noticia_id
-  } = req.body;
-
-  const imagen1 = req.files['imagen1']?.[0]?.filename || null;
-  const imagen2 = req.files['imagen2']?.[0]?.filename || null;
-  const imagen3 = req.files['imagen3']?.[0]?.filename || null;
-
-  // Validar que no exista otra noticia con el mismo tipo
-  const checkQuery = "SELECT * FROM Noticia WHERE tipo_noticia_id = ?";
-  conexion.query(checkQuery, [tipo_noticia_id], (err, results) => {
-    if (err) return res.status(500).json({ error: "Error al validar tipo de noticia" });
-    if (results.length > 0) {
-      return res.status(400).json({ error: "Ya hay una noticia con este tipo" });
-    }
-
-    // Insertar nueva noticia
-    const insertQuery = `
-      INSERT INTO Noticia (
-        Titulo_Noticia, Encabezado, Descripcion1, Descripcion2, Descripcion3,
-        Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id
-      )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
-
-    conexion.query(insertQuery, [
+router.post(
+  "/Noticias",
+  upload.fields([
+    { name: "imagen1" },
+    { name: "imagen2" },
+    { name: "imagen3" }
+  ]),
+  (req, res) => {
+    const {
       titulo,
       encabezado,
       descripcion1,
-      descripcion2 || null,
-      descripcion3 || null,
+      descripcion2,
+      descripcion3,
       fecha,
-      imagen1,
-      imagen2,
-      imagen3,
       tipo_noticia_id
-    ], (err2, result) => {
-      if (err2) return res.status(500).json({ error: "Error al crear la noticia" });
-      res.json({ mensaje: "Noticia creada exitosamente" });
-    });
-  });
-});
+    } = req.body;
+
+    const imagen1 = req.files['imagen1']?.[0]?.filename || null;
+    const imagen2 = req.files['imagen2']?.[0]?.filename || null;
+    const imagen3 = req.files['imagen3']?.[0]?.filename || null;
+
+    // 🔹 Validar duplicados solo para tipos principales (1, 2, 3)
+    const tiposUnicos = ['1', '2', '3'];
+
+    if (tiposUnicos.includes(tipo_noticia_id)) {
+      const checkQuery = "SELECT * FROM Noticia WHERE tipo_noticia_id = ?";
+      conexion.query(checkQuery, [tipo_noticia_id], (err, results) => {
+        if (err) return res.status(500).json({ error: "Error al validar tipo de noticia" });
+        if (results.length > 0) {
+          return res.status(400).json({
+            error: "Ya existe una noticia con este tipo principal. No se pueden repetir."
+          });
+        }
+
+        insertarNoticia();
+      });
+    } else {
+      // Si no es tipo principal, se puede insertar directamente
+      insertarNoticia();
+    }
+
+    // 🔹 Función auxiliar para insertar la noticia
+    function insertarNoticia() {
+      const insertQuery = `
+        INSERT INTO Noticia (
+          Titulo_Noticia, Encabezado, Descripcion1, Descripcion2, Descripcion3,
+          Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `;
+
+      conexion.query(
+        insertQuery,
+        [
+          titulo,
+          encabezado,
+          descripcion1,
+          descripcion2 || null,
+          descripcion3 || null,
+          fecha,
+          imagen1,
+          imagen2,
+          imagen3,
+          tipo_noticia_id
+        ],
+        (err2) => {
+          if (err2)
+            return res.status(500).json({ error: "Error al crear la noticia" });
+          res.json({ mensaje: "Noticia creada exitosamente" });
+        }
+      );
+    }
+  }
+);
 
 // Obtener tipos de noticia
 router.get("/TiposNoticia", (req, res) => {
@@ -1412,54 +1434,84 @@ router.get("/TiposNoticia", (req, res) => {
 });
 
 // Actualizar Noticia
-router.put("/Noticias/:id", upload.fields([
-  { name: "imagen1" },
-  { name: "imagen2" },
-  { name: "imagen3" }
-]), (req, res) => {
-  const id = req.params.id;
-  const {
-    titulo,
-    encabezado,
-    descripcion1,
-    descripcion2,
-    descripcion3,
-    fecha,
-    tipo_noticia_id
-  } = req.body;
-
-  // Validar duplicado de tipo (ajustar solo si cambió)
-  const checkQuery = `
-    SELECT * FROM Noticia
-    WHERE tipo_noticia_id = ? AND ID != ?
-  `;
-  conexion.query(checkQuery, [tipo_noticia_id, id], (err, results) => {
-    if (err) return res.status(500).json({ error: "Error al validar tipo de noticia" });
-    if (results.length > 0) {
-      return res.status(400).json({ error: "Otra noticia ya tiene este tipo" });
-    }
+router.put(
+  "/Noticias/:id",
+  upload.fields([
+    { name: "imagen1" },
+    { name: "imagen2" },
+    { name: "imagen3" }
+  ]),
+  (req, res) => {
+    const id = req.params.id;
+    const {
+      titulo,
+      encabezado,
+      descripcion1,
+      descripcion2,
+      descripcion3,
+      fecha,
+      tipo_noticia_id
+    } = req.body;
 
     // Preparar imágenes
     const imagen1 = req.files['imagen1']?.[0]?.filename;
     const imagen2 = req.files['imagen2']?.[0]?.filename;
     const imagen3 = req.files['imagen3']?.[0]?.filename;
 
-    let query = `UPDATE Noticia SET Titulo_Noticia = ?, Encabezado = ?, Descripcion1 = ?, Descripcion2 = ?, Descripcion3 = ?, Fecha_Notica = ?, tipo_noticia_id = ?`;
-    const params = [titulo, encabezado, descripcion1, descripcion2 || null, descripcion3 || null, fecha, tipo_noticia_id];
+    // 🔹 Solo validar duplicados si es tipo principal (1, 2 o 3)
+    const tiposUnicos = ['1', '2', '3'];
 
-    if (imagen1) { query += ", Imagen1 = ?"; params.push(imagen1); }
-    if (imagen2) { query += ", Imagen2 = ?"; params.push(imagen2); }
-    if (imagen3) { query += ", Imagen3 = ?"; params.push(imagen3); }
+    if (tiposUnicos.includes(tipo_noticia_id)) {
+      const checkQuery = `
+        SELECT * FROM Noticia
+        WHERE tipo_noticia_id = ? AND ID != ?
+      `;
+      conexion.query(checkQuery, [tipo_noticia_id, id], (err, results) => {
+        if (err) return res.status(500).json({ error: "Error al validar tipo de noticia" });
+        if (results.length > 0) {
+          return res.status(400).json({
+            error: "Ya existe otra noticia con este tipo principal. No se pueden repetir."
+          });
+        }
+        actualizarNoticia();
+      });
+    } else {
+      // Si no es tipo principal, actualizar directamente
+      actualizarNoticia();
+    }
 
-    query += " WHERE ID = ?";
-    params.push(id);
+    // 🔹 Función auxiliar para actualizar noticia
+    function actualizarNoticia() {
+      let query = `
+        UPDATE Noticia
+        SET Titulo_Noticia = ?, Encabezado = ?, Descripcion1 = ?, Descripcion2 = ?, Descripcion3 = ?,
+            Fecha_Notica = ?, tipo_noticia_id = ?
+      `;
+      const params = [
+        titulo,
+        encabezado,
+        descripcion1,
+        descripcion2 || null,
+        descripcion3 || null,
+        fecha,
+        tipo_noticia_id
+      ];
 
-    conexion.query(query, params, (error, result) => {
-      if (error) return res.status(500).json({ error: "Error al actualizar la noticia" });
-      res.json({ mensaje: "Noticia actualizada correctamente" });
-    });
-  });
-});
+      if (imagen1) { query += ", Imagen1 = ?"; params.push(imagen1); }
+      if (imagen2) { query += ", Imagen2 = ?"; params.push(imagen2); }
+      if (imagen3) { query += ", Imagen3 = ?"; params.push(imagen3); }
+
+      query += " WHERE ID = ?";
+      params.push(id);
+
+      conexion.query(query, params, (error) => {
+        if (error)
+          return res.status(500).json({ error: "Error al actualizar la noticia" });
+        res.json({ mensaje: "Noticia actualizada correctamente" });
+      });
+    }
+  }
+);
 
 // Obtener una noticia por ID
 router.get("/Noticias/:id", (req, res) => {

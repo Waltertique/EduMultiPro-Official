@@ -120,9 +120,10 @@ function CrearHorario(){
                             <div className="contenidoCrearHorario">
                     
                               <form onSubmit={handleSubmit}>
-                                <input type="text" name="titulo" placeholder="Título del Horario" required onChange={handleChange} />
-                                <textarea name="descripcion" placeholder="Descripción del Horario" required onChange={handleChange}></textarea>
-                                <input type="file" name="imagen" accept="image/png, image/jpeg" onChange={handleChange} />
+                                <input type="text" name="titulo" maxLength="100" placeholder="Título del Horario" required onChange={handleChange} />
+                                <textarea name="descripcion" maxLength="500" placeholder="Descripción del Horario" required onChange={handleChange}></textarea>
+
+                                <input type="file" name="imagen" accept="image/png, image/jpeg, application/pdf" onChange={handleChange} />
 
                                 <select name="profesor_id" value={formulario.profesor_id} onChange={handleChange}>
                                   <option value="">Selecciona un profesor (opcional)</option>

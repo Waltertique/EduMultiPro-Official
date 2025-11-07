@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     const usuario = JSON.parse(localStorage.getItem('usuario'));
-
+    
     if (token && usuario?.rol) {
       switch (usuario.rol) {
         case 'R004': navigate('/usuario'); break;

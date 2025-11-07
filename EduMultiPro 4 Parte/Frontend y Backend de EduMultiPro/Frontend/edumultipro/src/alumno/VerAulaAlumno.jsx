@@ -124,7 +124,7 @@ function VerAulaAlumno(){
                             </div>
 
                             {anuncio.Enlace_Anuncio && anuncio.Enlace_Anuncio.split(";").map((enlace, i) => (
-                                <a key={i} href={`http://localhost:3000/imagenes/${enlace}`} target="_blank" rel="noreferrer">Ver archivo</a>
+                                <a key={i} href={`http://localhost:3000/imagenes/${enlace}`} target="_blank" rel="noreferrer" id='enlaceAnuncio2'>Ver archivo</a>
                             ))}
 
                             <div className="botonesAulaAlumno">

@@ -34,7 +34,7 @@ CREATE TABLE Materia (
 
 CREATE TABLE Tipo_Noticia (
 	ID INT auto_increment PRIMARY KEY,
-    Tipo VARCHAR(100) NOT NULL
+    Tipo VARCHAR(40) NOT NULL
 );
 
 -- Tablas Con Llaves Foraneas
@@ -50,17 +50,17 @@ CREATE TABLE Curso(
 
 CREATE TABLE Usuario (
 	ID INT PRIMARY KEY,
-    Primer_Nombre VARCHAR(100) NOT NULL,
-    Segundo_Nombre VARCHAR(100),
-    Primer_Apellido VARCHAR(100) NOT NULL,
-    Segundo_Apellido VARCHAR(100),
+    Primer_Nombre VARCHAR(50) NOT NULL,
+    Segundo_Nombre VARCHAR(50),
+    Primer_Apellido VARCHAR(50) NOT NULL,
+    Segundo_Apellido VARCHAR(50),
     Correo1 VARCHAR(50) NOT NULL,
     Contraseña VARCHAR(255) NOT NULL,
     Correo2 VARCHAR(50),
     Contacto1 VARCHAR(50) NOT NULL,
     Contacto2 VARCHAR(50),
     Fecha_Nacimiento DATE NOT NULL,
-    RutaFoto VARCHAR(200),
+    RutaFoto VARCHAR(225),
     rol_id VARCHAR(10) NOT NULL,
     documento_id VARCHAR(10) NOT NULL,
     FOREIGN KEY (rol_id) REFERENCES Rol(ID),
@@ -77,9 +77,9 @@ CREATE TABLE Miembros_Curso (
 
 CREATE TABLE Horario (
 	ID INT auto_increment PRIMARY KEY,
-    Titulo_Horario VARCHAR(50) NOT NULL,
-    Imagen_Horario VARCHAR(200),
-    Descripcion_Horario TEXT(300) NOT NULL,
+    Titulo_Horario VARCHAR(100) NOT NULL,
+    Imagen_Horario VARCHAR(225),
+    Descripcion_Horario TEXT(500) NOT NULL,
     profesor_id	INT,
     curso_id INT,
     FOREIGN KEY (profesor_id) REFERENCES Usuario(ID) ON DELETE CASCADE,
@@ -99,9 +99,9 @@ CREATE TABLE Aula (
 
 CREATE TABLE Anuncio (
 	ID INT auto_increment PRIMARY KEY,
-    Titulo_Anuncio VARCHAR(100) NOT NULL,
-	Descripcion_Anuncio TEXT(300),
-    Enlace_Anuncio VARCHAR(200),
+    Titulo_Anuncio VARCHAR(80) NOT NULL,
+	Descripcion_Anuncio TEXT(500),
+    Enlace_Anuncio VARCHAR(225),
     Fecha_Anuncio DATE NOT NULL,
     aula_id INT NOT NULL,
     usuario_id INT NOT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE Anuncio (
 CREATE TABLE Trabajo (
 	ID INT auto_increment PRIMARY KEY,
     Titulo_Trabajo VARCHAR(100) NOT NULL,
-	Descripcion_Trabajo TEXT(300),
+	Descripcion_Trabajo TEXT(500),
     Fecha_Trabajo DATE NOT NULL,
     aula_id INT NOT NULL,
     FOREIGN KEY (aula_id) REFERENCES Aula(ID) ON DELETE CASCADE
@@ -121,7 +121,7 @@ CREATE TABLE Trabajo (
 CREATE TABLE Trabajo_Archivo (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     trabajo_id INT NOT NULL,
-    ruta_archivo VARCHAR(200) NOT NULL,
+    ruta_archivo VARCHAR(225) NOT NULL,
     nombre_original VARCHAR(150),
     FOREIGN KEY (trabajo_id) REFERENCES Trabajo(ID) ON DELETE CASCADE
 );
@@ -139,14 +139,14 @@ CREATE TABLE TrabajoEntregado (
 CREATE TABLE TrabajoEntregado_Archivo (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     trabajo_entregado_id INT NOT NULL,
-    ruta_archivo VARCHAR(200) NOT NULL,
+    ruta_archivo VARCHAR(225) NOT NULL,
     nombre_original VARCHAR(150),
     FOREIGN KEY (trabajo_entregado_id) REFERENCES TrabajoEntregado(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Comentario (
 	ID INT auto_increment PRIMARY KEY,
-    Descripcion VARCHAR(200) NOT NULL,
+    Descripcion VARCHAR(500) NOT NULL,
     Fecha DATE NOT NULL,
     trabajo_id INT,
     anuncio_id int,
@@ -158,15 +158,15 @@ CREATE TABLE Comentario (
 
 CREATE TABLE Noticia (
 	ID INT auto_increment PRIMARY KEY,
-	Titulo_Noticia VARCHAR(200) NOT NULL,
-    Encabezado TEXT(1000),
-	Descripcion1 TEXT(2000),
-    Descripcion2 TEXT(2000),
-    Descripcion3 TEXT(2000),
+	Titulo_Noticia VARCHAR(100) NOT NULL,
+    Encabezado TEXT(500),
+	Descripcion1 TEXT(1500),
+    Descripcion2 TEXT(1500),
+    Descripcion3 TEXT(1500),
     Fecha_Notica Date NOT NULL,
-    Imagen1 VARCHAR(200),
-    Imagen2 VARCHAR(200),
-    Imagen3 VARCHAR(200),
+    Imagen1 VARCHAR(225),
+    Imagen2 VARCHAR(225),
+    Imagen3 VARCHAR(225),
 	tipo_noticia_id INT NOT NULL,
     FOREIGN KEY (tipo_noticia_id) REFERENCES Tipo_Noticia(ID)
 );
@@ -189,6 +189,4 @@ INSERT INTO Tipo_Noticia(ID, Tipo) Values
 	('1', 'Noticia Principal 1'),
 	('2', 'Noticia Principal 2'),
 	('3', 'Noticia Principal 3'),
-	('4', 'Noticia Secundaria 1'),
-    ('5', 'Noticia Secundaria 2'),
-    ('6', 'Noticia Secundaria 3');
+	('4', 'Ninguna de las anteriores');

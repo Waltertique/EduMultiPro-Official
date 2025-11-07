@@ -142,13 +142,13 @@ const { id } = useParams(); // URL: /VerUsuario/:id
                                                 <option key={doc.ID} value={doc.ID}>{doc.Tipo_Documento}</option>
                                             ))}
                                             </select>
-                                            <input type="text" name="Primer_Nombre" value={usuario.Primer_Nombre} onChange={handleChange} required placeholder="Primer Nombre" />
-                                            <input type="text" name="Segundo_Nombre" value={usuario.Segundo_Nombre || ''} onChange={handleChange} placeholder="Segundo Nombre" />
+                                            <input type="text" name="Primer_Nombre" maxLength="50" value={usuario.Primer_Nombre} onChange={handleChange} required placeholder="Primer Nombre" />
+                                            <input type="text" name="Segundo_Nombre" maxLength="50" value={usuario.Segundo_Nombre || ''} onChange={handleChange} placeholder="Segundo Nombre" />
                                         </div>
                                         <div className="f1">
-                                            <input type="text" name="Primer_Apellido" value={usuario.Primer_Apellido} onChange={handleChange} required placeholder="Primer Apellido" />
-                                            <input type="text" name="Segundo_Apellido" value={usuario.Segundo_Apellido || ''} onChange={handleChange} placeholder="Segundo Apellido" />
-                                            <input type="email" name="Correo1" value={usuario.Correo1} onChange={handleChange} required placeholder="Correo 1" />
+                                            <input type="text" name="Primer_Apellido" maxLength="50" value={usuario.Primer_Apellido} onChange={handleChange} required placeholder="Primer Apellido" />
+                                            <input type="text" name="Segundo_Apellido" maxLength="50" value={usuario.Segundo_Apellido || ''} onChange={handleChange} placeholder="Segundo Apellido" />
+                                            <input type="email" name="Correo1" maxLength="50" value={usuario.Correo1} onChange={handleChange} required placeholder="Correo 1" />
                                         </div>
                                         <div className="f1">
                                             <input type="password" name="Contraseña" value={nuevaContraseña} onChange={(e) => setNuevaContraseña(e.target.value)} placeholder="Nueva contraseña"/>
@@ -158,7 +158,7 @@ const { id } = useParams(); // URL: /VerUsuario/:id
                                                 <option key={rol.ID} value={rol.ID}>{rol.Nombre_Rol}</option>
                                             ))}
                                             </select>
-                                            <input type="email" name="Correo2" value={usuario.Correo2 || ''} onChange={handleChange} placeholder="Correo 2" />
+                                            <input type="email" name="Correo2" maxLength="50" value={usuario.Correo2 || ''} onChange={handleChange} placeholder="Correo 2" />
                                         </div>
 
                                         <h3>Otros Datos</h3>

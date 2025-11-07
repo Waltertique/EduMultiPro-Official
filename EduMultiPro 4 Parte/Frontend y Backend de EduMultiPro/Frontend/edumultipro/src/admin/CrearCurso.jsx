@@ -95,7 +95,7 @@ function CrearCurso(){
                                 <form onSubmit={handleSubmit}>
                                     <h3>Datos Curso</h3>
                                     <div className="f1">
-                                        <input type="text" name="curso_nombre" placeholder="Nombre del Curso" value={cursoNombre} onChange={(e) => setCursoNombre(e.target.value)} required></input>
+                                        <input type="text" name="curso_nombre" maxLength="50" placeholder="Nombre del Curso" value={cursoNombre} onChange={(e) => setCursoNombre(e.target.value)} required></input>
                                     </div>
                                     <div className="f1">
                                         <select

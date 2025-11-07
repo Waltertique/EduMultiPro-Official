@@ -68,19 +68,35 @@ useEffect(() => {
                                 <div className="row" id="tituloho">
                                     <h2>{horario?.Titulo_Horario || "Horario sin título"}</h2>
                                 </div>
-                            
+
                                 <div className="row" id="imghorario">
                                     {horario?.Imagen_Horario ? (
-                                        <img
+                                        <>
+                                        {/* Detectar tipo de archivo según extensión */}
+                                        {horario.Imagen_Horario.toLowerCase().endsWith(".pdf") ? (
+                                            <iframe
                                             src={`http://localhost:3000/imagenes/${horario.Imagen_Horario}`}
-                                            alt="Imagen Horario"
-                                            id="imagenPequena"
-                                        />
+                                            title="Horario PDF"
+                                            width="100%"
+                                            height="600px"
+                                            style={{
+                                                border: "2px solid #ccc",
+                                                borderRadius: "10px",
+                                                boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+                                            }}
+                                            />
                                         ) : (
-                                        <p>No se ha subido una imagen para este horario.</p>
+                                            <img
+                                                src={`http://localhost:3000/imagenes/${horario.Imagen_Horario}`}
+                                                alt="Imagen del Horario"
+                                                id="imagenPequena"
+                                            />
+                                        )}
+                                        </>
+                                    ) : (
+                                        <p>No se ha subido un archivo para este horario.</p>
                                     )}
                                 </div>
-                            
                             
                                 <div className="row" id="descripcion">
                                     <h3>Descripcion:</h3>

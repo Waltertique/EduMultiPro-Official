@@ -100,7 +100,7 @@ function VerTrabajoProfesor(){
                         {archivos.map((archivo) => (
                             <div className="enlace" key={archivo.ID}>
                                 <a
-                                href={`http://localhost:3000/${archivo.ruta_archivo}`}
+                                href={`http://localhost:3000/imagenes/${archivo.ruta_archivo}`}
                                 target="_blank"
                                 rel="noreferrer"
                                 >

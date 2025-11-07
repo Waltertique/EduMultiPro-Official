@@ -211,8 +211,8 @@ const cancelarEdicion = () => {
 
                                 <form onSubmit={guardarMateria}>
                                     <h3>Datos Materia</h3>
-                                        <input type="text" name="materia_nombre" placeholder="Nombre de la Materia" value={nuevaMateria.materia_nombre} onChange={manejarCambioNueva} required></input>
-                                        <input id="Descripcion" type="text" name="materia_descripcion" placeholder="Descripcion de la Materia" value={nuevaMateria.materia_descripcion} onChange={manejarCambioNueva} required></input>
+                                        <input type="text" name="materia_nombre" maxLength="50" placeholder="Nombre de la Materia" value={nuevaMateria.materia_nombre} onChange={manejarCambioNueva} required></input>
+                                        <input id="Descripcion" type="text" name="materia_descripcion" maxLength="300" placeholder="Descripcion de la Materia" value={nuevaMateria.materia_descripcion} onChange={manejarCambioNueva} required></input>
                                         <button type="submit">Guardar Materia</button>
                                 </form>
 
@@ -245,10 +245,10 @@ const cancelarEdicion = () => {
                                     <input type="hidden" name="id" value={materiaSeleccionada.ID} />
                                     
                                     <label for="editarNombre">Nombre:</label>
-                                    <input type="text" name="nombre" id="editarNombre" value={materiaSeleccionada.Materia_Nombre} onChange={manejarCambio} required></input>
+                                    <input type="text" name="nombre" id="editarNombre" maxLength="50" value={materiaSeleccionada.Materia_Nombre} onChange={manejarCambio} required></input>
                                     
                                     <label for="editarDescripcion">Descripción:</label>
-                                    <input name="descripcion" id="editarDescripcion" rows="3" value={materiaSeleccionada.Descripcion_Materia} onChange={manejarCambio} required></input>
+                                    <input name="descripcion" id="editarDescripcion" maxLength="300" rows="3" value={materiaSeleccionada.Descripcion_Materia} onChange={manejarCambio} required></input>
                                     
                                     <button type="submit" className="btn-guardar2">Guardar cambios</button>
                                     <button type="button" className="btn-cancelar" onClick={cancelarEdicion}>Cancelar</button>

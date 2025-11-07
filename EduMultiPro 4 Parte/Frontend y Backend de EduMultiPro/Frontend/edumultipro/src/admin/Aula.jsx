@@ -185,6 +185,7 @@ function Aula(){
                                         id='editarAulaNombre'
                                         value={aulaSeleccionada.Aula_Nombre}
                                         placeholder="Nombre del Aula"
+                                        maxLength="50"
                                         required
                                         onChange={(e) => setAulaSeleccionada({ ...aulaSeleccionada, Aula_Nombre: e.target.value })}
                                     />

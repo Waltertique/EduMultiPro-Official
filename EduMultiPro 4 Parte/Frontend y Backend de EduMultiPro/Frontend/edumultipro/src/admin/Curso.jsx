@@ -170,6 +170,7 @@ function Curso(){
                                       "Content-Type": "application/json",
                                     },
                                     body: JSON.stringify({
+                                      Curso_Nombre: cursoSeleccionado.Curso_Nombre,
                                       grado_id: cursoSeleccionado.grado_id,
                                       jornada_id: cursoSeleccionado.jornada_id,
                                     }),
@@ -180,6 +181,18 @@ function Curso(){
                                   setMostrarFormulario(false);
                                   obtenerCursos(); // actualizar tabla
                                 }}> 
+                                    <input
+                                      type="text"
+                                      id="editarNombre"
+                                      name="Curso_Nombre"
+                                      maxLength="50"
+                                      placeholder="Nombre del curso"
+                                      value={cursoSeleccionado.Curso_Nombre}
+                                      onChange={(e) =>
+                                        setCursoSeleccionado({ ...cursoSeleccionado, Curso_Nombre: e.target.value })
+                                      }
+                                      required
+                                    />
                                     
                                     <select
                                       id='editarGrado'

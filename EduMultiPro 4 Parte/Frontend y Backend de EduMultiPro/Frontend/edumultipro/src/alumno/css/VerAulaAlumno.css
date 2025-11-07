@@ -249,6 +249,9 @@
     color: black;
     cursor: pointer;
 }
+#enlaceAnuncio2 {
+    margin-right: 20px;
+}
 @media (min-width: 100px) and (max-width: 414px) {
     #tituloAulaAlumno h2{
         font-size: 25px;

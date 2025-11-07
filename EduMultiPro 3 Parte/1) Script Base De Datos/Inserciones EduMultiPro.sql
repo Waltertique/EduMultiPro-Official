@@ -363,9 +363,9 @@ INSERT INTO Noticia (ID, Titulo_Noticia, Encabezado, Descripcion1, Descripcion2,
  'Actualmente se están planificando pruebas en humanos, y si los resultados son positivos, podría representar un avance histórico en la lucha contra las enfermedades neurodegenerativas. A pesar del entusiasmo, los científicos advierten que el proceso de aprobación será largo y requerirá años de seguimiento.','2025-03-10', '1.png', 'd3.png', '1.png', '4'),
 
 ('5', 'Importancia del reciclaje en las instituciones', 'Una iniciativa verde para mejorar la cultura ambiental.','La campaña busca reducir residuos y promover hábitos sostenibles.',
- 'Se implementarán puntos de reciclaje en varias sedes educativas.','También se realizarán charlas de concientización y actividades ecológicas.', '2025-03-08', '2.png', 'd4.png', '2.png', '5'),
+ 'Se implementarán puntos de reciclaje en varias sedes educativas.','También se realizarán charlas de concientización y actividades ecológicas.', '2025-03-08', '2.png', 'd4.png', '2.png', '4'),
 
 ('6', 'Eventos académicos en 2025', 'Un año cargado de actividades educativas y tecnológicas.','Entre los eventos destacan ferias científicas y congresos de innovación.',
- 'Las instituciones pueden inscribirse para participar con sus proyectos.','Consulta el calendario oficial para conocer fechas y requisitos.','2025-03-05', '3.png', 'd5.png', '3.png', '6');
+ 'Las instituciones pueden inscribirse para participar con sus proyectos.','Consulta el calendario oficial para conocer fechas y requisitos.','2025-03-05', '3.png', 'd5.png', '3.png', '4');
     
                                

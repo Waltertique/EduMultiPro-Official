@@ -210,8 +210,8 @@ const cancelarEdicion = () => {
                             <div className="contenedor-fromularioGrado">
                                 <form onSubmit={guardarGrado}>
                                     <h3>Datos Grado</h3>
-                                        <input type="text" name="grado_nombre" placeholder="Nombre del grado" value={nuevaGrado.grado_nombre} onChange={manejarCambioNueva} required></input>
-                                        <input type="text" name="grado_descripcion" placeholder="Descripcion" value={nuevaGrado.grado_descripcion} onChange={manejarCambioNueva} required></input>
+                                        <input type="text" name="grado_nombre" maxLength="50" placeholder="Nombre del grado" value={nuevaGrado.grado_nombre} onChange={manejarCambioNueva} required></input>
+                                        <input type="text" name="grado_descripcion" maxLength="300" placeholder="Descripcion" value={nuevaGrado.grado_descripcion} onChange={manejarCambioNueva} required></input>
                                         <button type="submit">Guardar Grado</button>
                                 </form>
 
@@ -244,10 +244,10 @@ const cancelarEdicion = () => {
                                     <input type="hidden" name="id" value={gradoSeleccionada.ID} />
                                     
                                     <label for="editarGradoNombre">Nombre del grado:</label>
-                                    <input type="text" name="nombre" id="editarGradoNombre" value={gradoSeleccionada.Grado_Nombre} onChange={manejarCambio} required></input>
+                                    <input type="text" name="nombre" id="editarGradoNombre" maxLength="50" value={gradoSeleccionada.Grado_Nombre} onChange={manejarCambio} required></input>
 
                                     <label for="editarDescripcion">Descripción:</label>
-                                    <input name="descripcion" id="editarDescripcion" rows="3" value={gradoSeleccionada.Descripcion_Grado} onChange={manejarCambio} required></input>
+                                    <input name="descripcion" id="editarDescripcion" maxLength="300" rows="3" value={gradoSeleccionada.Descripcion_Grado} onChange={manejarCambio} required></input>
                                     
                                     <button type="submit" className="btn-guardar4">Guardar cambios</button>
                                     <button type="button" className="btn-cancelar" onClick={cancelarEdicion}>Cancelar</button>

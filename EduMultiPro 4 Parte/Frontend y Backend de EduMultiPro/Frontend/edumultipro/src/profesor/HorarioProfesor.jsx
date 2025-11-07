@@ -57,15 +57,32 @@ function HorarioProfesor(){
                             </div>
 
                             <div className="imghorarioProfesor">
-                            {horario.Imagen_Horario ? (
-                                <img
-                                src={`http://localhost:3000/imagenes/${horario.Imagen_Horario}`}
-                                alt="Imagen Horario"
-                                id="imagenPequena"
-                                />
-                            ) : (
-                                <img src="" alt="Sin Imagen" id="imagenPequena" />
-                            )}
+                                {horario?.Imagen_Horario ? (
+                                    <>
+                                    {/* Detectar tipo de archivo según extensión */}
+                                    {horario.Imagen_Horario.toLowerCase().endsWith(".pdf") ? (
+                                        <iframe
+                                        src={`http://localhost:3000/imagenes/${horario.Imagen_Horario}`}
+                                        title="Horario PDF"
+                                        width="100%"
+                                        height="600px"
+                                        style={{
+                                            border: "2px solid #ccc",
+                                            borderRadius: "10px",
+                                            boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+                                        }}
+                                        />
+                                    ) : (
+                                        <img
+                                            src={`http://localhost:3000/imagenes/${horario.Imagen_Horario}`}
+                                            alt="Imagen del Horario"
+                                            id="imagenPequena"
+                                        />
+                                    )}
+                                    </>
+                                ) : (
+                                    <p>No se ha subido un archivo para este horario.</p>
+                                )}
                             </div>
 
                             <div className="descripcion">

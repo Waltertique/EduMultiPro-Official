@@ -100,6 +100,7 @@ function CrearAula(){
                                         type="text"
                                         name="aula_nombre"
                                         placeholder="Nombre del Aula"
+                                        maxLength="50"
                                         required
                                         value={aulaNombre}
                                         onChange={(e) => setAulaNombre(e.target.value)}
