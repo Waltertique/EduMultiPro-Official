@@ -50,6 +50,10 @@ import VerNoticiaCoordinador from './coordinador/VerNoticiaCoordinador.jsx';
 import ActualizarNoticiaCoordinador from './coordinador/ActualizarNoticiaCoordinador.jsx';
 import CrearNoticiaCoordinador from './coordinador/CrearNoticiaCoordinador.jsx';
 import PerfilCoordinador from './coordinador/PerfilCoordinador.jsx';
+import ReportesCoor from './coordinador/ReportesCoor.jsx';
+import ReportesAgendaCoor from './coordinador/ReportesAgendaCoor.jsx';
+import ReportesClaseCoor from './coordinador/ReportesClaseCoor.jsx';
+import VerUsuarioCoor from './coordinador/VerUsuarioCoor.jsx';
 
 //--Aqui los links del Profesor--
 import PrincipalProfesor from './profesor/PrincipalProfesor.jsx';
@@ -133,6 +137,10 @@ createRoot(document.getElementById('root')).render(
         <Route path="/ActualizarNoticiaCoordinador/:id" element={<ActualizarNoticiaCoordinador />} />
         <Route path="/CrearNoticiaCoordinador" element={<CrearNoticiaCoordinador />} />
         <Route path="/PerfilCoordinador" element={<PerfilCoordinador />} />
+        <Route path="/ReportesCoor" element={<ReportesCoor />} />
+        <Route path="/ReportesAgendaCoor" element={<ReportesAgendaCoor />} />
+        <Route path="/ReportesClaseCoor" element={<ReportesClaseCoor />} />
+        <Route path="/VerUsuarioCoor/:id" element={<VerUsuarioCoor />} />
 
         {/*--Aqui los links del Profesor--*/}
         <Route path="/PrincipalProfesor" element={<PrincipalProfesor />} />

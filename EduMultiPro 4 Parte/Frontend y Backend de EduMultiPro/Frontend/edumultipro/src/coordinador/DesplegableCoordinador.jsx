@@ -15,6 +15,7 @@ function DesplegableCoordinador() {
                         <li><Link to="/PrincipalCoordinador"><i className="fa-solid fa-layer-group"><p>Cursos</p></i></Link></li>
                         <li><Link to="/HorarioCoordinador"><i className="fa-solid fa-calendar-days"><p>Horarios</p></i></Link></li>
                         <li><Link to="/NoticiaCoordinador"><i className="fa-solid fa-newspaper"><p>Noticias</p></i></Link></li>
+                        <li><Link to="/ReportesCoor"><i className="fa-regular fa-folder-open"><p>Reportes</p></i></Link></li>
                         <li><Link to="/PerfilCoordinador"><i className="fa-solid fa-user-group"><p>Perfil</p></i></Link></li>
                         <li><Link to="/"><i className="fa-solid fa-right-to-bracket"><p>Salir</p></i></Link></li>
                         </ul>
