@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'; // 👈 Importar Esto importa el hook useNavigate de react-router-dom, que permite redirigir a otra ruta (por ejemplo, navegar a otro componente).
+import { Link, useNavigate } from 'react-router-dom'; // 👈 Importar Esto importa el hook useNavigate de react-router-dom, que permite redirigir a otra ruta (por ejemplo, navegar a otro componente).
 import { useState } from 'react';               // 👈 Importar Importa el hook useState de React, usado para manejar estados (por ejemplo, el contenido de los campos de texto del formulario).
 import { useEffect } from 'react';
 
@@ -97,7 +97,7 @@ function App() {
                   <input type="email" placeholder="Correo" name="Correo" value={correo} onChange={(e) => setCorreo(e.target.value)} required/>
                   <input type="password" placeholder="Contraseña" value={contrasena} onChange={(e) => setContrasena(e.target.value)} required></input>
                   <button type="submit" className="btn-ingresar">Ingresar</button>
-                  <a href="#">¿Olvidaste tu contraseña?</a>
+                  <Link to={"/CambioContraseña"}>¿Olvidaste tu contraseña?</Link>
               </form>
             </div>
           

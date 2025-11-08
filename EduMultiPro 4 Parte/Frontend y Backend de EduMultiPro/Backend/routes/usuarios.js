@@ -86,6 +86,35 @@ router.post('/login', (req, res) => {
   });
 });
 
+//CAMBIAR CONTRASEÑA
+router.put("/cambiar-contrasena", (req, res) => {
+  const { id, correo1, nuevaContraseña, confirmarContraseña } = req.body;
+
+  if (nuevaContraseña !== confirmarContraseña) {
+    return res.status(400).json({ error: "Las contraseñas no coinciden." });
+  }
+
+  const checkUser = "SELECT * FROM Usuario WHERE ID = ? AND Correo1 = ?";
+  conexion.query(checkUser, [id, correo1], (err, results) => {
+    if (err) return res.status(500).json({ error: "Error en la base de datos." });
+    if (results.length === 0) {
+      return res.status(404).json({ error: "Usuario no encontrado." });
+    }
+
+    const hash = bcrypt.hashSync(nuevaContraseña, 10); // 🔒 Encriptamos antes de guardar
+
+    const updateQuery = "UPDATE Usuario SET Contraseña = ? WHERE ID = ?";
+    conexion.query(updateQuery, [hash, id], (err2) => {
+      if (err2) {
+        console.error("❌ Error al actualizar contraseña:", err2);
+        return res.status(500).json({ error: "Error al actualizar la contraseña." });
+      }
+
+      return res.json({ mensaje: "✅ Contraseña actualizada correctamente" });
+    });
+  });
+});
+
 //---------------------------------------------------------------------------------------------------------
 
 // Obtener todos los usuarios
