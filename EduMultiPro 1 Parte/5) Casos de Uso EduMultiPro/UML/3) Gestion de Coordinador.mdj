@@ -61,7 +61,7 @@
 											"font": "Arial;15;1",
 											"left": 141,
 											"top": 423,
-											"width": 927,
+											"width": 815,
 											"height": 15,
 											"text": "Gestion de Coordinador"
 										},
@@ -96,7 +96,7 @@
 									"font": "Arial;15;0",
 									"left": 136,
 									"top": 416,
-									"width": 937,
+									"width": 825,
 									"height": 27,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGRvhQ+0Dj1L0Q="
@@ -115,8 +115,8 @@
 							"font": "Arial;15;0",
 							"left": 136,
 							"top": 416,
-							"width": 937,
-							"height": 753,
+							"width": 825,
+							"height": 657,
 							"nameCompartment": {
 								"$ref": "AAAAAAGRvhQ+0Dj0RoU="
 							}
@@ -166,7 +166,7 @@
 											"top": 525.5,
 											"width": 171,
 											"height": 15,
-											"text": "C6--Gestion de Materias"
+											"text": "C6--Gestionar Materias"
 										},
 										{
 											"_type": "LabelView",
@@ -202,7 +202,7 @@
 									"font": "Arial;15;0",
 									"left": 549.5,
 									"top": 518.5,
-									"width": 181.708984375,
+									"width": 181,
 									"height": 27,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGRvhRyJTkSdGs="
@@ -376,7 +376,7 @@
 											"top": 761,
 											"width": 175,
 											"height": 15,
-											"text": "Gestion de Coordinador"
+											"text": "Ver Vista Coordinador"
 										},
 										{
 											"_type": "LabelView",
@@ -586,7 +586,7 @@
 											"top": 613.5,
 											"width": 163,
 											"height": 15,
-											"text": "C7--Gestion de Grados"
+											"text": "C7--Gestionar Grados"
 										},
 										{
 											"_type": "LabelView",
@@ -622,7 +622,7 @@
 									"font": "Arial;15;0",
 									"left": 684,
 									"top": 606.5,
-									"width": 173.359375,
+									"width": 173,
 									"height": 27,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGRvhScBjmbb4w="
@@ -796,7 +796,7 @@
 											"top": 709.5,
 											"width": 177,
 											"height": 15,
-											"text": "C8--Gestion de Jornadas"
+											"text": "C8--Gestionar Jornadas"
 										},
 										{
 											"_type": "LabelView",
@@ -832,7 +832,7 @@
 									"font": "Arial;15;0",
 									"left": 703,
 									"top": 702.5,
-									"width": 187.5390625,
+									"width": 187,
 									"height": 27,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGRvhTO/jnIdiA="
@@ -1006,7 +1006,7 @@
 											"top": 805.5,
 											"width": 172,
 											"height": 15,
-											"text": "C9--Gestion de Horarios"
+											"text": "C9--Gestionar Horarios"
 										},
 										{
 											"_type": "LabelView",
@@ -1042,7 +1042,7 @@
 									"font": "Arial;15;0",
 									"left": 694,
 									"top": 798.5,
-									"width": 182.529296875,
+									"width": 182,
 									"height": 27,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGRvhTVhzn1Jsw="
@@ -2248,7 +2248,7 @@
 											"top": 534.5,
 											"width": 140,
 											"height": 13,
-											"text": "C5--Gestion de Cursos"
+											"text": "C5--Gestionar Cursos"
 										},
 										{
 											"_type": "LabelView",
@@ -2284,7 +2284,7 @@
 									"font": "Arial;13;0",
 									"left": 287.5,
 									"top": 527.5,
-									"width": 150.8544921875,
+									"width": 150,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGWc4tLfO4b/LU="
@@ -2553,7 +2553,7 @@
 											"top": 910.5,
 											"width": 153,
 											"height": 13,
-											"text": "C19--Gestion de Noticias"
+											"text": "C19--Gestionar Noticias"
 										},
 										{
 											"_type": "LabelView",
@@ -2589,7 +2589,7 @@
 									"font": "Arial;13;0",
 									"left": 666,
 									"top": 903.5,
-									"width": 163.8671875,
+									"width": 163,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGWc4wb/O+6BR4="
@@ -3229,7 +3229,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFElm6BOFNpegQ="
 					},
-					"name": "C6--Gestion de Materias",
+					"name": "C6--Gestionar Materias",
 					"ownedElements": [
 						{
 							"_type": "UMLExtend",
@@ -3304,7 +3304,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFElm6BOFNpegQ="
 					},
-					"name": "Gestion de Coordinador",
+					"name": "Ver Vista Coordinador",
 					"ownedElements": [
 						{
 							"_type": "UMLInclude",
@@ -3504,7 +3504,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFElm6BOFNpegQ="
 					},
-					"name": "C7--Gestion de Grados",
+					"name": "C7--Gestionar Grados",
 					"ownedElements": [
 						{
 							"_type": "UMLInclude",
@@ -3566,7 +3566,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFElm6BOFNpegQ="
 					},
-					"name": "C8--Gestion de Jornadas",
+					"name": "C8--Gestionar Jornadas",
 					"ownedElements": [
 						{
 							"_type": "UMLExtend",
@@ -3641,7 +3641,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFElm6BOFNpegQ="
 					},
-					"name": "C9--Gestion de Horarios",
+					"name": "C9--Gestionar Horarios",
 					"ownedElements": [
 						{
 							"_type": "UMLInclude",
@@ -4012,7 +4012,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFElm6BOFNpegQ="
 					},
-					"name": "C5--Gestion de Cursos",
+					"name": "C5--Gestionar Cursos",
 					"ownedElements": [
 						{
 							"_type": "UMLExtend",
@@ -4074,7 +4074,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFElm6BOFNpegQ="
 					},
-					"name": "C19--Gestion de Noticias"
+					"name": "C19--Gestionar Noticias"
 				},
 				{
 					"_type": "UMLUseCase",
