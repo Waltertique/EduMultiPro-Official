@@ -1,21 +1,22 @@
-const request = require("supertest");
+const request = require("supertest"); //librería que permite hacer peticiones HTTP a tu servidor en los tests
 const app = require("../index"); 
 const conexion = require("../db/conexion");
 
-describe("Pruebas de integración - Materias", () => {
+describe("Pruebas de integración - Materias", () => { //agrupa un conjunto de tests relacionados
 
-    afterAll(() => {
+    afterAll(() => { //es una función de Jest que se ejecuta una vez después de todos los tests dentro del describe
         conexion.end();
     });
 
-    test("GET /Materias debe devolver lista de materias", async () => {
+    test("GET /Materias debe devolver lista de materias", async () => { //define una prueba. El nombre describe lo que se espera.
         const res = await request(app)
-            .get("/api/edumultipro/Materias")
+            .get("/api/edumultipro/Materias") //Hace una petición GET a la ruta /api/edumultipro/Materias
             .expect(200);
 
-        expect(Array.isArray(res.body)).toBe(true);
+        expect(Array.isArray(res.body)).toBe(true); //la API devuelve una lista de materias.
     });
 
+    // Crear Materia
     test("POST /Materias debe crear una materia", async () => {
         const nuevaMateria = {
             Materia_Nombre: "Materia Test",
@@ -31,6 +32,7 @@ describe("Pruebas de integración - Materias", () => {
         expect(res.body.insertId).toBeDefined();
     });
 
+    // Modificar Materia
     test("PUT /Materias/:id debe actualizar una materia", async () => {
 
         // Crear materia temporal
@@ -54,7 +56,8 @@ describe("Pruebas de integración - Materias", () => {
 
         expect(res.body.mensaje).toBe("Materia actualizada correctamente");
     });
-
+    
+    // Eliminar Materia
     test("DELETE /Materias/:id debe eliminar una materia", async () => {
 
         // Crear materia temporal

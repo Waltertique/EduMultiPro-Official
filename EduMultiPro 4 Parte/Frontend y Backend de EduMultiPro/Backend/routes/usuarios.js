@@ -368,7 +368,7 @@ router.post("/Cursos", (req, res) => {
     if (error) {
       res.status(500).json({ mensaje: "Error al crear el curso" });
     } else {
-      res.json({ mensaje: "Curso creado correctamente", id: result.insertId });
+      res.json({ mensaje: "Curso creado correctamente", insertId: result.insertId });
     }
   });
 });
