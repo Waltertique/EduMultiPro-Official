@@ -489,7 +489,7 @@ router.post("/Materias", (req, res) => {
     if (error) {
       res.status(500).json({ error: "Error al crear la materia" });
     } else {
-      res.status(201).json({ mensaje: "Materia creada correctamente" });
+      res.status(201).json({ mensaje: "Materia creada correctamente", insertId: result.insertId });
     }
   });
 });
