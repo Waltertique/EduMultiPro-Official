@@ -1,0 +1,510 @@
+{
+  "id": "4f307465-10d5-404d-a052-48d14ce27989",
+  "version": "2.0",
+  "name": "Cursos EduMultiPro",
+  "url": "http://localhost:5173/curso",
+  "tests": [{
+    "id": "dc36c4a7-3f6f-459e-959c-a73ceff09c93",
+    "name": "Crear Curso",
+    "commands": [{
+      "id": "2c9f349f-4af9-4357-828b-0423753037d3",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/curso",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "45fe2867-e8de-4472-beab-eb8eb202489f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "25e0e406-ee66-4d4b-bfda-653329de63da",
+      "comment": "",
+      "command": "click",
+      "target": "id=btnAgregarUsuario",
+      "targets": [
+        ["id=btnAgregarUsuario", "id"],
+        ["css=#btnAgregarUsuario", "css:finder"],
+        ["xpath=//button[@id='btnAgregarUsuario']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear Curso')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "76c0a1e7-2a72-43b1-a918-4f002af4e75b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.f1:nth-child(2)",
+      "targets": [
+        ["css=.f1:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/div", "xpath:idRelative"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98ba9050-92d2-4654-944b-4d0f60ccd2f5",
+      "comment": "",
+      "command": "click",
+      "target": "name=curso_nombre",
+      "targets": [
+        ["name=curso_nombre", "name"],
+        ["css=input", "css:finder"],
+        ["xpath=//input[@name='curso_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c81854f4-016a-4d96-8a60-be9bf04cfcce",
+      "comment": "",
+      "command": "type",
+      "target": "name=curso_nombre",
+      "targets": [
+        ["name=curso_nombre", "name"],
+        ["css=input", "css:finder"],
+        ["xpath=//input[@name='curso_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "nuevo curso"
+    }, {
+      "id": "be89e3fb-bfc6-4231-a8b0-97e6ac9b6b9d",
+      "comment": "",
+      "command": "select",
+      "target": "name=grado_id",
+      "targets": [],
+      "value": "label=Primero"
+    }, {
+      "id": "1b23abb5-b635-41f2-af5c-2e867e64453e",
+      "comment": "",
+      "command": "click",
+      "target": "css=select:nth-child(1) > option:nth-child(2)",
+      "targets": [
+        ["css=select:nth-child(1) > option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='1']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/div[2]/select/option[2]", "xpath:idRelative"],
+        ["xpath=//option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'Primero')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "acc0e05a-1856-4e73-ab97-93d45a0bb058",
+      "comment": "",
+      "command": "click",
+      "target": "name=jornada_id",
+      "targets": [
+        ["name=jornada_id", "name"],
+        ["css=select:nth-child(2)", "css:finder"],
+        ["xpath=//select[@name='jornada_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/div[2]/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a6b24df-cb5d-4e39-bdfd-56a92c2fd9cf",
+      "comment": "",
+      "command": "select",
+      "target": "name=jornada_id",
+      "targets": [],
+      "value": "label=Mañana"
+    }, {
+      "id": "b9933ed3-0d65-4c54-80b5-0d8c57671c96",
+      "comment": "",
+      "command": "click",
+      "target": "css=select:nth-child(2) > option:nth-child(2)",
+      "targets": [
+        ["css=select:nth-child(2) > option:nth-child(2)", "css:finder"],
+        ["xpath=(//option[@value='1'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/div[2]/select[2]/option[2]", "xpath:idRelative"],
+        ["xpath=//select[2]/option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'Mañana')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "77ce79c8-4b45-4f12-9d01-3ef6aecd5216",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(4)",
+      "targets": [
+        ["css=button:nth-child(4)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar Curso')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "844d57b4-3249-4d5a-838b-3b10ba7bac59",
+    "name": "Eliminar Curso",
+    "commands": [{
+      "id": "69afb53a-c0c7-468d-9e58-b8725f123916",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/curso",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2e283662-e18c-4958-84f7-98380ac0581e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0df047c2-8a5f-4696-bf9f-a1862d2b0db4",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(4) .btn-icon > .fa-solid",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b8a503e5-482c-4ed4-9091-dae86696460c",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2c15626d-d84f-4cf2-8f33-66f3fc54d671",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(4) .btn-icon > .fa-solid",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b3c5ded6-769d-4050-966f-3b8fa8376b5f",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar este curso?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "08724111-bf9e-4433-8665-33cf4c7d7076",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "cc9460cf-6f42-40f4-a31d-dae13c193d9f",
+    "name": "Modificar Curso",
+    "commands": [{
+      "id": "a7312438-c874-46c7-b2f9-b78362a1e289",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/curso",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa500b44-36d4-4c36-9020-f08402ed7daa",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b62ecccf-523c-4c40-a2d9-1420da3d82fa",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .modificar > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar > .fa-solid", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[6]/button/i", "xpath:idRelative"],
+        ["xpath=//td[6]/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b19c0437-2bc7-4def-83a1-eefc8ee9dead",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarNombre",
+      "targets": [
+        ["id=editarNombre", "id"],
+        ["name=Curso_Nombre", "name"],
+        ["css=#editarNombre", "css:finder"],
+        ["xpath=//input[@id='editarNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='modificarCurso']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "59589f61-d8c1-4ba1-9aff-c11722343f6d",
+      "comment": "",
+      "command": "type",
+      "target": "id=editarNombre",
+      "targets": [
+        ["id=editarNombre", "id"],
+        ["name=Curso_Nombre", "name"],
+        ["css=#editarNombre", "css:finder"],
+        ["xpath=//input[@id='editarNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='modificarCurso']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "101 modificado"
+    }, {
+      "id": "29231aad-c710-45db-898d-f423a51a158b",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarGrado",
+      "targets": [
+        ["id=editarGrado", "id"],
+        ["name=grado", "name"],
+        ["css=#editarGrado", "css:finder"],
+        ["xpath=//select[@id='editarGrado']", "xpath:attributes"],
+        ["xpath=//div[@id='modificarCurso']/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d102d3f9-847d-4bea-a3c5-92f3f21bab53",
+      "comment": "",
+      "command": "select",
+      "target": "id=editarGrado",
+      "targets": [],
+      "value": "label=Segundo"
+    }, {
+      "id": "55dc1e48-c09a-4793-b5ac-fd2c5121c9f7",
+      "comment": "",
+      "command": "click",
+      "target": "css=#editarGrado > option:nth-child(3)",
+      "targets": [
+        ["css=#editarGrado > option:nth-child(3)", "css:finder"],
+        ["xpath=//option[@value='2']", "xpath:attributes"],
+        ["xpath=//select[@id='editarGrado']/option[3]", "xpath:idRelative"],
+        ["xpath=//option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'Segundo')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "91ad1b8a-d299-4427-a116-4956c44e90aa",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarJornada",
+      "targets": [
+        ["id=editarJornada", "id"],
+        ["name=jornada", "name"],
+        ["css=#editarJornada", "css:finder"],
+        ["xpath=//select[@id='editarJornada']", "xpath:attributes"],
+        ["xpath=//div[@id='modificarCurso']/form/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9219b073-745a-4123-902f-e6db886f8447",
+      "comment": "",
+      "command": "select",
+      "target": "id=editarJornada",
+      "targets": [],
+      "value": "label=Tarde"
+    }, {
+      "id": "25e02d9d-4129-4cb6-8560-1fd325d951e0",
+      "comment": "",
+      "command": "click",
+      "target": "css=#editarJornada > option:nth-child(3)",
+      "targets": [
+        ["css=#editarJornada > option:nth-child(3)", "css:finder"],
+        ["xpath=(//option[@value='2'])[2]", "xpath:attributes"],
+        ["xpath=//select[@id='editarJornada']/option[3]", "xpath:idRelative"],
+        ["xpath=//select[2]/option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'Tarde')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c1721119-391d-4afb-a2c0-b12cc98d4a87",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-guardar1",
+      "targets": [
+        ["css=.btn-guardar1", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='modificarCurso']/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fecb6b7a-057f-4e43-b46f-9e0ca944705c",
+    "name": "Ver Curso",
+    "commands": [{
+      "id": "1fc8cb9c-4044-4d07-91de-01a6822f988c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/curso",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3a3b1ee9-dd1a-4d5e-8d31-01a37d3d1434",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "816cf183-e930-4ec2-9ac3-278ae2e4a09e",
+      "comment": "",
+      "command": "click",
+      "target": "id=btninformacion",
+      "targets": [
+        ["id=btninformacion", "id"],
+        ["css=tr:nth-child(1) #btninformacion", "css:finder"],
+        ["xpath=//button[@id='btninformacion']", "xpath:attributes"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[5]/a/button", "xpath:idRelative"],
+        ["xpath=//td[5]/a/button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "6f943e24-6b25-4786-96fc-a1f32a2c95d4",
+    "name": "Agregar Integrante",
+    "commands": [{
+      "id": "8c445a38-56a5-498f-9f92-f05686fe896e",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/curso",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e4d177db-4f51-448a-956c-57e7b95eb921",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "990b70de-1336-4492-8b1a-c0570e7d33db",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) #btninformacion > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(1) #btninformacion > .fa-solid", "css:finder"],
+        ["xpath=//button[@id='btninformacion']/i", "xpath:idRelative"],
+        ["xpath=//td[5]/a/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6b50d1bb-55d5-4ffc-bc56-b979febfe8d6",
+      "comment": "",
+      "command": "click",
+      "target": "id=usuario_id",
+      "targets": [
+        ["id=usuario_id", "id"],
+        ["name=usuario_id", "name"],
+        ["css=#usuario_id", "css:finder"],
+        ["xpath=//input[@id='usuario_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d39c3114-dd84-4eec-bb58-84582f330f08",
+      "comment": "",
+      "command": "type",
+      "target": "id=usuario_id",
+      "targets": [
+        ["id=usuario_id", "id"],
+        ["name=usuario_id", "name"],
+        ["css=#usuario_id", "css:finder"],
+        ["xpath=//input[@id='usuario_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "41"
+    }, {
+      "id": "375634db-f166-4e6b-9a61-90bf8f0761ce",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > button",
+      "targets": [
+        ["css=form > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Agregar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a3a32068-9999-4d87-9a43-2035941684b8",
+    "name": "Eliminar Integrante",
+    "commands": [{
+      "id": "ceee8b5e-9f69-4b2c-801f-b400769a27c7",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/curso",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bae95471-ce9a-4448-bc6f-264e12bd21fc",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d8c70fff-8f54-4439-bb0a-5d96616353c5",
+      "comment": "",
+      "command": "click",
+      "target": "id=btninformacion",
+      "targets": [
+        ["id=btninformacion", "id"],
+        ["css=tr:nth-child(1) #btninformacion", "css:finder"],
+        ["xpath=//button[@id='btninformacion']", "xpath:attributes"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[5]/a/button", "xpath:idRelative"],
+        ["xpath=//td[5]/a/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "379f35a2-f4b4-45fc-aa99-d8a27b8a7314",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "317c855c-36e5-4fbf-8037-23ad6b7f40f4",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7299b4b0-6010-4056-8edc-3d29c5e673d7",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(1) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "be843b81-23d1-4c3f-b516-c109ee0f13e1",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar este integrante del curso? ",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ddbc9e4b-beba-48ef-9985-7e939edd9959",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "895ce01f-67e7-44d9-9862-d8401d1f8aed",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:5173/curso"],
+  "plugins": []
+}

@@ -1,0 +1,109 @@
+{
+  "id": "e9c6c857-38db-467d-ba3d-7b075abf18ad",
+  "version": "2.0",
+  "name": "1) Login",
+  "url": "http://localhost:5173",
+  "tests": [{
+    "id": "b5dcbbf4-0fbd-4fe1-84b1-6e1bbc2eb9bc",
+    "name": "Login",
+    "commands": [{
+      "id": "6f82c523-b3cf-44d2-bf79-809c531a5d5e",
+      "comment": "",
+      "command": "open",
+      "target": "/usuario",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b7d08e69-5cb0-41b9-8153-38ea62f60523",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed8a7111-ef35-42f4-bdd0-3aa834ea8c9f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn > .fa-solid",
+      "targets": [
+        ["css=.btn > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/button/i", "xpath:idRelative"],
+        ["xpath=//button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7011a262-44b9-4f6c-9573-684743bb9490",
+      "comment": "",
+      "command": "click",
+      "target": "name=Correo",
+      "targets": [
+        ["name=Correo", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='Correo']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b90e585-c568-4dab-9581-732e616685d9",
+      "comment": "",
+      "command": "type",
+      "target": "name=Correo",
+      "targets": [
+        ["name=Correo", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='Correo']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "maradona@gmail.com"
+    }, {
+      "id": "83a2b6ad-ea55-448f-b933-c963937a070f",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(3)",
+      "targets": [
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9fe9d92e-cb42-47d8-af3c-95787dd59a1d",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(3)",
+      "targets": [
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@value='12345']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "12345"
+    }, {
+      "id": "1d47dcef-83f5-4e2a-a703-67b8c82a1292",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-ingresar",
+      "targets": [
+        ["css=.btn-ingresar", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Ingresar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "563b1838-74a4-4c47-bc58-e06209484b25",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["b5dcbbf4-0fbd-4fe1-84b1-6e1bbc2eb9bc"]
+  }],
+  "urls": ["http://localhost:5173/"],
+  "plugins": []
+}

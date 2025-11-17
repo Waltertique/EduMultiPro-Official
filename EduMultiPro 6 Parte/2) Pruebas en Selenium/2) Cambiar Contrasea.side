@@ -1,0 +1,149 @@
+{
+  "id": "d4526045-1a38-45e0-96fb-2aea66fb487a",
+  "version": "2.0",
+  "name": "2) Cambiar Contraseña",
+  "url": "http://localhost:5173/CambioContraseña",
+  "tests": [{
+    "id": "00203f10-af46-4bcb-adff-9d874451cb05",
+    "name": "Cambiar Contraseña",
+    "commands": [{
+      "id": "ac650ce8-084a-4149-9353-18502efd316b",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/CambioContrase%C3%B1a",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "01835719-209c-458e-ac0c-62fe0f66b616",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3992f71a-ff4a-421c-9ea4-da42448fc534",
+      "comment": "",
+      "command": "click",
+      "target": "name=id",
+      "targets": [
+        ["name=id", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='id']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "45049c73-7535-4d1f-baf7-b33c9c6fcb21",
+      "comment": "",
+      "command": "type",
+      "target": "name=id",
+      "targets": [
+        ["name=id", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='id']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "db1b6ee9-c727-419a-b4ee-d99b2f14987e",
+      "comment": "",
+      "command": "click",
+      "target": "name=Correo",
+      "targets": [
+        ["name=Correo", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='Correo']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1e086b4d-19c6-4cfe-99c2-8287e230cf41",
+      "comment": "",
+      "command": "type",
+      "target": "name=Correo",
+      "targets": [
+        ["name=Correo", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='Correo']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "juan01@gmail.com"
+    }, {
+      "id": "d837e42e-a685-46c4-aea4-72f88a8863fb",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(7)",
+      "targets": [
+        ["css=input:nth-child(7)", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "964e4ce9-11e4-49d1-9a5f-175968244112",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(7)",
+      "targets": [
+        ["css=input:nth-child(7)", "css:finder"],
+        ["xpath=//input[@value='1234']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "1234"
+    }, {
+      "id": "667a9fa6-2c49-4303-8c93-94f6512356cc",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(9)",
+      "targets": [
+        ["css=input:nth-child(9)", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "33852bb9-acc1-4434-9f12-52f4c8928232",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(9)",
+      "targets": [
+        ["css=input:nth-child(9)", "css:finder"],
+        ["xpath=(//input[@value='1234'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "1234"
+    }, {
+      "id": "e86c84f6-42f2-45fb-843e-7aa5e0c491b9",
+      "comment": "",
+      "command": "click",
+      "target": "id=BotonContraseña",
+      "targets": [
+        ["id=BotonContraseña", "id"],
+        ["css=#BotonContrase\\F1 a", "css:finder"],
+        ["xpath=//button[@id='BotonContraseña']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Cambiar Contraseña')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "cb9497c7-36cf-4d09-9b88-20be21b797fa",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["00203f10-af46-4bcb-adff-9d874451cb05"]
+  }],
+  "urls": ["http://localhost:5173/CambioContrase%C3%B1a"],
+  "plugins": []
+}
