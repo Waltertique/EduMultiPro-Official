@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-function PrincipalCoordinador(){
-    return(
-        <>
-            <h1>Hola coordinadior</h1>
-        </>
-    )
-}
-
-=======
 import { useEffect, useState } from 'react'; // datatables
 import $ from 'jquery';
 import 'datatables.net-dt'; // JS
@@ -301,5 +291,4 @@ function PrincipalCoordinador(){
         </>
     )
 }
->>>>>>> origin/ramajohan
 export default PrincipalCoordinador;

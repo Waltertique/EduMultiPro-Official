@@ -6,14 +6,6 @@ import './css/CrearTrabajo.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-
-function CrearTrabajo(){
-
-    return(
-        <>
-=======
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ProteccionRuta from '../ProteccionRuta.jsx';
@@ -61,7 +53,6 @@ function CrearTrabajo(){
     return(
         <>
             <ProteccionRuta rolRequerido="R004" />
->>>>>>> origin/ramajohan
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />
@@ -80,31 +71,11 @@ function CrearTrabajo(){
                         {/*---Tabla---*/}
                         <div className="col-10" id="contenidoCrearTrabajo">
 
-<<<<<<< HEAD
-                            <Link to={"/Trabajos"}>
-=======
                             <Link to={`/Trabajos/${id}`}>
->>>>>>> origin/ramajohan
                                 <button id="salirCrearTrabajo">Salir</button>
                             </Link>
                             <div className="parte1CrearTrabajo">
                                 <h1>Crear Trabajo</h1>
-<<<<<<< HEAD
-                                <form action="{{ url_for('admin2_bp.guardarTrabajo') }}" method="POST" enctype="multipart/form-data">
-                                <input type="hidden" name="aula_id" value="{{ aula_id }}" />
-                                
-                                <input type="text" placeholder="Titulo" name="titulo" required /><br></br>
-                                
-                                <textarea placeholder="Descripción" name="descripcion"></textarea><br></br>
-                                
-                                <label for="fecha">Fecha de entrega:</label>
-                                <input type="date" name="fecha" required /><br></br>
-                                
-                                <label for="archivo">Archivo (opcional):</label>
-                                <input id='ArchivoCrearTrabajo' type="file" name="archivo[]" multiple /><br></br>
-
-                                <button type="submit">Crear</button>
-=======
                                 <form onSubmit={manejarEnvio}>
                                     <input type="text" placeholder="Título" required value={titulo} onChange={(e) => setTitulo(e.target.value)} /><br />
                                     <textarea placeholder="Descripción" value={descripcion} onChange={(e) => setDescripcion(e.target.value)}></textarea><br />
@@ -113,7 +84,6 @@ function CrearTrabajo(){
                                     <label>Archivo (opcional):</label>
                                     <input type="file" id='ArchivoCrearTrabajo' multiple onChange={(e) => setArchivos(e.target.files)} /><br />
                                     <button type="submit">Crear</button>
->>>>>>> origin/ramajohan
                                 </form>
                             </div>
 

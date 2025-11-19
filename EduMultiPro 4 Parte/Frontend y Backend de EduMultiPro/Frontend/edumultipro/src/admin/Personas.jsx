@@ -12,10 +12,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-<<<<<<< HEAD
-=======
 import ProteccionRuta from '../ProteccionRuta.jsx';
->>>>>>> origin/ramajohan
 
 function Personas(){
 
@@ -66,10 +63,7 @@ function Personas(){
 
     return(
         <>
-<<<<<<< HEAD
-=======
             <ProteccionRuta rolRequerido="R004" />
->>>>>>> origin/ramajohan
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />
@@ -91,13 +85,8 @@ function Personas(){
                             <div className="row" id="navAula">
 
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/VerAula/${id}`}><button id="principal">Principal</button></Link></div>
-<<<<<<< HEAD
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Trabajos"}><button id="trabajo">Trabajos</button></Link></div>
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Notas"}><button id="persona">Notas</button></Link></div>
-=======
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/Trabajos/${id}`}><button id="trabajo">Trabajos</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/Notas/${id}`}><button id="persona">Notas</button></Link></div>
->>>>>>> origin/ramajohan
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/Personas/${id}`}><button id="persona">Personas</button></Link></div>
                                 <div className="col-12 col-md-4 col-xl-4"></div>
 

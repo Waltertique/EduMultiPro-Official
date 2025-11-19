@@ -191,7 +191,7 @@ router.post("/crearUsuario", upload.single("foto"), (req, res) => {
       console.error("❌ Error MySQL:", error);
       res.status(500).json({ mensaje: "Error al crear usuario" });
     } else {
-      res.json({ mensaje: "✅ Usuario creado correctamente" });
+      res.json({ mensaje: "✅ Usuario creado correctamente", insertId: resultado.insertId });
     }
   });
 });

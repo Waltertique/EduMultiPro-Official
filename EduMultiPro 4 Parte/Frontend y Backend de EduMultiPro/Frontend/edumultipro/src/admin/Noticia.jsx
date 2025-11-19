@@ -11,10 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-=======
 import ProteccionRuta from '../ProteccionRuta.jsx';
->>>>>>> origin/ramajohan
 
 function Noticia(){
 
@@ -99,10 +96,7 @@ function Noticia(){
 
     return(
         <>
-<<<<<<< HEAD
-=======
           <ProteccionRuta rolRequerido="R004" />
->>>>>>> origin/ramajohan
             <div className='contenedor'>
 
                 {/*---Nav---*/}

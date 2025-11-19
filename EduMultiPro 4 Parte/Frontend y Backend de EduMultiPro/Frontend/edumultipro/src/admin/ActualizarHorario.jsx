@@ -9,10 +9,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-<<<<<<< HEAD
-=======
 import ProteccionRuta from '../ProteccionRuta.jsx';
->>>>>>> origin/ramajohan
 
 function ActualizarHorario(){
 
@@ -32,11 +29,7 @@ function ActualizarHorario(){
   useEffect(() => {
     const cargarDatos = async () => {
       const [hp, hs, cps] = await Promise.all([
-<<<<<<< HEAD
-        fetch(`http://localhost:3000/api/edumultipro/Horariossss/${id}`).then(r => r.json()),
-=======
         fetch(`http://localhost:3000/api/edumultipro/Horarios/${id}`).then(r => r.json()),
->>>>>>> origin/ramajohan
         fetch("http://localhost:3000/api/edumultipro/Profesores").then(r => r.json()),
         fetch("http://localhost:3000/api/edumultipro/Cursos-jornada").then(r => r.json()),
       ]);
@@ -97,10 +90,7 @@ function ActualizarHorario(){
     
     return(
         <>
-<<<<<<< HEAD
-=======
           <ProteccionRuta rolRequerido="R004" />
->>>>>>> origin/ramajohan
             <div className='contenedor'>
 
                 {/*---Nav---*/}
@@ -130,17 +120,6 @@ function ActualizarHorario(){
                             <div className="contenidoActualizarHorario">
                     
                                 <form onSubmit={handleSubmit} encType="multipart/form-data">
-<<<<<<< HEAD
-                                    <input type="text" name="titulo" value={formulario.titulo} onChange={handleChange} required />
-                                    <textarea name="descripcion" value={formulario.descripcion} onChange={handleChange} required />
-                                    {formulario.imagenActual && (
-                                    <>
-                                        <p>Imagen actual:</p>
-                                        <img src={`http://localhost:3000/imagenes/${formulario.imagenActual}`} width="200" alt="Actual" />
-                                    </>
-                                    )}
-                                    <input type="file" name="imagen" accept="image/png,image/jpeg" onChange={handleChange} />
-=======
                                     <input type="text" name="titulo" maxLength="100" value={formulario.titulo} onChange={handleChange} required />
                                     <textarea name="descripcion" maxLength="500" value={formulario.descripcion} onChange={handleChange} required />
                                     {formulario.imagenActual && (
@@ -169,7 +148,6 @@ function ActualizarHorario(){
                                       </>
                                     )}
                                     <input type="file" name="imagen" accept="image/png,image/jpeg,application/pdf" onChange={handleChange} />
->>>>>>> origin/ramajohan
                                     <select name="profesor_id" value={formulario.profesor_id} onChange={handleChange}>
                                     <option value="">-- Sin profesor --</option>
                                     {profesores.map(p => <option key={p.ID} value={p.ID}>{p.Nombre_Completo}</option>)}

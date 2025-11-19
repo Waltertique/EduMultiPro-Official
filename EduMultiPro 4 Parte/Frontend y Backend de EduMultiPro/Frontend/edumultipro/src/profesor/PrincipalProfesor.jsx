@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-function PrincipalProfesor(){
-    return(
-        <>
-            <h1>Hola Profesor</h1>
-        </>
-    )
-=======
 import Encabezado from '../Encabezado.jsx';
 import Footer from '../footer.jsx';
 import DesplegableProfesor from './DesplegableProfesor.jsx';
@@ -126,7 +118,6 @@ function PrincipalProfesor(){
         </div>
     </>
   );
->>>>>>> origin/ramajohan
 }
 
 export default PrincipalProfesor;

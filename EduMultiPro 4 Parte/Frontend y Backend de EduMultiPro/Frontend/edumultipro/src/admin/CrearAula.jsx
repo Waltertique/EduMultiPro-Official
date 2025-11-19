@@ -8,10 +8,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-<<<<<<< HEAD
-=======
 import ProteccionRuta from '../ProteccionRuta.jsx';
->>>>>>> origin/ramajohan
 
 function CrearAula(){
 
@@ -70,10 +67,7 @@ function CrearAula(){
 
     return(
         <>
-<<<<<<< HEAD
-=======
             <ProteccionRuta rolRequerido="R004" />
->>>>>>> origin/ramajohan
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />
@@ -106,10 +100,7 @@ function CrearAula(){
                                         type="text"
                                         name="aula_nombre"
                                         placeholder="Nombre del Aula"
-<<<<<<< HEAD
-=======
                                         maxLength="50"
->>>>>>> origin/ramajohan
                                         required
                                         value={aulaNombre}
                                         onChange={(e) => setAulaNombre(e.target.value)}

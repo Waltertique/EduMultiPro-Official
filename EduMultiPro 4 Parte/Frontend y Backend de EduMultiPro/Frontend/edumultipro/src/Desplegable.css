@@ -48,11 +48,8 @@
     color: white;
     display: flex;
     flex-direction: row;
-<<<<<<< HEAD
-=======
     width: 100%;
     justify-content: center;
->>>>>>> origin/ramajohan
 }
 .dropdown-menu p{
     margin: auto 10px;

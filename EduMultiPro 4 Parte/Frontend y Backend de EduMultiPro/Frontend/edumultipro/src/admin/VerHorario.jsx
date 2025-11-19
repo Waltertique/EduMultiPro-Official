@@ -10,10 +10,7 @@ import imghorario from '../assets/imghorario.png';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-<<<<<<< HEAD
-=======
 import ProteccionRuta from '../ProteccionRuta.jsx';
->>>>>>> origin/ramajohan
 
 function VerHorario(){
 
@@ -36,10 +33,7 @@ useEffect(() => {
     
     return(
         <>
-<<<<<<< HEAD
-=======
             <ProteccionRuta rolRequerido="R004" />
->>>>>>> origin/ramajohan
             <div className='contenedor'>
 
                 {/*---Nav---*/}
@@ -74,22 +68,6 @@ useEffect(() => {
                                 <div className="row" id="tituloho">
                                     <h2>{horario?.Titulo_Horario || "Horario sin título"}</h2>
                                 </div>
-<<<<<<< HEAD
-                            
-                                <div className="row" id="imghorario">
-                                    {horario?.Imagen_Horario ? (
-                                        <img
-                                            src={`http://localhost:3000/imagenes/${horario.Imagen_Horario}`}
-                                            alt="Imagen Horario"
-                                            id="imagenPequena"
-                                        />
-                                        ) : (
-                                        <p>No se ha subido una imagen para este horario.</p>
-                                    )}
-                                </div>
-                            
-                            
-=======
 
                                 <div className="row" id="imghorario">
                                     {horario?.Imagen_Horario ? (
@@ -120,7 +98,6 @@ useEffect(() => {
                                     )}
                                 </div>
                             
->>>>>>> origin/ramajohan
                                 <div className="row" id="descripcion">
                                     <h3>Descripcion:</h3>
                                     <p>{horario?.Descripcion_Horario || "Sin descripción"}</p>

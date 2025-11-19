@@ -6,15 +6,6 @@ import './css/VerTrabajo.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-import imgTrabajo from '../assets/f9.png';
-
-function VerTrabajo(){
-
-    return(
-        <>
-=======
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import imgTrabajo from '../assets/f9.png';
@@ -60,7 +51,6 @@ function VerTrabajo(){
     return(
         <>
             <ProteccionRuta rolRequerido="R004" />
->>>>>>> origin/ramajohan
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />
@@ -81,49 +71,25 @@ function VerTrabajo(){
 
                             <div class="botonesVerTrabajo">
                                 <div className='btn'>
-<<<<<<< HEAD
-                                    <Link to={"/VerTrabajo"}><button>Instrucciones</button></Link>
-                                    <Link to={"/VerTrabajoEntregado"}><button>Ver Subidos</button></Link>
-                                </div>
-                                <Link to={"/Trabajos"}><button id="equix"><i className="fa-solid fa-x"></i></button></Link>
-=======
                                     <Link><button>Instrucciones</button></Link>
                                     <Link to={`/VerTrabajoEntregado/${trabajoId}/${aulaId}`}><button>Ver Subidos</button></Link>
                                 </div>
                                 <Link to={`/Trabajos/${aulaId}`}><button id="equix"><i className="fa-solid fa-x"></i></button></Link>
->>>>>>> origin/ramajohan
                             </div>
 
                             <div className="tituloVerTrabajo">
                                 <div>
                                     <img src={imgTrabajo} alt=""></img>
-<<<<<<< HEAD
-                                    <h1> trabajo.Titulo_Trabajo </h1>
-                                </div>
-                                <div>
-                                    <h4>Fecha de entrega</h4>
-                                    <h4>17/89/56</h4>
-=======
                                     <h1>{trabajo.Titulo_Trabajo}</h1>
                                 </div>
                                 <div>
                                     <h4>Fecha de entrega</h4>
                                     <h4>{new Date(trabajo.Fecha_Trabajo).toLocaleDateString()}</h4>
->>>>>>> origin/ramajohan
                                 </div>
                             </div>
 
                             <div className="descripcionVerTrabajo">
                                 <h3>Descripcion:</h3>
-<<<<<<< HEAD
-                                <p> trabajo.Descripcion_Trabajo </p>
-
-                                {/*-- % for archivo in archivos % --*/}
-                                <div className="enlace">
-                                    <a href="{{ url_for('static', filename=archivo.ruta_archivo) }}" target="_blank"> archivo.nombre_original </a>
-                                </div>
-                                {/*-- % endfor % --*/}
-=======
                                 <p>{trabajo.Descripcion_Trabajo}</p>
 
                                 {archivos.map((archivo) => (
@@ -137,36 +103,11 @@ function VerTrabajo(){
                                         </a>
                                     </div>
                                 ))}
->>>>>>> origin/ramajohan
                             </div>
 
                             <div className="comentariosVerTrabajo">
                                 <p id="titu">Agregar comentarios</p>
 
-<<<<<<< HEAD
-                                <form action="{{ url_for('admin2_bp.comentar_trabajo', trabajo_id=trabajo_id, aula_id=aula_id) }}" method="POST">
-                                <input name="comentario" placeholder="Escribe tu comentario" required />
-                                <button type="submit">Comentar</button>
-                                </form>
-
-                                {/*-- % for comentario in comentarios_trabajo % --*/}
-                                <div className="comentarioVerTrabajo">
-                                    <div className="info1">
-                                        <div className="foto">
-                                            <img src={imgTrabajo} alt="Foto" width="40"></img>
-                                            <h1> comentario.Comentador </h1>
-                                        </div>
-                                        <h2> 76/65/65 </h2>
-                                    </div>
-                                    <div className="desc">
-                                    <p> comentario.comentario </p>
-                                    </div>
-                                    <form action="{{ url_for('admin2_bp.eliminar_comentario_trabajo', id=comentario.comentario_id, trabajo_id=trabajo_id, aula_id=aula_id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este comentario?')">
-                                    <button type="submit" id='eliminarVerTrabajo'>Eliminar</button>
-                                    </form>
-                                </div>
-                                {/*-- % endfor % --*/}
-=======
                                 <form onSubmit={async (e) => {
                                     e.preventDefault();
                                     const descripcion = e.target.comentario.value;
@@ -242,7 +183,6 @@ function VerTrabajo(){
                                     </button>
                                 </div>
                                 ))}
->>>>>>> origin/ramajohan
                             </div>
 
                         </div>

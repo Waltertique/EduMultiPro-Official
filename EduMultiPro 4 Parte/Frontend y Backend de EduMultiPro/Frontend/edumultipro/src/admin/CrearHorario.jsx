@@ -10,10 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-=======
 import ProteccionRuta from '../ProteccionRuta.jsx';
->>>>>>> origin/ramajohan
 
 function CrearHorario(){
 
@@ -93,10 +90,7 @@ function CrearHorario(){
     
     return(
         <>
-<<<<<<< HEAD
-=======
           <ProteccionRuta rolRequerido="R004" />
->>>>>>> origin/ramajohan
             <div className='contenedor'>
 
                 {/*---Nav---*/}
@@ -117,11 +111,7 @@ function CrearHorario(){
                         <div className="col-10" id="contenidoTabla">
 
                             <div className="tituloCrearHorario">
-<<<<<<< HEAD
-                                <h1>Crear Horario</h1>
-=======
                                 <h1>Subir Horario</h1>
->>>>>>> origin/ramajohan
                                 <Link to={"/Horario"}>
                                     <button className="crear" id="btnAgregarUsuario"> <i className="fas fa-user-plus"></i>Salir</button>
                                 </Link>
@@ -130,16 +120,10 @@ function CrearHorario(){
                             <div className="contenidoCrearHorario">
                     
                               <form onSubmit={handleSubmit}>
-<<<<<<< HEAD
-                                <input type="text" name="titulo" placeholder="Título del Horario" required onChange={handleChange} />
-                                <textarea name="descripcion" placeholder="Descripción del Horario" required onChange={handleChange}></textarea>
-                                <input type="file" name="imagen" accept="image/png, image/jpeg" onChange={handleChange} />
-=======
                                 <input type="text" name="titulo" maxLength="100" placeholder="Título del Horario" required onChange={handleChange} />
                                 <textarea name="descripcion" maxLength="500" placeholder="Descripción del Horario" required onChange={handleChange}></textarea>
 
                                 <input type="file" name="imagen" accept="image/png, image/jpeg, application/pdf" onChange={handleChange} />
->>>>>>> origin/ramajohan
 
                                 <select name="profesor_id" value={formulario.profesor_id} onChange={handleChange}>
                                   <option value="">Selecciona un profesor (opcional)</option>

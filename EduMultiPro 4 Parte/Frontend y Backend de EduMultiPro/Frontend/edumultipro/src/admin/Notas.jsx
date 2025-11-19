@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import { useEffect } from 'react'; // datatables
-=======
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
->>>>>>> origin/ramajohan
 import $ from 'jquery';
 import 'datatables.net-dt'; // JS
 
@@ -15,45 +11,6 @@ import './css/Notas.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-
-function Notas(){
-
-    useEffect(() => {
-    const table = $('#tablaUsuarios').DataTable();
-
-    // Verifica si ya está inicializado
-    if ($.fn.DataTable.isDataTable('#tablaUsuarios')) {
-        table.destroy(); // Destruye la instancia anterior
-    }
-
-    $('#tablaUsuarios').DataTable({
-        language: {
-            processing: "Procesando...",
-            search: "Buscar:",
-            lengthMenu: "Mostrar _MENU_ registros",
-            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            infoEmpty: "Mostrando 0 a 0 de 0 registros",
-            infoFiltered: "(filtrado de _MAX_ registros totales)",
-            loadingRecords: "Cargando...",
-            zeroRecords: "No se encontraron resultados",
-            emptyTable: "No hay datos en la tabla",
-            paginate: {
-                previous: "Anterior",
-                next: "Siguiente"
-            },
-            aria: {
-                sortAscending: ": activar para ordenar la columna ascendente",
-                sortDescending: ": activar para ordenar la columna descendente"
-            }
-        }
-    });
-    }, []);
-
-    return(
-        <>
-=======
 import ProteccionRuta from '../ProteccionRuta.jsx';
 
 
@@ -105,7 +62,6 @@ function Notas(){
     return(
         <>
             <ProteccionRuta rolRequerido="R004" />
->>>>>>> origin/ramajohan
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />
@@ -126,17 +82,10 @@ function Notas(){
                             
                             <div className="row" id="navAula">
 
-<<<<<<< HEAD
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/VerAula"}><button id="principal">Pricipal</button></Link></div>
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Trabajos"}><button id="trabajo">Trabajos</button></Link></div>
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Notas"}><button id="persona">Notas</button></Link></div>
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Personas"}><button id="persona">Personas</button></Link></div>
-=======
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/VerAula/${id}`}><button id="principal">Principal</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/Trabajos/${id}`}><button id="trabajo">Trabajos</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/Notas/${id}`}><button id="persona">Notas</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/Personas/${id}`}><button id="persona">Personas</button></Link></div>
->>>>>>> origin/ramajohan
                                 <div className="col-12 col-md-4 col-xl-4"></div>
 
                             </div>
@@ -150,28 +99,6 @@ function Notas(){
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
-<<<<<<< HEAD
-                                            {/*-- % for trabajo in trabajos % --*/}
-                                                {/*-- <th>{{ trabajo.Titulo_Trabajo }}</th> --*/}
-                                            {/*-- % endfor % --*/}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {/*-- % for fila in tabla_notas % --*/}
-                                            <tr>
-                                                <td> fila.nombre </td>
-                                                {/*-- % for nota in fila.notas % --*/} 
-                                                    {/*-- <td>{{ nota }}</td> --*/}
-                                                {/*-- % endfor % --*/}
-                                            </tr>
-                                        {/*-- % endfor % --*/}
-                                    </tbody>
-                                </table>
-
-                                {/*-- % if not trabajos % --*/}
-                                    {/*--<p>No hay trabajos registrados en esta aula.</p>--*/}
-                                {/*-- % endif % --*/}
-=======
                                             {trabajos.map((trabajo, i) => (
                                                 <th key={i}>{trabajo}</th>
                                             ))}
@@ -192,7 +119,6 @@ function Notas(){
                                         ))}
                                     </tbody>
                                 </table>
->>>>>>> origin/ramajohan
                             </div>
 
                         </div>

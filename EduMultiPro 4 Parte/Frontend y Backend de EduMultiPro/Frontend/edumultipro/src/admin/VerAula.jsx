@@ -8,11 +8,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-<<<<<<< HEAD
-import imgAula from '../assets/usuario.png';
-=======
 import ProteccionRuta from '../ProteccionRuta.jsx';
->>>>>>> origin/ramajohan
 
 function VerAula(){
 
@@ -178,10 +174,7 @@ function VerAula(){
 
     return(
         <>
-<<<<<<< HEAD
-=======
             <ProteccionRuta rolRequerido="R004" />
->>>>>>> origin/ramajohan
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />
@@ -202,15 +195,9 @@ function VerAula(){
                             
                             <div className="row" id="navAula">
 
-<<<<<<< HEAD
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={`/VerAula/${aula.ID}`}><button id="principal">Pricipal</button></Link></div>
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Trabajos"}><button id="trabajo">Trabajos</button></Link></div>
-                                <div className="col-12 col-md-2 col-xl-2"><Link to={"/Notas"}><button id="persona">Notas</button></Link></div>
-=======
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/VerAula/${aula.ID}`}><button id="principal">Principal</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/Trabajos/${aula.ID}`}><button id="trabajo">Trabajos</button></Link></div>
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/Notas/${aula.ID}`}><button id="nota">Notas</button></Link></div>
->>>>>>> origin/ramajohan
                                 <div className="col-12 col-md-2 col-xl-2"><Link to={`/Personas/${aula.ID}`}><button id="persona">Personas</button></Link></div>
                                 <div className="col-12 col-md-4 col-xl-4"></div>
 
@@ -385,11 +372,7 @@ function VerAula(){
                                         <h2>{new Date(comentario.Fecha).toLocaleDateString()}</h2>
                                         </div>
                                         <div className="desc">
-<<<<<<< HEAD
-                                        <p>{comentario.Descripcion}</p>
-=======
                                             <p>{comentario.Descripcion}</p>
->>>>>>> origin/ramajohan
                                         </div>
                                         <button
                                             className="btn-icon eliminar"

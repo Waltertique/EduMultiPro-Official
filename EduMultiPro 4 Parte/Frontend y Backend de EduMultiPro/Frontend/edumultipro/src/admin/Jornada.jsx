@@ -11,10 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-=======
 import ProteccionRuta from '../ProteccionRuta.jsx';
->>>>>>> origin/ramajohan
 
 function Jornada(){
 
@@ -176,10 +173,7 @@ const cancelarEdicion = () => {
 
     return(
         <>
-<<<<<<< HEAD
-=======
           <ProteccionRuta rolRequerido="R004" />
->>>>>>> origin/ramajohan
             <div className='contenedor'>
 
                 {/*---Nav---*/}
@@ -217,13 +211,8 @@ const cancelarEdicion = () => {
 
                                 <form onSubmit={guardarJornada}>
                                     <h3>Datos Jornada</h3>
-<<<<<<< HEAD
-                                        <input type="text" name="jornada_nombre" placeholder="Nombre de la jornada" value={nuevaJornada.jornada_nombre} onChange={manejarCambioNueva} required></input>
-                                        <input type="text" name="jornada_descripcion" placeholder="Descripcion" value={nuevaJornada.jornada_descripcion} onChange={manejarCambioNueva} required></input>
-=======
                                         <input type="text" name="jornada_nombre" maxLength="50" placeholder="Nombre de la jornada" value={nuevaJornada.jornada_nombre} onChange={manejarCambioNueva} required></input>
                                         <input type="text" name="jornada_descripcion" maxLength="300" placeholder="Descripcion" value={nuevaJornada.jornada_descripcion} onChange={manejarCambioNueva} required></input>
->>>>>>> origin/ramajohan
                                         <button type="submit">Guardar Jornada</button>
                                 </form>
 
@@ -256,17 +245,10 @@ const cancelarEdicion = () => {
                                         <input type="hidden" name="id" id="editarJornadaID"></input>
                                         
                                         <label for="editarJornadaNombre">Nombre:</label>
-<<<<<<< HEAD
-                                        <input type="text" name="nombre" id="editarJornadaNombre" value={jornadaSeleccionada.Jornada_Nombre} onChange={manejarCambio} required></input>
-
-                                        <label for="editarDescripcion">Descripción:</label>
-                                        <input name="descripcion" id="editarDescripcion" rows="3" value={jornadaSeleccionada.Descripcion_Jornada} onChange={manejarCambio} required></input>
-=======
                                         <input type="text" name="nombre" id="editarJornadaNombre" maxLength="50" value={jornadaSeleccionada.Jornada_Nombre} onChange={manejarCambio} required></input>
 
                                         <label for="editarDescripcion">Descripción:</label>
                                         <input name="descripcion" id="editarDescripcion" maxLength="300" rows="3" value={jornadaSeleccionada.Descripcion_Jornada} onChange={manejarCambio} required></input>
->>>>>>> origin/ramajohan
 
                                         <button type="submit" className="btn-guardar5">Guardar cambios</button>
                                         <button type="button" className="btn-cancelar" onClick={cancelarEdicion}>Cancelar</button>

@@ -36,10 +36,7 @@
     flex-direction: row;
     font-size: 18px;
     padding: 15px 25px;
-<<<<<<< HEAD
-=======
     width: 100%;
->>>>>>> origin/ramajohan
     border-bottom: 1px solid var(--azulClaro);
 }
 .menu i p{
