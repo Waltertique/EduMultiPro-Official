@@ -22,10 +22,6 @@ app.listen(PUERTO, () => {
 });
 
 const path = require("path");
-<<<<<<< HEAD
-app.use('/imagenes', express.static(path.join(__dirname, 'imagenes')));
-=======
 app.use('/imagenes', express.static(path.join(__dirname, 'imagenes')));
 
 module.exports = app; // <- EXPORTAR para tests
->>>>>>> origin/ramajohan

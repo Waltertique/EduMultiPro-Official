@@ -3,13 +3,10 @@ const router = express.Router();
 const conexion = require("../db/conexion");
 const bcrypt = require('bcryptjs');
 
-<<<<<<< HEAD
-=======
 //JSON WEB TOKEN
 const jwt = require('jsonwebtoken');
 const JWT_SECRETO = 'mi_clave_super_secreta';
 
->>>>>>> origin/ramajohan
 const multer = require('multer');
 const path = require('path');
 
@@ -27,8 +24,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 //Controlador del Login
-<<<<<<< HEAD
-=======
 
 const verificarToken = (req, res, next) => { //Sirve para verificar si el cliente (frontend) envió un token válido en la solicitud
   const authHeader = req.headers['authorization'];
@@ -47,7 +42,6 @@ router.get('/perfil', verificarToken, (req, res) => { //Esta ruta está protegid
   res.json({ mensaje: 'Acceso a perfil autorizado', usuario: req.usuario });
 });
 
->>>>>>> origin/ramajohan
 router.post('/login', (req, res) => {
   const { correo, contrasena } = req.body;
 
@@ -64,10 +58,6 @@ router.post('/login', (req, res) => {
 
     const usuario = resultados[0];
 
-<<<<<<< HEAD
-    // Comparar la contraseña ingresada con el hash
-=======
->>>>>>> origin/ramajohan
     bcrypt.compare(contrasena, usuario.Contraseña, (err, coinciden) => {
       if (err) {
         console.error('❌ Error al comparar contraseñas:', err);
@@ -75,9 +65,6 @@ router.post('/login', (req, res) => {
       }
 
       if (coinciden) {
-<<<<<<< HEAD
-        res.json({ mensaje: 'Login exitoso', usuario: { id: usuario.ID, nombre: usuario.Primer_Nombre, rol: usuario.rol_id } });
-=======
         const payload = {
           id: usuario.ID,
           nombre: usuario.Primer_Nombre,
@@ -92,7 +79,6 @@ router.post('/login', (req, res) => {
           token,
           usuario: payload
         });
->>>>>>> origin/ramajohan
       } else {
         res.status(401).json({ mensaje: 'Contraseña incorrecta' });
       }
@@ -100,8 +86,6 @@ router.post('/login', (req, res) => {
   });
 });
 
-<<<<<<< HEAD
-=======
 //CAMBIAR CONTRASEÑA
 router.put("/cambiar-contrasena", (req, res) => {
   const { id, correo1, nuevaContraseña, confirmarContraseña } = req.body;
@@ -131,7 +115,6 @@ router.put("/cambiar-contrasena", (req, res) => {
   });
 });
 
->>>>>>> origin/ramajohan
 //---------------------------------------------------------------------------------------------------------
 
 // Obtener todos los usuarios
@@ -208,11 +191,7 @@ router.post("/crearUsuario", upload.single("foto"), (req, res) => {
       console.error("❌ Error MySQL:", error);
       res.status(500).json({ mensaje: "Error al crear usuario" });
     } else {
-<<<<<<< HEAD
       res.json({ mensaje: "✅ Usuario creado correctamente" });
-=======
-      res.json({ mensaje: "✅ Usuario creado correctamente", insertId: resultado.insertId });
->>>>>>> origin/ramajohan
     }
   });
 });
@@ -359,17 +338,6 @@ router.delete("/Cursos/:id", (req, res) => {
 // Actualizar curso
 router.put("/Cursos/:id", (req, res) => {
   const { id } = req.params;
-<<<<<<< HEAD
-  const { grado_id, jornada_id } = req.body;
-
-  const query = `
-    UPDATE Curso
-    SET grado_id = ?, jornada_id = ?
-    WHERE ID = ?
-  `;
-
-  conexion.query(query, [grado_id, jornada_id, id], (error, result) => {
-=======
   const { Curso_Nombre, grado_id, jornada_id } = req.body;
 
   const query = `
@@ -379,7 +347,6 @@ router.put("/Cursos/:id", (req, res) => {
   `;
 
   conexion.query(query, [Curso_Nombre, grado_id, jornada_id, id], (error, result) => {
->>>>>>> origin/ramajohan
     if (error) {
       res.status(500).json({ error: "Error al actualizar el curso" });
     } else {
@@ -401,11 +368,7 @@ router.post("/Cursos", (req, res) => {
     if (error) {
       res.status(500).json({ mensaje: "Error al crear el curso" });
     } else {
-<<<<<<< HEAD
-      res.json({ mensaje: "Curso creado correctamente", id: result.insertId });
-=======
       res.json({ mensaje: "Curso creado correctamente", insertId: result.insertId });
->>>>>>> origin/ramajohan
     }
   });
 });
@@ -526,11 +489,7 @@ router.post("/Materias", (req, res) => {
     if (error) {
       res.status(500).json({ error: "Error al crear la materia" });
     } else {
-<<<<<<< HEAD
-      res.status(201).json({ mensaje: "Materia creada correctamente" });
-=======
       res.status(201).json({ mensaje: "Materia creada correctamente", insertId: result.insertId });
->>>>>>> origin/ramajohan
     }
   });
 });
@@ -1034,26 +993,6 @@ router.get("/Comentarios/Anuncio/:anuncio_id", (req, res) => {
   });
 });
 
-<<<<<<< HEAD
-// Crear comentario
-router.post("/Comentarios", (req, res) => {
-  const { descripcion, anuncio_id, usuario_id } = req.body;
-  const fecha = new Date().toISOString().split("T")[0];
-
-  const query = `
-    INSERT INTO Comentario (Descripcion, Fecha, anuncio_id, usuario_id)
-    VALUES (?, ?, ?, ?)
-  `;
-
-  conexion.query(query, [descripcion, fecha, anuncio_id, usuario_id], (error, result) => {
-    if (error) {
-      console.error("Error al crear comentario:", error);
-      res.status(500).json({ mensaje: "Error al crear el comentario" });
-    } else {
-      res.json({ mensaje: "Comentario creado correctamente" });
-    }
-  });
-=======
 // Crear comentario (para trabajo o anuncio)
 router.post("/Comentarios", (req, res) => {
   const { descripcion, trabajo_id, anuncio_id, usuario_id, fecha } = req.body;
@@ -1075,7 +1014,6 @@ router.post("/Comentarios", (req, res) => {
       }
     }
   );
->>>>>>> origin/ramajohan
 });
 
 // Eliminar comentario por ID
@@ -1115,9 +1053,6 @@ router.get("/Aulas/:id/integrantes", (req, res) => {
   });
 });
 
-<<<<<<< HEAD
-//---------------------------------------------------------------------------------------------------------
-=======
 // Obtener trabajos por aula
 router.get("/Trabajos/Aula/:id", (req, res) => {
   const aulaId = req.params.id;
@@ -1408,7 +1343,6 @@ router.get("/Aulas/:id/Notas", (req, res) => {
 
 //---------------------------------------------------------------------------------------------------------
 //Alumno y Profesor --------------------------------------------------------------------- Alumno y Profesor
->>>>>>> origin/ramajohan
 
 // Obtener todas las noticias
 router.get("/Noticias", (req, res) => {
@@ -1441,61 +1375,6 @@ router.delete("/Noticias/:id", (req, res) => {
 });
 
 // Crear noticia
-<<<<<<< HEAD
-router.post("/Noticias", upload.fields([
-  { name: "imagen1" },
-  { name: "imagen2" },
-  { name: "imagen3" }
-]), (req, res) => {
-  const {
-    titulo,
-    encabezado,
-    descripcion1,
-    descripcion2,
-    descripcion3,
-    fecha,
-    tipo_noticia_id
-  } = req.body;
-
-  const imagen1 = req.files['imagen1']?.[0]?.filename || null;
-  const imagen2 = req.files['imagen2']?.[0]?.filename || null;
-  const imagen3 = req.files['imagen3']?.[0]?.filename || null;
-
-  // Validar que no exista otra noticia con el mismo tipo
-  const checkQuery = "SELECT * FROM Noticia WHERE tipo_noticia_id = ?";
-  conexion.query(checkQuery, [tipo_noticia_id], (err, results) => {
-    if (err) return res.status(500).json({ error: "Error al validar tipo de noticia" });
-    if (results.length > 0) {
-      return res.status(400).json({ error: "Ya hay una noticia con este tipo" });
-    }
-
-    // Insertar nueva noticia
-    const insertQuery = `
-      INSERT INTO Noticia (
-        Titulo_Noticia, Encabezado, Descripcion1, Descripcion2, Descripcion3,
-        Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id
-      )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
-
-    conexion.query(insertQuery, [
-      titulo,
-      encabezado,
-      descripcion1,
-      descripcion2 || null,
-      descripcion3 || null,
-      fecha,
-      imagen1,
-      imagen2,
-      imagen3,
-      tipo_noticia_id
-    ], (err2, result) => {
-      if (err2) return res.status(500).json({ error: "Error al crear la noticia" });
-      res.json({ mensaje: "Noticia creada exitosamente" });
-    });
-  });
-});
-=======
 router.post(
   "/Noticias",
   upload.fields([
@@ -1571,7 +1450,6 @@ router.post(
     }
   }
 );
->>>>>>> origin/ramajohan
 
 // Obtener tipos de noticia
 router.get("/TiposNoticia", (req, res) => {
@@ -1585,34 +1463,6 @@ router.get("/TiposNoticia", (req, res) => {
 });
 
 // Actualizar Noticia
-<<<<<<< HEAD
-router.put("/Noticias/:id", upload.fields([
-  { name: "imagen1" },
-  { name: "imagen2" },
-  { name: "imagen3" }
-]), (req, res) => {
-  const id = req.params.id;
-  const {
-    titulo,
-    encabezado,
-    descripcion1,
-    descripcion2,
-    descripcion3,
-    fecha,
-    tipo_noticia_id
-  } = req.body;
-
-  // Validar duplicado de tipo (ajustar solo si cambió)
-  const checkQuery = `
-    SELECT * FROM Noticia
-    WHERE tipo_noticia_id = ? AND ID != ?
-  `;
-  conexion.query(checkQuery, [tipo_noticia_id, id], (err, results) => {
-    if (err) return res.status(500).json({ error: "Error al validar tipo de noticia" });
-    if (results.length > 0) {
-      return res.status(400).json({ error: "Otra noticia ya tiene este tipo" });
-    }
-=======
 router.put(
   "/Noticias/:id",
   upload.fields([
@@ -1631,31 +1481,12 @@ router.put(
       fecha,
       tipo_noticia_id
     } = req.body;
->>>>>>> origin/ramajohan
 
     // Preparar imágenes
     const imagen1 = req.files['imagen1']?.[0]?.filename;
     const imagen2 = req.files['imagen2']?.[0]?.filename;
     const imagen3 = req.files['imagen3']?.[0]?.filename;
 
-<<<<<<< HEAD
-    let query = `UPDATE Noticia SET Titulo_Noticia = ?, Encabezado = ?, Descripcion1 = ?, Descripcion2 = ?, Descripcion3 = ?, Fecha_Notica = ?, tipo_noticia_id = ?`;
-    const params = [titulo, encabezado, descripcion1, descripcion2 || null, descripcion3 || null, fecha, tipo_noticia_id];
-
-    if (imagen1) { query += ", Imagen1 = ?"; params.push(imagen1); }
-    if (imagen2) { query += ", Imagen2 = ?"; params.push(imagen2); }
-    if (imagen3) { query += ", Imagen3 = ?"; params.push(imagen3); }
-
-    query += " WHERE ID = ?";
-    params.push(id);
-
-    conexion.query(query, params, (error, result) => {
-      if (error) return res.status(500).json({ error: "Error al actualizar la noticia" });
-      res.json({ mensaje: "Noticia actualizada correctamente" });
-    });
-  });
-});
-=======
     // 🔹 Solo validar duplicados si es tipo principal (1, 2 o 3)
     const tiposUnicos = ['1', '2', '3'];
 
@@ -1710,7 +1541,6 @@ router.put(
     }
   }
 );
->>>>>>> origin/ramajohan
 
 // Obtener una noticia por ID
 router.get("/Noticias/:id", (req, res) => {
@@ -1726,9 +1556,6 @@ router.get("/Noticias/:id", (req, res) => {
     }
     res.json(results[0]);
   });
-<<<<<<< HEAD
-});
-=======
 });
 
 //Llamar Noticias A vista Alumno y profesor
@@ -2323,4 +2150,3 @@ router.get("/reportes/profesores-horarios", (req, res) => {
         });
     });
 });
->>>>>>> origin/ramajohan
