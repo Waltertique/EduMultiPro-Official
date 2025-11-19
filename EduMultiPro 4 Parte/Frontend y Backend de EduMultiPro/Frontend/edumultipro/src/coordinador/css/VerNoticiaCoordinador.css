@@ -1,0 +1,433 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fondo);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+
+/* article -------------------- article */
+
+#centro1{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+#contenido {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+/* tabla -------------------- tabla*/
+#contenidoTabla{
+    flex: 1;
+    padding: 20px;
+}
+#tituloVerNoticia{
+    border-bottom: 2px solid var(--azul-primario);
+    margin: 30px auto 20px auto;
+    display: flex;
+    align-items: center;
+    padding: 0px 40px;
+    width: 95%;
+}
+#tituloVerNoticia h2{
+    font-size: 50px;
+    color: var(--azul-primario);
+}
+#ttbtn2{
+    display: flex;
+    justify-content: flex-end;
+}
+#tituloVerNoticia button{
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--azul);
+    color: white;
+    border: 2px solid var(--azulClaro);
+    margin-left: 15px;
+}
+#tituloVerNoticia button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#cont1a{
+    background: var(--azul-primario);
+    border-radius: 15px;
+    margin: 30px auto 20px auto;
+    padding: 40px 20px;
+    width: 80%;
+    height: auto;
+}
+
+
+.cont2a{
+    width: 100%;
+    padding: 20px;
+    background: white;
+    display: flex;
+    text-align: justify;
+}
+.cont2a .row #h0{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.cont2a .row #h0 h2{
+    font-size: 50px;
+    color: var(--azul);
+    word-break: break-word;
+    white-space: normal;
+}
+.cont2a .row .text{
+    display: flex;
+    justify-content: center;   
+    padding: 0px 90px;
+}
+.cont2a .row .text p{
+    word-break: break-word;
+    white-space: normal;
+}
+.cont2a .row .imagen img{
+    max-width: 1000px;
+    max-height: 400px;
+    border-radius: 10px;
+    display: block; 
+    margin: 0 auto; 
+    margin-bottom: 40px; 
+    margin-top: 30px;
+}
+.cont2a .row #h6{
+    margin-top: 30px;
+    margin-left: 10px;
+}
+@media (min-width: 100px) and (max-width: 414px) {
+
+    /* PARTE2 -------------------- PARTE2 */
+    #tituloVerNoticia{
+        display: flex;
+        text-align: center;
+    }
+    #ttbtn2{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    #tituloVerNoticia h2{
+        font-size: 25px;
+    }
+    #cont1a{
+        width: 100%;
+        padding: 20px 15px;
+    }
+    .cont2a{
+        width: 100%;
+        padding: 30px 30px;
+    }
+    .cont2a .row .imagen img{
+        width: 100%;
+    }
+
+    .cont2a .row #h0{
+        margin-bottom: 10px;
+    }
+    .cont2a .row #h0 h2{
+        font-size: 15px;
+    }
+
+    .cont2a .row .text{
+        width: 100%;
+        padding: 0px 0px;
+        margin-bottom: 0;
+    }
+    .cont2a .row .text p{
+        font-size: 10px;
+    }
+    .cont2a .row #h6 p{
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 575px) {
+    /* PARTE2 -------------------- PARTE2 */
+    #tituloVerNoticia{
+        display: flex;
+        text-align: center;
+    }
+    #ttbtn2{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    #tituloVerNoticia h2{
+        font-size: 25px;
+    }
+    #cont1a{
+        width: 100%;
+        padding: 20px 15px;
+    }
+    .cont2a{
+        width: 100%;
+        padding: 30px 30px;
+    }
+    .cont2a .row .imagen img{
+        width: 100%;
+    }
+
+    .cont2a .row #h0{
+        margin-bottom: 10px;
+    }
+    .cont2a .row #h0 h2{
+        font-size: 15px;
+    }
+
+    .cont2a .row .text{
+        width: 100%;
+        padding: 0px 0px;
+        margin-bottom: 0;
+    }
+    .cont2a .row .text p{
+        font-size: 10px;
+    }
+    .cont2a .row #h6 p{
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+    /* PARTE2 -------------------- PARTE2 */
+    #tituloVerNoticia{
+        display: flex;
+        text-align: center;
+    }
+    #ttbtn2{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    #tituloVerNoticia h2{
+        font-size: 25px;
+    }
+    #cont1a{
+        width: 100%;
+        padding: 20px 15px;
+    }
+    .cont2a{
+        width: 100%;
+        padding: 30px 30px;
+    }
+    .cont2a .row .imagen img{
+        width: 100%;
+    }
+
+    .cont2a .row #h0{
+        margin-bottom: 10px;
+    }
+    .cont2a .row #h0 h2{
+        font-size: 15px;
+    }
+
+    .cont2a .row .text{
+        width: 100%;
+        padding: 0px 0px;
+        margin-bottom: 0;
+    }
+    .cont2a .row .text p{
+        font-size: 10px;
+    }
+    .cont2a .row #h6 p{
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* PARTE2 -------------------- PARTE2 */
+    #tituloVerNoticia{
+        display: flex;
+        text-align: center;
+    }
+    #ttbtn2{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    #tituloVerNoticia h2{
+        font-size: 25px;
+    }
+    #cont1a{
+        width: 90%;
+        padding: 30px 25px;
+    }
+    .cont2a{
+        width: 100%;
+        padding: 30px 40px;
+    }
+    .cont2a .row .imagen img{
+        max-width: 500px;
+        max-height: 400px;
+        border-radius: 10px;
+    }
+
+    .cont2a .row #h0{
+        margin-bottom: 10px;
+    }
+    .cont2a .row #h0 h2{
+        font-size: 25px;
+    }
+
+    .cont2a .row .text{
+        width: 100%;
+        padding: 0px 0px;
+        margin-bottom: 0;
+    }
+    .cont2a .row .text p{
+        font-size: 17px;
+    }
+    .cont2a .row #h6 p{
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    /* PARTE2 -------------------- PARTE2 */
+    #tituloVerNoticia{
+        display: flex;
+        text-align: center;
+    }
+    #ttbtn2{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    #tituloVerNoticia h2{
+        font-size: 25px;
+    }
+    #cont1a{
+        width: 75%;
+        padding: 30px 25px;
+    }
+    .cont2a{
+        width: 100%;
+        padding: 30px 40px;
+    }
+    .cont2a .row .imagen img{
+        max-width: 550px;
+        max-height: 400px;
+        border-radius: 10px;
+    }
+
+    .cont2a .row #h0{
+        margin-bottom: 10px;
+    }
+    .cont2a .row #h0 h2{
+        font-size: 25px;
+    }
+
+    .cont2a .row .text{
+        width: 100%;
+        padding: 0px 0px;
+        margin-bottom: 0;
+    }
+    .cont2a .row .text p{
+        font-size: 20px;
+    }
+    .cont2a .row #h6 p{
+        font-size: 17px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px){
+    
+    /* PARTE2 -------------------- PARTE2 */
+    #tituloVerNoticia{
+        display: flex;
+        text-align: center;
+    }
+    #ttbtn2{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    #tituloVerNoticia h2{
+        font-size: 25px;
+    }
+    #cont1a{
+        width: 75%;
+        padding: 30px 25px;
+    }
+    .cont2a{
+        width: 100%;
+        padding: 30px 40px;
+    }
+    .cont2a .row .imagen img{
+        max-width: 550px;
+        max-height: 400px;
+        border-radius: 10px;
+    }
+
+    .cont2a .row #h0{
+        margin-bottom: 10px;
+    }
+    .cont2a .row #h0 h2{
+        font-size: 25px;
+    }
+
+    .cont2a .row .text{
+        width: 100%;
+        padding: 0px 0px;
+        margin-bottom: 0;
+    }
+    .cont2a .row .text p{
+        font-size: 20px;
+    }
+    .cont2a .row #h6 p{
+        font-size: 17px;
+    }
+
+}
+@media (min-width: 1400px) and (max-width: 1775px){
+
+    .cont2a .row .imagen img{
+        max-width: 650px;
+        max-height: 400px;
+        border-radius: 10px;
+    }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear Tarea</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .contenedor {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+
+    .contenedor label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .contenedor input,
+    .contenedor textarea,
+    .contenedor select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    .contenedor textarea {
+      resize: vertical;
+    }
+
+    #archivoSubido a {
+      display: inline-block;
+      margin-top: 5px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    #archivoSubido a:hover {
+      text-decoration: underline;
+    }
+
+    .botones {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .botones button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .botones button:nth-child(1) {
+      background-color: #ccc;
+    }
+
+    .botones button:nth-child(2) {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    .botones button:hover {
+      opacity: 0.8;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="contenedor">
+    <h2>Crear Tarea</h2>
+
+    <label>Asignar A:</label>
+    <select>
+      <option value="toda">Toda la clase</option>
+      <option value="grupo1">Grupo 1</option>
+      <option value="grupo2">Grupo 2</option>
+      <option value="individual">Individual</option>
+    </select>
+
+    <label>Título del Trabajo:</label>
+    <input type="text" placeholder="Título">
+
+    <label>Descripción del Trabajo:</label>
+    <textarea placeholder="Descripción"></textarea>
+
+    <label>Adjuntar Archivo:</label>
+    <input type="file" id="archivo" onchange="mostrarArchivo(event)">
+    <div id="archivoSubido"></div>
+
+    <label>Puntos:</label>
+    <input type="number" placeholder="Puntos">
+
+    <label>Fecha de Entrega:</label>
+    <input type="date">
+
+    <label>¿Permitir entregas después de la fecha?</label>
+    <select>
+      <option>Si</option>
+      <option>No</option>
+    </select>
+
+    <label>Tema:</label>
+    <input type="text" placeholder="Tema">
+
+    <div class="botones">
+      <button>Cancelar</button>
+      <button>Crear Tarea</button>
+    </div>
+
+  </div>
+
+  <script>
+    function mostrarArchivo(event) {
+      const archivo = event.target.files[0];
+      const url = URL.createObjectURL(archivo);
+
+      document.getElementById('archivoSubido').innerHTML = `
+        <a href="${url}" target="_blank">${archivo.name}</a>
+      `;
+    }
+  </script>
+
+</body>
+</html>

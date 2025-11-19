@@ -1,0 +1,359 @@
+{
+  "id": "c2e33169-16e8-44ad-8a5e-bbad0530aabd",
+  "version": "2.0",
+  "name": "5) Materias EduMultiPro",
+  "url": "http://localhost:5173/materia",
+  "tests": [{
+    "id": "c1ab6d1a-0a08-4bf7-80d8-b1b8c8d9f61a",
+    "name": "Crear Materia",
+    "commands": [{
+      "id": "328db9da-dbf2-45f0-b4cc-c104d759faa4",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/materia",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "40d1d666-6db7-48a4-9599-3e44c1010911",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "06c1dca4-52fc-48c0-91a1-07ebd0141e4a",
+      "comment": "",
+      "command": "click",
+      "target": "name=materia_nombre",
+      "targets": [
+        ["name=materia_nombre", "name"],
+        ["css=form > input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='materia_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d2e2b01c-690c-4a1b-969d-0ad2a1c74a5a",
+      "comment": "",
+      "command": "type",
+      "target": "name=materia_nombre",
+      "targets": [
+        ["name=materia_nombre", "name"],
+        ["css=form > input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='materia_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "nueva materia"
+    }, {
+      "id": "b92985e5-7106-4a49-a717-32517c207243",
+      "comment": "",
+      "command": "click",
+      "target": "id=Descripcion",
+      "targets": [
+        ["id=Descripcion", "id"],
+        ["name=materia_descripcion", "name"],
+        ["css=#Descripcion", "css:finder"],
+        ["xpath=//input[@id='Descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "190e77e8-d72a-4d7a-b946-8f707b3fb122",
+      "comment": "",
+      "command": "type",
+      "target": "id=Descripcion",
+      "targets": [
+        ["id=Descripcion", "id"],
+        ["name=materia_descripcion", "name"],
+        ["css=#Descripcion", "css:finder"],
+        ["xpath=//input[@id='Descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "se crea una nueva materia"
+    }, {
+      "id": "c7bf2e5b-0b75-4de5-84a8-5e8e67d313bc",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > button",
+      "targets": [
+        ["css=form > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar Materia')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "270483ab-241e-418a-bcac-2e30c0df30d3",
+    "name": "Eliminar Materia",
+    "commands": [{
+      "id": "647b668b-63aa-48c0-a6b3-b983f3ca488a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/materia",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c79b8c3d-4d0a-4fb5-924d-0c9f5f709282",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9194d206-f33d-49ef-b64c-0b79bccd1ab0",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a2a00336-cc5b-4e95-9f31-14cc2017cfcf",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e051d15d-a122-4191-8bbc-a8772b64be88",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(3) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "39e723fe-40ef-4dee-8910-00c2ace0a244",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar esta Materia?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "db423cd0-0609-40c3-9a35-7d14fc377ed0",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "3a8b4f99-b815-466b-840c-ced5007dd32d",
+    "name": "Modificar Materia",
+    "commands": [{
+      "id": "bf0b235d-73b1-4b74-b115-f9bb45ccacc1",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/materia",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dbaa1173-6392-42de-95ce-3abc4a545e81",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1ea02046-5a99-4b04-99a3-1bfb5f7387f1",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .modificar > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar > .fa-solid", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[4]/button/i", "xpath:idRelative"],
+        ["xpath=//td[4]/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "88e60e8c-a509-4057-ae23-59f2c26c109f",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(1) .modificar > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar > .fa-solid", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[4]/button/i", "xpath:idRelative"],
+        ["xpath=//td[4]/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b5060c0c-8887-4a98-bb25-1e21a6308938",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=tr:nth-child(1) .modificar > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar > .fa-solid", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[4]/button/i", "xpath:idRelative"],
+        ["xpath=//td[4]/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d98ddf7c-fc67-454f-9695-cc549af1539a",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarNombre",
+      "targets": [
+        ["id=editarNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarNombre", "css:finder"],
+        ["xpath=//input[@id='editarNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarMateria']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "79ab5c9b-cd11-423a-8d04-1a2a1b5cf1db",
+      "comment": "",
+      "command": "type",
+      "target": "id=editarNombre",
+      "targets": [
+        ["id=editarNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarNombre", "css:finder"],
+        ["xpath=//input[@id='editarNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarMateria']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/input[2]", "xpath:position"]
+      ],
+      "value": "Matemáticas modificada"
+    }, {
+      "id": "5fbb42e8-150c-46d5-bab4-cb837c1f18e3",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarDescripcion",
+      "targets": [
+        ["id=editarDescripcion", "id"],
+        ["name=descripcion", "name"],
+        ["css=#editarDescripcion", "css:finder"],
+        ["xpath=//input[@id='editarDescripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarMateria']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9fd7e01f-d4c7-472d-ac35-63be04ae0409",
+      "comment": "",
+      "command": "type",
+      "target": "id=editarDescripcion",
+      "targets": [
+        ["id=editarDescripcion", "id"],
+        ["name=descripcion", "name"],
+        ["css=#editarDescripcion", "css:finder"],
+        ["xpath=//input[@id='editarDescripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarMateria']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "modificada Estudia los números, las operaciones y las estructuras matemáticas básicas."
+    }, {
+      "id": "dbee38b2-ad0d-46d1-8104-79430b67cdbb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-guardar2",
+      "targets": [
+        ["css=.btn-guardar2", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarMateria']/form/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "e4f12e89-17f1-4cf3-a7dc-6fa985dae827",
+    "name": "Ver Materia",
+    "commands": [{
+      "id": "970397a8-a4bd-43ed-a263-36aae91a9741",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/materia",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a9acaa8-182e-460a-9a77-0b60368028ef",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aad1b701-d00b-4c26-9664-e1fc2f95b7c3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.menu .fa-user > p",
+      "targets": [
+        ["css=.menu .fa-user > p", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a/i/p", "xpath:idRelative"],
+        ["xpath=//div/a/i/p", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "19297d84-a552-47a8-b595-f9afff12f173",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(2) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(2) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "23d552be-3b98-4439-a3ca-375b732b7a0e",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(2) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(2) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "747f1c25-4d93-4ff0-9725-5a844d295f16",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(2) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(2) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "24d62466-817f-4854-a378-8ee7d8c8c8d3",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=a:nth-child(2) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(2) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "af3d5eab-1bb9-4d82-9173-96e54aeecc6d",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(1) > .targeta",
+      "targets": [
+        ["css=a:nth-child(1) > .targeta", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a/div", "xpath:idRelative"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "e321fc53-4400-457e-9706-c5bd55186a40",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:5173/materia"],
+  "plugins": []
+}

@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "dev": "nodemon index.js"
+=======
+    "dev": "nodemon index.js",
+    "test": "cross-env NODE_ENV=test jest --runInBand",
+    "test:watch": "cross-env NODE_ENV=test jest --watch"
+>>>>>>> origin/ramajohan
   },
   "keywords": [],
   "author": "",
@@ -14,8 +20,20 @@
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+<<<<<<< HEAD
     "multer": "^2.0.1",
     "mysql2": "^3.14.1",
     "nodemon": "^3.1.10"
+=======
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.1",
+    "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
+>>>>>>> origin/ramajohan
   }
 }

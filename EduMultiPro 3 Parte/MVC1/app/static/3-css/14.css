@@ -1,0 +1,335 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--blanco);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+/* Baner -------------------- Baner*/
+.contenedor nav{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: flex-start;
+    background: var(--azul);
+    background-position: center;
+    background-size: cover;
+}
+.contenedor nav .uno{
+    margin: 20px 20px 0px 40px;
+    width: 130px;
+    height: 90px;
+
+}
+.contenedor nav .uno img{
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor nav .dos{
+    margin: 20px 0px;
+    width: 450px;
+    height: 90px;
+    justify-items: center;
+}
+.contenedor nav .dos p{
+    font-size: 80px;
+    color: white;
+}
+.contenedor nav .tres{
+    margin: 20px 0px 0px 40px;
+    width: 500px;
+    height: 90px;
+    display: grid;
+    place-items: center;
+   
+}
+.contenedor nav .tres p{
+    font-size: 35px;
+    line-height: center;
+    color: aqua;
+}
+.contenedor nav .cuatro{
+    margin: 0px 25px;
+    width: 200px;
+    display: grid;
+    place-content: center;
+    grid-template-columns: auto auto;
+    position: relative;
+}
+.contenedor nav .cuatro input{
+    padding: 0px 10px;
+    border-radius: 10px 0px 0px 10px;
+    width: 150px;
+    height: 35px;
+    border: 0;
+    outline: none;
+    font-size: 15px;
+}
+.contenedor nav .cuatro input::placeholder{
+    font-weight: normal;
+}
+.contenedor nav .cuatro input:hover::placeholder{
+    color: blue;
+}
+.contenedor nav .cuatro button{
+    width: 35px;
+    height: 36px;
+    float: right;
+    border-radius: 0 10px 10px 0;
+}
+.contenedor nav .cuatro button:hover{
+    transform: scale(1.1);
+    color: blue;
+}
+/* centro -------------------- centro*/
+/* parte1 -------------------- centro*/
+.contenedor article{
+    flex: 1;
+}
+.contenedor article .parte1{
+    margin: 20px 0px 0px 0px;
+    width: 100%;
+    height: 70px;
+    display: flex; 
+    align-items: center;
+    background: var(--azulClaro);
+    background-position: center;
+    background-size: cover;
+    justify-content: flex-end;
+}
+.contenedor article .parte1 button{
+    margin: 0px 8px;
+   width: 120px;
+   height: 100%;
+   border: none;
+   font-size: 15px;
+   border-bottom: none;
+   background: var(--azulClaro);
+    color: white;
+    font-size: 18px;
+}
+.contenedor article .parte1 button:hover{
+    transform: scale(1.1);
+    background: #37c1e4;
+    cursor: pointer;
+}
+/* parte2 -------------------- centro*/
+.parte2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 30px 0px;
+}
+.parte2 .contenedorTabla{
+    width: 800px;
+    height: 320px;
+}
+.parte2 .contenedorTabla .titulo{
+    width: 100%;
+    height: 40px;
+    background: var(--azulClaro);
+    display: flex;
+    align-items: center;
+}
+.titulo h2{
+    margin: 0px 20px;
+    color: white;
+}
+
+.contenedorTabla .selector{
+    display: flex;
+    flex-direction: row;
+}
+.contenedorTabla .selector input{
+    margin: 15px 0px 0px 30px;
+    padding: 0px 15px;
+    width: 350px;
+    height: 35px;
+    border-radius: 10px;
+}
+.contenedorTabla .selector #boton1{
+    margin: 18px 5px;
+    background: var(--azulClaro);
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+}
+.contenedorTabla .selector #boton2{
+    margin: 18px 0px 0px 110px;
+    background: var(--azulClaro);
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+}
+.contenedorTabla .selector #boton1:hover{
+    background: white;
+    border: 1px solid var(--azulClaro);
+    color: var(--azulClaro);
+    cursor: pointer;
+}
+/* tabla 1 -------------------- tabla 1*/
+#periodos{
+    width: 730px;
+    margin: 10px auto;
+    border-collapse: collapse;
+} 
+#periodos th{
+    background: var(--azulClaro);
+}
+#periodos th, td{
+    padding: 0px 10px;
+    border: 1px solid rgb(223, 185, 141);
+    text-align: center !important;
+}
+#periodos th h2{
+    font-size: 20px;
+    color: white;
+}
+#periodos tbody tr td{
+    font-size: 14px;
+}
+#periodos tbody tr td button{
+    width: 20px;
+    height: 20px;
+}
+.parte2 .logros{
+    width: 600px;
+    height: 300px;
+    border-left: 1px solid var(--azulClaro);
+    display: flex;
+    flex-direction: column;
+}
+.parte2 .logros .titulo{
+    width: 100%;
+    height: 40px;
+    background: var(--azulClaro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* tabla 2 -------------------- tabla 2*/
+#logro{
+    margin: 75px auto 0px auto;
+    width: 550px;
+    border-collapse: collapse;
+}
+#logro th{
+    background: var(--azulClaro);
+}
+#logro th, td{
+    padding: 0px 10px;
+    border: 1px solid rgb(223, 185, 141);
+    text-align: center !important;
+}
+#logro th h2{
+    font-size: 20px;
+    color: white;
+}
+#logro tbody tr td{
+    font-size: 14px;
+}
+#logro tbody tr td select{
+    margin: 5px 0px;
+    width: 350px;
+    background: var(--blanco);
+    border: none;
+}
+#logro tbody tr td input{
+    margin: 5px 0px;
+    padding: 0px 10px;
+    width: 350px;
+    height: 43px;
+    background: var(--blanco);
+    border: none;
+}
+/* tabla 3-------------------- tabla 3*/
+
+.parte3 #estudiantesLista{
+    border-collapse: collapse;
+    margin: 0px auto;
+    width: 1300px;
+}
+#estudiantesLista th{
+    background: var(--azulClaro);
+}
+#estudiantesLista th, td{
+    padding: 0px 10px;
+    border: 1px solid rgb(223, 185, 141);
+    text-align: center !important;
+}
+#estudiantesLista th h2{
+    font-size: 20px;
+    color: white;
+}
+#estudiantesLista thead tr th button{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+#estudiantesLista tbody tr td{
+    font-size: 14px;
+    padding: 10px 10px;
+}
+#estudiantesLista tbody tr td button{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+#estudiantesLista tbody tr td input{
+    width: 70px;
+    background: var(--blanco);
+    border: none;
+    border-bottom: 1px solid black;
+}
+#estudiantesLista tbody tr td img{
+    width: 20px;
+    height: 15px;
+}
+#estudiantesLista tbody tr td img:hover{
+    transform: scale(1.3);
+    cursor: pointer;
+}
+#estudiantesLista tbody tr td select{
+    background: var(--blanco);
+    border: none;
+}
+/* footer -------------------- footer*/
+.contenedor footer{
+    margin: 40px 0px 0px 0px;
+    width: 100%;
+    height: 130px;
+    background-image: url("../img/gris\ fondo.jpg");
+}
+
+footer .informacion1{
+    color: white;
+    font-size: 30px;
+    margin: 15px 0px 0px 50px;
+}
+footer .informacion2{
+    margin: 15px 0px;
+    color: white;
+    font-size: 23px;
+    display: flex;
+    justify-content: space-around;
+}

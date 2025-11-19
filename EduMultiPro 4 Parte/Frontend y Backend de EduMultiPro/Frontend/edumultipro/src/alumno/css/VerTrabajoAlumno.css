@@ -1,0 +1,775 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fondo);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+
+/* article -------------------- article */
+
+#centroAlumno{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+
+/* Centro -------------------- Centro*/
+
+#contenidoTablaVerTrabajoAlumno{
+    margin: 20px auto;
+    padding: 30px 0px;
+    flex: 1;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.contenido1VerTrabajoAlumno{
+    margin-right: 80px;
+}
+.contenido2VerTrabajoAlumno .subirtr{
+    padding: 15px 0px;
+    width: 280px;
+    height: auto;
+    border: 1px solid var(--azul-primario);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.contenido2VerTrabajoAlumno .subirtr p{
+    font-size: 15px;
+}
+.contenido2VerTrabajoAlumno .subirtr .mitrabajo{
+    width: 220px;
+    height: 40px;
+    border: 1px solid var(--azul-primario);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin-bottom: 10px;
+
+}
+.contenido2VerTrabajoAlumno .subirtr .mitrabajo p{
+    font-size: 20px;
+}
+.contenido2VerTrabajoAlumno .subirtr .mitrabajo a{
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration: none;
+}
+#cancelar_entrega{
+    width: 140px;
+    height: 30px;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+.contenido2VerTrabajoAlumno .subirtr button{
+    margin-top: 15px;
+    width: 220px;
+    height: 40px;
+    border: 1px solid var(--azul-primario);
+    border-radius: 20px;
+    font-size: 17px;
+    background: var(--azulClaro);
+    color: white;
+    border: 2px solid var(--azul);
+    cursor: pointer;
+}
+
+.contenido1VerTrabajoAlumno .ti{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 820px;
+}
+.contenido1VerTrabajoAlumno .ti img{
+    margin: 0px 20px 0px 0px;
+    width: 50px;
+    height: 50px;
+}
+.contenido1VerTrabajoAlumno .ti h2{
+    font-size: 35px;
+    word-break: break-word; 
+    white-space: normal;
+}
+.contenido1VerTrabajoAlumno .fecha{
+    margin: 20px 0px;
+    padding: 0px 30px;
+    width: 820px;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid var(--azul-primario);
+    border-bottom: 1px solid var(--azul-primario);
+}
+.contenido1VerTrabajoAlumno .fecha div{
+    display: flex;
+    flex-direction: row;
+}
+.contenido1VerTrabajoAlumno .fecha div p{
+    font-size: 20px;
+    margin-right: 10px;
+}
+.contenido1VerTrabajoAlumno .descripcion{
+    width: 820px;
+}
+.contenido1VerTrabajoAlumno .descripcion h2{
+    word-break: break-word;
+    white-space: normal;
+}
+.contenido1VerTrabajoAlumno .descripcion p{
+    word-break: break-word;
+    white-space: normal;
+}
+.contenido1VerTrabajoAlumno .adjunto{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 5px;
+}
+.contenido1VerTrabajoAlumno .adjunto .material1{
+    width: 150px;
+    margin-right: 20px;
+    height: 50px;
+    border: 1px solid var(--azul-primario);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+.contenido1VerTrabajoAlumno .adjunto .material1 a{
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration: none;
+}
+.contenido1VerTrabajoAlumno .mensaje{
+    margin: 30px 0px 0px 0px;
+    width: 820px;
+    height: 100px;
+    border-top: 1px solid var(--azul-primario);
+    display: flex;
+    flex-direction: row;
+}
+.contenido1VerTrabajoAlumno .mensaje img{
+    margin: 40px 20px 0px 30px;
+    width: 50px;
+    height: 50px;
+}
+.contenido1VerTrabajoAlumno .mensaje input{
+    background: white;
+    color: black;
+    margin: 40px 0px 0px 0px;
+    padding: 0px 20px;
+    width: 600px;
+    height: 50px;
+    border-radius: 20px 0px 0px 20px;
+    border: 1px solid gray;
+}
+.contenido1VerTrabajoAlumno .mensaje button{
+    margin: 40px 0px 0px 0px;
+    border-radius: 0px 20px 20px 0px;
+    width: 100px;
+    height: 50px;
+    background: var(--azulClaro);
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    border: 1px solid gray;
+}
+.contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno{
+    margin-top: 30px;
+    background: var(--fondo);
+    border: 1px solid black;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto{
+    display: flex;
+    flex-direction: row;
+}
+.contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 img{
+    width: 40px;
+    height: auto;
+}
+.contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 h1{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 25px;
+    word-break: break-word; 
+    white-space: normal;
+}
+.contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 h2{
+    margin-top: 15px;
+    margin-left: 30px;
+    font-size: 20px;
+    word-break: break-word; 
+    white-space: normal;
+}
+.contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .desc p{
+    word-break: break-word; 
+    white-space: normal;
+}
+.contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno button{
+    margin-left: 0px;
+    width: 80px;
+    height: 39px;
+    color: white;
+    border: 2px solid var(--azul-primario);
+    background: var(--azul-secundario);
+    border-radius: 20px;
+}
+.contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno button:hover{
+    transform: scale(1.1);
+    color: black;
+    cursor: pointer;
+}
+#subVerTrabajoAlumno{
+    font-size: 10px;
+}
+@media (min-width: 100px) and (max-width: 414px) {
+    #contenidoTablaVerTrabajoAlumno{
+        width: 90%;
+        margin: 0px auto;
+        display:  flex;
+        flex-direction: column;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti img{
+        width: 30px;
+        height: 30px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti h2{
+        font-size: 20px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha div{
+        display: flex;
+        align-items: center;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha p{
+        font-size: 13px;
+        margin-bottom: 0px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion h2{
+        font-size: 17px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion p{
+        font-size: 13px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .adjunto .material1{
+        width: 90px;
+        height: 25px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .adjunto .material1 a{
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje{
+        margin: 30px 0px 0px 0px;
+        width: 820px;
+        height: 100px;
+        border-top: 1px solid rgb(185, 120, 29);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .mensaje {
+        width: 100%;
+    }
+    .contenido1VerTrabajoAlumno .mensaje img{
+        margin: 0px 20px 0px 10px;
+        width: 30px;
+        height: 30px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje input{
+        margin-top: 0px;
+        padding: 0px 20px;
+        width: 120px;
+        height: 30px;
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje button{
+        margin: 0px;
+        width: 80px;
+        height: 30px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno{
+        margin-top: 0px;
+        margin-bottom: 15px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1{
+        display: flex;
+        flex-direction: column;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto{
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto img{
+        width: 30px;
+        height: 30px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto h1{
+        font-size: 17px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 h2{
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .desc p{
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno button{
+        width: 75px;
+        height: 30px;
+        font-size: 12px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido2VerTrabajoAlumno{
+        margin: 0px auto;
+    }
+}
+@media (min-width: 415px) and (max-width: 575px) {
+   #contenidoTablaVerTrabajoAlumno{
+        width: 90%;
+        margin: 0px auto;
+        display:  flex;
+        flex-direction: column;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti img{
+        width: 30px;
+        height: 30px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti h2{
+        font-size: 20px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha div{
+        display: flex;
+        align-items: center;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha p{
+        font-size: 13px;
+        margin-bottom: 0px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion h2{
+        font-size: 17px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion p{
+        font-size: 13px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .adjunto .material1{
+        width: 90px;
+        height: 25px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .adjunto .material1 a{
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje{
+        margin: 30px 0px 0px 0px;
+        width: 820px;
+        height: 100px;
+        border-top: 1px solid rgb(185, 120, 29);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .mensaje {
+        width: 100%;
+    }
+    .contenido1VerTrabajoAlumno .mensaje img{
+        margin: 0px 20px 0px 10px;
+        width: 30px;
+        height: 30px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje input{
+        margin-top: 0px;
+        padding: 0px 20px;
+        width: 200px;
+        height: 30px;
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje button{
+        margin: 0px;
+        width: 80px;
+        height: 30px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno{
+        margin-top: 0px;
+        margin-bottom: 15px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1{
+        display: flex;
+        flex-direction: row;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto{
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto img{
+        width: 30px;
+        height: 30px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto h1{
+        font-size: 17px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 h2{
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .desc p{
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno button{
+        width: 75px;
+        height: 30px;
+        font-size: 12px;
+    } 
+    #contenidoTablaVerTrabajoAlumno .contenido2VerTrabajoAlumno{
+        margin: 0px auto;
+    }
+}
+@media (min-width: 576px) and (max-width: 767px){
+    #contenidoTablaVerTrabajoAlumno{
+        width: 90%;
+        margin: 0px auto;
+        display:  flex;
+        flex-direction: column;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti img{
+        width: 30px;
+        height: 30px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti h2{
+        font-size: 20px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha div{
+        display: flex;
+        align-items: center;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha p{
+        font-size: 13px;
+        margin-bottom: 0px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion h2{
+        font-size: 17px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion p{
+        font-size: 13px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .adjunto .material1{
+        width: 90px;
+        height: 25px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .adjunto .material1 a{
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje{
+        margin: 30px 0px 0px 0px;
+        width: 820px;
+        height: 100px;
+        border-top: 1px solid rgb(185, 120, 29);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .mensaje {
+        width: 100%;
+    }
+    .contenido1VerTrabajoAlumno .mensaje img{
+        margin: 0px 20px 0px 10px;
+        width: 30px;
+        height: 30px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje input{
+        margin-top: 0px;
+        padding: 0px 20px;
+        width: 200px;
+        height: 30px;
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje button{
+        margin: 0px;
+        width: 80px;
+        height: 30px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno{
+        margin-top: 0px;
+        margin-bottom: 15px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1{
+        display: flex;
+        flex-direction: row;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto{
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto img{
+        width: 30px;
+        height: 30px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto h1{
+        font-size: 17px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 h2{
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .desc p{
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno button{
+        width: 75px;
+        height: 30px;
+        font-size: 12px;
+    } 
+    #contenidoTablaVerTrabajoAlumno .contenido2VerTrabajoAlumno{
+        margin: 0px auto;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    #contenidoTablaVerTrabajoAlumno{
+        width: 90%;
+        margin: 0px auto;
+        display:  flex;
+        flex-direction: column;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti img{
+        width: 40px;
+        height: 40px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti h2{
+        font-size: 25px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha div{
+        display: flex;
+        align-items: center;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha p{
+        font-size: 17px;
+        margin-bottom: 0px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion h2{
+        font-size: 20px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion p{
+        font-size: 17px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .adjunto .material1{
+        width: 100px;
+        height: 35px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .adjunto .material1 a{
+        font-size: 17px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje{
+        margin: 30px 0px 0px 0px;
+        width: 820px;
+        height: 100px;
+        border-top: 1px solid rgb(185, 120, 29);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .mensaje {
+        width: 100%;
+    }
+    .contenido1VerTrabajoAlumno .mensaje img{
+        margin: 0px 20px 0px 10px;
+        width: 30px;
+        height: 30px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje input{
+        margin-top: 0px;
+        padding: 0px 20px;
+        width: 400px;
+        height: 30px;
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .mensaje button{
+        margin: 0px;
+        width: 100px;
+        height: 30px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno{
+        margin-top: 0px;
+        margin-bottom: 15px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1{
+        display: flex;
+        flex-direction: row;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto{
+        align-items: center;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto img{
+        width: 30px;
+        height: 30px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 .foto h1{
+        font-size: 17px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .info1 h2{
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno .desc p{
+        font-size: 13px;
+    }
+    .contenido1VerTrabajoAlumno .comentarioVerTrabajoAlumno button{
+        width: 75px;
+        height: 30px;
+        font-size: 12px;
+    } 
+    #contenidoTablaVerTrabajoAlumno .contenido2VerTrabajoAlumno{
+        margin: 0px auto;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    #contenidoTablaVerTrabajoAlumno{
+        width: 90%;
+        margin: 0px auto;
+        display:  flex;
+        flex-direction: column;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno{
+        margin-right: 0px;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .ti{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .fecha{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .descripcion{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .adjunto{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido1VerTrabajoAlumno .mensaje{
+        width: 100%;
+    }
+    #contenidoTablaVerTrabajoAlumno .contenido2VerTrabajoAlumno{
+        margin: 30px auto;
+    }
+}

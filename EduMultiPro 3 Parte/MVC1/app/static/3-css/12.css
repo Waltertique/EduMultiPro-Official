@@ -1,0 +1,287 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--blanco);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+/* Baner -------------------- Baner*/
+.contenedor nav{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: flex-start;
+    background: var(--azul);
+    background-position: center;
+    background-size: cover;
+}
+.contenedor nav .uno{
+    margin: 20px 20px 0px 40px;
+    width: 130px;
+    height: 90px;
+
+}
+.contenedor nav .uno img{
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor nav .dos{
+    margin: 20px 0px;
+    width: 450px;
+    height: 90px;
+    justify-items: center;
+}
+.contenedor nav .dos p{
+    font-size: 80px;
+    color: white;
+}
+.contenedor nav .tres{
+    margin: 20px 0px 0px 40px;
+    width: 500px;
+    height: 90px;
+    display: grid;
+    place-items: center;
+   
+}
+.contenedor nav .tres p{
+    font-size: 35px;
+    line-height: center;
+    color: aqua;
+}
+.contenedor nav .cuatro{
+    margin: 0px 25px;
+    width: 200px;
+    display: grid;
+    place-content: center;
+    grid-template-columns: auto auto;
+    position: relative;
+}
+.contenedor nav .cuatro input{
+    padding: 0px 10px;
+    border-radius: 10px 0px 0px 10px;
+    width: 150px;
+    height: 35px;
+    border: 0;
+    outline: none;
+    font-size: 15px;
+}
+.contenedor nav .cuatro input::placeholder{
+    font-weight: normal;
+}
+.contenedor nav .cuatro input:hover::placeholder{
+    color: blue;
+}
+.contenedor nav .cuatro button{
+    width: 35px;
+    height: 36px;
+    float: right;
+    border-radius: 0 10px 10px 0;
+}
+.contenedor nav .cuatro button:hover{
+    transform: scale(1.1);
+    color: blue;
+    cursor: pointer;
+}
+/* centro -------------------- centro*/
+/* parte2 -------------------- centro*/
+.contenedor article{
+    flex: 1;
+}
+.contenedor article .parte2 .apartado1{
+    margin: 30px auto 0px ;
+    width: 1300px;
+    height: 60px;
+    background: var(--blanco);
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+}
+.contenedor article .parte2 .apartado1 button{
+    width: 300px;
+    height: 50px;
+    display: grid;
+    place-content: center;
+    font-size: 35px;
+    background: var(--blanco);
+    border: none;
+}
+.contenedor article .parte2 .apartado1 button:hover{
+    background: var(--azulClaro);
+    cursor: pointer;
+}
+
+.contenedor article .parte2 .linea{
+    margin: 0px auto;
+    width: 100%px;
+    border: 1px solid black;
+}
+/* parte3 -------------------- centro*/
+.contenedor article .parte3{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+.contenedor article .parte3 input{
+    height: 35px;
+    width: 120px;
+    padding: 0px 20px;
+    border: 2px solid rgb(235, 211, 184);
+    border-radius: 20px;
+    margin: 0px 60px 0px 120px;
+}
+.contenedor article .parte3 button{
+    height: 35px;
+    width: 120px;
+    border: 3px solid white;
+    border-radius: 20px;
+    background: var(--azulClaro);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.contenedor article .parte3 button:hover{
+    transform: scale(1.1);
+}
+/* parte4 -------------------- centro*/
+.contenedor article .parte4{
+    display: flex;
+    flex-direction: row;
+}
+.contenedor article .parte4 .infopersona{
+    border-right: 1px solid black;
+    height: 50vh;
+    width: 450px;
+}
+.contenedor article .parte4 .infopersona .opcion1{
+    display: flex;
+    flex-direction: row;
+}
+.contenedor article .parte4 .infopersona .opcion1 button{
+    margin: 20px 0px 20px 30px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+.contenedor article .parte4 .infopersona .opcion1 p{
+    margin: 20px 0px 20px 15px;
+    font-size: 25px;
+}
+.contenedor article .parte4 .infopersona .orden select{
+    margin: 20px 0px 20px 30px;
+    height: 40px;
+    width: 190px;
+    background: rgb(235, 211, 184);
+}
+.contenedor article .parte4 .infopersona .persona{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.contenedor article .parte4 .infopersona .persona .nombre{
+    border-right: 1px solid black;
+    width: 310px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.contenedor article .parte4 .infopersona .persona .nombre button{
+    margin: 0px 20px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+.contenedor article .parte4 .infopersona .persona .nombre img{
+    margin: 0px 0px;
+    height: 40px;
+    width: 40px;
+}
+.contenedor article .parte4 .infopersona .persona .nombre a{
+    font-size: 22px;
+    margin: 0px 15px;
+    text-decoration: none;
+}
+.contenedor article .parte4 .infopersona .persona .nota{
+    display: flex;
+    margin: auto;
+}
+.contenedor article .parte4 .infopersona .persona .nota p{
+    font-size: 20px;
+}
+.vistatrabajos h2{
+    margin: 25px 30px;
+    font-size: 30px;
+}
+.vistatrabajos .entregas{
+    margin: 25px 30px;
+    display: flex;
+    flex-direction: row;
+}
+.vistatrabajos .entregas .entregados{
+    width: 120px;
+    height: 80px;
+    border-right: 1px solid black;
+}
+.vistatrabajos .entregas .entregados p{
+    font-size: 25px;
+    text-align: center;
+}
+.vistatrabajos .entregas .asignados{
+    width: 135px;
+    height: 80px;
+    border-right: 1px solid black;
+}
+.vistatrabajos .entregas .asignados p{
+    font-size: 25px;
+    text-align: center;
+}
+.vistatrabajos .entregas .evaluados{
+    width: 120px;
+    height: 80px;
+}
+.vistatrabajos .entregas .evaluados p{
+    font-size: 25px;
+    text-align: center;
+}
+/* footer -------------------- footer*/
+.contenedor footer{
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    height: 130px;
+    background-image: url("../img/gris\ fondo.jpg");
+}
+
+footer .informacion1{
+    color: white;
+    font-size: 30px;
+    margin: 15px 0px 0px 50px;
+}
+footer .informacion2{
+    margin: 15px 0px;
+    color: white;
+    font-size: 23px;
+    display: flex;
+    justify-content: space-around;
+}

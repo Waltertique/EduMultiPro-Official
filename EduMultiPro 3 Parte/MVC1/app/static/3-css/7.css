@@ -1,0 +1,272 @@
+:root {
+  --azul-primario: #0066cc;
+  --azul-secundario: #4da6ff;
+  --azul-claro: #e6f2ff;
+  --blanco: #ffffff;
+  --gris-claro: #f5f5f5;
+  --gris-medio: #e0e0e0;
+  --gris-oscuro: #757575;
+  --rojo: #dc3545;
+  --amarillo: #ffc107;
+  --verde: #28a745;
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --sombra-hover: 0 8px 24px rgba(0, 102, 204, 0.2);
+  --borde-redondeado: 12px;
+  --transicion: all 0.3s ease;
+  --max-width: 1400px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--gris-claro);
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Barra de navegación superior - Mejorado para responsive */
+nav {
+  background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+  padding: 1.2rem clamp(1rem, 3vw, 2.5rem);
+  color: var(--blanco);
+  box-shadow: var(--sombra);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 
+    "logo titulo busqueda"
+    "slogan slogan busqueda";
+  align-items: center;
+  gap: 1rem;
+}
+
+nav .uno {
+  grid-area: logo;
+}
+
+nav .uno img {
+  max-width: min(110px, 15vw);
+  transition: var(--transicion);
+}
+
+nav .dos {
+  grid-area: titulo;
+  white-space: nowrap;
+}
+
+nav .dos p {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+nav .tres {
+  grid-area: slogan;
+}
+
+nav .tres p {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-style: italic;
+  opacity: 0.9;
+}
+
+nav .cuatro {
+  grid-area: busqueda;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  justify-self: end;
+}
+
+/* Menú principal - Mejorado para responsive */
+.navbar {
+  background-color: var(--blanco);
+  border-radius: var(--borde-redondeado);
+  margin: 1rem 0;
+  box-shadow: var(--sombra);
+  padding: 0.5rem clamp(0.5rem, 2vw, 1rem);
+}
+
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.dropdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem clamp(0.5rem, 1vw, 1rem);
+  color: var(--azul-primario);
+  border-radius: var(--borde-redondeado);
+  transition: var(--transicion);
+  text-align: center;
+  min-width: max-content;
+}
+
+/* Contenido principal - Mejorado para 4K */
+.container {
+  flex: 1;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Encabezado de la página */
+.titulo h1 {
+  color: var(--azul-primario);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+/* Tarjeta de formulario - Mejorado para responsive */
+.card {
+  border: none;
+  border-radius: var(--borde-redondeado);
+  box-shadow: var(--sombra);
+  margin-bottom: clamp(1rem, 2vw, 2rem);
+}
+
+.card-header h5 {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+}
+
+/* Formulario - Mejorado para responsive */
+.form-control, .form-select {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+}
+
+/* Tabla de trabajos - Mejorado para responsive */
+#tablatrabajos {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+}
+
+#tablatrabajos thead th {
+  padding: clamp(0.5rem, 1vw, 1rem);
+  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+}
+
+#tablatrabajos tbody td {
+  padding: clamp(0.5rem, 1vw, 1rem);
+}
+
+/* Botones - Mejorado para responsive */
+.btn {
+  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+  padding: 0.25rem clamp(0.5rem, 1vw, 0.75rem);
+}
+
+/* Pie de página - Mejorado para responsive */
+footer {
+  padding: clamp(1rem, 2vw, 2rem) 0;
+}
+
+footer h2 {
+  font-size: clamp(1.3rem, 2vw, 1.5rem);
+}
+
+/* Media Queries optimizadas */
+@media (max-width: 992px) {
+  nav {
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 
+      "logo titulo"
+      "slogan busqueda";
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "logo"
+      "titulo"
+      "slogan"
+      "busqueda";
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  nav .cuatro {
+    justify-self: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .dropdown-item {
+    min-width: 60px;
+  }
+  
+  #tablatrabajos {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --max-width: 1600px;
+    --borde-redondeado: 16px;
+  }
+  
+  .container {
+    padding: 2rem;
+  }
+  
+  .dropdown-item {
+    min-width: 100px;
+  }
+  
+  #tablatrabajos {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 2560px) { /* 2K */
+  :root {
+    --max-width: 2000px;
+  }
+  
+  body {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 3840px) { /* 4K */
+  :root {
+    --max-width: 2400px;
+    --borde-redondeado: 20px;
+  }
+  
+  body {
+    font-size: 1.3rem;
+    line-height: 1.8;
+  }
+  
+  .container {
+    padding: 3rem;
+  }
+}

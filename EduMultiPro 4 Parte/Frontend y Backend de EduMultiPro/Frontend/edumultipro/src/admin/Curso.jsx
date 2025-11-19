@@ -11,6 +11,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
+=======
+import ProteccionRuta from '../ProteccionRuta.jsx';
+>>>>>>> origin/ramajohan
 
 function Curso(){
 
@@ -119,6 +123,10 @@ function Curso(){
 
     return(
         <>
+<<<<<<< HEAD
+=======
+          <ProteccionRuta rolRequerido="R004" />
+>>>>>>> origin/ramajohan
             <div className='contenedor'>
 
                 {/*---Nav---*/}
@@ -168,6 +176,10 @@ function Curso(){
                                       "Content-Type": "application/json",
                                     },
                                     body: JSON.stringify({
+<<<<<<< HEAD
+=======
+                                      Curso_Nombre: cursoSeleccionado.Curso_Nombre,
+>>>>>>> origin/ramajohan
                                       grado_id: cursoSeleccionado.grado_id,
                                       jornada_id: cursoSeleccionado.jornada_id,
                                     }),
@@ -178,6 +190,21 @@ function Curso(){
                                   setMostrarFormulario(false);
                                   obtenerCursos(); // actualizar tabla
                                 }}> 
+<<<<<<< HEAD
+=======
+                                    <input
+                                      type="text"
+                                      id="editarNombre"
+                                      name="Curso_Nombre"
+                                      maxLength="50"
+                                      placeholder="Nombre del curso"
+                                      value={cursoSeleccionado.Curso_Nombre}
+                                      onChange={(e) =>
+                                        setCursoSeleccionado({ ...cursoSeleccionado, Curso_Nombre: e.target.value })
+                                      }
+                                      required
+                                    />
+>>>>>>> origin/ramajohan
                                     
                                     <select
                                       id='editarGrado'

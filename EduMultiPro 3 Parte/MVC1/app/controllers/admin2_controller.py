@@ -1,0 +1,1146 @@
+from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
+from flask import jsonify
+import pymysql
+import pymysql.cursors
+from flask import session
+from werkzeug.utils import secure_filename
+import os
+from werkzeug.security import generate_password_hash
+import uuid
+from datetime import datetime # importa tu modelo
+from conexion import obtener_conexion
+
+admin2_bp = Blueprint('admin2_bp', __name__, url_prefix='/admin')
+
+
+hash = generate_password_hash("pepito123")
+print(hash)
+
+# ---------modificar materias
+
+@admin2_bp.route('/modificar_materia', methods=['POST'])
+def modificar_materia():
+    id = request.form['id']
+    nombre = request.form['nombre']
+    descripcion = request.form['descripcion']
+
+    connection = current_app.connection
+    with connection.cursor() as cursor:
+        sql = """
+            UPDATE Materia
+            SET Materia_Nombre = %s, Descripcion_Materia = %s
+            WHERE ID = %s
+        """
+        cursor.execute(sql, (nombre, descripcion, id))
+    connection.commit()
+
+    flash('Materia modificada exitosamente.')
+    return redirect(url_for('admin_bp.materia'))
+
+# ---------modificar grados
+
+@admin2_bp.route('/modificar_grado', methods=['POST'])
+def modificar_grado():
+    id = request.form['id']
+    nombre = request.form['nombre']
+    descripcion = request.form['descripcion']
+
+    connection = current_app.connection
+    with connection.cursor() as cursor:
+        sql = """
+            UPDATE Grado
+            SET Grado_Nombre = %s, Descripcion_Grado = %s
+            WHERE ID = %s
+        """
+        cursor.execute(sql, (nombre, descripcion, id))
+    connection.commit()
+
+    flash('Grado modificado exitosamente.')
+    return redirect(url_for('admin_bp.grado'))
+
+# ---------modificar jornada
+
+@admin2_bp.route('/modificar_jornada', methods=['POST'])
+def modificar_jornada():
+    id = request.form['id']
+    nombre = request.form['nombre']
+    descripcion = request.form['descripcion']
+
+    connection = current_app.connection
+    with connection.cursor() as cursor:
+        sql = """
+            UPDATE Jornada
+            SET Jornada_Nombre = %s, Descripcion_Jornada = %s
+            WHERE ID = %s
+        """
+        cursor.execute(sql, (nombre, descripcion, id))
+    connection.commit()
+
+    flash('Jornada modificada exitosamente.')
+    return redirect(url_for('admin_bp.jornada'))
+
+# ---------crear horario---------------------------------------------------------- 
+
+@admin2_bp.route('/4.1crearHorario')
+def crearHorario():
+    connection = current_app.connection
+    import pymysql.cursors
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    # Obtener los profesores
+    cursor.execute("""
+        SELECT ID, CONCAT(Primer_Nombre, ' ', Primer_Apellido) AS Nombre_Completo
+        FROM Usuario 
+        WHERE rol_id = 'R002'
+    """)
+    profesores = cursor.fetchall()
+
+    # Obtener los cursos con su jornada
+    cursor.execute("""
+        SELECT Curso.ID, CONCAT(Curso.Curso_Nombre, ' - ', Jornada.Jornada_Nombre) AS Curso_Con_Jornada
+        FROM Curso
+        INNER JOIN Jornada ON Curso.jornada_id = Jornada.ID
+    """)
+    cursos = cursor.fetchall()
+
+    return render_template('admin/4.1crearHorario.html', profesores=profesores, cursos=cursos)
+
+
+@admin2_bp.route('/crear_horario', methods=['POST'])
+def crear_horario():
+    titulo = request.form['titulo']
+    descripcion = request.form['descripcion']
+    profesor_id = request.form.get('profesor_id') or None
+    curso_id = request.form.get('curso_id') or None
+    imagen = request.files['imagen']
+    imagen_path = None
+
+    # Validación: Solo uno puede ser seleccionado
+    if (profesor_id and curso_id) or (not profesor_id and not curso_id):
+        flash('Debes seleccionar solo un curso o un profesor, no ambos.', 'danger')
+        return redirect(url_for('admin2_bp.crearHorario'))
+
+    if imagen and imagen.filename:
+        filename = secure_filename(imagen.filename)
+        imagen_path = os.path.join('static', 'fotos', filename)
+        full_path = os.path.join(current_app.root_path, imagen_path)
+        os.makedirs(os.path.dirname(full_path), exist_ok=True)
+        imagen.save(full_path)
+
+    connection = current_app.connection
+    import pymysql.cursors
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    # Validar profesor si fue seleccionado
+    if profesor_id:
+        cursor.execute("SELECT COUNT(*) AS total FROM Usuario WHERE ID = %s", (profesor_id,))
+        if cursor.fetchone()['total'] == 0:
+            flash('El profesor seleccionado no existe.', 'danger')
+            return redirect(url_for('admin2_bp.crearHorario'))
+
+    # Validar curso si fue seleccionado
+    if curso_id:
+        cursor.execute("SELECT COUNT(*) AS total FROM Curso WHERE ID = %s", (curso_id,))
+        if cursor.fetchone()['total'] == 0:
+            flash('El curso seleccionado no existe.', 'danger')
+            return redirect(url_for('admin2_bp.crearHorario'))
+
+    # Insertar en Horario
+    sql = """
+        INSERT INTO Horario (Titulo_Horario, Imagen_Horario, Descripcion_Horario, profesor_id, curso_id)
+        VALUES (%s, %s, %s, %s, %s)
+    """
+    try:
+        cursor.execute(sql, (
+            titulo,
+            imagen_path,
+            descripcion,
+            profesor_id if profesor_id else None,
+            curso_id if curso_id else None
+        ))
+        connection.commit()
+        flash('Horario creado exitosamente.', 'success')
+    except pymysql.MySQLError as e:
+        flash(f'Error al crear el horario: {e.args[0]} - {e.args[1]}', 'danger')
+        return redirect(url_for('admin2_bp.crearHorario'))
+
+    return redirect(url_for('admin_bp.horario'))
+
+# ---------modificar horario---------------------------------------------------------- 
+
+@admin2_bp.route('/modificar_horario/<int:id>', methods=['GET'])
+def modificarHorario(id):
+    connection = current_app.connection
+    import pymysql.cursors
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    # Traer los datos del horario
+    cursor.execute("""
+        SELECT H.ID, H.Titulo_Horario, H.Descripcion_Horario, H.Imagen_Horario,
+               H.profesor_id, H.curso_id
+        FROM Horario H
+        WHERE H.ID = %s
+    """, (id,))
+    horario = cursor.fetchone()
+
+    # Traer profesores y cursos para los select
+    cursor.execute("SELECT ID, CONCAT(Primer_Nombre, ' ', Primer_Apellido) AS Nombre FROM Usuario WHERE rol_id = 'R002'")
+    profesores = cursor.fetchall()
+
+    cursor.execute("""
+        SELECT Curso.ID, CONCAT(Curso.Curso_Nombre, ' - ', Jornada.Jornada_Nombre) AS Curso_Con_Jornada
+        FROM Curso
+        INNER JOIN Jornada ON Curso.jornada_id = Jornada.ID
+    """)
+    cursos = cursor.fetchall()
+
+    return render_template('admin/4.2modificarHorario.html', horario=horario, profesores=profesores, cursos=cursos)
+
+@admin2_bp.route('/guardar_horario_editado/<int:id>', methods=['POST'])
+def guardarHorarioEditado(id):
+    titulo = request.form['titulo']
+    descripcion = request.form['descripcion']
+    profesor_id = request.form.get('profesor_id') or None
+    curso_id = request.form.get('curso_id') or None
+    imagen = request.files['imagen']
+    imagen_filename = None
+
+    # Validación: solo se permite curso o profesor, no ambos ni ninguno
+    if (profesor_id and curso_id) or (not profesor_id and not curso_id):
+        flash('Debes seleccionar solo un curso o un profesor, no ambos.', 'danger')
+        return redirect(url_for('admin2_bp.editarHorario', id=id))
+
+    connection = current_app.connection
+    import pymysql.cursors
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    # Validar existencia del profesor
+    if profesor_id:
+        cursor.execute("SELECT COUNT(*) AS total FROM Usuario WHERE ID = %s", (profesor_id,))
+        if cursor.fetchone()['total'] == 0:
+            flash('El profesor seleccionado no existe.', 'danger')
+            return redirect(url_for('admin2_bp.editarHorario', id=id))
+
+    # Validar existencia del curso
+    if curso_id:
+        cursor.execute("SELECT COUNT(*) AS total FROM Curso WHERE ID = %s", (curso_id,))
+        if cursor.fetchone()['total'] == 0:
+            flash('El curso seleccionado no existe.', 'danger')
+            return redirect(url_for('admin2_bp.editarHorario', id=id))
+
+    # Procesar imagen si se subió
+    if imagen and imagen.filename:
+        filename = secure_filename(imagen.filename)
+        imagen_filename = f'static/fotos/{filename}'
+        ruta_completa = os.path.join(current_app.root_path, imagen_filename)
+        os.makedirs(os.path.dirname(ruta_completa), exist_ok=True)
+        imagen.save(ruta_completa)
+
+    # Armar consulta según si hay imagen
+    if imagen_filename:
+        cursor.execute("""
+            UPDATE Horario
+            SET Titulo_Horario = %s,
+                Descripcion_Horario = %s,
+                Imagen_Horario = %s,
+                profesor_id = %s,
+                curso_id = %s
+            WHERE ID = %s
+        """, (titulo, descripcion, imagen_filename, profesor_id, curso_id, id))
+    else:
+        cursor.execute("""
+            UPDATE Horario
+            SET Titulo_Horario = %s,
+                Descripcion_Horario = %s,
+                profesor_id = %s,
+                curso_id = %s
+            WHERE ID = %s
+        """, (titulo, descripcion, profesor_id, curso_id, id))
+
+    connection.commit()
+    flash('Horario actualizado correctamente.', 'success')
+    return redirect(url_for('admin_bp.horario'))
+
+@admin2_bp.route('/ver_horario/<int:id>', methods=['GET'])
+def verHorario(id):
+    connection = current_app.connection
+    import pymysql.cursors
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    sql = """
+        SELECT 
+            h.ID, 
+            h.Titulo_Horario, 
+            h.Imagen_Horario, 
+            h.Descripcion_Horario,
+            c.Curso_Nombre AS Curso_Nombre, 
+            j.Jornada_Nombre AS Jornada_Nombre,
+            CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Profesor_Nombre
+        FROM Horario h
+        LEFT JOIN Curso c ON c.ID = h.curso_id
+        LEFT JOIN Jornada j ON j.ID = c.jornada_id
+        LEFT JOIN Usuario u ON u.ID = h.profesor_id
+        WHERE h.ID = %s
+    """
+    cursor.execute(sql, (id,))
+    horario = cursor.fetchone()
+
+    if not horario:
+        flash('Horario no encontrado.', 'danger')
+        return redirect(url_for('admin_bp.horario'))
+
+    # Ya no necesitamos la conversión a base64, solo pasamos la ruta
+    return render_template('admin/4.3verHorario.html', horario=horario)
+
+# ---------Noticias---------------------------------------------------------------------------------- 
+
+@admin2_bp.route('/8.1crearNoticia')
+def crear_noticia():
+    connection = current_app.connection
+    import pymysql.cursors
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    # Obtener los tipos de noticia
+    cursor.execute("SELECT ID, Tipo FROM Tipo_Noticia")
+    tipos_noticia = cursor.fetchall()
+
+    return render_template('admin/8.1crearNoticia.html', tipos_noticia=tipos_noticia)
+
+
+@admin2_bp.route('/guardarNoticia', methods=['POST'])
+def guardar_noticia():
+    from werkzeug.utils import secure_filename
+    import os
+
+    titulo = request.form['titulo']
+    encabezado = request.form['encabezado']
+    descripcion1 = request.form['descripcion1']
+    descripcion2 = request.form['descripcion2']
+    descripcion3 = request.form['descripcion3']
+    fecha = request.form['fecha']
+    tipo_noticia_id = request.form['tipo_noticia_id']
+
+    imagenes = []
+    for i in range(1, 4):
+        img = request.files.get(f'imagen{i}')
+        ruta = None
+        if img and img.filename:
+            filename = secure_filename(img.filename)
+            ruta = os.path.join('static', 'fotos', filename)
+            full_path = os.path.join(current_app.root_path, ruta)
+            os.makedirs(os.path.dirname(full_path), exist_ok=True)
+            img.save(full_path)
+        imagenes.append(ruta)
+
+    connection = current_app.connection
+    import pymysql.cursors
+    cursor = connection.cursor()
+
+    sql = """
+        INSERT INTO Noticia (
+            Titulo_Noticia, Encabezado, Descripcion1, Descripcion2, Descripcion3,
+            Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
+    try:
+        cursor.execute(sql, (
+            titulo, encabezado, descripcion1, descripcion2, descripcion3,
+            fecha, imagenes[0], imagenes[1], imagenes[2], tipo_noticia_id
+        ))
+        connection.commit()
+        flash('Noticia creada exitosamente.', 'success')
+    except pymysql.MySQLError as e:
+        flash(f'Error al crear la noticia: {e.args[0]} - {e.args[1]}', 'danger')
+    
+    return redirect(url_for('admin_bp.noticia'))
+
+@admin2_bp.route('/eliminar_noticia/<string:id>', methods=['POST'])
+def eliminar_noticia(id):
+    connection = current_app.connection
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                DELETE FROM Noticia WHERE ID = %s
+            """, (id,))
+            
+        connection.commit()
+        flash('Noticia eliminado correctamente', 'success')
+    except Exception as e:
+        connection.rollback()
+        flash(f'Error al eliminar Noticia: {str(e)}', 'danger')
+    
+    return redirect(url_for('admin_bp.noticia'))
+
+@admin2_bp.route('/modificar_noticia/<int:id>', methods=['GET'])
+def modificar_noticia(id):
+    connection = current_app.connection
+    import pymysql.cursors
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    # Traer los datos de la noticia
+    cursor.execute("""
+        SELECT N.ID, N.Titulo_Noticia, N.Encabezado, N.Descripcion1, N.Descripcion2, N.Descripcion3, 
+               N.Fecha_Notica, N.Imagen1, N.Imagen2, N.Imagen3, N.tipo_noticia_id
+        FROM Noticia N
+        WHERE N.ID = %s
+    """, (id,))
+    noticia = cursor.fetchone()
+
+    # Traer los tipos de noticia para el select
+    cursor.execute("SELECT ID, Tipo FROM Tipo_Noticia")
+    tipos_noticia = cursor.fetchall()
+
+    return render_template('admin/8.2modificarNoticia.html', noticia=noticia, tipos_noticia=tipos_noticia)
+
+@admin2_bp.route('/guardar_noticia_editada/<int:id>', methods=['POST'])
+def guardar_noticia_editada(id):
+    from werkzeug.utils import secure_filename
+    import os
+    import pymysql.cursors
+
+    # Obtener conexión y cursor
+    connection = current_app.connection
+    cursor = connection.cursor()
+
+    # Obtener los datos actuales de la noticia
+    cursor.execute("SELECT Imagen1, Imagen2, Imagen3 FROM Noticia WHERE ID = %s", (id,))
+    noticia_actual = cursor.fetchone()
+
+    # Obtener datos del formulario
+    titulo = request.form['titulo']
+    encabezado = request.form['encabezado']
+    descripcion1 = request.form['descripcion1']
+    descripcion2 = request.form['descripcion2']
+    descripcion3 = request.form['descripcion3']
+    fecha = request.form['fecha']
+    tipo_noticia_id = request.form['tipo_noticia_id']
+
+    # Procesar imágenes (nuevas o conservar las anteriores)
+    imagenes = []
+    for i in range(1, 4):
+        img = request.files.get(f'imagen{i}')
+        ruta = None
+        if img and img.filename:
+            filename = secure_filename(img.filename)
+            ruta = os.path.join('static', 'fotos', filename)
+            full_path = os.path.join(current_app.root_path, ruta)
+            os.makedirs(os.path.dirname(full_path), exist_ok=True)
+            img.save(full_path)
+        else:
+            ruta = noticia_actual[f'Imagen{i}']  # ← ¡aquí está el fix!
+        imagenes.append(ruta)
+
+    # Actualizar la noticia
+    sql = """
+        UPDATE Noticia
+        SET Titulo_Noticia = %s, Encabezado = %s, Descripcion1 = %s, Descripcion2 = %s, Descripcion3 = %s, 
+            Fecha_Notica = %s, Imagen1 = %s, Imagen2 = %s, Imagen3 = %s, tipo_noticia_id = %s
+        WHERE ID = %s
+    """
+    try:
+        cursor.execute(sql, (
+            titulo, encabezado, descripcion1, descripcion2, descripcion3, fecha, 
+            imagenes[0], imagenes[1], imagenes[2], tipo_noticia_id, id
+        ))
+        connection.commit()
+        flash('Noticia actualizada correctamente.', 'success')
+    except pymysql.MySQLError as e:
+        flash(f'Error al actualizar la noticia: {e.args[0]} - {e.args[1]}', 'danger')
+
+    return redirect(url_for('admin_bp.noticia'))
+
+@admin2_bp.route('/ver_noticia/<int:id>', methods=['GET'])
+def verNoticia(id):
+    connection = current_app.connection
+    cursor = connection.cursor()
+
+    sql = "SELECT * FROM Noticia WHERE ID = %s"
+    cursor.execute(sql, (id,))
+    noticia = cursor.fetchone()
+
+    if not noticia:
+        flash('No se encontró la noticia.', 'danger')
+        return redirect(url_for('admin_bp.noticia'))
+
+    return render_template('admin/8.3verNoticia.html', noticia=noticia)
+
+# ------------Aulas-----------------------------------------------------------------------------
+
+@admin2_bp.route('/5.2verAula')
+def verAula():
+    aula_id = request.args.get('aula_id')
+
+    if not aula_id:
+        flash('No se especificó un aula.', 'warning')
+        return redirect(url_for('admin2_bp.algun_listado'))  # Cambia esto al nombre real de tu ruta de listado
+
+    try:
+        aula_id = int(aula_id)  # Conversión segura a entero
+    except ValueError:
+        flash('ID de aula no válido.', 'danger')
+        return redirect(url_for('admin2_bp.algun_listado'))
+
+    connection = current_app.connection
+    aula_info = {}
+    anuncios = []
+    comentarios_por_anuncio = {}
+
+    try:
+        with connection.cursor() as cursor:
+            # Obtener anuncios e información del aula
+            cursor.execute("""
+                SELECT Anuncio.ID,
+                       Aula.Aula_Nombre, Materia.Materia_Nombre, 
+                       CONCAT(Curso.Curso_Nombre, ' ', Jornada.Jornada_Nombre) AS Curso_Jornada,
+                       CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Profesor,
+                       Usuario.RutaFoto,
+                       Anuncio.Titulo_Anuncio, Anuncio.Descripcion_Anuncio, Anuncio.Fecha_Anuncio,
+                       Anuncio.Enlace_Anuncio
+                FROM Aula
+                JOIN Materia ON Aula.materia_id = Materia.ID
+                JOIN Curso ON Aula.curso_id = Curso.ID
+                JOIN Jornada ON Curso.jornada_id = Jornada.ID
+                JOIN Usuario ON Aula.usuario_id = Usuario.ID
+                LEFT JOIN Anuncio ON Anuncio.aula_id = Aula.ID
+                WHERE Aula.ID = %s
+            """, (aula_id,))
+            anuncios = cursor.fetchall()
+
+            # Si hay anuncios, extraer la info general del aula
+            if anuncios:
+                aula_info = {
+                    'Aula_Nombre': anuncios[0]['Aula_Nombre'],
+                    'Materia_Nombre': anuncios[0]['Materia_Nombre'],
+                    'Curso_Jornada': anuncios[0]['Curso_Jornada'],
+                    'Profesor': anuncios[0]['Profesor']
+                }
+
+                # Obtener comentarios de los anuncios
+                anuncio_ids = [anuncio['ID'] for anuncio in anuncios if anuncio['ID'] is not None]
+                if anuncio_ids:
+                    formato_ids = ','.join(['%s'] * len(anuncio_ids))
+                    cursor.execute(f"""
+                        SELECT Comentario.ID AS comentario_id,
+                               Comentario.anuncio_id,
+                               Comentario.Descripcion AS comentario,
+                               Comentario.Fecha AS fecha_comentario,
+                               CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Comentador,
+                               Usuario.RutaFoto
+                        FROM Comentario
+                        JOIN Usuario ON Comentario.usuario_id = Usuario.ID
+                        WHERE Comentario.anuncio_id IN ({formato_ids})
+                        ORDER BY Comentario.Fecha DESC
+                    """, anuncio_ids)
+
+                    comentarios = cursor.fetchall()
+
+                    # Agrupar comentarios por anuncio_id
+                    for com in comentarios:
+                        anuncio_id = com['anuncio_id']
+                        if anuncio_id not in comentarios_por_anuncio:
+                            comentarios_por_anuncio[anuncio_id] = []
+                        comentarios_por_anuncio[anuncio_id].append(com)
+
+    except Exception as e:
+        flash(f'Error al obtener información del aula: {str(e)}', 'danger')
+
+    return render_template(
+        'admin/5.2verAula.html',
+        aula=aula_info,
+        anuncios=anuncios,
+        aula_id=aula_id,
+        comentarios_por_anuncio=comentarios_por_anuncio
+    )
+
+@admin2_bp.route('/crear_anuncio', methods=['POST'])
+def crear_anuncio():
+    connection = current_app.connection
+
+    aula_id = request.form.get('aula_id')
+    usuario_id = session.get('usuario_id')
+
+    titulo = request.form.get('titulo')
+    descripcion = request.form.get('descripcion')
+    
+    fecha = datetime.now().strftime('%Y-%m-%d')  # ← aquí se obtiene la fecha del sistema
+
+    archivos = request.files.getlist('archivo[]')
+    enlaces_archivos = []
+
+    if archivos:
+        carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
+        os.makedirs(carpeta_destino, exist_ok=True)
+
+        for archivo in archivos:
+            if archivo.filename != '':
+                ext = os.path.splitext(archivo.filename)[1]
+                nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
+                ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+                archivo.save(ruta_guardado)
+                enlaces_archivos.append(f"fotos/{nuevo_nombre}")
+
+    enlaces_concatenados = ';'.join(enlaces_archivos) if enlaces_archivos else None
+
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO Anuncio (aula_id, usuario_id, Titulo_Anuncio, Descripcion_Anuncio, Fecha_Anuncio, Enlace_Anuncio)
+                VALUES (%s, %s, %s, %s, %s, %s)
+            """, (aula_id, usuario_id, titulo, descripcion, fecha, enlaces_concatenados))
+        connection.commit()
+        flash('Anuncio creado correctamente.', 'success')
+    except Exception as e:
+        connection.rollback()
+        flash(f'Error al crear el anuncio: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
+@admin2_bp.route('/eliminar-anuncio/<string:id>/<string:aula_id>', methods=['POST'])
+def eliminar_anuncio(id, aula_id):
+    connection = current_app.connection
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM Anuncio WHERE ID = %s", (id,))
+        connection.commit()
+        flash('Anuncio eliminado correctamente.', 'success')
+    except Exception as e:
+        connection.rollback()
+        flash(f'Error al eliminar el anuncio: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
+@admin2_bp.route('/modificar_anuncio/<int:id>', methods=['POST'])
+def modificar_anuncio(id):
+    connection = current_app.connection
+
+    titulo = request.form.get('titulo')
+    descripcion = request.form.get('descripcion')
+    fecha = request.form.get('fecha')
+    archivos = request.files.getlist('archivo[]')
+
+    enlaces_archivos = []
+
+    if archivos:
+        carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
+        os.makedirs(carpeta_destino, exist_ok=True)
+
+        for archivo in archivos:
+            if archivo.filename != '':
+                ext = os.path.splitext(archivo.filename)[1]
+                nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
+                ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+                archivo.save(ruta_guardado)
+                enlaces_archivos.append(f"fotos/{nuevo_nombre}")
+
+    enlaces_concatenados = ';'.join(enlaces_archivos) if enlaces_archivos else None
+
+    try:
+        with connection.cursor() as cursor:
+            if enlaces_concatenados:
+                cursor.execute("""
+                    UPDATE Anuncio
+                    SET Titulo_Anuncio = %s, Descripcion_Anuncio = %s, Fecha_Anuncio = %s, Enlace_Anuncio = %s
+                    WHERE ID = %s
+                """, (titulo, descripcion, fecha, enlaces_concatenados, id))
+            else:
+                cursor.execute("""
+                    UPDATE Anuncio
+                    SET Titulo_Anuncio = %s, Descripcion_Anuncio = %s, Fecha_Anuncio = %s
+                    WHERE ID = %s
+                """, (titulo, descripcion, fecha, id))
+
+        connection.commit()
+        flash('Anuncio modificado correctamente.', 'success')
+    except Exception as e:
+        connection.rollback()
+        flash(f'Error al modificar el anuncio: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verAula', aula_id=request.form.get('aula_id')))
+
+@admin2_bp.route('/comentar/<int:anuncio_id>', methods=['POST'])
+def comentar(anuncio_id):
+    aula_id = request.args.get('aula_id')
+    usuario_id = session.get('usuario_id')  # ID del usuario logueado
+    nombre_comentador = session.get('usuario_nombre')  # Solo para validación
+
+    if not usuario_id:
+        flash('No has iniciado sesión', 'warning')
+        return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
+    texto_comentario = request.form.get('comentario')
+    if not texto_comentario:
+        flash('Debe escribir un comentario', 'warning')
+        return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
+    connection = current_app.connection
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO Comentario (anuncio_id, Descripcion, Fecha, usuario_id)
+                VALUES (%s, %s, NOW(), %s)
+            """, (anuncio_id, texto_comentario, usuario_id))
+            connection.commit()
+        flash('Comentario agregado con éxito', 'success')
+    except Exception as e:
+        flash(f'Error al agregar comentario: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
+@admin2_bp.route('/eliminar_comentario/<int:id>', methods=['POST'])
+def eliminar_comentario(id):
+    aula_id = request.args.get('aula_id')
+    connection = current_app.connection
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM Comentario WHERE ID = %s", (id,))
+            connection.commit()
+            flash('Comentario eliminado correctamente.', 'success')
+    except Exception as e:
+        flash(f'Error al eliminar comentario: {str(e)}', 'danger')
+    return redirect(url_for('admin2_bp.verAula', aula_id=aula_id))
+
+@admin2_bp.route('/5.3Trabajos')
+def Trabajos():
+    aula_id = request.args.get('aula_id')
+    if not aula_id:
+        flash("No se especificó aula", "error")
+        return redirect(url_for('admin2_bp.verAula'))
+
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
+            cursor.execute("""
+                SELECT ID, Titulo_Trabajo, Fecha_Trabajo, Descripcion_Trabajo
+                FROM Trabajo
+                WHERE aula_id = %s
+            """, (aula_id,))
+            trabajos = cursor.fetchall()
+    finally:
+        conexion.close()
+
+    return render_template('admin/5.3Trabajos.html', trabajos=trabajos, aula_id=aula_id)
+
+@admin2_bp.route('/5.6crearTrabajo')
+def crearTrabajo():
+    aula_id = request.args.get('aula_id')
+    return render_template('admin/5.6crearTrabajo.html', aula_id=aula_id)
+
+
+
+
+@admin2_bp.route('/guardar_trabajo', methods=['POST'])
+def guardarTrabajo():
+    conexion = obtener_conexion()
+
+    aula_id = request.form.get('aula_id')
+    titulo = request.form.get('titulo')
+    descripcion = request.form.get('descripcion')
+    fecha_entrega = request.form.get('fecha')
+    archivos = request.files.getlist('archivo[]')  # Recibe todos los archivos
+
+    try:
+        with conexion.cursor() as cursor:
+            # 1. Insertar en la tabla Trabajo
+            cursor.execute("""
+                INSERT INTO Trabajo (Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, aula_id)
+                VALUES (%s, %s, %s, %s)
+            """, (titulo, descripcion, fecha_entrega, aula_id))
+            
+            trabajo_id = cursor.lastrowid  # Obtener el ID del trabajo recién insertado
+
+            # 2. Procesar y guardar cada archivo en la tabla Trabajo_Archivo
+            for archivo in archivos:
+                if archivo and archivo.filename != '':
+                    carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
+                    os.makedirs(carpeta_destino, exist_ok=True)
+
+                    ext = os.path.splitext(archivo.filename)[1]
+                    nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
+                    ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+                    archivo.save(ruta_guardado)
+
+                    enlace_archivo = f"fotos/{nuevo_nombre}"
+                    nombre_original = archivo.filename
+
+                    cursor.execute("""
+                        INSERT INTO Trabajo_Archivo (trabajo_id, ruta_archivo, nombre_original)
+                        VALUES (%s, %s, %s)
+                    """, (trabajo_id, enlace_archivo, nombre_original))
+
+        conexion.commit()
+        flash('Trabajo creado exitosamente.', 'success')
+    except Exception as e:
+        conexion.rollback()
+        flash(f'Error al guardar el trabajo: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.Trabajos', aula_id=aula_id))
+
+
+@admin2_bp.route('/5.7modificarTarea')
+def editarTrabajo():
+    aula_id = request.args.get('aula_id')
+    trabajo_id = request.args.get('trabajo_id')
+
+    conexion = obtener_conexion()
+    with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
+        # Obtener datos del trabajo
+        cursor.execute("""
+            SELECT ID, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, aula_id
+            FROM Trabajo
+            WHERE ID = %s
+        """, (trabajo_id,))
+        trabajo = cursor.fetchone()
+
+        # Obtener archivos asociados
+        cursor.execute("""
+            SELECT id, ruta_archivo, nombre_original
+            FROM Trabajo_Archivo
+            WHERE trabajo_id = %s
+        """, (trabajo_id,))
+        archivos_actuales = cursor.fetchall()
+
+    conexion.close()
+
+    return render_template('admin/5.7modificarTarea.html', trabajo=trabajo, aula_id=aula_id, archivos_actuales=archivos_actuales)
+
+
+@admin2_bp.route('/guardar_cambios_trabajo', methods=['POST'])
+def guardarCambiosTrabajo():
+    conexion = obtener_conexion()
+
+    trabajo_id = request.form.get('trabajo_id')
+    aula_id = request.form.get('aula_id')
+    titulo = request.form.get('titulo')
+    descripcion = request.form.get('descripcion')
+    fecha_entrega = request.form.get('fecha')
+    archivos = request.files.getlist('archivo[]')  # Archivos nuevos
+    eliminar_archivos = request.form.getlist('eliminar_archivos[]')  # IDs de archivos a eliminar
+
+    try:
+        with conexion.cursor() as cursor:
+            # Actualizar datos del trabajo
+            cursor.execute("""
+                UPDATE Trabajo
+                SET Titulo_Trabajo = %s,
+                    Descripcion_Trabajo = %s,
+                    Fecha_Trabajo = %s
+                WHERE ID = %s
+            """, (titulo, descripcion, fecha_entrega, trabajo_id))
+
+            # Eliminar archivos marcados
+            if eliminar_archivos:
+                # Obtener rutas para eliminar archivos físicos (opcional)
+                query_placeholder = ','.join(['%s'] * len(eliminar_archivos))
+                cursor.execute(f"SELECT ruta_archivo FROM Trabajo_Archivo WHERE id IN ({query_placeholder})", eliminar_archivos)
+                rutas = cursor.fetchall()
+                for fila in rutas:
+                    ruta_archivo = os.path.join(current_app.root_path, 'static', fila['ruta_archivo'])
+                    if os.path.exists(ruta_archivo):
+                        os.remove(ruta_archivo)
+
+                # Eliminar de BD
+                cursor.execute(f"DELETE FROM Trabajo_Archivo WHERE id IN ({query_placeholder})", eliminar_archivos)
+
+            # Insertar nuevos archivos
+            for archivo in archivos:
+                if archivo and archivo.filename != '':
+                    carpeta_destino = os.path.join(current_app.root_path, 'static', 'fotos')
+                    os.makedirs(carpeta_destino, exist_ok=True)
+
+                    ext = os.path.splitext(archivo.filename)[1]
+                    nuevo_nombre = f"{uuid.uuid4().hex}{ext}"
+                    ruta_guardado = os.path.join(carpeta_destino, nuevo_nombre)
+                    archivo.save(ruta_guardado)
+
+                    enlace_archivo = f"fotos/{nuevo_nombre}"
+                    nombre_original = archivo.filename
+
+                    cursor.execute("""
+                        INSERT INTO Trabajo_Archivo (trabajo_id, ruta_archivo, nombre_original)
+                        VALUES (%s, %s, %s)
+                    """, (trabajo_id, enlace_archivo, nombre_original))
+
+        conexion.commit()
+        flash('Trabajo modificado exitosamente.', 'success')
+    except Exception as e:
+        conexion.rollback()
+        flash(f'Error al modificar el trabajo: {str(e)}', 'danger')
+    finally:
+        conexion.close()
+
+    return redirect(url_for('admin2_bp.Trabajos', trabajo_id=trabajo_id, aula_id=aula_id))
+
+
+
+@admin2_bp.route('/eliminar_trabajo/<int:id>', methods=['POST'])
+def eliminar_trabajo(id):
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("DELETE FROM Trabajo WHERE ID = %s", (id,))
+        conexion.commit()
+        flash("Trabajo eliminado correctamente.", "success")
+    except Exception as e:
+        conexion.rollback()
+        flash(f"Error al eliminar el trabajo: {str(e)}", "danger")
+
+    # Redirige a la vista de trabajos, puedes ajustar el aula_id si es necesario
+    return redirect(request.referrer or url_for('admin2_bp.inicio'))
+
+@admin2_bp.route('/6-verTrabajo')
+def verTrabajo():
+    trabajo_id = request.args.get('trabajo_id')
+    aula_id = request.args.get('aula_id')
+
+    conexion = obtener_conexion()
+    trabajo = None
+    archivos = []
+    comentarios_trabajo = []
+
+    try:
+        with conexion.cursor() as cursor:
+            # Obtener el trabajo
+            cursor.execute("SELECT * FROM Trabajo WHERE ID = %s", (trabajo_id,))
+            trabajo = cursor.fetchone()
+
+            # Obtener archivos asociados
+            cursor.execute("SELECT * FROM Trabajo_Archivo WHERE trabajo_id = %s", (trabajo_id,))
+            archivos = cursor.fetchall()
+
+            # Obtener comentarios del trabajo
+            cursor.execute("""
+                SELECT Comentario.ID AS comentario_id,
+                       Comentario.Descripcion AS comentario,
+                       Comentario.Fecha AS fecha_comentario,
+                       CONCAT(Usuario.Primer_Nombre, ' ', Usuario.Primer_Apellido) AS Comentador,
+                       Usuario.RutaFoto
+                FROM Comentario
+                JOIN Usuario ON Comentario.usuario_id = Usuario.ID
+                WHERE Comentario.trabajo_id = %s
+                ORDER BY Comentario.Fecha DESC
+            """, (trabajo_id,))
+            comentarios_trabajo = cursor.fetchall()
+
+    except Exception as e:
+        flash(f'Error al cargar el trabajo: {str(e)}', 'danger')
+
+    return render_template('admin/6-verTrabajo.html',
+                           trabajo=trabajo,
+                           archivos=archivos,
+                           aula_id=aula_id,
+                           trabajo_id=trabajo_id,
+                           comentarios_trabajo=comentarios_trabajo)
+
+@admin2_bp.route('/comentar_trabajo/<int:trabajo_id>', methods=['POST'])
+def comentar_trabajo(trabajo_id):
+    aula_id = request.args.get('aula_id')
+    usuario_id = session.get('usuario_id')
+
+    if not usuario_id:
+        flash('Debes iniciar sesión para comentar.', 'warning')
+        return redirect(url_for('admin2_bp.verTrabajo', trabajo_id=trabajo_id, aula_id=aula_id))
+
+    comentario = request.form.get('comentario')
+    if not comentario:
+        flash('No puedes enviar un comentario vacío.', 'warning')
+        return redirect(url_for('admin2_bp.verTrabajo', trabajo_id=trabajo_id, aula_id=aula_id))
+
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO Comentario (trabajo_id, Descripcion, Fecha, usuario_id)
+                VALUES (%s, %s, NOW(), %s)
+            """, (trabajo_id, comentario, usuario_id))
+            conexion.commit()
+            flash('Comentario agregado con éxito.', 'success')
+    except Exception as e:
+        flash(f'Error al agregar comentario: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verTrabajo', trabajo_id=trabajo_id, aula_id=aula_id))
+
+@admin2_bp.route('/eliminar_comentario_trabajo/<int:id>', methods=['POST'])
+def eliminar_comentario_trabajo(id):
+    trabajo_id = request.args.get('trabajo_id')
+    aula_id = request.args.get('aula_id')
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("DELETE FROM Comentario WHERE ID = %s", (id,))
+            conexion.commit()
+            flash('Comentario eliminado correctamente.', 'success')
+    except Exception as e:
+        flash(f'Error al eliminar comentario: {str(e)}', 'danger')
+
+    return redirect(url_for('admin2_bp.verTrabajo', trabajo_id=trabajo_id, aula_id=aula_id))
+
+@admin2_bp.route('/6.1-verEntregado')
+def verEntregado():
+    trabajo_id = request.args.get('trabajo_id')
+    aula_id = request.args.get('aula_id')
+
+    if not trabajo_id or not aula_id:
+        flash("Faltan parámetros", "error")
+        return redirect(url_for('admin2_bp.Trabajos'))
+
+    conexion = obtener_conexion()
+    alumnos_entregados = []
+
+    try:
+        with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
+            cursor.execute("""
+                SELECT 
+                    te.ID AS trabajo_entregado_id,
+                    CONCAT(u.Primer_Nombre, ' ', u.Segundo_Nombre, ' ', u.Primer_Apellido, ' ', u.Segundo_Apellido) AS nombre_completo,
+                    te.Nota,
+                    te.Fecha_Trabajo,
+                    ta.ruta_archivo,
+                    ta.nombre_original
+                FROM TrabajoEntregado te
+                JOIN Usuario u ON te.usuario_id = u.ID
+                JOIN Trabajo t ON te.trabajo_id = t.ID
+                LEFT JOIN TrabajoEntregado_Archivo ta ON ta.trabajo_entregado_id = te.ID
+                WHERE te.trabajo_id = %s AND t.aula_id = %s
+                ORDER BY u.ID
+            """, (trabajo_id, aula_id))
+
+            resultados = cursor.fetchall()
+
+            for fila in resultados:
+                alumno = next((a for a in alumnos_entregados if a['trabajo_entregado_id'] == fila['trabajo_entregado_id']), None)
+                if not alumno:
+                    alumno = {
+                        'trabajo_entregado_id': fila['trabajo_entregado_id'],
+                        'nombre_completo': fila['nombre_completo'],
+                        'Nota': fila['Nota'],
+                        'Fecha_Trabajo': fila['Fecha_Trabajo'],
+                        'archivos': []
+                    }
+                    alumnos_entregados.append(alumno)
+                if fila['ruta_archivo']:
+                    alumno['archivos'].append({
+                        'ruta': url_for('static', filename=fila['ruta_archivo']),
+                        'nombre': fila['nombre_original']
+                    })
+
+    finally:
+        conexion.close()
+
+    return render_template('admin/6.1-verEntregado.html',
+                           alumnos_entregados=alumnos_entregados,
+                           trabajo_id=trabajo_id,
+                           aula_id=aula_id)
+
+@admin2_bp.route('/asignar-nota', methods=['POST'])
+def asignar_nota():
+    trabajo_entregado_id = request.form.get('trabajo_entregado_id')
+    nueva_nota = request.form.get('nuevaNota')
+
+    if not trabajo_entregado_id or nueva_nota is None:
+        flash("Faltan datos para actualizar la nota", "error")
+        return redirect(request.referrer or url_for('admin2_bp.verEntregado'))
+
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("""
+                UPDATE TrabajoEntregado
+                SET Nota = %s
+                WHERE ID = %s
+            """, (nueva_nota, trabajo_entregado_id))
+        conexion.commit()
+        flash("Nota actualizada correctamente", "success")
+    except Exception as e:
+        flash(f"Error al actualizar nota: {e}", "error")
+    finally:
+        conexion.close()
+
+    return redirect(request.referrer or url_for('admin2_bp.verEntregado'))
+        
+@admin2_bp.route('/5.4Personas')
+def Personas():
+    aula_id = request.args.get('aula_id')
+    if not aula_id:
+        flash("No se especificó aula", "error")
+        return redirect(url_for('admin2_bp.verAula'))
+
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("SELECT curso_id FROM Aula WHERE ID = %s", (aula_id,))
+            resultado = cursor.fetchone()
+
+            if not resultado:
+                flash("Aula no encontrada", "error")
+                return redirect(url_for('admin2_bp.verAula'))
+
+            curso_id = resultado['curso_id']
+
+            query = """
+                SELECT u.ID, u.Primer_Nombre, u.Segundo_Nombre, u.Primer_Apellido, u.Segundo_Apellido
+                FROM Usuario u
+                JOIN Miembros_Curso mc ON u.ID = mc.usuario_id
+                WHERE mc.curso_id = %s
+            """
+            cursor.execute(query, (curso_id,))
+            usuarios = cursor.fetchall()
+    finally:
+        conexion.close()
+
+    return render_template('admin/5.4Personas.html', usuarios=usuarios, aula_id=aula_id)
+
+@admin2_bp.route('/5.5notas')
+def Notas():
+    aula_id = request.args.get('aula_id')
+    if not aula_id:
+        flash("No se especificó aula", "error")
+        return redirect(url_for('admin2_bp.verAula'))
+
+    conexion = obtener_conexion()
+    try:
+        with conexion.cursor(pymysql.cursors.DictCursor) as cursor:
+            # Obtener todos los estudiantes del curso relacionado con el aula
+            cursor.execute("""
+                SELECT u.ID, CONCAT(u.Primer_Nombre, ' ', u.Segundo_Nombre, ' ', u.Primer_Apellido, ' ', u.Segundo_Apellido) AS nombre
+                FROM Usuario u
+                JOIN Miembros_Curso mc ON u.ID = mc.usuario_id
+                JOIN Aula a ON mc.curso_id = a.curso_id
+                WHERE a.ID = %s
+            """, (aula_id,))
+            estudiantes = cursor.fetchall()
+
+            # Obtener los trabajos del aula
+            cursor.execute("SELECT ID, Titulo_Trabajo FROM Trabajo WHERE aula_id = %s", (aula_id,))
+            trabajos = cursor.fetchall()
+
+            # Obtener las notas entregadas
+            cursor.execute("""
+                SELECT te.usuario_id, te.trabajo_id, te.Nota
+                FROM TrabajoEntregado te
+                JOIN Trabajo t ON te.trabajo_id = t.ID
+                WHERE t.aula_id = %s
+            """, (aula_id,))
+            notas_raw = cursor.fetchall()
+
+        # Organizar las notas en un diccionario: {(usuario_id, trabajo_id): nota}
+        notas_dict = {(n["usuario_id"], n["trabajo_id"]): n["Nota"] for n in notas_raw}
+
+        # Construir una tabla con los estudiantes y sus notas por trabajo
+        tabla_notas = []
+        for estudiante in estudiantes:
+            fila = {"nombre": estudiante["nombre"], "notas": []}
+            for trabajo in trabajos:
+                nota = notas_dict.get((estudiante["ID"], trabajo["ID"]), "Sin nota")
+                fila["notas"].append(nota)
+            tabla_notas.append(fila)
+
+    finally:
+        conexion.close()
+
+    return render_template('admin/5.5notas.html', trabajos=trabajos, tabla_notas=tabla_notas, aula_id=aula_id)
+
+
+
+
+
+

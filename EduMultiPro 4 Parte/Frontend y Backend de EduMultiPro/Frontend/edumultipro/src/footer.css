@@ -2,7 +2,11 @@
 /* footer -------------------- footer */
 
 #pie{
+<<<<<<< HEAD
     background-image: url("../src/assets/gris\ fondo.jpg");
+=======
+    background: rgb(66, 66, 66);
+>>>>>>> origin/ramajohan
     height: 130px;
 }
 #n4 h2{
@@ -34,7 +38,10 @@
     /* footer -------------------- footer */
 
     #pie{
+<<<<<<< HEAD
         background-image: url("../src/assets/gris\ fondo.jpg");
+=======
+>>>>>>> origin/ramajohan
         height: 200px;
     }
     #n4 h2{
@@ -75,7 +82,10 @@
     /* footer -------------------- footer */
 
     #pie{
+<<<<<<< HEAD
         background-image: url("../src/assets/gris\ fondo.jpg");
+=======
+>>>>>>> origin/ramajohan
         height: 200px;
     }
     #n4 h2{
@@ -114,7 +124,10 @@
 @media (min-width: 576px) and (max-width: 767px){
 
     #pie{
+<<<<<<< HEAD
         background-image: url("../src/assets/gris\ fondo.jpg");
+=======
+>>>>>>> origin/ramajohan
         height: 200px;
     }
     #n4 h2{
@@ -152,7 +165,10 @@
 
     /* footer -------------------- footer */
     #pie{
+<<<<<<< HEAD
         background-image: url("../src/assets/gris\ fondo.jpg");
+=======
+>>>>>>> origin/ramajohan
         height: 220px;
     }
     #n4 h2{
@@ -191,7 +207,10 @@
 @media (min-width: 992px) and (max-width: 1199px){
 
     #pie{
+<<<<<<< HEAD
         background-image: url("../src/assets/gris\ fondo.jpg");
+=======
+>>>>>>> origin/ramajohan
         height: 220px;
     }
     #n4 h2{
@@ -230,7 +249,10 @@
 @media (min-width: 1200px) and (max-width: 1399px){
     
     #pie{
+<<<<<<< HEAD
         background-image: url("../src/assets/gris\ fondo.jpg");
+=======
+>>>>>>> origin/ramajohan
         height: 130px;
     }
     #n4 h2{

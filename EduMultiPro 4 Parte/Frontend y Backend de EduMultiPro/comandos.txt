@@ -1,0 +1,14 @@
+Backend:
+‎-Npm install express
+‎-Npm install mysql2
+‎-Npm install nodemon
+‎-Npm install cors
+‎-Npm install multer
+‎-Npm install bcrypt
+‎-Npm install jsonwebtoken
+‎
+‎Frontend
+‎-Npm install jquery datatables.net-dt 
+-Npm install datatables.net-dt
+‎-Npm install bootstrap
+‎-Npm install @fortawesome/fontawesome-free

@@ -1,0 +1,47 @@
+.contenedor-tarea {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #48a3d6;
+    padding: 20px;
+    border-radius: 15px;
+    color: #fff;
+    font-family: sans-serif;
+  }
+  
+  .formulario label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .formulario input,
+  .formulario textarea,
+  .formulario select,
+  .formulario button {
+    width: 100%;
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+  }
+  
+  textarea {
+    resize: none;
+    height: 100px;
+  }
+  
+  .botones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .botones .cancelar {
+    background: #ff5c5c;
+    color: white;
+  }
+  
+  .botones .crear {
+    background: #1f8f1f;
+    color: white;
+  }

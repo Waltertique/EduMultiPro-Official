@@ -10,6 +10,10 @@ import imghorario from '../assets/imghorario.png';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+<<<<<<< HEAD
+=======
+import ProteccionRuta from '../ProteccionRuta.jsx';
+>>>>>>> origin/ramajohan
 
 function VerHorario(){
 
@@ -32,6 +36,10 @@ useEffect(() => {
     
     return(
         <>
+<<<<<<< HEAD
+=======
+            <ProteccionRuta rolRequerido="R004" />
+>>>>>>> origin/ramajohan
             <div className='contenedor'>
 
                 {/*---Nav---*/}
@@ -66,6 +74,7 @@ useEffect(() => {
                                 <div className="row" id="tituloho">
                                     <h2>{horario?.Titulo_Horario || "Horario sin título"}</h2>
                                 </div>
+<<<<<<< HEAD
                             
                                 <div className="row" id="imghorario">
                                     {horario?.Imagen_Horario ? (
@@ -80,6 +89,38 @@ useEffect(() => {
                                 </div>
                             
                             
+=======
+
+                                <div className="row" id="imghorario">
+                                    {horario?.Imagen_Horario ? (
+                                        <>
+                                        {/* Detectar tipo de archivo según extensión */}
+                                        {horario.Imagen_Horario.toLowerCase().endsWith(".pdf") ? (
+                                            <iframe
+                                            src={`http://localhost:3000/imagenes/${horario.Imagen_Horario}`}
+                                            title="Horario PDF"
+                                            width="100%"
+                                            height="600px"
+                                            style={{
+                                                border: "2px solid #ccc",
+                                                borderRadius: "10px",
+                                                boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+                                            }}
+                                            />
+                                        ) : (
+                                            <img
+                                                src={`http://localhost:3000/imagenes/${horario.Imagen_Horario}`}
+                                                alt="Imagen del Horario"
+                                                id="imagenPequena"
+                                            />
+                                        )}
+                                        </>
+                                    ) : (
+                                        <p>No se ha subido un archivo para este horario.</p>
+                                    )}
+                                </div>
+                            
+>>>>>>> origin/ramajohan
                                 <div className="row" id="descripcion">
                                     <h3>Descripcion:</h3>
                                     <p>{horario?.Descripcion_Horario || "Sin descripción"}</p>

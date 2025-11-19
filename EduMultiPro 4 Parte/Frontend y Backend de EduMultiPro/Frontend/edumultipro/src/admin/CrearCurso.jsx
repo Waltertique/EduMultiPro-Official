@@ -10,6 +10,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
+=======
+import ProteccionRuta from '../ProteccionRuta.jsx';
+>>>>>>> origin/ramajohan
 
 function CrearCurso(){
 
@@ -62,6 +66,10 @@ function CrearCurso(){
     
     return(
         <>
+<<<<<<< HEAD
+=======
+          <ProteccionRuta rolRequerido="R004" />
+>>>>>>> origin/ramajohan
             <div className='contenedor'>
 
                 {/*---Nav---*/}
@@ -93,7 +101,11 @@ function CrearCurso(){
                                 <form onSubmit={handleSubmit}>
                                     <h3>Datos Curso</h3>
                                     <div className="f1">
+<<<<<<< HEAD
                                         <input type="text" name="curso_nombre" placeholder="Nombre del Curso" value={cursoNombre} onChange={(e) => setCursoNombre(e.target.value)} required></input>
+=======
+                                        <input type="text" name="curso_nombre" maxLength="50" placeholder="Nombre del Curso" value={cursoNombre} onChange={(e) => setCursoNombre(e.target.value)} required></input>
+>>>>>>> origin/ramajohan
                                     </div>
                                     <div className="f1">
                                         <select

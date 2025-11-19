@@ -3,6 +3,13 @@ const router = express.Router();
 const conexion = require("../db/conexion");
 const bcrypt = require('bcryptjs');
 
+<<<<<<< HEAD
+=======
+//JSON WEB TOKEN
+const jwt = require('jsonwebtoken');
+const JWT_SECRETO = 'mi_clave_super_secreta';
+
+>>>>>>> origin/ramajohan
 const multer = require('multer');
 const path = require('path');
 
@@ -20,6 +27,27 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 //Controlador del Login
+<<<<<<< HEAD
+=======
+
+const verificarToken = (req, res, next) => { //Sirve para verificar si el cliente (frontend) envió un token válido en la solicitud
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1]; //sirve para obtener solo el token
+
+  if (!token) return res.status(401).json({ mensaje: 'Token no proporcionado' });
+
+  jwt.verify(token, JWT_SECRETO, (err, usuario) => {
+    if (err) return res.status(403).json({ mensaje: 'Token inválido o expirado' });
+    req.usuario = usuario; // se guarda en la petición
+    next();
+  });
+};
+
+router.get('/perfil', verificarToken, (req, res) => { //Esta ruta está protegida por el middleware verificarToken. Si el token es válido, responde con el mensaje y los datos del usuario.
+  res.json({ mensaje: 'Acceso a perfil autorizado', usuario: req.usuario });
+});
+
+>>>>>>> origin/ramajohan
 router.post('/login', (req, res) => {
   const { correo, contrasena } = req.body;
 
@@ -36,7 +64,10 @@ router.post('/login', (req, res) => {
 
     const usuario = resultados[0];
 
+<<<<<<< HEAD
     // Comparar la contraseña ingresada con el hash
+=======
+>>>>>>> origin/ramajohan
     bcrypt.compare(contrasena, usuario.Contraseña, (err, coinciden) => {
       if (err) {
         console.error('❌ Error al comparar contraseñas:', err);
@@ -44,7 +75,24 @@ router.post('/login', (req, res) => {
       }
 
       if (coinciden) {
+<<<<<<< HEAD
         res.json({ mensaje: 'Login exitoso', usuario: { id: usuario.ID, nombre: usuario.Primer_Nombre, rol: usuario.rol_id } });
+=======
+        const payload = {
+          id: usuario.ID,
+          nombre: usuario.Primer_Nombre,
+          rol: usuario.rol_id
+        };
+
+        // Crear token sin duración
+        const token = jwt.sign(payload, JWT_SECRETO); // ✅ Sin expiración
+
+        res.json({
+          mensaje: 'Login exitoso',
+          token,
+          usuario: payload
+        });
+>>>>>>> origin/ramajohan
       } else {
         res.status(401).json({ mensaje: 'Contraseña incorrecta' });
       }
@@ -52,6 +100,38 @@ router.post('/login', (req, res) => {
   });
 });
 
+<<<<<<< HEAD
+=======
+//CAMBIAR CONTRASEÑA
+router.put("/cambiar-contrasena", (req, res) => {
+  const { id, correo1, nuevaContraseña, confirmarContraseña } = req.body;
+
+  if (nuevaContraseña !== confirmarContraseña) {
+    return res.status(400).json({ error: "Las contraseñas no coinciden." });
+  }
+
+  const checkUser = "SELECT * FROM Usuario WHERE ID = ? AND Correo1 = ?";
+  conexion.query(checkUser, [id, correo1], (err, results) => {
+    if (err) return res.status(500).json({ error: "Error en la base de datos." });
+    if (results.length === 0) {
+      return res.status(404).json({ error: "Usuario no encontrado." });
+    }
+
+    const hash = bcrypt.hashSync(nuevaContraseña, 10); // 🔒 Encriptamos antes de guardar
+
+    const updateQuery = "UPDATE Usuario SET Contraseña = ? WHERE ID = ?";
+    conexion.query(updateQuery, [hash, id], (err2) => {
+      if (err2) {
+        console.error("❌ Error al actualizar contraseña:", err2);
+        return res.status(500).json({ error: "Error al actualizar la contraseña." });
+      }
+
+      return res.json({ mensaje: "✅ Contraseña actualizada correctamente" });
+    });
+  });
+});
+
+>>>>>>> origin/ramajohan
 //---------------------------------------------------------------------------------------------------------
 
 // Obtener todos los usuarios
@@ -128,7 +208,11 @@ router.post("/crearUsuario", upload.single("foto"), (req, res) => {
       console.error("❌ Error MySQL:", error);
       res.status(500).json({ mensaje: "Error al crear usuario" });
     } else {
+<<<<<<< HEAD
       res.json({ mensaje: "✅ Usuario creado correctamente" });
+=======
+      res.json({ mensaje: "✅ Usuario creado correctamente", insertId: resultado.insertId });
+>>>>>>> origin/ramajohan
     }
   });
 });
@@ -275,6 +359,7 @@ router.delete("/Cursos/:id", (req, res) => {
 // Actualizar curso
 router.put("/Cursos/:id", (req, res) => {
   const { id } = req.params;
+<<<<<<< HEAD
   const { grado_id, jornada_id } = req.body;
 
   const query = `
@@ -284,6 +369,17 @@ router.put("/Cursos/:id", (req, res) => {
   `;
 
   conexion.query(query, [grado_id, jornada_id, id], (error, result) => {
+=======
+  const { Curso_Nombre, grado_id, jornada_id } = req.body;
+
+  const query = `
+    UPDATE Curso
+    SET Curso_Nombre = ?, grado_id = ?, jornada_id = ?
+    WHERE ID = ?
+  `;
+
+  conexion.query(query, [Curso_Nombre, grado_id, jornada_id, id], (error, result) => {
+>>>>>>> origin/ramajohan
     if (error) {
       res.status(500).json({ error: "Error al actualizar el curso" });
     } else {
@@ -305,7 +401,11 @@ router.post("/Cursos", (req, res) => {
     if (error) {
       res.status(500).json({ mensaje: "Error al crear el curso" });
     } else {
+<<<<<<< HEAD
       res.json({ mensaje: "Curso creado correctamente", id: result.insertId });
+=======
+      res.json({ mensaje: "Curso creado correctamente", insertId: result.insertId });
+>>>>>>> origin/ramajohan
     }
   });
 });
@@ -426,7 +526,11 @@ router.post("/Materias", (req, res) => {
     if (error) {
       res.status(500).json({ error: "Error al crear la materia" });
     } else {
+<<<<<<< HEAD
       res.status(201).json({ mensaje: "Materia creada correctamente" });
+=======
+      res.status(201).json({ mensaje: "Materia creada correctamente", insertId: result.insertId });
+>>>>>>> origin/ramajohan
     }
   });
 });
@@ -930,6 +1034,7 @@ router.get("/Comentarios/Anuncio/:anuncio_id", (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 // Crear comentario
 router.post("/Comentarios", (req, res) => {
   const { descripcion, anuncio_id, usuario_id } = req.body;
@@ -948,6 +1053,29 @@ router.post("/Comentarios", (req, res) => {
       res.json({ mensaje: "Comentario creado correctamente" });
     }
   });
+=======
+// Crear comentario (para trabajo o anuncio)
+router.post("/Comentarios", (req, res) => {
+  const { descripcion, trabajo_id, anuncio_id, usuario_id, fecha } = req.body;
+
+  const query = `
+    INSERT INTO Comentario (Descripcion, Fecha, trabajo_id, anuncio_id, usuario_id)
+    VALUES (?, ?, ?, ?, ?)
+  `;
+
+  conexion.query(
+    query,
+    [descripcion, fecha || new Date().toISOString().split("T")[0], trabajo_id || null, anuncio_id || null, usuario_id],
+    (error, result) => {
+      if (error) {
+        console.error("Error al crear comentario:", error);
+        res.status(500).json({ mensaje: "Error al crear el comentario" });
+      } else {
+        res.json({ mensaje: "Comentario creado correctamente" });
+      }
+    }
+  );
+>>>>>>> origin/ramajohan
 });
 
 // Eliminar comentario por ID
@@ -987,7 +1115,300 @@ router.get("/Aulas/:id/integrantes", (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 //---------------------------------------------------------------------------------------------------------
+=======
+// Obtener trabajos por aula
+router.get("/Trabajos/Aula/:id", (req, res) => {
+  const aulaId = req.params.id;
+
+  const sql = `
+    SELECT ID, Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo
+    FROM Trabajo
+    WHERE aula_id = ?
+  `;
+
+  conexion.query(sql, [aulaId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener los trabajos:", error);
+      return res.status(500).json({ mensaje: "Error en la base de datos" });
+    }
+
+    res.json(results);
+  });
+});
+
+router.post("/CrearTrabajo", upload.array('archivos'), (req, res) => {
+  const { titulo, descripcion, fecha, aula_id } = req.body;
+  const archivos = req.files;
+
+  const sqlTrabajo = `
+    INSERT INTO Trabajo (Titulo_Trabajo, Descripcion_Trabajo, Fecha_Trabajo, aula_id)
+    VALUES (?, ?, ?, ?)
+  `;
+
+  conexion.query(sqlTrabajo, [titulo, descripcion, fecha, aula_id], (error, result) => {
+    if (error) {
+      console.error("Error al insertar trabajo:", error);
+      return res.status(500).json({ mensaje: "Error al guardar el trabajo" });
+    }
+
+    const trabajoId = result.insertId;
+
+    if (archivos && archivos.length > 0) {
+      const sqlArchivos = `
+        INSERT INTO Trabajo_Archivo (trabajo_id, ruta_archivo, nombre_original)
+        VALUES ?
+      `;
+
+      const valores = archivos.map((archivo) => [
+        trabajoId,
+        archivo.filename,
+        archivo.originalname
+      ]);
+
+      conexion.query(sqlArchivos, [valores], (err2) => {
+        if (err2) {
+          console.error("Error al guardar archivos:", err2);
+          return res.status(500).json({ mensaje: "Error al guardar archivos" });
+        }
+
+        res.status(200).json({ mensaje: "Trabajo y archivos guardados" });
+      });
+    } else {
+      res.status(200).json({ mensaje: "Trabajo guardado sin archivos" });
+    }
+  });
+});
+
+// Obtener datos de un trabajo por ID
+router.get("/Trabajo/:id", (req, res) => {
+  const id = req.params.id;
+
+  const sqlTrabajo = "SELECT * FROM Trabajo WHERE ID = ?";
+  const sqlArchivos = "SELECT * FROM Trabajo_Archivo WHERE trabajo_id = ?";
+
+  conexion.query(sqlTrabajo, [id], (err, trabajoResult) => {
+    if (err || trabajoResult.length === 0) {
+      return res.status(404).json({ error: "Trabajo no encontrado" });
+    }
+
+    conexion.query(sqlArchivos, [id], (err2, archivosResult) => {
+      if (err2) {
+        return res.status(500).json({ error: "Error al obtener archivos" });
+      }
+
+      res.json({
+        trabajo: trabajoResult[0],
+        archivos: archivosResult
+      });
+    });
+  });
+});
+
+// Actualizar trabajo
+router.post("/ActualizarTrabajo", upload.array("archivos"), (req, res) => {
+  const { trabajo_id, titulo, descripcion, fecha, aula_id, eliminar_archivos } = req.body;
+  const archivosNuevos = req.files;
+
+  // 1. Actualiza datos del trabajo
+  const sqlUpdate = `
+    UPDATE Trabajo
+    SET Titulo_Trabajo = ?, Descripcion_Trabajo = ?, Fecha_Trabajo = ?
+    WHERE ID = ?
+  `;
+  conexion.query(sqlUpdate, [titulo, descripcion, fecha, trabajo_id], (err) => {
+    if (err) return res.status(500).json({ error: "Error al actualizar trabajo" });
+
+    // 2. Eliminar archivos seleccionados (si los hay)
+    if (eliminar_archivos) {
+      const idsEliminar = Array.isArray(eliminar_archivos) ? eliminar_archivos : [eliminar_archivos];
+      const sqlDeleteArchivos = `DELETE FROM Trabajo_Archivo WHERE ID IN (?)`;
+
+      conexion.query(sqlDeleteArchivos, [idsEliminar], (err) => {
+        if (err) console.error("Error al eliminar archivos:", err);
+      });
+    }
+
+    // 3. Insertar nuevos archivos
+    if (archivosNuevos.length > 0) {
+      const valores = archivosNuevos.map(file => [
+        trabajo_id,
+        'imagenes/' + file.filename,
+        file.originalname
+      ]);
+
+      const sqlInsertArchivos = `INSERT INTO Trabajo_Archivo (trabajo_id, ruta_archivo, nombre_original) VALUES ?`;
+      conexion.query(sqlInsertArchivos, [valores], (err) => {
+        if (err) console.error("Error al insertar nuevos archivos:", err);
+      });
+    }
+
+    res.json({ mensaje: "Trabajo actualizado correctamente" });
+  });
+});
+
+//Eliminar Trabajo
+router.delete("/Trabajo/:id", (req, res) => {
+  const id = req.params.id;
+
+  const sqlArchivos = "DELETE FROM Trabajo_Archivo WHERE trabajo_id = ?";
+  const sqlTrabajo = "DELETE FROM Trabajo WHERE ID = ?";
+
+  conexion.query(sqlArchivos, [id], (err) => {
+    if (err) {
+      console.error("Error al eliminar archivos del trabajo:", err);
+      return res.status(500).json({ error: "Error al eliminar archivos" });
+    }
+
+    conexion.query(sqlTrabajo, [id], (err2) => {
+      if (err2) {
+        console.error("Error al eliminar trabajo:", err2);
+        return res.status(500).json({ error: "Error al eliminar el trabajo" });
+      }
+
+      res.json({ mensaje: "Trabajo eliminado correctamente" });
+    });
+  });
+});
+
+// Obtener comentarios por trabajo
+router.get("/Comentarios/Trabajo/:trabajo_id", (req, res) => {
+  const trabajoId = req.params.trabajo_id;
+  const query = `
+    SELECT c.ID, c.Descripcion, c.Fecha,
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Nombre_Usuario,
+           u.RutaFoto
+    FROM Comentario c
+    JOIN Usuario u ON c.usuario_id = u.ID
+    WHERE c.trabajo_id = ?
+    ORDER BY c.Fecha DESC
+  `;
+
+  conexion.query(query, [trabajoId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener los comentarios:", error);
+      res.status(500).json({ error: "Error al obtener comentarios" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Obtener estudiantes que entregaron un trabajo específico
+router.get("/Trabajos/:id/Entregados", (req, res) => {
+  const trabajoId = req.params.id;
+
+  const sql = `
+    SELECT 
+      te.ID AS trabajo_entregado_id,
+      te.Fecha_Trabajo,
+      te.Nota,
+      u.ID AS usuario_id,
+      CONCAT(u.Primer_Nombre, ' ', u.Segundo_Nombre, ' ', u.Primer_Apellido, ' ', u.Segundo_Apellido) AS nombre_completo
+    FROM TrabajoEntregado te
+    JOIN Usuario u ON te.usuario_id = u.ID
+    WHERE te.trabajo_id = ?
+  `;
+
+  conexion.query(sql, [trabajoId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener entregas:", error);
+      return res.status(500).json({ mensaje: "Error al consultar las entregas" });
+    }
+
+    res.json(results);
+  });
+});
+
+router.put("/Trabajos/Entregado/:id/Nota", (req, res) => {
+    const id = req.params.id;
+    const { nota } = req.body;
+    const sql = `UPDATE TrabajoEntregado SET Nota = ? WHERE ID = ?`;
+
+    conexion.query(sql, [nota, id], (error) => {
+        if (error) return res.status(500).json({ mensaje: "Error al actualizar nota" });
+        res.json({ mensaje: "Nota asignada correctamente" });
+    });
+});
+
+// Obtener entrega con sus archivos
+router.get("/TrabajoEntregado/:id/Archivos", (req, res) => {
+    const entregaId = req.params.id;
+
+    const sql = `
+        SELECT 
+            ruta_archivo,
+            nombre_original
+        FROM TrabajoEntregado_Archivo
+        WHERE trabajo_entregado_id = ?
+    `;
+
+    conexion.query(sql, [entregaId], (error, results) => {
+        if (error) {
+            console.error("Error al obtener archivos:", error);
+            return res.status(500).json({ mensaje: "Error al consultar los archivos" });
+        }
+
+        res.json(results);
+    });
+});
+
+//Notas
+router.get("/Aulas/:id/Notas", (req, res) => {
+  const aulaId = req.params.id;
+
+  const sql = `
+    SELECT 
+      u.ID AS usuario_id,
+      CONCAT(u.Primer_Nombre, ' ', u.Segundo_Nombre, ' ', u.Primer_Apellido, ' ', u.Segundo_Apellido) AS nombre_completo,
+      t.ID AS trabajo_id,
+      t.Titulo_Trabajo,
+      te.Nota
+    FROM Usuario u
+    INNER JOIN Miembros_Curso mc ON u.ID = mc.usuario_id
+    INNER JOIN Aula a ON mc.curso_id = a.curso_id
+    LEFT JOIN Trabajo t ON a.ID = t.aula_id
+    LEFT JOIN TrabajoEntregado te ON te.usuario_id = u.ID AND te.trabajo_id = t.ID
+    WHERE a.ID = ?
+    ORDER BY u.ID, t.ID
+  `;
+
+  conexion.query(sql, [aulaId], (err, results) => {
+    if (err) {
+      console.error("Error al consultar notas:", err);
+      return res.status(500).json({ mensaje: "Error en la base de datos" });
+    }
+
+    const alumnos = {};
+    const trabajosSet = new Set();
+
+    results.forEach(row => {
+      if (!row.Titulo_Trabajo) return;
+
+      trabajosSet.add(row.Titulo_Trabajo);
+
+      if (!alumnos[row.usuario_id]) {
+        alumnos[row.usuario_id] = {
+          nombre: row.nombre_completo,
+          notas: {}
+        };
+      }
+
+      alumnos[row.usuario_id].notas[row.Titulo_Trabajo] = row.Nota !== null ? row.Nota : "sin nota";
+    });
+
+    const trabajos = Array.from(trabajosSet);
+    const tabla_notas = Object.values(alumnos);
+
+    res.json({ trabajos, tabla_notas });
+  });
+});
+
+
+//---------------------------------------------------------------------------------------------------------
+//Alumno y Profesor --------------------------------------------------------------------- Alumno y Profesor
+>>>>>>> origin/ramajohan
 
 // Obtener todas las noticias
 router.get("/Noticias", (req, res) => {
@@ -1020,6 +1441,7 @@ router.delete("/Noticias/:id", (req, res) => {
 });
 
 // Crear noticia
+<<<<<<< HEAD
 router.post("/Noticias", upload.fields([
   { name: "imagen1" },
   { name: "imagen2" },
@@ -1073,6 +1495,83 @@ router.post("/Noticias", upload.fields([
     });
   });
 });
+=======
+router.post(
+  "/Noticias",
+  upload.fields([
+    { name: "imagen1" },
+    { name: "imagen2" },
+    { name: "imagen3" }
+  ]),
+  (req, res) => {
+    const {
+      titulo,
+      encabezado,
+      descripcion1,
+      descripcion2,
+      descripcion3,
+      fecha,
+      tipo_noticia_id
+    } = req.body;
+
+    const imagen1 = req.files['imagen1']?.[0]?.filename || null;
+    const imagen2 = req.files['imagen2']?.[0]?.filename || null;
+    const imagen3 = req.files['imagen3']?.[0]?.filename || null;
+
+    // 🔹 Validar duplicados solo para tipos principales (1, 2, 3)
+    const tiposUnicos = ['1', '2', '3'];
+
+    if (tiposUnicos.includes(tipo_noticia_id)) {
+      const checkQuery = "SELECT * FROM Noticia WHERE tipo_noticia_id = ?";
+      conexion.query(checkQuery, [tipo_noticia_id], (err, results) => {
+        if (err) return res.status(500).json({ error: "Error al validar tipo de noticia" });
+        if (results.length > 0) {
+          return res.status(400).json({
+            error: "Ya existe una noticia con este tipo principal. No se pueden repetir."
+          });
+        }
+
+        insertarNoticia();
+      });
+    } else {
+      // Si no es tipo principal, se puede insertar directamente
+      insertarNoticia();
+    }
+
+    // 🔹 Función auxiliar para insertar la noticia
+    function insertarNoticia() {
+      const insertQuery = `
+        INSERT INTO Noticia (
+          Titulo_Noticia, Encabezado, Descripcion1, Descripcion2, Descripcion3,
+          Fecha_Notica, Imagen1, Imagen2, Imagen3, tipo_noticia_id
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `;
+
+      conexion.query(
+        insertQuery,
+        [
+          titulo,
+          encabezado,
+          descripcion1,
+          descripcion2 || null,
+          descripcion3 || null,
+          fecha,
+          imagen1,
+          imagen2,
+          imagen3,
+          tipo_noticia_id
+        ],
+        (err2) => {
+          if (err2)
+            return res.status(500).json({ error: "Error al crear la noticia" });
+          res.json({ mensaje: "Noticia creada exitosamente" });
+        }
+      );
+    }
+  }
+);
+>>>>>>> origin/ramajohan
 
 // Obtener tipos de noticia
 router.get("/TiposNoticia", (req, res) => {
@@ -1086,6 +1585,7 @@ router.get("/TiposNoticia", (req, res) => {
 });
 
 // Actualizar Noticia
+<<<<<<< HEAD
 router.put("/Noticias/:id", upload.fields([
   { name: "imagen1" },
   { name: "imagen2" },
@@ -1112,12 +1612,33 @@ router.put("/Noticias/:id", upload.fields([
     if (results.length > 0) {
       return res.status(400).json({ error: "Otra noticia ya tiene este tipo" });
     }
+=======
+router.put(
+  "/Noticias/:id",
+  upload.fields([
+    { name: "imagen1" },
+    { name: "imagen2" },
+    { name: "imagen3" }
+  ]),
+  (req, res) => {
+    const id = req.params.id;
+    const {
+      titulo,
+      encabezado,
+      descripcion1,
+      descripcion2,
+      descripcion3,
+      fecha,
+      tipo_noticia_id
+    } = req.body;
+>>>>>>> origin/ramajohan
 
     // Preparar imágenes
     const imagen1 = req.files['imagen1']?.[0]?.filename;
     const imagen2 = req.files['imagen2']?.[0]?.filename;
     const imagen3 = req.files['imagen3']?.[0]?.filename;
 
+<<<<<<< HEAD
     let query = `UPDATE Noticia SET Titulo_Noticia = ?, Encabezado = ?, Descripcion1 = ?, Descripcion2 = ?, Descripcion3 = ?, Fecha_Notica = ?, tipo_noticia_id = ?`;
     const params = [titulo, encabezado, descripcion1, descripcion2 || null, descripcion3 || null, fecha, tipo_noticia_id];
 
@@ -1134,6 +1655,62 @@ router.put("/Noticias/:id", upload.fields([
     });
   });
 });
+=======
+    // 🔹 Solo validar duplicados si es tipo principal (1, 2 o 3)
+    const tiposUnicos = ['1', '2', '3'];
+
+    if (tiposUnicos.includes(tipo_noticia_id)) {
+      const checkQuery = `
+        SELECT * FROM Noticia
+        WHERE tipo_noticia_id = ? AND ID != ?
+      `;
+      conexion.query(checkQuery, [tipo_noticia_id, id], (err, results) => {
+        if (err) return res.status(500).json({ error: "Error al validar tipo de noticia" });
+        if (results.length > 0) {
+          return res.status(400).json({
+            error: "Ya existe otra noticia con este tipo principal. No se pueden repetir."
+          });
+        }
+        actualizarNoticia();
+      });
+    } else {
+      // Si no es tipo principal, actualizar directamente
+      actualizarNoticia();
+    }
+
+    // 🔹 Función auxiliar para actualizar noticia
+    function actualizarNoticia() {
+      let query = `
+        UPDATE Noticia
+        SET Titulo_Noticia = ?, Encabezado = ?, Descripcion1 = ?, Descripcion2 = ?, Descripcion3 = ?,
+            Fecha_Notica = ?, tipo_noticia_id = ?
+      `;
+      const params = [
+        titulo,
+        encabezado,
+        descripcion1,
+        descripcion2 || null,
+        descripcion3 || null,
+        fecha,
+        tipo_noticia_id
+      ];
+
+      if (imagen1) { query += ", Imagen1 = ?"; params.push(imagen1); }
+      if (imagen2) { query += ", Imagen2 = ?"; params.push(imagen2); }
+      if (imagen3) { query += ", Imagen3 = ?"; params.push(imagen3); }
+
+      query += " WHERE ID = ?";
+      params.push(id);
+
+      conexion.query(query, params, (error) => {
+        if (error)
+          return res.status(500).json({ error: "Error al actualizar la noticia" });
+        res.json({ mensaje: "Noticia actualizada correctamente" });
+      });
+    }
+  }
+);
+>>>>>>> origin/ramajohan
 
 // Obtener una noticia por ID
 router.get("/Noticias/:id", (req, res) => {
@@ -1149,4 +1726,601 @@ router.get("/Noticias/:id", (req, res) => {
     }
     res.json(results[0]);
   });
+<<<<<<< HEAD
 });
+=======
+});
+
+//Llamar Noticias A vista Alumno y profesor
+router.get("/NoticiasPrincipales", (req, res) => {
+  const query = `
+    SELECT n.ID, n.Titulo_Noticia, n.Encabezado, n.Imagen1, t.Tipo
+    FROM Noticia n
+    INNER JOIN Tipo_Noticia t ON n.tipo_noticia_id = t.ID
+    WHERE t.Tipo IN ('Noticia Principal 1', 'Noticia Principal 2', 'Noticia Principal 3')
+    ORDER BY t.ID ASC
+  `;
+
+  conexion.query(query, (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: "Error al obtener noticias principales" });
+    }
+
+    // Organizar resultados por tipo
+    const noticias = {
+      noticia1: null,
+      noticia2: null,
+      noticia3: null,
+    };
+
+    results.forEach(n => {
+      if (n.Tipo === 'Noticia Principal 1') noticias.noticia1 = n;
+      if (n.Tipo === 'Noticia Principal 2') noticias.noticia2 = n;
+      if (n.Tipo === 'Noticia Principal 3') noticias.noticia3 = n;
+    });
+
+    res.json(noticias);
+  });
+});
+
+//Trae las noticas con el titulo, encabezado e imagen1
+router.get("/NoticiasDatos", (req, res) => {
+  const query = `
+    SELECT ID, Titulo_Noticia, Encabezado, Imagen1
+    FROM Noticia
+    ORDER BY Fecha_Notica DESC
+  `;
+  conexion.query(query, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: "Error en la base de datos" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// 🔁 Obtener horario del usuario según su rol (alumno o profesor)
+router.get("/HorarioUsuario/:id", (req, res) => {
+  const idUsuario = req.params.id;
+
+  const rolQuery = "SELECT rol_id FROM Usuario WHERE ID = ?";
+  conexion.query(rolQuery, [idUsuario], (err, rolRes) => {
+    if (err || rolRes.length === 0) {
+      return res.status(500).json({ error: "No se pudo determinar el rol del usuario" });
+    }
+
+    const rol = rolRes[0].rol_id;
+
+    if (rol === 'R001') {
+      // 🧑 Alumno - obtener horario del curso al que pertenece
+      const query = `
+        SELECT H.*
+        FROM Horario H
+        INNER JOIN Miembros_Curso MC ON H.curso_id = MC.curso_id
+        WHERE MC.usuario_id = ?
+        LIMIT 1
+      `;
+      conexion.query(query, [idUsuario], (err, result) => {
+        if (err) return res.status(500).json({ error: "Error al obtener horario del alumno" });
+        if (!result.length) return res.status(404).json({ mensaje: "No hay horario asignado a este alumno" });
+        res.json(result[0]);
+      });
+
+    } else if (rol === 'R002') {
+      // 👨‍🏫 Profesor - obtener horario asignado a él
+      const query = `SELECT * FROM Horario WHERE profesor_id = ? LIMIT 1`;
+      conexion.query(query, [idUsuario], (err, result) => {
+        if (err) return res.status(500).json({ error: "Error al obtener horario del profesor" });
+        if (!result.length) return res.status(404).json({ mensaje: "No hay horario asignado a este profesor" });
+        res.json(result[0]);
+      });
+
+    } else {
+      res.status(400).json({ mensaje: "Este usuario no tiene horario asignado por rol" });
+    }
+  });
+});
+
+// Obtener aulas por usuario (alumno o profesor)
+router.get("/Aulas/usuario/:id", (req, res) => {
+  const usuarioId = req.params.id;
+
+  const sql = `
+    SELECT a.ID, a.Aula_Nombre, m.Materia_Nombre, 
+           CONCAT(c.Curso_Nombre, ' ', j.Jornada_Nombre) AS Curso_Nombre, 
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Profesor,
+           a.usuario_id  -- 👈 IMPORTANTE: para verificar si el usuario creó el aula
+    FROM Aula a
+    JOIN Materia m ON a.materia_id = m.ID
+    JOIN Curso c ON a.curso_id = c.ID
+    JOIN Jornada j ON c.jornada_id = j.ID
+    JOIN Usuario u ON a.usuario_id = u.ID
+    WHERE a.curso_id IN (
+      SELECT curso_id FROM Miembros_Curso WHERE usuario_id = ?
+    )
+    OR a.usuario_id = ?
+  `;
+
+  conexion.query(sql, [usuarioId, usuarioId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener aulas del usuario:", error);
+      return res.status(500).json({ mensaje: "Error en la base de datos" });
+    }
+
+    res.json(results);
+  });
+});
+
+// Eliminar comentario por ID (con validación del usuario opcional)
+router.delete("/ComentariosAlum/:id", (req, res) => {
+  const comentarioId = req.params.id;
+  const usuarioId = parseInt(req.query.usuario_id);
+
+  const queryVerificar = "SELECT * FROM Comentario WHERE ID = ?";
+
+  conexion.query(queryVerificar, [comentarioId], (err, result) => {
+    if (err || result.length === 0) {
+      return res.status(404).json({ mensaje: "Comentario no encontrado" });
+    }
+
+    if (result[0].usuario_id !== usuarioId) {
+      return res.status(403).json({ mensaje: "No tienes permiso para eliminar este comentario" });
+    }
+
+    // Eliminar si es del usuario logueado
+    const queryEliminar = "DELETE FROM Comentario WHERE ID = ?";
+    conexion.query(queryEliminar, [comentarioId], (error) => {
+      if (error) {
+        console.error("❌ Error al eliminar el comentario:", error);
+        res.status(500).json({ mensaje: "Error al eliminar el comentario" });
+      } else {
+        res.json({ mensaje: "Comentario eliminado correctamente" });
+      }
+    });
+  });
+});
+
+// obtener comentario
+router.get("/ComentariosAlum/Trabajo/:trabajo_id", (req, res) => {
+  const trabajoId = req.params.trabajo_id;
+  const query = `
+    SELECT c.ID, c.Descripcion, c.Fecha,
+           c.usuario_id,
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Nombre_Usuario,
+           u.RutaFoto
+    FROM Comentario c
+    JOIN Usuario u ON c.usuario_id = u.ID
+    WHERE c.trabajo_id = ?
+    ORDER BY c.Fecha DESC
+  `;
+
+  conexion.query(query, [trabajoId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener los comentarios:", error);
+      res.status(500).json({ error: "Error al obtener comentarios" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Obtener comentarios por anuncio (versión para alumno)
+router.get("/ComentariosAlum/Anuncio/:anuncio_id", (req, res) => {
+  const anuncioId = req.params.anuncio_id;
+
+  const query = `
+    SELECT c.ID, c.Descripcion, c.Fecha,
+           c.usuario_id,
+           CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS Nombre_Usuario,
+           u.RutaFoto
+    FROM Comentario c
+    JOIN Usuario u ON c.usuario_id = u.ID
+    WHERE c.anuncio_id = ?
+    ORDER BY c.Fecha DESC
+  `;
+
+  conexion.query(query, [anuncioId], (error, results) => {
+    if (error) {
+      console.error("Error al obtener comentarios:", error);
+      res.status(500).json({ mensaje: "Error al obtener comentarios" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Eliminar comentario (con validación de usuario)
+router.delete("/ComentariosAlumAnuncio/:id", (req, res) => {
+  const comentarioId = req.params.id;
+  const usuarioId = parseInt(req.query.usuario_id);
+
+  const queryVerificar = "SELECT * FROM Comentario WHERE ID = ?";
+  conexion.query(queryVerificar, [comentarioId], (err, result) => {
+    if (err || result.length === 0) {
+      return res.status(404).json({ mensaje: "Comentario no encontrado" });
+    }
+
+    if (result[0].usuario_id !== usuarioId) {
+      return res.status(403).json({ mensaje: "No tienes permiso para eliminar este comentario" });
+    }
+
+    const queryEliminar = "DELETE FROM Comentario WHERE ID = ?";
+    conexion.query(queryEliminar, [comentarioId], (error) => {
+      if (error) {
+        console.error("Error al eliminar comentario:", error);
+        res.status(500).json({ mensaje: "Error al eliminar comentario" });
+      } else {
+        res.json({ mensaje: "Comentario eliminado correctamente" });
+      }
+    });
+  });
+});
+
+// -------------------------------------Subir trabajos como Alumno------------------------------------------
+
+router.get("/TrabajoEntregado/:trabajoId/:usuarioId", (req, res) => {
+  const { trabajoId, usuarioId } = req.params;
+
+  const sqlEntrega = "SELECT * FROM TrabajoEntregado WHERE trabajo_id = ? AND usuario_id = ?";
+  const sqlArchivos = `
+    SELECT * FROM TrabajoEntregado_Archivo 
+    WHERE trabajo_entregado_id = ?
+  `;
+
+  conexion.query(sqlEntrega, [trabajoId, usuarioId], (err, entregaResult) => {
+    if (err) return res.status(500).json({ error: "Error al obtener la entrega" });
+
+    if (entregaResult.length === 0) return res.json(null); // No entregado
+
+    const entrega = entregaResult[0];
+
+    conexion.query(sqlArchivos, [entrega.ID], (err2, archivosResult) => {
+      if (err2) return res.status(500).json({ error: "Error al obtener archivos entregados" });
+
+      res.json({
+        entrega,
+        archivos: archivosResult
+      });
+    });
+  });
+});
+
+router.post("/TrabajoEntregado", upload.array("archivo"), (req, res) => {
+  const { trabajo_id, usuario_id } = req.body;
+  const fecha = new Date().toISOString().split("T")[0];
+
+  const sqlInsertar = `
+    INSERT INTO TrabajoEntregado (Fecha_Trabajo, trabajo_id, usuario_id) 
+    VALUES (?, ?, ?)
+  `;
+
+  conexion.query(sqlInsertar, [fecha, trabajo_id, usuario_id], (err, result) => {
+    if (err) return res.status(500).json({ error: "Error al registrar entrega" });
+
+    const trabajoEntregadoId = result.insertId;
+
+    const archivos = req.files.map(file => [
+      trabajoEntregadoId,
+      file.filename,
+      file.originalname
+    ]);
+
+    const sqlInsertarArchivos = `
+      INSERT INTO TrabajoEntregado_Archivo 
+      (trabajo_entregado_id, ruta_archivo, nombre_original) 
+      VALUES ?
+    `;
+
+    conexion.query(sqlInsertarArchivos, [archivos], (err2) => {
+      if (err2) return res.status(500).json({ error: "Error al guardar archivos" });
+
+      res.json({ mensaje: "Trabajo entregado exitosamente" });
+    });
+  });
+});
+
+router.delete("/TrabajoEntregado/:trabajoId/:usuarioId", (req, res) => {
+  const { trabajoId, usuarioId } = req.params;
+
+  const sqlObtener = `
+    SELECT ID FROM TrabajoEntregado 
+    WHERE trabajo_id = ? AND usuario_id = ?
+  `;
+
+  conexion.query(sqlObtener, [trabajoId, usuarioId], (err, result) => {
+    if (err) return res.status(500).json({ error: "Error al buscar entrega" });
+
+    if (result.length === 0) return res.status(404).json({ mensaje: "Entrega no encontrada" });
+
+    const entregaId = result[0].ID;
+
+    const sqlEliminar = "DELETE FROM TrabajoEntregado WHERE ID = ?";
+
+    conexion.query(sqlEliminar, [entregaId], (err2) => {
+      if (err2) return res.status(500).json({ error: "Error al eliminar entrega" });
+
+      res.json({ mensaje: "Entrega cancelada correctamente" });
+    });
+  });
+});
+
+// Obtener totales de usuarios por rol
+router.get('/reportes/usuarios-totales', (req, res) => {
+  const query = `
+    SELECT 
+      COUNT(*) AS totalUsuarios,
+      SUM(CASE WHEN rol_id = 'R003' THEN 1 ELSE 0 END) AS totalCoordinadores,
+      SUM(CASE WHEN rol_id = 'R002' THEN 1 ELSE 0 END) AS totalProfesores,
+      SUM(CASE WHEN rol_id = 'R001' THEN 1 ELSE 0 END) AS totalAlumnos
+    FROM Usuario
+  `;
+
+  conexion.query(query, (error, resultados) => {
+    if (error) {
+      console.error('❌ Error al obtener totales:', error);
+      return res.status(500).json({ mensaje: 'Error en el servidor' });
+    }
+    res.json(resultados[0]);
+  });
+});
+
+// Obtener totales de cursos por jornada
+router.get("/reportes/cursos", (req, res) => {
+  const sql = `
+    SELECT 
+        'Total Cursos' AS Jornada,
+        COUNT(*) AS Total
+    FROM Curso
+
+    UNION ALL
+
+    SELECT 
+        j.Jornada_Nombre,
+        COUNT(c.ID) AS Total
+    FROM Jornada j
+    LEFT JOIN Curso c ON j.ID = c.jornada_id
+    GROUP BY j.ID, j.Jornada_Nombre
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error obteniendo reportes de cursos:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    res.json(resultados);
+  });
+});
+
+// Obtener totales de materias, grados y jornadas
+router.get("/reportes/estructura", (req, res) => {
+  const sql = `
+    SELECT 
+        (SELECT COUNT(*) FROM Materia) AS total_materias,
+        (SELECT COUNT(*) FROM Grado) AS total_grados,
+        (SELECT COUNT(*) FROM Jornada) AS total_jornadas
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error obteniendo datos de estructura:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    res.json(resultados[0]); // devolvemos el objeto directamente
+  });
+});
+
+// Obtener materias y aulas que la usan
+router.get("/reportes/materias-aulas", (req, res) => {
+  const sql = `
+    SELECT 
+        m.Materia_Nombre,
+        COUNT(a.ID) AS total_aulas
+    FROM Materia m
+    LEFT JOIN Aula a ON m.ID = a.materia_id
+    GROUP BY m.Materia_Nombre
+    ORDER BY m.Materia_Nombre;
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error obteniendo materias y aulas:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    res.json(resultados);
+  });
+});
+
+// Obtener grados y cursos que lo usan
+router.get("/reportes/grados-cursos", (req, res) => {
+  const sql = `
+    SELECT 
+        g.Grado_Nombre,
+        COUNT(c.ID) AS total_cursos
+    FROM Grado g
+    LEFT JOIN Curso c ON g.ID = c.grado_id
+    GROUP BY g.Grado_Nombre
+    ORDER BY g.Grado_Nombre;
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error obteniendo grados y cursos:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    res.json(resultados);
+  });
+});
+
+// Obtener jornadas y cursos que lo usan
+router.get("/reportes/jornadas-cursos", (req, res) => {
+  const sql = `
+    SELECT 
+        j.Jornada_Nombre,
+        COUNT(c.ID) AS total_cursos
+    FROM Jornada j
+    LEFT JOIN Curso c ON j.ID = c.jornada_id
+    GROUP BY j.Jornada_Nombre
+    ORDER BY j.Jornada_Nombre;
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error obteniendo jornadas y cursos:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    res.json(resultados);
+  });
+});
+
+// Obtener usuario por id
+router.get("/buscar-usuario/:id", (req, res) => {
+  const id = req.params.id;
+
+  const sql = `
+    SELECT 
+        u.ID,
+        u.Primer_Nombre,
+        u.Primer_Apellido,
+        r.Nombre_Rol AS Rol,
+        CONCAT(c.Curso_Nombre, ' ', j.Jornada_Nombre) AS Curso_Jornada
+    FROM Usuario u
+    LEFT JOIN Rol r ON u.rol_id = r.ID
+    LEFT JOIN Miembros_Curso mc ON u.ID = mc.usuario_id
+    LEFT JOIN Curso c ON mc.curso_id = c.ID
+    LEFT JOIN Jornada j ON c.jornada_id = j.ID
+    WHERE u.ID = ?
+  `;
+
+  conexion.query(sql, [id], (err, resultados) => {
+    if (err) {
+      console.error("Error buscando usuario:", err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    if (resultados.length === 0) {
+      return res.status(404).json({ mensaje: "Usuario no encontrado" });
+    }
+    res.json(resultados[0]);
+  });
+});
+
+// Obtener datos para ReportesClase
+router.get("/reportes/aulas", (req, res) => {
+  const sql = `
+    SELECT 
+        a.ID AS aula_id,
+        a.Aula_Nombre,
+        m.Materia_Nombre,
+        CONCAT(c.Curso_Nombre, ' - ', j.Jornada_Nombre) AS curso_jornada,
+        CONCAT(u.Primer_Nombre, ' ', u.Primer_Apellido) AS profesor,
+        (SELECT COUNT(*) FROM Miembros_Curso mc WHERE mc.curso_id = a.curso_id) AS total_usuarios,
+        (SELECT COUNT(*) FROM Anuncio an WHERE an.aula_id = a.ID) AS total_anuncios,
+        (
+          SELECT COUNT(*) 
+          FROM Comentario co 
+          INNER JOIN Anuncio an2 ON co.anuncio_id = an2.ID
+          WHERE an2.aula_id = a.ID
+        ) 
+        + 
+        (
+          SELECT COUNT(*) 
+          FROM Comentario co 
+          INNER JOIN Trabajo tr2 ON co.trabajo_id = tr2.ID
+          WHERE tr2.aula_id = a.ID
+        ) AS total_comentarios,
+        (SELECT COUNT(*) FROM Trabajo t WHERE t.aula_id = a.ID) AS total_trabajos
+    FROM Aula a
+    INNER JOIN Materia m ON a.materia_id = m.ID
+    INNER JOIN Curso c ON a.curso_id = c.ID
+    INNER JOIN Jornada j ON c.jornada_id = j.ID
+    INNER JOIN Usuario u ON a.usuario_id = u.ID
+  `;
+
+  conexion.query(sql, (err, resultados) => {
+    if (err) {
+      console.error("Error al obtener reportes de aulas:", err);
+      return res.status(500).json({ mensaje: "Error en el servidor" });
+    }
+
+    res.json({
+      totalAulas: resultados.length,
+      aulas: resultados
+    });
+  });
+});
+
+// 📊 Ruta para totales de horarios y profesores
+router.get("/reportes/horarios-totales", (req, res) => {
+    const query = `
+        SELECT
+            (SELECT COUNT(*) FROM Horario) AS total_horarios,
+            (SELECT COUNT(DISTINCT curso_id) FROM Horario WHERE curso_id IS NOT NULL) AS cursos_con_horario,
+            (SELECT COUNT(*) FROM Curso WHERE ID NOT IN (SELECT DISTINCT curso_id FROM Horario WHERE curso_id IS NOT NULL)) AS cursos_sin_horario,
+            (SELECT COUNT(DISTINCT profesor_id) FROM Horario WHERE profesor_id IS NOT NULL) AS profesores_con_horario,
+            (SELECT COUNT(*) FROM Usuario WHERE rol_id = 'R002' AND ID NOT IN (SELECT DISTINCT profesor_id FROM Horario WHERE profesor_id IS NOT NULL)) AS profesores_sin_horario
+    `;
+
+    conexion.query(query, (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results[0]);
+    });
+});
+
+// 📰 Ruta para total de noticias
+router.get("/reportes/noticias-totales", (req, res) => {
+    conexion.query(`SELECT COUNT(*) AS total_noticias FROM Noticia`, (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results[0]);
+    });
+});
+
+router.get("/reportes/cursos-horarios", (req, res) => {
+    const queryConHorario = `
+        SELECT c.Curso_Nombre AS curso, j.Jornada_Nombre AS jornada
+        FROM Curso c
+        JOIN Horario h ON h.curso_id = c.ID
+        JOIN Jornada j ON c.jornada_id = j.ID
+        GROUP BY c.ID, c.Curso_Nombre, j.Jornada_Nombre
+    `;
+
+    const querySinHorario = `
+        SELECT c.Curso_Nombre AS curso, j.Jornada_Nombre AS jornada
+        FROM Curso c
+        LEFT JOIN Horario h ON h.curso_id = c.ID
+        JOIN Jornada j ON c.jornada_id = j.ID
+        WHERE h.ID IS NULL
+        GROUP BY c.ID, c.Curso_Nombre, j.Jornada_Nombre
+    `;
+
+    conexion.query(queryConHorario, (err, conHorario) => {
+        if (err) return res.status(500).json({ error: err.message });
+        conexion.query(querySinHorario, (err2, sinHorario) => {
+            if (err2) return res.status(500).json({ error: err2.message });
+            res.json({ conHorario, sinHorario });
+        });
+    });
+});
+
+router.get("/reportes/profesores-horarios", (req, res) => {
+    const queryConHorario = `
+        SELECT DISTINCT u.ID, u.Primer_Nombre AS nombre, u.Primer_Apellido AS apellido
+        FROM Usuario u
+        JOIN Horario h ON h.profesor_id = u.ID
+        WHERE u.rol_id = 'R002'
+    `;
+
+    const querySinHorario = `
+        SELECT u.ID, u.Primer_Nombre AS nombre, u.Primer_Apellido AS apellido
+        FROM Usuario u
+        LEFT JOIN Horario h ON h.profesor_id = u.ID
+        WHERE u.rol_id = 'R002' AND h.ID IS NULL
+    `;
+
+    conexion.query(queryConHorario, (err, conHorario) => {
+        if (err) return res.status(500).json({ error: err.message });
+        conexion.query(querySinHorario, (err2, sinHorario) => {
+            if (err2) return res.status(500).json({ error: err2.message });
+            res.json({ conHorario, sinHorario });
+        });
+    });
+});
+>>>>>>> origin/ramajohan

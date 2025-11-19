@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fondo);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+
+/* article -------------------- article */
+
+#centroAlumno{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+
+/* Centro -------------------- Centro*/
+
+.tituloPersonasAlumno{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 0px 100px;
+    align-items: center;
+}
+.tituloPersonasAlumno h1{
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.contenedor-tablaPersonasAlumno{  
+    overflow-x: auto;
+    margin: 0px 0px 20px 0px;
+    background: var(--fondo);
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%; 
+}
+.contenedor-tablaPersonasAlumno table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0px;
+}
+.contenedor-tablaPersonasAlumno table thead{
+    background-color: var(--azul-primario);
+    color: var(--blanco);
+}
+.contenedor-tablaPersonasAlumno table th, .contenedor-tablaPersonasAlumno table td{
+    padding: 10px;
+    text-align: center !important;
+    border-bottom: 1px solid var(--azul-primario) !important;
+}
+
+.contenedor-tablaPersonasAlumno table button{
+    background-color: var(--azul);
+    color: var(--blanco);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.contenedor-tablaPersonasAlumno table button:hover{
+    background-color: black;
+}
+.contenedor-tablaPersonasAlumno table tbody tr td{
+    color: black;
+}
+@media (min-width: 100px) and (max-width: 414px) {
+    #navAulaAlumno{
+        width: 100%;
+        margin: 0px;
+    }
+    .tituloPersonasAlumno{
+        display: flex;
+        justify-content: center;
+    }
+}    
+@media (min-width: 415px) and (max-width: 575px) {
+    #navAulaAlumno{
+        width: 100%;
+        margin: 0px;
+    }
+    .tituloPersonasAlumno{
+        display: flex;
+        justify-content: center;
+    }
+}
+@media (min-width: 576px) and (max-width: 767px){
+    #navAulaAlumno{
+        width: 100%;
+        margin: 0px;
+    }
+    .tituloPersonasAlumno{
+        display: flex;
+        justify-content: center;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    #navAulaAlumno{
+        padding: 0px;
+    }
+    #navAulaAlumno .col-xl-2{
+        width: 212px;
+    }
+    #navAulaAlumno .col-xl-4{
+        width: 5px;
+    }
+    .tituloPersonasAlumno{
+        display: flex;
+        justify-content: center;
+    }
+}

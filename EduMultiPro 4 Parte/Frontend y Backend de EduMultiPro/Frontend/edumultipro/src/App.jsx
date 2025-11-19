@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom'; // 👈 Importar Esto importa el hook useNavigate de react-router-dom, que permite redirigir a otra ruta (por ejemplo, navegar a otro componente).
 import { useState } from 'react';               // 👈 Importar Importa el hook useState de React, usado para manejar estados (por ejemplo, el contenido de los campos de texto del formulario).
+=======
+import { Link, useNavigate } from 'react-router-dom'; // 👈 Importar Esto importa el hook useNavigate de react-router-dom, que permite redirigir a otra ruta (por ejemplo, navegar a otro componente).
+import { useState } from 'react';               // 👈 Importar Importa el hook useState de React, usado para manejar estados (por ejemplo, el contenido de los campos de texto del formulario).
+import { useEffect } from 'react';
+>>>>>>> origin/ramajohan
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -15,6 +21,7 @@ function App() {
   const [contrasena, setContrasena] = useState('');
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   const manejarSubmit = async (e) => {
   e.preventDefault();
 
@@ -59,6 +66,72 @@ function App() {
     alert('❌ Hubo un error en el servidor');
   }
 };
+=======
+  //Verifica si hay un token y un usuario en localStorage.
+  //sí hay, redirige automáticamente al usuario a su página correspondiente según su rol, sin necesidad de iniciar sesión otra vez.
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    
+    if (token && usuario?.rol) {
+      switch (usuario.rol) {
+        case 'R004': navigate('/usuario'); break;
+        case 'R003': navigate('/PrincipalCoordinador'); break;
+        case 'R002': navigate('/PrincipalProfesor'); break;
+        case 'R001': navigate('/PrincipalAlumno'); break;
+      }
+    }
+  }, []);
+
+
+  //Guarda el usuario y el token JWT en localStorage.
+  //Redirige al usuario según su rol.
+  
+  const manejarSubmit = async (e) => {
+  e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:3000/api/edumultipro/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ correo, contrasena })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('usuario', JSON.stringify(data.usuario));
+        localStorage.setItem('token', data.token); // 👈 Guarda el JWT
+
+        const { rol } = data.usuario;
+
+        switch (rol) {
+          case 'R004':
+            navigate('/usuario');
+            break;
+          case 'R003':
+            navigate('/PrincipalCoordinador');
+            break;
+          case 'R002':
+            navigate('/PrincipalProfesor');
+            break;
+          case 'R001':
+            navigate('/PrincipalAlumno');
+            break;
+          default:
+            alert('Rol no reconocido');
+            break;
+        }
+
+      } else {
+        const err = await response.json();
+        alert(err.mensaje);
+      }
+
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      alert('❌ Hubo un error en el servidor');
+    }
+  };
+>>>>>>> origin/ramajohan
 
   return (
     <>
@@ -76,7 +149,11 @@ function App() {
                   <input type="email" placeholder="Correo" name="Correo" value={correo} onChange={(e) => setCorreo(e.target.value)} required/>
                   <input type="password" placeholder="Contraseña" value={contrasena} onChange={(e) => setContrasena(e.target.value)} required></input>
                   <button type="submit" className="btn-ingresar">Ingresar</button>
+<<<<<<< HEAD
                   <a href="#">¿Olvidaste tu contraseña?</a>
+=======
+                  <Link to={"/CambioContraseña"}>¿Olvidaste tu contraseña?</Link>
+>>>>>>> origin/ramajohan
               </form>
             </div>
           

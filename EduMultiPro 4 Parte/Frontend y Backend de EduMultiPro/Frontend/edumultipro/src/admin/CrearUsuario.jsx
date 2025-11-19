@@ -7,6 +7,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import '@fortawesome/fontawesome-free/css/all.min.css'; // libreria de logos
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
+=======
+import ProteccionRuta from '../ProteccionRuta.jsx';
+>>>>>>> origin/ramajohan
 
 import { useState, useEffect } from 'react'; 
 import { useNavigate } from 'react-router-dom'; 
@@ -83,6 +87,10 @@ function CrearUsuario(){
 
     return(
         <>
+<<<<<<< HEAD
+=======
+          <ProteccionRuta rolRequerido="R004" />
+>>>>>>> origin/ramajohan
             <div className='contenedor'>
                 {/*---Nav---*/}
                 <Encabezado />
@@ -113,6 +121,7 @@ function CrearUsuario(){
                                     <h3>Datos Usuario</h3>
                                     <div className="f1">
                                         <input type="number" name="id" placeholder="N.O Identificacion" required onChange={handleChange} />
+<<<<<<< HEAD
                                         <input type="text" name="primer_nombre" placeholder="Primer Nombre" required onChange={handleChange} />
                                         <input type="text" name="segundo_nombre" placeholder="Segundo Nombre" onChange={handleChange} />
                                     </div>
@@ -120,6 +129,15 @@ function CrearUsuario(){
                                         <input type="text" name="primer_apellido" placeholder="Primer Apellido" required onChange={handleChange} />
                                         <input type="text" name="segundo_apellido" placeholder="Segundo Apellido" onChange={handleChange} />
                                         <input type="email" name="correo1" placeholder="Correo" required onChange={handleChange} />
+=======
+                                        <input type="text" name="primer_nombre" placeholder="Primer Nombre" maxLength="50" required onChange={handleChange} />
+                                        <input type="text" name="segundo_nombre" placeholder="Segundo Nombre" maxLength="50" onChange={handleChange} />
+                                    </div>
+                                    <div className="f1">
+                                        <input type="text" name="primer_apellido" placeholder="Primer Apellido" maxLength="50" required onChange={handleChange} />
+                                        <input type="text" name="segundo_apellido" placeholder="Segundo Apellido" maxLength="50" onChange={handleChange} />
+                                        <input type="email" name="correo1" placeholder="Correo" maxLength="50" required onChange={handleChange} />
+>>>>>>> origin/ramajohan
                                     </div>
                                     <div className="f1">
                                         <input type="password" name="contrasena" placeholder="Contraseña" required onChange={handleChange} />
@@ -138,7 +156,11 @@ function CrearUsuario(){
                                     </div>
 
                                     <h3>Otros Datos</h3>
+<<<<<<< HEAD
                                     <input type="email" name="correo2" placeholder="Correo Alternativo" onChange={handleChange} />
+=======
+                                    <input type="email" name="correo2" placeholder="Correo Alternativo" maxLength="50" onChange={handleChange} />
+>>>>>>> origin/ramajohan
                                     <input type="number" name="contacto1" placeholder="Contacto Principal" required onChange={handleChange} />
                                     <input type="number" name="contacto2" placeholder="Contacto Secundario" onChange={handleChange} />
                                     <input type="date" name="fecha_nacimiento" required onChange={handleChange} />

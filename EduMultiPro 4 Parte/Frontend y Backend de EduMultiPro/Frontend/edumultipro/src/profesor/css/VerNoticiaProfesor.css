@@ -1,0 +1,245 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --azul-primario: #0066cc;
+    --azul-secundario: #4da6ff;
+    --azul-secundario2: #3d9eff;
+    --azul-secundario3: #82c0ff;
+    --azul-claro: #e6f2ff;
+    --blanco2: #ffffff;
+    --gris-claro: #f5f5f5;
+    --gris-medio: #e0e0e0;
+    --gris-oscuro: #757575;
+
+    --azul: #007bbd;
+    --blanco: rgb(253, 243, 229);
+    --gris: rgb(99, 95, 95);
+    --azulClaro: #4aa2d1;
+    --fondo: #e6f0fa;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--fondo);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* centro -------------------- centro*/
+
+/* article -------------------- article */
+
+#centroProfesor{
+    flex: 1;
+    display: flex;
+    padding: 0;
+}
+
+/* Centro -------------------- Centro*/
+
+.contenerdo-VerNoticiaProfesor{
+    width: 70%;
+    height: auto;
+    margin: 20px auto;
+    background: var(--azul-primario);
+    padding: 30px 45px;
+}
+.contenerdorVerNoticiaProfesor{
+    width: 100%;
+    height: auto;
+    margin: 20px auto;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+}
+.contenerdorVerNoticiaProfesor #h0Titulo{
+    background: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.contenerdorVerNoticiaProfesor #h0Titulo h2{
+    font-size: 50px;
+    color: var(--azul);
+    font-weight: bold;
+    word-break: break-word; 
+    white-space: normal;
+}
+.contenerdorVerNoticiaProfesor .text{
+    display: flex;
+    justify-content: center;   
+    padding: 0px 90px;
+}
+.contenerdorVerNoticiaProfesor .text p{
+    word-break: break-word; 
+    white-space: normal;
+}
+.contenerdorVerNoticiaProfesor .imagen img{
+    max-width: 1000px;
+    max-height: 400px;
+    border-radius: 10px;
+    display: block; 
+    margin: 0 auto; 
+    margin-bottom: 40px; 
+    margin-top: 30px;
+}
+.contenerdorVerNoticiaProfesor #h6Fecha{
+    margin-top: 30px;
+}
+@media (min-width: 100px) and (max-width: 414px) {
+    .contenerdo-VerNoticiaProfesor{
+        width: 90%;
+        padding: 20px 15px;
+        margin: 20px auto;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor{
+        width: 100%;
+        padding: 30px 20px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .imagen img{
+        width: 100%;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h0Titulo{
+        margin-bottom: 10px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h0Titulo h2{
+        font-size: 15px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .text{
+        width: 100%;
+        padding: 0px 0px;
+        margin-bottom: 0;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .text p{
+        font-size: 10px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h6Fecha p{
+        font-size: 10px;
+    }
+}
+@media (min-width: 415px) and (max-width: 575px) {
+    .contenerdo-VerNoticiaProfesor{
+        width: 90%;
+        padding: 20px 15px;
+        margin: 20px auto;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor{
+        width: 100%;
+        padding: 30px 20px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .imagen img{
+        width: 100%;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h0Titulo{
+        margin-bottom: 10px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h0Titulo h2{
+        font-size: 15px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .text{
+        width: 100%;
+        padding: 0px 0px;
+        margin-bottom: 0;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .text p{
+        font-size: 10px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h6Fecha p{
+        font-size: 10px;
+    }
+}
+@media (min-width: 576px) and (max-width: 767px){
+    .contenerdo-VerNoticiaProfesor{
+        width: 90%;
+        padding: 20px 15px;
+        margin: 20px auto;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor{
+        width: 100%;
+        padding: 30px 20px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .imagen img{
+        width: 100%;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h0Titulo{
+        margin-bottom: 10px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h0Titulo h2{
+        font-size: 15px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .text{
+        width: 100%;
+        padding: 0px 0px;
+        margin-bottom: 0;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .text p{
+        font-size: 10px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h6Fecha p{
+        font-size: 10px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .contenerdo-VerNoticiaProfesor{
+        width: 90%;
+        padding: 20px 15px;
+        margin: 20px auto;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor{
+        width: 100%;
+        padding: 30px 20px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .imagen img{
+        width: 100%;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h0Titulo{
+        margin-bottom: 10px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h0Titulo h2{
+        font-size: 20px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .text{
+        width: 100%;
+        padding: 0px 0px;
+        margin-bottom: 0;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor .text p{
+        font-size: 15px;
+    }
+    .contenerdo-VerNoticiaProfesor .contenerdorVerNoticiaProfesor #h6Fecha p{
+        font-size: 15px;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    .contenerdo-VerNoticiaProfesor{
+        width: 90%;
+        padding: 20px 30px;
+        margin: 20px auto;
+    }
+    .contenerdorVerNoticiaProfesor .imagen img{
+        max-width: 600px;
+    }
+}
+@media (min-width: 1200px) and (max-width: 1399px){
+    .contenerdo-VerNoticiaProfesor{
+        width: 90%;
+        padding: 20px 30px;
+        margin: 20px auto;
+    }
+    .contenerdorVerNoticiaProfesor .imagen img{
+        max-width: 600px;
+    }
+}
+@media (min-width: 1400px) and (max-width: 1775px){
+    .contenerdorVerNoticiaProfesor .imagen img{
+        max-width: 700px;
+    }
+}
