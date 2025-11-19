@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-function PrincipalAlumno(){
-    return(
-        <>
-            <h1>Hola Alumno</h1>
-        </>
-    )
-=======
 import Encabezado from '../Encabezado.jsx';
 import Footer from '../footer.jsx';
 import DesplegableAlumno from './DesplegableAlumno.jsx';
@@ -126,7 +118,6 @@ function PrincipalAlumno(){
         </div>
     </>
   );
->>>>>>> origin/ramajohan
 }
 
 export default PrincipalAlumno;

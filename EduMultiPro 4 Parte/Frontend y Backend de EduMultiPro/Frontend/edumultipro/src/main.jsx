@@ -2,10 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; // 👈 NUEVO
 import './index.css';
-<<<<<<< HEAD
-=======
 import CambioContraseña from './CambioContraseña.jsx';
->>>>>>> origin/ramajohan
 import App from './App.jsx';
 import Usuario from './admin/Usuario.jsx'; // 👈 NUEVO
 import Curso from './admin/Curso.jsx';
@@ -34,32 +31,6 @@ import CrearTrabajo from './admin/CrearTrabajo.jsx';
 import ActualizarTrabajo from './admin/ActualizarTrabajo.jsx';
 import VerTrabajo from './admin/VerTrabajo.jsx';
 import VerTrabajoEntregado from './admin/VerTrabajoEntregado.jsx';
-<<<<<<< HEAD
-
-//--Aqui los links del Coordinador--
-import PrincipalCoordinador from './coordinador/Cursos.jsx';
-import ActualizarHorarios from './coordinador/ActualizarHorarios.jsx';
-import ActualizarNoticias from './coordinador/ActualizarNoticias.jsx';
-import CrearCursos from './coordinador/CrearCursos.jsx';
-import CrearHorarios from './coordinador/CrearHorarios.jsx';
-import CrearNoticias from './coordinador/CrearNoticias.jsx';
-import Cursos from './coordinador/Cursos.jsx';
-import Grados from './coordinador/Grados.jsx';
-import Horarios from './coordinador/Horarios.jsx';
-import Jornadas from './coordinador/Jornadas.jsx';
-import Materias from './coordinador/Materias.jsx';
-import Noticias from './coordinador/Noticias.jsx';
-import VerCursos from './coordinador/VerCursos.jsx';
-import VerHorarios from './coordinador/VerHorarios.jsx';
-import VerNoticias from './coordinador/VerNoticias.jsx';
-import Perfil from './coordinador/perfil.jsx';
-
-//--Aqui los links del Profesor--
-import PrincipalProfesor from './profesor/PrincipalProfesor.jsx';
-
-//--Aqui los links del Alumno--
-import PrincipalAlumno from './alumno/PrincipalAlumno.jsx';
-=======
 import Reportes from './admin/Reportes.jsx';
 import ReportesClase from './admin/ReportesClase.jsx';
 import ReportesAgenda from './admin/ReportesAgenda.jsx';
@@ -113,7 +84,6 @@ import VerAulaAlumno from './alumno/VerAulaAlumno.jsx';
 import TrabajoAlumno from './alumno/TrabajoAlumno.jsx';
 import PersonaAlumno from './alumno/PersonaAlumno.jsx';
 import VerTrabajoAlumno from './alumno/VerTrabajoAlumno.jsx';
->>>>>>> origin/ramajohan
 
 
 createRoot(document.getElementById('root')).render(
@@ -121,10 +91,7 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter> {/* 👈 ENVOLVER CON BROWSERROUTER */}
       <Routes>
         <Route path="/" element={<App />} />
-<<<<<<< HEAD
-=======
         <Route path="CambioContraseña" element={<CambioContraseña />} />
->>>>>>> origin/ramajohan
         <Route path="/usuario" element={<Usuario />} />
         <Route path="/curso" element={<Curso />} />
         <Route path="/horario" element={<Horario />} />
@@ -145,41 +112,6 @@ createRoot(document.getElementById('root')).render(
         <Route path="/ActualizarNoticia/:id" element={<ActualizarNoticia />} />
         <Route path="/VerNoticia/:id" element={<VerNoticia />} />
         <Route path="/VerAula/:id" element={<VerAula />} />
-<<<<<<< HEAD
-        <Route path="/Trabajos" element={<Trabajos />} />
-        <Route path="/Notas" element={<Notas />} />
-        <Route path="/Personas/:id" element={<Personas />} />
-        <Route path="/CrearTrabajo" element={<CrearTrabajo />} />
-        <Route path="/ActualizarTrabajo" element={<ActualizarTrabajo />} />
-        <Route path="/VerTrabajo" element={<VerTrabajo />} />
-        <Route path="/VerTrabajoEntregado" element={<VerTrabajoEntregado />} />
-
-        {/*--Aqui los links del Coordinador--*/}
-        <Route path="/PrincipalCoordinador" element={<PrincipalCoordinador />} />
-        <Route path="/ActualizarHorarios/:id" element={<ActualizarHorarios />} />
-        <Route path="/ActualizarNoticias/:id" element={<ActualizarNoticias />} />
-        <Route path="/CrearCursos" element={<CrearCursos />} />
-        <Route path="/CrearHorarios" element={<CrearHorarios />} />
-        <Route path="/CrearNoticias" element={<CrearNoticias />} />
-        <Route path="/Cursos" element={<Cursos />} />
-        <Route path="/Grados" element={<Grados />} />
-        <Route path="/Horarios" element={<Horarios />} />
-        <Route path="/Jornadas" element={<Jornadas />} />
-        <Route path="/Materias" element={<Materias />} />
-        <Route path="/Noticias" element={<Noticias />} />
-        <Route path="/VerCursos/:id" element={<VerCursos />} />
-        <Route path="/VerHorarios/:id" element={<VerHorarios />} />
-        <Route path="/VerNoticias/:id" element={<VerNoticias />} />
-        <Route path="/Perfil" element={<Perfil />} />
-
-
-
-        {/*--Aqui los links del Profesor--*/}
-        <Route path="/PrincipalProfesor" element={<PrincipalProfesor />} />
-
-        {/*--Aqui los links del Alumno--*/}
-        <Route path="/PrincipalAlumno" element={<PrincipalAlumno />} />
-=======
         <Route path="/Trabajos/:id" element={<Trabajos />} />
         <Route path="/Notas/:id" element={<Notas />} />
         <Route path="/Personas/:id" element={<Personas />} />
@@ -240,7 +172,6 @@ createRoot(document.getElementById('root')).render(
         <Route path="/TrabajoAlumno/:id" element={<TrabajoAlumno />} />
         <Route path="/PersonaAlumno/:id" element={<PersonaAlumno />} />
         <Route path="/VerTrabajoAlumno/:trabajoId/:aulaId" element={<VerTrabajoAlumno />} />
->>>>>>> origin/ramajohan
 
       </Routes>
     </BrowserRouter>
