@@ -60,7 +60,7 @@ const mysql = require("mysql2");
 const conexion = mysql.createConnection({
     host: "127.0.0.1",   // Dirección del host
     user: "root",        // Usuario para la conexión
-    password: "4580",        // Contraseña del usuario
+    password: "SENA",        // Contraseña del usuario
     database: "EduMultiPro", // Nombre de la base de datos
     port: 3306,          // Puerto de conexión (default para MySQL)
 });

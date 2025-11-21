@@ -715,7 +715,7 @@ router.post("/Horarios", upload.single('imagen'), (req, res) => {
     `;
     conexion.query(query, [titulo, imagen, descripcion, profesor_id || null, curso_id || null], (error, result) => {
       if (error) return res.status(500).json({ error: "Error al guardar horario" });
-      res.json({ mensaje: "Horario creado exitosamente" });
+      res.json({ mensaje: "Horario creado exitosamente", id: result.insertId });
     });
   });
 });
