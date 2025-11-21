@@ -55,7 +55,7 @@ function PerfilCoordinador(){
                         <div className="col-10" id="contenidoTabla">
 
                             <div className="tituloPerfilCoordinador">
-                                <h1>Mi Infromacion</h1>
+                                <h1>Mi Informacion</h1>
                             </div>
                             <div className="contenidoTablaCoordinador2">
                                 <table id='PerfilUsuario'>

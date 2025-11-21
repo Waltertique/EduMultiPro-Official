@@ -1,0 +1,629 @@
+{
+  "id": "559bb50e-713e-413b-b15e-07c91fe77b04",
+  "version": "2.0",
+  "name": "Noticias",
+  "url": "http://localhost:5173/NoticiaCoordinador",
+  "tests": [{
+    "id": "a9b7cc77-7278-43f7-9661-8ed54f52cf60",
+    "name": "verNoticias",
+    "commands": [{
+      "id": "fd2599d7-a72c-4e65-ad45-39e6265188e6",
+      "comment": "",
+      "command": "open",
+      "target": "/NoticiaCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "96fe8810-35d5-44b5-b9e0-41ca26218708",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "adac7053-b254-41ca-bfbb-e42bee9f147e",
+      "comment": "",
+      "command": "click",
+      "target": "id=btninformacion",
+      "targets": [
+        ["id=btninformacion", "id"],
+        ["css=tr:nth-child(1) #btninformacion", "css:finder"],
+        ["xpath=//button[@id='btninformacion']", "xpath:attributes"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[4]/a/button", "xpath:idRelative"],
+        ["xpath=//td[4]/a/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6262bcab-c029-4c4d-9f08-01a4f8bfd898",
+      "comment": "",
+      "command": "click",
+      "target": "id=btnAgregarUsuario",
+      "targets": [
+        ["id=btnAgregarUsuario", "id"],
+        ["css=#btnAgregarUsuario", "css:finder"],
+        ["xpath=//button[@id='btnAgregarUsuario']", "xpath:attributes"],
+        ["xpath=//div[@id='ttbtn2']/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4423b604-b457-433e-9651-c06b9a870b67",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "70614495-bf32-4898-8481-30f25d60aba4",
+    "name": "modificarNoticias",
+    "commands": [{
+      "id": "9e6bcadf-de7d-4191-8b3e-d0fcde5e710b",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/NoticiaCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "52ac7161-22cb-4de1-a349-dbab79f7646a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2b040ea2-002a-44f2-8939-90d5eb367b23",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .modificar",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[5]/a/button", "xpath:idRelative"],
+        ["xpath=//td[5]/a/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fee43e59-d9f8-4238-9920-962ff0aa10e5",
+      "comment": "",
+      "command": "click",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3039e0ec-d328-454f-be05-22b46860d4e8",
+      "comment": "",
+      "command": "type",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "lanzamiento"
+    }, {
+      "id": "e3289551-57fa-41a9-ab8e-52a6cbfd32a1",
+      "comment": "",
+      "command": "click",
+      "target": "name=encabezado",
+      "targets": [
+        ["name=encabezado", "name"],
+        ["css=textarea:nth-child(2)", "css:finder"],
+        ["xpath=//textarea[@name='encabezado']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d97e7cf-0f0d-49df-a972-0231729d5fc0",
+      "comment": "",
+      "command": "type",
+      "target": "name=encabezado",
+      "targets": [
+        ["name=encabezado", "name"],
+        ["css=textarea:nth-child(2)", "css:finder"],
+        ["xpath=//textarea[@name='encabezado']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Transformando la gestión educativa"
+    }, {
+      "id": "e069352b-d291-4ce2-babb-21e6def8c1f7",
+      "comment": "",
+      "command": "click",
+      "target": "name=descripcion1",
+      "targets": [
+        ["name=descripcion1", "name"],
+        ["css=textarea:nth-child(3)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion1']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[2]", "xpath:idRelative"],
+        ["xpath=//textarea[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d7bee05b-30f9-4812-9509-419d5656c7ee",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion1",
+      "targets": [
+        ["name=descripcion1", "name"],
+        ["css=textarea:nth-child(3)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion1']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[2]", "xpath:idRelative"],
+        ["xpath=//textarea[2]", "xpath:position"]
+      ],
+      "value": "Apple ha presentado oficialmente su nuevo iPhone "
+    }, {
+      "id": "93095455-e3bc-439d-980e-a35b95bfd0de",
+      "comment": "",
+      "command": "click",
+      "target": "name=descripcion2",
+      "targets": [
+        ["name=descripcion2", "name"],
+        ["css=textarea:nth-child(4)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion2']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[3]", "xpath:idRelative"],
+        ["xpath=//textarea[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e57c5a7-b231-4a4f-9753-9aed82b3f6c0",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion2",
+      "targets": [
+        ["name=descripcion2", "name"],
+        ["css=textarea:nth-child(4)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion2']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[3]", "xpath:idRelative"],
+        ["xpath=//textarea[3]", "xpath:position"]
+      ],
+      "value": "Una de las novedades más destacadas es el asistente inteligente renovado, que no solo responde preguntas sino que también anticipa necesidades, como sugerir rutas menos congestionadas"
+    }, {
+      "id": "a3d57a3a-f65b-4bcf-b630-b0e42ffe13be",
+      "comment": "",
+      "command": "click",
+      "target": "name=descripcion3",
+      "targets": [
+        ["name=descripcion3", "name"],
+        ["css=textarea:nth-child(5)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion3']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[4]", "xpath:idRelative"],
+        ["xpath=//textarea[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3902528-087d-4d15-a21e-f70aade1af23",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion3",
+      "targets": [
+        ["name=descripcion3", "name"],
+        ["css=textarea:nth-child(5)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion3']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[4]", "xpath:idRelative"],
+        ["xpath=//textarea[4]", "xpath:position"]
+      ],
+      "value": "Los analistas prevén que esta evolución podría marcar una nueva etapa en la interacción con los smartphones."
+    }, {
+      "id": "f3b34401-94f9-4b98-9e39-3008bf402d45",
+      "comment": "",
+      "command": "click",
+      "target": "name=imagen1",
+      "targets": [
+        ["name=imagen1", "name"],
+        ["css=div:nth-child(8) > input", "css:finder"],
+        ["xpath=//input[@name='imagen1']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d02538c-84a2-4bce-91c6-ba6ef72aadbc",
+      "comment": "",
+      "command": "echo",
+      "target": "Simulando carga de imagen",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac96a455-b4b6-45fd-bd9a-ca1796753081",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(11)",
+      "targets": [
+        ["css=button:nth-child(11)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "945e5c80-42bc-45f9-b68d-acebe974e598",
+    "name": "crearNoticias",
+    "commands": [{
+      "id": "38d42725-6070-47dc-a333-a421820c17ba",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/NoticiaCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4d791bdb-fbc4-4c02-996d-71ed6cdecb34",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aeacf6b4-2bff-4522-b5a2-878be3e97b5b",
+      "comment": "",
+      "command": "click",
+      "target": "id=btnAgregarNoticia",
+      "targets": [
+        ["id=btnAgregarNoticia", "id"],
+        ["css=#btnAgregarNoticia", "css:finder"],
+        ["xpath=//button[@id='btnAgregarNoticia']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear Noticia')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "24d0c76e-7a71-45cc-aac3-990e4f2a6ffc",
+      "comment": "",
+      "command": "click",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d5d8670-a65a-4183-99ab-827c83bce8e0",
+      "comment": "",
+      "command": "type",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Nueva noticia"
+    }, {
+      "id": "5c225598-ce47-4bb2-9b89-66283b91e195",
+      "comment": "",
+      "command": "click",
+      "target": "name=encabezado",
+      "targets": [
+        ["name=encabezado", "name"],
+        ["css=textarea:nth-child(2)", "css:finder"],
+        ["xpath=//textarea[@name='encabezado']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "95b3a696-2dc3-4a0f-84ab-2c84c4e079ab",
+      "comment": "",
+      "command": "type",
+      "target": "name=encabezado",
+      "targets": [
+        ["name=encabezado", "name"],
+        ["css=textarea:nth-child(2)", "css:finder"],
+        ["xpath=//textarea[@name='encabezado']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "nuevas noticias "
+    }, {
+      "id": "b8618714-3921-4441-9338-47cb9db30a6b",
+      "comment": "",
+      "command": "click",
+      "target": "name=descripcion1",
+      "targets": [
+        ["name=descripcion1", "name"],
+        ["css=textarea:nth-child(3)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion1']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[2]", "xpath:idRelative"],
+        ["xpath=//textarea[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "91f7eaca-9f95-4cb7-b430-bcfd86d4d7c3",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion1",
+      "targets": [
+        ["name=descripcion1", "name"],
+        ["css=textarea:nth-child(3)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion1']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[2]", "xpath:idRelative"],
+        ["xpath=//textarea[2]", "xpath:position"]
+      ],
+      "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\n\\n\\n\\n"
+    }, {
+      "id": "2443c461-8c00-4b1b-a380-4dbb9c3a5795",
+      "comment": "",
+      "command": "click",
+      "target": "name=descripcion2",
+      "targets": [
+        ["name=descripcion2", "name"],
+        ["css=textarea:nth-child(4)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion2']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[3]", "xpath:idRelative"],
+        ["xpath=//textarea[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "317aa930-2f0b-4dba-88d9-7372dcf4da77",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion2",
+      "targets": [
+        ["name=descripcion2", "name"],
+        ["css=textarea:nth-child(4)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion2']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[3]", "xpath:idRelative"],
+        ["xpath=//textarea[3]", "xpath:position"]
+      ],
+      "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\n\\n\\n\\n"
+    }, {
+      "id": "4c049d62-8c21-452c-bfdc-46edf60d0bd5",
+      "comment": "",
+      "command": "click",
+      "target": "name=descripcion3",
+      "targets": [
+        ["name=descripcion3", "name"],
+        ["css=textarea:nth-child(5)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion3']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[4]", "xpath:idRelative"],
+        ["xpath=//textarea[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ac8bccf-8b39-4999-ba26-bfdcd03afcce",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion3",
+      "targets": [
+        ["name=descripcion3", "name"],
+        ["css=textarea:nth-child(5)", "css:finder"],
+        ["xpath=//textarea[@name='descripcion3']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea[4]", "xpath:idRelative"],
+        ["xpath=//textarea[4]", "xpath:position"]
+      ],
+      "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\n\\n\\n\\n"
+    }, {
+      "id": "90170139-908f-4b16-86d4-96d515787c53",
+      "comment": "",
+      "command": "click",
+      "target": "name=fecha",
+      "targets": [
+        ["name=fecha", "name"],
+        ["css=input:nth-child(6)", "css:finder"],
+        ["xpath=//input[@name='fecha']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bed0d247-3582-432d-8080-a399294e59a0",
+      "comment": "",
+      "command": "type",
+      "target": "name=fecha",
+      "targets": [
+        ["name=fecha", "name"],
+        ["css=input:nth-child(6)", "css:finder"],
+        ["xpath=//input[@name='fecha']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "2025-11-14"
+    }, {
+      "id": "9b85dee0-4f42-46fb-92b4-b07788be8300",
+      "comment": "",
+      "command": "click",
+      "target": "name=imagen1",
+      "targets": [
+        ["name=imagen1", "name"],
+        ["css=input:nth-child(8)", "css:finder"],
+        ["xpath=//input[@name='imagen1']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f724330-0180-4398-a258-8a1320fc4483",
+      "comment": "",
+      "command": "click",
+      "target": "name=imagen2",
+      "targets": [
+        ["name=imagen2", "name"],
+        ["css=input:nth-child(10)", "css:finder"],
+        ["xpath=//input[@name='imagen2']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c78f2f40-160b-4385-ac78-be3f27a7a913",
+      "comment": "",
+      "command": "click",
+      "target": "name=imagen3",
+      "targets": [
+        ["name=imagen3", "name"],
+        ["css=input:nth-child(12)", "css:finder"],
+        ["xpath=//input[@name='imagen3']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input[5]", "xpath:idRelative"],
+        ["xpath=//input[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b355ff4-3b36-4364-a7a9-31ba8c415a67",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "name=tipo_noticia_id",
+      "targets": [
+        ["name=tipo_noticia_id", "name"],
+        ["css=select", "css:finder"],
+        ["xpath=//select[@name='tipo_noticia_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-452.3999938964844,-352.70001220703125"
+    }, {
+      "id": "a333c9ad-d863-4678-84d5-eb95821e73f0",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "name=tipo_noticia_id",
+      "targets": [
+        ["name=tipo_noticia_id", "name"],
+        ["css=select", "css:finder"],
+        ["xpath=//select[@name='tipo_noticia_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-452.3999938964844,-352.70001220703125"
+    }, {
+      "id": "360e1ec3-1b94-48e6-80cb-0aa4fb890506",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "name=tipo_noticia_id",
+      "targets": [
+        ["name=tipo_noticia_id", "name"],
+        ["css=select", "css:finder"],
+        ["xpath=//select[@name='tipo_noticia_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-452.3999938964844,-352.70001220703125"
+    }, {
+      "id": "4d128943-3b4a-4560-beec-a4b1c777f3a1",
+      "comment": "",
+      "command": "click",
+      "target": "name=tipo_noticia_id",
+      "targets": [
+        ["name=tipo_noticia_id", "name"],
+        ["css=select", "css:finder"],
+        ["xpath=//select[@name='tipo_noticia_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb2bec28-ddd7-4816-8856-a58619126774",
+      "comment": "",
+      "command": "select",
+      "target": "name=tipo_noticia_id",
+      "targets": [],
+      "value": "label=Ninguna de las anteriores"
+    }, {
+      "id": "eb37550c-dd93-4182-8e7d-a20504a52306",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(5)",
+      "targets": [
+        ["css=option:nth-child(5)", "css:finder"],
+        ["xpath=//option[@value='4']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select/option[5]", "xpath:idRelative"],
+        ["xpath=//option[5]", "xpath:position"],
+        ["xpath=//option[contains(.,'Ninguna de las anteriores')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9c81d7d8-8ecb-47c2-a697-bd5fe9a50a86",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(14)",
+      "targets": [
+        ["css=button:nth-child(14)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear Noticia')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "79dd8a75-8b6b-46cb-a18d-e30d338fafb3",
+    "name": "eliminarNoticia",
+    "commands": [{
+      "id": "e8eece91-3081-4ac5-8f2d-693fc8a622ea",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/NoticiaCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ca6c018a-732b-48ba-acea-cbd21d5698ac",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1321x692",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6a726139-161b-4442-9916-abdca03ce605",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(7) .btn-icon > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(7) .btn-icon > .fa-solid", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr[7]/td[6]/button/i", "xpath:idRelative"],
+        ["xpath=//tr[7]/td[6]/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2474f53-05a5-4386-9479-ec7bb02db928",
+      "comment": "",
+      "command": "chooseCancelOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c3cfe44b-5fc7-4129-bcae-a50d5efc543d",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar esta Noticia?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0ceb1b30-02ed-47fe-93dd-7d0469bb8d97",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bbdfd226-5873-4833-a740-53db59954292",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "694ea99e-cf32-4166-8e34-ca456537b43b",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a9b7cc77-7278-43f7-9661-8ed54f52cf60"]
+  }],
+  "urls": ["http://localhost:5173/", "http://localhost:5173/NoticiaCoordinador"],
+  "plugins": []
+}

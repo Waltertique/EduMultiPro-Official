@@ -1,0 +1,207 @@
+{
+  "id": "a89ae8bb-50ab-4b0f-9c52-4efe2435006e",
+  "version": "2.0",
+  "name": "jornadaCoordinador",
+  "url": "http://localhost:5173/jornadaCoordinador",
+  "tests": [{
+    "id": "fa641a40-8def-4d44-ac96-a3440590a639",
+    "name": "crearJornada",
+    "commands": [{
+      "id": "16f85f99-5e02-41a0-90d3-7df7f1fcc59a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/PrincipalCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "875d22b6-e26a-4d9d-913d-72f4b6c68de1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6f0a0cd3-b6bf-4ce0-ba03-24c76888d669",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(3) h1",
+      "targets": [
+        ["css=a:nth-child(3) h1", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[3]/div/h1", "xpath:idRelative"],
+        ["xpath=//a[3]/div/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Jornada')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "09d81ff7-f5cb-4c29-9516-e2a5fd9f34ee",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(3) h1",
+      "targets": [
+        ["css=a:nth-child(3) h1", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[3]/div/h1", "xpath:idRelative"],
+        ["xpath=//a[3]/div/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Jornada')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8f1d7a47-2d64-42f3-86fe-c23db7942194",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=a:nth-child(3) h1",
+      "targets": [
+        ["css=a:nth-child(3) h1", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[3]/div/h1", "xpath:idRelative"],
+        ["xpath=//a[3]/div/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Jornada')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6be43dad-91be-4aac-8bec-3a5a9bdbed21",
+      "comment": "",
+      "command": "click",
+      "target": "name=jornada_nombre",
+      "targets": [
+        ["name=jornada_nombre", "name"],
+        ["css=form > input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='jornada_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "89c1fef5-c7bb-488d-b28b-5eaf7114d619",
+      "comment": "",
+      "command": "type",
+      "target": "name=jornada_nombre",
+      "targets": [
+        ["name=jornada_nombre", "name"],
+        ["css=form > input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='jornada_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Noche"
+    }, {
+      "id": "a2dd52cb-5d8d-417e-adc4-0df13023fa04",
+      "comment": "",
+      "command": "type",
+      "target": "name=jornada_descripcion",
+      "targets": [
+        ["name=jornada_descripcion", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='jornada_descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "Jornada de noche"
+    }, {
+      "id": "50c8e066-c131-4af1-8d5e-1265ba8dddfa",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > button",
+      "targets": [
+        ["css=form > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar Jornada')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "5325e664-1165-48f7-a7df-ff9ecc768370",
+    "name": "modificarJornada",
+    "commands": [{
+      "id": "22c13509-ce1f-4642-9107-df0f7f1d406d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/jornadaCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "16bfb12c-6c29-4d0f-b006-fd1470d13f45",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0fed58c9-3ded-4376-9f63-88777edf3be1",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(5) .modificar",
+      "targets": [
+        ["css=tr:nth-child(5) .modificar", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr[5]/td[4]/button", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[4]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6960f8a5-cd71-4463-8d9d-38fa1ea75663",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarJornadaNombre",
+      "targets": [
+        ["id=editarJornadaNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarJornadaNombre", "css:finder"],
+        ["xpath=//input[@id='editarJornadaNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarJornada']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "74b0ae52-42e1-49d6-8e8e-fd1757fc4fbc",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarDescripcion",
+      "targets": [
+        ["id=editarDescripcion", "id"],
+        ["name=descripcion", "name"],
+        ["css=#editarDescripcion", "css:finder"],
+        ["xpath=//input[@id='editarDescripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarJornada']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a6c3d4c8-3d7f-424a-84ca-48a0bf675149",
+      "comment": "",
+      "command": "type",
+      "target": "id=editarDescripcion",
+      "targets": [
+        ["id=editarDescripcion", "id"],
+        ["name=descripcion", "name"],
+        ["css=#editarDescripcion", "css:finder"],
+        ["xpath=//input[@id='editarDescripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarJornada']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "Nueva jornada para el grupo de la noche"
+    }, {
+      "id": "488bb84b-ac69-402b-9ffe-146e89d39297",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-guardar5",
+      "targets": [
+        ["css=.btn-guardar5", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarJornada']/form/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2298441e-8e8b-4c27-8ded-0324123f2af5",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["fa641a40-8def-4d44-ac96-a3440590a639"]
+  }],
+  "urls": ["http://localhost:5173/PrincipalCoordinador", "http://localhost:5173/jornadaCoordinador"],
+  "plugins": []
+}

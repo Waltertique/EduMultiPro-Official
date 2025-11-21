@@ -1,0 +1,284 @@
+{
+  "id": "0e45df20-aa06-4208-adfb-a787aa205e61",
+  "version": "2.0",
+  "name": "Grados",
+  "url": "http://localhost:5173/gradoCoordinador",
+  "tests": [{
+    "id": "ddc0d14a-3f92-4612-8739-c159c2b32b69",
+    "name": "crearGrado",
+    "commands": [{
+      "id": "3a6d3b86-4658-4f60-87da-311f724f1a6d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/PrincipalCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bbd3800a-8362-4808-8064-f1214419a969",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1321x693",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a0e0eeb8-0d1e-4d61-b71e-b062f7309108",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(2) h1",
+      "targets": [
+        ["css=a:nth-child(2) h1", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[2]/div/h1", "xpath:idRelative"],
+        ["xpath=//a[2]/div/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Grado')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac12489e-1961-4160-95e6-b750c699575d",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(2) h1",
+      "targets": [
+        ["css=a:nth-child(2) h1", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[2]/div/h1", "xpath:idRelative"],
+        ["xpath=//a[2]/div/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Grado')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "da02980e-609a-49ca-8562-5bb0dbfd3f9a",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=a:nth-child(2) h1",
+      "targets": [
+        ["css=a:nth-child(2) h1", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[2]/div/h1", "xpath:idRelative"],
+        ["xpath=//a[2]/div/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Grado')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9dec4fcd-aad1-4c61-89dd-aea7aaa7c9f3",
+      "comment": "",
+      "command": "click",
+      "target": "name=grado_nombre",
+      "targets": [
+        ["name=grado_nombre", "name"],
+        ["css=form > input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='grado_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "60d916f2-de7e-45f6-b0b5-e5ef5f354d6b",
+      "comment": "",
+      "command": "type",
+      "target": "name=grado_nombre",
+      "targets": [
+        ["name=grado_nombre", "name"],
+        ["css=form > input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='grado_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "nuevo grado"
+    }, {
+      "id": "3f5245ad-77a2-40c0-adc6-27777346ba1e",
+      "comment": "",
+      "command": "type",
+      "target": "name=grado_descripcion",
+      "targets": [
+        ["name=grado_descripcion", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='grado_descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "este es un nuevo grado creado"
+    }, {
+      "id": "31c5cbb2-d59e-4135-8bb9-6f33889e2d65",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > button",
+      "targets": [
+        ["css=form > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar Grado')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "d02dacec-da17-4701-9ef2-64df108910fb",
+    "name": "modificarGrado",
+    "commands": [{
+      "id": "9ec33bde-ed28-40e7-b76f-24e1af91446b",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/gradoCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "99abe063-37c7-4f0b-8ae2-0063f2e94be8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1321x693",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "971fe188-768b-4957-8cd8-798edea7cf16",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dt-paging-button:nth-child(4)",
+      "targets": [
+        ["css=.dt-paging-button:nth-child(4)", "css:finder"],
+        ["xpath=(//button[@type='button'])[15]", "xpath:attributes"],
+        ["xpath=//div[@id='tablaUsuarios_wrapper']/div[3]/div[2]/div/nav/button[4]", "xpath:idRelative"],
+        ["xpath=//button[4]", "xpath:position"],
+        ["xpath=//button[contains(.,'2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a08cc9aa-f8d2-4fa3-912e-822266d5f1ce",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) .modificar > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(2) .modificar > .fa-solid", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr[2]/td[4]/button/i", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[4]/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2afe162a-4a9a-48bd-89b0-64897cd5b9fe",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarGradoNombre",
+      "targets": [
+        ["id=editarGradoNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarGradoNombre", "css:finder"],
+        ["xpath=//input[@id='editarGradoNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarGrado']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f15450b9-97a1-4455-9e87-118dd64d6415",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarGradoNombre",
+      "targets": [
+        ["id=editarGradoNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarGradoNombre", "css:finder"],
+        ["xpath=//input[@id='editarGradoNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarGrado']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "528c1011-3d8d-4f81-9611-8cc53abd9a90",
+      "comment": "",
+      "command": "type",
+      "target": "id=editarGradoNombre",
+      "targets": [
+        ["id=editarGradoNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarGradoNombre", "css:finder"],
+        ["xpath=//input[@id='editarGradoNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarGrado']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/input[2]", "xpath:position"]
+      ],
+      "value": "once02"
+    }, {
+      "id": "09f4a6b6-5065-4ba2-9e9c-994ba7cb03b1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-guardar4",
+      "targets": [
+        ["css=.btn-guardar4", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarGrado']/form/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "008cde62-ea1f-4023-82d5-187f0b99952c",
+    "name": "eliminarGrado",
+    "commands": [{
+      "id": "be9b5e3c-bde3-48bd-80b2-e6a21acf8d29",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/gradoCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e4c96288-2878-40b3-af29-2bcb15fad0c4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1321x693",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ae905fd3-b702-4d37-b7ad-e32cd551139a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dt-paging-button:nth-child(4)",
+      "targets": [
+        ["css=.dt-paging-button:nth-child(4)", "css:finder"],
+        ["xpath=(//button[@type='button'])[15]", "xpath:attributes"],
+        ["xpath=//div[@id='tablaUsuarios_wrapper']/div[3]/div[2]/div/nav/button[4]", "xpath:idRelative"],
+        ["xpath=//button[4]", "xpath:position"],
+        ["xpath=//button[contains(.,'2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1fc6cfcb-91e9-49f6-9bb6-d1ab0a241dfb",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d9b0e4ec-5ba9-4f5a-97a4-4abf68e31140",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) .btn-icon",
+      "targets": [
+        ["css=tr:nth-child(2) .btn-icon", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr[2]/td[5]/button", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad97d1a6-73d1-4657-9176-52f5391843e0",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac381007-a99e-4f1b-91ac-c4722aafef6f",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Grado eliminado exitosamente",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "85811441-a597-4cac-b9b9-8a0122f2fe77",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["ddc0d14a-3f92-4612-8739-c159c2b32b69"]
+  }],
+  "urls": ["http://localhost:5173/PrincipalCoordinador", "http://localhost:5173/gradoCoordinador"],
+  "plugins": []
+}

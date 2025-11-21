@@ -1,0 +1,554 @@
+{
+  "id": "620a8066-9b50-45bc-8ba3-17ab6e972907",
+  "version": "2.0",
+  "name": "Horarios",
+  "url": "http://localhost:5173/HorarioCoordinador",
+  "tests": [{
+    "id": "4f52c2ca-ce64-4a4c-ac11-a309e01e04cb",
+    "name": "crearHorario",
+    "commands": [{
+      "id": "f6e39862-2f19-4744-89fd-6b993b3b5269",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/HorarioCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "573ffecc-f498-432c-957e-a2d7a1d955dd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1321x692",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "831350c7-7e35-45b8-bc83-a7e5296806ae",
+      "comment": "",
+      "command": "click",
+      "target": "id=btnAgregarHorario",
+      "targets": [
+        ["id=btnAgregarHorario", "id"],
+        ["css=#btnAgregarHorario", "css:finder"],
+        ["xpath=//button[@id='btnAgregarHorario']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear Horario')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a1740c93-6e95-4b0d-ae88-9135b5d6f3b3",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.fas",
+      "targets": [
+        ["css=.fas", "css:finder"],
+        ["xpath=//button[@id='btnAgregarUsuario']/i", "xpath:idRelative"],
+        ["xpath=//a/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5a157420-ed62-421c-b995-8ff633258ffc",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.fas",
+      "targets": [
+        ["css=.fas", "css:finder"],
+        ["xpath=//button[@id='btnAgregarUsuario']/i", "xpath:idRelative"],
+        ["xpath=//a/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5cb98961-1ac0-4a7a-97be-69d257c5f848",
+      "comment": "",
+      "command": "click",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e5324985-5275-4631-9d6f-788a72219641",
+      "comment": "",
+      "command": "type",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Nuevo Horario"
+    }, {
+      "id": "ee761be2-362a-4311-9261-465a08a6f7d9",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion",
+      "targets": [
+        ["name=descripcion", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Horario para curso nuevo"
+    }, {
+      "id": "2a046502-d467-409e-a85c-a4975df496fe",
+      "comment": "",
+      "command": "click",
+      "target": "name=imagen",
+      "targets": [
+        ["name=imagen", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='imagen']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4fa2cbd7-794a-4a1e-8161-b79f8aab54b7",
+      "comment": "",
+      "command": "echo",
+      "target": "simulando carga de imagen ",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c3f244bc-914c-45bf-b98e-9974df23a07b",
+      "comment": "",
+      "command": "click",
+      "target": "name=profesor_id",
+      "targets": [
+        ["name=profesor_id", "name"],
+        ["css=select:nth-child(4)", "css:finder"],
+        ["xpath=//select[@name='profesor_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5380b564-b2f9-4720-a0a8-6cf9f62e478f",
+      "comment": "",
+      "command": "select",
+      "target": "name=profesor_id",
+      "targets": [],
+      "value": "label=Carlos Torres"
+    }, {
+      "id": "c4663f45-a646-47f6-bcf6-a255a49fac72",
+      "comment": "",
+      "command": "click",
+      "target": "css=select:nth-child(4) > option:nth-child(4)",
+      "targets": [
+        ["css=select:nth-child(4) > option:nth-child(4)", "css:finder"],
+        ["xpath=//option[@value='5']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select/option[4]", "xpath:idRelative"],
+        ["xpath=//option[4]", "xpath:position"],
+        ["xpath=//option[contains(.,'Carlos Torres')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e0e40712-e025-4253-aec8-4a1023d11d06",
+      "comment": "",
+      "command": "click",
+      "target": "id=selecCurso",
+      "targets": [
+        ["id=selecCurso", "id"],
+        ["name=curso_id", "name"],
+        ["css=#selecCurso", "css:finder"],
+        ["xpath=//select[@id='selecCurso']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3609fa8e-0685-4176-a51f-b4ea99282266",
+      "comment": "",
+      "command": "click",
+      "target": "css=#selecCurso > option:nth-child(1)",
+      "targets": [
+        ["css=#selecCurso > option:nth-child(1)", "css:finder"],
+        ["xpath=(//option[@value=''])[2]", "xpath:attributes"],
+        ["xpath=//select[@id='selecCurso']/option", "xpath:idRelative"],
+        ["xpath=//select[2]/option", "xpath:position"],
+        ["xpath=//option[contains(.,'Selecciona un curso (opcional)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e72a6845-8021-4bf5-adc9-28b19514dd4a",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > button",
+      "targets": [
+        ["css=form > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear horario')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "9111ba21-8bcd-4c75-a147-c8d4b8150db2",
+    "name": "eliminarHorario",
+    "commands": [{
+      "id": "1ed87d0c-db89-4e81-a550-3f4427b0a16e",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/HorarioCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2aab0fc1-42ce-4c65-812b-ec9de71a27f9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1321x692",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4c222de5-83af-4759-9b40-8e07fda2c9b4",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "babc1736-dd40-44b5-aacc-b8a280a8c1b9",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(6) .btn-icon > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(6) .btn-icon > .fa-solid", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr[6]/td[8]/button/i", "xpath:idRelative"],
+        ["xpath=//tr[6]/td[8]/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8765c688-ba20-44c5-aa2e-cdefa344a724",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar este Horario?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "12d6014a-84a8-458c-8954-832621a02339",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "20b34d9e-359b-4a44-be15-c42f34efc118",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,251)",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "16f81038-d1c7-4137-a767-1deb18107950",
+    "name": "verHorario",
+    "commands": [{
+      "id": "8d64246f-2bcb-4861-b204-2af24927b0f2",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/HorarioCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "89b2935b-b563-4b97-bed9-9874b9bf38d2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1321x692",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c538ffa2-5c23-44d3-8983-cfa34bcb5d6c",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) #btninformacion > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(3) #btninformacion > .fa-solid", "css:finder"],
+        ["xpath=(//button[@id='btninformacion']/i)[3]", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[6]/a/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7034c8fc-2636-43cb-b0ce-e256c657657e",
+      "comment": "",
+      "command": "click",
+      "target": "id=btnAgregarUsuario",
+      "targets": [
+        ["id=btnAgregarUsuario", "id"],
+        ["css=#btnAgregarUsuario", "css:finder"],
+        ["xpath=//button[@id='btnAgregarUsuario']", "xpath:attributes"],
+        ["xpath=//div[@id='ttbtn']/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "187551db-65cd-41a9-8f94-b1c2bb13bcf7",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "4caa99ce-7d9d-4e05-acdf-484acf4398dd",
+    "name": "modificarHorario",
+    "commands": [{
+      "id": "4015f100-7ebe-4949-87fd-e5255300b38d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/HorarioCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bd1a5f58-165f-4e7a-bbba-43b23f781a6f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1321x692",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "898bce48-c4f7-45c3-b663-004016c617eb",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(6) .modificar",
+      "targets": [
+        ["css=tr:nth-child(6) .modificar", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr[6]/td[7]/a/button", "xpath:idRelative"],
+        ["xpath=//tr[6]/td[7]/a/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7528f559-ccc4-4ec4-b695-6f002cb4cd30",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,243)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "208a4fce-7cd3-4c83-83fb-8436a298589f",
+      "comment": "",
+      "command": "click",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "086c108c-df89-4e99-aa5a-9d110f3f1dcb",
+      "comment": "",
+      "command": "type",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Nuevo Horario modificado"
+    }, {
+      "id": "e0324d3e-9d06-49de-92df-ef17369e1d24",
+      "comment": "",
+      "command": "click",
+      "target": "name=descripcion",
+      "targets": [
+        ["name=descripcion", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3ad9f417-595b-46c3-9a3a-480de8bab634",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion",
+      "targets": [
+        ["name=descripcion", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Horario para curso nuevo que se modifico"
+    }, {
+      "id": "9aeceea3-3177-44fd-997d-bda6dba29d4e",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "name=profesor_id",
+      "targets": [
+        ["name=profesor_id", "name"],
+        ["css=select:nth-child(4)", "css:finder"],
+        ["xpath=//select[@name='profesor_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-578.7666625976562,-291.70001220703125"
+    }, {
+      "id": "aa867f89-d0f9-4f55-ba25-c1c69e8d1b6c",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "name=profesor_id",
+      "targets": [
+        ["name=profesor_id", "name"],
+        ["css=select:nth-child(4)", "css:finder"],
+        ["xpath=//select[@name='profesor_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-578.7666625976562,-291.70001220703125"
+    }, {
+      "id": "ab6927c8-a7f2-4ade-8db6-923523e883ab",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "name=profesor_id",
+      "targets": [
+        ["name=profesor_id", "name"],
+        ["css=select:nth-child(4)", "css:finder"],
+        ["xpath=//select[@name='profesor_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-578.7666625976562,-291.70001220703125"
+    }, {
+      "id": "600aa668-300b-49f4-97ac-4ea4708d2c7a",
+      "comment": "",
+      "command": "click",
+      "target": "name=profesor_id",
+      "targets": [
+        ["name=profesor_id", "name"],
+        ["css=select:nth-child(4)", "css:finder"],
+        ["xpath=//select[@name='profesor_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1dd586dd-fd3b-4968-97cd-20f9f16108b9",
+      "comment": "",
+      "command": "select",
+      "target": "name=profesor_id",
+      "targets": [],
+      "value": "label=Laura Hernández"
+    }, {
+      "id": "1646c1f6-294e-45c4-b761-139da405e319",
+      "comment": "",
+      "command": "click",
+      "target": "css=select:nth-child(4) > option:nth-child(3)",
+      "targets": [
+        ["css=select:nth-child(4) > option:nth-child(3)", "css:finder"],
+        ["xpath=//option[@value='4']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select/option[3]", "xpath:idRelative"],
+        ["xpath=//option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'Laura Hernández')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8f8a0baa-f4f8-4a79-b73b-73e61ac9c7c0",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "name=curso_id",
+      "targets": [
+        ["name=curso_id", "name"],
+        ["css=select:nth-child(5)", "css:finder"],
+        ["xpath=//select[@name='curso_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": "-578.7666625976562,-341.70001220703125"
+    }, {
+      "id": "5af5fe1d-24f8-4f6a-8847-2028a6b126f7",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "name=curso_id",
+      "targets": [
+        ["name=curso_id", "name"],
+        ["css=select:nth-child(5)", "css:finder"],
+        ["xpath=//select[@name='curso_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": "-578.7666625976562,-341.70001220703125"
+    }, {
+      "id": "2461e886-b25b-4731-9bdc-a51e78ef581c",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "name=curso_id",
+      "targets": [
+        ["name=curso_id", "name"],
+        ["css=select:nth-child(5)", "css:finder"],
+        ["xpath=//select[@name='curso_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": "-578.7666625976562,-341.70001220703125"
+    }, {
+      "id": "253537ad-6580-442c-81bc-0c05dc7d7c6c",
+      "comment": "",
+      "command": "click",
+      "target": "name=curso_id",
+      "targets": [
+        ["name=curso_id", "name"],
+        ["css=select:nth-child(5)", "css:finder"],
+        ["xpath=//select[@name='curso_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7ee2dceb-9fa4-4ced-ae0c-d0119563adcd",
+      "comment": "",
+      "command": "click",
+      "target": "css=select:nth-child(5) > option:nth-child(1)",
+      "targets": [
+        ["css=select:nth-child(5) > option:nth-child(1)", "css:finder"],
+        ["xpath=(//option[@value=''])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select[2]/option", "xpath:idRelative"],
+        ["xpath=//select[2]/option", "xpath:position"],
+        ["xpath=//option[contains(.,'-- Sin curso --')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "03c5057c-2d03-4462-8fbd-3259baef151d",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > button",
+      "targets": [
+        ["css=form > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b83a6f1-2ce5-4076-bc62-e67f7130eece",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f784f371-baf0-4309-9615-163de5cc26c8",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:5173/HorarioCoordinador"],
+  "plugins": []
+}
