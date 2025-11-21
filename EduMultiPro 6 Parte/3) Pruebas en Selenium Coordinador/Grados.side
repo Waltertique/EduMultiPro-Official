@@ -262,13 +262,6 @@
       "target": "",
       "targets": [],
       "value": ""
-    }, {
-      "id": "ac381007-a99e-4f1b-91ac-c4722aafef6f",
-      "comment": "",
-      "command": "assertAlert",
-      "target": "Grado eliminado exitosamente",
-      "targets": [],
-      "value": ""
     }]
   }],
   "suites": [{

@@ -193,6 +193,57 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "159b7d85-6f9f-484c-b321-a157a1674be4",
+    "name": "eliminarJornada",
+    "commands": [{
+      "id": "601621b6-2869-4d14-a1a3-73fdeaeb8b3e",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/jornadaCoordinador",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1a171fa2-2b10-4a18-b6e7-3e53ae8c3a0d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x720",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e904b199-4f70-4c6f-acc2-88082c9b27dc",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b4a37467-a9b7-4c27-886b-586feaec9434",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(5) .btn-icon",
+      "targets": [
+        ["css=tr:nth-child(5) .btn-icon", "css:finder"],
+        ["xpath=(//button[@type='button'])[6]", "xpath:attributes"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr[5]/td[5]/button", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3c3ad9d0-8c4d-4ade-a1df-13bc20059345",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar esta Jornada?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "da3ad0e1-b98b-4684-a065-3717da534a5f",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "2298441e-8e8b-4c27-8ded-0324123f2af5",
