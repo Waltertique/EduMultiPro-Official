@@ -558,7 +558,7 @@ router.post("/Grados", (req, res) => {
     if (error) {
       res.status(500).json({ error: "Error al crear el grado" });
     } else {
-      res.status(201).json({ mensaje: "Grado creada correctamente" });
+      res.status(201).json({ mensaje: "Grado creado correctamente", insertId: result.insertId });
     }
   });
 });
@@ -589,7 +589,7 @@ router.delete("/Jornadas/:id", (req, res) => {
     if (error) {
       res.status(500).json({ mensaje: "Error al eliminar el Jornada" });
     } else {
-      res.json({ mensaje: "Jornada eliminado exitosamente" });
+      res.json({ mensaje: "Jornada eliminada exitosamente" });
     }
   });
 });
@@ -609,7 +609,7 @@ router.put("/Jornadas/:id", (req, res) => {
     if (error) {
       res.status(500).json({ error: "Error al actualizar la jornada" });
     } else {
-      res.json({ mensaje: "jornada actualizado correctamente" });
+      res.json({ mensaje: "Jornada actualizada correctamente" });
     }
   });
 });
@@ -627,7 +627,7 @@ router.post("/Jornadas", (req, res) => {
     if (error) {
       res.status(500).json({ error: "Error al crear la jornada" });
     } else {
-      res.status(201).json({ mensaje: "Jornada creada correctamente" });
+      res.status(201).json({ mensaje: "Jornada creada correctamente", insertId: result.insertId });
     }
   });
 });
@@ -1441,10 +1441,10 @@ router.post(
           imagen3,
           tipo_noticia_id
         ],
-        (err2) => {
+        (err2, result) => {
           if (err2)
             return res.status(500).json({ error: "Error al crear la noticia" });
-          res.json({ mensaje: "Noticia creada exitosamente" });
+          res.json({ mensaje: "Noticia creada exitosamente", id: result.insertId });
         }
       );
     }
