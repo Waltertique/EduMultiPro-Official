@@ -558,7 +558,7 @@ router.post("/Grados", (req, res) => {
     if (error) {
       res.status(500).json({ error: "Error al crear el grado" });
     } else {
-      res.status(201).json({ mensaje: "Grado creada correctamente" });
+      res.status(201).json({ mensaje: "Grado creada correctamente", insertId: result.insertId });
     }
   });
 });
@@ -627,7 +627,7 @@ router.post("/Jornadas", (req, res) => {
     if (error) {
       res.status(500).json({ error: "Error al crear la jornada" });
     } else {
-      res.status(201).json({ mensaje: "Jornada creada correctamente" });
+      res.status(201).json({ mensaje: "Jornada creada correctamente", insertId: result.insertId });
     }
   });
 });
@@ -715,7 +715,7 @@ router.post("/Horarios", upload.single('imagen'), (req, res) => {
     `;
     conexion.query(query, [titulo, imagen, descripcion, profesor_id || null, curso_id || null], (error, result) => {
       if (error) return res.status(500).json({ error: "Error al guardar horario" });
-      res.json({ mensaje: "Horario creado exitosamente" });
+      res.json({ mensaje: "Horario creado exitosamente", insertId: result.insertId });
     });
   });
 });
@@ -835,7 +835,7 @@ router.post("/Aulas", (req, res) => {
     if (error) {
       res.status(500).json({ mensaje: "Error al crear el Aula" });
     } else {
-      res.json({ mensaje: "Aula creada exitosamente" });
+      res.json({ mensaje: "Aula creada exitosamente", insertId: result.insertId });
     }
   });
 });
@@ -923,7 +923,7 @@ router.post("/Anuncios", upload.array('archivo'), (req, res) => {
         console.error("Error al guardar anuncio:", error);
         res.status(500).json({ mensaje: "Error al crear el anuncio" });
       } else {
-        res.json({ mensaje: "Anuncio creado con éxito" });
+        res.json({ mensaje: "Anuncio creado con éxito", insertId: result.insertId });
       }
     }
   );
@@ -1010,7 +1010,7 @@ router.post("/Comentarios", (req, res) => {
         console.error("Error al crear comentario:", error);
         res.status(500).json({ mensaje: "Error al crear el comentario" });
       } else {
-        res.json({ mensaje: "Comentario creado correctamente" });
+        res.json({ mensaje: "Comentario creado correctamente", insertId: result.insertId });
       }
     }
   );
@@ -1088,7 +1088,7 @@ router.post("/CrearTrabajo", upload.array('archivos'), (req, res) => {
       return res.status(500).json({ mensaje: "Error al guardar el trabajo" });
     }
 
-    const trabajoId = result.insertId;
+    const trabajoId = result.insertId; 
 
     if (archivos && archivos.length > 0) {
       const sqlArchivos = `
@@ -1108,10 +1108,10 @@ router.post("/CrearTrabajo", upload.array('archivos'), (req, res) => {
           return res.status(500).json({ mensaje: "Error al guardar archivos" });
         }
 
-        res.status(200).json({ mensaje: "Trabajo y archivos guardados" });
+        res.status(200).json({ mensaje: "Trabajo y archivos guardados", id: trabajoId });
       });
     } else {
-      res.status(200).json({ mensaje: "Trabajo guardado sin archivos" });
+      res.status(200).json({ mensaje: "Trabajo guardado sin archivos", id: trabajoId });
     }
   });
 });
