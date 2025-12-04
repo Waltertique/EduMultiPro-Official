@@ -1,0 +1,368 @@
+{
+  "id": "04f9d790-1e67-4183-90f0-c512a61d4f38",
+  "version": "2.0",
+  "name": "7) Jornadas EduMultiPro",
+  "url": "http://localhost:5173/jornada",
+  "tests": [{
+    "id": "dfc513b8-e3be-44fe-9f0c-e5360f429553",
+    "name": "Ver Jornadas",
+    "commands": [{
+      "id": "45a0692a-716f-4723-b326-8160092b887a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/jornada",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "436cebd1-0d9f-440e-8c00-6d7df55b55a4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c21a3674-a2f3-48e3-ad80-c02f4ff58303",
+      "comment": "",
+      "command": "click",
+      "target": "css=.menu .fa-user",
+      "targets": [
+        ["css=.menu .fa-user", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a/i", "xpath:idRelative"],
+        ["xpath=//div/a/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0c18e4c2-9fb6-4501-ae60-ffdd6eab8d05",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(2) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(2) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "83530fd1-06a3-431b-b8a4-b8eaefe0fa6c",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(2) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(2) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "544bdb5f-50c7-400a-99af-09b5b0e42a7b",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=a:nth-child(2) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(2) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c3053fbd-8445-4fb3-ac4d-0f767e21b55c",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(3) > .targeta",
+      "targets": [
+        ["css=a:nth-child(3) > .targeta", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[3]/div", "xpath:idRelative"],
+        ["xpath=//a[3]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cf945589-e0d1-435d-8cc2-5e1fbc5dd2e9",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(3) > .targeta",
+      "targets": [
+        ["css=a:nth-child(3) > .targeta", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[3]/div", "xpath:idRelative"],
+        ["xpath=//a[3]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7fba92f4-2645-4cb7-9406-d9bd89045ed3",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=a:nth-child(3) > .targeta",
+      "targets": [
+        ["css=a:nth-child(3) > .targeta", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[3]/div", "xpath:idRelative"],
+        ["xpath=//a[3]/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "29637297-2a1b-46df-a9d8-214df5f51946",
+    "name": "Crear Jornada",
+    "commands": [{
+      "id": "056d402b-f557-448f-b7a8-d82d54007754",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/jornada",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c561c20c-47c0-4798-9a18-13eeee149a8c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "25c4e6da-f6fa-4464-81a2-23c49a33b318",
+      "comment": "",
+      "command": "click",
+      "target": "name=jornada_nombre",
+      "targets": [
+        ["name=jornada_nombre", "name"],
+        ["css=form > input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='jornada_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae6c66a7-7cdc-4568-a82b-e3eca593ea41",
+      "comment": "",
+      "command": "type",
+      "target": "name=jornada_nombre",
+      "targets": [
+        ["name=jornada_nombre", "name"],
+        ["css=form > input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='jornada_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "nueva jornada"
+    }, {
+      "id": "663447ef-4a8c-4649-9993-06bed17e4c76",
+      "comment": "",
+      "command": "click",
+      "target": "name=jornada_descripcion",
+      "targets": [
+        ["name=jornada_descripcion", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='jornada_descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "403bfef5-7b4b-486d-9617-b9406bb283d0",
+      "comment": "",
+      "command": "type",
+      "target": "name=jornada_descripcion",
+      "targets": [
+        ["name=jornada_descripcion", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='jornada_descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "se agrega jornada"
+    }, {
+      "id": "d287c0f5-93d6-4d7f-a4c5-679356e4b588",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > button",
+      "targets": [
+        ["css=form > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar Jornada')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "89dc9fe9-4f85-4503-a5ff-7b1bbef35c62",
+    "name": "Modificar Jornada",
+    "commands": [{
+      "id": "1818f65d-b579-4b1c-abf5-820314a572cc",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/jornada",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4ca7fc9d-f301-4e8a-bb42-9b6afe45c16b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4649f974-b9b4-48c6-9af9-ef2b83757fb5",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .modificar",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[4]/button", "xpath:idRelative"],
+        ["xpath=//td[4]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e1473f46-15b0-474e-8a43-05d321320c9b",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(1) .modificar",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[4]/button", "xpath:idRelative"],
+        ["xpath=//td[4]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "71ba088a-8003-40ae-ab1c-aad474cb0a02",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=tr:nth-child(1) .modificar",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[4]/button", "xpath:idRelative"],
+        ["xpath=//td[4]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b6d8ea2-5408-493e-a005-64f24668cf24",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarJornadaNombre",
+      "targets": [
+        ["id=editarJornadaNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarJornadaNombre", "css:finder"],
+        ["xpath=//input[@id='editarJornadaNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarJornada']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d370a47-2fde-4e42-894e-da608e124906",
+      "comment": "",
+      "command": "type",
+      "target": "id=editarJornadaNombre",
+      "targets": [
+        ["id=editarJornadaNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarJornadaNombre", "css:finder"],
+        ["xpath=//input[@id='editarJornadaNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarJornada']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/input[2]", "xpath:position"]
+      ],
+      "value": "Mañana modificada"
+    }, {
+      "id": "a613f8de-f08c-44d9-9fe1-4de32c213e42",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarDescripcion",
+      "targets": [
+        ["id=editarDescripcion", "id"],
+        ["name=descripcion", "name"],
+        ["css=#editarDescripcion", "css:finder"],
+        ["xpath=//input[@id='editarDescripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarJornada']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aaef574d-3001-4b56-a216-42c7f73313af",
+      "comment": "",
+      "command": "type",
+      "target": "id=editarDescripcion",
+      "targets": [
+        ["id=editarDescripcion", "id"],
+        ["name=descripcion", "name"],
+        ["css=#editarDescripcion", "css:finder"],
+        ["xpath=//input[@id='editarDescripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarJornada']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "jornada mañana modificada"
+    }, {
+      "id": "73fd1063-f32a-4130-9c4b-fa8e7f1a2140",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-guardar5",
+      "targets": [
+        ["css=.btn-guardar5", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarJornada']/form/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "55f9d0e0-ff24-4b21-a7d1-b676eb774679",
+    "name": "Eliminar Jornada",
+    "commands": [{
+      "id": "b6fcfb33-8a08-4b3a-9b5f-8fc2dc4ebaa6",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/jornada",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bb52e133-577a-42ed-838c-77fa6fcd458f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "99706b34-2e93-426c-b871-e21f6ef7830c",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "89c0c4f5-0887-4457-b1d4-ce340dce5de6",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4d3f8477-8be8-4b3c-a6e4-5fd4f02d8260",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(2) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "002562d2-52df-44a7-a863-3a629c990e5e",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar esta Jornada?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4beb1fe3-c558-489a-817e-a57c8884bf88",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "a37e0dfb-5f8d-4112-83e1-9c6f3441fe34",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:5173/jornada"],
+  "plugins": []
+}

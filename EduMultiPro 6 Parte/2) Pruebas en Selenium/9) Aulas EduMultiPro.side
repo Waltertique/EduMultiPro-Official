@@ -1,0 +1,430 @@
+{
+  "id": "d1e399a9-2fe8-481a-a68e-7e5faaa620ac",
+  "version": "2.0",
+  "name": "9) Aulas EduMultiPro",
+  "url": "http://localhost:5173/aula",
+  "tests": [{
+    "id": "5b1ba45c-27a1-4c50-8ba7-bb97efc15c9f",
+    "name": "Ver Aula",
+    "commands": [{
+      "id": "a9ec19ad-0aa3-40da-b3a0-2d50697a8e07",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/aula",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9d60e739-3989-47fe-ba10-a2ad56f3caf1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a97cc0b0-140a-4363-82b6-5c840d4fee72",
+      "comment": "",
+      "command": "click",
+      "target": "css=.menu .fa-user > p",
+      "targets": [
+        ["css=.menu .fa-user > p", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a/i/p", "xpath:idRelative"],
+        ["xpath=//div/a/i/p", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1c3d6923-9a8b-4c89-aaa7-eace40058094",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(4) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(4) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[4]/i", "xpath:idRelative"],
+        ["xpath=//a[4]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6c12b4c-00ff-45c8-96a9-fa2649b0e3ff",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(4) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(4) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[4]/i", "xpath:idRelative"],
+        ["xpath=//a[4]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2d291a7e-9fa9-420e-95f6-0a5eeadf6342",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=a:nth-child(4) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(4) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[4]/i", "xpath:idRelative"],
+        ["xpath=//a[4]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c7029697-54bb-4c2b-ae94-535c2d15ef89",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) #btninformacion > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(1) #btninformacion > .fa-solid", "css:finder"],
+        ["xpath=//button[@id='btninformacion']/i", "xpath:idRelative"],
+        ["xpath=//td[6]/a/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "9b88ba60-ed50-47e7-8925-8b5e9f81d75d",
+    "name": "Crear Aula",
+    "commands": [{
+      "id": "14913287-1c25-40a8-83ef-b3a56d1fdf45",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/aula",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b56b3533-15b0-429a-92ce-05f986cffc1a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1f87dfee-993b-4e49-8328-31a548bcafa5",
+      "comment": "",
+      "command": "click",
+      "target": "id=btnAgregarUsuario",
+      "targets": [
+        ["id=btnAgregarUsuario", "id"],
+        ["css=#btnAgregarUsuario", "css:finder"],
+        ["xpath=//button[@id='btnAgregarUsuario']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear Aula')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3593c72b-f343-4ee0-8669-9c3bda953926",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=btnAgregarUsuario",
+      "targets": [
+        ["id=btnAgregarUsuario", "id"],
+        ["css=#btnAgregarUsuario", "css:finder"],
+        ["xpath=//button[@id='btnAgregarUsuario']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aaacdc27-b049-4f2e-8713-9a5c8392fb5d",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=btnAgregarUsuario",
+      "targets": [
+        ["id=btnAgregarUsuario", "id"],
+        ["css=#btnAgregarUsuario", "css:finder"],
+        ["xpath=//button[@id='btnAgregarUsuario']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "349aad9e-9661-4cc1-af0b-00107c7c3056",
+      "comment": "",
+      "command": "click",
+      "target": "name=aula_nombre",
+      "targets": [
+        ["name=aula_nombre", "name"],
+        ["css=input", "css:finder"],
+        ["xpath=//input[@name='aula_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8db4d5e4-7828-4fec-a173-9db9f3e47536",
+      "comment": "",
+      "command": "type",
+      "target": "name=aula_nombre",
+      "targets": [
+        ["name=aula_nombre", "name"],
+        ["css=input", "css:finder"],
+        ["xpath=//input[@name='aula_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "nueva aula"
+    }, {
+      "id": "29ca8bbd-cb9e-48d7-b4a8-d704b807972b",
+      "comment": "",
+      "command": "click",
+      "target": "name=materia_id",
+      "targets": [
+        ["name=materia_id", "name"],
+        ["css=select:nth-child(2)", "css:finder"],
+        ["xpath=//select[@name='materia_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "022d4b7b-329d-4690-871d-7171bf1def5a",
+      "comment": "",
+      "command": "select",
+      "target": "name=materia_id",
+      "targets": [],
+      "value": "label=Inglés"
+    }, {
+      "id": "400aadbb-102e-4679-ac1b-e9e2ee3a3689",
+      "comment": "",
+      "command": "click",
+      "target": "css=select:nth-child(2) > option:nth-child(6)",
+      "targets": [
+        ["css=select:nth-child(2) > option:nth-child(6)", "css:finder"],
+        ["xpath=//option[@value='5']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select/option[6]", "xpath:idRelative"],
+        ["xpath=//option[6]", "xpath:position"],
+        ["xpath=//option[contains(.,'Inglés')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffcedc80-7dc1-404a-93d5-b5cb632ad79a",
+      "comment": "",
+      "command": "click",
+      "target": "name=curso_id",
+      "targets": [
+        ["name=curso_id", "name"],
+        ["css=select:nth-child(3)", "css:finder"],
+        ["xpath=//select[@name='curso_id']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8bb9a324-ac75-419f-aaee-b31971291cf5",
+      "comment": "",
+      "command": "select",
+      "target": "name=curso_id",
+      "targets": [],
+      "value": "label=1101 - Mixto"
+    }, {
+      "id": "228b535e-f74d-4caf-a871-0db3bccf3df1",
+      "comment": "",
+      "command": "click",
+      "target": "css=select:nth-child(3) > option:nth-child(9)",
+      "targets": [
+        ["css=select:nth-child(3) > option:nth-child(9)", "css:finder"],
+        ["xpath=(//option[@value='8'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select[2]/option[9]", "xpath:idRelative"],
+        ["xpath=//select[2]/option[9]", "xpath:position"],
+        ["xpath=//option[contains(.,'1101 - Mixto')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8e810fd4-b678-4f3e-a3dc-8f7e459333b0",
+      "comment": "",
+      "command": "select",
+      "target": "name=usuario_id",
+      "targets": [],
+      "value": "label=Ana Ruiz"
+    }, {
+      "id": "629a2f53-a7a5-4602-a2c9-2665bfb91b65",
+      "comment": "",
+      "command": "click",
+      "target": "css=select:nth-child(4) > option:nth-child(5)",
+      "targets": [
+        ["css=select:nth-child(4) > option:nth-child(5)", "css:finder"],
+        ["xpath=(//option[@value='6'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select[3]/option[5]", "xpath:idRelative"],
+        ["xpath=//select[3]/option[5]", "xpath:position"],
+        ["xpath=//option[contains(.,'Ana Ruiz')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb8cfcc7-763f-430d-b0f1-acfb533a6a5a",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(5)",
+      "targets": [
+        ["css=button:nth-child(5)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar Aula')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "f94ad441-55b6-40d9-a15e-56cb2a4b4f3c",
+    "name": "Modificar Aula",
+    "commands": [{
+      "id": "a65107dd-bc3f-464a-9673-265637c65aca",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/aula",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5c643e11-1562-4385-aa0f-905efdeedf6d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "52ab394b-40a7-4ce2-a8e0-e4085aa5e399",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .modificar",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[7]/button", "xpath:idRelative"],
+        ["xpath=//td[7]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9d40d360-c884-4267-8e9f-89600cbbacb2",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarAulaNombre",
+      "targets": [
+        ["id=editarAulaNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarAulaNombre", "css:finder"],
+        ["xpath=//input[@id='editarAulaNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='modificarAula']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0beb624-38b4-48d5-878b-4d8d3bd62a1a",
+      "comment": "",
+      "command": "type",
+      "target": "id=editarAulaNombre",
+      "targets": [
+        ["id=editarAulaNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarAulaNombre", "css:finder"],
+        ["xpath=//input[@id='editarAulaNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='modificarAula']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "modificada Aula Matemáticas 101"
+    }, {
+      "id": "ee75e2dd-91a8-4f0f-9781-e15a844a285e",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarMateria",
+      "targets": [
+        ["id=editarMateria", "id"],
+        ["name=materia_id", "name"],
+        ["css=#editarMateria", "css:finder"],
+        ["xpath=//select[@id='editarMateria']", "xpath:attributes"],
+        ["xpath=//div[@id='modificarAula']/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa3bc331-241d-4662-9810-cf392949a7f6",
+      "comment": "",
+      "command": "select",
+      "target": "id=editarMateria",
+      "targets": [],
+      "value": "label=Lengua Castellana"
+    }, {
+      "id": "7b1abc26-6986-41aa-9386-a1ae7edff799",
+      "comment": "",
+      "command": "click",
+      "target": "css=#editarMateria > option:nth-child(3)",
+      "targets": [
+        ["css=#editarMateria > option:nth-child(3)", "css:finder"],
+        ["xpath=//option[@value='2']", "xpath:attributes"],
+        ["xpath=//select[@id='editarMateria']/option[3]", "xpath:idRelative"],
+        ["xpath=//option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'Lengua Castellana')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5fd71ba1-a0a6-4bf3-b39b-5e581c6aa85a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-guardar",
+      "targets": [
+        ["css=.btn-guardar", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='modificarAula']/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "2cb74fa5-a224-4628-9e88-9868647e8b4c",
+    "name": "Eliminar Aula",
+    "commands": [{
+      "id": "823c57da-3335-41d7-9016-16e5662598fa",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/aula",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1d8a4c56-73a9-4a09-a1b4-59ac65ad30d2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "72ba20aa-071c-4669-8c02-993950f62024",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) .btn-icon > .fa-solid",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "59fdb4f8-786c-4556-b586-6401bf2c2c23",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "110d5f18-75de-4e5b-8b8c-895ef5314fbc",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(3) .btn-icon > .fa-solid",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e3865cf5-f0ec-4953-921f-66021c282e11",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar este Aula?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "712540a9-0f85-4b0c-b721-4490a65a5b3a",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "42ceaa61-9611-473d-988b-157cbc5ad243",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:5173/aula"],
+  "plugins": []
+}

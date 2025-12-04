@@ -1,0 +1,357 @@
+{
+  "id": "b7d1227c-d69e-4f45-89dc-9b6ef5ec1686",
+  "version": "2.0",
+  "name": "11) Anuncio EduMultiPro",
+  "url": "http://localhost:5173/VerAula/1",
+  "tests": [{
+    "id": "5331938b-ca62-44bd-8e09-42b4775e1ca8",
+    "name": "Ver Anuncio",
+    "commands": [{
+      "id": "8b5333d5-422e-4f22-9dad-ac5ae7b03da3",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/VerAula/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2a3bab8b-5e03-46e2-8b7b-18942c0a17da",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d259ba57-c5f0-4f22-8288-d24115ba73a3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.menu .fa-user",
+      "targets": [
+        ["css=.menu .fa-user", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a/i", "xpath:idRelative"],
+        ["xpath=//div/a/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "684784ce-6f58-4aba-9780-7f5a8a9f1683",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(4) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(4) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[4]/i", "xpath:idRelative"],
+        ["xpath=//a[4]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "100d6cd8-bf3c-4ab8-a9f2-de18926a8980",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(4) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(4) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[4]/i", "xpath:idRelative"],
+        ["xpath=//a[4]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b0f2325-5a56-4b68-871e-f7ad4b7dbcaf",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=a:nth-child(4) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(4) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[4]/i", "xpath:idRelative"],
+        ["xpath=//a[4]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "27bbde7b-2384-44ad-9753-cc6dd178f5e0",
+      "comment": "",
+      "command": "click",
+      "target": "id=btninformacion",
+      "targets": [
+        ["id=btninformacion", "id"],
+        ["css=tr:nth-child(1) #btninformacion", "css:finder"],
+        ["xpath=//button[@id='btninformacion']", "xpath:attributes"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[6]/a/button", "xpath:idRelative"],
+        ["xpath=//td[6]/a/button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "335e9d4c-ba8a-4375-a484-7dab7917b5d0",
+    "name": "Crear Anuncio",
+    "commands": [{
+      "id": "1389cf8c-7348-4911-bca3-755743bcfb49",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/VerAula/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a813b46d-7f90-41f0-8a46-be8a6d0070c0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f20470c0-d78c-4eb3-b2f9-94dba6a86c54",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn-crear",
+      "targets": [
+        ["id=btn-crear", "id"],
+        ["css=#btn-crear", "css:finder"],
+        ["xpath=//button[@id='btn-crear']", "xpath:attributes"],
+        ["xpath=//div[@id='canuncioAula']/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear Anuncio')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6107d14e-ee11-49a8-80ca-c2468ea8df49",
+      "comment": "",
+      "command": "click",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='crearAnuncio']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca6c7faa-7750-42ba-869e-ab912e25f3b0",
+      "comment": "",
+      "command": "type",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='crearAnuncio']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "nuevo anuncio"
+    }, {
+      "id": "babb144d-04a7-44f7-b63d-cdc307123b71",
+      "comment": "",
+      "command": "click",
+      "target": "name=descripcion",
+      "targets": [
+        ["name=descripcion", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='crearAnuncio']/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "03010fab-4bb7-423f-bd15-32d1c09ac6a0",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion",
+      "targets": [
+        ["name=descripcion", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='crearAnuncio']/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "nuevo anuncio"
+    }, {
+      "id": "da056dbe-58cc-4224-84fa-64d6edd2ead3",
+      "comment": "",
+      "command": "click",
+      "target": "name=archivo",
+      "targets": [
+        ["name=archivo", "name"],
+        ["css=input:nth-child(4)", "css:finder"],
+        ["xpath=//input[@name='archivo']", "xpath:attributes"],
+        ["xpath=//div[@id='crearAnuncio']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9dc907d2-e7eb-4df6-a0b4-81ef1f47da81",
+      "comment": "",
+      "command": "echo",
+      "target": "simulacion de imagen",
+      "targets": [],
+      "value": "C:\\fakepath\\1762713978424.PNG"
+    }, {
+      "id": "d20435d0-0476-4252-994b-f7bbdba1e3c8",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn-guardar",
+      "targets": [
+        ["id=btn-guardar", "id"],
+        ["css=#btn-guardar", "css:finder"],
+        ["xpath=//button[@id='btn-guardar']", "xpath:attributes"],
+        ["xpath=//div[@id='crearAnuncio']/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Publicar anuncio')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "503faff9-1333-4744-acbe-65a755e64c06",
+    "name": "Modificar Anuncio",
+    "commands": [{
+      "id": "337a94b1-a178-4bbb-a93e-fa18fd29493f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/VerAula/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bbbca405-31e6-422b-886b-94ae9154b830",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4f735c84-1360-470f-ab6f-bb37dc622d78",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anuncioAula:nth-child(5) .b1",
+      "targets": [
+        ["css=.anuncioAula:nth-child(5) .b1", "css:finder"],
+        ["xpath=//div[@id='contenidoTablaAula']/div[5]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[5]/div/div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6a9f018-f292-48d2-88f2-9ea47835b6fa",
+      "comment": "",
+      "command": "click",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=form:nth-child(2) > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTablaAula']/div[5]/div[4]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ebef88ba-2393-4da5-8b59-1a384ff8c72b",
+      "comment": "",
+      "command": "type",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=form:nth-child(2) > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTablaAula']/div[5]/div[4]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/form/input", "xpath:position"]
+      ],
+      "value": "Guía de Estudio Matemáticas modificado"
+    }, {
+      "id": "b7774828-914a-4ce6-aca2-34a477a6b6b3",
+      "comment": "",
+      "command": "click",
+      "target": "name=descripcion",
+      "targets": [
+        ["name=descripcion", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTablaAula']/div[5]/div[4]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aaeade2b-2d02-4e6a-951b-c90275f1e532",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion",
+      "targets": [
+        ["name=descripcion", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTablaAula']/div[5]/div[4]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Disponible la guía de ejercicios para preparar el examen. Descargar aquí. modificado"
+    }, {
+      "id": "4e1cf35e-654f-4f11-90db-9e8b0c3605d4",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(4)",
+      "targets": [
+        ["css=button:nth-child(4)", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTablaAula']/div[5]/div[4]/form/button", "xpath:idRelative"],
+        ["xpath=//div[4]/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "cb6a2c26-64ca-4d4d-a141-669279046b0a",
+    "name": "Eliminar Anuncio",
+    "commands": [{
+      "id": "b2a610e6-d10c-4d9f-ba47-02f4a35f588f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/VerAula/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e7da5fbd-7c7e-483e-a9a7-55ce3fab1a40",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ecab0c1-0747-48f5-a866-2791716f6c4d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anuncioAula:nth-child(4) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dc221cc4-5e3b-4def-a75c-1edab8eb1d17",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3a2aa3b9-3e8d-450c-9e37-0c0baa3cfdff",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.anuncioAula:nth-child(4) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "227946f1-0bc9-463f-9a2e-6b625698adda",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar este anuncio?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "16f9d559-e56c-4f2a-9919-c8d012182128",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "416a957e-b44e-455a-9615-fbd6e9b34731",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:5173/VerAula/1"],
+  "plugins": []
+}

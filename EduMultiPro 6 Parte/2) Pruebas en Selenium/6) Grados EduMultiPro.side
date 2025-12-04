@@ -1,0 +1,380 @@
+{
+  "id": "55f3c3a4-914a-4452-9d82-c3a09e478160",
+  "version": "2.0",
+  "name": "5) Grados EduMultiPro",
+  "url": "http://localhost:5173/grado",
+  "tests": [{
+    "id": "4dce350d-09be-42cc-905d-bade08129244",
+    "name": "Crear Grado",
+    "commands": [{
+      "id": "892fe84b-93aa-443d-9ccd-145976ab5673",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/grado",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "47fffc22-fe77-4643-b9ec-3c0c87d065c7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c671a3bb-88bb-4d76-b69f-828a694aaabe",
+      "comment": "",
+      "command": "click",
+      "target": "name=grado_nombre",
+      "targets": [
+        ["name=grado_nombre", "name"],
+        ["css=form > input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='grado_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9edc2df-31db-4650-ba06-0175f18c7768",
+      "comment": "",
+      "command": "type",
+      "target": "name=grado_nombre",
+      "targets": [
+        ["name=grado_nombre", "name"],
+        ["css=form > input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='grado_nombre']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "nuevo grado"
+    }, {
+      "id": "74a4b6d0-1970-4527-8317-31b7db930a0f",
+      "comment": "",
+      "command": "click",
+      "target": "name=grado_descripcion",
+      "targets": [
+        ["name=grado_descripcion", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='grado_descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ceb85bc6-e84b-46c3-b60f-766bb4cb886e",
+      "comment": "",
+      "command": "type",
+      "target": "name=grado_descripcion",
+      "targets": [
+        ["name=grado_descripcion", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='grado_descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "se agrega grado"
+    }, {
+      "id": "39125d89-1ba1-444f-ac97-9413d0e9993f",
+      "comment": "",
+      "command": "click",
+      "target": "css=form > button",
+      "targets": [
+        ["css=form > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[3]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar Grado')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "168c0016-c30f-4122-99e4-eaa7664a37b3",
+    "name": "Modificar Grado",
+    "commands": [{
+      "id": "e4532b0d-ab3e-4c72-bf3b-52252ae18ded",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/grado",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "61f9d409-60a7-4202-aa32-4334219a1952",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "81018685-d965-4529-be41-dfaf9850ed10",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .modificar",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[4]/button", "xpath:idRelative"],
+        ["xpath=//td[4]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c6b4a695-7089-4e0a-9a91-c5bda22ecd7d",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(1) .modificar",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[4]/button", "xpath:idRelative"],
+        ["xpath=//td[4]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3fd73fec-44d5-43c0-9b29-576c673de7c6",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=tr:nth-child(1) .modificar",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[4]/button", "xpath:idRelative"],
+        ["xpath=//td[4]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d9d6d6ee-323d-4cd1-ae55-dc03c5f12896",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarGradoNombre",
+      "targets": [
+        ["id=editarGradoNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarGradoNombre", "css:finder"],
+        ["xpath=//input[@id='editarGradoNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarGrado']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9617376-c5db-450c-8e66-f9f70ffd4648",
+      "comment": "",
+      "command": "type",
+      "target": "id=editarGradoNombre",
+      "targets": [
+        ["id=editarGradoNombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#editarGradoNombre", "css:finder"],
+        ["xpath=//input[@id='editarGradoNombre']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarGrado']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/input[2]", "xpath:position"]
+      ],
+      "value": "Primero modificado"
+    }, {
+      "id": "d0d02240-9a80-4822-be31-9712894c02d6",
+      "comment": "",
+      "command": "click",
+      "target": "css=form:nth-child(2)",
+      "targets": [
+        ["css=form:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='formEditarGrado']/form", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form", "xpath:position"],
+        ["xpath=//form[contains(.,'Nombre del grado:Descripción:Guardar cambiosCancelar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b075f86-52b4-4026-ab45-1f7ee66182c3",
+      "comment": "",
+      "command": "click",
+      "target": "id=editarDescripcion",
+      "targets": [
+        ["id=editarDescripcion", "id"],
+        ["name=descripcion", "name"],
+        ["css=#editarDescripcion", "css:finder"],
+        ["xpath=//input[@id='editarDescripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarGrado']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa5f026f-5094-449c-974f-d118bfb8b06f",
+      "comment": "",
+      "command": "type",
+      "target": "id=editarDescripcion",
+      "targets": [
+        ["id=editarDescripcion", "id"],
+        ["name=descripcion", "name"],
+        ["css=#editarDescripcion", "css:finder"],
+        ["xpath=//input[@id='editarDescripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarGrado']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "grado primero modificado"
+    }, {
+      "id": "92438525-eabe-4e6b-bc78-c1adfc63fd34",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-guardar4",
+      "targets": [
+        ["css=.btn-guardar4", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='formEditarGrado']/form/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "31ada537-c250-4d1a-b043-20f3eba5764d",
+    "name": "Eliminar Grado",
+    "commands": [{
+      "id": "8a322aab-7277-4bea-bf31-4c530f03a489",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/grado",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c288d03c-987a-4594-afa9-83be05893ba4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "555c49d9-8d84-4e2b-8d86-8391a2f4e115",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "854faf6b-597b-4ed9-beb2-f820ca505757",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "09c7b372-653c-46d8-a448-d0b61c664fe6",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(3) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a3a382e4-cebb-436a-b1b0-76b4fbeef64c",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar este Grado?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "502bcaed-3358-4172-8abb-de79ca1bf0dd",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "8ad1203c-5a35-4856-9501-d05e94fff30c",
+    "name": "Ver Grado",
+    "commands": [{
+      "id": "205d7746-63d0-4200-9f8b-0bfc01dc0281",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/grado",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c72cd345-8144-453a-9664-ac41fcacbd12",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "098816f0-bb94-4e09-8935-bd3685a51a26",
+      "comment": "",
+      "command": "click",
+      "target": "css=.menu .fa-user",
+      "targets": [
+        ["css=.menu .fa-user", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a/i", "xpath:idRelative"],
+        ["xpath=//div/a/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8e748dc4-e15b-4ca3-a90e-75219c5fe413",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(2) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(2) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "64487d30-1314-4259-8141-14a558e85a43",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(2) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(2) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d5878379-aa45-49ba-9809-eee67a19dc6b",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=a:nth-child(2) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(2) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "65f3c284-82c5-4383-915a-d6b88e8bfacc",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(2) > .targeta",
+      "targets": [
+        ["css=a:nth-child(2) > .targeta", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[2]/div", "xpath:idRelative"],
+        ["xpath=//a[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "25e51050-4ed8-4d7e-937e-4034b48ac4e7",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(2) > .targeta",
+      "targets": [
+        ["css=a:nth-child(2) > .targeta", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[2]/div", "xpath:idRelative"],
+        ["xpath=//a[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "77f72089-dc67-4ceb-a816-74ed445362f4",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=a:nth-child(2) > .targeta",
+      "targets": [
+        ["css=a:nth-child(2) > .targeta", "css:finder"],
+        ["xpath=//div[@id='contenidoTabla']/div/a[2]/div", "xpath:idRelative"],
+        ["xpath=//a[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2b59beea-8517-4771-8387-008dd7b9ca90",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:5173/grado"],
+  "plugins": []
+}

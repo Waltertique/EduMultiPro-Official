@@ -1,0 +1,204 @@
+{
+  "id": "90498759-a69f-4f84-97f7-f5312365b4a7",
+  "version": "2.0",
+  "name": "12) Comentarios EduMultiPro",
+  "url": "http://localhost:5173/VerAula/1",
+  "tests": [{
+    "id": "db8219a5-30f6-47a7-8311-022205bc36de",
+    "name": "Ver Comentario",
+    "commands": [{
+      "id": "01d2e619-14bf-444c-a6b6-85e909699758",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/VerAula/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "27ccc6cd-c304-4cc2-bf23-8fb334dd5c2e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b5c284f2-4215-44ee-8c96-9e320b3b3377",
+      "comment": "",
+      "command": "click",
+      "target": "css=.menu .fa-user",
+      "targets": [
+        ["css=.menu .fa-user", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a/i", "xpath:idRelative"],
+        ["xpath=//div/a/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f62981c3-52bb-4cfb-bdd5-18bc010db2cd",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(4) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(4) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[4]/i", "xpath:idRelative"],
+        ["xpath=//a[4]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c3ab18ea-38d7-4017-baf0-cb44df92646b",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(4) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(4) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[4]/i", "xpath:idRelative"],
+        ["xpath=//a[4]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5a789219-ae28-4075-aa01-f012f5da0e6a",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=a:nth-child(4) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(4) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[4]/i", "xpath:idRelative"],
+        ["xpath=//a[4]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "68eb7a83-ab18-4086-af0d-5f91597ed1f3",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) #btninformacion > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(1) #btninformacion > .fa-solid", "css:finder"],
+        ["xpath=//button[@id='btninformacion']/i", "xpath:idRelative"],
+        ["xpath=//td[6]/a/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "f56e484f-65bc-4ac5-b05f-3b801b858bfc",
+    "name": "Crear Comentario",
+    "commands": [{
+      "id": "2b83de74-0d0a-49bd-843a-bc0e68bb855a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/VerAula/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e8a18cf2-af33-4e82-9e4e-0c9ecbbc0961",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "87b5c82b-6261-468e-8fba-41d6d9ebfed2",
+      "comment": "",
+      "command": "click",
+      "target": "name=comentario",
+      "targets": [
+        ["name=comentario", "name"],
+        ["css=.anuncioAula:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='comentario']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTablaAula']/div[4]/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "caf5e49f-8844-4d2a-9112-4aba5c8aed8e",
+      "comment": "",
+      "command": "type",
+      "target": "name=comentario",
+      "targets": [
+        ["name=comentario", "name"],
+        ["css=.anuncioAula:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='comentario']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTablaAula']/div[4]/div[3]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "nuevo comentario"
+    }, {
+      "id": "9b735cc0-1bc4-421b-8714-4d660f6ed7a4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.anuncioAula:nth-child(4) #principal",
+      "targets": [
+        ["css=.anuncioAula:nth-child(4) #principal", "css:finder"],
+        ["xpath=(//button[@id='principal'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTablaAula']/div[4]/div[3]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Enviar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "3125bc17-3c3c-40ce-9ce8-fe48047659cd",
+    "name": "Eliminar Comentario",
+    "commands": [{
+      "id": "8631ddf0-cda0-49c5-90e8-84857e501bce",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/VerAula/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7a6228e2-8e97-44bb-98c4-0114ac9ad6e8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "10b38783-a553-4be3-9c49-89a483e53ccb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.comentario:nth-child(5) > .btn-icon",
+      "targets": [
+        ["css=.comentario:nth-child(5) > .btn-icon", "css:finder"],
+        ["xpath=//div[@id='contenidoTablaAula']/div[4]/div[4]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f43cf6cd-ac19-4017-bb3f-23d573391625",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7a3fa5dd-af9f-4449-8243-f79e5d87e365",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.comentario:nth-child(5) > .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "864ecc7b-f512-47ce-90c1-cd192c81ac29",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar este comentario?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "467bd534-4f94-414c-8946-3d2f9e09b82c",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "8e6718aa-90d4-4d99-9c49-d38aa7b51583",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:5173/VerAula/1"],
+  "plugins": []
+}

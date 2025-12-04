@@ -1,0 +1,410 @@
+{
+  "id": "a585b9fe-0d0a-4487-9e26-26549fa1b1fe",
+  "version": "2.0",
+  "name": "13) Trabajos EduMultiPro",
+  "url": "http://localhost:5173/Trabajos/1",
+  "tests": [{
+    "id": "ded33d9e-eb93-4a3e-8c7c-89afe273a1f3",
+    "name": "Ver Trabajo",
+    "commands": [{
+      "id": "f967c006-fa62-41ca-9702-08dbc210432a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/Trabajos/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "18f58c1e-4caf-4bc2-998c-3daa42fd399e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d28500f1-a9f5-4005-8ef8-6afe03f8e375",
+      "comment": "",
+      "command": "click",
+      "target": "css=.menu .fa-user",
+      "targets": [
+        ["css=.menu .fa-user", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a/i", "xpath:idRelative"],
+        ["xpath=//div/a/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07e3d673-0d4e-4e50-acf3-900164968cc0",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(4) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(4) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[4]/i", "xpath:idRelative"],
+        ["xpath=//a[4]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cc96b95f-b36e-413e-8397-df54e34ed289",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) #btninformacion > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(1) #btninformacion > .fa-solid", "css:finder"],
+        ["xpath=//button[@id='btninformacion']/i", "xpath:idRelative"],
+        ["xpath=//td[6]/a/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b10d1aa-3975-4c2e-91e4-32d33b54a2d0",
+      "comment": "",
+      "command": "click",
+      "target": "id=trabajo",
+      "targets": [
+        ["id=trabajo", "id"],
+        ["css=#trabajo", "css:finder"],
+        ["xpath=//button[@id='trabajo']", "xpath:attributes"],
+        ["xpath=//div[@id='navAula']/div[2]/a/button", "xpath:idRelative"],
+        ["xpath=//div[2]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Trabajos')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1eb3b48c-aec6-41c9-bd55-c4dc08ff71ac",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=trabajo",
+      "targets": [
+        ["id=trabajo", "id"],
+        ["css=#trabajo", "css:finder"],
+        ["xpath=//button[@id='trabajo']", "xpath:attributes"],
+        ["xpath=//div[@id='navAula']/div[2]/a/button", "xpath:idRelative"],
+        ["xpath=//div[2]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Trabajos')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ecbfbb5-9d3e-4ffa-9baf-44ce2c23d5ff",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=trabajo",
+      "targets": [
+        ["id=trabajo", "id"],
+        ["css=#trabajo", "css:finder"],
+        ["xpath=//button[@id='trabajo']", "xpath:attributes"],
+        ["xpath=//div[@id='navAula']/div[2]/a/button", "xpath:idRelative"],
+        ["xpath=//div[2]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Trabajos')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c0054cba-d19e-4f55-ba1b-76821cb88a8b",
+      "comment": "",
+      "command": "click",
+      "target": "id=btninformacion",
+      "targets": [
+        ["id=btninformacion", "id"],
+        ["css=tr:nth-child(1) #btninformacion", "css:finder"],
+        ["xpath=//button[@id='btninformacion']", "xpath:attributes"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[3]/a/button", "xpath:idRelative"],
+        ["xpath=//td[3]/a/button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "79d951b0-0639-4b44-972d-981f27a5861b",
+    "name": "Crear Trabajo",
+    "commands": [{
+      "id": "73f8ea8c-72d8-4fd6-a09b-b2253635d715",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/Trabajos/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3ae7150b-cf2d-47c4-bf76-974215b63331",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "37d75954-4352-4b31-92c1-31bdb76e6a29",
+      "comment": "",
+      "command": "click",
+      "target": "id=btnAgregarUsuario",
+      "targets": [
+        ["id=btnAgregarUsuario", "id"],
+        ["css=a:nth-child(2) > #btnAgregarUsuario", "css:finder"],
+        ["xpath=//button[@id='btnAgregarUsuario']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTablaAula']/div[2]/a/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear Trabajo')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b9d52a6-b503-47db-8417-f5d7c8eb3778",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(1)",
+      "targets": [
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoCrearTrabajo']/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c61b6e9e-9fe8-4a5b-8941-a3872b999594",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(1)",
+      "targets": [
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@value='nuevo trabajo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoCrearTrabajo']/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "nuevo trabajo"
+    }, {
+      "id": "3955572a-c5ee-4403-b58a-5f09169ee565",
+      "comment": "",
+      "command": "click",
+      "target": "css=textarea",
+      "targets": [
+        ["css=textarea", "css:finder"],
+        ["xpath=//div[@id='contenidoCrearTrabajo']/div/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3666ce3e-0564-434e-a561-3eedcbdcd462",
+      "comment": "",
+      "command": "type",
+      "target": "css=textarea",
+      "targets": [
+        ["css=textarea", "css:finder"],
+        ["xpath=//div[@id='contenidoCrearTrabajo']/div/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": " nnuevo trabajo"
+    }, {
+      "id": "38c8bb76-0cba-466f-8946-05cbee4a147c",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(6)",
+      "targets": [
+        ["css=input:nth-child(6)", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoCrearTrabajo']/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ef21d65-93f4-49b5-92c0-3fc84ffad960",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(6)",
+      "targets": [
+        ["css=input:nth-child(6)", "css:finder"],
+        ["xpath=//input[@value='0222-02-22']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoCrearTrabajo']/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "0222-02-22"
+    }, {
+      "id": "636af432-e899-429d-87f9-df367a2b65cb",
+      "comment": "",
+      "command": "click",
+      "target": "id=ArchivoCrearTrabajo",
+      "targets": [
+        ["id=ArchivoCrearTrabajo", "id"],
+        ["css=#ArchivoCrearTrabajo", "css:finder"],
+        ["xpath=//input[@id='ArchivoCrearTrabajo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoCrearTrabajo']/div/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2a05671-b5e5-4878-b6c5-1c0118c78356",
+      "comment": "",
+      "command": "echo",
+      "target": "simulacion de imagen",
+      "targets": [],
+      "value": "C:\\fakepath\\1762540439918.png"
+    }, {
+      "id": "51b07702-1144-4434-9a25-37d260ae11b2",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(11)",
+      "targets": [
+        ["css=button:nth-child(11)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoCrearTrabajo']/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "4423109e-7f46-4faa-8ff4-6e2042d0d488",
+    "name": "Modificar Trabajo",
+    "commands": [{
+      "id": "41bfe348-d94f-4625-9f2f-27e8dc121d5c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/Trabajos/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "03188180-f498-472f-b66d-58590756ab79",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6e7c3519-d70e-4d47-83b6-dfb85a14a04b",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) #btnAgregarUsuario",
+      "targets": [
+        ["css=tr:nth-child(1) #btnAgregarUsuario", "css:finder"],
+        ["xpath=(//button[@id='btnAgregarUsuario'])[2]", "xpath:attributes"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[4]/a/button", "xpath:idRelative"],
+        ["xpath=//td[4]/a/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cac37f23-7024-40bd-a463-08b3456cdcf2",
+      "comment": "",
+      "command": "click",
+      "target": "id=titulo",
+      "targets": [
+        ["id=titulo", "id"],
+        ["css=#titulo", "css:finder"],
+        ["xpath=//input[@id='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoModificarTabla']/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8501f370-98f8-4d23-9ba8-f466346fbe4a",
+      "comment": "",
+      "command": "type",
+      "target": "id=titulo",
+      "targets": [
+        ["id=titulo", "id"],
+        ["css=#titulo", "css:finder"],
+        ["xpath=//input[@id='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoModificarTabla']/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "modificado Construcción de Figuras Geométricas"
+    }, {
+      "id": "04e714d7-a02d-442a-bfb9-2c06e0c58829",
+      "comment": "",
+      "command": "click",
+      "target": "id=descripcion",
+      "targets": [
+        ["id=descripcion", "id"],
+        ["css=#descripcion", "css:finder"],
+        ["xpath=//textarea[@id='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoModificarTabla']/div/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "627cf0a7-a07d-41d7-ac83-b04407063756",
+      "comment": "",
+      "command": "type",
+      "target": "id=descripcion",
+      "targets": [
+        ["id=descripcion", "id"],
+        ["css=#descripcion", "css:finder"],
+        ["xpath=//textarea[@id='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoModificarTabla']/div/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "modificado Dibuja y explica las propiedades de las figuras solicitadas."
+    }, {
+      "id": "dcc7496e-b0bb-4937-b616-54e779ff82cd",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(11)",
+      "targets": [
+        ["css=button:nth-child(11)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoModificarTabla']/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Modificar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "993fddfc-2fbb-4af2-9de4-5099e293999d",
+    "name": "Eliminar Trabajo",
+    "commands": [{
+      "id": "8d22259b-1df2-48a3-aa49-d8ab47619bff",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/Trabajos/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e0ffaeec-8ba6-4c15-9718-ff51d339ba44",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3ac19be3-77a8-494a-afef-58bd8759184a",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) .btn-icon",
+      "targets": [
+        ["css=tr:nth-child(2) .btn-icon", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr[2]/td[5]/button", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "85c21d48-4e35-49a6-975b-5af880378926",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "89ef3c07-6cfe-4ca1-9b77-93667ffa6ff9",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(2) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "40b33d77-d458-4ccb-8616-828787b9b99d",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que quieres eliminar este trabajo?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4ee2faba-3340-4331-a5d4-5a519824c3e6",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "e6594af6-09a4-437c-b0b0-a90c5471114b",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:5173/Trabajos/1"],
+  "plugins": []
+}

@@ -1,0 +1,376 @@
+{
+  "id": "3b8dd4ef-9224-4da8-990b-9b3f9d7aaadf",
+  "version": "2.0",
+  "name": "8) Horarios EduMultiPro",
+  "url": "http://localhost:5173/horario",
+  "tests": [{
+    "id": "2d649a78-ddf5-436b-95f7-1c73f474a1f1",
+    "name": "Ver Horario",
+    "commands": [{
+      "id": "a12e2305-01c6-4247-b4a9-80c12ca1578d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/horario",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8487bcf6-6f8d-4af8-90e4-473abbf8bcc7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9cc2ac75-9853-4a5b-b2c3-2d1e23b8e992",
+      "comment": "",
+      "command": "click",
+      "target": "css=.menu .fa-user",
+      "targets": [
+        ["css=.menu .fa-user", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a/i", "xpath:idRelative"],
+        ["xpath=//div/a/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b26a57f-4a1e-4ea5-9c3a-ce8de8904ce3",
+      "comment": "",
+      "command": "click",
+      "target": "css=a:nth-child(3) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(3) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[3]/i", "xpath:idRelative"],
+        ["xpath=//a[3]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bc09e51b-02cd-4105-8762-c4f55fae5259",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=a:nth-child(3) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(3) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[3]/i", "xpath:idRelative"],
+        ["xpath=//a[3]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6731097-26b7-48da-b41a-3cb50bee4e30",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=a:nth-child(3) > .fa-solid",
+      "targets": [
+        ["css=a:nth-child(3) > .fa-solid", "css:finder"],
+        ["xpath=//div[@id='barraLateral']/div/div/a[3]/i", "xpath:idRelative"],
+        ["xpath=//a[3]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a3807e5-0ad4-4981-b6c3-486ac68d0253",
+      "comment": "",
+      "command": "click",
+      "target": "id=btninformacion",
+      "targets": [
+        ["id=btninformacion", "id"],
+        ["css=tr:nth-child(1) #btninformacion", "css:finder"],
+        ["xpath=//button[@id='btninformacion']", "xpath:attributes"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[6]/a/button", "xpath:idRelative"],
+        ["xpath=//td[6]/a/button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "b3cb69fb-ed94-4714-9b18-918e36c447e8",
+    "name": "Crear Horario",
+    "commands": [{
+      "id": "0f50241c-7fc7-4b9a-8d12-853528a3af77",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/horario",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b930f172-8c0c-4b92-a412-a85b5d8c2d65",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b9a42bad-1827-41ea-9fda-727b541b0187",
+      "comment": "",
+      "command": "click",
+      "target": "id=btnAgregarHorario",
+      "targets": [
+        ["id=btnAgregarHorario", "id"],
+        ["css=#btnAgregarHorario", "css:finder"],
+        ["xpath=//button[@id='btnAgregarHorario']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Subir Horario')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a47e5a6-83de-4108-9d90-c814ce9546f4",
+      "comment": "",
+      "command": "click",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "12601a7f-ba54-4d66-ba23-101f130c5b2e",
+      "comment": "",
+      "command": "type",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "nuevo horario"
+    }, {
+      "id": "1d6a2813-129f-4681-9d7d-b5517706b496",
+      "comment": "",
+      "command": "click",
+      "target": "name=descripcion",
+      "targets": [
+        ["name=descripcion", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7b274c22-7ae5-4627-bc5f-30f89b472cce",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion",
+      "targets": [
+        ["name=descripcion", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "nuevo horario"
+    }, {
+      "id": "4a92a917-b8d2-4bb2-9a54-c8789c449964",
+      "comment": "",
+      "command": "click",
+      "target": "name=imagen",
+      "targets": [
+        ["name=imagen", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='imagen']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "12317987-8fdb-4928-acf7-770023ee5a25",
+      "comment": "",
+      "command": "echo",
+      "target": "simulacion de imagen",
+      "targets": [],
+      "value": "C:\\fakepath\\3.png"
+    }, {
+      "id": "64030c87-e3f2-41e6-bf27-75776540346a",
+      "comment": "",
+      "command": "select",
+      "target": "name=profesor_id",
+      "targets": [],
+      "value": "label=Laura Hernández"
+    }, {
+      "id": "fea5b600-775f-4d3e-95ed-9591ebee68cd",
+      "comment": "",
+      "command": "click",
+      "target": "css=select:nth-child(4) > option:nth-child(3)",
+      "targets": [
+        ["css=select:nth-child(4) > option:nth-child(3)", "css:finder"],
+        ["xpath=//option[@value='4']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/select/option[3]", "xpath:idRelative"],
+        ["xpath=//option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'Laura Hernández')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a52386a-8c80-4b01-a8f3-c293136f9d24",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(6)",
+      "targets": [
+        ["css=button:nth-child(6)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear horario')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8889b756-ada8-409c-9d0e-d3e384456143",
+    "name": "Modificar Horario",
+    "commands": [{
+      "id": "9202efdd-b0ae-4730-b731-24c099e585b6",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/horario",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bf25aa81-3a06-4b45-ac66-5f5a804db622",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "428ee626-7bfb-410d-8ee0-5a8e905a0946",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) .modificar > .fa-solid",
+      "targets": [
+        ["css=tr:nth-child(1) .modificar > .fa-solid", "css:finder"],
+        ["xpath=//table[@id='tablaUsuarios']/tbody/tr/td[7]/a/button/i", "xpath:idRelative"],
+        ["xpath=//td[7]/a/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "865e9851-0c12-4d1c-a408-b91001792803",
+      "comment": "",
+      "command": "click",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6ab5c516-93a1-4a34-a21a-caf6242fde73",
+      "comment": "",
+      "command": "type",
+      "target": "name=titulo",
+      "targets": [
+        ["name=titulo", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='titulo']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Horario Primero modificado"
+    }, {
+      "id": "56f5e64d-80f3-49dc-aab9-2c5b00d4e09f",
+      "comment": "",
+      "command": "click",
+      "target": "name=descripcion",
+      "targets": [
+        ["name=descripcion", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "024d722e-d162-4a43-90b9-27f1f7af1a74",
+      "comment": "",
+      "command": "type",
+      "target": "name=descripcion",
+      "targets": [
+        ["name=descripcion", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "modificar Horario académico del grado primero para el año 2025. Incluye materias básicas y actividades lúdicas."
+    }, {
+      "id": "39fa8e62-f890-48af-aeeb-83da00ce8e23",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(8)",
+      "targets": [
+        ["css=button:nth-child(8)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='contenidoTabla']/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "74d2ec45-63a9-4139-9503-32cd05099789",
+    "name": "Eliminar Horario",
+    "commands": [{
+      "id": "64f3abed-d99f-4cf4-8ec0-876162bc6570",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:5173/horario",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b7a441d5-cc46-42e3-95b2-09b8e987a9b3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1096",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8b6a96a9-088a-4d73-906d-5130ca9e272c",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e8bd7dc5-2793-4be5-9864-7775399f05f4",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f2b3cedd-38f1-4c02-89cd-698725068b84",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=tr:nth-child(3) .btn-icon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b2b4eb62-a64c-4aeb-884a-48b44a095151",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "¿Estás seguro de que deseas eliminar este Horario?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "353f83cd-1126-411c-b976-db4ebd6e166f",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "820755c5-9ae7-4b85-bf31-061430f4258c",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:5173/horario"],
+  "plugins": []
+}
